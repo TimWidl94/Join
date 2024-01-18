@@ -1,12 +1,12 @@
 /*  general section  */
 
-.dp-flex{
+.dp-flex {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.fd-colum{
+.fd-colum {
   display: flex;
   flex-direction: column;
 }
@@ -77,13 +77,13 @@ footer {
 }
 
 .inputFieldLogIn {
-width: 380px;
-height: 24px;
-flex-shrink: 0;
-border: 0;
+  width: 380px;
+  height: 24px;
+  flex-shrink: 0;
+  border: 0;
 }
 
-.inputField{
+.inputField {
   width: 380px;
   height: 24px;
   gap: 8px;
@@ -92,33 +92,38 @@ border: 0;
   padding: 12px 21px;
 }
 
-.inputFieldBox{
+.inputFieldContainer {
+  position: relative;
   display: flex;
-height: 152px;
-flex-direction: column;
-align-items: flex-start;
-gap: 32px;
-outline: none;
+  height: 152px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 32px;
+  outline: none;
 }
 
-.checkboxBox{
+.inputFieldBox{
+  position: relative;
+}
+
+.checkboxBox {
   display: flex;
   padding: 0px 241px 0px 39px;
   align-items: center;
   align-self: stretch;
 }
-.checkboxSavePassword{
+.checkboxSavePassword {
   width: 16px;
   height: 16px;
-  stroke: #2A3647;
+  stroke: #2a3647;
 }
 
-.buttonLogin{
+.buttonLogin {
   padding: 24px 15px;
   font-size: 21px;
-font-style: normal;
-font-weight: 700;
-line-height: 120%;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 120%;
 }
 
 /* img section   */
@@ -130,3 +135,20 @@ line-height: 120%;
   width: 100.03px;
   height: 121.97px;
 }
+
+.inputImgMail {
+  position: absolute;
+  top: 13px;
+  right: 22px;
+  width: 24px;
+  height: 24px;
+}
+
+.inputImgLock {
+  position: absolute;
+  top: 95px;
+  right: 25px;
+  width: 16px;
+  height: 21px;
+}
+

@@ -33,5 +33,22 @@ body{
 }
 
 .buttonGrey:hover{
-    color: blue;
+    transition: 250ms;
+    background-color: rgb(14,140,233);
+    transform:scale(1.0005);
+    box-shadow: 0 5px 2px -2px rgba(0, 0, 0, 0.2);
+}
+
+.buttonWhite:hover{
+    transition: 250ms;
+    border: 1px solid rgb(14,140,233);
+    color: rgb(14,140,233);
+    bottom: 1px;
+    transform:scale(1.0005);
+    box-shadow: 0 5px 2px -2px rgba(0, 0, 0, 0.2);
+}
+
+.footerLink:hover{
+    color: rgb(14,140,233);
+    font-weight: bold;
 }

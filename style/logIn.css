@@ -126,6 +126,12 @@ footer {
   line-height: 120%;
 }
 
+.h1Box{
+  height: 89px;
+  width: 315px;
+  gap: 16px;
+}
+
 /* img section   */
 
 .JoinLogoSmall {

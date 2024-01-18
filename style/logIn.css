@@ -187,3 +187,19 @@ footer {
   height: 21px;
 }
 
+.inputImgLock1 {
+  position: absolute;
+  top: 95px;
+  right: 25px;
+  width: 16px;
+  height: 21px;
+}
+
+.inputImgLock2 {
+  position: absolute;
+  top: 95px;
+  right: 25px;
+  width: 16px;
+  height: 21px;
+}
+

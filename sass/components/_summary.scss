@@ -1,20 +1,64 @@
+// @import "../base/_colors";
+
 .container {
-    width: 1400px;
+    margin: auto;
+    position: relative;
+    padding: 110px 96px;
 }
 
 .row {
     display: flex;
     align-items: center;
     padding-bottom: 28px;
+    background-color: $primary-color;
 } 
 
 .col-6 {
-    width: 50%;
+    width: 50%
 }
 
+.col-12 {
+    width: 100%;
+}
+
+.flex-start {
+    justify-content: flex-start;
+}
 .summary {
     background-color: $summary-background-color;
-    height: vh100;
+
+    &-h2 {
+        font-size: 61px;
+        color: $color-dark;
+    }
+
+    &-h3 {
+        display: inline;
+        font-size: 27px;
+        font-weight: 400;
+        color: $primary-color;
+    }
+    &-welcome {
+        font-size: 47px;
+        font-weight: 500;
+    }
+
+    &-welcome-name {
+        color: $secondary-color;
+        font-family: Inter;
+        font-size: 64px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 120%
+    }
+
+    &-date {
+        font-weight: 700;
+    }
+
+    &-subtitle {
+        font-size: 16px;
+    }
 
     &-flex {
         display: flex;
@@ -23,13 +67,11 @@
     }
     &-vertical-line {
         position: relative;
-        height: 150px;
         width: 67px;
         display: block;
         text-align: center;
         padding-top: 100px;
-        margin: 10px auto; 
-        &_before {
+        &:before {
             border-left: 3px solid #29ABE2;
             content: "";
             height: 56px;
@@ -38,9 +80,7 @@
             z-index: 0;
         }
     }
-    &-h3 {
-        display: inline;
-    }
+    
     
     &-todo {
         display: flex;
@@ -54,15 +94,21 @@
         gap: 18px;
         flex-shrink: 0;
 
-        &-todo-counter {
+        &-counter {
             color: #000;
             text-align: center;
             font-size: 64px;
             font-weight: 600;
 
             &-text {
-                font-size: 20px;
                 font-weight: 400;
+            }
+            &-text-m {
+                font-size: 20px;
+            }
+
+            &-text-s {
+                font-size: 16px;
             }
         }
     }

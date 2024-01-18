@@ -1,0 +1,81 @@
+.container {
+    width: 100%;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    padding-bottom: 28px;
+} 
+
+.col-6 {
+    width: 50%;
+}
+
+.summary {
+    background-color: #D1D1D1;
+    height: vh100;
+}
+
+h3 {
+    display: inline;
+}
+.summary-flex {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/* .summary-h2::after {
+    content: "";        
+    border-left: 3px solid #29ABE2;
+    padding:0px 0;
+    margin: 30px;
+} */
+.summary-vertical-line {
+    position: relative;
+    height: 150px;
+    width: 67px;
+    display: block;
+    text-align: center;
+    padding-top: 100px;
+    margin: 10px auto;
+}
+
+.summary-vertical-line:before {
+    border-left: 3px solid #29ABE2;
+    content: "";
+    /* display: block; */
+    /* display: flex; */
+    height: 56px;
+    /* left: 34px; */
+    position: absolute;
+    top: 20px;
+    /* width: 3px; */
+    z-index: 0;
+}
+
+
+.todo {
+    display: flex;
+    font-family: 'Inter', sans-serif;
+    border-radius: 30px;
+    background-color: #fff;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
+    padding: 38px 58px;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+    flex-shrink: 0;
+}
+
+.todo-counter {
+    color: #000;
+    text-align: center;
+    font-size: 64px;
+    font-weight: 600;
+}
+.todo-text {
+    font-size: 20px;
+    font-weight: 400;
+}

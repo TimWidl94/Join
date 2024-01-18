@@ -1,7 +1,16 @@
 body{
     margin: 0;
+    font-family: 'Inter', sans-serif;
 }
 
+h2 {
+    font-size: 61px;
+}
+h3 {
+    font-size: 27px;
+    font-weight: 400;
+    color: #2A3647;
+}
 
 .buttonGrey{
     display: flex;

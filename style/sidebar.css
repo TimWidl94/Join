@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  height: 100vh;
+  min-height: 100vh;
   color: var(--icon, #a8a8a8);
   /* Version 2/body */
   font-family: Inter;

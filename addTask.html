@@ -1,15 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./style/main.css">
-    <link rel="stylesheet" href="./style/addTask.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Task</title>
+    <link rel="stylesheet" href="./style/main.css" />
+    <link rel="stylesheet" href="./style/addTask.css?version=1" />
     <script src="./includeHTML.js"></script>
     <script src="./script.js"></script>
-</head>
-<body>
-    
-</body>
+    <link rel="icon" type="image/x-icon" href="assets/img/Global/join_logo_black.svg" />
+  </head>
+  <body>
+    <div w3-include-html="./sidebar.html"></div>
+    <div w3-include-html="./includes/topbar.html"></div>
+
+    <h1>Add Task</h1>
+    <main>
+      <section class="container-left">
+        <div id="title">
+          <p>Title<span>*</span></p>
+          <input required type="text" placeholder="Enter a title" />
+        </div>
+
+        <div id="description">
+          <p>Description</p>
+          <textarea placeholder="Enter a description"></textarea>
+        </div>
+
+        <div id="assignedTo">
+          <p>Assigned to</p>
+          <select name="" id="assigned">
+            <option>Select contacts to assign</option>
+            <option>Verena Schranz</option>
+            <option>Tim Widl</option>
+            <option>Christian Grund</option>
+          </select>
+        </div>
+
+        <div id="requirement">
+          <p><span>*</span>This field is required</p>
+        </div>
+      </section>
+
+      <div class="vertical-line"></div>
+
+      <section class="container-right">
+        <div id="due-date">
+          <p>Due Date<span>*</span></p>
+          <input required type="date" value="dd/mm/yyyy" />
+        </div>
+
+        <div class="priority">
+          <p>Prio</p>
+          <div class="priority-options">
+            <div>
+              <p>Urgent</p>
+              <img src="assets/img/AddTask/ArrowUpPrioSign.svg" alt="Prio High" />
+            </div>
+            <div>
+              <p>Medium</p>
+              <img src="assets/img/AddTask/MediumPrioSign.svg" alt="Prio Medium" />
+            </div>
+            <div>
+              <p>Low</p>
+              <img src="assets/img/AddTask/ArrowDownPrioSign.svg" alt="Prio Low" />
+            </div>
+          </div>
+        </div>
+
+        <div class="category">
+          <p>Category<span>*</span></p>
+          <select id="category-options">
+            <option>Select contacts to assign</option>
+            <option>Verena Schranz</option>
+            <option>Tim Widl</option>
+            <option>Christian Grund</option>
+          </select>
+        </div>
+
+        <div id="subtasks">
+          <p>Subtasks</p>
+          <input type="text" placeholder="Add new subtask" />
+        </div>
+
+        <div class="btns-down-right">
+          <div id="clear">
+            <p>Clear</p>
+            <img class="filter-lightblue" src="assets/img/AddTask/cancel.svg" alt="Clear Icon" />
+          </div>
+          <div id="create-task">
+            <p>Create Task</p>
+            <img src="assets/img/AddTask/check_white.svg" alt="Check Icon" />
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
 </html>

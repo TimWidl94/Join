@@ -1,0 +1,14 @@
+{
+  "name": "join",
+  "version": "1.0.0",
+  "description": "",
+  "main": "includeHTML.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Verena Schranz, Tim Widl, Christian Grund",
+  "license": "ISC",
+  "devDependencies": {
+    "node-sass": "^9.0.0"
+  }
+}

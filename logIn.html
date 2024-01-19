@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Join</title>
+    <link rel="stylesheet" href="./style/main.css" />
+    <link rel="stylesheet" href="./style/logIn.css" />
+    <script src="./includeHTML.js"></script>
+    <script src="./script.js"></script>
+  </head>
+  <body onload="init()">
+    <div class="logInOverlayBox">
+      <img
+        src="./assets/img/LogIn/JoinLogoSmall.png"
+        alt="JoinLogo"
+        class="JoinLogoSmall"
+      />
+      <div class="headerRightBox">
+        <p>Not a Join user?</p>
+        <button class="buttonGrey">Sign up</button>
+      </div>
+
+      <form action="" id="loginScreenBody" class="loginScreenBody">
+        <h1>Log in</h1>
+        <img src="./assets/img/LogIn/Vector.png" alt="" />
+        <div class="dp-flex fd-colum">
+          <div class="inputFieldBox">
+            <div>
+              <input type="text" class="inputField" placeholder="Email" />
+              <img src="./assets/img/LogIn/MailIcon.png" alt="" />
+            </div>
+            <div>
+              <input
+                type="text"
+                class="inputField"
+                placeholder="Password"
+              /><img src="./assets/img/LogIn/LockIcon.png" alt="" />
+            </div>
+          </div>
+          <div class="checkboxBox">
+            <input
+              type="checkbox"
+              id="checkboxSavePassword"
+              name="checkboxSavePassword"
+              class="checkboxSavePassword"
+            />
+            <p>Remember me</p>
+          </div>
+        </div>
+        <div class="ButtonBox dp-flex">
+          <button class="buttonGrey buttonLogin">Log in</button>
+          <button class="buttonWhite buttonLogin">Guest Log in</button>
+        </div>
+      </form>
+
+      <footer>
+        <a href="" class="footerLink">Privacy Policy</a>
+        <a href="" class="footerLink">Legal notice</a>
+      </footer>
+    </div>
+  </body>
+</html>

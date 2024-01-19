@@ -1,14 +1,14 @@
 {
   "name": "join",
   "version": "1.0.0",
-  "description": "",
   "main": "includeHTML.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "compile:sass": "node-sass sass/main.scss css/style.css -w"
   },
-  "author": "Verena Schranz, Tim Widl, Christian Grund",
+  "author": "Tim Widl, Christian Grund, Verena Schranz",
   "license": "ISC",
   "devDependencies": {
     "node-sass": "^9.0.0"
-  }
+  },
+  "description": ""
 }

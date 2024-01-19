@@ -4,18 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Add Task</title>
-    <link rel="stylesheet" href="./style/main.css" />
+    <link rel="stylesheet" href="./style/main.css?version=1" />
     <link rel="stylesheet" href="./style/addTask.css?version=1" />
-    <script src="./includeHTML.js"></script>
+    <script src="includeHTML.js"></script>
     <script src="./script.js"></script>
     <link rel="icon" type="image/x-icon" href="assets/img/Global/join_logo_black.svg" />
   </head>
   <body>
-    <div w3-include-html="./sidebar.html"></div>
-    <div w3-include-html="./includes/topbar.html"></div>
+    <div w3-include-html="sidebar.html"></div>
+    <div w3-include-html="topbar.html"></div>
 
     <h1>Add Task</h1>
-    <main>
+    <main style="display: none">
       <section class="container-left">
         <div id="title">
           <p>Title<span>*</span></p>
@@ -95,5 +95,11 @@
         </div>
       </section>
     </main>
+
+    <script>
+      window.onload = function () {
+        includeHTML();
+      };
+    </script>
   </body>
 </html>

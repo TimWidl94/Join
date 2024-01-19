@@ -10,12 +10,13 @@
     <script src="./script.js"></script>
     <link rel="icon" type="image/x-icon" href="assets/img/Global/join_logo_black.svg" />
   </head>
-  <body>
+  <body onload="includeHTML()">
     <div w3-include-html="sidebar.html"></div>
     <div w3-include-html="topbar.html"></div>
 
-    <h1>Add Task</h1>
-    <main style="display: none">
+    <div class="headline"><h1>Add Task</h1></div>
+
+    <main>
       <section class="container-left">
         <div id="title">
           <p>Title<span>*</span></p>
@@ -95,11 +96,5 @@
         </div>
       </section>
     </main>
-
-    <script>
-      window.onload = function () {
-        includeHTML();
-      };
-    </script>
   </body>
 </html>

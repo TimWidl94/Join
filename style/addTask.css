@@ -21,17 +21,24 @@ span {
   color: #ff8190;
 }
 
+.headline {
+  display: flex;
+  justify-content: center;
+  padding-right: 500px;
+}
+
 h1 {
   font-size: 61px;
   position: absolute;
   top: 206px;
-  left: 328px;
+  color: #000;
 }
 
 main {
   display: flex;
   justify-content: center;
   margin-top: 327px;
+  padding-left: 232px;
 }
 
 .container-left {

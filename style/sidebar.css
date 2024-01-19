@@ -1,13 +1,11 @@
 body {
   margin: 0;
   min-height: 100vh;
-  color: var(--icon, #a8a8a8);
-  /* Version 2/body */
   font-family: Inter;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
-  line-height: 120%; /* 19.2px */
+  line-height: 120%;
 }
 
 p {
@@ -59,6 +57,10 @@ p {
   border-radius: 8px;
 }
 
+.menu div p {
+  color: var(--icon, #a8a8a8) !important;
+}
+
 .menu div:hover {
   cursor: pointer;
   background-color: #2a3d59;
@@ -76,10 +78,11 @@ p {
 
 .notes p {
   padding: 8px 8px;
+  color: var(--icon, #a8a8a8) !important;
 }
 
 .notes p:hover {
   cursor: pointer;
-  color: #2aaae2;
+  color: #2aaae2 !important;
   font-weight: 700;
 }

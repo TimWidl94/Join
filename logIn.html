@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./style/main.css" />
     <link rel="stylesheet" href="./style/logIn.css" />
     <script src="./includeHTML.js"></script>
+    <script src="./javascript/login.js"></script>
     <script src="./script.js"></script>
   </head>
   <body onload="init()">
@@ -17,44 +18,51 @@
         alt="JoinLogo"
         class="JoinLogoSmall"
       />
-      <div class="headerRightBox">
+      <div class="headerRightBox" id="headerRightBox">
         <p>Not a Join user?</p>
-        <button class="buttonGrey">Sign up</button>
+        <button class="buttonGrey" onclick="signUp()">Sign up</button>
       </div>
-
-      <form action="" id="loginScreenBody" class="loginScreenBody">
-        <h1>Log in</h1>
-        <img src="./assets/img/LogIn/Vector.png" alt="" />
-        <div class="dp-flex fd-colum">
-          <div class="inputFieldBox">
-            <div>
-              <input type="text" class="inputField" placeholder="Email" />
-              <img src="./assets/img/LogIn/MailIcon.png" alt="" />
+      <div id="formBody" class="dp-flex">
+        <form action="" id="loginScreenBody" class="loginScreenBody">
+          <div class="h1Box dp-flex fd-colum">
+            <h1>Log in</h1>
+            <img src="./assets/img/LogIn/Vector.png" alt="" />
+          </div>
+          <div class="dp-flex fd-colum">
+            <div class="inputFieldContainer">
+              <div class="inputFieldBox">
+                <input type="text" class="inputField" placeholder="Email" />
+                <img src="./assets/img/LogIn/MailIcon.png" alt="" class="inputImgMail"/>
+              </div>
+              <div>
+                <input type="text" class="inputField" placeholder="Password" />
+                <img
+                  src="./assets/img/LogIn/LockIcon.png"
+                  alt=""
+                  class="inputImgLock"
+                />
+              </div>
             </div>
-            <div>
+            <div class="checkboxBox">
               <input
-                type="text"
-                class="inputField"
-                placeholder="Password"
-              /><img src="./assets/img/LogIn/LockIcon.png" alt="" />
+                type="checkbox"
+                id="checkboxSavePassword"
+                name="checkboxSavePassword"
+                class="checkboxSavePassword"
+              />
+              <p>Remember me</p>
             </div>
           </div>
-          <div class="checkboxBox">
-            <input
-              type="checkbox"
-              id="checkboxSavePassword"
-              name="checkboxSavePassword"
-              class="checkboxSavePassword"
-            />
-            <p>Remember me</p>
+          <div class="ButtonBox dp-flex">
+            <button class="buttonGrey buttonLogin" onclick="logIn()">
+              Log in
+            </button>
+            <button class="buttonWhite buttonLogin" onclick="logInGuest()">
+              Guest Log in
+            </button>
           </div>
-        </div>
-        <div class="ButtonBox dp-flex">
-          <button class="buttonGrey buttonLogin">Log in</button>
-          <button class="buttonWhite buttonLogin">Guest Log in</button>
-        </div>
-      </form>
-
+        </form>
+      </div>
       <footer>
         <a href="" class="footerLink">Privacy Policy</a>
         <a href="" class="footerLink">Legal notice</a>

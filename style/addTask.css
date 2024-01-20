@@ -99,7 +99,7 @@ main {
   gap: 8px;
 }
 
-#assignedTo select {
+#assigned {
   padding: 12px 16px;
   border-radius: 10px;
   border: 1px solid var(--Style, #d1d1d1);
@@ -109,10 +109,13 @@ main {
   -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;
-  /* background-image: url('assets/img/AddTask/arrow_drop.svg');
-  background-repeat: no-repeat;
-  background-position: right 1px top 50%, 0 0;
-  background-size: 16px, 100%; */
+  background-image: url('assets/img/AddTask/arrow_drop.svg');
+  /* background-repeat: no-repeat;
+  background-position: right 10px top 50%, 0 0; */
+  background-size: 16px, 100%;
+}
+
+.withArrowDrop {
 }
 
 #requirement {
@@ -206,6 +209,10 @@ main {
   -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;
+  background: url('assets/img/AddTask/calender.svg');
+  background-repeat: no-repeat;
+  background-size: 16px 17px;
+  background-position: center;
 }
 
 #subtasks {
@@ -213,6 +220,10 @@ main {
   flex-direction: column;
   width: 100%;
   gap: 8px;
+}
+
+.inputFieldBox {
+  position: relative;
 }
 
 #subtasks input {
@@ -226,6 +237,15 @@ main {
   background: #fff;
   font-family: Inter;
   font-size: 19px;
+  width: calc(100% - (2 * 16px));
+}
+
+.inputImgPlus {
+  position: absolute;
+  top: 11px;
+  right: 12px;
+  width: 24px;
+  height: 24px;
 }
 
 .btns-down-right {

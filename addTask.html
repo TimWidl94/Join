@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Add Task</title>
     <link rel="stylesheet" href="./style/main.css?version=1" />
-    <link rel="stylesheet" href="./style/addTask.css?version=1" />
+    <link rel="stylesheet" href="./style/addTask.css?version=51" />
     <script src="includeHTML.js"></script>
     <script src="./script.js"></script>
     <link rel="icon" type="image/x-icon" href="assets/img/Global/join_logo_black.svg" />
@@ -30,8 +30,8 @@
 
         <div id="assignedTo">
           <p>Assigned to</p>
-          <select name="" id="assigned">
-            <option>Select contacts to assign</option>
+          <select name="assignedTo" id="assigned">
+            <option class="withArrowDrop">Select contacts to assign</option>
             <option>Verena Schranz</option>
             <option>Tim Widl</option>
             <option>Christian Grund</option>
@@ -81,13 +81,17 @@
 
         <div id="subtasks">
           <p>Subtasks</p>
-          <input type="text" placeholder="Add new subtask" />
+          <div class="inputFieldBox">
+            <input type="text" placeholder="Add new subtask" />
+            <img class="inputImgPlus" src="assets/img/AddTask/plus.svg" alt="Add Icon" />
+          </div>
         </div>
 
         <div class="btns-down-right">
           <div id="clear">
             <p>Clear</p>
-            <img class="filter-lightblue" src="assets/img/AddTask/cancel.svg" alt="Clear Icon" />
+            <!-- class="filter-lightblue" -->
+            <img src="assets/img/AddTask/cancel.svg" alt="Clear Icon" />
           </div>
           <div id="create-task">
             <p>Create Task</p>

@@ -13,7 +13,7 @@ function signUp() {
             <div class="inputFieldContainerSignUp">
                 <div class="inputFieldBox">
                     <input type="text" class="inputField" placeholder="Name" />
-                    <img src="./assets/img/LogIn/person.svg" alt="" class="inputSignInImgMail" />
+                    <img src="./assets/img/LogIn/person.svg" alt="" class="inputImgMail" />
                 </div>
                 <div class="inputFieldBox">
                     <input type="text" class="inputField" placeholder="Email"/>
@@ -21,11 +21,11 @@ function signUp() {
                 </div>
                 <div class="inputFieldBox">
                     <input type="text" class="inputField" placeholder="Password"/>
-                    <img src="./assets/img/LogIn/lock.svg" alt="" class="inputSignInImgLock" />
+                    <img src="./assets/img/LogIn/lock.svg" alt="" class="inputImgLock1" />
                 </div>
                 <div class="inputFieldBox">
                     <input type="text" class="inputField" placeholder="Confirm Password"/>
-                    <img src="./assets/img/LogIn/lock2.svg" alt="" class="inputSignInImgLock" />
+                    <img src="./assets/img/LogIn/lock.svg" alt="" class="inputImgLock2" />
                 </div>
             </div>
             <div class="checkboxPrivacyPolicy dp-flex">

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contacts</title>
+    <link rel="stylesheet" href="./style/main.css" />
+    <link rel="stylesheet" href="./style/contacts_edit_add.css" />
+    <script src="./includeHTML.js"></script>
+    <script src="./script.js"></script>
+  </head>
+  <body>
+    <section class="add-contact-wrapper">
+      <section class="left-container">
+        <img src="assets/img/Contacts/logo-white.svg" alt="Logo" />
+        <div class="left-card-text">
+          <h2>Add Contact</h2>
+          <p>Tasks are better with a team!</p>
+        </div>
+        <div class="horizontal-line"></div>
+      </section>
+
+      <section class="right-container">
+        <div class="profile">
+          <img id="profile-img" src="assets/img/Contacts/person.svg" alt="Profile Image" />
+        </div>
+
+        <div class="inputButtonsWrapper">
+          <div class="inputFieldContainer">
+            <div class="inputFieldBox">
+              <input type="text" class="inputField" placeholder="Name" />
+              <img src="assets/img/Contacts/person_grey.svg" alt="Person" class="inputImgPerson" />
+            </div>
+            <div class="inputFieldBox">
+              <input type="mail" class="inputField" placeholder="Email" />
+              <img src="assets/img/Contacts/mail.svg" alt="Mail" class="inputImgMail" />
+            </div>
+            <div class="inputFieldBox">
+              <input type="tel" class="inputField" placeholder="Phone" />
+              <img src="assets/img/Contacts/call.svg" alt="Phone" class="inputImgPhone" />
+            </div>
+          </div>
+
+          <div class="btns-down-right">
+            <div id="clear">
+              <p>Cancel</p>
+              <!-- class="filter-lightblue" -->
+              <img src="assets/img/AddTask/cancel.svg" alt="Clear Icon" />
+            </div>
+            <div id="create-task">
+              <p>Create Contact</p>
+              <img src="assets/img/AddTask/check_white.svg" alt="Check Icon" />
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <section class="edit-contact-wrapper">
+      <section class="left-container">
+        <img src="assets/img/Contacts/logo-white.svg" alt="Logo" />
+        <div class="left-card-text">
+          <h2>Edit Contact</h2>
+        </div>
+        <div class="horizontal-line"></div>
+      </section>
+
+      <section class="right-container">
+        <div class="profile">
+          <img id="profile-img" src="assets/img/Contacts/person.svg" alt="Profile Image" />
+        </div>
+
+        <div class="inputButtonsWrapper">
+          <div class="inputFieldContainer">
+            <div class="inputFieldBox">
+              <input type="text" class="inputField" placeholder="Name" />
+              <img src="assets/img/Contacts/person_grey.svg" alt="Person" class="inputImgPerson" />
+            </div>
+            <div class="inputFieldBox">
+              <input type="mail" class="inputField" placeholder="Email" />
+              <img src="assets/img/Contacts/mail.svg" alt="Mail" class="inputImgMail" />
+            </div>
+            <div class="inputFieldBox">
+              <input type="tel" class="inputField" placeholder="Phone" />
+              <img src="assets/img/Contacts/call.svg" alt="Phone" class="inputImgPhone" />
+            </div>
+          </div>
+
+          <div class="btns-down-right">
+            <div id="clear">
+              <p>Delete</p>
+              <!-- class="filter-lightblue" -->
+              <img src="assets/img/AddTask/cancel.svg" alt="Clear Icon" />
+            </div>
+            <div id="create-task">
+              <p>Save</p>
+              <img src="assets/img/AddTask/check_white.svg" alt="Check Icon" />
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+  </body>
+</html>

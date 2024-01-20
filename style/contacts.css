@@ -45,6 +45,17 @@ h1 {
   background: #fff;
   margin-right: auto;
   margin-left: auto;
+  margin-bottom: 200px;
+}
+
+.edit-contact-wrapper {
+  display: flex;
+  width: 1212px;
+  height: 592px;
+  border-radius: 30px;
+  background: #fff;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .left-container {

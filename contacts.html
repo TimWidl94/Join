@@ -13,52 +13,72 @@
     <div w3-include-html="sidebar.html"></div>
     <div w3-include-html="topbar.html"></div>
 
-    <main>
-      <section class="wrapper-contacts"> </section>
+    <!-- <main class="main-contacts"> -->
+    <section class="wrapper-contact-list">
+      <div class="add-new-contact">
+        <p>Add new contact</p>
+        <img src="assets/img/Contacts/person_add.svg" alt="Person Add" />
+      </div>
 
-      <section class="wrapper-contact-info">
-        <section class="headline">
-          <h1>Contacts</h1>
-          <div class="vertical-line"></div>
-          <p>Better with a Team</p>
-        </section>
+      <div class="start-letter-container">
+        <p id="start-letter">A</p>
+      </div>
+      <div class="start-letter-line"></div>
 
-        <section class="contact-info">
-          <div class="basic-info">
-            <div class="capital-letters">
-              <h2 id="capital-letters">AM</h2>
-            </div>
-            <div class="name-and-changes">
-              <h2 id="name">Anton Mayer</h2>
-              <div class="changes">
-                <div class="edit">
-                  <img src="assets/img/Contacts/edit.svg" alt="" />
-                  <p>Edit</p>
-                </div>
-                <div class="delete">
-                  <img src="assets/img/Contacts/delete.svg" alt="" />
-                  <p>Delete</p>
-                </div>
+      <div class="contact-list-basic-info">
+        <div class="capital-letters-list">
+          <p id="capital-letters-list">AM</p>
+        </div>
+        <div class="name-and-mail">
+          <p id="name-list">Anton Mayer</p>
+          <p id="email-list">antom@gmail.com</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrapper-contact-info">
+      <section class="headline">
+        <h1>Contacts</h1>
+        <div class="vertical-line"></div>
+        <p>Better with a Team</p>
+      </section>
+
+      <section class="contact-info">
+        <div class="basic-info">
+          <div class="capital-letters">
+            <h2 id="capital-letters">AM</h2>
+          </div>
+          <div class="name-and-changes">
+            <h2 id="name">Anton Mayer</h2>
+            <div class="changes">
+              <div class="edit">
+                <img src="assets/img/Contacts/edit.svg" alt="" />
+                <p>Edit</p>
+              </div>
+              <div class="delete">
+                <img src="assets/img/Contacts/delete.svg" alt="" />
+                <p>Delete</p>
               </div>
             </div>
           </div>
+        </div>
 
-          <div class="contact-info-text">
-            <p>Contact Information</p>
-          </div>
+        <div class="contact-info-text">
+          <p>Contact Information</p>
+        </div>
 
-          <div class="mail-and-phone">
-            <div class="mail">
-              <p>Email</p>
-              <p id="contact-email">antom@gmail.com</p>
-            </div>
-            <div class="phone">
-              <p>Phone</p>
-              <p id="contact-phone" type="phone">+49 1111 111 11 1</p>
-            </div>
+        <div class="mail-and-phone">
+          <div class="mail">
+            <p>Email</p>
+            <p id="contact-email">antom@gmail.com</p>
           </div>
-        </section>
+          <div class="phone">
+            <p>Phone</p>
+            <p id="contact-phone" type="phone">+49 1111 111 11 1</p>
+          </div>
+        </div>
       </section>
-    </main>
+    </section>
+    <!-- </main> -->
   </body>
 </html>

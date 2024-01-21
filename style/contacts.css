@@ -19,11 +19,23 @@ p {
   color: var(--Version-2-main-color, #2a3647);
 }
 
+.main {
+  flex-direction: row;
+}
+
+.wrapper-contacts {
+}
+
 .headline {
+  margin-top: 150px;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 30px;
+}
+
+.headline p {
+  font-size: 27px;
 }
 
 h1 {
@@ -31,8 +43,112 @@ h1 {
   color: #000;
 }
 
+h2 {
+  font-size: 47px;
+  font-weight: 500;
+}
+
 .vertical-line {
   width: 2px;
   height: 60px;
   background-color: #29abe2;
+}
+
+.contact-info {
+  display: flex;
+  /* flex-direction: column; */
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 21px;
+  margin-left: 400px;
+}
+
+.basic-info {
+  display: flex;
+  gap: 54px;
+}
+
+.capital-letters {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 120px;
+  height: 120px;
+  background-color: #ff7a00;
+  border-radius: 60px;
+}
+
+.capital-letters h2 {
+  color: #fff;
+}
+
+.name-and-changes {
+  display: flex;
+  flex-direction: column;
+}
+
+.name-and-changes h2 {
+  color: #000;
+}
+
+.changes {
+  display: flex;
+  gap: 16px;
+}
+
+.changes div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.changes div p {
+  font-size: 16px;
+}
+
+.contact-info-text {
+  display: flex;
+  align-items: center;
+  height: 74px;
+}
+
+.contact-info-text p {
+  color: #000;
+  font-size: 20px;
+}
+
+.mail-and-phone {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 22px;
+}
+
+.mail,
+.phone {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 15px;
+}
+
+.mail p,
+.phone p {
+  font-size: 16px;
+  color: #000;
+}
+
+.mail p:nth-child(1),
+.phone p:nth-child(1) {
+  font-weight: 700;
+}
+
+.mail p:nth-child(2) {
+  color: #007cee;
+}
+
+.mail p:nth-child(2):hover,
+.phone p:nth-child(2):hover {
+  cursor: pointer;
 }

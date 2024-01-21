@@ -1,6 +1,10 @@
 body {
   margin: 0;
-  font-family: 'Inter', sans-serif; }
+  font-family: 'Inter', sans-serif;
+  background-color: #F6F7F8; }
+
+.d-none {
+  display: none !important; }
 
 .buttonGrey {
   display: flex;
@@ -9,7 +13,7 @@ body {
   justify-content: center;
   height: 48px;
   color: white;
-  background-color: #2A3644;
+  background-color: #2A3647;
   border-radius: 8px;
   border: none;
   gap: 10px;
@@ -28,6 +32,24 @@ body {
   gap: 10px;
   padding: 15px 16px;
   border: 1px solid #2a3647; }
+
+.buttonGrey:hover {
+  transition: 250ms;
+  background-color: #0e8ce9;
+  transform: scale(1.0005);
+  box-shadow: 0 5px 2px -2px rgba(0, 0, 0, 0.2); }
+
+.buttonWhite:hover {
+  transition: 250ms;
+  border: 1px solid #29ABE2;
+  color: #29ABE2;
+  bottom: 1px;
+  transform: scale(1.0005);
+  box-shadow: 0 5px 2px -2px rgba(0, 0, 0, 0.2); }
+
+.footerLink:hover {
+  color: #29ABE2;
+  font-weight: bold; }
 
 @font-face {
   font-family: 'Inter', sans-serif;
@@ -187,11 +209,23 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  width: 652px;
-  height: 493px;
+  width: 422px;
+  height: 397px;
   padding: 48px 115px 48px 115px;
   border-radius: 30px;
   gap: 32px;
+  background-color: #ffffff;
+  box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04); }
+
+.signUpBody {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 422px;
+  height: 534px;
+  padding: 48px 88px;
+  border-radius: 30px;
+  gap: 24px;
   background-color: #ffffff;
   box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04); }
 
@@ -246,7 +280,8 @@ footer {
   border: 1px solid #d1d1d1;
   padding: 12px 21px; }
 
-.inputFieldBox {
+.inputFieldContainer {
+  position: relative;
   display: flex;
   height: 152px;
   flex-direction: column;
@@ -254,16 +289,31 @@ footer {
   gap: 32px;
   outline: none; }
 
+.inputFieldContainerSignUp {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 32px;
+  outline: none; }
+
+.inputFieldBox {
+  position: relative; }
+
 .checkboxBox {
   display: flex;
   padding: 0px 241px 0px 39px;
   align-items: center;
   align-self: stretch; }
 
+.checkboxPrivacyPolicy {
+  padding: 0;
+  align-self: stretch; }
+
 .checkboxSavePassword {
   width: 16px;
   height: 16px;
-  stroke: #2A3647; }
+  stroke: #2a3647; }
 
 .buttonLogin {
   padding: 24px 15px;
@@ -272,6 +322,11 @@ footer {
   font-weight: 700;
   line-height: 120%; }
 
+.h1Box {
+  height: 89px;
+  width: 315px;
+  gap: 16px; }
+
 /* img section   */
 .JoinLogoSmall {
   position: absolute;
@@ -279,3 +334,31 @@ footer {
   left: 77px;
   width: 100.03px;
   height: 121.97px; }
+
+.inputImgMail {
+  position: absolute;
+  top: 13px;
+  right: 22px;
+  width: 24px;
+  height: 24px; }
+
+.inputImgLock {
+  position: absolute;
+  top: 95px;
+  right: 25px;
+  width: 16px;
+  height: 21px; }
+
+.inputImgLock1 {
+  position: absolute;
+  top: 95px;
+  right: 25px;
+  width: 16px;
+  height: 21px; }
+
+.inputImgLock2 {
+  position: absolute;
+  top: 95px;
+  right: 25px;
+  width: 16px;
+  height: 21px; }

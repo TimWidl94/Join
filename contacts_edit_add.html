@@ -4,8 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contacts</title>
-    <link rel="stylesheet" href="./style/main.css" />
-    <link rel="stylesheet" href="./style/contacts_edit_add.css" />
+    <!-- <link rel="stylesheet" href="./style/main.css" />
+    <link rel="stylesheet" href="./style/contacts_edit_add.css" /> -->
+    <link rel="stylesheet" href="./css/style.css" />
     <script src="./includeHTML.js"></script>
     <script src="./script.js"></script>
   </head>
@@ -37,20 +38,17 @@
             </div>
             <div class="inputFieldBox">
               <input type="tel" class="inputField" placeholder="Phone" />
-              <img src="assets/img/Contacts/call.svg" alt="Phone" class="inputImgPhone" />
+              <img src="assets/img/Contacts/call.svg" alt="Phone" class="inputImgPhone2" />
             </div>
           </div>
 
           <div class="btns-down-right">
-            <div id="clear">
-              <p>Cancel</p>
-              <!-- class="filter-lightblue" -->
-              <img src="assets/img/AddTask/cancel.svg" alt="Clear Icon" />
-            </div>
-            <div id="create-task">
-              <p>Create Contact</p>
-              <img src="assets/img/AddTask/check_white.svg" alt="Check Icon" />
-            </div>
+            <button id="cancel" class="buttonWhite">
+              Cancel <img src="assets/img/AddTask/cancel.svg" alt="Clear Icon"
+            /></button>
+            <button id="create-contact" class="buttonGrey">
+              Create Contact <img src="assets/img/AddTask/check_white.svg" alt="Check Icon"
+            /></button>
           </div>
         </div>
       </section>
@@ -87,15 +85,12 @@
           </div>
 
           <div class="btns-down-right">
-            <div id="clear">
-              <p>Delete</p>
-              <!-- class="filter-lightblue" -->
-              <img src="assets/img/AddTask/cancel.svg" alt="Clear Icon" />
-            </div>
-            <div id="create-task">
-              <p>Save</p>
-              <img src="assets/img/AddTask/check_white.svg" alt="Check Icon" />
-            </div>
+            <button id="delete" class="buttonWhite">
+              Delete <img src="assets/img/AddTask/cancel.svg" alt="Clear Icon"
+            /></button>
+            <button id="save" class="buttonGrey">
+              Save <img src="assets/img/AddTask/check_white.svg" alt="Check Icon"
+            /></button>
           </div>
         </div>
       </section>

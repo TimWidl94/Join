@@ -247,33 +247,35 @@ main {
 }
 
 #clear {
-  display: flex;
-  padding: 16px;
-  justify-content: center;
-  align-items: center;
-  gap: 4px;
-  border-radius: 10px;
-  border: 1px solid $primary-color;
-  background: #f6f7f8;
+  // display: flex;
+  // padding: 16px;
+  // justify-content: center;
+  // align-items: center;
+  // gap: 4px;
+  // border-radius: 10px;
+  // border: 1px solid $primary-color;
+  // background: #f6f7f8;
+  font-size: 20px;
 }
 
-#clear:hover {
-  color: #2aaae2;
-  border: 1px solid #2aaae2;
-}
+// #clear:hover {
+//   color: #2aaae2;
+//   border: 1px solid #2aaae2;
+// }
 
-.filter-lightblue {
-  filter: invert(55%) sepia(74%) saturate(588%) hue-rotate(162deg) brightness(93%) contrast(90%);
-}
+// .filter-lightblue {
+//   filter: invert(55%) sepia(74%) saturate(588%) hue-rotate(162deg) brightness(93%) contrast(90%);
+// }
 
 #create-task {
-  display: flex;
-  padding: 16px;
-  justify-content: center;
-  align-items: center;
-  gap: 4px;
-  border-radius: 10px;
-  background: $primary-color;
+  // display: flex;
+  // padding: 16px;
+  // justify-content: center;
+  // align-items: center;
+  // gap: 4px;
+  // border-radius: 10px;
+  // background: $primary-color;
+  font-size: 20px;
 }
 
 #create-task p {
@@ -281,6 +283,6 @@ main {
   font-weight: 700;
 }
 
-#create-task:hover {
-  background-color: #2aaae2;
-}
+// #create-task:hover {
+//   background-color: #2aaae2;
+// }

@@ -124,8 +124,9 @@ body {
 .buttonGrey:hover {
   transition: 250ms;
   background-color: rgb(14, 140, 233);
-  transform: scale(1.0005);
+  transform: scale(1.001);
   box-shadow: 0 5px 2px -2px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
 }
 
 .buttonWhite:hover {
@@ -133,8 +134,9 @@ body {
   border: 1px solid $secondary-color;
   color: $secondary-color;
   bottom: 1px;
-  transform: scale(1.0005);
+  transform: scale(1.001);
   box-shadow: 0 5px 2px -2px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
 }
 
 .footerLink:hover {

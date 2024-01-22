@@ -349,6 +349,9 @@ span {
   color: #fff !important;
   font-weight: 700; }
 
+.my-body {
+  height: 100vh; }
+
 /* Wrapper Contact List */
 .wrapper-contact-list {
   position: absolute;
@@ -360,7 +363,9 @@ span {
   flex-direction: column;
   align-items: center;
   background: #fff;
-  height: calc(100vh - 98px - 2 * 32px); }
+  height: calc(100vh - 98px - 2 * 32px);
+  overflow-x: hidden;
+  overflow-y: auto; }
 
 .add-new-contact {
   display: flex;
@@ -392,15 +397,11 @@ span {
 #start-letter {
   color: #000; }
 
-.start-letter-line {
-  display: flex;
+.start-letter-line1 {
   margin: 8px 0px;
-  flex-direction: column;
-  align-items: flex-start;
-  align-self: stretch;
   height: 1px;
   background-color: #d1d1d1;
-  width: 100%; }
+  width: 300px; }
 
 /* === Contact List Basic Info === */
 .contact-list-basic-info {

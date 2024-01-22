@@ -114,6 +114,10 @@ function openContactInfo(i) {
   `;
 }
 
+function deleteContact(i) {
+  console.log('deleteContact i', contacts[i].name);
+}
+
 function toggleBackground(i) {
   //   let removeBackground = document.getElementById('contact-list-basic-info');
   //   removeBackground.forEach((element) => {

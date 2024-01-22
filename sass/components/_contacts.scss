@@ -1,37 +1,4 @@
-@font-face {
-  font-family: 'Inter', sans-serif;
-  src: url(assets/fonts/Inter.ttf);
-}
-
-body {
-  margin: 0;
-  background: #f6f7f8;
-  min-height: 100vh;
-  color: var(--Version-2-main-color, #2a3647);
-  font-family: Inter, Arial, Helvetica, sans-serif;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 120%; /* 24px */
-  display: flex;
-  flex-direction: column;
-}
-
-p {
-  margin-block-start: 0;
-  margin-block-end: 0;
-  font-size: 20px;
-  color: var(--Version-2-main-color, #2a3647);
-}
-
-/* .main-contacts {
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
-  margin-top: 96px;
-  gap: 100px;
-  /* margin-left: 232px; */
-/* }  */
+@import '../base/_colors';
 
 /* Wrapper Contact List */
 .wrapper-contact-list {
@@ -43,7 +10,7 @@ p {
   padding: 32px 24px;
   flex-direction: column;
   align-items: center;
-  background: var(--white, #fff);
+  background: $color-light;
   height: calc(100vh - 98px - 2 * 32px);
 }
 
@@ -56,13 +23,13 @@ p {
   gap: 16px;
   flex-shrink: 0;
   border-radius: 10px;
-  border: 1px solid #2a3647;
-  background: #2a3647;
+  border: 1px solid $primary-color;
+  background: $primary-color;
   cursor: pointer;
 }
 
 .add-new-contact p {
-  color: var(--white, #fff);
+  color: $color-light;
   font-size: 21px;
   font-weight: 700;
 }
@@ -78,7 +45,7 @@ p {
 }
 
 #start-letter {
-  color: #000;
+  color: $color-dark;
 }
 
 .start-letter-line {
@@ -88,7 +55,7 @@ p {
   align-items: flex-start;
   align-self: stretch;
   height: 1px;
-  background-color: #d1d1d1;
+  background-color: $color-lightgrey;
   width: 100%;
 }
 
@@ -102,7 +69,7 @@ p {
 }
 
 .contact-list-basic-info:hover {
-  background-color: #f6f7f8;
+  background-color: $summary-background-color;
   cursor: pointer;
 }
 
@@ -113,12 +80,12 @@ p {
   width: 42px;
   height: 42px;
   background-color: #ff7a00;
-  border: 2px solid #fff;
+  border: 2px solid $color-light;
   border-radius: 42px;
 }
 
 .capital-letters-list p {
-  color: var(--white, #fff);
+  color: $color-light;
   font-size: 12px;
 }
 
@@ -130,7 +97,7 @@ p {
 }
 
 #name-list {
-  color: #000;
+  color: $color-dark;
   font-size: 20px;
 }
 
@@ -148,21 +115,21 @@ p {
   padding-left: 100px;
 }
 
-.headline {
+.contact-info-headline {
   margin-top: 150px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  flex-direction: row;
   gap: 30px;
 }
 
-.headline p {
+.contact-info-headline p {
   font-size: 27px;
 }
 
-h1 {
-  font-size: 61px;
-  color: #000;
+.contact-info-h1 {
+  position: relative;
 }
 
 h2 {
@@ -173,7 +140,7 @@ h2 {
 .vertical-line {
   width: 2px;
   height: 60px;
-  background-color: #29abe2;
+  background-color: $secondary-color;
 }
 
 .contact-info {
@@ -200,7 +167,7 @@ h2 {
 }
 
 .capital-letters h2 {
-  color: #fff;
+  color: $color-light;
 }
 
 .name-and-changes {
@@ -209,7 +176,7 @@ h2 {
 }
 
 .name-and-changes h2 {
-  color: #000;
+  color: $color-dark;
 }
 
 .changes {
@@ -235,7 +202,7 @@ h2 {
 }
 
 .contact-info-text p {
-  color: #000;
+  color: $color-dark;
   font-size: 20px;
 }
 
@@ -257,7 +224,7 @@ h2 {
 .mail p,
 .phone p {
   font-size: 16px;
-  color: #000;
+  color: $color-dark;
 }
 
 .mail p:nth-child(1),

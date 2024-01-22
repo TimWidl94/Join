@@ -26,7 +26,7 @@ body {
   justify-content: center;
   height: 48px;
   color: #2a3647;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   border-radius: 8px;
   border: none;
   gap: 10px;
@@ -48,8 +48,17 @@ body {
   box-shadow: 0 5px 2px -2px rgba(0, 0, 0, 0.2); }
 
 .footerLink:hover {
-  color: #29ABE2;
+  color: #0e8ce9;
   font-weight: bold; }
+
+h1 {
+  color: #000;
+  text-align: center;
+  font-family: Inter;
+  font-size: 61px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 120%; }
 
 @font-face {
   font-family: 'Inter', sans-serif;
@@ -325,7 +334,28 @@ footer {
 .h1Box {
   height: 89px;
   width: 315px;
-  gap: 16px; }
+  gap: 16px;
+  position: relative; }
+
+.blueUnderline {
+  position: absolute;
+  bottom: 0; }
+
+.acceptPrivacyGrey {
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 120%; }
+
+.privacyPolicyLink {
+  color: var(--Ligth-blue, #29ABE2);
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 120%;
+  text-decoration: none; }
 
 /* img section   */
 .JoinLogoSmall {
@@ -337,28 +367,21 @@ footer {
 
 .inputImgMail {
   position: absolute;
-  top: 13px;
-  right: 22px;
-  width: 24px;
-  height: 24px; }
+  right: 25px;
+  width: 16px;
+  height: 21px;
+  top: 13px; }
 
 .inputImgLock {
   position: absolute;
-  top: 95px;
   right: 25px;
   width: 16px;
-  height: 21px; }
+  height: 21px;
+  top: 95px; }
 
 .inputImgLock1 {
   position: absolute;
-  top: 95px;
   right: 25px;
   width: 16px;
-  height: 21px; }
-
-.inputImgLock2 {
-  position: absolute;
-  top: 95px;
-  right: 25px;
-  width: 16px;
-  height: 21px; }
+  height: 21px;
+  top: 13px; }

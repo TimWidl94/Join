@@ -7,15 +7,10 @@
   gap: 30px;
 }
 
-h1 {
-  font-size: 61px;
-  color: #000;
-}
-
 .vertical-line {
   width: 2px;
   height: 60px;
-  background-color: #29abe2;
+  background-color: $secondary-color;
 }
 
 .add-contact-wrapper {
@@ -23,7 +18,7 @@ h1 {
   width: 1212px;
   height: 592px;
   border-radius: 30px;
-  background: #fff;
+  background: $color-light;
   margin-right: auto;
   margin-left: auto;
   margin-bottom: 200px;
@@ -34,7 +29,7 @@ h1 {
   width: 1212px;
   height: 592px;
   border-radius: 30px;
-  background: #fff;
+  background: $color-light;
   margin-right: auto;
   margin-left: auto;
 }
@@ -48,7 +43,7 @@ h1 {
   width: 467px;
   padding: 66px 48px;
   gap: 12px;
-  background: var(--Version-2-main-color, #2a3647);
+  background: $primary-color;
   border-top-left-radius: 30px;
   border-bottom-left-radius: 30px;
 }
@@ -56,7 +51,6 @@ h1 {
 .left-container img {
   width: 55.6px;
   height: 66.483px;
-  /* padding-bottom: 16px; */
 }
 
 .left-card-text {
@@ -69,14 +63,14 @@ h1 {
 }
 
 h2 {
-  color: #ffffff;
+  color: $color-light;
   font-size: 61px;
   margin-block-start: 0.5em;
   margin-block-end: 0.5em;
 }
 
 .left-container p {
-  color: #ffffff;
+  color: $color-light;
   font-size: 27px;
   letter-spacing: 0.5px;
 }
@@ -84,7 +78,7 @@ h2 {
 .horizontal-line {
   width: 65px;
   height: 2px;
-  background-color: #29abe2;
+  background-color: $secondary-color;
   margin-bottom: 32px;
 }
 
@@ -100,7 +94,7 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #d1d1d1;
+  background-color: $color-lightgrey;
   width: 120px;
   height: 120px;
   border-radius: 60px;
@@ -148,7 +142,7 @@ h2 {
 
 .inputImgPhone2 {
   position: absolute;
-  top: 177px;
+  top: 12px;
   right: 22px;
   width: 24px;
   height: 24px;
@@ -175,4 +169,12 @@ h2 {
 #save p {
   color: $color-light !important;
   font-weight: 700;
+}
+
+.height-unset {
+  height: unset !important;
+}
+
+.pos-rel {
+  position: relative;
 }

@@ -1,11 +1,5 @@
 @import '../base/_colors';
 
-// body {
-//   height: 100vh;
-//   display: flex;
-//   flex-direction: column;
-// }
-
 span {
   color: #ff8190;
 }
@@ -16,11 +10,9 @@ span {
   padding-right: 500px;
 }
 
-h1 {
-  font-size: 62px;
+.headline-h1 {
   position: absolute;
   top: 206px;
-  color: $color-dark;
 }
 
 main {

@@ -1,79 +1,65 @@
-users = [];
+async function loadLogIn(){
+    let container = document.getElementById("formBody");
+    container.innerHTML = await logInHtml();
+}
 
 function loadSignUpHtml() {
   let container = document.getElementById("formBody");
   changeCssFromInput(container);
   document.getElementById("headerRightBox").classList.add("d-none");
 
-  container.innerHTML = `
-    <form action="" id="signUpBody" class="signUpBody" onsubmit="return false">
-        <div class="h1Box dp-flex fd-colum">
-            <h1>Sign up</h1>
-            <img src="./assets/img/LogIn/blueUnderline.svg" alt="" class="blueUnderline" />
-        </div>
-        <div class="dp-flex fd-colum">
-            <div class="inputFieldContainerSignUp">
-                <div class="inputFieldBox">
-                    <input type="text" class="inputField" placeholder="Name" id="name" />
-                    <img src="./assets/img/LogIn/person.svg" alt="" class="inputImgMail" />
-                </div>
-                <div class="inputFieldBox">
-                    <input type="email" class="inputField" placeholder="Email" id="email" />
-                    <img src="./assets/img/LogIn/mail.svg" alt="" class="inputImgMail" />
-                </div>
-                <div class="inputFieldBox">
-                    <input type="password" class="inputField" placeholder="Password" id="password"/>
-                    <img src="./assets/img/LogIn/lock.svg" alt="" class="inputImgLock1" />
-                </div>
-                <div class="inputFieldBox">
-                    <input type="password" class="inputField" placeholder="Confirm Password" id="checkPassword"/>
-                    <img src="./assets/img/LogIn/lock.svg" alt="" class="inputImgLock1" />
-                </div>
-            </div>
-            <div class="checkboxPrivacyPolicy dp-flex">
-                <input type="checkbox" id="checkboxSavePassword" name="checkboxSavePassword" class="checkboxSavePassword"/>
-                <p class="acceptPrivacyGrey">i accept the 
-                    <a href="./privacyPolice.html" class="privacyPolicyLink">Privacy policy</a>
-                </p>
-            </div>
-        </div>
-        <div class="ButtonBox dp-flex">
-            <button class="buttonGrey buttonLogin" onclick="signUp()">Sign up</button>
-        </div>
-    </form>
-    
-    
-    `;
+  container.innerHTML = signupHtml();
 }
 
-function changeCssFromInput(container) {
+function changeCssFromInput(container) {}
+
+async function signUp() {
+  username = document.getElementById("name").value;
+  email = document.getElementById("emailSignUp").value;
+  password = document.getElementById("passwordSignUp").value;
+  checkPassword = document.getElementById("checkPasswordSignUp").value;
+
+  let user = {
+    username: username,
+    email: email,
+    password: password,
+    checkPassword: checkPassword,
+  };
+  await users.push(user);
+  await saveLocalStorageData(users);
+  window.location.href = "./summary.html";
 }
 
+function saveLocalStorageData(users) {
+  let usersAsString = JSON.stringify(users);
+  localStorage.setItem("users", usersAsString);
+}
 
-function signUp(){
-    username = document.getElementById('name').value;
-    email = document.getElementById('email').value;
-    password = document.getElementById('password').value;
-    checkPassword = document.getElementById('checkPassword').value;
+function loadLocalStorageData() {
+  let usersAsString = localStorage.getItem("users");
+  if (usersAsString) {
+    users = JSON.parse(usersAsString);
+  }
+}
 
-    let user = {
-        'username': username,
-        'email': email,
-        'password': password,
-        'checkPassword': checkPassword,
+function einloggen() {
+  let email = document.getElementById("email").value;
+  let password = document.getElementById("password").value;
+  if (searchForEmail(email, password)) {
+    window.location.href = "./summary.html"
+  } 
+}
+
+function searchForEmail(email, password) {
+  for (let i = 0; i < users.length; i++) {
+    if (
+      users[i]["email"].includes(email) &&
+      users[i]["password"].includes(password)
+    ) {
+      return true;
+    } else {
+      return false;
     }
-
-    users.push(user)
-    saveLocalStorageData(user);
+  }
 }
 
-function saveLocalStorageData(user){
-let userAsString = JSON.stringify(user);
-localStorage.setItem('user', userAsString);
-
-}
-
-function loadLocalStorageData(){
-let userAsString = localStorage.getItem('user');
-users = JSON.parse(userAsString);
-}

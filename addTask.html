@@ -4,8 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Add Task</title>
-    <link rel="stylesheet" href="./style/main.css?version=1" />
-    <link rel="stylesheet" href="./style/addTask.css?version=51" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <!-- <link rel="stylesheet" href="./style/main.css?version=1" /> -->
+    <!-- <link rel="stylesheet" href="./style/addTask.css?version=51" /> -->
     <script src="includeHTML.js"></script>
     <script src="./script.js"></script>
     <link rel="icon" type="image/x-icon" href="assets/img/Global/join_logo_black.svg" />
@@ -14,10 +15,10 @@
     <div w3-include-html="sidebar.html"></div>
     <div w3-include-html="topbar.html"></div>
 
-    <div class="headline"><h1>Add Task</h1></div>
-
-    <main>
+    <main class="main-add-task">
       <section class="container-left">
+        <div class="headline-add-task"><h1 class="headline-h1-add-task">Add Task</h1></div>
+
         <div id="title">
           <p>Title<span>*</span></p>
           <input required type="text" placeholder="Enter a title" />
@@ -43,7 +44,7 @@
         </div>
       </section>
 
-      <div class="vertical-line"></div>
+      <div class="vertical-line-add-task"></div>
 
       <section class="container-right">
         <div id="due-date">
@@ -87,16 +88,13 @@
           </div>
         </div>
 
-        <div class="btns-down-right">
-          <div id="clear">
-            <p>Clear</p>
-            <!-- class="filter-lightblue" -->
-            <img src="assets/img/AddTask/cancel.svg" alt="Clear Icon" />
-          </div>
-          <div id="create-task">
-            <p>Create Task</p>
-            <img src="assets/img/AddTask/check_white.svg" alt="Check Icon" />
-          </div>
+        <div class="btns-down-right-add-task">
+          <button id="clear" class="buttonWhite">
+            Clear <img src="assets/img/AddTask/cancel.svg" alt="Clear Icon"
+          /></button>
+          <button id="create-task" class="buttonGrey">
+            Create Task <img src="assets/img/AddTask/check_white.svg" alt="Check Icon"
+          /></button>
         </div>
       </section>
     </main>

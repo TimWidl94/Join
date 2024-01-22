@@ -15,10 +15,10 @@
     <div w3-include-html="sidebar.html"></div>
     <div w3-include-html="topbar.html"></div>
 
-    <div class="headline"><h1 class="headline-h1">Add Task</h1></div>
-
-    <main>
+    <main class="main-add-task">
       <section class="container-left">
+        <div class="headline-add-task"><h1 class="headline-h1-add-task">Add Task</h1></div>
+
         <div id="title">
           <p>Title<span>*</span></p>
           <input required type="text" placeholder="Enter a title" />
@@ -44,7 +44,7 @@
         </div>
       </section>
 
-      <div class="vertical-line"></div>
+      <div class="vertical-line-add-task"></div>
 
       <section class="container-right">
         <div id="due-date">
@@ -88,19 +88,7 @@
           </div>
         </div>
 
-        <!-- class="filter-lightblue" -->
-        <!-- <div class="btns-down-right">
-          <div id="clear">
-            <p>Clear</p>
-            <img src="assets/img/AddTask/cancel.svg" alt="Clear Icon" />
-          </div>
-          <div id="create-task">
-            <p>Create Task</p>
-            <img src="assets/img/AddTask/check_white.svg" alt="Check Icon" />
-          </div>
-        </div> -->
-
-        <div class="btns-down-right">
+        <div class="btns-down-right-add-task">
           <button id="clear" class="buttonWhite">
             Clear <img src="assets/img/AddTask/cancel.svg" alt="Clear Icon"
           /></button>

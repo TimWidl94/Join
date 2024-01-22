@@ -354,12 +354,28 @@ span {
   width: 300px; }
 
 /* === Contact List Basic Info === */
+#basic-info-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  width: 100%; }
+
 .contact-list-basic-info {
   display: flex;
   width: calc(100% - 2 * 24px);
   padding: 15px 24px;
   align-items: center;
-  gap: 35px; }
+  gap: 35px;
+  border-radius: 10px; }
+
+.bg-primary {
+  background-color: #2a3647; }
+
+.hover-unset {
+  background-color: #2a3647; }
+
+.color-white {
+  color: #fff; }
 
 .contact-list-basic-info:hover {
   background-color: #f6f7f8;
@@ -373,13 +389,14 @@ span {
   height: 42px;
   background-color: #ff7a00;
   border: 2px solid #fff;
-  border-radius: 42px; }
+  border-radius: 100px; }
 
-.capital-letters-list p {
+#capital-letters-list p {
   color: #fff;
-  font-size: 12px; }
+  font-size: 12px;
+  padding: 0px 12.5px; }
 
-.name-and-mail {
+#name-and-mail {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -424,14 +441,14 @@ h2 {
   height: 60px;
   background-color: #29abe2; }
 
-.contact-info {
+#contact-info {
   display: flex;
   justify-content: center;
   align-items: flex-start;
   flex-direction: column;
   gap: 21px; }
 
-.basic-info {
+#basic-info {
   display: flex;
   gap: 54px; }
 

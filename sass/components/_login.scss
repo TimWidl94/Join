@@ -41,6 +41,7 @@
   box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
 }
 
+
 .signUpBody {
   display: flex;
   align-items: center;
@@ -131,7 +132,8 @@ footer {
   outline: none;
 }
 
-.inputFieldBox {
+
+.inputFieldBox{
   position: relative;
 }
 
@@ -142,10 +144,12 @@ footer {
   align-self: stretch;
 }
 
-.checkboxPrivacyPolicy {
+
+.checkboxPrivacyPolicy{
   padding: 0;
   align-self: stretch;
 }
+
 
 .checkboxSavePassword {
   width: 16px;

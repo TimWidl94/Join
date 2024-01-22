@@ -8,7 +8,9 @@
     <script src="./includeHTML.js"></script>
     <script src="./script.js"></script>
   </head>
-  <body>
+  <body onload="includeHTML()">
+    <div w3-include-html="sidebar.html"></div>
+    <div w3-include-html="topbar.html"></div>
     <div class="container summary">
       <div class="summary-padding">
         <div class="row-header flex-start">

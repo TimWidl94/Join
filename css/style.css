@@ -1,7 +1,7 @@
 body {
   margin: 0;
-  background-color: #f6f7f8;
-  font-family: "Inter", sans-serif; }
+  font-family: 'Inter', sans-serif;
+  background-color: #F6F7F8; }
 
 .d-none {
   display: none !important; }
@@ -13,7 +13,7 @@ body {
   justify-content: center;
   height: 48px;
   color: white;
-  background-color: #2a3647;
+  background-color: #2A3647;
   border-radius: 8px;
   border: none;
   gap: 10px;
@@ -41,8 +41,8 @@ body {
 
 .buttonWhite:hover {
   transition: 250ms;
-  border: 1px solid #0e8ce9;
-  color: #0e8ce9;
+  border: 1px solid #29ABE2;
+  color: #29ABE2;
   bottom: 1px;
   transform: scale(1.0005);
   box-shadow: 0 5px 2px -2px rgba(0, 0, 0, 0.2); }

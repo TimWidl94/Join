@@ -1,10 +1,10 @@
 @import "../base/_colors";
 
 .container {
-    margin: auto;
+    margin: 96px 96px 0px;
     position: relative;
-    padding: 110px 96px;
-    width: 1130px;
+    padding-top: 110px;
+    left: 232px;
     background-color: $summary-background-color;
 }
 
@@ -35,7 +35,7 @@
     justify-content: flex-start;
 }
 .summary {
-
+    font-family: "Inter", sans-serif;
     &-h2 {
         font-size: 61px;
         line-height: 0;
@@ -50,6 +50,7 @@
     }
    
     &-welcome {
+        line-height: 120%;
         font-size: 47px;
         font-weight: 500;
     }
@@ -95,8 +96,7 @@
         border-right: 2px solid $summary-background-color;
         content: "";
         height: 102px;
-        position: absolute;
-        left: 45%;
+        // position: absolute;
         z-index: 0;
     }
 
@@ -108,7 +108,10 @@
     &-flex-column {
         display: flex;
         flex-direction: column;
-        
+        align-items: center;
+        line-height: normal;
+        // height: 60px;
+        justify-content: space-between;   
     }
 
     &-vertical-line {
@@ -126,21 +129,45 @@
         }
     }
     
-    
-    &-todo {
+    &-urgent-wrapper {
         display: flex;
-        position: relative;
+        align-items: center;
+        justify-content: center;
+        gap: 18px;
+        // width: 218px;
+    }
+
+    &-gap-urgent {
+            display: flex;
+            position: relative;
+            justify-content: center;
+            align-items: center;
+            gap: 60px;
+        }
+        &-gap-default {
+            display: flex;
+            position: relative;
+            justify-content: center;
+            align-items: center;
+            gap:18px;
+        }
+
+    &-todo {
+     
         font-family: 'Inter', sans-serif;
         border-radius: 30px;
         background-color: #fff;
         box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
-        padding: 28px 38px;
-        justify-content: center;
-        align-items: center;
-        gap: 18px;
+        padding: 38px 38px;
+
+        // gap: 18px;
         flex-shrink: 0;
 
+        
+
         &-counter {
+            display: flex;
+            flex-direction: column;
             color: #000;
             text-align: center;
             font-size: 64px;
@@ -148,6 +175,7 @@
 
             &-text {
                 font-weight: 400;
+                text-align: center;
             }
             &-text-m {
                 font-size: 20px;

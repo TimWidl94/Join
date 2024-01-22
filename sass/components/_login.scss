@@ -1,133 +1,218 @@
 /*  general section  */
 
-.dp-flex{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .fd-colum{
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .logInOverlayBox {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    width: 100vw;
-    height: 100vh;
-  }
-  
-  .loginScreenBody {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    width: 652px;
-    height: 493px;
-    padding: 48px 115px 48px 115px;
-    border-radius: 30px;
-    gap: 32px;
-    background-color: #ffffff;
-    box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
-  }
-  
-  .headerLogIn {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    height: 20%;
-  }
-  
-  .headerRightBox {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    top: 67px;
-    right: 122px;
-    display: flex;
-    gap: 35px;
-    width: 279px;
-    height: 49px;
-  }
-  
-  footer {
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    bottom: 40px;
-    gap: 8px;
-    width: 246px;
-    height: 35px;
-  }
-  
-  .footerLink {
-    text-decoration: none;
-    color: rgba(168, 168, 168, 1);
-    padding: 8px;
-  }
-  
-  .ButtonBox {
-    gap: 35px;
-  }
-  
-  .inputFieldLogIn {
+@mixin inputFieldIcon() {
+  position: absolute;
+  right: 25px;
+  width: 16px;
+  height: 21px;
+}
+
+.dp-flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fd-colum {
+  display: flex;
+  flex-direction: column;
+}
+
+.logInOverlayBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+}
+
+.loginScreenBody {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 422px;
+  height: 397px;
+  padding: 48px 115px 48px 115px;
+  border-radius: 30px;
+  gap: 32px;
+  background-color: #ffffff;
+  box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
+}
+
+.signUpBody {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 422px;
+  height: 534px;
+  padding: 48px 88px;
+  border-radius: 30px;
+  gap: 24px;
+  background-color: #ffffff;
+  box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
+}
+
+.headerLogIn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 20%;
+}
+
+.headerRightBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 67px;
+  right: 122px;
+  display: flex;
+  gap: 35px;
+  width: 279px;
+  height: 49px;
+}
+
+footer {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  bottom: 40px;
+  gap: 8px;
+  width: 246px;
+  height: 35px;
+}
+
+.footerLink {
+  text-decoration: none;
+  color: rgba(168, 168, 168, 1);
+  padding: 8px;
+}
+
+.ButtonBox {
+  gap: 35px;
+}
+
+.inputFieldLogIn {
   width: 380px;
   height: 24px;
   flex-shrink: 0;
   border: 0;
-  }
-  
-  .inputField{
-    width: 380px;
-    height: 24px;
-    gap: 8px;
-    border-radius: 10px;
-    border: 1px solid rgba(209, 209, 209, 1);
-    padding: 12px 21px;
-  }
-  
-  .inputFieldBox{
-    display: flex;
+}
+
+.inputField {
+  width: 380px;
+  height: 24px;
+  gap: 8px;
+  border-radius: 10px;
+  border: 1px solid rgba(209, 209, 209, 1);
+  padding: 12px 21px;
+}
+
+.inputFieldContainer {
+  position: relative;
+  display: flex;
   height: 152px;
   flex-direction: column;
   align-items: flex-start;
   gap: 32px;
   outline: none;
-  }
-  
-  .checkboxBox{
-    display: flex;
-    padding: 0px 241px 0px 39px;
-    align-items: center;
-    align-self: stretch;
-  }
-  .checkboxSavePassword{
-    width: 16px;
-    height: 16px;
-    stroke: #2A3647;
-  }
-  
-  .buttonLogin{
-    padding: 24px 15px;
-    font-size: 21px;
+}
+
+.inputFieldContainerSignUp {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 32px;
+  outline: none;
+}
+
+.inputFieldBox {
+  position: relative;
+}
+
+.checkboxBox {
+  display: flex;
+  padding: 0px 241px 0px 39px;
+  align-items: center;
+  align-self: stretch;
+}
+
+.checkboxPrivacyPolicy {
+  padding: 0;
+  align-self: stretch;
+}
+
+.checkboxSavePassword {
+  width: 16px;
+  height: 16px;
+  stroke: #2a3647;
+}
+
+.buttonLogin {
+  padding: 24px 15px;
+  font-size: 21px;
   font-style: normal;
   font-weight: 700;
   line-height: 120%;
-  }
-  
-  /* img section   */
-  
-  .JoinLogoSmall {
-    position: absolute;
-    top: 80px;
-    left: 77px;
-    width: 100.03px;
-    height: 121.97px;
-  }
-  
+}
+
+.h1Box {
+  height: 89px;
+  width: 315px;
+  gap: 16px;
+  position: relative;
+}
+
+.blueUnderline{
+  position: absolute;
+  bottom: 0;
+}
+
+.acceptPrivacyGrey{
+  font-family: Inter;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: 120%;
+}
+
+.privacyPolicyLink{
+  color:  var(--Ligth-blue, #29ABE2);
+  font-family: Inter;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: 120%;
+text-decoration: none;
+}
+
+/* img section   */
+
+.JoinLogoSmall {
+  position: absolute;
+  top: 80px;
+  left: 77px;
+  width: 100.03px;
+  height: 121.97px;
+}
+
+.inputImgMail {
+  @include inputFieldIcon();
+  top: 13px;
+}
+
+.inputImgLock {
+  @include inputFieldIcon();
+  top: 95px;
+}
+
+.inputImgLock1 {
+  @include inputFieldIcon();
+  top: 13px;
+}
+

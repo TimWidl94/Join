@@ -6,7 +6,6 @@
     <title>Join</title>
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="stylesheet" href="./style/main.css" />
-    <link rel="stylesheet" href="./style/logIn.css" />
     <script src="./includeHTML.js"></script>
     <script src="./javascript/login.js"></script>
     <script src="./script.js"></script>
@@ -14,30 +13,38 @@
   <body onload="init()">
     <div class="logInOverlayBox">
       <img
-        src="./assets/img/LogIn/JoinLogoSmall.png"
+        src="./assets/img/LogIn/joinLogoSmall.svg"
         alt="JoinLogo"
         class="JoinLogoSmall"
       />
       <div class="headerRightBox" id="headerRightBox">
         <p>Not a Join user?</p>
-        <button class="buttonGrey" onclick="signUp()">Sign up</button>
+        <button class="buttonGrey" onclick="loadSignUpHtml()">Sign up</button>
       </div>
       <div id="formBody" class="dp-flex">
         <form action="" id="loginScreenBody" class="loginScreenBody">
           <div class="h1Box dp-flex fd-colum">
             <h1>Log in</h1>
-            <img src="./assets/img/LogIn/Vector.png" alt="" />
+            <img
+              src="./assets/img/LogIn/blueUnderline.svg"
+              alt=""
+              class="blueUnderline"
+            />
           </div>
           <div class="dp-flex fd-colum">
             <div class="inputFieldContainer">
               <div class="inputFieldBox">
-                <input type="text" class="inputField" placeholder="Email" />
-                <img src="./assets/img/LogIn/MailIcon.png" alt="" class="inputImgMail"/>
+                <input type="email" class="inputField" placeholder="Email" required/>
+                <img
+                  src="./assets/img/LogIn/mail.svg"
+                  alt=""
+                  class="inputImgMail"
+                />
               </div>
               <div>
-                <input type="text" class="inputField" placeholder="Password" />
+                <input type="password" class="inputField" placeholder="Password" required />
                 <img
-                  src="./assets/img/LogIn/LockIcon.png"
+                  src="./assets/img/LogIn/lock.svg"
                   alt=""
                   class="inputImgLock"
                 />

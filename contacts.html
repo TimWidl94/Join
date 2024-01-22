@@ -7,8 +7,9 @@
     <link rel="stylesheet" href="./css/style.css" />
     <script src="includeHTML.js"></script>
     <script src="./script.js"></script>
+    <script src="./javascript/contacts.js"></script>
   </head>
-  <body class="my-body" onload="includeHTML()">
+  <body class="my-body" onload="includeHTML(), init()">
     <div w3-include-html="sidebar.html"></div>
     <div w3-include-html="topbar.html"></div>
 
@@ -24,15 +25,7 @@
       </div>
       <div class="start-letter-line1"></div>
 
-      <div class="contact-list-basic-info">
-        <div class="capital-letters-list">
-          <p id="capital-letters-list">AM</p>
-        </div>
-        <div class="name-and-mail">
-          <p id="name-list">Anton Mayer</p>
-          <p id="email-list">antom@gmail.com</p>
-        </div>
-      </div>
+      <div id="basic-info-wrapper"> </div>
     </section>
 
     <section class="wrapper-contact-info">

@@ -1,6 +1,6 @@
 function signupHtml(){
     return `
-    <form action="" id="signUpBody" class="signUpBody" onsubmit="return false">
+    <form action="" id="signUpBody" class="signUpBody" onsubmit="return false; return false">
         <div class="h1Box dp-flex fd-colum">
             <h1>Sign up</h1>
             <img src="./assets/img/LogIn/blueUnderline.svg" alt="" class="blueUnderline" />
@@ -39,7 +39,7 @@ function signupHtml(){
 
 function logInHtml(){
     return `
-    <form action="" id="loginScreenBody" class="loginScreenBody" onsubmit="return false" name="logIn">
+    <form action="" id="loginScreenBody" class="loginScreenBody" onsubmit="einloggen();return false" name="logIn">
     <div class="h1Box dp-flex fd-colum">
       <h1>Log in</h1>
       <img src="./assets/img/LogIn/blueUnderline.svg" alt="" class="blueUnderline"/>
@@ -63,7 +63,7 @@ function logInHtml(){
       </div>
     </div>
     <div class="ButtonBox dp-flex">
-      <button class="buttonGrey buttonLogin" onclick="einloggen()">
+      <button class="buttonGrey buttonLogin">
         Log in
       </button>
       <button class="buttonWhite buttonLogin" onclick="logInGuest()">

@@ -57,9 +57,15 @@ function searchForEmail(email, password) {
       users[i]["password"].includes(password)
     ) {
       return true;
-    } else {
-      return false;
     }
   }
 }
 
+
+function logInGuest(){
+    let email = "Guest@web.de";
+    let password = "admin123";
+    if (searchForEmail(email, password)) {
+        window.location.href = "./summary.html"
+      } 
+}

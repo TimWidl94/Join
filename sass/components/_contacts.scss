@@ -70,17 +70,31 @@
   width: 100%;
 }
 
-#contact-list-basic-info {
+.contact-list-basic-info {
   display: flex;
   width: calc(100% - 2 * 24px);
   padding: 15px 24px;
   align-items: center;
   gap: 35px;
+  border-radius: 10px;
 }
 
-#contact-list-basic-info:hover {
-  background-color: #f6f7f8;
-  // background-color: $summary-background-color;
+.bg-primary {
+  background-color: $primary-color;
+}
+
+// Lösung suchen!!
+.hover-unset {
+  background-color: $primary-color;
+}
+
+.color-white {
+  color: $color-light;
+}
+
+.contact-list-basic-info:hover {
+  // background-color: #f6f7f8;
+  background-color: $summary-background-color;
   cursor: pointer;
 }
 
@@ -155,7 +169,7 @@ h2 {
   background-color: $secondary-color;
 }
 
-.contact-info {
+#contact-info {
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -163,7 +177,7 @@ h2 {
   gap: 21px;
 }
 
-.basic-info {
+#basic-info {
   display: flex;
   gap: 54px;
 }

@@ -74,6 +74,7 @@ function getFirstLetters(str) {
 }
 
 function openContactInfo(i) {
+  console.log('openContactInfo i', i);
   let contact = contacts[i];
   let acronym = getFirstLetters(contact.name);
   document.getElementById('contact-info').innerHTML = '';
@@ -89,7 +90,7 @@ function openContactInfo(i) {
                     <img src="assets/img/Contacts/edit.svg" alt="" />
                     <p>Edit</p>
                 </div>
-                <div class="delete" onclick="deleteContact(i)">
+                <div class="delete" onclick="deleteContact(${i})">
                     <img src="assets/img/Contacts/delete.svg" alt="" />
                     <p>Delete</p>
                 </div>
@@ -115,7 +116,16 @@ function openContactInfo(i) {
 }
 
 function deleteContact(i) {
-  console.log('deleteContact i', contacts[i].name);
+  console.log('contacts', contacts);
+  contacts.splice(i, 1);
+  console.log('contacts', contacts);
+
+  loadContacts();
+}
+
+function editContact(i) {
+  // Hier können Sie den Code für die Bearbeitung des Kontakts implementieren
+  console.log('editContact i', contacts[i].name);
 }
 
 function toggleBackground(i) {

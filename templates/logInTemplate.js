@@ -1,6 +1,6 @@
 function signupHtml(){
     return `
-    <form action="" id="signUpBody" class="signUpBody" onsubmit="return false">
+    <form action="" id="signUpBody" class="signUpBody" onsubmit="signUp(); return false">
         <div class="h1Box dp-flex fd-colum">
             <h1>Sign up</h1>
             <img src="./assets/img/LogIn/blueUnderline.svg" alt="" class="blueUnderline" />
@@ -8,19 +8,19 @@ function signupHtml(){
         <div class="dp-flex fd-colum">
             <div class="inputFieldContainerSignUp">
                 <div class="inputFieldBox">
-                    <input type="text" class="inputField" placeholder="Name" id="name" autocomplete="on"/>
+                    <input type="text" class="inputField" placeholder="Name" id="userName" autocomplete="on" required/>
                     <img src="./assets/img/LogIn/person.svg" alt="" class="inputImgMail" />
                 </div>
                 <div class="inputFieldBox">
-                    <input type="email" class="inputField" placeholder="Email" id="emailSignUp" autocomplete="on"/>
+                    <input type="email" class="inputField" placeholder="Email" id="emailSignUp" autocomplete="on" required/>
                     <img src="./assets/img/LogIn/mail.svg" alt="" class="inputImgMail" />
                 </div>
                 <div class="inputFieldBox">
-                    <input type="password" class="inputField" placeholder="Password" id="passwordSignUp" autocomplete="on"/>
+                    <input type="password" class="inputField" placeholder="Password" id="passwordSignUp" autocomplete="on" required/>
                     <img src="./assets/img/LogIn/lock.svg" alt="" class="inputImgLock1" />
                 </div>
                 <div class="inputFieldBox">
-                    <input type="password" class="inputField" placeholder="Confirm Password" id="checkPasswordSignUp" autocomplete="on"/>
+                    <input type="password" class="inputField" placeholder="Confirm Password" id="checkPasswordSignUp" autocomplete="on" required/>
                     <img src="./assets/img/LogIn/lock.svg" alt="" class="inputImgLock1" />
                 </div>
             </div>
@@ -32,14 +32,14 @@ function signupHtml(){
             </div>
         </div>
         <div class="ButtonBox dp-flex">
-            <button class="buttonGrey buttonLogin" onclick="signUp()">Sign up</button>
+            <button class="buttonGrey buttonLogin">Sign up</button>
         </div>
     </form>`;
 }
 
 function logInHtml(){
     return `
-    <form action="" id="loginScreenBody" class="loginScreenBody" onsubmit="return false" name="logIn">
+    <form action="" id="loginScreenBody" class="loginScreenBody" onsubmit="loadUser();return false" name="logIn">
     <div class="h1Box dp-flex fd-colum">
       <h1>Log in</h1>
       <img src="./assets/img/LogIn/blueUnderline.svg" alt="" class="blueUnderline"/>
@@ -63,7 +63,7 @@ function logInHtml(){
       </div>
     </div>
     <div class="ButtonBox dp-flex">
-      <button class="buttonGrey buttonLogin" onclick="einloggen()">
+      <button class="buttonGrey buttonLogin" id="logInBtn">
         Log in
       </button>
       <button class="buttonWhite buttonLogin" onclick="logInGuest()">

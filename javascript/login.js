@@ -1,6 +1,6 @@
-async function loadLogIn(){
-    let container = document.getElementById("formBody");
-    container.innerHTML = await logInHtml();
+async function loadLogIn() {
+  let container = document.getElementById("formBody");
+  container.innerHTML = await logInHtml();
 }
 
 function loadSignUpHtml() {
@@ -14,40 +14,26 @@ function loadSignUpHtml() {
 function changeCssFromInput(container) {}
 
 async function signUp() {
-  username = document.getElementById("name").value;
-  email = document.getElementById("emailSignUp").value;
-  password = document.getElementById("passwordSignUp").value;
-  checkPassword = document.getElementById("checkPasswordSignUp").value;
-
-  let user = {
-    username: username,
-    email: email,
-    password: password,
-    checkPassword: checkPassword,
-  };
-  await users.push(user);
-  await saveLocalStorageData(users);
+  users.push({
+    username: userName.value,
+    email: emailSignUp.value,
+    password: passwordSignUp.value,
+    checkPassword: checkPasswordSignUp.value,
+  });
+  await setItem('users', JSON.stringify(users));
   window.location.href = "./summary.html";
 }
 
-function saveLocalStorageData(users) {
-  let usersAsString = JSON.stringify(users);
-  localStorage.setItem("users", usersAsString);
-}
-
-function loadLocalStorageData() {
-  let usersAsString = localStorage.getItem("users");
-  if (usersAsString) {
-    users = JSON.parse(usersAsString);
-  }
-}
-
-function einloggen() {
+async function loadUser() {
+  logInBtn.disabled = true;
   let email = document.getElementById("email").value;
   let password = document.getElementById("password").value;
+  await setItem("users", JSON.stringify(users));
+  resetForm();
   if (searchForEmail(email, password)) {
-    window.location.href = "./summary.html"
-  } 
+    console.log("erfolg");
+    window.location.href = "./summary.html";
+  }
 }
 
 function searchForEmail(email, password) {
@@ -57,9 +43,43 @@ function searchForEmail(email, password) {
       users[i]["password"].includes(password)
     ) {
       return true;
-    } else {
-      return false;
     }
   }
 }
 
+function resetForm() {
+  email.value = "";
+  password.value = "";
+  logInBtn.disabled = false;
+}
+
+function logInGuest() {
+  let email = "Guest@web.de";
+  let password = "admin123";
+  if (searchForEmail(email, password)) {
+    window.location.href = "./summary.html";
+  }
+}
+
+async function setItem(key, value) {
+  const payload = { key, value, token: STORAGE_TOKEN };
+  return fetch(STORAGE_URL, {
+    method: "POST",
+    body: JSON.stringify(payload),
+  }).then((res) => res.json());
+}
+
+async function getItem(key) {
+  const url = `${STORAGE_URL}?key=${key}&token=${STORAGE_TOKEN}`;
+  return fetch(url)
+    .then((res) => res.json())
+    .then((res) => res.data.value);
+}
+
+async function loadUsers() {
+  try {
+    users = JSON.parse(await getItem("users"));
+  } catch(e) {
+    console.info("could not load users");
+  }
+}

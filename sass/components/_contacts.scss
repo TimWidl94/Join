@@ -63,15 +63,37 @@
 }
 
 /* === Contact List Basic Info === */
+#basic-info-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  width: 100%;
+}
+
 .contact-list-basic-info {
   display: flex;
   width: calc(100% - 2 * 24px);
   padding: 15px 24px;
   align-items: center;
   gap: 35px;
+  border-radius: 10px;
+}
+
+.bg-primary {
+  background-color: $primary-color;
+}
+
+// Lösung suchen!!
+.hover-unset {
+  background-color: $primary-color;
+}
+
+.color-white {
+  color: $color-light;
 }
 
 .contact-list-basic-info:hover {
+  // background-color: #f6f7f8;
   background-color: $summary-background-color;
   cursor: pointer;
 }
@@ -84,15 +106,16 @@
   height: 42px;
   background-color: #ff7a00;
   border: 2px solid $color-light;
-  border-radius: 42px;
+  border-radius: 100px;
 }
 
-.capital-letters-list p {
+#capital-letters-list p {
   color: $color-light;
   font-size: 12px;
+  padding: 0px 12.5px;
 }
 
-.name-and-mail {
+#name-and-mail {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -116,6 +139,7 @@
   flex-direction: column;
   margin-left: 584px;
   padding-left: 100px;
+  width: 100%;
 }
 
 .contact-info-headline {
@@ -146,7 +170,7 @@ h2 {
   background-color: $secondary-color;
 }
 
-.contact-info {
+#contact-info {
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -154,7 +178,7 @@ h2 {
   gap: 21px;
 }
 
-.basic-info {
+#basic-info {
   display: flex;
   gap: 54px;
 }
@@ -242,4 +266,22 @@ h2 {
 .mail p:nth-child(2):hover,
 .phone p:nth-child(2):hover {
   cursor: pointer;
+}
+
+#banner-contact-created,
+#banner-contact-deleted {
+  display: flex;
+  width: 326px;
+  height: 74px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  background: $primary-color;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.15);
+  margin-bottom: 32px;
+}
+
+#banner-contact-created p,
+#banner-contact-deleted p {
+  color: $color-light;
 }

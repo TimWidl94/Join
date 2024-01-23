@@ -551,13 +551,18 @@ h2 {
   background-color: #29abe2; }
 
 #wrapper {
-  display: block;
   position: fixed;
   z-index: 2;
   top: 0;
   bottom: 0;
   right: 0;
   left: 0; }
+
+.add-contact-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%; }
 
 #add-contact-wrapper {
   display: flex;

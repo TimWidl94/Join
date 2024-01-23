@@ -45,10 +45,21 @@ let contactColors = ['#FF7A00', '#9327FF', '#6E52FF', '#FC71FF', '#FFBB2B', '#1F
 
 function init() {
   loadContacts();
+  renderContacts();
   //   setBackgroundColor();
 }
 
 function loadContacts() {
+  let contactsAsText = localStorage.getItem('contacts');
+  if (contacts) {
+    contacts = JSON.parse(contactsAsText);
+    console.log('Loaded all contacts:', contacts);
+  } else {
+    console.log('No contacts found to load!');
+  }
+}
+
+function renderContacts() {
   document.getElementById('basic-info-wrapper').innerHTML = '';
 
   for (let i = 0; i < contacts.length; i++) {
@@ -116,24 +127,32 @@ function openContactInfo(i) {
 }
 
 function showPopupAddContact() {
-  document.getElementById('add-contact-wrapper').classList.remove('d-none');
-  document.getElementById('add-contact-wrapper').classList.add('d-flex');
+  document.getElementById('wrapper').classList.remove('d-none');
+  document.getElementById('wrapper').classList.add('d-block');
 }
 
 function closePopupAddContact() {
-  document.getElementById('add-contact-wrapper').classList.remove('d-flex');
-  document.getElementById('add-contact-wrapper').classList.add('d-none');
+  document.getElementById('wrapper').classList.remove('d-block');
+  document.getElementById('wrapper').classList.add('d-none');
 }
 
 function addContact() {
   let name = document.getElementById('add-name');
-  let email = document.getElementById('add-email');
+  let mail = document.getElementById('add-mail');
   let tel = document.getElementById('add-tel');
 
-  contacts.push({ name: name.value, email: email.value, tel: tel.value });
-  console.log('users:', contacts);
+  contacts.push({ name: name.value, mail: mail.value, phone: tel.value });
+  console.log('contacts:', contacts);
+
+  saveContacts();
 
   return true;
+}
+
+function saveContacts() {
+  console.log('saveContacts 123:', contacts);
+  let contactsAsText = JSON.stringify(contacts);
+  localStorage.setItem('contacts', contactsAsText);
 }
 
 function doNotClose(event) {
@@ -147,7 +166,8 @@ function editContact(i) {
 function deleteContact(i) {
   contacts.splice(i, 1);
 
-  loadContacts();
+  saveContacts();
+  init();
   document.getElementById('contact-info').innerHTML = '';
 
   let bannerContactDeleted = document.getElementById('banner-contact-deleted');

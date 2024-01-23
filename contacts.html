@@ -37,17 +37,19 @@
       </section>
 
       <section id="contact-info"></section>
+    </section>
 
-      <div id="banner-contact-created" style="display: none">
-        <p>Contact succesfully created</p>
-      </div>
+    <div id="banner-contact-created" style="display: none">
+      <p>Contact succesfully created</p>
+    </div>
 
-      <div id="banner-contact-deleted" style="display: none">
-        <p>Contact succesfully deleted</p>
-      </div>
+    <div id="banner-contact-deleted" style="display: none">
+      <p>Contact succesfully deleted</p>
+    </div>
 
-      <section id="wrapper">
-        <div id="add-contact-wrapper" class="d-none">
+    <section id="wrapper" class="d-none" onclick="closePopupAddContact()">
+      <div class="add-contact-container">
+        <div id="add-contact-wrapper" onclick="doNotClose(event)">
           <section class="left-container">
             <img src="assets/img/Contacts/logo-white.svg" alt="Logo" />
             <div class="left-card-text">
@@ -69,11 +71,11 @@
                   <img src="assets/img/Contacts/person_grey.svg" alt="Person" class="inputImgPerson" />
                 </div>
                 <div class="inputFieldBox">
-                  <input type="mail" class="inputField" placeholder="Email" id="add-email" />
+                  <input type="mail" class="inputField" placeholder="Email" id="add-mail" required />
                   <img src="assets/img/Contacts/mail.svg" alt="Mail" class="inputImgMail" />
                 </div>
                 <div class="inputFieldBox">
-                  <input type="tel" class="inputField" placeholder="Phone" id="add-tel" />
+                  <input type="tel" class="inputField" placeholder="Phone" id="add-tel" required />
                   <img src="assets/img/Contacts/call.svg" alt="Phone" class="inputImgPhone2" />
                 </div>
               </div>
@@ -89,48 +91,48 @@
             </form>
           </section>
         </div>
+      </div>
+    </section>
+
+    <section id="edit-contact-wrapper" class="d-none">
+      <section class="left-container">
+        <img src="assets/img/Contacts/logo-white.svg" alt="Logo" />
+        <div class="left-card-text">
+          <h2>Edit Contact</h2>
+        </div>
+        <div class="horizontal-line"></div>
       </section>
 
-      <section id="edit-contact-wrapper" class="d-none">
-        <section class="left-container">
-          <img src="assets/img/Contacts/logo-white.svg" alt="Logo" />
-          <div class="left-card-text">
-            <h2>Edit Contact</h2>
-          </div>
-          <div class="horizontal-line"></div>
-        </section>
+      <section class="right-container">
+        <div class="profile">
+          <img id="profile-img" src="assets/img/Contacts/person.svg" alt="Profile Image" />
+        </div>
 
-        <section class="right-container">
-          <div class="profile">
-            <img id="profile-img" src="assets/img/Contacts/person.svg" alt="Profile Image" />
-          </div>
-
-          <div class="inputButtonsWrapper">
-            <div class="inputFieldContainer height-unset">
-              <div class="inputFieldBox">
-                <input type="text" class="inputField" placeholder="Name" />
-                <img src="assets/img/Contacts/person_grey.svg" alt="Person" class="inputImgPerson" />
-              </div>
-              <div class="inputFieldBox">
-                <input type="mail" class="inputField" placeholder="Email" />
-                <img src="assets/img/Contacts/mail.svg" alt="Mail" class="inputImgMail" />
-              </div>
-              <div class="inputFieldBox">
-                <input type="tel" class="inputField" placeholder="Phone" />
-                <img src="assets/img/Contacts/call.svg" alt="Phone" class="inputImgPhone2" />
-              </div>
+        <div class="inputButtonsWrapper">
+          <div class="inputFieldContainer height-unset">
+            <div class="inputFieldBox">
+              <input type="text" class="inputField" placeholder="Name" />
+              <img src="assets/img/Contacts/person_grey.svg" alt="Person" class="inputImgPerson" />
             </div>
-
-            <div class="btns-down-right">
-              <button id="delete" class="buttonWhite">
-                Delete <img src="assets/img/AddTask/cancel.svg" alt="Clear Icon"
-              /></button>
-              <button id="save" class="buttonGrey">
-                Save <img src="assets/img/AddTask/check_white.svg" alt="Check Icon"
-              /></button>
+            <div class="inputFieldBox">
+              <input type="mail" class="inputField" placeholder="Email" />
+              <img src="assets/img/Contacts/mail.svg" alt="Mail" class="inputImgMail" />
+            </div>
+            <div class="inputFieldBox">
+              <input type="tel" class="inputField" placeholder="Phone" />
+              <img src="assets/img/Contacts/call.svg" alt="Phone" class="inputImgPhone2" />
             </div>
           </div>
-        </section>
+
+          <div class="btns-down-right">
+            <button id="delete" class="buttonWhite">
+              Delete <img src="assets/img/AddTask/cancel.svg" alt="Clear Icon"
+            /></button>
+            <button id="save" class="buttonGrey">
+              Save <img src="assets/img/AddTask/check_white.svg" alt="Check Icon"
+            /></button>
+          </div>
+        </div>
       </section>
     </section>
     <!-- </main> -->

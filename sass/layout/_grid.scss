@@ -1,9 +1,11 @@
 .container {
-    margin: 96px 96px 0px;
+    margin: 96px 0px 0px;
+    max-width: 1208px;
     position: relative;
-    padding-top: 110px;
-    left: 232px;
-    background-color: $summary-background-color;
+    padding: 80px 64px;
+    left:  232px;
+    // background-color: $summary-background-color;
+    background-color: deeppink;
 }
 
 .row {
@@ -29,6 +31,9 @@
 }
 .col-6 {
     width: 50%
+}
+.col-8 {
+    width: 66.66%;
 }
 .col-12 {
     width: 100%;

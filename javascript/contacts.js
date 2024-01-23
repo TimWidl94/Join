@@ -39,56 +39,28 @@ let contacts = [
     mail: 'wolf@gmail.com',
     phone: '+49 8888 888 88 8',
   },
-  {
-    name: 'Anton Mayer',
-    mail: 'antom@gmail.com',
-    phone: '+49 1111 111 11 1',
-  },
-  {
-    name: 'Anja Schulz',
-    mail: 'schulz@hotmail.com',
-    phone: '+49 2222 222 22 2',
-  },
-  {
-    name: 'Benedikt Ziegler',
-    mail: 'benedikt@gmail.com',
-    phone: '+49 3333 333 33 3',
-  },
-  {
-    name: 'David Eisenberg',
-    mail: 'davidberg@gmail.com',
-    phone: '+49 4444 444 44 4',
-  },
-  {
-    name: 'Eva Fischer',
-    mail: 'eva@gmail.com',
-    phone: '+49 5555 555 55 5',
-  },
-  {
-    name: 'Emmanuel Mauer',
-    mail: 'emmanuelma@gmail.com',
-    phone: '+49 6666 666 66 6',
-  },
-  {
-    name: 'Marcel Bauer',
-    mail: 'bauer@gmail.com',
-    phone: '+49 7777 777 77 7',
-  },
-  {
-    name: 'Tatjana Wolf',
-    mail: 'wolf@gmail.com',
-    phone: '+49 8888 888 88 8',
-  },
 ];
 
 let contactColors = ['#FF7A00', '#9327FF', '#6E52FF', '#FC71FF', '#FFBB2B', '#1FD7C1', '#462F8A', '#FF4646'];
 
 function init() {
   loadContacts();
+  renderContacts();
   //   setBackgroundColor();
 }
 
 function loadContacts() {
+  let contactsAsText = localStorage.getItem('contacts');
+  if (contacts) {
+    contacts = JSON.parse(contactsAsText);
+    // console.log('Loaded all contacts:', contacts);
+  }
+  // else {
+  //   console.log('No contacts found to load!');
+  // }
+}
+
+function renderContacts() {
   document.getElementById('basic-info-wrapper').innerHTML = '';
 
   for (let i = 0; i < contacts.length; i++) {
@@ -114,7 +86,6 @@ function getFirstLetters(str) {
 }
 
 function openContactInfo(i) {
-  console.log('openContactInfo i', i);
   let contact = contacts[i];
   let acronym = getFirstLetters(contact.name);
   document.getElementById('contact-info').innerHTML = '';
@@ -126,7 +97,7 @@ function openContactInfo(i) {
         <div class="name-and-changes">
             <h2 id="name">${contact.name}</h2>
             <div class="changes">
-                <div class="edit" onclick="editContact(i)">
+                <div class="edit" onclick="editContact(${i})">
                     <img src="assets/img/Contacts/edit.svg" alt="" />
                     <p>Edit</p>
                 </div>
@@ -155,20 +126,89 @@ function openContactInfo(i) {
   `;
 }
 
+function showPopupAddContact() {
+  document.getElementById('add-contact-wrapper').classList.remove('d-none');
+  document.getElementById('add-contact-wrapper').classList.add('d-block');
+}
+
+function closePopupAddContact() {
+  document.getElementById('add-contact-wrapper').classList.remove('d-block');
+  document.getElementById('add-contact-wrapper').classList.add('d-none');
+}
+
+function showPopupEditContact() {
+  document.getElementById('edit-contact-wrapper').classList.remove('d-none');
+  document.getElementById('edit-contact-wrapper').classList.add('d-block');
+}
+
+function closePopupEditContact() {
+  document.getElementById('edit-contact-wrapper').classList.remove('d-block');
+  document.getElementById('edit-contact-wrapper').classList.add('d-none');
+}
+
+function addContact() {
+  let name = document.getElementById('add-name');
+  let mail = document.getElementById('add-mail');
+  let tel = document.getElementById('add-tel');
+
+  contacts.push({ name: name.value, mail: mail.value, phone: tel.value });
+  console.log('contacts:', contacts);
+
+  saveContacts();
+
+  return true;
+}
+
+function saveContacts() {
+  console.log('saveContacts 123:', contacts);
+  let contactsAsText = JSON.stringify(contacts);
+  localStorage.setItem('contacts', contactsAsText);
+}
+
+function doNotClose(event) {
+  event.stopPropagation();
+}
+
+function editContact(i) {
+  let content = document.getElementById('edit-contact-wrapper');
+  content.innerHTML = editContactHTML(i);
+
+  let name = document.getElementById('edit-name');
+  let mail = document.getElementById('edit-mail');
+  let tel = document.getElementById('edit-tel');
+  name.value = contacts[i].name;
+  mail.value = contacts[i].mail;
+  tel.value = contacts[i].phone;
+
+  showPopupEditContact();
+}
+
+function saveEditedContact(i) {
+  console.log('saveEditedContact i:', i);
+
+  let name = document.getElementById('edit-name');
+  let mail = document.getElementById('edit-mail');
+  let tel = document.getElementById('edit-tel');
+  contacts[i].name = name.value;
+  contacts[i].mail = mail.value;
+  contacts[i].phone = tel.value;
+  console.log('contacts[i].name', contacts[i].name);
+
+  saveContacts();
+  init();
+  return true;
+}
+
 function deleteContact(i) {
   contacts.splice(i, 1);
 
-  loadContacts();
+  saveContacts();
+  init();
   document.getElementById('contact-info').innerHTML = '';
 
   let bannerContactDeleted = document.getElementById('banner-contact-deleted');
   bannerContactDeleted.style = 'display: flex';
   setTimeout(() => (bannerContactDeleted.style = 'display: none'), 2000);
-}
-
-function editContact(i) {
-  // Hier können Sie den Code für die Bearbeitung des Kontakts implementieren
-  console.log('editContact i', contacts[i].name);
 }
 
 function toggleBackground(i) {

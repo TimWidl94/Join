@@ -253,7 +253,8 @@ span {
   font-weight: 700; }
 
 .my-body {
-  height: 100vh; }
+  height: 100vh;
+  overflow: hidden; }
 
 /* Wrapper Contact List */
 .wrapper-contact-list {
@@ -503,17 +504,24 @@ h2 {
   height: 60px;
   background-color: #29abe2; }
 
-.add-contact-wrapper {
-  display: flex;
-  width: 1212px;
-  height: 592px;
-  border-radius: 30px;
-  background: #fff;
-  margin-right: auto;
-  margin-left: auto;
-  margin-bottom: 200px; }
+#add-contact-wrapper,
+#edit-contact-wrapper {
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0; }
 
-.edit-contact-wrapper {
+.add-contact-container,
+.edit-contact-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%; }
+
+#add-contact,
+#edit-contact {
   display: flex;
   width: 1212px;
   height: 592px;

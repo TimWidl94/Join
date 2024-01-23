@@ -8,6 +8,7 @@
     <script src="includeHTML.js"></script>
     <script src="./script.js"></script>
     <script src="./javascript/contacts.js"></script>
+    <link rel="icon" type="image/x-icon" href="assets/img/Global/join_logo_black.svg" />
   </head>
   <body class="my-body" onload="includeHTML(), init()">
     <div w3-include-html="sidebar.html"></div>
@@ -36,6 +37,14 @@
       </section>
 
       <section id="contact-info"></section>
+
+      <div id="banner-contact-created" style="display: none">
+        <p>Contact succesfully created</p>
+      </div>
+
+      <div id="banner-contact-deleted" style="display: none">
+        <p>Contact succesfully deleted</p>
+      </div>
     </section>
     <!-- </main> -->
   </body>

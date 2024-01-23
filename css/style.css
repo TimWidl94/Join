@@ -550,17 +550,23 @@ h2 {
   height: 60px;
   background-color: #29abe2; }
 
-.add-contact-wrapper {
+#wrapper {
+  display: block;
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0; }
+
+#add-contact-wrapper {
   display: flex;
   width: 1212px;
   height: 592px;
   border-radius: 30px;
-  background: #fff;
-  margin-right: auto;
-  margin-left: auto;
-  margin-bottom: 200px; }
+  background: #fff; }
 
-.edit-contact-wrapper {
+#edit-contact-wrapper {
   display: flex;
   width: 1212px;
   height: 592px;

@@ -1,57 +1,66 @@
 let contacts = [
   {
-    name: 'Anton Mayer',
-    mail: 'antom@gmail.com',
-    phone: '+49 1111 111 11 1',
+    name: "Anton Mayer",
+    mail: "antom@gmail.com",
+    phone: "+49 1111 111 11 1",
   },
   {
-    name: 'Anja Schulz',
-    mail: 'schulz@hotmail.com',
-    phone: '+49 2222 222 22 2',
+    name: "Anja Schulz",
+    mail: "schulz@hotmail.com",
+    phone: "+49 2222 222 22 2",
   },
   {
-    name: 'Benedikt Ziegler',
-    mail: 'benedikt@gmail.com',
-    phone: '+49 3333 333 33 3',
+    name: "Benedikt Ziegler",
+    mail: "benedikt@gmail.com",
+    phone: "+49 3333 333 33 3",
   },
   {
-    name: 'David Eisenberg',
-    mail: 'davidberg@gmail.com',
-    phone: '+49 4444 444 44 4',
+    name: "David Eisenberg",
+    mail: "davidberg@gmail.com",
+    phone: "+49 4444 444 44 4",
   },
   {
-    name: 'Eva Fischer',
-    mail: 'eva@gmail.com',
-    phone: '+49 5555 555 55 5',
+    name: "Eva Fischer",
+    mail: "eva@gmail.com",
+    phone: "+49 5555 555 55 5",
   },
   {
-    name: 'Emmanuel Mauer',
-    mail: 'emmanuelma@gmail.com',
-    phone: '+49 6666 666 66 6',
+    name: "Emmanuel Mauer",
+    mail: "emmanuelma@gmail.com",
+    phone: "+49 6666 666 66 6",
   },
   {
-    name: 'Marcel Bauer',
-    mail: 'bauer@gmail.com',
-    phone: '+49 7777 777 77 7',
+    name: "Marcel Bauer",
+    mail: "bauer@gmail.com",
+    phone: "+49 7777 777 77 7",
   },
   {
-    name: 'Tatjana Wolf',
-    mail: 'wolf@gmail.com',
-    phone: '+49 8888 888 88 8',
+    name: "Tatjana Wolf",
+    mail: "wolf@gmail.com",
+    phone: "+49 8888 888 88 8",
   },
 ];
 
-let contactColors = ['#FF7A00', '#9327FF', '#6E52FF', '#FC71FF', '#FFBB2B', '#1FD7C1', '#462F8A', '#FF4646'];
+let contactColors = [
+  "#FF7A00",
+  "#9327FF",
+  "#6E52FF",
+  "#FC71FF",
+  "#FFBB2B",
+  "#1FD7C1",
+  "#462F8A",
+  "#FF4646",
+];
 
-function init() {
-  loadContacts();
+async function init() {
+  await loadContacts();
   renderContacts();
   //   setBackgroundColor();
 }
 
 function loadContacts() {
-  let contactsAsText = localStorage.getItem('contacts');
-  if (contacts) {
+  let contactsAsText = localStorage.getItem("contacts");
+  if (contactsAsText) {
     contacts = JSON.parse(contactsAsText);
     // console.log('Loaded all contacts:', contacts);
   }
@@ -61,13 +70,13 @@ function loadContacts() {
 }
 
 function renderContacts() {
-  document.getElementById('basic-info-wrapper').innerHTML = '';
+  document.getElementById("basic-info-wrapper").innerHTML = "";
 
   for (let i = 0; i < contacts.length; i++) {
     const contact = contacts[i];
     let acronym = getFirstLetters(contact.name);
 
-    document.getElementById('basic-info-wrapper').innerHTML += /*html*/ `
+    document.getElementById("basic-info-wrapper").innerHTML += /*html*/ `
         <div id="contact-list-basic-info${i}" class="contact-list-basic-info" onclick="toggleBackground(${i}), openContactInfo(${i})">
             <div class="capital-letters-list" id="capital-letters-list${i}"> 
                 <p id="capital-letters-list">${acronym}</p>
@@ -82,14 +91,16 @@ function renderContacts() {
 }
 
 function getFirstLetters(str) {
-  return str.split(/\s/).reduce((response, word) => (response += word.slice(0, 1)), '');
+  return str
+    .split(/\s/)
+    .reduce((response, word) => (response += word.slice(0, 1)), "");
 }
 
 function openContactInfo(i) {
   let contact = contacts[i];
   let acronym = getFirstLetters(contact.name);
-  document.getElementById('contact-info').innerHTML = '';
-  document.getElementById('contact-info').innerHTML += /*html*/ `
+  document.getElementById("contact-info").innerHTML = "";
+  document.getElementById("contact-info").innerHTML += /*html*/ `
     <div id="basic-info">
         <div class="capital-letters">
             <h2 id="capital-letters">${acronym}</h2>
@@ -127,32 +138,32 @@ function openContactInfo(i) {
 }
 
 function showPopupAddContact() {
-  document.getElementById('add-contact-wrapper').classList.remove('d-none');
-  document.getElementById('add-contact-wrapper').classList.add('d-block');
+  document.getElementById("add-contact-wrapper").classList.remove("d-none");
+  document.getElementById("add-contact-wrapper").classList.add("d-block");
 }
 
 function closePopupAddContact() {
-  document.getElementById('add-contact-wrapper').classList.remove('d-block');
-  document.getElementById('add-contact-wrapper').classList.add('d-none');
+  document.getElementById("add-contact-wrapper").classList.remove("d-block");
+  document.getElementById("add-contact-wrapper").classList.add("d-none");
 }
 
 function showPopupEditContact() {
-  document.getElementById('edit-contact-wrapper').classList.remove('d-none');
-  document.getElementById('edit-contact-wrapper').classList.add('d-block');
+  document.getElementById("edit-contact-wrapper").classList.remove("d-none");
+  document.getElementById("edit-contact-wrapper").classList.add("d-block");
 }
 
 function closePopupEditContact() {
-  document.getElementById('edit-contact-wrapper').classList.remove('d-block');
-  document.getElementById('edit-contact-wrapper').classList.add('d-none');
+  document.getElementById("edit-contact-wrapper").classList.remove("d-block");
+  document.getElementById("edit-contact-wrapper").classList.add("d-none");
 }
 
 function addContact() {
-  let name = document.getElementById('add-name');
-  let mail = document.getElementById('add-mail');
-  let tel = document.getElementById('add-tel');
+  let name = document.getElementById("add-name");
+  let mail = document.getElementById("add-mail");
+  let tel = document.getElementById("add-tel");
 
   contacts.push({ name: name.value, mail: mail.value, phone: tel.value });
-  console.log('contacts:', contacts);
+  console.log("contacts:", contacts);
 
   saveContacts();
 
@@ -160,9 +171,9 @@ function addContact() {
 }
 
 function saveContacts() {
-  console.log('saveContacts 123:', contacts);
+  console.log("saveContacts 123:", contacts);
   let contactsAsText = JSON.stringify(contacts);
-  localStorage.setItem('contacts', contactsAsText);
+  localStorage.setItem("contacts", contactsAsText);
 }
 
 function doNotClose(event) {
@@ -170,12 +181,12 @@ function doNotClose(event) {
 }
 
 function editContact(i) {
-  let content = document.getElementById('edit-contact-wrapper');
+  let content = document.getElementById("edit-contact-wrapper");
   content.innerHTML = editContactHTML(i);
 
-  let name = document.getElementById('edit-name');
-  let mail = document.getElementById('edit-mail');
-  let tel = document.getElementById('edit-tel');
+  let name = document.getElementById("edit-name");
+  let mail = document.getElementById("edit-mail");
+  let tel = document.getElementById("edit-tel");
   name.value = contacts[i].name;
   mail.value = contacts[i].mail;
   tel.value = contacts[i].phone;
@@ -184,15 +195,15 @@ function editContact(i) {
 }
 
 function saveEditedContact(i) {
-  console.log('saveEditedContact i:', i);
+  console.log("saveEditedContact i:", i);
 
-  let name = document.getElementById('edit-name');
-  let mail = document.getElementById('edit-mail');
-  let tel = document.getElementById('edit-tel');
+  let name = document.getElementById("edit-name");
+  let mail = document.getElementById("edit-mail");
+  let tel = document.getElementById("edit-tel");
   contacts[i].name = name.value;
   contacts[i].mail = mail.value;
   contacts[i].phone = tel.value;
-  console.log('contacts[i].name', contacts[i].name);
+  console.log("contacts[i].name", contacts[i].name);
 
   saveContacts();
   init();
@@ -204,11 +215,11 @@ function deleteContact(i) {
 
   saveContacts();
   init();
-  document.getElementById('contact-info').innerHTML = '';
+  document.getElementById("contact-info").innerHTML = "";
 
-  let bannerContactDeleted = document.getElementById('banner-contact-deleted');
-  bannerContactDeleted.style = 'display: flex';
-  setTimeout(() => (bannerContactDeleted.style = 'display: none'), 2000);
+  let bannerContactDeleted = document.getElementById("banner-contact-deleted");
+  bannerContactDeleted.style = "display: flex";
+  setTimeout(() => (bannerContactDeleted.style = "display: none"), 2000);
 }
 
 function toggleBackground(i) {
@@ -217,8 +228,10 @@ function toggleBackground(i) {
   //     element.classList.remove('bg-primary');
   //     console.log('removeBackground:', removeBackground);
   //   });
-  document.getElementById(`contact-list-basic-info${i}`).classList.toggle('bg-primary');
-  document.getElementById(`name-list${i}`).classList.toggle('color-white');
+  document
+    .getElementById(`contact-list-basic-info${i}`)
+    .classList.toggle("bg-primary");
+  document.getElementById(`name-list${i}`).classList.toggle("color-white");
 }
 
 // function setBackgroundColor() {

@@ -1,13 +1,15 @@
 async function loadLogIn() {
   let container = document.getElementById("formBody");
+  let headerRight = document.getElementById("headerRightBox");
   container.innerHTML = await logInHtml();
+  if(headerRight.classList.contains("d-none")){}
+  headerRight.classList.remove("d-none");
 }
 
 function loadSignUpHtml() {
   let container = document.getElementById("formBody");
   changeCssFromInput(container);
   document.getElementById("headerRightBox").classList.add("d-none");
-
   container.innerHTML = signupHtml();
 }
 
@@ -20,18 +22,16 @@ async function signUp() {
     password: passwordSignUp.value,
     checkPassword: checkPasswordSignUp.value,
   });
-  await setItem('users', JSON.stringify(users));
+  await setItem("users", JSON.stringify(users));
   window.location.href = "./summary.html";
 }
 
 async function loadUser() {
-  logInBtn.disabled = true;
   let email = document.getElementById("email").value;
   let password = document.getElementById("password").value;
   await setItem("users", JSON.stringify(users));
-  resetForm();
   if (searchForEmail(email, password)) {
-    console.log("erfolg");
+    await rememberMe();
     window.location.href = "./summary.html";
   }
 }
@@ -50,7 +50,6 @@ function searchForEmail(email, password) {
 function resetForm() {
   email.value = "";
   password.value = "";
-  logInBtn.disabled = false;
 }
 
 function logInGuest() {
@@ -79,7 +78,51 @@ async function getItem(key) {
 async function loadUsers() {
   try {
     users = JSON.parse(await getItem("users"));
-  } catch(e) {
+  } catch (e) {
     console.info("could not load users");
+  }
+}
+
+function rememberMe() {
+  let checkbox = document.getElementById("checkboxSavePassword");
+  let email = document.getElementById("email").value;
+  let password = document.getElementById("password").value;
+  if (checkbox.checked) {
+    console.log(email, password);
+    localStorage.setItem("useremail", email);
+    localStorage.setItem("userpassword", password);
+    localStorage.setItem("rememberMe", "on");
+  } else {
+    localStorage.removeItem("useremail");
+    localStorage.removeItem("userpassword");
+    localStorage.removeItem("rememberMe");
+    resetForm();
+  }
+}
+
+function loadLocalStorageData() {
+  let userEmail = localStorage.getItem("useremail");
+  let userPassword = localStorage.getItem("userpassword");
+  if (userEmail && userPassword) {
+    let emailInput = document.getElementById("email");
+    let passwordInput = document.getElementById("password");
+    let checkbox = document.getElementById("checkboxSavePassword");
+    emailInput.value = userEmail;
+    passwordInput.value = userPassword;
+    checkbox.checked = true;
+  }
+}
+
+function toggleShowPassword(){
+  let passwordField = document.getElementById('password');
+  let passwordIcon = document.getElementById('passwordIcon');
+  if(passwordField.type === 'password'){
+    passwordField.type = 'text';
+    passwordIcon.src = './assets/img/icons/visibilityOff.svg';
+    // passwordIcon.classList.add('')
+  } else {
+    passwordField.type = 'password';
+    passwordIcon.src = './assets/img/icons/lock.svg';
+    passwordIcon.classList.add('inputImgLock')
   }
 }

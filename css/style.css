@@ -25,53 +25,6 @@ h1 {
   font-weight: 700;
   line-height: 120%; }
 
-.buttonGrey {
-  display: flex;
-  text-align: center;
-  align-items: center;
-  justify-content: center;
-  height: 48px;
-  color: white;
-  background-color: #2a3647;
-  border-radius: 8px;
-  border: none;
-  gap: 10px;
-  padding: 15px 16px; }
-
-.buttonWhite {
-  display: flex;
-  text-align: center;
-  align-items: center;
-  justify-content: center;
-  height: 48px;
-  color: #2a3647;
-  background-color: #ffffff;
-  border-radius: 8px;
-  border: none;
-  gap: 10px;
-  padding: 15px 16px;
-  border: 1px solid #2a3647; }
-
-.buttonGrey:hover {
-  transition: 250ms;
-  background-color: #0e8ce9;
-  transform: scale(1.001);
-  box-shadow: 0 5px 2px -2px rgba(0, 0, 0, 0.2);
-  cursor: pointer; }
-
-.buttonWhite:hover {
-  transition: 250ms;
-  border: 1px solid #29abe2;
-  color: #29abe2;
-  bottom: 1px;
-  transform: scale(1.001);
-  box-shadow: 0 5px 2px -2px rgba(0, 0, 0, 0.2);
-  cursor: pointer; }
-
-.footerLink:hover {
-  color: #29abe2;
-  font-weight: bold; }
-
 .gap9 {
   gap: 8px; }
 
@@ -655,13 +608,6 @@ h2 {
   width: 24px;
   height: 24px; }
 
-.inputImgMail {
-  position: absolute;
-  top: 95px;
-  right: 22px;
-  width: 24px;
-  height: 24px; }
-
 .inputImgPhone2 {
   position: absolute;
   top: 12px;
@@ -864,6 +810,7 @@ h2 {
   box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04); }
 
 .signUpBody {
+  position: relative;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -918,14 +865,6 @@ footer {
   flex-shrink: 0;
   border: 0; }
 
-.inputField {
-  width: 380px;
-  height: 24px;
-  gap: 8px;
-  border-radius: 10px;
-  border: 1px solid #d1d1d1;
-  padding: 12px 21px; }
-
 .inputFieldContainer {
   position: relative;
   display: flex;
@@ -958,9 +897,12 @@ footer {
   align-self: stretch; }
 
 .checkboxSavePassword {
+  display: inline-block;
   width: 16px;
   height: 16px;
-  stroke: #2a3647; }
+  border-radius: 3px;
+  border: 2px solid #2a3647;
+  cursor: pointer; }
 
 .buttonLogin {
   padding: 24px 15px;
@@ -987,7 +929,7 @@ footer {
   line-height: 120%; }
 
 .privacyPolicyLink {
-  color: var(--Ligth-blue, #29ABE2);
+  color: var(--Ligth-blue, #29abe2);
   font-family: Inter;
   font-size: 16px;
   font-style: normal;
@@ -995,8 +937,14 @@ footer {
   line-height: 120%;
   text-decoration: none; }
 
-.rememberMeWidth {
-  width: 142px; }
+.rememberMeFont {
+  color: #000;
+  font-size: 16px; }
+
+.remembermeWidth {
+  width: 142px;
+  height: 24px;
+  gap: 8px; }
 
 /* img section   */
 .JoinLogoSmall {
@@ -1009,9 +957,9 @@ footer {
 .inputImgMail {
   position: absolute;
   right: 25px;
-  width: 16px;
-  height: 21px;
-  top: 13px; }
+  width: 20px;
+  height: 16px;
+  top: 16px; }
 
 .inputImgLock {
   position: absolute;
@@ -1026,6 +974,13 @@ footer {
   width: 16px;
   height: 21px;
   top: 13px; }
+
+.inputImgVisibilityOff {
+  width: 21.65px;
+  height: 18.95px;
+  top: 3.23px;
+  left: 357.17px;
+  top: 95px; }
 
 .main {
   position: absolute;
@@ -1144,3 +1099,83 @@ a {
   color: #29abe2;
   font-size: 20px;
   padding: 10px; }
+
+.showPasswordButton {
+  display: flex;
+  border: none;
+  background-color: #fff; }
+
+.arrowLeftIcon {
+  position: absolute;
+  top: 64px;
+  left: 48px;
+  width: 32px;
+  height: 32px; }
+
+.arrowLeftIcon:hover {
+  cursor: pointer; }
+
+input[type=checkbox] {
+  display: none; }
+
+input[type=checkbox] + label {
+  display: inline-block;
+  padding: 0 0 0 0px;
+  background: url("../../assets/img/icons/checkInput.svg") no-repeat;
+  height: 16px;
+  width: 16px;
+  background-size: 100%; }
+
+input[type=checkbox]:checked + label {
+  background: url("../../assets/img/icons/checkedInput.svg") no-repeat;
+  height: 16px;
+  width: 16px;
+  display: inline-block;
+  background-size: 100%; }
+
+.buttonGrey {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  color: white;
+  background-color: #2a3647;
+  border-radius: 8px;
+  border: none;
+  gap: 10px;
+  padding: 15px 16px; }
+
+.buttonWhite {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  color: #2a3647;
+  background-color: #ffffff;
+  border-radius: 8px;
+  border: none;
+  gap: 10px;
+  padding: 15px 16px;
+  border: 1px solid #2a3647; }
+
+.buttonGrey:hover {
+  transition: 250ms;
+  background-color: #0e8ce9;
+  transform: scale(1.001);
+  box-shadow: 0 5px 2px -2px rgba(0, 0, 0, 0.2);
+  cursor: pointer; }
+
+.buttonWhite:hover {
+  transition: 250ms;
+  border: 1px solid #29abe2;
+  color: #29abe2;
+  bottom: 1px;
+  transform: scale(1.001);
+  box-shadow: 0 5px 2px -2px rgba(0, 0, 0, 0.2);
+  cursor: pointer; }
+
+.footerLink:hover {
+  color: #29abe2;
+  font-weight: bold; }

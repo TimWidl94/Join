@@ -22,8 +22,7 @@ h1 {
   font-family: "Inter", sans-serif;
   font-size: 61px;
   font-style: normal;
-  font-weight: 700;
-  line-height: 120%; }
+  font-weight: 700; }
 
 .buttonGrey {
   display: flex;
@@ -809,7 +808,7 @@ h2 {
   position: relative;
   padding: 80px 64px;
   left: 232px;
-  background-color: deeppink; }
+  background-color: #f6f7f8; }
 
 .row {
   display: flex;
@@ -825,7 +824,11 @@ h2 {
   gap: 32px; }
 
 .space-between {
-  justify-content: space-between; }
+  justify-content: space-between;
+  align-items: center; }
+
+.col-3 {
+  width: 25%; }
 
 .col-4 {
   width: 33.33%; }
@@ -841,6 +844,53 @@ h2 {
 
 .flex-start {
   justify-content: flex-start; }
+
+.inputField-search {
+  width: 380px;
+  height: 24px;
+  gap: 8px;
+  border-radius: 10px;
+  border: 1px solid #d1d1d1;
+  padding: 8px 16px; }
+
+.search-side {
+  display: flex;
+  gap: 32px; }
+  .search-side-bar {
+    padding: 8px 16px;
+    height: 200px;
+    width: 380px;
+    height: 48px;
+    gap: 8px;
+    border-radius: 10px;
+    border: 1px solid #d1d1d1;
+    padding: 12px 21px;
+    position: relative; }
+    .search-side-bar::placeholder {
+      color: #d1d1d1;
+      top: 12px;
+      position: absolute;
+      font-size: 20px; }
+    .search-side-bar-vertical-line {
+      background-color: #d1d1d1;
+      width: 2px;
+      height: 30px;
+      position: absolute;
+      right: 45px;
+      top: 10px; }
+  .search-side-input-img {
+    position: absolute;
+    width: 32px;
+    right: 5px;
+    top: 8px; }
+
+.board-title {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 20px;
+  font-weight: 700;
+  color: #42526E; }
 
 /*  general section  */
 .dp-flex {
@@ -1161,7 +1211,7 @@ a {
   position: relative;
   padding: 80px 64px;
   left: 232px;
-  background-color: deeppink; }
+  background-color: #f6f7f8; }
 
 .row {
   display: flex;
@@ -1177,7 +1227,11 @@ a {
   gap: 32px; }
 
 .space-between {
-  justify-content: space-between; }
+  justify-content: space-between;
+  align-items: center; }
+
+.col-3 {
+  width: 25%; }
 
 .col-4 {
   width: 33.33%; }

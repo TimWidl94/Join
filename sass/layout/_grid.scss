@@ -4,8 +4,7 @@
     position: relative;
     padding: 80px 64px;
     left:  232px;
-    // background-color: $summary-background-color;
-    background-color: deeppink;
+    background-color: $summary-background-color;
 }
 
 .row {
@@ -24,6 +23,11 @@
 
 .space-between {
     justify-content: space-between;
+    align-items: center;
+}
+
+.col-3 {
+    width: 25%;
 }
 
 .col-4 {

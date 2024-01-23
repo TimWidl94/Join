@@ -12,13 +12,53 @@
     <div w3-include-html="sidebar.html"></div>
     <div w3-include-html="topbar.html"></div>
     <div class="container">
-        <div class="row">
-     <div><h1 style="text-align: left; position: relative; top: 0; line-height: 0">Board</h1></div>
-        <div class="inputFieldBox">
-            <input type="search" class="inputField search" placeholder="Search...">
-            <img src="./assets/img/Board/search.svg" alt="" class="inputImgMail">
+      <div class="row space-between">
+        <div>
+          <h1>Board</h1>
         </div>
-        <button class="buttonGrey buttonLogin" onclick="">Add Task <span class="add-class"><img src="./assets/img/Board/PlusButton.png" alt=""></span></button>    </div>
-</div>
+        <div class="search-side">
+          <div class="inputFieldBox">
+            <input
+              type="search"
+              class="search-side-bar"
+              placeholder="Find Task"
+              id="email"
+              minlength="5"
+              required="" />
+            <div class="search-side-bar-vertical-line"></div>
+            <img
+              src="./assets/img/Board/search.svg"
+              alt=""
+              class="search-side-input-img" />
+          </div>
+
+          <button class="buttonGrey buttonLogin" onclick="">
+            Add Task
+            <span class="add-class"
+              ><img src="./assets/img/Board/PlusButton.svg" alt=""
+            /></span>
+          </button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-4">
+            <div class="board">
+                <div class="board-title">To do <button><img src="assets/img/Board/plus-btn-blue.svg" alt=""></button></div>
+                <div class="board-task">
+                    <div class="board-task-epic">User Story</div>
+                    <div class="borad-task-info-title">Contact Form & Imprint</div>
+                    <div class="board-task-subtask">1/2 Subtasks</div>
+                    <div class="board-task-member">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-4"></div>
+        <div class="col-4"></div>
+        <div class="col-4"></div>
+    </div>
+    </div>
+    
   </body>
 </html>

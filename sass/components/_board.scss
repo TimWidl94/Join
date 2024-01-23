@@ -4,4 +4,61 @@
 .flex-start {
     justify-content: flex-start;
 }
+.inputField-search {
+    width: 380px;
+  height: 24px;
+  gap: 8px;
+  border-radius: 10px;
+  border: 1px solid rgba(209, 209, 209, 1);
+  padding: 8px 16px;
+}
 
+.search-side {
+    display: flex;
+    gap: 32px;
+
+    &-bar {
+        padding: 8px 16px;
+        height: 200px;
+        width: 380px;
+        height: 48px;
+        gap: 8px;
+        border-radius: 10px;
+        border: 1px solid rgba(209, 209, 209, 1);
+        padding: 12px 21px;
+        position: relative;
+        &::placeholder {
+            color: $color-lightgrey;
+            top: 12px;
+            position: absolute;
+            font-size: 20px;
+        }
+        &-vertical-line {
+            background-color: $color-lightgrey;
+            width: 2px;
+            height: 30px;
+            position: absolute;
+            right: 45px;
+            top: 10px;
+        }
+    }
+    &-input-img {
+        position: absolute;
+        width: 32px;
+        right: 5px;
+        top: 8px;
+    }
+}
+
+.board {
+  
+    &-title {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        font-size: 20px;
+        font-weight: 700;
+        color: $dark-blue;
+        
+    }
+}

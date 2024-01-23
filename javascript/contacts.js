@@ -53,10 +53,11 @@ function loadContacts() {
   let contactsAsText = localStorage.getItem('contacts');
   if (contacts) {
     contacts = JSON.parse(contactsAsText);
-    console.log('Loaded all contacts:', contacts);
-  } else {
-    console.log('No contacts found to load!');
+    // console.log('Loaded all contacts:', contacts);
   }
+  // else {
+  //   console.log('No contacts found to load!');
+  // }
 }
 
 function renderContacts() {
@@ -85,7 +86,6 @@ function getFirstLetters(str) {
 }
 
 function openContactInfo(i) {
-  console.log('openContactInfo i', i);
   let contact = contacts[i];
   let acronym = getFirstLetters(contact.name);
   document.getElementById('contact-info').innerHTML = '';
@@ -97,7 +97,7 @@ function openContactInfo(i) {
         <div class="name-and-changes">
             <h2 id="name">${contact.name}</h2>
             <div class="changes">
-                <div class="edit" onclick="editContact(i)">
+                <div class="edit" onclick="editContact(${i})">
                     <img src="assets/img/Contacts/edit.svg" alt="" />
                     <p>Edit</p>
                 </div>
@@ -127,13 +127,23 @@ function openContactInfo(i) {
 }
 
 function showPopupAddContact() {
-  document.getElementById('wrapper').classList.remove('d-none');
-  document.getElementById('wrapper').classList.add('d-block');
+  document.getElementById('add-contact-wrapper').classList.remove('d-none');
+  document.getElementById('add-contact-wrapper').classList.add('d-block');
 }
 
 function closePopupAddContact() {
-  document.getElementById('wrapper').classList.remove('d-block');
-  document.getElementById('wrapper').classList.add('d-none');
+  document.getElementById('add-contact-wrapper').classList.remove('d-block');
+  document.getElementById('add-contact-wrapper').classList.add('d-none');
+}
+
+function showPopupEditContact() {
+  document.getElementById('edit-contact-wrapper').classList.remove('d-none');
+  document.getElementById('edit-contact-wrapper').classList.add('d-block');
+}
+
+function closePopupEditContact() {
+  document.getElementById('edit-contact-wrapper').classList.remove('d-block');
+  document.getElementById('edit-contact-wrapper').classList.add('d-none');
 }
 
 function addContact() {
@@ -160,7 +170,33 @@ function doNotClose(event) {
 }
 
 function editContact(i) {
-  console.log('editContact i', i);
+  let content = document.getElementById('edit-contact-wrapper');
+  content.innerHTML = editContactHTML(i);
+
+  let name = document.getElementById('edit-name');
+  let mail = document.getElementById('edit-mail');
+  let tel = document.getElementById('edit-tel');
+  name.value = contacts[i].name;
+  mail.value = contacts[i].mail;
+  tel.value = contacts[i].phone;
+
+  showPopupEditContact();
+}
+
+function saveEditedContact(i) {
+  console.log('saveEditedContact i:', i);
+
+  let name = document.getElementById('edit-name');
+  let mail = document.getElementById('edit-mail');
+  let tel = document.getElementById('edit-tel');
+  contacts[i].name = name.value;
+  contacts[i].mail = mail.value;
+  contacts[i].phone = tel.value;
+  console.log('contacts[i].name', contacts[i].name);
+
+  saveContacts();
+  init();
+  return true;
 }
 
 function deleteContact(i) {

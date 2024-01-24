@@ -11,5 +11,6 @@ async function init(){
     await loadLocalStorageData();
 }
 
-
-
+function openAddTaskPopup() {
+    document.getElementById("addTaskPopup").classList.remove("d-none");
+}

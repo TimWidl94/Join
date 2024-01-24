@@ -11,7 +11,91 @@
   <body onload="includeHTML()">
     <div w3-include-html="sidebar.html"></div>
     <div w3-include-html="topbar.html"></div>
+
     <div class="container">
+        <div id="addTaskPopup" class="add-task-popup d-none">
+            <section class="container-left">
+              <div class="headline-add-task"><h1 class="headline-h1-add-task">Add Task</h1></div>
+      
+              <div id="title">
+                <p>Title<span>*</span></p>
+                <input required type="text" placeholder="Enter a title" />
+              </div>
+      
+              <div id="description">
+                <p>Description</p>
+                <textarea placeholder="Enter a description"></textarea>
+              </div>
+      
+              <div id="assignedTo">
+                <p>Assigned to</p>
+                <select name="assigned" id="assigned">
+                  <option>Select contacts to assign</option>
+                  <option>Verena Schranz</option>
+                  <option>Tim Widl</option>
+                  <option>Christian Grund</option>
+                </select>
+              </div>
+      
+              <div id="requirement">
+                <p><span>*</span>This field is required</p>
+              </div>
+            </section>
+      
+            <div class="vertical-line-add-task"></div>
+      
+            <section class="container-right">
+              <div id="due-date">
+                <p>Due Date<span>*</span></p>
+                <input required type="date" />
+              </div>
+      
+              <div class="priority">
+                <p>Prio</p>
+                <div class="priority-options">
+                  <div>
+                    <p>Urgent</p>
+                    <img src="assets/img/AddTask/ArrowUpPrioSign.svg" alt="Prio High" />
+                  </div>
+                  <div>
+                    <p>Medium</p>
+                    <img src="assets/img/AddTask/MediumPrioSign.svg" alt="Prio Medium" />
+                  </div>
+                  <div>
+                    <p>Low</p>
+                    <img src="assets/img/AddTask/ArrowDownPrioSign.svg" alt="Prio Low" />
+                  </div>
+                </div>
+              </div>
+      
+              <div class="category">
+                <p>Category<span>*</span></p>
+                <select id="category-options">
+                  <option>Select contacts to assign</option>
+                  <option>Verena Schranz</option>
+                  <option>Tim Widl</option>
+                  <option>Christian Grund</option>
+                </select>
+              </div>
+      
+              <div id="subtasks">
+                <p>Subtasks</p>
+                <div class="inputFieldBox">
+                  <input type="text" placeholder="Add new subtask" />
+                  <img class="inputImgPlus" src="assets/img/AddTask/plus.svg" alt="Add Icon" />
+                </div>
+              </div>
+      
+              <div class="btns-down-right-add-task">
+                <button id="clear" class="buttonWhite">
+                  Clear <img src="assets/img/AddTask/cancel.svg" alt="Clear Icon"
+                /></button>
+                <button id="create-task" class="buttonGrey">
+                  Create Task <img src="assets/img/AddTask/check_white.svg" alt="Check Icon"
+                /></button>
+              </div>
+            </section>
+    </div>
       <div class="row space-between">
         <div>
           <h1>Board</h1>
@@ -32,7 +116,7 @@
               class="search-side-input-img" />
           </div>
 
-          <button class="buttonGrey buttonLogin" onclick="">
+          <button class="buttonGrey buttonLogin" onclick="openAddTaskPopup()">
             Add Task
             <span class="add-class"
               ><img src="./assets/img/Board/PlusButton.svg" alt=""
@@ -42,23 +126,147 @@
       </div>
       <div class="row">
         <div class="col-4">
-            <div class="board">
-                <div class="board-title">To do <button><img src="assets/img/Board/plus-btn-blue.svg" alt=""></button></div>
-                <div class="board-task">
-                    <div class="board-task-epic">User Story</div>
-                    <div class="borad-task-info-title">Contact Form & Imprint</div>
-                    <div class="board-task-subtask">1/2 Subtasks</div>
-                    <div class="board-task-member">
-                        
-                    </div>
-                </div>
+            <div class="board-title">
+                To do
+                <div><img src="./assets/img/icons/plusButton.svg" alt="" /></div>
             </div>
+            <div class="board">
+              
+              <div class="board-task">
+                <div class="board-task-epic board-task-epic-green">
+                  User Story
+                </div>
+                <div class="board-task-title">Contact Form & Imprint</div>
+                <div class="board-task-description">
+                  Create a contact form and imprint page...
+                </div>
+                <div class="board-task-subtask">
+                  <div class="board-task-subtask-progress">
+                    <div
+                      class="progress-done"
+                      id="progress-${i}"
+                      style="width: 0%"></div>
+                  </div>
+                  <div class="sboard-task-subtask-counter">0/3 Subtasks</div>
+                </div>
+                <div class="board-task-member">
+                  <div class="board-task-member">
+                    <div class="board-task-member-profile">DA</div>
+                    <div class="board-task-member-profile">DA</div>
+                  </div>
+                  <div class="board-task-member-prio">
+                    <img src="./assets/img/AddTask/ArrowUpPrioSign.svg" alt="" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="board">
+              <div class="board-title">
+                To do
+                <div><img src="./assets/img/icons/plusButton.svg" alt="" /></div>
+              </div>
+              <div class="board-task">
+                <div class="board-task-epic board-task-epic-green">
+                  User Story
+                </div>
+                <div class="board-task-title">Contact Form & Imprint</div>
+                <div class="board-task-description">
+                  Create a contact form and imprint page...
+                </div>
+                <div class="board-task-subtask">
+                  <div class="board-task-subtask-progress">
+                    <div
+                      class="progress-done"
+                      id="progress-${i}"
+                      style="width: 0%"></div>
+                  </div>
+                  <div class="sboard-task-subtask-counter">0/3 Subtasks</div>
+                </div>
+                <div class="board-task-member">
+                  <div class="board-task-member">
+                    <div class="board-task-member-profile">DA</div>
+                    <div class="board-task-member-profile">DA</div>
+                  </div>
+                  <div class="board-task-member-prio">
+                    <img src="./assets/img/AddTask/ArrowUpPrioSign.svg" alt="" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="board">
+              <div class="board-title">
+                To do
+                <div><img src="./assets/img/icons/plusButton.svg" alt="" /></div>
+              </div>
+              <div class="board-task">
+                <div class="board-task-epic board-task-epic-green">
+                  User Story
+                </div>
+                <div class="board-task-title">Contact Form & Imprint</div>
+                <div class="board-task-description">
+                  Create a contact form and imprint page...
+                </div>
+                <div class="board-task-subtask">
+                  <div class="board-task-subtask-progress">
+                    <div
+                      class="progress-done"
+                      id="progress-${i}"
+                      style="width: 0%"></div>
+                  </div>
+                  <div class="sboard-task-subtask-counter">0/3 Subtasks</div>
+                </div>
+                <div class="board-task-member">
+                  <div class="board-task-member">
+                    <div class="board-task-member-profile">DA</div>
+                    <div class="board-task-member-profile">DA</div>
+                  </div>
+                  <div class="board-task-member-prio">
+                    <img src="./assets/img/AddTask/ArrowUpPrioSign.svg" alt="" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <div class="col-4">
+          <div class="board">
+            <div class="board-title">
+              To do
+              <div><img src="./assets/img/icons/plusButton.svg" alt="" /></div>
+            </div>
+            <div class="board-task">
+              <div class="board-task-epic board-task-epic-green">
+                User Story
+              </div>
+              <div class="board-task-title">Contact Form & Imprint</div>
+              <div class="board-task-description">
+                Create a contact form and imprint page...
+              </div>
+              <div class="board-task-subtask">
+                <div class="board-task-subtask-progress">
+                  <div
+                    class="progress-done"
+                    id="progress-${i}"
+                    style="width: 0%"></div>
+                </div>
+                <div class="sboard-task-subtask-counter">0/3 Subtasks</div>
+              </div>
+              <div class="board-task-member">
+                <div class="board-task-member">
+                  <div class="board-task-member-profile">DA</div>
+                  <div class="board-task-member-profile">DA</div>
+                </div>
+                <div class="board-task-member-prio">
+                  <img src="./assets/img/AddTask/ArrowUpPrioSign.svg" alt="" />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="col-4"></div>
-        <div class="col-4"></div>
-        <div class="col-4"></div>
+      </div>
     </div>
-    </div>
-    
   </body>
 </html>

@@ -335,8 +335,7 @@ span {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: calc(100% - 2 * 18px);
-  padding: 17px 18px; }
+  width: 100%; }
 
 #start-letter-container {
   display: flex;
@@ -349,9 +348,10 @@ span {
   color: #fff; }
 
 .start-letter {
-  width: 100%;
+  width: calc(100% - 2 * 36px);
   border-bottom: 1px solid #d1d1d1;
-  padding: 17px 12px; }
+  padding: 17px 36px 17px 36px;
+  padding-bottom: 8px; }
 
 .contacts-by-start-letter {
   width: 100%;
@@ -368,8 +368,8 @@ span {
 
 .contact-list-basic-info {
   display: flex;
-  width: 100%;
-  padding: 15px 0px;
+  width: calc(100% - 2 * 24px);
+  padding: 15px 24px;
   align-items: center;
   gap: 35px;
   border-radius: 10px; }
@@ -393,7 +393,6 @@ span {
   align-items: center;
   width: 42px;
   height: 42px;
-  background-color: #ff7a00;
   border: 2px solid #fff;
   border-radius: 100px; }
 
@@ -465,7 +464,6 @@ h2 {
   align-items: center;
   width: 120px;
   height: 120px;
-  background-color: #ff7a00;
   border-radius: 60px; }
 
 .capital-letters h2 {

@@ -78,14 +78,8 @@ function renderLetters() {
 
   for (let i = 0; i < letters.length; i++) {
     const letter = letters[i];
-    letterBox.innerHTML += `
-    <div id="start-letter-container">
-      <div class="start-letter">
-          <p id="start-letter">${letter}</p>
-      </div>
-      <div id="contacts-${letter}" class="contacts-by-start-letter"></div>
-    </div>
-    `;
+    letterBox.innerHTML += generateLettersHTML(letter);
+
     setContactsToFirstLetters(letter);
   }
 }
@@ -97,27 +91,17 @@ function setContactsToFirstLetters(letter) {
   for (let i = 0; i < contacts.length; i++) {
     const contact = contacts[i];
     const firstLetter = contact.name.charAt(0);
+    const color = setBackgroundColor(i);
     let acronym = getFirstLetters(contact.name);
 
     if (firstLetter.includes(letter)) {
-      contactBox.innerHTML += generateContacts(contact, acronym, i);
+      contactBox.innerHTML += generateContactsHTML(contact, color, acronym, i);
     }
   }
 }
 
-function generateContacts(contact, acronym, i) {
-  const color = contactColors[i % contactColors.length];
-  return /*html*/ `
-  <div id="contact-list-basic-info${i}" class="contact-list-basic-info" onclick="toggleBackground(${i}), openContactInfo(${i})">
-            <div class="capital-letters-list" id="capital-letters-list${i}" style="background-color: ${color};"> 
-                <p id="capital-letters-list">${acronym}</p>
-                </div>
-            <div id="name-and-mail"> 
-            <p id="name-list${i}">${contact.name}</p>
-              <p id="email-list">${contact.mail}</p>
-          </div>
-        </div>
-  `;
+function setBackgroundColor(i) {
+  return contactColors[i % contactColors.length];
 }
 
 function getFirstLetters(str) {
@@ -127,42 +111,10 @@ function getFirstLetters(str) {
 function openContactInfo(i) {
   let contact = contacts[i];
   let acronym = getFirstLetters(contact.name);
-  document.getElementById('contact-info').innerHTML = '';
-  document.getElementById('contact-info').innerHTML += /*html*/ `
-    <div id="basic-info">
-        <div class="capital-letters">
-            <h2 id="capital-letters">${acronym}</h2>
-        </div>
-        <div class="name-and-changes">
-            <h2 id="name">${contact.name}</h2>
-            <div class="changes">
-                <div class="edit" onclick="editContact(${i})">
-                    <img src="assets/img/Contacts/edit.svg" alt="" />
-                    <p>Edit</p>
-                </div>
-                <div class="delete" onclick="deleteContact(${i})">
-                    <img src="assets/img/Contacts/delete.svg" alt="" />
-                    <p>Delete</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="contact-info-text">
-        <p>Contact Information</p>
-    </div>
-
-    <div class="mail-and-phone">
-        <div class="mail">
-            <p>Email</p>
-            <p id="contact-email">${contact.mail}</p>
-        </div>
-        <div class="phone">
-            <p>Phone</p>
-            <p id="contact-phone" type="phone">${contact.phone}</p>
-        </div>
-    </div>
-  `;
+  const color = setBackgroundColor(i);
+  let content = document.getElementById('contact-info');
+  content.innerHTML = '';
+  content.innerHTML += openContactInfoHTML(contact, acronym, color, i);
 }
 
 function showPopupAddContact() {
@@ -200,9 +152,6 @@ async function addContact() {
   let bannerContactAdded = document.getElementById('banner-contact-created');
   await animateBannerContacts(bannerContactAdded);
 
-  // await timeOut(2000);
-  // console.log('waited');
-
   return true;
 }
 
@@ -212,7 +161,7 @@ function clearPopup(name, mail, tel) {
   tel.value = '';
 }
 
-function saveContacts() {
+async function saveContacts() {
   let contactsAsText = JSON.stringify(contacts);
   localStorage.setItem('contacts', contactsAsText);
 }
@@ -254,15 +203,25 @@ function saveEditedContact(i) {
   return false;
 }
 
-function deleteContact(i) {
+async function deleteContact(i) {
+  deleteUnusedLetter(i);
   contacts.splice(i, 1);
 
-  saveContacts();
-  init();
+  await saveContacts();
   document.getElementById('contact-info').innerHTML = '';
+  init();
 
   let bannerContactDeleted = document.getElementById('banner-contact-deleted');
   animateBannerContacts(bannerContactDeleted);
+}
+
+function deleteUnusedLetter(i) {
+  let index = letters.indexOf(contacts[i].name.charAt(0));
+  console.log('contacts[i].name', contacts[i].name.charAt(0));
+  console.log('letters:', letters);
+  console.log('index:', index);
+  letters.splice(index, 1);
+  console.log('letters:', letters);
 }
 
 async function animateBannerContacts(banner) {
@@ -280,13 +239,3 @@ function toggleBackground(i) {
   document.getElementById(`contact-list-basic-info${i}`).classList.toggle('bg-primary');
   document.getElementById(`name-list${i}`).classList.toggle('color-white');
 }
-
-// function setBackgroundColor() {
-//   let element = document.getElementById(`capital-letters-list${i}`);
-
-//   for (let i = 0; i < contacts.length; i++) {
-//     for (let j = 0; j < contactColors.length; j++) {
-//       const element = array[j];
-//     }
-//   }
-// }

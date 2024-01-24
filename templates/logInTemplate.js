@@ -1,5 +1,5 @@
-function signupHtml(){
-    return `
+function signupHtml() {
+  return /*html*/ `
     <form action="" id="signUpBody" class="signUpBody" onsubmit="signUp(); return false">
         <div class="h1Box dp-flex fd-colum">
             <h1>Sign up</h1>
@@ -27,7 +27,8 @@ function signupHtml(){
             <div class="checkboxPrivacyPolicy dp-flex">
                 <input type="checkbox" id="checkboxSavePassword" name="checkboxSavePassword" class="checkboxSavePassword"/>
                 <p class="acceptPrivacyGrey">i accept the 
-                    <a href="./privacyPolice.html" class="privacyPolicyLink">Privacy policy</a>
+                    <a href="./privacyPolice.html" class="privacyPolicyLink
+                    ">Privacy policy</a>
                 </p>
             </div>
         </div>
@@ -37,8 +38,8 @@ function signupHtml(){
     </form>`;
 }
 
-function logInHtml(){
-    return `
+function logInHtml() {
+  return `
     <form action="" id="loginScreenBody" class="loginScreenBody" onsubmit="loadUser();return false" name="logIn">
     <div class="h1Box dp-flex fd-colum">
       <h1>Log in</h1>

@@ -18,15 +18,15 @@ function editContactHTML(i) {
                 <form class="inputButtonsWrapper" onsubmit="return saveEditedContact(${i});">
                 <div class="inputFieldContainer height-unset">
                     <div class="inputFieldBox">
-                    <input type="text" class="inputField" placeholder="Name" id="edit-name" required />
+                    <input type="text" class="inputField" placeholder="Name" id="edit-name" required autocomplete="none" />
                     <img src="assets/img/Contacts/person_grey.svg" alt="Person" class="inputImgPerson" />
                     </div>
                     <div class="inputFieldBox">
-                    <input type="mail" class="inputField" placeholder="Email" id="edit-mail" required />
+                    <input type="email" class="inputField" placeholder="Email" id="edit-mail" required autocomplete="none"/>
                     <img src="assets/img/Contacts/mail.svg" alt="Mail" class="inputImgMail" />
                     </div>
                     <div class="inputFieldBox">
-                    <input type="tel" class="inputField" placeholder="Phone" id="edit-tel" required />
+                    <input type="tel" oninput="validatePhoneNumber(this)" class="inputField" placeholder="Phone" id="edit-tel" required autocomplete="none"/>
                     <img src="assets/img/Contacts/call.svg" alt="Phone" class="inputImgPhone2" />
                     </div>
                 </div>

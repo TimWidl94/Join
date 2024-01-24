@@ -1,3 +1,45 @@
+@keyframes slideIn {
+  0% {
+    transform: translateX(400px);
+    animation-timing-function: ease-out; }
+  60% {
+    transform: translateX(-30px);
+    animation-timing-function: ease-in; }
+  80% {
+    transform: translateX(10px);
+    animation-timing-function: ease-out; }
+  100% {
+    transform: translateX(0px);
+    animation-timing-function: ease-in; } }
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1; }
+  100% {
+    opacity: 0; } }
+
+@keyframes slideOut {
+  0% {
+    transform: translateX(0px);
+    opacity: 1;
+    animation-timing-function: ease-in; }
+  20% {
+    transform: translateX(10px);
+    animation-timing-function: ease-out; }
+  40% {
+    transform: translateX(-30px);
+    animation-timing-function: ease-in; }
+  100% {
+    transform: translateX(400px);
+    animation-timing-function: ease-out;
+    opacity: 0; } }
+
 body {
   margin: 0;
   background-color: #f6f7f8;
@@ -973,28 +1015,17 @@ h2 {
   padding: 64px 74px;
   z-index: 9;
   background: white;
-  border-radius: 30px;
+  border-radius: 30px; }
+  .add-task-popup-close {
+    position: absolute;
+    right: 40px;
+    cursor: pointer; }
+
+.slide-in {
   animation: fadeIn 1s, slideIn .8s linear; }
 
-@keyframes slideIn {
-  0% {
-    transform: translateX(400px);
-    animation-timing-function: ease-out; }
-  60% {
-    transform: translateX(-30px);
-    animation-timing-function: ease-in; }
-  80% {
-    transform: translateX(10px);
-    animation-timing-function: ease-out; }
-  100% {
-    transform: translateX(0px);
-    animation-timing-function: ease-in; } }
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0; }
-  100% {
-    opacity: 1; } }
+.slide-out {
+  animation: fadeOut 1s, slideOut .8s linear; }
 
 .search-side {
   display: flex;

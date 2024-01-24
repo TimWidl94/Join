@@ -1,12 +1,5 @@
 /*  general section  */
 
-@mixin inputFieldIcon() {
-  position: absolute;
-  right: 25px;
-  width: 16px;
-  height: 21px;
-}
-
 .dp-flex {
   display: flex;
   align-items: center;
@@ -41,8 +34,8 @@
   box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
 }
 
-
 .signUpBody {
+  position: relative;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -104,14 +97,14 @@ footer {
   border: 0;
 }
 
-.inputField {
-  width: 380px;
-  height: 24px;
-  gap: 8px;
-  border-radius: 10px;
-  border: 1px solid rgba(209, 209, 209, 1);
-  padding: 12px 21px;
-}
+// .inputField {
+// width: 380px;
+// height: 24px;
+// gap: 8px;
+// border-radius: 10px;
+// border: 1px solid rgba(209, 209, 209, 1);
+// padding: 12px 21px;
+// }
 
 .inputFieldContainer {
   position: relative;
@@ -133,8 +126,7 @@ footer {
   padding-bottom: 16px;
 }
 
-
-.inputFieldBox{
+.inputFieldBox {
   position: relative;
 }
 
@@ -145,17 +137,18 @@ footer {
   align-self: stretch;
 }
 
-
-.checkboxPrivacyPolicy{
+.checkboxPrivacyPolicy {
   padding: 0;
   align-self: stretch;
 }
 
-
 .checkboxSavePassword {
+  display: inline-block;
   width: 16px;
   height: 16px;
-  stroke: #2a3647;
+  border-radius: 3px;
+  border: 2px solid #2a3647;
+  cursor: pointer;
 }
 
 .buttonLogin {
@@ -173,31 +166,38 @@ footer {
   position: relative;
 }
 
-.blueUnderline{
+.blueUnderline {
   position: absolute;
   bottom: 0;
 }
 
-.acceptPrivacyGrey{
+.acceptPrivacyGrey {
   font-family: Inter;
-font-size: 16px;
-font-style: normal;
-font-weight: 400;
-line-height: 120%;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 120%;
 }
 
-.privacyPolicyLink{
-  color:  var(--Ligth-blue, #29ABE2);
+.privacyPolicyLink {
+  color: var(--Ligth-blue, #29abe2);
   font-family: Inter;
-font-size: 16px;
-font-style: normal;
-font-weight: 400;
-line-height: 120%;
-text-decoration: none;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 120%;
+  text-decoration: none;
 }
 
-.rememberMeWidth{
+.rememberMeFont {
+  color: #000;
+  font-size: 16px;
+}
+
+.remembermeWidth{
   width: 142px;
+  height: 24px;
+  gap: 8px;
 }
 
 /* img section   */
@@ -211,17 +211,33 @@ text-decoration: none;
 }
 
 .inputImgMail {
-  @include inputFieldIcon();
-  top: 13px;
+  position: absolute;
+  right: 25px;
+  width: 20px;
+  height: 16px;
+  top: 16px;
 }
 
 .inputImgLock {
-  @include inputFieldIcon();
+  position: absolute;
+  right: 25px;
+  width: 16px;
+  height: 21px;
   top: 95px;
 }
 
 .inputImgLock1 {
-  @include inputFieldIcon();
+  position: absolute;
+  right: 25px;
+  width: 16px;
+  height: 21px;
   top: 13px;
 }
 
+.inputImgVisibilityOff {
+  width: 21.65px;
+  height: 18.95px;
+  top: 3.23px;
+  left: 357.17px;
+  top: 95px;
+}

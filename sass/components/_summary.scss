@@ -1,36 +1,5 @@
 @import "../base/_colors";
 
-.container {
-    margin: 96px 96px 0px;
-    position: relative;
-    padding-top: 110px;
-    left: 232px;
-    background-color: $summary-background-color;
-}
-
-.row {
-    display: flex;
-    align-items: center;
-    padding-bottom: 28px;
-    gap: 32px;
-} 
-.row-header {
-    display: flex;
-    align-items: center;
-    padding-bottom: 28px;
-    background-color: $summary-background-color;
-    gap: 32px;
-}
-.col-4 {
-    width: 33.33%;
-}
-.col-6 {
-    width: 50%
-}
-.col-12 {
-    width: 100%;
-}
-
 .flex-start {
     justify-content: flex-start;
 }

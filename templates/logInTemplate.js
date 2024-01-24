@@ -67,7 +67,8 @@ function signupHtml(){
                 <input type="checkbox" id="checkboxSavePassword" name="checkboxSavePassword" class="checkboxSavePassword" required/>
                 <label for="checkboxSavePassword"></label>
                 <p class="acceptPrivacyGrey">i accept the 
-                    <a href="./privacyPolice.html" class="privacyPolicyLink">Privacy policy</a>
+                    <a href="./privacyPolice.html" class="privacyPolicyLink
+                    ">Privacy policy</a>
                 </p>
             </div>
         </div>
@@ -76,4 +77,3 @@ function signupHtml(){
         </div>
     </form>`;
 }
-

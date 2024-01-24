@@ -37,15 +37,15 @@
       </section>
 
       <section id="contact-info"></section>
+
+      <div id="banner-contact-created" style="display: none">
+        <p>Contact succesfully created</p>
+      </div>
+
+      <div id="banner-contact-deleted" style="display: none">
+        <p>Contact succesfully deleted</p>
+      </div>
     </section>
-
-    <div id="banner-contact-created" style="display: none">
-      <p>Contact succesfully created</p>
-    </div>
-
-    <div id="banner-contact-deleted" style="display: none">
-      <p>Contact succesfully deleted</p>
-    </div>
 
     <section id="add-contact-wrapper" class="d-none" onclick="closePopupAddContact()">
       <div class="add-contact-container">
@@ -71,11 +71,18 @@
                   <img src="assets/img/Contacts/person_grey.svg" alt="Person" class="inputImgPerson" />
                 </div>
                 <div class="inputFieldBox">
-                  <input type="mail" class="inputField" placeholder="Email" id="add-mail" required />
+                  <input type="email" class="inputField" placeholder="Email" id="add-mail" required />
                   <img src="assets/img/Contacts/mail.svg" alt="Mail" class="inputImgMail" />
                 </div>
                 <div class="inputFieldBox">
-                  <input type="tel" class="inputField" placeholder="Phone" id="add-tel" required />
+                  <input
+                    type="tel"
+                    oninput="validatePhoneNumber(this)"
+                    class="inputField"
+                    placeholder="Phone"
+                    id="add-tel"
+                    required
+                  />
                   <img src="assets/img/Contacts/call.svg" alt="Phone" class="inputImgPhone2" />
                 </div>
               </div>

@@ -194,10 +194,34 @@ footer {
   font-size: 16px;
 }
 
-.remembermeWidth{
+.remembermeWidth {
   width: 142px;
   height: 24px;
   gap: 8px;
+}
+
+.signedUpMassage {
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%);
+  display: flex;
+  height: 74px;
+  padding: 0px 25px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  background: var(--Version-2-main-color, #2a3647);
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.15);
+  transition: transform 3s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+.moveToCenter {
+  transform: translate(-50%, -480%);
+}
+
+.p-whiteText {
+  color: rgba(255, 255, 255, 1) !important;
 }
 
 /* img section   */

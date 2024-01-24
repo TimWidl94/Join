@@ -56,17 +56,14 @@ async function init() {
   await loadContacts();
   renderContacts();
   //   setBackgroundColor();
+  console.log('init');
 }
 
 function loadContacts() {
-  let contactsAsText = localStorage.getItem("contacts");
+  let contactsAsText = localStorage.getItem('contacts');
   if (contactsAsText) {
     contacts = JSON.parse(contactsAsText);
-    // console.log('Loaded all contacts:', contacts);
   }
-  // else {
-  //   console.log('No contacts found to load!');
-  // }
 }
 
 function renderContacts() {
@@ -163,11 +160,23 @@ function addContact() {
   let tel = document.getElementById("add-tel");
 
   contacts.push({ name: name.value, mail: mail.value, phone: tel.value });
-  console.log("contacts:", contacts);
 
   saveContacts();
+  closePopupAddContact();
+  init();
+  clearPopup(name, mail, tel);
 
-  return true;
+  let bannerContactCreated = document.getElementById('banner-contact-created');
+  animateBannerContacts(bannerContactCreated);
+
+  setTimeout(() => 2000);
+  return false;
+}
+
+function clearPopup(name, mail, tel) {
+  name.value = '';
+  mail.value = '';
+  tel.value = '';
 }
 
 function saveContacts() {
@@ -194,20 +203,24 @@ function editContact(i) {
   showPopupEditContact();
 }
 
-function saveEditedContact(i) {
-  console.log("saveEditedContact i:", i);
 
-  let name = document.getElementById("edit-name");
-  let mail = document.getElementById("edit-mail");
-  let tel = document.getElementById("edit-tel");
+function validatePhoneNumber(input) {
+  input.value = input.value.replace(/[^\d+\/\s-]/g, '');
+}
+
+function saveEditedContact(i) {
+  let name = document.getElementById('edit-name');
+  let mail = document.getElementById('edit-mail');
+  let tel = document.getElementById('edit-tel');
   contacts[i].name = name.value;
   contacts[i].mail = mail.value;
   contacts[i].phone = tel.value;
-  console.log("contacts[i].name", contacts[i].name);
 
   saveContacts();
+  closePopupEditContact();
   init();
-  return true;
+
+  return false;
 }
 
 function deleteContact(i) {
@@ -217,9 +230,14 @@ function deleteContact(i) {
   init();
   document.getElementById("contact-info").innerHTML = "";
 
-  let bannerContactDeleted = document.getElementById("banner-contact-deleted");
-  bannerContactDeleted.style = "display: flex";
-  setTimeout(() => (bannerContactDeleted.style = "display: none"), 2000);
+  let bannerContactDeleted = document.getElementById('banner-contact-deleted');
+  animateBannerContacts(bannerContactDeleted);
+}
+
+function animateBannerContacts(banner) {
+  banner.style = 'display: flex';
+  setTimeout(() => (banner.style = 'display: none'), 2000);
+
 }
 
 function toggleBackground(i) {

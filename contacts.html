@@ -5,18 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contacts</title>
     <link rel="stylesheet" href="./css/style.css" />
-    <script src="includeHTML.js"></script>
+    <script src="./includeHTML.js"></script>
     <script src="./script.js"></script>
     <script src="./javascript/contacts.js"></script>
+    <script src="./templates/contactTemplate.js"></script>
     <link rel="icon" type="image/x-icon" href="assets/img/Global/join_logo_black.svg" />
   </head>
   <body class="my-body" onload="includeHTML(), init()">
-    <div w3-include-html="sidebar.html"></div>
-    <div w3-include-html="topbar.html"></div>
+    <div w3-include-html="./sidebar.html"></div>
+    <div w3-include-html="./topbar.html"></div>
 
-    <!-- <main class="main-contacts"> -->
     <section class="wrapper-contact-list">
-      <div class="add-new-contact">
+      <div class="add-new-contact" onclick="showPopupAddContact()">
         <p>Add new contact</p>
         <img src="assets/img/Contacts/person_add.svg" alt="Person Add" />
       </div>
@@ -37,15 +37,63 @@
       </section>
 
       <section id="contact-info"></section>
+    </section>
 
-      <div id="banner-contact-created" style="display: none">
-        <p>Contact succesfully created</p>
-      </div>
+    <div id="banner-contact-created" style="display: none">
+      <p>Contact succesfully created</p>
+    </div>
 
-      <div id="banner-contact-deleted" style="display: none">
-        <p>Contact succesfully deleted</p>
+    <div id="banner-contact-deleted" style="display: none">
+      <p>Contact succesfully deleted</p>
+    </div>
+
+    <section id="add-contact-wrapper" class="d-none" onclick="closePopupAddContact()">
+      <div class="add-contact-container">
+        <div id="add-contact" onclick="doNotClose(event)">
+          <section class="left-container">
+            <img src="assets/img/Contacts/logo-white.svg" alt="Logo" />
+            <div class="left-card-text">
+              <h2>Add Contact</h2>
+              <p>Tasks are better with a team!</p>
+            </div>
+            <div class="horizontal-line"></div>
+          </section>
+
+          <section class="right-container">
+            <div class="profile">
+              <img id="profile-img" src="assets/img/Contacts/person.svg" alt="Profile Image" />
+            </div>
+
+            <form class="inputButtonsWrapper" onsubmit="return addContact();">
+              <div class="inputFieldContainer height-unset">
+                <div class="inputFieldBox pos-rel">
+                  <input type="text" class="inputField" placeholder="Name" id="add-name" required />
+                  <img src="assets/img/Contacts/person_grey.svg" alt="Person" class="inputImgPerson" />
+                </div>
+                <div class="inputFieldBox">
+                  <input type="mail" class="inputField" placeholder="Email" id="add-mail" required />
+                  <img src="assets/img/Contacts/mail.svg" alt="Mail" class="inputImgMail" />
+                </div>
+                <div class="inputFieldBox">
+                  <input type="tel" class="inputField" placeholder="Phone" id="add-tel" required />
+                  <img src="assets/img/Contacts/call.svg" alt="Phone" class="inputImgPhone2" />
+                </div>
+              </div>
+
+              <div class="btns-down-right">
+                <button id="cancel" class="buttonWhite" onclick="closePopupAddContact()">
+                  Cancel <img src="assets/img/AddTask/cancel.svg" alt="Clear Icon"
+                /></button>
+                <button id="create-contact" class="buttonGrey">
+                  Create Contact <img src="assets/img/AddTask/check_white.svg" alt="Check Icon"
+                /></button>
+              </div>
+            </form>
+          </section>
+        </div>
       </div>
     </section>
-    <!-- </main> -->
+
+    <section id="edit-contact-wrapper" class="d-none" onclick="closePopupEditContact()"> </section>
   </body>
 </html>

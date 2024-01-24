@@ -345,8 +345,8 @@ span {
   align-items: flex-start;
   width: 100%; }
 
-#start-letter-container p {
-  color: #000; }
+#capital-letters-list {
+  color: #fff; }
 
 .start-letter {
   width: 100%;

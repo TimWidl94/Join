@@ -65,10 +65,6 @@ function render() {
     const contact = contacts[i];
     const firstLetter = contact.name.charAt(0);
 
-    // if (!filter || filter == firstLetter) {
-    //   content.innerHTML += generateContacts(contact, acronym);
-    // }
-
     if (!letters.includes(firstLetter)) {
       letters.push(firstLetter);
     }
@@ -104,16 +100,16 @@ function setContactsToFirstLetters(letter) {
     let acronym = getFirstLetters(contact.name);
 
     if (firstLetter.includes(letter)) {
-      console.log('Treffer!', firstLetter);
       contactBox.innerHTML += generateContacts(contact, acronym, i);
     }
   }
 }
 
 function generateContacts(contact, acronym, i) {
+  const color = contactColors[i % contactColors.length];
   return /*html*/ `
   <div id="contact-list-basic-info${i}" class="contact-list-basic-info" onclick="toggleBackground(${i}), openContactInfo(${i})">
-            <div class="capital-letters-list" id="capital-letters-list${i}"> 
+            <div class="capital-letters-list" id="capital-letters-list${i}" style="background-color: ${color};"> 
                 <p id="capital-letters-list">${acronym}</p>
                 </div>
             <div id="name-and-mail"> 
@@ -123,10 +119,6 @@ function generateContacts(contact, acronym, i) {
         </div>
   `;
 }
-
-// function setFilter(letter) {
-//   render(letter);
-// }
 
 function getFirstLetters(str) {
   return str.split(/\s/).reduce((response, word) => (response += word.slice(0, 1)), '');

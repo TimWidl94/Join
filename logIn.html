@@ -5,13 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Join</title>
     <link rel="stylesheet" href="./css/style.css" />
-    <link rel="stylesheet" href="./style/main.css" />
 
     <script src="./includeHTML.js"></script>
     <script src="./javascript/login.js"></script>
     <script src="./templates/logInTemplate.js"></script>
     <script src="./script.js"></script>
-
+    <link rel="icon" type="image/x-icon" href="assets/img/Global/join_logo_black.svg" />
   </head>
   <body onload="init()">
     <div class="logInOverlayBox">
@@ -26,6 +25,8 @@
       </div>
       <div id="formBody" class="dp-flex">
       </div>
+      <div class="signedUpMassage d-none" id="signedUpMassage"><p class="p-whiteText">You Signed Up successfully</p></div>
+      <div class="signedUpMassage d-none" id="acceptPrivacyPolicy"><p class="p-whiteText">You need to accept Privacy policy</p></div>
       <footer>
         <a href="" class="footerLink">Privacy Policy</a>
         <a href="" class="footerLink">Legal notice</a>

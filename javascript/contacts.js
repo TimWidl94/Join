@@ -1,51 +1,51 @@
 let contacts = [
-  {
-    name: 'Anton Mayer',
-    mail: 'antom@gmail.com',
-    phone: '+49 1111 111 11 1',
-  },
-  {
-    name: 'Anja Schulz',
-    mail: 'schulz@hotmail.com',
-    phone: '+49 2222 222 22 2',
-  },
-  {
-    name: 'Benedikt Ziegler',
-    mail: 'benedikt@gmail.com',
-    phone: '+49 3333 333 33 3',
-  },
-  {
-    name: 'David Eisenberg',
-    mail: 'davidberg@gmail.com',
-    phone: '+49 4444 444 44 4',
-  },
-  {
-    name: 'Eva Fischer',
-    mail: 'eva@gmail.com',
-    phone: '+49 5555 555 55 5',
-  },
-  {
-    name: 'Emmanuel Mauer',
-    mail: 'emmanuelma@gmail.com',
-    phone: '+49 6666 666 66 6',
-  },
-  {
-    name: 'Marcel Bauer',
-    mail: 'bauer@gmail.com',
-    phone: '+49 7777 777 77 7',
-  },
-  {
-    name: 'Tatjana Wolf',
-    mail: 'wolf@gmail.com',
-    phone: '+49 8888 888 88 8',
-  },
+  // {
+    // name: 'Anton Mayer',
+    // mail: 'antom@gmail.com',
+    // phone: '+49 1111 111 11 1',
+  // },
+  // {
+    // name: 'Anja Schulz',
+    // mail: 'schulz@hotmail.com',
+    // phone: '+49 2222 222 22 2',
+  // },
+  // {
+    // name: 'Benedikt Ziegler',
+    // mail: 'benedikt@gmail.com',
+    // phone: '+49 3333 333 33 3',
+  // },
+  // {
+    // name: 'David Eisenberg',
+    // mail: 'davidberg@gmail.com',
+    // phone: '+49 4444 444 44 4',
+  // },
+  // {
+    // name: 'Eva Fischer',
+    // mail: 'eva@gmail.com',
+    // phone: '+49 5555 555 55 5',
+  // },
+  // {
+    // name: 'Emmanuel Mauer',
+    // mail: 'emmanuelma@gmail.com',
+    // phone: '+49 6666 666 66 6',
+  // },
+  // {
+    // name: 'Marcel Bauer',
+    // mail: 'bauer@gmail.com',
+    // phone: '+49 7777 777 77 7',
+  // },
+  // {
+    // name: 'Tatjana Wolf',
+    // mail: 'wolf@gmail.com',
+    // phone: '+49 8888 888 88 8',
+  // },
 ];
 
 let contactColors = ['#FF7A00', '#9327FF', '#6E52FF', '#FC71FF', '#FFBB2B', '#1FD7C1', '#462F8A', '#FF4646'];
 let letters = [];
 
 async function init() {
-  await loadUsers();
+  await loadData();
   await loadContacts();
   render();
   //   setBackgroundColor();
@@ -144,10 +144,9 @@ async function addContact() {
   let tel = document.getElementById('add-tel');
 
   contacts.push({ name: name.value, mail: mail.value, phone: tel.value });
-
-  saveContacts();
+  
+  await saveContacts();
   closePopupAddContact();
-
   clearPopup(name, mail, tel);
 
   let bannerContactAdded = document.getElementById('banner-contact-created');
@@ -165,6 +164,7 @@ function clearPopup(name, mail, tel) {
 async function saveContacts() {
   let contactsAsText = JSON.stringify(contacts);
   localStorage.setItem('contacts', contactsAsText);
+  await setItem("contacts", JSON.stringify(contacts));
 }
 
 function doNotClose(event) {

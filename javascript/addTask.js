@@ -2,10 +2,6 @@ async function init(){
 await loadData();
 await loadUser();
 }
-
-function timeOut(ms) {
-    return new Promise((resolve) => setTimeout(resolve, ms));
-  }
   
   function openAddTaskPopup() {
     document.getElementById('addTaskPopup').classList.remove('d-none');

@@ -6,4 +6,6 @@ let users = [];
 let contacts = [];
 
 
-
+function timeOut(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }

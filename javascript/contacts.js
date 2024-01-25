@@ -1,4 +1,4 @@
-let contacts = [
+// let contacts = [
   // {
     // name: 'Anton Mayer',
     // mail: 'antom@gmail.com',
@@ -39,24 +39,23 @@ let contacts = [
     // mail: 'wolf@gmail.com',
     // phone: '+49 8888 888 88 8',
   // },
-];
+// ];
 
 let contactColors = ['#FF7A00', '#9327FF', '#6E52FF', '#FC71FF', '#FFBB2B', '#1FD7C1', '#462F8A', '#FF4646'];
 let letters = [];
 
 async function init() {
   await loadData();
-  await loadContacts();
   render();
   //   setBackgroundColor();
 }
 
-function loadContacts() {
-  let contactsAsText = localStorage.getItem('contacts');
-  if (contactsAsText) {
-    contacts = JSON.parse(contactsAsText);
-  }
-}
+// function loadContacts() {
+  // let contactsAsText = localStorage.getItem('contacts');
+  // if (contactsAsText) {
+    // contacts = JSON.parse(contactsAsText);
+  // }
+// }
 
 function render() {
   let content = document.getElementById('basic-info-wrapper');
@@ -162,9 +161,9 @@ function clearPopup(name, mail, tel) {
 }
 
 async function saveContacts() {
-  let contactsAsText = JSON.stringify(contacts);
-  localStorage.setItem('contacts', contactsAsText);
-  await setItem("contacts", JSON.stringify(contacts));
+  // let contactsAsText = JSON.stringify(contacts);
+  // localStorage.setItem('contacts', contactsAsText);
+  await setItem('contacts', JSON.stringify(contacts));
 }
 
 function doNotClose(event) {

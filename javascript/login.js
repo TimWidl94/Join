@@ -33,7 +33,6 @@ async function signUp() {
     });
     await setItem("users", JSON.stringify(users));
     loadLogIn();
-    // window.location.href = "./summary.html";
     showAnimation('signedUpMassage')
   } else {
     showAnimation('acceptPrivacyPolicy');

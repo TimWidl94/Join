@@ -21,3 +21,10 @@ async function setItem(key, value) {
     body: JSON.stringify(payload),
   }).then((res) => res.json());
 }
+
+function loadUser() {
+  let userAsText = localStorage.getItem('user');
+  if (userAsText) {
+    user = JSON.parse(userAsText);
+  }
+}

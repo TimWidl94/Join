@@ -6,10 +6,12 @@
     <title>Join Summary</title>
     <link rel="stylesheet" href="./css/style.css" />
     <script src="./includeHTML.js"></script>
+    <script src="./javascript/loadData.js"></script>
+    <script src="./javascript/summary.js"></script>
     <script src="./script.js"></script>
     <link rel="icon" type="image/x-icon" href="assets/img/Global/join_logo_black.svg" />
   </head>
-  <body onload="includeHTML()">
+  <body onload="includeHTML(), init()">
     <div w3-include-html="sidebar.html"></div>
     <div w3-include-html="topbar.html"></div>
     <div class="container summary">

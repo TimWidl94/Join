@@ -331,22 +331,33 @@ span {
   font-weight: 700; }
 
 /* Start-Letter-Container */
-.start-letter-container {
+#contact-list-container {
   display: flex;
-  padding: 17px 36px;
   flex-direction: column;
   justify-content: center;
+  width: 100%; }
+
+#start-letter-container {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
   align-items: flex-start;
-  width: calc(100% - 2 * 36px); }
+  width: 100%; }
 
-#start-letter {
-  color: #000; }
+#capital-letters-list {
+  color: #fff; }
 
-.start-letter-line1 {
-  margin: 8px 0px;
-  height: 1px;
-  background-color: #d1d1d1;
-  width: 300px; }
+.start-letter {
+  width: calc(100% - 2 * 36px);
+  border-bottom: 1px solid #d1d1d1;
+  padding: 17px 36px 17px 36px;
+  padding-bottom: 8px; }
+
+.contacts-by-start-letter {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column; }
 
 /* === Contact List Basic Info === */
 #basic-info-wrapper {
@@ -382,7 +393,6 @@ span {
   align-items: center;
   width: 42px;
   height: 42px;
-  background-color: #ff7a00;
   border: 2px solid #fff;
   border-radius: 100px; }
 
@@ -454,7 +464,6 @@ h2 {
   align-items: center;
   width: 120px;
   height: 120px;
-  background-color: #ff7a00;
   border-radius: 60px; }
 
 .capital-letters h2 {
@@ -1338,6 +1347,27 @@ footer {
   width: 142px;
   height: 24px;
   gap: 8px; }
+
+.signedUpMassage {
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%);
+  display: flex;
+  height: 74px;
+  padding: 0px 25px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  background: var(--Version-2-main-color, #2a3647);
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.15);
+  transition: transform 3s ease-in-out, opacity 0.5s ease-in-out; }
+
+.moveToCenter {
+  transform: translate(-50%, -480%); }
+
+.p-whiteText {
+  color: white !important; }
 
 /* img section   */
 .JoinLogoSmall {

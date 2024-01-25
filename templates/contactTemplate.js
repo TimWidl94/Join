@@ -1,3 +1,67 @@
+function generateLettersHTML(letter) {
+  return `
+    <div id="start-letter-container">
+      <div class="start-letter">
+          <p id="start-letter">${letter}</p>
+      </div>
+      <div id="contacts-${letter}" class="contacts-by-start-letter"></div>
+    </div>
+    `;
+}
+
+function generateContactsHTML(contact, color, acronym, i) {
+  // const color = contactColors[i % contactColors.length];
+  return /*html*/ `
+    <div id="contact-list-basic-info${i}" class="contact-list-basic-info" onclick="toggleBackground(${i}), openContactInfo(${i})">
+              <div class="capital-letters-list" id="capital-letters-list${i}" style="background-color: ${color};"> 
+                  <p id="capital-letters-list">${acronym}</p>
+                  </div>
+              <div id="name-and-mail"> 
+              <p id="name-list${i}">${contact.name}</p>
+                <p id="email-list">${contact.mail}</p>
+            </div>
+          </div>
+    `;
+}
+
+function openContactInfoHTML(contact, acronym, color, i) {
+  return /*html*/ `
+    <div id="basic-info">
+        <div class="capital-letters"  style="background-color: ${color};">
+            <h2 id="capital-letters">${acronym}</h2>
+        </div>
+        <div class="name-and-changes">
+            <h2 id="name">${contact.name}</h2>
+            <div class="changes">
+                <div class="edit" onclick="editContact(${i})">
+                    <img src="assets/img/Contacts/edit.svg" alt="" />
+                    <p>Edit</p>
+                </div>
+                <div class="delete" onclick="deleteContact(${i})">
+                    <img src="assets/img/Contacts/delete.svg" alt="" />
+                    <p>Delete</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="contact-info-text">
+        <p>Contact Information</p>
+    </div>
+
+    <div class="mail-and-phone">
+        <div class="mail">
+            <p>Email</p>
+            <p id="contact-email">${contact.mail}</p>
+        </div>
+        <div class="phone">
+            <p>Phone</p>
+            <p id="contact-phone" type="phone">${contact.phone}</p>
+        </div>
+    </div>
+  `;
+}
+
 function editContactHTML(i) {
   return /*html*/ `
         <div class="edit-contact-container">
@@ -43,6 +107,5 @@ function editContactHTML(i) {
             </section>
             </div>
         </div>
-      
       `;
 }

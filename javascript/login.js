@@ -1,8 +1,16 @@
+async function init() {
+  await includeHTML();
+  await loadData();
+  await loadLogIn();
+  await loadLocalStorageData();
+}
+
 async function loadLogIn() {
   let container = document.getElementById("formBody");
   let headerRight = document.getElementById("headerRightBox");
   container.innerHTML = await logInHtml();
-  if(headerRight.classList.contains("d-none")){}
+  if (headerRight.classList.contains("d-none")) {
+  }
   headerRight.classList.remove("d-none");
 }
 
@@ -16,14 +24,20 @@ function loadSignUpHtml() {
 function changeCssFromInput(container) {}
 
 async function signUp() {
-  users.push({
-    username: userName.value,
-    email: emailSignUp.value,
-    password: passwordSignUp.value,
-    checkPassword: checkPasswordSignUp.value,
-  });
-  await setItem("users", JSON.stringify(users));
-  window.location.href = "./summary.html";
+  if (checkIfPrivatPolicyIsChecked()) {
+    users.push({
+      username: userName.value,
+      email: emailSignUp.value,
+      password: passwordSignUp.value,
+      checkPassword: checkPasswordSignUp.value,
+    });
+    await setItem("users", JSON.stringify(users));
+    loadLogIn();
+    // window.location.href = "./summary.html";
+    showAnimation('signedUpMassage')
+  } else {
+    showAnimation('acceptPrivacyPolicy');
+  }
 }
 
 async function loadUser() {
@@ -60,28 +74,13 @@ function logInGuest() {
   }
 }
 
-async function setItem(key, value) {
-  const payload = { key, value, token: STORAGE_TOKEN };
-  return fetch(STORAGE_URL, {
-    method: "POST",
-    body: JSON.stringify(payload),
-  }).then((res) => res.json());
-}
-
-async function getItem(key) {
-  const url = `${STORAGE_URL}?key=${key}&token=${STORAGE_TOKEN}`;
-  return fetch(url)
-    .then((res) => res.json())
-    .then((res) => res.data.value);
-}
-
-async function loadUsers() {
-  try {
-    users = JSON.parse(await getItem("users"));
-  } catch (e) {
-    console.info("could not load users");
-  }
-}
+// async function setItem(key, value) {
+  // const payload = { key, value, token: STORAGE_TOKEN };
+  // return fetch(STORAGE_URL, {
+    // method: "POST",
+    // body: JSON.stringify(payload),
+  // }).then((res) => res.json());
+// }
 
 function rememberMe() {
   let checkbox = document.getElementById("checkboxSavePassword");
@@ -113,16 +112,38 @@ function loadLocalStorageData() {
   }
 }
 
-function toggleShowPassword(){
-  let passwordField = document.getElementById('password');
-  let passwordIcon = document.getElementById('passwordIcon');
-  if(passwordField.type === 'password'){
-    passwordField.type = 'text';
-    passwordIcon.src = './assets/img/icons/visibilityOff.svg';
+function toggleShowPassword(passwordId, passwordIconId) {
+  let passwordField = document.getElementById(passwordId);
+  let passwordIcon = document.getElementById(passwordIconId);
+  if (passwordField.type === "password") {
+    passwordField.type = "text";
+    passwordIcon.src = "./assets/img/icons/visibilityOff.svg";
     // passwordIcon.classList.add('')
   } else {
-    passwordField.type = 'password';
-    passwordIcon.src = './assets/img/icons/lock.svg';
-    passwordIcon.classList.add('inputImgLock')
+    passwordField.type = "password";
+    passwordIcon.src = "./assets/img/icons/lock.svg";
+    passwordIcon.classList.add("inputImgLock");
   }
+}
+
+function checkIfPrivatPolicyIsChecked() {
+  let checkButton = document.getElementById("checkboxPrivatPolicy");
+  if (checkButton.checked) {
+    return true;
+  }
+}
+
+function showAnimation(id) {
+  let button = document.getElementById(id);
+  button.classList.remove("d-none");
+  setTimeout(() => moveToCenter(button), 200);
+  setTimeout(() => addDNone(button), 4000)
+}
+
+function moveToCenter(button) {
+  button.classList.add("moveToCenter");
+}
+
+function addDNone(button){
+  button.classList.add("d-none");
 }

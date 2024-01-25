@@ -8,98 +8,116 @@
     <script src="./includeHTML.js"></script>
     <script src="./javascript/loadData.js"></script>
     <script src="./javascript/board.js"></script>
+    <script src="./templates/boardTemplate.js"></script>
     <script src="./script.js"></script>
-    <link rel="icon" type="image/x-icon" href="assets/img/Global/join_logo_black.svg" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="assets/img/Global/join_logo_black.svg" />
   </head>
   <body onload="includeHTML(), init()">
     <div w3-include-html="sidebar.html"></div>
     <div w3-include-html="topbar.html"></div>
 
     <div class="container">
-        <div id="addTaskPopup" class="add-task-popup d-none">
-            <div onclick="closeAddTaskPopup()"  class="add-task-popup-close"><img src="./assets/img/icons/close.svg" alt=""></div>
-            <section class="container-left">
-              <div class="headline-add-task"><h1 class="headline-h1-add-task">Add Task</h1></div>
-      
-              <div id="title">
-                <p>Title<span>*</span></p>
-                <input required type="text" placeholder="Enter a title" />
+      <div id="addTaskPopup" class="add-task-popup d-none">
+        <div onclick="closeAddTaskPopup()" class="add-task-popup-close">
+          <img src="./assets/img/icons/close.svg" alt="" />
+        </div>
+        <section class="container-left">
+          <div class="headline-add-task">
+            <h1 class="headline-h1-add-task">Add Task</h1>
+          </div>
+
+          <div id="title">
+            <p>Title<span>*</span></p>
+            <input required type="text" placeholder="Enter a title" />
+          </div>
+
+          <div id="description">
+            <p>Description</p>
+            <textarea placeholder="Enter a description"></textarea>
+          </div>
+
+          <div id="assignedTo">
+            <p>Assigned to</p>
+            <select name="assigned" id="assigned">
+              <option>Select contacts to assign</option>
+              <option>Verena Schranz</option>
+              <option>Tim Widl</option>
+              <option>Christian Grund</option>
+            </select>
+          </div>
+
+          <div id="requirement">
+            <p><span>*</span>This field is required</p>
+          </div>
+        </section>
+
+        <div class="vertical-line-add-task"></div>
+
+        <section class="container-right">
+          <div id="due-date">
+            <p>Due Date<span>*</span></p>
+            <input required type="date" />
+          </div>
+
+          <div class="priority">
+            <p>Prio</p>
+            <div class="priority-options">
+              <div>
+                <p>Urgent</p>
+                <img
+                  src="assets/img/AddTask/ArrowUpPrioSign.svg"
+                  alt="Prio High" />
               </div>
-      
-              <div id="description">
-                <p>Description</p>
-                <textarea placeholder="Enter a description"></textarea>
+              <div>
+                <p>Medium</p>
+                <img
+                  src="assets/img/AddTask/MediumPrioSign.svg"
+                  alt="Prio Medium" />
               </div>
-      
-              <div id="assignedTo">
-                <p>Assigned to</p>
-                <select name="assigned" id="assigned">
-                  <option>Select contacts to assign</option>
-                  <option>Verena Schranz</option>
-                  <option>Tim Widl</option>
-                  <option>Christian Grund</option>
-                </select>
+              <div>
+                <p>Low</p>
+                <img
+                  src="assets/img/AddTask/ArrowDownPrioSign.svg"
+                  alt="Prio Low" />
               </div>
-      
-              <div id="requirement">
-                <p><span>*</span>This field is required</p>
-              </div>
-            </section>
-      
-            <div class="vertical-line-add-task"></div>
-      
-            <section class="container-right">
-              <div id="due-date">
-                <p>Due Date<span>*</span></p>
-                <input required type="date" />
-              </div>
-      
-              <div class="priority">
-                <p>Prio</p>
-                <div class="priority-options">
-                  <div>
-                    <p>Urgent</p>
-                    <img src="assets/img/AddTask/ArrowUpPrioSign.svg" alt="Prio High" />
-                  </div>
-                  <div>
-                    <p>Medium</p>
-                    <img src="assets/img/AddTask/MediumPrioSign.svg" alt="Prio Medium" />
-                  </div>
-                  <div>
-                    <p>Low</p>
-                    <img src="assets/img/AddTask/ArrowDownPrioSign.svg" alt="Prio Low" />
-                  </div>
-                </div>
-              </div>
-      
-              <div class="category">
-                <p>Category<span>*</span></p>
-                <select id="category-options">
-                  <option>Select contacts to assign</option>
-                  <option>Verena Schranz</option>
-                  <option>Tim Widl</option>
-                  <option>Christian Grund</option>
-                </select>
-              </div>
-      
-              <div id="subtasks">
-                <p>Subtasks</p>
-                <div class="inputFieldBox">
-                  <input type="text" placeholder="Add new subtask" />
-                  <img class="inputImgPlus" src="assets/img/AddTask/plus.svg" alt="Add Icon" />
-                </div>
-              </div>
-      
-              <div class="btns-down-right-add-task">
-                <button id="clear" class="buttonWhite">
-                  Clear <img src="assets/img/AddTask/cancel.svg" alt="Clear Icon"
-                /></button>
-                <button id="create-task" class="buttonGrey">
-                  Create Task <img src="assets/img/AddTask/check_white.svg" alt="Check Icon"
-                /></button>
-              </div>
-            </section>
-    </div>
+            </div>
+          </div>
+
+          <div class="category">
+            <p>Category<span>*</span></p>
+            <select id="category-options">
+              <option>Select contacts to assign</option>
+              <option>Verena Schranz</option>
+              <option>Tim Widl</option>
+              <option>Christian Grund</option>
+            </select>
+          </div>
+
+          <div id="subtasks">
+            <p>Subtasks</p>
+            <div class="inputFieldBox">
+              <input type="text" placeholder="Add new subtask" />
+              <img
+                class="inputImgPlus"
+                src="assets/img/AddTask/plus.svg"
+                alt="Add Icon" />
+            </div>
+          </div>
+
+          <div class="btns-down-right-add-task">
+            <button id="clear" class="buttonWhite">
+              Clear <img src="assets/img/AddTask/cancel.svg" alt="Clear Icon" />
+            </button>
+            <button id="create-task" class="buttonGrey">
+              Create Task
+              <img src="assets/img/AddTask/check_white.svg" alt="Check Icon" />
+            </button>
+          </div>
+        </section>
+      </div>
       <div class="row space-between">
         <div>
           <h1>Board</h1>
@@ -130,12 +148,14 @@
       </div>
       <div class="row">
         <div class="col-4">
-            <div class="board-title">
-                To do
-                <div onclick="openAddTaskPopup()" class="board-svg-container"></div>
-            </div>
-            <div class="board drag-area">
-              
+          <div class="board-title">
+            To do
+            <div onclick="openAddTaskPopup()" class="board-svg-container"></div>
+          </div>
+          <div class="board drag-area"id="open" ondrop="moveTo('open')" ondragleave="removeHighlight('open')" ondragover="allowDrop(event); highlight('open')">
+            <!-- <div
+              draggable="true"
+              ondragstart="startDragging(`${element['id']}`)">
               <div class="board-task">
                 <div class="board-task-epic board-task-epic-green">
                   User Story
@@ -159,116 +179,49 @@
                     <div class="board-task-member-profile">DA</div>
                   </div>
                   <div class="board-task-member-prio">
-                    <img src="./assets/img/AddTask/ArrowUpPrioSign.svg" alt="" />
+                    <img
+                      src="./assets/img/AddTask/ArrowUpPrioSign.svg"
+                      alt="" />
                   </div>
                 </div>
               </div>
-            </div>
+            </div> -->
           </div>
-          <div class="col-4">
-            <div class="board">
-              <div class="board-title">
-                In progress
-                <div onclick="openAddTaskPopup()" class="board-svg-container"></div>
-              </div>
-              <div class="board-task">
-                <div class="board-task-epic board-task-epic-blue">
-                  User Story
-                </div>
-                <div class="board-task-title">Contact Form & Imprint</div>
-                <div class="board-task-description">
-                  Create a contact form and imprint page...
-                </div>
-                <div class="board-task-subtask">
-                  <div class="board-task-subtask-progress">
-                    <div
-                      class="progress-done"
-                      id="progress-${i}"
-                      style="width: 0%"></div>
-                  </div>
-                  <div class="sboard-task-subtask-counter">0/3 Subtasks</div>
-                </div>
-                <div class="board-task-member">
-                  <div class="board-task-member">
-                    <div class="board-task-member-profile">DA</div>
-                    <div class="board-task-member-profile">DA</div>
-                  </div>
-                  <div class="board-task-member-prio">
-                    <img src="./assets/img/AddTask/ArrowUpPrioSign.svg" alt="" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-4">
-            <div class="board">
-              <div class="board-title">
-                Await feedback
-                <div onclick="openAddTaskPopup()" class="board-svg-container"></div>
-              </div>
-              <div class="board-task">
-                <div class="board-task-epic board-task-epic-green">
-                  User Story
-                </div>
-                <div class="board-task-title">Contact Form & Imprint</div>
-                <div class="board-task-description">
-                  Create a contact form and imprint page...
-                </div>
-                <div class="board-task-subtask">
-                  <div class="board-task-subtask-progress">
-                    <div
-                      class="progress-done"
-                      id="progress-${i}"
-                      style="width: 0%"></div>
-                  </div>
-                  <div class="sboard-task-subtask-counter">0/3 Subtasks</div>
-                </div>
-                <div class="board-task-member">
-                  <div class="board-task-member">
-                    <div class="board-task-member-profile">DA</div>
-                    <div class="board-task-member-profile">DA</div>
-                  </div>
-                  <div class="board-task-member-prio">
-                    <img src="./assets/img/AddTask/ArrowUpPrioSign.svg" alt="" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+        </div>
         <div class="col-4">
-          <div class="board">
-            <div class="board-title">
-              Done
-              <div onclick="openAddTaskPopup()" class="board-svg-container"></div>
-            </div>
-            <div class="board-task">
-              <div class="board-task-epic board-task-epic-green">
-                User Story
-              </div>
-              <div class="board-task-title">Contact Form & Imprint</div>
-              <div class="board-task-description">
-                Create a contact form and imprint page...
-              </div>
-              <div class="board-task-subtask">
-                <div class="board-task-subtask-progress">
-                  <div
-                    class="progress-done"
-                    id="progress-${i}"
-                    style="width: 0%"></div>
-                </div>
-                <div class="sboard-task-subtask-counter">0/3 Subtasks</div>
-              </div>
-              <div class="board-task-member">
-                <div class="board-task-member">
-                  <div class="board-task-member-profile">DA</div>
-                  <div class="board-task-member-profile">DA</div>
-                </div>
-                <div class="board-task-member-prio">
-                  <img src="./assets/img/AddTask/ArrowUpPrioSign.svg" alt="" />
-                </div>
-              </div>
-            </div>
+          <div class="board-title">
+            In progress
+            <div onclick="openAddTaskPopup()" class="board-svg-container"></div>
           </div>
+          <div class="board drag-area" ondragover="allowDrop(event)">
+            
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="board-title">
+            Await feedback
+            <div onclick="openAddTaskPopup()" class="board-svg-container"></div>
+          </div>
+          <div
+            class="board drag-area"
+            id="open"
+            ondrop="moveTo('open')"
+            ondragleave="removeHighlight('open')"
+            ondragover="allowDrop(event); highlight('open')">
+            
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="board-title">
+            Done
+            <div onclick="openAddTaskPopup()" class="board-svg-container"></div>
+          </div>
+          <div
+            class="board drag-area"
+            id="closed"
+            ondrop="moveTo('closed')"
+            ondragleave="removeHighlight('closed')"
+            ondragover="allowDrop(event); highlight('closed')"></div>
         </div>
       </div>
     </div>

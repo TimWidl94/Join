@@ -1,18 +1,8 @@
 let contacts = [
   {
-    name: 'Anton Mayer',
-    mail: 'antom@gmail.com',
-    phone: '+49 1111 111 11 1',
-  },
-  {
-    name: 'Anja Schulz',
-    mail: 'schulz@hotmail.com',
-    phone: '+49 2222 222 22 2',
-  },
-  {
-    name: 'Benedikt Ziegler',
-    mail: 'benedikt@gmail.com',
-    phone: '+49 3333 333 33 3',
+    name: 'Tatjana Wolf',
+    mail: 'wolf@gmail.com',
+    phone: '+49 8888 888 88 8',
   },
   {
     name: 'David Eisenberg',
@@ -25,6 +15,11 @@ let contacts = [
     phone: '+49 5555 555 55 5',
   },
   {
+    name: 'Anton Mayer',
+    mail: 'antom@gmail.com',
+    phone: '+49 1111 111 11 1',
+  },
+  {
     name: 'Emmanuel Mauer',
     mail: 'emmanuelma@gmail.com',
     phone: '+49 6666 666 66 6',
@@ -35,9 +30,14 @@ let contacts = [
     phone: '+49 7777 777 77 7',
   },
   {
-    name: 'Tatjana Wolf',
-    mail: 'wolf@gmail.com',
-    phone: '+49 8888 888 88 8',
+    name: 'Benedikt Ziegler',
+    mail: 'benedikt@gmail.com',
+    phone: '+49 3333 333 33 3',
+  },
+  {
+    name: 'Anja Schulz',
+    mail: 'schulz@hotmail.com',
+    phone: '+49 2222 222 22 2',
   },
 ];
 
@@ -69,7 +69,12 @@ function render() {
       letters.push(firstLetter);
     }
   }
+  sortLetters();
   renderLetters();
+}
+
+function sortLetters() {
+  letters.sort();
 }
 
 function renderLetters() {
@@ -95,9 +100,14 @@ function setContactsToFirstLetters(letter) {
     let acronym = getFirstLetters(contact.name);
 
     if (firstLetter.includes(letter)) {
+      sortContactsByAlphabet();
       contactBox.innerHTML += generateContactsHTML(contact, color, acronym, i);
     }
   }
+}
+
+function sortContactsByAlphabet() {
+  return contacts.sort((a, b) => a.name.localeCompare(b.name));
 }
 
 function setBackgroundColor(i) {
@@ -117,16 +127,6 @@ function openContactInfo(i) {
   content.innerHTML += openContactInfoHTML(contact, acronym, color, i);
 }
 
-function showPopupAddContact() {
-  document.getElementById('add-contact-wrapper').classList.remove('d-none');
-  document.getElementById('add-contact-wrapper').classList.add('d-block');
-}
-
-function closePopupAddContact() {
-  document.getElementById('add-contact-wrapper').classList.remove('d-block');
-  document.getElementById('add-contact-wrapper').classList.add('d-none');
-}
-
 function showPopupEditContact() {
   document.getElementById('edit-contact-wrapper').classList.remove('d-none');
   document.getElementById('edit-contact-wrapper').classList.add('d-block');
@@ -137,22 +137,43 @@ function closePopupEditContact() {
   document.getElementById('edit-contact-wrapper').classList.add('d-none');
 }
 
+function classlistRemoveAndAdd(id, remove, add) {
+  document.getElementById(id).classList.remove(remove);
+  document.getElementById(id).classList.add(add);
+}
+
 async function addContact() {
+  renderAddContactForm();
   let name = document.getElementById('add-name');
   let mail = document.getElementById('add-mail');
   let tel = document.getElementById('add-tel');
 
-  contacts.push({ name: name.value, mail: mail.value, phone: tel.value });
+  // let nameValue = firstLettersUppercase(name.value);
+
+  contacts.push({ name: firstLettersUppercase(name.value), mail: mail.value, phone: tel.value });
 
   saveContacts();
-  closePopupAddContact();
+  classlistRemoveAndAdd('add-contact-wrapper', 'd-block', 'd-none');
 
   clearPopup(name, mail, tel);
 
   let bannerContactAdded = document.getElementById('banner-contact-created');
   await animateBannerContacts(bannerContactAdded);
 
+  init();
+
   return true;
+}
+
+function renderAddContactForm() {}
+
+function firstLettersUppercase(str) {
+  let splitStr = '';
+  splitStr = str.toLowerCase().split(' ');
+  for (let i = 0; i < splitStr.length; i++) {
+    splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
+  }
+  return splitStr.join(' ');
 }
 
 function clearPopup(name, mail, tel) {
@@ -177,6 +198,7 @@ function editContact(i) {
   let name = document.getElementById('edit-name');
   let mail = document.getElementById('edit-mail');
   let tel = document.getElementById('edit-tel');
+
   name.value = contacts[i].name;
   mail.value = contacts[i].mail;
   tel.value = contacts[i].phone;
@@ -189,10 +211,11 @@ function validatePhoneNumber(input) {
 }
 
 function saveEditedContact(i) {
+  deleteUnusedLetter(i);
   let name = document.getElementById('edit-name');
   let mail = document.getElementById('edit-mail');
   let tel = document.getElementById('edit-tel');
-  contacts[i].name = name.value;
+  contacts[i].name = firstLettersUppercase(name.value);
   contacts[i].mail = mail.value;
   contacts[i].phone = tel.value;
 
@@ -231,11 +254,11 @@ async function animateBannerContacts(banner) {
 }
 
 function toggleBackground(i) {
-  //   let removeBackground = document.getElementById('contact-list-basic-info');
-  //   removeBackground.forEach((element) => {
-  //     element.classList.remove('bg-primary');
-  //     console.log('removeBackground:', removeBackground);
-  //   });
-  document.getElementById(`contact-list-basic-info${i}`).classList.toggle('bg-primary');
-  document.getElementById(`name-list${i}`).classList.toggle('color-white');
+  contacts.forEach((contact, j) => {
+    document.getElementById(`contact-list-basic-info${j}`).classList.remove('bg-primary');
+    document.getElementById(`name-list${j}`).classList.remove('color-white');
+  });
+
+  document.getElementById(`contact-list-basic-info${i}`).classList.add('bg-primary');
+  document.getElementById(`name-list${i}`).classList.add('color-white');
 }

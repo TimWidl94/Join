@@ -43,7 +43,7 @@
 body {
   margin: 0;
   background-color: #f6f7f8;
-  font-family: "Inter", sans-serif; }
+  font-family: 'Inter', sans-serif; }
 
 p {
   margin-block-start: 0;
@@ -52,8 +52,7 @@ p {
   font-style: normal;
   font-weight: 400;
   line-height: 120%;
-  /* 24px */
-  color: #2a3647; }
+  /* 24px */ }
 
 .d-none {
   display: none !important; }
@@ -61,7 +60,7 @@ p {
 h1 {
   color: #000;
   text-align: center;
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 61px;
   font-style: normal;
   font-weight: 700; }
@@ -422,7 +421,8 @@ span {
   flex-direction: column;
   margin-left: 584px;
   padding-left: 100px;
-  width: 100%; }
+  width: 100%;
+  background-color: #f6f7f8; }
 
 .contact-info-headline {
   margin-top: 150px;
@@ -456,6 +456,7 @@ h2 {
 
 #basic-info {
   display: flex;
+  align-items: center;
   gap: 54px; }
 
 .capital-letters {
@@ -464,7 +465,8 @@ h2 {
   align-items: center;
   width: 120px;
   height: 120px;
-  border-radius: 60px; }
+  border-radius: 120px;
+  border: 4px solid #fff; }
 
 .capital-letters h2 {
   color: #fff; }
@@ -483,8 +485,26 @@ h2 {
 .changes div {
   display: flex;
   align-items: center;
-  gap: 8px;
-  cursor: pointer; }
+  gap: 8px; }
+
+.changes div:hover {
+  cursor: pointer;
+  color: #29abe2 !important; }
+
+.edit {
+  display: flex;
+  align-items: center;
+  gap: 8px; }
+
+.edit-img,
+.delete-img {
+  padding-bottom: 4px; }
+
+.edit:hover .edit-img {
+  filter: invert(65%) sepia(27%) saturate(3883%) hue-rotate(165deg) brightness(94%) contrast(88%); }
+
+.delete:hover .delete-img {
+  filter: invert(65%) sepia(27%) saturate(3883%) hue-rotate(165deg) brightness(94%) contrast(88%); }
 
 .changes div p {
   font-size: 16px; }
@@ -520,12 +540,11 @@ h2 {
 .phone p:nth-child(1) {
   font-weight: 700; }
 
-.mail p:nth-child(2) {
+.mail a {
   color: #007cee; }
 
-.mail p:nth-child(2):hover,
-.phone p:nth-child(2):hover {
-  cursor: pointer; }
+.phone a {
+  color: #000; }
 
 #banner-contact-created,
 #banner-contact-deleted {
@@ -562,7 +581,8 @@ h2 {
   top: 0;
   bottom: 0;
   right: 0;
-  left: 0; }
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.4); }
 
 .add-contact-container,
 .edit-contact-container {

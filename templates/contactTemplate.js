@@ -10,9 +10,8 @@ function generateLettersHTML(letter) {
 }
 
 function generateContactsHTML(contact, color, acronym, i) {
-  // const color = contactColors[i % contactColors.length];
   return /*html*/ `
-    <div id="contact-list-basic-info${i}" class="contact-list-basic-info" onclick="toggleBackground(${i}), openContactInfo(${i})">
+    <div id="contact-list-basic-info${i}" class="contact-list-basic-info" onclick="openContactInfo(${i}), toggleBackground(${i})">
               <div class="capital-letters-list" id="capital-letters-list${i}" style="background-color: ${color};"> 
                   <p id="capital-letters-list">${acronym}</p>
                   </div>
@@ -34,11 +33,11 @@ function openContactInfoHTML(contact, acronym, color, i) {
             <h2 id="name">${contact.name}</h2>
             <div class="changes">
                 <div class="edit" onclick="editContact(${i})">
-                    <img src="assets/img/Contacts/edit.svg" alt="" />
-                    <p>Edit</p>
+                    <img class="edit-img" src="assets/img/Contacts/edit.svg" alt="Edit">
+                    <p class="edit-p">Edit</p>
                 </div>
                 <div class="delete" onclick="deleteContact(${i})">
-                    <img src="assets/img/Contacts/delete.svg" alt="" />
+                    <img class="delete-img" src="assets/img/Contacts/delete.svg" alt="Delete">
                     <p>Delete</p>
                 </div>
             </div>
@@ -52,11 +51,11 @@ function openContactInfoHTML(contact, acronym, color, i) {
     <div class="mail-and-phone">
         <div class="mail">
             <p>Email</p>
-            <p id="contact-email">${contact.mail}</p>
+            <a id="contact-email" href="mailto:${contact.mail}">${contact.mail}</a>
         </div>
         <div class="phone">
             <p>Phone</p>
-            <p id="contact-phone" type="phone">${contact.phone}</p>
+            <a id="contact-phone" href="tel:${contact.phone}">${contact.phone}</a>
         </div>
     </div>
   `;
@@ -96,7 +95,7 @@ function editContactHTML(i) {
                 </div>
 
                 <div class="btns-down-right">
-                    <button id="delete" class="buttonWhite" onclick="deleteContact()">
+                    <button id="delete" class="buttonWhite" onclick="deleteContact(${i})">
                     Delete <img src="assets/img/AddTask/cancel.svg" alt="Clear Icon"
                     /></button>
                     <button id="save" class="buttonGrey">

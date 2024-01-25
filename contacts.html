@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contacts</title>
-    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/style.css?version=1" />
     <script src="./includeHTML.js"></script>
     <script src="./javascript/loadData.js"></script>
     <script src="./script.js"></script>
@@ -17,7 +17,7 @@
     <div w3-include-html="./topbar.html"></div>
 
     <section class="wrapper-contact-list">
-      <div class="add-new-contact" onclick="showPopupAddContact()">
+      <div class="add-new-contact" onclick="classlistRemoveAndAdd('add-contact-wrapper', 'd-none', 'd-block')">
         <p>Add new contact</p>
         <img src="assets/img/Contacts/person_add.svg" alt="Person Add" />
       </div>
@@ -45,7 +45,11 @@
       </div>
     </section>
 
-    <section id="add-contact-wrapper" class="d-none" onclick="closePopupAddContact()">
+    <section
+      id="add-contact-wrapper"
+      class="d-none"
+      onclick="classlistRemoveAndAdd('add-contact-wrapper', 'd-block', 'd-none')"
+    >
       <div class="add-contact-container">
         <div id="add-contact" onclick="doNotClose(event)">
           <section class="left-container">
@@ -65,20 +69,42 @@
             <form class="inputButtonsWrapper" onsubmit="return addContact();">
               <div class="inputFieldContainer height-unset">
                 <div class="inputFieldBox pos-rel">
-                  <input type="text" class="inputField" placeholder="Name" id="add-name" required />
+                  <input
+                    type="text"
+                    minlength="2"
+                    maxlength="100"
+                    class="inputField"
+                    placeholder="Name"
+                    id="add-name"
+                    name="add-name"
+                    autocomplete="none"
+                    required
+                  />
                   <img src="assets/img/Contacts/person_grey.svg" alt="Person" class="inputImgPerson" />
                 </div>
                 <div class="inputFieldBox">
-                  <input type="email" class="inputField" placeholder="Email" id="add-mail" required />
+                  <input
+                    type="email"
+                    maxlength="100"
+                    class="inputField"
+                    placeholder="Email"
+                    id="add-mail"
+                    name="add-mail"
+                    autocomplete="none"
+                    required
+                  />
                   <img src="assets/img/Contacts/mail.svg" alt="Mail" class="inputImgMail" />
                 </div>
                 <div class="inputFieldBox">
                   <input
                     type="tel"
+                    maxlength="100"
                     oninput="validatePhoneNumber(this)"
                     class="inputField"
                     placeholder="Phone"
                     id="add-tel"
+                    name="add-tel"
+                    autocomplete="none"
                     required
                   />
                   <img src="assets/img/Contacts/call.svg" alt="Phone" class="inputImgPhone2" />
@@ -86,7 +112,11 @@
               </div>
 
               <div class="btns-down-right">
-                <button id="cancel" class="buttonWhite" onclick="closePopupAddContact()">
+                <button
+                  id="cancel"
+                  class="buttonWhite"
+                  onclick="classlistRemoveAndAdd('add-contact-wrapper', 'd-block', 'd-none')"
+                >
                   Cancel <img src="assets/img/AddTask/cancel.svg" alt="Clear Icon"
                 /></button>
                 <button id="create-contact" class="buttonGrey">

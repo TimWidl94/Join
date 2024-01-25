@@ -1,87 +1,87 @@
-let contacts = [
-  {
-    name: 'Tatjana Wolf',
-    mail: 'wolf@gmail.com',
-    phone: '+49 8888 888 88 8',
-  },
-  {
-    name: 'David Eisenberg',
-    mail: 'davidberg@gmail.com',
-    phone: '+49 4444 444 44 4',
-  },
-  {
-    name: 'Eva Fischer',
-    mail: 'eva@gmail.com',
-    phone: '+49 5555 555 55 5',
-  },
-  {
-    name: 'Anton Mayer',
-    mail: 'antom@gmail.com',
-    phone: '+49 1111 111 11 1',
-  },
-  {
-    name: 'Emmanuel Mauer',
-    mail: 'emmanuelma@gmail.com',
-    phone: '+49 6666 666 66 6',
-  },
-  {
-    name: 'Marcel Bauer',
-    mail: 'bauer@gmail.com',
-    phone: '+49 7777 777 77 7',
-  },
-  {
-    name: 'Benedikt Ziegler',
-    mail: 'benedikt@gmail.com',
-    phone: '+49 3333 333 33 3',
-  },
-  {
-    name: 'Anja Schulz',
-    mail: 'schulz@hotmail.com',
-    phone: '+49 2222 222 22 2',
-  },
-];
-=======
 // let contacts = [
-  // {
-    // name: 'Anton Mayer',
-    // mail: 'antom@gmail.com',
-    // phone: '+49 1111 111 11 1',
-  // },
-  // {
-    // name: 'Anja Schulz',
-    // mail: 'schulz@hotmail.com',
-    // phone: '+49 2222 222 22 2',
-  // },
-  // {
-    // name: 'Benedikt Ziegler',
-    // mail: 'benedikt@gmail.com',
-    // phone: '+49 3333 333 33 3',
-  // },
-  // {
-    // name: 'David Eisenberg',
-    // mail: 'davidberg@gmail.com',
-    // phone: '+49 4444 444 44 4',
-  // },
-  // {
-    // name: 'Eva Fischer',
-    // mail: 'eva@gmail.com',
-    // phone: '+49 5555 555 55 5',
-  // },
-  // {
-    // name: 'Emmanuel Mauer',
-    // mail: 'emmanuelma@gmail.com',
-    // phone: '+49 6666 666 66 6',
-  // },
-  // {
-    // name: 'Marcel Bauer',
-    // mail: 'bauer@gmail.com',
-    // phone: '+49 7777 777 77 7',
-  // },
-  // {
-    // name: 'Tatjana Wolf',
-    // mail: 'wolf@gmail.com',
-    // phone: '+49 8888 888 88 8',
-  // },
+//   {
+//     name: 'Tatjana Wolf',
+//     mail: 'wolf@gmail.com',
+//     phone: '+49 8888 888 88 8',
+//   },
+//   {
+//     name: 'David Eisenberg',
+//     mail: 'davidberg@gmail.com',
+//     phone: '+49 4444 444 44 4',
+//   },
+//   {
+//     name: 'Eva Fischer',
+//     mail: 'eva@gmail.com',
+//     phone: '+49 5555 555 55 5',
+//   },
+//   {
+//     name: 'Anton Mayer',
+//     mail: 'antom@gmail.com',
+//     phone: '+49 1111 111 11 1',
+//   },
+//   {
+//     name: 'Emmanuel Mauer',
+//     mail: 'emmanuelma@gmail.com',
+//     phone: '+49 6666 666 66 6',
+//   },
+//   {
+//     name: 'Marcel Bauer',
+//     mail: 'bauer@gmail.com',
+//     phone: '+49 7777 777 77 7',
+//   },
+//   {
+//     name: 'Benedikt Ziegler',
+//     mail: 'benedikt@gmail.com',
+//     phone: '+49 3333 333 33 3',
+//   },
+//   {
+//     name: 'Anja Schulz',
+//     mail: 'schulz@hotmail.com',
+//     phone: '+49 2222 222 22 2',
+//   },
+// ];
+
+// let contacts = [
+// {
+// name: 'Anton Mayer',
+// mail: 'antom@gmail.com',
+// phone: '+49 1111 111 11 1',
+// },
+// {
+// name: 'Anja Schulz',
+// mail: 'schulz@hotmail.com',
+// phone: '+49 2222 222 22 2',
+// },
+// {
+// name: 'Benedikt Ziegler',
+// mail: 'benedikt@gmail.com',
+// phone: '+49 3333 333 33 3',
+// },
+// {
+// name: 'David Eisenberg',
+// mail: 'davidberg@gmail.com',
+// phone: '+49 4444 444 44 4',
+// },
+// {
+// name: 'Eva Fischer',
+// mail: 'eva@gmail.com',
+// phone: '+49 5555 555 55 5',
+// },
+// {
+// name: 'Emmanuel Mauer',
+// mail: 'emmanuelma@gmail.com',
+// phone: '+49 6666 666 66 6',
+// },
+// {
+// name: 'Marcel Bauer',
+// mail: 'bauer@gmail.com',
+// phone: '+49 7777 777 77 7',
+// },
+// {
+// name: 'Tatjana Wolf',
+// mail: 'wolf@gmail.com',
+// phone: '+49 8888 888 88 8',
+// },
 // ];
 
 let contactColors = ['#FF7A00', '#9327FF', '#6E52FF', '#FC71FF', '#FFBB2B', '#1FD7C1', '#462F8A', '#FF4646'];
@@ -95,10 +95,10 @@ async function init() {
 }
 
 // function loadContacts() {
-  // let contactsAsText = localStorage.getItem('contacts');
-  // if (contactsAsText) {
-    // contacts = JSON.parse(contactsAsText);
-  // }
+// let contactsAsText = localStorage.getItem('contacts');
+// if (contactsAsText) {
+// contacts = JSON.parse(contactsAsText);
+// }
 // }
 
 function render() {
@@ -204,9 +204,10 @@ async function addContact() {
   let bannerContactAdded = document.getElementById('banner-contact-created');
   await animateBannerContacts(bannerContactAdded);
 
+  console.log('Test12345');
   init();
 
-  return true;
+  return false;
 }
 
 function renderAddContactForm() {}

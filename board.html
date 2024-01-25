@@ -152,50 +152,24 @@
             To do
             <div onclick="openAddTaskPopup()" class="board-svg-container"></div>
           </div>
-          <div class="board drag-area"id="open" ondrop="moveTo('open')" ondragleave="removeHighlight('open')" ondragover="allowDrop(event); highlight('open')">
-            <!-- <div
-              draggable="true"
-              ondragstart="startDragging(`${element['id']}`)">
-              <div class="board-task">
-                <div class="board-task-epic board-task-epic-green">
-                  User Story
-                </div>
-                <div class="board-task-title">Contact Form & Imprint</div>
-                <div class="board-task-description">
-                  Create a contact form and imprint page...
-                </div>
-                <div class="board-task-subtask">
-                  <div class="board-task-subtask-progress">
-                    <div
-                      class="progress-done"
-                      id="progress-${i}"
-                      style="width: 0%"></div>
-                  </div>
-                  <div class="sboard-task-subtask-counter">0/3 Subtasks</div>
-                </div>
-                <div class="board-task-member">
-                  <div class="board-task-member">
-                    <div class="board-task-member-profile">DA</div>
-                    <div class="board-task-member-profile">DA</div>
-                  </div>
-                  <div class="board-task-member-prio">
-                    <img
-                      src="./assets/img/AddTask/ArrowUpPrioSign.svg"
-                      alt="" />
-                  </div>
-                </div>
-              </div>
-            </div> -->
-          </div>
+          <div
+            class="board drag-area"
+            id="todo"
+            ondrop="moveTo('todo')"
+            ondragleave="removeHighlight('todo')"
+            ondragover="allowDrop(event); highlight('todo')"></div>
         </div>
         <div class="col-4">
           <div class="board-title">
             In progress
             <div onclick="openAddTaskPopup()" class="board-svg-container"></div>
           </div>
-          <div class="board drag-area" ondragover="allowDrop(event)">
-            
-          </div>
+          <div
+            class="board drag-area"
+            id="inProgress"
+            ondrop="moveTo('inProgress')"
+            ondragleave="removeHighlight('inProgress')"
+            ondragover="allowDrop(event); highlight('inProgress')"></div>
         </div>
         <div class="col-4">
           <div class="board-title">
@@ -204,12 +178,10 @@
           </div>
           <div
             class="board drag-area"
-            id="open"
-            ondrop="moveTo('open')"
-            ondragleave="removeHighlight('open')"
-            ondragover="allowDrop(event); highlight('open')">
-            
-          </div>
+            id="awaitFeedback"
+            ondrop="moveTo('awaitFeedback')"
+            ondragleave="removeHighlight('awaitFeedback')"
+            ondragover="allowDrop(event); highlight('awaitFeedback')"></div>
         </div>
         <div class="col-4">
           <div class="board-title">
@@ -218,10 +190,10 @@
           </div>
           <div
             class="board drag-area"
-            id="closed"
-            ondrop="moveTo('closed')"
-            ondragleave="removeHighlight('closed')"
-            ondragover="allowDrop(event); highlight('closed')"></div>
+            id="done"
+            ondrop="moveTo('done')"
+            ondragleave="removeHighlight('done')"
+            ondragover="allowDrop(event); highlight('done')"></div>
         </div>
       </div>
     </div>

@@ -1,17 +1,33 @@
-let todos = [{
-  'id': 0,
-  'title': 'Putzen',
-  'category': 'open'
-}, {
-  'id': 1,
-  'title': 'Kochen',
-  'category': 'open'
-}, {
-  'id': 2,
-  'title': 'Einkaufen',
-  'category': 'closed'
-}];
+let todos = [
+  {
+    id: 0,
+    title: "Putzen",
+    category: "todo",
+  },
+  {
+    id: 1,
+    title: "Kochen",
+    category: "todo",
+  },
+  {
+    id: 2,
+    title: "Einkaufen",
+    category: "done",
+  },
+  {
+    id: 3,
+    title: "Einkaufen",
+    category: "inProgress",
+  },
+  {
+    id: 4,
+    title: "Einkaufen",
+    category: "awaitFeedback",
+  },
+];
 let currentDraggedElement;
+
+dateHTML();
 
 function init(){
     loadData();
@@ -20,22 +36,21 @@ function init(){
 }
 
 function openAddTaskPopup() {
-    document.getElementById('addTaskPopup').classList.remove('d-none');
-    document.getElementById('addTaskPopup').classList.add('slide-in');
-  }
-  
-   function closeAddTaskPopup() {
-      let addTaskPopup = document.getElementById("addTaskPopup");
-      addTaskPopup.classList.remove("slide-in");
-      addTaskPopup.classList.add("slide-out");
-      
-      setTimeout(function () {
-    
-          addTaskPopup.classList.add("d-none");
-        }, 500);
-        setTimeout(function () {
-          addTaskPopup.classList.remove("slide-out");
-        }, 900);
+  document.getElementById("addTaskPopup").classList.remove("d-none");
+  document.getElementById("addTaskPopup").classList.add("slide-in");
+}
+
+function closeAddTaskPopup() {
+  let addTaskPopup = document.getElementById("addTaskPopup");
+  addTaskPopup.classList.remove("slide-in");
+  addTaskPopup.classList.add("slide-out");
+
+  setTimeout(function () {
+    addTaskPopup.classList.add("d-none");
+  }, 500);
+  setTimeout(function () {
+    addTaskPopup.classList.remove("slide-out");
+  }, 900);
 }
 
 function startDragging(id) {
@@ -43,22 +58,55 @@ function startDragging(id) {
 }
 
 function updateHTML() {
-  let open = todos.filter(t => t['category'] == 'open');
+  todoAreaUpdate();
+  inProgressUdate();
+  feedbackAeraUdate();
+  doneUpdate();
+}
 
-  document.getElementById('open').innerHTML = '';
+function todoAreaUpdate() {
+  let todo = todos.filter((t) => t["category"] == "todo");
 
-  for (let index = 0; index < open.length; index++) {
-      const element = open[index];
-      document.getElementById('open').innerHTML += generateTodoHTML(element);
+  document.getElementById("todo").innerHTML = "";
+
+  for (let index = 0; index < todo.length; index++) {
+    const element = todo[index];
+    document.getElementById("todo").innerHTML += generateTodoHTML(element);
   }
+}
 
-  let closed = todos.filter(t => t['category'] == 'closed');
+function inProgressUdate() {
+  let inProgress = todos.filter((t) => t["category"] == "inProgress");
 
-  document.getElementById('closed').innerHTML = '';
+  document.getElementById("inProgress").innerHTML = "";
 
-  for (let index = 0; index < closed.length; index++) {
-      const element = closed[index];
-      document.getElementById('closed').innerHTML += generateTodoHTML(element);
+  for (let index = 0; index < inProgress.length; index++) {
+    const element = inProgress[index];
+    document.getElementById("inProgress").innerHTML +=
+      generateTodoHTML(element);
+  }
+}
+
+function feedbackAeraUdate() {
+  let awaitFeedback = todos.filter((t) => t["category"] == "awaitFeedback");
+
+  document.getElementById("awaitFeedback").innerHTML = "";
+
+  for (let index = 0; index < awaitFeedback.length; index++) {
+    const element = awaitFeedback[index];
+    document.getElementById("awaitFeedback").innerHTML +=
+      generateTodoHTML(element);
+  }
+}
+
+function doneUpdate() {
+  let done = todos.filter((t) => t["category"] == "done");
+
+  document.getElementById("done").innerHTML = "";
+
+  for (let index = 0; index < done.length; index++) {
+    const element = done[index];
+    document.getElementById("done").innerHTML += generateTodoHTML(element);
   }
 }
 
@@ -67,14 +115,14 @@ function allowDrop(ev) {
 }
 
 function moveTo(category) {
-  todos[currentDraggedElement]['category'] = category;
+  todos[currentDraggedElement]["category"] = category;
   updateHTML();
 }
 
 function highlight(id) {
-  document.getElementById(id).classList.add('drag-area-highlight');
+  document.getElementById(id).classList.add("drag-area-highlight");
 }
 
 function removeHighlight(id) {
-  document.getElementById(id).classList.remove('drag-area-highlight');
+  document.getElementById(id).classList.remove("drag-area-highlight");
 }

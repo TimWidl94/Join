@@ -22,7 +22,10 @@ function openAddTaskPopup() {
     addTaskPopup.classList.add("slide-out");
     
     setTimeout(function () {
-        addTaskPopup.classList.remove("slide-out");
+  
         addTaskPopup.classList.add("d-none");
+      }, 500);
+      setTimeout(function () {
+        addTaskPopup.classList.remove("slide-out");
       }, 900);
 }

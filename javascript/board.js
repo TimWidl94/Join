@@ -15,6 +15,7 @@ let currentDraggedElement;
 
 function init(){
     loadData();
+    loadUser();
     updateHTML();
 }
 

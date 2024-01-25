@@ -16,12 +16,9 @@ async function loadLogIn() {
 
 function loadSignUpHtml() {
   let container = document.getElementById("formBody");
-  changeCssFromInput(container);
   document.getElementById("headerRightBox").classList.add("d-none");
   container.innerHTML = signupHtml();
 }
-
-function changeCssFromInput(container) {}
 
 async function signUp() {
   if (checkIfPrivatPolicyIsChecked()) {
@@ -33,9 +30,9 @@ async function signUp() {
     });
     await setItem("users", JSON.stringify(users));
     loadLogIn();
-    showAnimation('signedUpMassage')
+    showAnimation("signedUpMassage");
   } else {
-    showAnimation('acceptPrivacyPolicy');
+    showAnimation("acceptPrivacyPolicy");
   }
 }
 
@@ -45,7 +42,19 @@ async function loadUser() {
   await setItem("users", JSON.stringify(users));
   if (searchForEmail(email, password)) {
     await rememberMe();
+    let user = await setUser(email);
     window.location.href = "./summary.html";
+  }
+}
+
+function setUser(email) {
+  for (let i = 0; i < users.length; i++) {
+    if (users[i].email === email) {
+      user = [];
+      user.push(i);
+      let userAsText = JSON.stringify(user);
+      localStorage.setItem('user', userAsText);
+    }
   }
 }
 
@@ -72,14 +81,6 @@ function logInGuest() {
     window.location.href = "./summary.html";
   }
 }
-
-// async function setItem(key, value) {
-  // const payload = { key, value, token: STORAGE_TOKEN };
-  // return fetch(STORAGE_URL, {
-    // method: "POST",
-    // body: JSON.stringify(payload),
-  // }).then((res) => res.json());
-// }
 
 function rememberMe() {
   let checkbox = document.getElementById("checkboxSavePassword");
@@ -117,7 +118,6 @@ function toggleShowPassword(passwordId, passwordIconId) {
   if (passwordField.type === "password") {
     passwordField.type = "text";
     passwordIcon.src = "./assets/img/icons/visibilityOff.svg";
-    // passwordIcon.classList.add('')
   } else {
     passwordField.type = "password";
     passwordIcon.src = "./assets/img/icons/lock.svg";
@@ -136,13 +136,13 @@ function showAnimation(id) {
   let button = document.getElementById(id);
   button.classList.remove("d-none");
   setTimeout(() => moveToCenter(button), 200);
-  setTimeout(() => addDNone(button), 4000)
+  setTimeout(() => addDNone(button), 2000);
 }
 
 function moveToCenter(button) {
   button.classList.add("moveToCenter");
 }
 
-function addDNone(button){
+function addDNone(button) {
   button.classList.add("d-none");
 }

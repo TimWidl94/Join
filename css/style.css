@@ -1300,8 +1300,8 @@ footer {
 
 .checkboxSavePassword {
   display: inline-block;
+  height: 20px;
   width: 16px;
-  height: 16px;
   border-radius: 3px;
   border: 2px solid #2a3647;
   cursor: pointer; }
@@ -1324,15 +1324,15 @@ footer {
   bottom: 0; }
 
 .acceptPrivacyGrey {
-  font-family: Inter;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
-  line-height: 120%; }
+  line-height: 120%;
+  margin-left: 8px; }
 
 .privacyPolicyLink {
   color: var(--Ligth-blue, #29abe2);
-  font-family: Inter;
+  font-family: "Inter", sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -1545,13 +1545,13 @@ input[type=checkbox] + label {
   display: inline-block;
   padding: 0 0 0 0px;
   background: url("../../assets/img/icons/checkInput.svg") no-repeat;
-  height: 16px;
+  height: 20px;
   width: 16px;
   background-size: 100%; }
 
 input[type=checkbox]:checked + label {
   background: url("../../assets/img/icons/checkedInput.svg") no-repeat;
-  height: 16px;
+  height: 20px;
   width: 16px;
   display: inline-block;
   background-size: 100%; }

@@ -45,6 +45,7 @@ let contactColors = ['#FF7A00', '#9327FF', '#6E52FF', '#FC71FF', '#FFBB2B', '#1F
 let letters = [];
 
 async function init() {
+  await loadUsers();
   await loadContacts();
   render();
   //   setBackgroundColor();

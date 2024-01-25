@@ -1,3 +1,10 @@
+async function init() {
+  await includeHTML();
+  await loadUsers();
+  await loadLogIn();
+  await loadLocalStorageData();
+}
+
 async function loadLogIn() {
   let container = document.getElementById("formBody");
   let headerRight = document.getElementById("headerRightBox");
@@ -75,20 +82,20 @@ async function setItem(key, value) {
   }).then((res) => res.json());
 }
 
-async function getItem(key) {
-  const url = `${STORAGE_URL}?key=${key}&token=${STORAGE_TOKEN}`;
-  return fetch(url)
-    .then((res) => res.json())
-    .then((res) => res.data.value);
-}
+// async function getItem(key) {
+  // const url = `${STORAGE_URL}?key=${key}&token=${STORAGE_TOKEN}`;
+  // return fetch(url)
+    // .then((res) => res.json())
+    // .then((res) => res.data.value);
+// }
 
-async function loadUsers() {
-  try {
-    users = JSON.parse(await getItem("users"));
-  } catch (e) {
-    console.info("could not load users");
-  }
-}
+// async function loadUsers() {
+  // try {
+    // users = JSON.parse(await getItem("users"));
+  // } catch (e) {
+    // console.info("could not load users");
+  // }
+// }
 
 function rememberMe() {
   let checkbox = document.getElementById("checkboxSavePassword");

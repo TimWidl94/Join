@@ -27,9 +27,12 @@ let todos = [
 ];
 let currentDraggedElement;
 
-function init() {
-  loadData();
-  updateHTML();
+dateHTML();
+
+function init(){
+    loadData();
+    loadUser();
+    updateHTML();
 }
 
 function openAddTaskPopup() {

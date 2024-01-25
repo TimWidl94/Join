@@ -1,5 +1,6 @@
 async function init(){
 await loadData();
+await loadUser();
 }
 
 function timeOut(ms) {

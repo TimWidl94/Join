@@ -46,6 +46,7 @@ let letters = [];
 
 async function init() {
   await loadData();
+  loadUser();
   render();
   //   setBackgroundColor();
 }

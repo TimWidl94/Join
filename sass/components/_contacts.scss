@@ -398,17 +398,24 @@ h2 {
 .left-card-text {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  // justify-content: flex-start;
+  // align-items: center;
   width: 366px;
   gap: 8px;
 }
 
-h2 {
+.h2-add-card {
   color: $color-light;
   font-size: 61px;
-  margin-block-start: 0.5em;
-  margin-block-end: 0.5em;
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}
+
+.h2-edit-card {
+  color: $color-light;
+  font-size: 61px;
+  margin-block-start: 0em;
+  margin-block-end: 0;
 }
 
 .left-container p {
@@ -419,6 +426,13 @@ h2 {
 
 .horizontal-line {
   width: 65px;
+  height: 2px;
+  background-color: $secondary-color;
+  margin-bottom: 32px;
+}
+
+.horizontal-line-edit-card {
+  width: 85px;
   height: 2px;
   background-color: $secondary-color;
   margin-bottom: 32px;
@@ -435,15 +449,12 @@ h2 {
 .form-close {
   display: flex;
   justify-content: flex-end;
-  align-items: flex-end;
+  align-items: baseline;
   width: calc(100% - 2 * 86px);
-  height: 20px;
-  padding: 20px 86px;
+  height: 100px;
+  padding: 0px 86px;
+  margin-top: 60px;
 }
-
-// .form-close img:hover {
-//   cursor: pointer;
-// }
 
 .form-close img:hover {
   cursor: pointer;
@@ -458,23 +469,28 @@ h2 {
   flex-direction: row;
   gap: 72px;
   height: calc(100% - 20px);
-  padding-bottom: 20px;
+  padding-bottom: 100px;
 }
 
 .profile {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: $color-lightgrey;
   width: 120px;
   height: 120px;
-  border-radius: 60px;
-  /* margin-bottom: 148px; */
+  border-radius: 120px;
+  border: 4px solid $color-light;
+  background-color: $color-lightgrey;
+  margin-bottom: 60px;
 }
 
-#profile-img {
+.profile img {
   width: 64px;
   height: 64px;
+}
+
+.capital-letters-edit h2 {
+  color: $color-light;
 }
 
 .inputFieldContainer {

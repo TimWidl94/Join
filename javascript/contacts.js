@@ -77,16 +77,6 @@ function openContactInfo(i) {
   content.innerHTML += openContactInfoHTML(contact, acronym, color, i);
 }
 
-// function showPopupEditContact() {
-//   document.getElementById('edit-contact-wrapper').classList.remove('d-none');
-//   document.getElementById('edit-contact-wrapper').classList.add('d-block');
-// }
-
-// function closePopupEditContact() {
-//   document.getElementById('edit-contact-wrapper').classList.remove('d-block');
-//   document.getElementById('edit-contact-wrapper').classList.add('d-none');
-// }
-
 function classlistRemoveAndAdd(id, remove, add) {
   document.getElementById(id).classList.remove(remove);
   document.getElementById(id).classList.add(add);
@@ -97,8 +87,6 @@ async function addContact() {
   let name = document.getElementById('add-name');
   let mail = document.getElementById('add-mail');
   let tel = document.getElementById('add-tel');
-
-  // let nameValue = firstLettersUppercase(name.value);
 
   contacts.push({ name: firstLettersUppercase(name.value), mail: mail.value, phone: tel.value });
 
@@ -140,8 +128,10 @@ function doNotClose(event) {
 }
 
 function editContact(i) {
+  let acronym = getFirstLetters(contacts[i].name);
+  const color = setBackgroundColor(i);
   let content = document.getElementById('edit-contact-wrapper');
-  content.innerHTML = editContactHTML(i);
+  content.innerHTML = editContactHTML(acronym, color, i);
 
   let name = document.getElementById('edit-name');
   let mail = document.getElementById('edit-mail');

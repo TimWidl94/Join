@@ -33,11 +33,11 @@ function openContactInfoHTML(contact, acronym, color, i) {
             <h2 id="name">${contact.name}</h2>
             <div class="changes">
                 <div class="edit" onclick="editContact(${i})">
-                    <img class="edit-img" src="assets/img/Contacts/edit.svg" alt="Edit">
+                    <img class="edit-img" src="assets/img/icons/edit.svg" alt="Edit">
                     <p class="edit-p">Edit</p>
                 </div>
                 <div class="delete" onclick="deleteContact(${i})">
-                    <img class="delete-img" src="assets/img/Contacts/delete.svg" alt="Delete">
+                    <img class="delete-img" src="assets/img/icons/delete.svg" alt="Delete">
                     <p>Delete</p>
                 </div>
             </div>

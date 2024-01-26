@@ -426,10 +426,39 @@ h2 {
 
 .right-container {
   display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.form-close {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  width: calc(100% - 2 * 86px);
+  height: 20px;
+  padding: 20px 86px;
+}
+
+// .form-close img:hover {
+//   cursor: pointer;
+// }
+
+.form-close img:hover {
+  cursor: pointer;
+  filter: invert(65%) sepia(27%) saturate(3883%) hue-rotate(165deg) brightness(94%) contrast(88%);
+  transform: scale(1.1);
+}
+
+.wrapper-profile-and-form {
+  display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  flex-direction: row;
   gap: 72px;
+  height: calc(100% - 20px);
+  padding-bottom: 20px;
 }
 
 .profile {

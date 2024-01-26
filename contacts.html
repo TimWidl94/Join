@@ -62,68 +62,78 @@
           </section>
 
           <section class="right-container">
-            <div class="profile">
-              <img id="profile-img" src="assets/img/icons/person.svg" alt="Profile Image" />
+            <div class="form-close">
+              <img
+                src="assets/img/icons/close.svg"
+                alt="Close"
+                onclick="classlistRemoveAndAdd('add-contact-wrapper', 'd-block', 'd-none')"
+              />
             </div>
 
-            <form class="inputButtonsWrapper" onsubmit="addContact(); return false">
-              <div class="inputFieldContainer height-unset">
-                <div class="inputFieldBox pos-rel">
-                  <input
-                    type="text"
-                    minlength="2"
-                    maxlength="100"
-                    class="inputField"
-                    placeholder="Name"
-                    id="add-name"
-                    name="add-name"
-                    autocomplete="none"
-                    required
-                  />
-                  <img src="assets/img/icons/person.svg" alt="Person" class="inputImgPerson" />
-                </div>
-                <div class="inputFieldBox">
-                  <input
-                    type="email"
-                    maxlength="100"
-                    class="inputField"
-                    placeholder="Email"
-                    id="add-mail"
-                    name="add-mail"
-                    autocomplete="none"
-                    required
-                  />
-                  <img src="assets/img/icons/mail.svg" alt="Mail" class="inputImgMail" />
-                </div>
-                <div class="inputFieldBox">
-                  <input
-                    type="tel"
-                    oninput="validatePhoneNumber(this)"
-                    maxlength="100"
-                    class="inputField"
-                    placeholder="Phone"
-                    id="add-tel"
-                    name="add-tel"
-                    autocomplete="none"
-                    required
-                  />
-                  <img src="assets/img/icons/call.svg" alt="Phone" class="inputImgPhone2" />
-                </div>
+            <div class="wrapper-profile-and-form">
+              <div class="profile">
+                <img id="profile-img" src="assets/img/icons/person.svg" alt="Profile Image" />
               </div>
 
-              <div class="btns-down-right">
-                <button
-                  id="cancel"
-                  class="buttonWhite"
-                  onclick="classlistRemoveAndAdd('add-contact-wrapper', 'd-block', 'd-none')"
-                >
-                  Cancel <img src="assets/img/AddTask/cancel.svg" alt="Clear Icon"
-                /></button>
-                <button id="create-contact" class="buttonGrey">
-                  Create Contact <img src="assets/img/AddTask/check_white.svg" alt="Check Icon"
-                /></button>
-              </div>
-            </form>
+              <form class="inputButtonsWrapper" onsubmit="addContact(); return false">
+                <div class="inputFieldContainer height-unset">
+                  <div class="inputFieldBox pos-rel">
+                    <input
+                      type="text"
+                      minlength="2"
+                      maxlength="100"
+                      class="inputField"
+                      placeholder="Name"
+                      id="add-name"
+                      name="add-name"
+                      autocomplete="none"
+                      required
+                    />
+                    <img src="assets/img/icons/person.svg" alt="Person" class="inputImgPerson" />
+                  </div>
+                  <div class="inputFieldBox">
+                    <input
+                      type="email"
+                      maxlength="100"
+                      class="inputField"
+                      placeholder="Email"
+                      id="add-mail"
+                      name="add-mail"
+                      autocomplete="none"
+                      required
+                    />
+                    <img src="assets/img/icons/mail.svg" alt="Mail" class="inputImgMail" />
+                  </div>
+                  <div class="inputFieldBox">
+                    <input
+                      type="tel"
+                      oninput="validatePhoneNumber(this)"
+                      maxlength="100"
+                      class="inputField"
+                      placeholder="Phone"
+                      id="add-tel"
+                      name="add-tel"
+                      autocomplete="none"
+                      required
+                    />
+                    <img src="assets/img/icons/call.svg" alt="Phone" class="inputImgPhone2" />
+                  </div>
+                </div>
+
+                <div class="btns-down-right">
+                  <button
+                    id="cancel"
+                    class="buttonWhite"
+                    onclick="classlistRemoveAndAdd('add-contact-wrapper', 'd-block', 'd-none')"
+                  >
+                    Cancel <img src="assets/img/AddTask/cancel.svg" alt="Clear Icon" class="buttonWhite-img"
+                  /></button>
+                  <button id="create-contact" class="buttonGrey">
+                    Create Contact <img src="assets/img/AddTask/check_white.svg" alt="Check Icon"
+                  /></button>
+                </div>
+              </form>
+            </div>
           </section>
         </div>
       </div>

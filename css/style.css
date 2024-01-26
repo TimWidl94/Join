@@ -697,10 +697,32 @@ h2 {
 
 .right-container {
   display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%; }
+
+.form-close {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  width: calc(100% - 2 * 86px);
+  height: 20px;
+  padding: 20px 86px; }
+
+.form-close img:hover {
+  cursor: pointer;
+  filter: invert(65%) sepia(27%) saturate(3883%) hue-rotate(165deg) brightness(94%) contrast(88%);
+  transform: scale(1.1); }
+
+.wrapper-profile-and-form {
+  display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  gap: 72px; }
+  flex-direction: row;
+  gap: 72px;
+  height: calc(100% - 20px);
+  padding-bottom: 20px; }
 
 .profile {
   display: flex;
@@ -1470,10 +1492,10 @@ a {
 .arrowLeftIcon:hover {
   cursor: pointer; }
 
-input[type=checkbox] {
+input[type='checkbox'] {
   display: none; }
 
-input[type=checkbox] + label {
+input[type='checkbox'] + label {
   display: inline-block;
   padding: 0 0 0 0px;
   background: url("../../assets/img/icons/checkInput.svg") no-repeat;
@@ -1481,7 +1503,7 @@ input[type=checkbox] + label {
   width: 16px;
   background-size: 100%; }
 
-input[type=checkbox]:checked + label {
+input[type='checkbox']:checked + label {
   background: url("../../assets/img/icons/checkedInput.svg") no-repeat;
   height: 20px;
   width: 16px;
@@ -1530,6 +1552,9 @@ input[type=checkbox]:checked + label {
   transform: scale(1.001);
   box-shadow: 0 5px 2px -2px rgba(0, 0, 0, 0.2);
   cursor: pointer; }
+
+.buttonWhite:hover .buttonWhite-img {
+  filter: invert(65%) sepia(27%) saturate(3883%) hue-rotate(165deg) brightness(94%) contrast(88%); }
 
 .footerLink:hover {
   color: #29abe2;

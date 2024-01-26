@@ -13,7 +13,11 @@
     <script src="./script.js"></script>
     <link rel="icon" type="image/x-icon" href="assets/img/Global/join_logo_black.svg" />
   </head>
-  <body onload="init()">
+  <body onload="animateLogo(), init()">
+    <div id="logo-bg-animation" class="logo-bg-animation">
+      <img id="logo" src="assets/img/Global/join_logo_black.svg" alt="Logo">
+    </div>
+
     <div class="logInOverlayBox">
       <img
         src="./assets/img/icons/joinLogoSmall.svg"

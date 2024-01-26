@@ -146,3 +146,10 @@ function moveToCenter(button) {
 function addDNone(button) {
   button.classList.add("d-none");
 }
+
+function animateLogo() {
+  setTimeout(function() {
+    document.getElementById('logo').classList.add('d-none'),
+    document.getElementById('logo-bg-animation').classList.add('d-none')
+  }, 1000);
+}

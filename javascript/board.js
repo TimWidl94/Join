@@ -27,13 +27,12 @@ let todos = [
 ];
 let currentDraggedElement;
 
-dateHTML();
 
-function init(){
+ function init(){
     loadData();
     loadUser();
     updateHTML();
-}
+} 
 
 function openAddTaskPopup() {
   document.getElementById("addTaskPopup").classList.remove("d-none");
@@ -62,6 +61,7 @@ function updateHTML() {
   inProgressUdate();
   feedbackAeraUdate();
   doneUpdate();
+  checkTaskAreaDisplayEmpty()
 }
 
 function todoAreaUpdate() {
@@ -125,4 +125,16 @@ function highlight(id) {
 
 function removeHighlight(id) {
   document.getElementById(id).classList.remove("drag-area-highlight");
+}
+
+function checkTaskAreaDisplayEmpty() {
+  let dragAreas = document.getElementsByClassName("drag-area");
+
+  for (let i = 0; i < dragAreas.length; i++) {
+    let dragArea = dragAreas[i];
+
+    if (dragArea.children.length === 0) {
+      dragArea.innerHTML = /*html*/ `<div class="drag-area-empty">No tasks To do</div>`
+    }
+  }
 }

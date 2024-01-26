@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contacts</title>
-    <link rel="stylesheet" href="./css/style.css?version=1" />
+    <link rel="stylesheet" href="./css/style.css" />
     <script src="./includeHTML.js"></script>
     <script src="./javascript/loadData.js"></script>
     <script src="./script.js"></script>
@@ -19,7 +19,7 @@
     <section class="wrapper-contact-list">
       <div class="add-new-contact" onclick="classlistRemoveAndAdd('add-contact-wrapper', 'd-none', 'd-block')">
         <p>Add new contact</p>
-        <img src="assets/img/Contacts/person_add.svg" alt="Person Add" />
+        <img src="assets/img/icons/person_add.svg" alt="Person Add" />
       </div>
 
       <div id="contact-list-container"> </div>
@@ -53,7 +53,7 @@
       <div class="add-contact-container">
         <div id="add-contact" onclick="doNotClose(event)">
           <section class="left-container">
-            <img src="assets/img/Contacts/logo-white.svg" alt="Logo" />
+            <img src="assets/img/icons/logo-white.svg" alt="Logo" />
             <div class="left-card-text">
               <h2>Add Contact</h2>
               <p>Tasks are better with a team!</p>
@@ -63,7 +63,7 @@
 
           <section class="right-container">
             <div class="profile">
-              <img id="profile-img" src="assets/img/Contacts/person.svg" alt="Profile Image" />
+              <img id="profile-img" src="assets/img/icons/person.svg" alt="Profile Image" />
             </div>
 
             <form class="inputButtonsWrapper" onsubmit="addContact(); return false">
@@ -80,7 +80,7 @@
                     autocomplete="none"
                     required
                   />
-                  <img src="assets/img/Contacts/person_grey.svg" alt="Person" class="inputImgPerson" />
+                  <img src="assets/img/icons/person.svg" alt="Person" class="inputImgPerson" />
                 </div>
                 <div class="inputFieldBox">
                   <input
@@ -93,13 +93,13 @@
                     autocomplete="none"
                     required
                   />
-                  <img src="assets/img/Contacts/mail.svg" alt="Mail" class="inputImgMail" />
+                  <img src="assets/img/icons/mail.svg" alt="Mail" class="inputImgMail" />
                 </div>
                 <div class="inputFieldBox">
                   <input
                     type="tel"
-                    maxlength="100"
                     oninput="validatePhoneNumber(this)"
+                    maxlength="100"
                     class="inputField"
                     placeholder="Phone"
                     id="add-tel"
@@ -107,7 +107,7 @@
                     autocomplete="none"
                     required
                   />
-                  <img src="assets/img/Contacts/call.svg" alt="Phone" class="inputImgPhone2" />
+                  <img src="assets/img/icons/call.svg" alt="Phone" class="inputImgPhone2" />
                 </div>
               </div>
 
@@ -129,6 +129,11 @@
       </div>
     </section>
 
-    <section id="edit-contact-wrapper" class="d-none" onclick="closePopupEditContact()"> </section>
+    <section
+      id="edit-contact-wrapper"
+      class="d-none"
+      onclick=" classlistRemoveAndAdd('edit-contact-wrapper', 'd-block', 'd-none');"
+    >
+    </section>
   </body>
 </html>

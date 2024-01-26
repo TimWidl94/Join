@@ -77,15 +77,15 @@ function openContactInfo(i) {
   content.innerHTML += openContactInfoHTML(contact, acronym, color, i);
 }
 
-function showPopupEditContact() {
-  document.getElementById('edit-contact-wrapper').classList.remove('d-none');
-  document.getElementById('edit-contact-wrapper').classList.add('d-block');
-}
+// function showPopupEditContact() {
+//   document.getElementById('edit-contact-wrapper').classList.remove('d-none');
+//   document.getElementById('edit-contact-wrapper').classList.add('d-block');
+// }
 
-function closePopupEditContact() {
-  document.getElementById('edit-contact-wrapper').classList.remove('d-block');
-  document.getElementById('edit-contact-wrapper').classList.add('d-none');
-}
+// function closePopupEditContact() {
+//   document.getElementById('edit-contact-wrapper').classList.remove('d-block');
+//   document.getElementById('edit-contact-wrapper').classList.add('d-none');
+// }
 
 function classlistRemoveAndAdd(id, remove, add) {
   document.getElementById(id).classList.remove(remove);
@@ -112,8 +112,6 @@ async function addContact() {
 
   console.log('Test12345');
   init();
-
-  // return false;
 }
 
 function renderAddContactForm() {}
@@ -153,7 +151,7 @@ function editContact(i) {
   mail.value = contacts[i].mail;
   tel.value = contacts[i].phone;
 
-  showPopupEditContact();
+  classlistRemoveAndAdd('edit-contact-wrapper', 'd-none', 'd-block');
 }
 
 function validatePhoneNumber(input) {
@@ -170,10 +168,8 @@ function saveEditedContact(i) {
   contacts[i].phone = tel.value;
 
   saveContacts();
-  closePopupEditContact();
+  classlistRemoveAndAdd('edit-contact-wrapper', 'd-block', 'd-none');
   init();
-
-  return false;
 }
 
 async function deleteContact(i) {

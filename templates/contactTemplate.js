@@ -61,48 +61,57 @@ function openContactInfoHTML(contact, acronym, color, i) {
   `;
 }
 
-function editContactHTML(i) {
+function editContactHTML(acronym, color, i) {
   return /*html*/ `
         <div class="edit-contact-container">
             <div id="edit-contact" onclick="doNotClose(event)">
             <section class="left-container">
                 <img src="assets/img/icons/logo-white.svg" alt="Logo" />
                 <div class="left-card-text">
-                <h2>Edit Contact</h2>
+                <h2 class="h2-edit-card">Edit Contact</h2>
                 </div>
-                <div class="horizontal-line"></div>
+                <div class="horizontal-line-edit-card"></div>
             </section>
 
             <section class="right-container">
-                <div class="profile">
-                <img id="profile-img" src="assets/img/icons/person.svg" alt="Profile Image" />
+                <div class="form-close">
+                <img
+                    src="assets/img/icons/close.svg"
+                    alt="Close"
+                    onclick="classlistRemoveAndAdd('edit-contact-wrapper', 'd-block', 'd-none')"
+                />
                 </div>
 
-                <form class="inputButtonsWrapper" onsubmit="saveEditedContact(${i}); return false">
-                <div class="inputFieldContainer height-unset">
-                    <div class="inputFieldBox">
-                    <input type="text" class="inputField" placeholder="Name" id="edit-name" required autocomplete="none" />
-                    <img src="assets/img/icons/person.svg" alt="Person" class="inputImgPerson" />
-                    </div>
-                    <div class="inputFieldBox">
-                    <input type="email" class="inputField" placeholder="Email" id="edit-mail" required autocomplete="none"/>
-                    <img src="assets/img/icons/mail.svg" alt="Mail" class="inputImgMail" />
-                    </div>
-                    <div class="inputFieldBox">
-                    <input type="tel" oninput="validatePhoneNumber(this)" class="inputField" placeholder="Phone" id="edit-tel" required autocomplete="none"/>
-                    <img src="assets/img/icons/call.svg" alt="Phone" class="inputImgPhone2" />
-                    </div>
-                </div>
+                <div class="wrapper-profile-and-form">
+                    <div class="profile" style="background-color: ${color};">
+                        <h2 id="capital-letters-edit">${acronym}</h2>
+                     </div>
 
-                <div class="btns-down-right">
-                    <button id="delete" class="buttonWhite" onclick="deleteContact(${i})">
-                    Delete <img src="assets/img/AddTask/cancel.svg" alt="Clear Icon"
-                    /></button>
-                    <button id="save" class="buttonGrey">
-                    Save <img src="assets/img/icons/close.svg" alt="Check Icon"
-                    /></button>
+                    <form class="inputButtonsWrapper" onsubmit="saveEditedContact(${i}); return false">
+                        <div class="inputFieldContainer height-unset">
+                            <div class="inputFieldBox">
+                            <input type="text" class="inputField" placeholder="Name" id="edit-name" required autocomplete="none" />
+                            <img src="assets/img/icons/person.svg" alt="Person" class="inputImgPerson" />
+                            </div>
+                            <div class="inputFieldBox">
+                            <input type="email" class="inputField" placeholder="Email" id="edit-mail" required autocomplete="none"/>
+                            <img src="assets/img/icons/mail.svg" alt="Mail" class="inputImgMail" />
+                            </div>
+                            <div class="inputFieldBox">
+                            <input type="tel" oninput="validatePhoneNumber(this)" class="inputField" placeholder="Phone" id="edit-tel" required autocomplete="none"/>
+                            <img src="assets/img/icons/call.svg" alt="Phone" class="inputImgPhone2" />
+                            </div>
+                        </div>
+
+                        <div class="btns-down-right">
+                            <button id="delete" class="buttonWhite" onclick="deleteContact(${i})">
+                            Delete 
+                            <button id="save" class="buttonGrey">
+                            Save <img src="assets/img/icons/check_white.svg" alt="Check Icon"
+                            /></button>
+                        </div>
+                    </form>
                 </div>
-                </form>
             </section>
             </div>
         </div>

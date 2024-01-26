@@ -1575,6 +1575,17 @@ input[type='checkbox']:checked + label {
   color: #29abe2;
   font-weight: bold; }
 
+.privatPolicyContainer {
+  overflow-y: scroll;
+  margin: 96px 0px 0px;
+  max-width: 1208px;
+  position: relative;
+  padding: 80px 64px;
+  left: 232px;
+  background-color: #f6f7f8;
+  width: calc(100% - 360px);
+  height: calc(100vh - 256px); }
+
 .container {
   margin: 96px 0px 0px;
   max-width: 1208px;

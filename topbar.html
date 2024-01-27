@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Topbar</title>
+    <link rel="stylesheet" href="./css/style.css" />
+
   </head>
   <body>
     <section class="topbar">
@@ -12,12 +14,23 @@
       </div>
       <div class="topbar-right">
         <img src="assets/img/icons/help.svg" alt="Help Icon" />
-        <div class="topbar-user-background">
+        <div class="topbar-user-background" onclick="toggleDropdownMenu()">
           <div id="topbar-user">
             <p>JN</p>
           </div>
         </div>
-      
     </section>
+
+    <div class="topbar-dropdown">
+      <div class="dropdown-content">
+        <a href="#"><p>Legal Notice</p></a>
+      </div>
+      <div class="dropdown-content">
+        <a href="#"><p>Privacy Policy</p></a>
+      </div>
+      <div class="dropdown-content">
+        <a href="#"><p>Log out</p></a>
+      </div>
+    </div>
   </body>
 </html>

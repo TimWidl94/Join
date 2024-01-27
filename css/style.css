@@ -1519,6 +1519,10 @@ a {
 .arrowLeftIcon:hover {
   cursor: pointer; }
 
+.arrowLeftIconPrivacyPolicy {
+  width: 21.33px;
+  height: 20.74px; }
+
 input[type='checkbox'] {
   display: none; }
 
@@ -1586,6 +1590,42 @@ input[type='checkbox']:checked + label {
 .footerLink:hover {
   color: #29abe2;
   font-weight: bold; }
+
+.privatPolicyContainer {
+  overflow-y: scroll;
+  margin: 96px 0px 0px;
+  position: relative;
+  padding: 80px 64px;
+  left: 232px;
+  background-color: #f6f7f8;
+  width: calc(100% - 360px);
+  height: calc(100vh - 256px);
+  display: flex;
+  align-items: start;
+  justify-content: start;
+  flex-direction: column; }
+
+.headline-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%; }
+
+.linkColor {
+  color: #29abe2; }
+
+.arrowContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background-color: #f6f7f8;
+  border-radius: 50%; }
+
+.arrowContainer:hover {
+  background-color: #EEEDEC;
+  cursor: pointer; }
 
 .container {
   margin: 96px 0px 0px;

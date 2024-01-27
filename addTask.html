@@ -5,15 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Add Task</title>
     <link rel="stylesheet" href="./css/style.css" />
-    <!-- <link rel="stylesheet" href="./style/main.css?version=1" /> -->
-    <!-- <link rel="stylesheet" href="./style/addTask.css?version=51" /> -->
     <script src="includeHTML.js"></script>
     <script src="./javascript/loadData.js"></script>
     <script src="./javascript/addTask.js"></script>
     <script src="./script.js"></script>
     <link rel="icon" type="image/x-icon" href="assets/img/Global/join_logo_black.svg" />
   </head>
-  <body onload="includeHTML(), init()">
+  <body onload="includeHTML(), init(), addTask()">
     <div w3-include-html="sidebar.html"></div>
     <div w3-include-html="topbar.html"></div>
 
@@ -23,21 +21,21 @@
 
         <div id="title">
           <p>Title<span>*</span></p>
-          <input required type="text" placeholder="Enter a title" />
+          <input id="taskTitle" required type="text" placeholder="Enter a title" />
         </div>
 
         <div id="description">
           <p>Description</p>
-          <textarea placeholder="Enter a description"></textarea>
+          <textarea id="taskDescription" placeholder="Enter a description"></textarea>
         </div>
 
         <div id="assignedTo">
           <p>Assigned to</p>
           <select name="assigned" id="assigned">
-            <option>Select contacts to assign</option>
+<!--        <option value="1">Select contacts to assign</option>
             <option>Verena Schranz</option>
             <option>Tim Widl</option>
-            <option>Christian Grund</option>
+            <option>Christian Grund</option> -->
           </select>
         </div>
 
@@ -76,9 +74,7 @@
           <p>Category<span>*</span></p>
           <select id="category-options">
             <option>Select contacts to assign</option>
-            <option>Verena Schranz</option>
-            <option>Tim Widl</option>
-            <option>Christian Grund</option>
+
           </select>
         </div>
 

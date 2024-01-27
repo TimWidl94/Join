@@ -4,6 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sidebar</title>
+
+    <link rel="stylesheet" href="./css/style.css?version=51" />
+
     <style src="./javascript/sidebar.js"></style>
   </head>
   <body>
@@ -15,26 +18,31 @@
       </a>
       <section class="menu" id="sidebarMenu">
         <a href="./summary.html">
-          <div id="sidebar-summary" onclick="changeOptic(1)">
-            <img id="summary-img" src="assets/img/icons/summary_icon_grey.svg" alt="Summary Icon" />
+          <div id="sidebar-summary" class="menu-category" onclick="changeOptic(1)">
+            <img
+              class="category-img"
+              id="summary-img"
+              src="assets/img/icons/summary_icon_grey.svg"
+              alt="Summary Icon"
+            />
             <p id="summary-p">Summary</p>
           </div>
         </a>
         <a href="./addTask.html">
-          <div id="sidebar-add-task" onclick="changeOptic(2)">
-            <img src="assets/img/icons/add_task_icon_grey.svg" alt="Add Task Icon" />
+          <div id="sidebar-add-task" class="menu-category" onclick="changeOptic(2)">
+            <img class="category-img" src="assets/img/icons/add_task_icon_grey.svg" alt="Add Task Icon" />
             <p>Add Task</p>
           </div>
         </a>
         <a href="./board.html">
-          <div id="sidebar-board" onclick="changeOptic(3)">
-            <img src="assets/img/icons/board_icon_grey.svg" alt="Board Icon" />
+          <div id="sidebar-board" class="menu-category" onclick="changeOptic(3)">
+            <img class="category-img" src="assets/img/icons/board_icon_grey.svg" alt="Board Icon" />
             <p>Board</p>
           </div>
         </a>
         <a href="./contacts.html">
-          <div id="sidebar-contacts" onclick="changeOptic(4)">
-            <img src="assets/img/icons/contacts_icon_grey.svg" alt="Contacts Icon" />
+          <div id="sidebar-contacts" class="menu-category" onclick="changeOptic(4)">
+            <img class="category-img" src="assets/img/icons/contacts_icon_grey.svg" alt="Contacts Icon" />
             <p>Contacts</p>
           </div>
         </a>

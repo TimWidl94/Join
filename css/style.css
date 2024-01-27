@@ -981,9 +981,9 @@ h2 {
   gap: 10px;
   align-self: stretch;
   border-radius: 10px;
-  color: #A8A8A8;
-  border: 1px dashed var(--icon, #A8A8A8);
-  background: #E7E7E7;
+  color: #a8a8a8;
+  border: 1px dashed var(--icon, #a8a8a8);
+  background: #e7e7e7;
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.16);
   cursor: pointer; }
 
@@ -1056,7 +1056,7 @@ h2 {
     top: 8px;
     cursor: pointer; }
     .search-side-input-img:hover {
-      background: #A8A8A8;
+      background: #a8a8a8;
       border-radius: 50%; }
 
 .board-title {
@@ -1066,7 +1066,7 @@ h2 {
   width: 100%;
   font-size: 20px;
   font-weight: 700;
-  color: #42526E;
+  color: #42526e;
   margin-bottom: 15.5px; }
 
 .board-svg-container {
@@ -1101,15 +1101,15 @@ h2 {
     font-size: 16px;
     margin-bottom: 24px; }
   .board-task-epic-blue {
-    background: #0038FF; }
+    background: #0038ff; }
   .board-task-epic-green {
-    background: #1FD7C1; }
+    background: #1fd7c1; }
   .board-task-title {
     font-family: "Inter", sans-serif;
     font-weight: 700;
     padding-bottom: 8px; }
   .board-task-description {
-    color: #A8A8A8;
+    color: #a8a8a8;
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
@@ -1406,7 +1406,7 @@ a {
 
 .menu div {
   display: flex;
-  height: 30px;
+  height: 40px;
   width: 120px;
   padding: 8px 56px 8px 56px;
   align-items: center;
@@ -1414,12 +1414,13 @@ a {
   flex-shrink: 0;
   border-radius: 8px; }
 
+.menu a div:hover {
+  cursor: pointer;
+  color: #fff !important;
+  background-color: #2a3647; }
+
 .menu div p {
   color: #cdcdcd !important; }
-
-.menu div:hover {
-  cursor: pointer;
-  background-color: #2a3d59; }
 
 .notes {
   display: flex;
@@ -1436,7 +1437,7 @@ a {
 
 .notes p:hover {
   cursor: pointer;
-  color: #2aaae2 !important;
+  color: #29abe2 !important;
   font-weight: 700; }
 
 .topbar {

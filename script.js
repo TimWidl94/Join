@@ -5,8 +5,31 @@ let user = [];
 let users = [];
 let contacts = [];
 
+function initScript() {}
+
 function timeOut(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+function showMenu() {
+  document.getElementById('topbar-dropdown').classList.toggle('show-overlay-menu');
+}
+
+function setUserInitials() {
+  if (user) {
+    // let name = users[user].name;
+    console.log('users:', users);
+    console.log('user:', user);
+  } else {
+    console.log('No user found!');
+  }
+
+  let acronym = getFirstLetters(users[user].name);
+  let content = document.getElementById('topbar-user');
+  content.innerHTML = '';
+  content.innerHTML = /*html*/ `
+    <p>${acronym}</p>
+  `;
 }
 
 /**

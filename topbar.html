@@ -5,23 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Topbar</title>
     <link rel="stylesheet" href="./css/style.css" />
-
+    <script src="./javascript/topbar.js"></script>
+    <script src="./javascript/contacts.js"></script>
+    <script src="./script.js"></script>
   </head>
-  <body>
+  <body onload="initScript()">
     <section class="topbar">
       <div class="topbar-left">
         <p>Kanban Project Management Tool</p>
       </div>
       <div class="topbar-right">
         <img src="assets/img/icons/help.svg" alt="Help Icon" />
-        <div class="topbar-user-background" onclick="toggleDropdownMenu()">
+        <div id="topbar-user-background" onclick="showMenu()">
           <div id="topbar-user">
-            <p>JN</p>
           </div>
         </div>
     </section>
 
-    <div class="topbar-dropdown">
+    <div id="topbar-dropdown">
       <div class="dropdown-content">
         <a href="#"><p>Legal Notice</p></a>
       </div>

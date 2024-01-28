@@ -1504,17 +1504,21 @@ a {
   font-size: 20px;
   padding: 10px; }
 
-.topbar-dropdown {
+#topbar-dropdown {
   position: absolute;
   top: 100px;
-  right: 40px;
+  right: 5px;
+  width: 160px;
+  transform: translateX(300px);
+  transition: all 225ms ease-in-out;
   display: inline-flex;
   padding: 10px;
   flex-direction: column;
   align-items: flex-start;
   border-radius: 20px 0px 20px 20px;
   background: #2a3647;
-  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1); }
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
+  z-index: 2; }
 
 .dropdown-content {
   display: flex;
@@ -1532,6 +1536,9 @@ a {
 .dropdown-content:hover {
   cursor: pointer;
   background-color: #091931; }
+
+.show-overlay-menu {
+  transform: translateX(0) !important; }
 
 .showPasswordButton {
   display: flex;
@@ -1619,6 +1626,28 @@ input[type='checkbox']:checked + label {
 .footerLink:hover {
   color: #29abe2;
   font-weight: bold; }
+
+.error-message {
+  color: #cc0033;
+  display: inline-block;
+  font-size: 12px;
+  line-height: 15px;
+  margin: 5px 0 0; }
+
+.input-group .error-message {
+  display: none; }
+
+/* Error Styling */
+.error label {
+  color: #cc0033; }
+
+.error input[type='text'] {
+  background-color: #fce4e4;
+  border: 1px solid #cc0033;
+  outline: none; }
+
+.error .error-message {
+  display: inline-block; }
 
 .privatPolicyContainer {
   overflow-y: scroll;

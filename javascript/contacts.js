@@ -198,3 +198,13 @@ function toggleBackground(i) {
   document.getElementById(`contact-list-basic-info${i}`).classList.add('bg-primary');
   document.getElementById(`name-list${i}`).classList.add('color-white');
 }
+
+function validateNameInput() {
+  let name = document.getElementById('add-name');
+  name.addEventListener('input', function (e) {
+    name.setCustomValidity(''); //remove message when new text is input
+  });
+  name.addEventListener('invalid', function (e) {
+    name.setCustomValidity('Please enter your full name'); //custom validation message for invalid text
+  });
+}

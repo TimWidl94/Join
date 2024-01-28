@@ -534,12 +534,29 @@ h2 {
   display: flex;
   gap: 16px; }
 
+.changesMobile {
+  display: inline-flex;
+  padding: 10px;
+  flex-direction: column;
+  align-items: flex-start;
+  border-radius: 20px 20px 0px 20px;
+  background: #fff;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25); }
+
+.changesMobile div {
+  display: flex;
+  width: 96px;
+  padding: 8px;
+  align-items: center;
+  gap: 8px; }
+
 .changes div {
   display: flex;
   align-items: center;
   gap: 8px; }
 
-.changes div:hover {
+.changes div:hover,
+.changesMobile div:hover {
   cursor: pointer;
   color: #29abe2 !important; }
 
@@ -1797,6 +1814,34 @@ input[type='checkbox']:checked + label {
   cursor: pointer;
   background: #29abe2;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25); }
+
+.contactsMobile {
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
+  margin-left: 16px;
+  gap: 16px; }
+
+.buttonGreyContactsMobile {
+  display: inline-flex;
+  width: fit-content;
+  padding: 12px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 46px;
+  border: 1px solid #2a3647;
+  background: #2a3647;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  border: none; }
+
+.btnImgAddContactMobile {
+  width: 32px;
+  height: 32px; }
+
+.buttonGreyContactsMobile:hover {
+  cursor: pointer;
+  background: #29abe2; }
 
 .error-message {
   color: #cc0033;

@@ -18,7 +18,7 @@
   cursor: pointer;
 }
 
-.arrowLeftIconPrivacyPolicy{
+.arrowLeftIconPrivacyPolicy {
   width: 21.33px;
   height: 20.74px;
 }
@@ -98,4 +98,110 @@ input[type='checkbox']:checked + label {
 .footerLink:hover {
   color: $secondary-color;
   font-weight: bold;
+}
+
+.buttonsMobile {
+  margin-top: 50px;
+  margin-left: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.buttonWhiteMobile {
+  display: flex;
+  width: 104px;
+  height: 27px;
+  padding: 4px 18px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  border: 1px solid $primary-color;
+}
+
+.buttonWhiteMobile:hover {
+  cursor: pointer;
+  color: $secondary-color;
+  border: 1px solid $secondary-color;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.buttonWhiteWithImgMobile {
+  display: flex;
+  width: 136px;
+  height: 61px;
+  padding: 18px 10px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  border: 1px solid $primary-color;
+  font-size: 20px;
+}
+
+.buttonWhiteWithImgMobile img {
+  width: 24px;
+  height: 24px;
+}
+
+.buttonWhiteWithImgMobile:hover {
+  cursor: pointer;
+  color: $secondary-color;
+  border: 1px solid $secondary-color;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.buttonWhiteWithImgMobile:hover .bntImgMobile {
+  filter: invert(65%) sepia(27%) saturate(3883%) hue-rotate(165deg) brightness(94%) contrast(88%);
+}
+
+.buttonGreyMobile {
+  display: flex;
+  width: 104px;
+  height: 27px;
+  padding: 4px 18px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background: $primary-color;
+  color: $color-light;
+  border: none;
+}
+
+.buttonGreyMobile:hover {
+  cursor: pointer;
+  background: $secondary-color;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.buttonGreyWithImgMobile {
+  display: inline-flex;
+  width: fit-content;
+  height: 61px;
+  padding: 18px 10px;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: $primary-color;
+  color: $color-light;
+  font-size: 21px;
+  border: none;
+}
+
+.buttonGreyWithImgMobile img {
+  width: 24px;
+  height: 24px;
+}
+
+.buttonGreyWithImgMobile:hover {
+  cursor: pointer;
+  background: $secondary-color;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }

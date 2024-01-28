@@ -1425,6 +1425,45 @@ a {
 .menu-category:hover .category-img {
   filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(7500%) hue-rotate(229deg) brightness(108%) contrast(98%); }
 
+.menuMobile {
+  display: flex;
+  width: 428px;
+  height: 80px;
+  padding: 2px 16px;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+  background: #2a3647;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1); }
+
+.menuCategoryMobile {
+  display: flex;
+  width: 76px;
+  padding: 15px 0px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+  border-radius: 8px; }
+
+.categoryImgMobile {
+  width: 24px;
+  height: 24px; }
+
+.menuCategoryMobile p {
+  font-size: 14px;
+  color: #cdcdcd; }
+
+.menuCategoryMobile:hover {
+  cursor: pointer;
+  background-color: #091931;
+  color: #fff !important;
+  opacity: 1; }
+
+.menuCategoryMobile:hover .categoryImgMobile {
+  filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(7500%) hue-rotate(229deg) brightness(108%) contrast(98%); }
+
 .notes {
   display: flex;
   padding: 0px 0px 64px 40px;
@@ -1503,6 +1542,44 @@ a {
   color: #29abe2;
   font-size: 20px;
   padding: 10px; }
+
+.topbarMobile {
+  margin-top: 50px;
+  display: flex;
+  width: 428px;
+  padding: 20px 16px;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1); }
+
+.topbarLeftMobile img {
+  width: 40px;
+  height: 40px; }
+
+.topbarRightMobile {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0; }
+
+#topbarUserMobile {
+  display: flex;
+  width: 36px;
+  height: 36px;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  background: #fff;
+  border: 2px solid #000;
+  border-radius: 50px; }
+
+#topbarUserMobile p {
+  font-size: 20px;
+  font-weight: bold;
+  color: #29abe2; }
+
+#topbarUserMobile:hover {
+  cursor: pointer; }
 
 #topbar-dropdown {
   position: absolute;
@@ -1626,6 +1703,100 @@ input[type='checkbox']:checked + label {
 .footerLink:hover {
   color: #29abe2;
   font-weight: bold; }
+
+.buttonsMobile {
+  margin-top: 50px;
+  margin-left: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px; }
+
+.buttonWhiteMobile {
+  display: flex;
+  width: 104px;
+  height: 27px;
+  padding: 4px 18px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  border: 1px solid #2a3647; }
+
+.buttonWhiteMobile:hover {
+  cursor: pointer;
+  color: #29abe2;
+  border: 1px solid #29abe2;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25); }
+
+.buttonWhiteWithImgMobile {
+  display: flex;
+  width: 136px;
+  height: 61px;
+  padding: 18px 10px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  border: 1px solid #2a3647;
+  font-size: 20px; }
+
+.buttonWhiteWithImgMobile img {
+  width: 24px;
+  height: 24px; }
+
+.buttonWhiteWithImgMobile:hover {
+  cursor: pointer;
+  color: #29abe2;
+  border: 1px solid #29abe2;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25); }
+
+.buttonWhiteWithImgMobile:hover .bntImgMobile {
+  filter: invert(65%) sepia(27%) saturate(3883%) hue-rotate(165deg) brightness(94%) contrast(88%); }
+
+.buttonGreyMobile {
+  display: flex;
+  width: 104px;
+  height: 27px;
+  padding: 4px 18px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background: #2a3647;
+  color: #fff;
+  border: none; }
+
+.buttonGreyMobile:hover {
+  cursor: pointer;
+  background: #29abe2;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25); }
+
+.buttonGreyWithImgMobile {
+  display: inline-flex;
+  width: fit-content;
+  height: 61px;
+  padding: 18px 10px;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: #2a3647;
+  color: #fff;
+  font-size: 21px;
+  border: none; }
+
+.buttonGreyWithImgMobile img {
+  width: 24px;
+  height: 24px; }
+
+.buttonGreyWithImgMobile:hover {
+  cursor: pointer;
+  background: #29abe2;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25); }
 
 .error-message {
   color: #cc0033;

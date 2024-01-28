@@ -205,3 +205,35 @@ input[type='checkbox']:checked + label {
   background: $secondary-color;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
+
+.contactsMobile {
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
+  margin-left: 16px;
+  gap: 16px;
+}
+
+.buttonGreyContactsMobile {
+  display: inline-flex;
+  width: fit-content;
+  padding: 12px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 46px;
+  border: 1px solid $primary-color;
+  background: $primary-color;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  border: none;
+}
+
+.btnImgAddContactMobile {
+  width: 32px;
+  height: 32px;
+}
+
+.buttonGreyContactsMobile:hover {
+  cursor: pointer;
+  background: $secondary-color;
+}

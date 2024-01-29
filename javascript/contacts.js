@@ -75,6 +75,39 @@ function openContactInfo(i) {
   let content = document.getElementById('contact-info');
   content.innerHTML = '';
   content.innerHTML += openContactInfoHTML(contact, acronym, color, i);
+  if (window.innerWidth < 800) {
+    toggleContactInfoMobile();
+  }
+}
+
+function toggleContactInfoMobile() {
+  classlistToggle('wrapper-contact-list', 'd-none');
+  classlistToggle('wrapper-contact-info', 'd-flex');
+  classlistToggle('addContactMobile', 'd-none');
+  classlistToggle('optionsContactMobile', 'd-flex');
+  classlistToggle('back-to-contact-list', 'd-flex');
+}
+
+function openChangesMenuMobile() {
+  classlistAdd('changesMobileWrapper', 'd-flex');
+  classlistAdd('changesMobile', 'show-overlay-menu');
+}
+
+function closeChangesMenuMobile() {
+  classlistRemove('changesMobile', 'show-overlay-menu');
+  classlistRemove('changesMobileWrapper', 'd-flex');
+}
+
+function classlistToggle(id, toggle) {
+  document.getElementById(id).classList.toggle(toggle);
+}
+
+function classlistAdd(id, add) {
+  document.getElementById(id).classList.add(add);
+}
+
+function classlistRemove(id, remove) {
+  document.getElementById(id).classList.remove(remove);
 }
 
 function classlistRemoveAndAdd(id, remove, add) {
@@ -166,12 +199,25 @@ async function deleteContact(i) {
   deleteUnusedLetter(i);
   contacts.splice(i, 1);
 
+  if (window.innerWidth < 800) {
+    closeChangesMenuMobile();
+  }
+
   await saveContacts();
   document.getElementById('contact-info').innerHTML = '';
   init();
 
-  let bannerContactDeleted = document.getElementById('banner-contact-deleted');
-  animateBannerContacts(bannerContactDeleted);
+  selectBannerDeleted();
+}
+
+function selectBannerDeleted() {
+  if (window.innerWidth > 800) {
+    let bannerContactDeleted = document.getElementById('banner-contact-deleted');
+    animateBannerContacts(bannerContactDeleted);
+  } else {
+    let bannerContactDeletedMobile = document.getElementById('banner-contact-deleted-mobile');
+    animateBannerContacts(bannerContactDeletedMobile);
+  }
 }
 
 function deleteUnusedLetter(i) {

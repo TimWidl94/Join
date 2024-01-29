@@ -106,6 +106,9 @@ p {
 .d-none {
   display: none !important; }
 
+.d-flex {
+  display: flex !important; }
+
 h1 {
   color: #000;
   text-align: center;
@@ -356,7 +359,7 @@ span {
   top: 98px;
   left: 232px;
   display: inline-flex;
-  width: 352px;
+  width: calc(400px - 2 * 24px);
   padding: 32px 24px;
   flex-direction: column;
   align-items: center;
@@ -391,9 +394,25 @@ span {
 .add-new-contact:hover {
   background: #29abe2; }
 
-.addContactMobile {
+#back-to-contact-list {
+  display: none;
   position: absolute;
-  bottom: 112px; }
+  top: 150px;
+  right: 32px;
+  border: none;
+  background-color: unset;
+  cursor: pointer; }
+
+#back-to-contact-list img {
+  width: 40px;
+  height: 40px; }
+
+#addContactMobile,
+#optionsContactMobile {
+  display: none;
+  position: absolute;
+  bottom: 112px;
+  right: 32px; }
 
 /* Start-Letter-Container */
 #contact-list-container {
@@ -555,7 +574,20 @@ h2 {
   display: flex;
   gap: 16px; }
 
-.changesMobile {
+#changesMobileWrapper {
+  display: none;
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0; }
+
+#changesMobile {
+  position: absolute;
+  bottom: 108px;
+  right: 32px;
+  transform: translate(200px);
   display: inline-flex;
   padding: 10px;
   flex-direction: column;
@@ -564,7 +596,7 @@ h2 {
   background: #fff;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25); }
 
-.changesMobile div {
+#changesMobile div {
   display: flex;
   width: 96px;
   padding: 8px;
@@ -577,7 +609,7 @@ h2 {
   gap: 8px; }
 
 .changes div:hover,
-.changesMobile div:hover {
+#changesMobile div:hover {
   cursor: pointer;
   color: #29abe2 !important; }
 
@@ -1011,7 +1043,15 @@ h2 {
 
 @media (max-width: 800px) {
   .wrapper-contact-info {
-    display: none; }
+    display: none;
+    padding-left: unset;
+    margin-left: unset;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 48px; }
+  .contact-info-headline {
+    margin-top: unset;
+    padding-right: 120px; }
   .wrapper-contact-list {
     top: 90px;
     bottom: 84px;
@@ -1035,16 +1075,17 @@ h2 {
     display: flex !important; }
   .menuMobile {
     display: flex !important; }
-  .addContactMobile {
-    display: flex !important;
-    right: 32px; } }
+  #addContactMobile {
+    display: flex; } }
 
 @media (max-width: 450px) {
   .wrapper-contact-list {
     padding: 24px 12px;
     width: calc(100% - 2 * 12px); }
   .contact-list-basic-info {
-    padding: 15px 12px; } }
+    padding: 15px 12px; }
+  .start-letter {
+    padding: 17px 24px; } }
 
 @media (max-width: 375px) {
   .wrapper-contact-list {
@@ -1054,7 +1095,9 @@ h2 {
     padding: 15px 6px;
     gap: 20px; }
   .contacts-by-start-letter {
-    width: calc(100% + 2 * 24px); } }
+    width: calc(100% + 2 * 24px); }
+  .start-letter {
+    padding: 17px 18px; } }
 
 .flex-start {
   justify-content: flex-start; }

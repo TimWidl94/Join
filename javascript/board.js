@@ -28,9 +28,10 @@ let todos = [
 let currentDraggedElement;
 
 
- function init(){
-    loadData();
-    loadUser();
+ async function init(){
+    await loadData();
+    await loadUser();
+    setUserInitials();
     updateHTML();
 } 
 

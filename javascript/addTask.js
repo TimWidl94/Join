@@ -3,33 +3,33 @@ async function init() {
   await loadUser();
   setUserInitials();
   showTaskForm();
-  setColorToAktive("sidebarAddTask");
+  setColorToActive('sidebarAddTask');
 }
 let tasks = [{}];
 /*Popup function */
 
 function openAddTaskPopup() {
-  document.getElementById("addTaskPopup").classList.remove("d-none");
-  document.getElementById("addTaskPopup").classList.add("slide-in");
+  document.getElementById('addTaskPopup').classList.remove('d-none');
+  document.getElementById('addTaskPopup').classList.add('slide-in');
 }
 
 function closeAddTaskPopup() {
-  let addTaskPopup = document.getElementById("addTaskPopup");
-  addTaskPopup.classList.remove("slide-in");
-  addTaskPopup.classList.add("slide-out");
+  let addTaskPopup = document.getElementById('addTaskPopup');
+  addTaskPopup.classList.remove('slide-in');
+  addTaskPopup.classList.add('slide-out');
 
   setTimeout(function () {
-    addTaskPopup.classList.remove("slide-out");
-    addTaskPopup.classList.add("d-none");
+    addTaskPopup.classList.remove('slide-out');
+    addTaskPopup.classList.add('d-none');
   }, 900);
 }
 
 function addTask() {
-  let taskTitle = document.getElementById("taskTitle").value;
-  let taskDescription = document.getElementById("taskDescription").value;
-  let taskDueDate = document.getElementById("myDateInput").value; // braucht noch funktion dass vergangene Tage nicht anklickbar sind
+  let taskTitle = document.getElementById('taskTitle').value;
+  let taskDescription = document.getElementById('taskDescription').value;
+  let taskDueDate = document.getElementById('myDateInput').value; // braucht noch funktion dass vergangene Tage nicht anklickbar sind
   // prio muss noch hinzugefügt werden
-  let categorySelect = document.getElementById("category-options");
+  let categorySelect = document.getElementById('category-options');
   let selectedCategory = categorySelect.value;
   tasks.push({
     taskTitle: taskTitle,
@@ -41,9 +41,9 @@ function addTask() {
 }
 
 function addSubTask() {
-  let subTaskContainer = document.getElementById("subTaskContainer");
-  let subTaskInput = document.getElementById("subTaskInput").value;
-  let subTaskError = document.getElementById("subTaskError");
+  let subTaskContainer = document.getElementById('subTaskContainer');
+  let subTaskInput = document.getElementById('subTaskInput').value;
+  let subTaskError = document.getElementById('subTaskError');
   if (subTaskInput == 0) {
     subTaskError.innerHTML = /*HTML*/ `
     Subtask bitte bei Bedarf hinzufügen.`;
@@ -51,17 +51,14 @@ function addSubTask() {
     subTaskError.innerHTML = /*HTML*/ ``;
     tasks.push({
       subTaskInput: subTaskInput,
-      
     });
-    document.getElementById("subTaskInput").value = "";
+    document.getElementById('subTaskInput').value = '';
 
     //need iteration
     subTaskContainer.innerHTML += /*HTML*/ `<div id="" class="subtask-div-list">${subTaskInput}
     <div><img class="subtask-div-btn" onclick="editSubTask()" src="./assets/img/icons/edit.svg" alt="">
     <img class="subtask-div-btn" onclick="deleteSubTask()" src="./assets/img/icons/delete.svg" alt=""></div>
-    </div>`
-     
-    ;
+    </div>`;
   }
   //add lear input
   //push into array is missing
@@ -73,7 +70,7 @@ function deleteSubTask() {}
 function editSubTask() {}
 
 function showTaskForm() {
-  let assignedTo = document.getElementById("assignedTo");
+  let assignedTo = document.getElementById('assignedTo');
 
   assignedTo.innerHTML = /*html*/ `
     <select name="assigned" id="assignedDropdown">
@@ -83,7 +80,7 @@ function showTaskForm() {
   for (let i = 0; i < users.length; i++) {
     let currentUser = users[i].username;
 
-    let assignedDropdown = document.getElementById("assignedDropdown");
+    let assignedDropdown = document.getElementById('assignedDropdown');
     assignedDropdown.innerHTML += /*html*/ `
       <option value="">${currentUser}</option>`;
   }

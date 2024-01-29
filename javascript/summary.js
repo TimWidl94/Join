@@ -4,4 +4,4 @@ async function init() {
   await loadData();
   loadUser();
   setUserInitials();
-  setColorToAktive("sidebarSummary");
+  setColorToActive("sidebarSummary");

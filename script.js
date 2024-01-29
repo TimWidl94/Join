@@ -16,7 +16,8 @@ function showMenu() {
 }
 
 function setUserInitials() {
-  if (user) {
+  let x = user;
+  if (user > -1) {
     // let name = users[user].name;
     console.log('users:', users);
     console.log('user:', user);
@@ -24,7 +25,7 @@ function setUserInitials() {
     console.log('No user found!');
   }
 
-  let acronym = getFirstLetters(users[user].name);
+  let acronym = getFirstLetters(users[x]["username"]);
   let content = document.getElementById('topbar-user');
   content.innerHTML = '';
   content.innerHTML = /*html*/ `
@@ -64,7 +65,13 @@ function selectSidebar() {
 }
 
 
+
 function setColorToAktive(id){
   let button = document.getElementById(id);
   button.classList.add("active");
 }
+
+function getFirstLetters(str) {
+  return str.split(/\s/).reduce((response, word) => (response += word.slice(0, 1)), '');
+}
+

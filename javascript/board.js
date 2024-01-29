@@ -33,6 +33,7 @@ let currentDraggedElement;
     await loadUser();
     await updateHTML();
     await includeHTML()
+    setUserInitials();
     setColorToAktive("sidebarBoard");
 } 
 

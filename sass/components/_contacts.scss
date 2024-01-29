@@ -836,7 +836,7 @@ h2 {
   .wrapper-contact-list {
     top: 90px;
     bottom: 84px;
-    height: calc(100vh - 90px - 84px - 2 * 32px);
+    height: calc(100vh - 90px - 84px - 2 * 24px);
     padding: 24px 24px;
     width: calc(100% - 2 * 24px);
   }
@@ -879,6 +879,7 @@ h2 {
 @media (max-width: 450px) {
   .wrapper-contact-list {
     padding: 24px 12px;
+    width: calc(100% - 2 * 12px);
   }
 
   .contact-list-basic-info {
@@ -886,12 +887,18 @@ h2 {
   }
 }
 
-@media (max-width: 385px) {
+@media (max-width: 375px) {
   .wrapper-contact-list {
     padding: 24px 6px;
+    width: calc(100% - 2 * 6px);
   }
 
   .contact-list-basic-info {
     padding: 15px 6px;
+    gap: 20px;
+  }
+
+  .contacts-by-start-letter {
+    width: calc(100% + 2 * 24px);
   }
 }

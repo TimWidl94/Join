@@ -6,6 +6,7 @@ async function init() {
   await loadUser();
   setUserInitials();
   render();
+  setColorToAktive("sidebarContacts");
 }
 
 function render() {

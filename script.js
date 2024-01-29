@@ -64,6 +64,14 @@ function selectSidebar() {
   }
 }
 
+
+
+function setColorToAktive(id){
+  let button = document.getElementById(id);
+  button.classList.add("active");
+}
+
 function getFirstLetters(str) {
   return str.split(/\s/).reduce((response, word) => (response += word.slice(0, 1)), '');
 }
+

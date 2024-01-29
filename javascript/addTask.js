@@ -3,6 +3,7 @@ async function init() {
   await loadUser();
   setUserInitials();
   showTaskForm();
+  setColorToAktive("sidebarAddTask");
 }
 let tasks = [{}];
 /*Popup function */

@@ -31,8 +31,10 @@ let currentDraggedElement;
  async function init(){
     await loadData();
     await loadUser();
+    await updateHTML();
+    await includeHTML()
     setUserInitials();
-    updateHTML();
+    setColorToAktive("sidebarBoard");
 } 
 
 function openAddTaskPopup() {

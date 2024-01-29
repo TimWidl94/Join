@@ -6,12 +6,12 @@
     <title>Add Task</title>
     <link rel="stylesheet" href="./css/style.css" />
     <script src="includeHTML.js"></script>
+    <script src="./script.js"></script>
     <script src="./javascript/loadData.js"></script>
     <script src="./javascript/addTask.js"></script>
-    <script src="./script.js"></script>
     <link rel="icon" type="image/x-icon" href="assets/img/Global/join_logo_black.svg" />
   </head>
-  <body onload="includeHTML(), init(), addTask()">
+  <body onload="includeHTML(), init()">
     <div w3-include-html="sidebar.html"></div>
     <div w3-include-html="topbar.html"></div>
 
@@ -29,14 +29,8 @@
           <textarea id="taskDescription" placeholder="Enter a description"></textarea>
         </div>
 
+        <p>Assigned to</p>
         <div id="assignedTo">
-          <p>Assigned to</p>
-          <select name="assigned" id="assigned">
-<!--        <option value="1">Select contacts to assign</option>
-            <option>Verena Schranz</option>
-            <option>Tim Widl</option>
-            <option>Christian Grund</option> -->
-          </select>
         </div>
 
         <div id="requirement">
@@ -47,9 +41,9 @@
       <div class="vertical-line-add-task"></div>
 
       <section class="container-right">
+        <p>Due Date<span>*</span></p>
         <div id="due-date">
-          <p>Due Date<span>*</span></p>
-          <input required type="date" />
+          <input id="myDateInput" required type="date" />
         </div>
 
         <div class="priority">
@@ -59,7 +53,7 @@
               <p>Urgent</p>
               <img src="assets/img/AddTask/ArrowUpPrioSign.svg" alt="Prio High" />
             </div>
-            <div>
+            <div class="selected medium">
               <p>Medium</p>
               <img src="assets/img/AddTask/MediumPrioSign.svg" alt="Prio Medium" />
             </div>
@@ -73,7 +67,9 @@
         <div class="category">
           <p>Category<span>*</span></p>
           <select id="category-options">
-            <option>Select contacts to assign</option>
+            <option>Select task category</option>
+            <option value="user-story">User Story</option>
+            <option value="other">Other</option>
 
           </select>
         </div>
@@ -81,8 +77,11 @@
         <div id="subtasks">
           <p>Subtasks</p>
           <div class="inputFieldBox">
-            <input type="text" placeholder="Add new subtask" />
-            <img class="inputImgPlus" src="assets/img/AddTask/plus.svg" alt="Add Icon" />
+            <input id="subTaskInput" type="text" placeholder="Add new subtask" />
+            <img onclick="addSubTask()" class="inputImgPlus" src="assets/img/AddTask/plus.svg" alt="Add Icon" />
+          </div>
+          <div id="subTaskError" class="subtask-div-error"></div>
+          <div id="subTaskContainer" class="subtask-div">
           </div>
         </div>
 
@@ -90,7 +89,7 @@
           <button id="clear" class="buttonWhite">
             Clear <img src="assets/img/AddTask/cancel.svg" alt="Clear Icon"
           /></button>
-          <button id="create-task" class="buttonGrey">
+          <button onclick="addTask()" id="create-task" class="buttonGrey">
             Create Task <img src="assets/img/AddTask/check_white.svg" alt="Check Icon"
           /></button>
         </div>

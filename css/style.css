@@ -1594,10 +1594,6 @@ footer {
   gap: 16px;
   position: relative; }
 
-.blueUnderline {
-  position: absolute;
-  bottom: 0; }
-
 .acceptPrivacyGrey {
   font-size: 16px;
   font-style: normal;
@@ -1680,7 +1676,25 @@ footer {
   left: 357.17px;
   top: 95px; }
 
-@media (max-width: 1000px) {
+.inputRequired {
+  border-color: #ff3d00; }
+
+.passwordDontMatch {
+  display: flex;
+  align-items: start;
+  justify-content: start;
+  color: #ff3d00;
+  font-size: 12px;
+  width: 100%;
+  height: 16px; }
+
+.padding-none {
+  padding: 0; }
+
+.paddingBtm16 {
+  padding-bottom: 16px; }
+
+@media (max-width: 800px) {
   .loginScreenBody {
     width: 396px;
     padding: 32px 0px; }
@@ -1998,6 +2012,14 @@ input[type='checkbox']:checked + label {
   width: 16px;
   display: inline-block;
   background-size: 100%; }
+
+input:focus {
+  border-color: #29abe2 !important;
+  outline: none; }
+
+.inputFokusError:focus {
+  border-color: #ff3d00 !important;
+  outline: none; }
 
 .buttonGrey {
   display: flex;

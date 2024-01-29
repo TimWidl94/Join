@@ -17,13 +17,6 @@ function showMenu() {
 
 function setUserInitials() {
   let x = user;
-  if (user > -1) {
-    // let name = users[user].name;
-    console.log('users:', users);
-    console.log('user:', user);
-  } else {
-    console.log('No user found!');
-  }
 
   let acronym = getFirstLetters(users[x]['username']);
   let content = document.getElementById('topbar-user');

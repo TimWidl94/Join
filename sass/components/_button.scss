@@ -130,7 +130,7 @@ input[type='checkbox']:checked + label {
 
 .buttonWhiteWithImgMobile {
   display: flex;
-  width: 136px;
+  width: fit-content;
   height: 61px;
   padding: 18px 10px;
   justify-content: center;

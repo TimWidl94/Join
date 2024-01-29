@@ -44,6 +44,16 @@ input[type='checkbox']:checked + label {
   background-size: 100%;
 }
 
+input:focus{
+  border-color: $secondary-color !important;
+  outline: none;
+}
+
+.inputFokusError:focus{
+  border-color: $error-red !important;
+  outline: none;
+}
+
 .buttonGrey {
   display: flex;
   text-align: center;

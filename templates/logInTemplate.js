@@ -38,14 +38,14 @@ function logInHtml() {
 
 function signupHtml() {
   return /*html*/ `
-    <form action="" id="signUpBody" class="signUpBody" onsubmit="signUp(), return false">
+    <form action="" id="signUpBody" class="signUpBody" onsubmit="signUp(); return false">
       <img src="./assets/img/icons/blueArrowLeft.svg" class="arrowLeftIcon" onclick="loadLogIn()">   
       <div class="h1Box dp-flex fd-colum">
           <h1>Sign up</h1>
           <img src="./assets/img/icons/blueUnderline.svg" alt="" class="blueUnderline" />
       </div>
       <div class="dp-flex fd-colum">
-          <div class="inputFieldContainerSignUp">
+          <div class="inputFieldContainerSignUp" id="inputFieldContainerSignUp">
               <div class="inputFieldBox">
                   <input type="text" class="inputField" placeholder="Name" id="userName" autocomplete="on" required/>
                   <img src="./assets/img/icons/person.svg" alt="" class="inputImgMail" />
@@ -59,10 +59,11 @@ function signupHtml() {
                   <img src="./assets/img/icons/lock.svg" alt="" class="inputImgLock1" id="signUpPasswordIcon1" onclick="toggleShowPassword('passwordSignUp', 'signUpPasswordIcon1')"/>
               </div>
               <div class="inputFieldBox">
-                  <input type="password" class="inputField" placeholder="Confirm Password" id="checkPasswordSignUp" autocomplete="on" required/>
+                  <input type="password" class="inputField" placeholder="Confirm Password" id="checkPasswordSignUp" autocomplete="on" required onkeyup="checkMatchPassword();"/>
                   <img src="./assets/img/icons/lock.svg" alt="" class="inputImgLock1" id="signUpPasswordIcon2" onclick="toggleShowPassword('checkPasswordSignUp', 'signUpPasswordIcon2')" />
-              </div>
+              </div> 
           </div>
+          <div class="passwordDontMatch d-none" id="passwordDontMatch">Ups! your password don't match</div>
       </div>
       <div class="checkboxPrivacyPolicy dp-flex">
               <input type="checkbox" id="checkboxPrivatPolicy" name="checkboxPrivatPolicy" class="checkboxSavePassword"/>

@@ -62,3 +62,9 @@ function selectSidebar() {
     });
   }
 }
+
+
+function setColorToAktive(id){
+  let button = document.getElementById(id);
+  button.classList.add("active");
+}

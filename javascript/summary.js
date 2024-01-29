@@ -1,4 +1,6 @@
 async function init() {
-    await loadData();
-    loadUser();
-  }
+  await includeHTML();
+  await loadData();
+  loadUser();
+  setColorToAktive("sidebarSummary");
+}

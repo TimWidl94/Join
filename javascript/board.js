@@ -28,10 +28,12 @@ let todos = [
 let currentDraggedElement;
 
 
- function init(){
-    loadData();
-    loadUser();
-    updateHTML();
+ async function init(){
+    await loadData();
+    await loadUser();
+    await updateHTML();
+    await includeHTML()
+    setColorToAktive("sidebarBoard");
 } 
 
 function openAddTaskPopup() {

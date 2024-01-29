@@ -5,3 +5,4 @@ async function init() {
   loadUser();
   setUserInitials();
   setColorToAktive("sidebarSummary");}
+

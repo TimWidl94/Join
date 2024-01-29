@@ -25,7 +25,7 @@ function setUserInitials() {
     console.log('No user found!');
   }
 
-  let acronym = getFirstLetters(users[x]["username"]);
+  let acronym = getFirstLetters(users[x]['username']);
   let content = document.getElementById('topbar-user');
   content.innerHTML = '';
   content.innerHTML = /*html*/ `
@@ -64,14 +64,17 @@ function selectSidebar() {
   }
 }
 
-
-
-function setColorToAktive(id){
-  let button = document.getElementById(id);
-  button.classList.add("active");
+function setColorToActive(id1, id2, id3, id4) {
+  let textSidebar = document.getElementById(id1);
+  textSidebar.classList.add('active');
+  let imageSidebar = document.getElementById(id2);
+  imageSidebar.classList.add('filter-white');
+  let textBottombar = document.getElementById(id3);
+  textBottombar.classList.add('active');
+  let imageBottombar = document.getElementById(id4);
+  imageBottombar.classList.add('filter-white');
 }
 
 function getFirstLetters(str) {
   return str.split(/\s/).reduce((response, word) => (response += word.slice(0, 1)), '');
 }
-

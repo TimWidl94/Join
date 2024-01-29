@@ -112,10 +112,15 @@ h1 {
   font-family: 'Inter', sans-serif;
   font-size: 61px;
   font-style: normal;
-  font-weight: 700; }
+  font-weight: 700;
+  margin: 0; }
 
 .gap9 {
   gap: 8px; }
+
+@media (max-width: 1000px) {
+  h1 {
+    font-size: 47px; } }
 
 @font-face {
   font-family: 'Inter', sans-serif;
@@ -1289,7 +1294,6 @@ h2 {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  width: 100vw;
   height: 100vh; }
 
 .loginScreenBody {
@@ -1297,8 +1301,7 @@ h2 {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  width: 422px;
-  height: 397px;
+  max-width: 422px;
   padding: 48px 115px 48px 115px;
   border-radius: 30px;
   gap: 32px;
@@ -1498,6 +1501,38 @@ footer {
   top: 3.23px;
   left: 357.17px;
   top: 95px; }
+
+@media (max-width: 1000px) {
+  .loginScreenBody {
+    width: 396px;
+    padding: 32px 0px; }
+  .inputField {
+    width: calc(396px - 80px); }
+  .JoinLogoSmall {
+    width: 64px;
+    height: 78.031px;
+    top: 37px;
+    left: 38px; }
+  .headerRightBox {
+    position: absolute;
+    top: 83%;
+    left: 50%;
+    transform: translate(-50%); }
+  .signUpBody {
+    width: 396px;
+    padding: 32px 0px; }
+  .checkboxPrivacyPolicy {
+    padding: 32px, 0px; }
+  .h1Box {
+    width: 173px; }
+  .arrowLeftIcon {
+    width: 21.33px !important;
+    height: 20.74px !important; }
+  .ButtonBox {
+    flex-direction: column;
+    gap: 21px; }
+  .buttonLogin {
+    width: 180px; } }
 
 .main {
   position: absolute;

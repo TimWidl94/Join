@@ -29,6 +29,7 @@ async function signUp() {
       checkPassword: checkPasswordSignUp.value,
     });
     await setItem("users", JSON.stringify(users));
+
     loadLogIn();
     showAnimation("signedUpMassage");
   } else {
@@ -43,6 +44,7 @@ async function loadUser() {
   if (searchForEmail(email, password)) {
     await rememberMe();
     let user = await setUser(email);
+    // 
     window.location.href = "./summary.html";
   }
 }

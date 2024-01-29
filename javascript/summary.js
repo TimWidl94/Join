@@ -1,4 +1,5 @@
 async function init() {
     await loadData();
-    loadUser();
+    await loadUser();
+    setUserInitials();
   }

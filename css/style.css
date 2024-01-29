@@ -196,7 +196,7 @@ span {
   position: relative;
   display: inline-block; }
 
-#assigned {
+#assignedDropdown {
   padding: 12px 16px;
   width: 100%;
   border-radius: 10px;
@@ -300,6 +300,27 @@ span {
   background-position: right 8px top 50%, 0 0;
   background-size: 32px, 100%; }
 
+.subtask-div {
+  display: flex;
+  justify-content: space-between;
+  margin: 5px 10px;
+  flex-direction: column; }
+  .subtask-div-btn {
+    cursor: pointer;
+    padding: 5px; }
+    .subtask-div-btn:hover {
+      background: #a8a8a8;
+      border-radius: 50%; }
+  .subtask-div-list {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center; }
+  .subtask-div-error {
+    color: #ff3d00;
+    font-size: 12px; }
+
 #subtasks {
   display: flex;
   flex-direction: column;
@@ -327,7 +348,11 @@ span {
   top: 11px;
   right: 12px;
   width: 24px;
-  height: 24px; }
+  height: 24px;
+  cursor: pointer; }
+  .inputImgPlus:hover {
+    background: #a8a8a8;
+    border-radius: 50%; }
 
 .btns-down-right-add-task {
   display: inline-flex;

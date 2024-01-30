@@ -71,13 +71,13 @@ function getFirstLetters(str) {
 }
 
 function openContactInfo(i) {
-  console.log('openContactInfo i:', i);
   let contact = contacts[i];
   let acronym = getFirstLetters(contact.name);
   const color = setBackgroundColor(i);
   let content = document.getElementById('contact-info');
   content.innerHTML = '';
   content.innerHTML += openContactInfoHTML(contact, acronym, color, i);
+  classlistAdd('wrapper-contact-info', 'show-overlay-menu');
   if (window.innerWidth < 800) {
     toggleContactInfoMobile();
   }
@@ -252,9 +252,11 @@ async function animateBannerContacts(idDesktop, idMobile) {
     banner = document.getElementById(idMobile);
   }
 
-  banner.style = 'display: flex';
-  await timeOut(2000);
-  banner.style = 'display: none';
+  console.log('banner:', banner);
+
+  classlistAdd('banner', 'show-overlay-menu-y');
+  // await timeOut(2000);
+  // classlistRemove('banner', 'show-overlay-menu-y');
 }
 
 function toggleBackground(i) {

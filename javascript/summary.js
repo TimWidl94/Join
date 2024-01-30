@@ -3,5 +3,5 @@ async function init() {
   await loadData();
   loadUser();
   setUserInitials();
-  setColorToAktive('sidebarSummary', 'summary-img', 'bottomBarSummaryMobile', 'summaryImgMobile');
+  setColorToActive('sidebarSummary', 'summary-img', 'bottomBarSummaryMobile', 'summaryImgMobile');
 }

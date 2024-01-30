@@ -4,6 +4,7 @@ body {
   margin: 0;
   background-color: #f6f7f8;
   font-family: 'Inter', sans-serif;
+  overflow: hidden;
 }
 
 p {
@@ -43,4 +44,8 @@ h1 {
   h1 {
     font-size: 47px;
   }
+}
+
+.overflowHidden{
+  overflow: hidden;
 }

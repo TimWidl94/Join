@@ -29,12 +29,26 @@ async function signUp() {
       checkPassword: checkPasswordSignUp.value,
     });
     await setItem("users", JSON.stringify(users));
+
     loadLogIn();
     showAnimation("signedUpMassage");
   } else {
     showAnimation("acceptPrivacyPolicy");
   }
 }
+
+function checkMatchPassword(){
+  if(document.getElementById('passwordSignUp').value === document.getElementById('checkPasswordSignUp').value){
+    document.getElementById('checkPasswordSignUp').classList.remove('inputRequired');
+    document.getElementById('passwordDontMatch').classList.add('d-none');
+    document.getElementById('inputFieldContainerSignUp').classList.remove('padding-none');
+  } else {
+    document.getElementById('checkPasswordSignUp').classList.add('inputRequired');
+    document.getElementById('passwordDontMatch').classList.remove('d-none');
+    document.getElementById('inputFieldContainerSignUp').classList.add('padding-none');
+  }
+}
+
 
 async function loadUser() {
   let email = document.getElementById("email").value;
@@ -43,6 +57,7 @@ async function loadUser() {
   if (searchForEmail(email, password)) {
     await rememberMe();
     let user = await setUser(email);
+    // 
     window.location.href = "./summary.html";
   }
 }
@@ -77,6 +92,7 @@ function resetForm() {
 function logInGuest() {
   let email = "Guest@web.de";
   let password = "admin123";
+  user.push(1)
   if (searchForEmail(email, password)) {
     window.location.href = "./summary.html";
   }

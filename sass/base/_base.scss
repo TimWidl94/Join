@@ -1,7 +1,5 @@
 @import '../base/_colors';
 
-
-
 body {
   margin: 0;
   background-color: #f6f7f8;
@@ -22,6 +20,10 @@ p {
   display: none !important;
 }
 
+.d-flex {
+  display: flex !important;
+}
+
 h1 {
   color: #000;
   text-align: center;
@@ -37,9 +39,8 @@ h1 {
   gap: 8px;
 }
 
-@media (max-width: 1000px){
-  h1{
+@media (max-width: 1000px) {
+  h1 {
     font-size: 47px;
   }
 }
-

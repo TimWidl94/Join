@@ -16,15 +16,9 @@ function showMenu() {
 }
 
 function setUserInitials() {
-  if (user) {
-    // let name = users[user].name;
-    console.log('users:', users);
-    console.log('user:', user);
-  } else {
-    console.log('No user found!');
-  }
+  let x = user;
 
-  let acronym = getFirstLetters(users[user].name);
+  let acronym = getFirstLetters(users[x]['username']);
   let content = document.getElementById('topbar-user');
   content.innerHTML = '';
   content.innerHTML = /*html*/ `
@@ -61,4 +55,19 @@ function selectSidebar() {
       console.log('classlist set');
     });
   }
+}
+
+function setColorToActive(id1, id2, id3, id4) {
+  let textSidebar = document.getElementById(id1);
+  textSidebar.classList.add('active');
+  let imageSidebar = document.getElementById(id2);
+  imageSidebar.classList.add('filter-white');
+  let textBottombar = document.getElementById(id3);
+  textBottombar.classList.add('active');
+  let imageBottombar = document.getElementById(id4);
+  imageBottombar.classList.add('filter-white');
+}
+
+function getFirstLetters(str) {
+  return str.split(/\s/).reduce((response, word) => (response += word.slice(0, 1)), '');
 }

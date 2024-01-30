@@ -60,17 +60,20 @@ a {
 }
 
 // --- Menu Mobile --- //
-
 .menuMobile {
+  position: absolute;
+  left: 0;
+  bottom: 0;
   display: flex;
-  width: 428px;
-  height: 80px;
-  padding: 2px 16px;
   justify-content: space-between;
   align-items: center;
   flex-shrink: 0;
+  width: calc(100% - 2 * 16px);
+  height: 80px;
+  padding: 2px 16px;
   background: $primary-color;
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
+  z-index: 2;
 }
 
 .menuCategoryMobile {
@@ -138,6 +141,11 @@ a {
 }
 
 .active-img {
+  filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(7500%) hue-rotate(229deg) brightness(108%)
+    contrast(98%);
+}
+
+.filter-white {
   filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(7500%) hue-rotate(229deg) brightness(108%)
     contrast(98%);
 }

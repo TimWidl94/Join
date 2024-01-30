@@ -115,13 +115,7 @@ function addAssignedContact() {
   }
 }
 
-function deleteSelectedContact(Number) {
-  selectedContacts.splice(Number, 1);
-  addAssignedContact = document.getElementById('assignedAddedContact');
-  for (let index = 0; index < selectedContacts.length; index++) {
-    let index = selectedContacts.length -1;
-  }
-}
+
 function renderSelectedContacts() {
   let content = document.getElementById('assignedAddedContact');
   content.innerHTML = '';
@@ -130,12 +124,17 @@ function renderSelectedContacts() {
     const contact = selectedContacts[i];
     const initials = getInitials(contact);
     setBackgroundColor();
-    content.innerHTML += `<div class="assinged-contact-profile selected-profile" style="background-color: ${setBackgroundColor(i)};onclick="deleteSelectedContact(${i})">${initials}</div>`;
+    content.innerHTML += `<div class="assinged-contact-profile selected-profile" style="background-color: ${setBackgroundColor(i)}"; onclick="deleteSelectedContact(${i})">${initials}</div>`;
   }
 }
 
 function setBackgroundColor(i) {
   return contactColors[i % contactColors.length];
+}
+
+function deleteSelectedContact(i) {
+  selectedContacts.splice(i, 1);
+  renderSelectedContacts();
 }
 
 function getInitials(contact) {

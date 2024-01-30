@@ -4,7 +4,7 @@ let letters = [];
 async function init() {
   await loadData();
   await loadUser();
-  setUserInitials();
+  // setUserInitials();
   render();
   setColorToActive('sidebarContacts', 'contacts-img', 'bottomBarContactsMobile', 'contactsImgMobile');
 }
@@ -71,6 +71,7 @@ function getFirstLetters(str) {
 }
 
 function openContactInfo(i) {
+  console.log('openContactInfo i:', i);
   let contact = contacts[i];
   let acronym = getFirstLetters(contact.name);
   const color = setBackgroundColor(i);
@@ -117,27 +118,32 @@ function classlistRemoveAndAdd(id, remove, add) {
   document.getElementById(id).classList.add(add);
 }
 
-async function addContact() {
-  renderAddContactForm();
-  let name = document.getElementById('add-name');
-  let mail = document.getElementById('add-mail');
-  let tel = document.getElementById('add-tel');
+async function addContact(target) {
+  let name = document.getElementById(`add-name-${target}`);
+  let mail = document.getElementById(`add-mail-${target}`);
+  let tel = document.getElementById(`add-tel-${target}`);
 
   contacts.push({ name: firstLettersUppercase(name.value), mail: mail.value, phone: tel.value });
 
-  saveContacts();
-  classlistRemoveAndAdd('add-contact-wrapper', 'd-block', 'd-none');
+  await saveContacts();
 
+  closePopup('add-contact-wrapper', 'add-contact-wrapper-mobile');
+  let index = findContactIndex(name.value);
+  openContactInfo(index);
   clearPopup(name, mail, tel);
 
-  let bannerContactAdded = document.getElementById('banner-contact-created');
-  await animateBannerContacts(bannerContactAdded);
-
-  console.log('Test12345');
-  init();
+  await animateBannerContacts('banner-contact-created', 'banner-contact-created-mobile');
+  await init();
 }
 
-function renderAddContactForm() {}
+function findContactIndex(name) {
+  return contacts.findIndex((obj) => obj.name.toLowerCase() === name.toLowerCase());
+}
+
+function closePopup(id1, id2) {
+  classlistRemoveAndAdd(id1, 'd-block', 'd-none');
+  classlistRemoveAndAdd(id2, 'd-block', 'd-none');
+}
 
 function firstLettersUppercase(str) {
   let splitStr = '';
@@ -162,39 +168,59 @@ function doNotClose(event) {
   event.stopPropagation();
 }
 
-function editContact(i) {
+function editContact(i, target) {
   let acronym = getFirstLetters(contacts[i].name);
   const color = setBackgroundColor(i);
-  let content = document.getElementById('edit-contact-wrapper');
-  content.innerHTML = editContactHTML(acronym, color, i);
+  renderEditContactDesktopOrMobile(acronym, color, i);
+  console.log('target:', target);
 
-  let name = document.getElementById('edit-name');
-  let mail = document.getElementById('edit-mail');
-  let tel = document.getElementById('edit-tel');
+  let name1 = document.getElementById(`edit-name-${target}`);
+  let mail = document.getElementById(`edit-mail-${target}`);
+  let tel = document.getElementById(`edit-tel-${target}`);
 
-  name.value = contacts[i].name;
+  name1.value = contacts[i].name;
   mail.value = contacts[i].mail;
   tel.value = contacts[i].phone;
+  if (target == 'desktop') {
+    classlistRemoveAndAdd('edit-contact-wrapper', 'd-none', 'd-block');
+  } else {
+    classlistRemoveAndAdd('edit-contact-wrapper-mobile', 'd-none', 'd-block');
+  }
+}
 
-  classlistRemoveAndAdd('edit-contact-wrapper', 'd-none', 'd-block');
+function renderEditContactDesktopOrMobile(acronym, color, i) {
+  if (window.innerWidth > 800) {
+    let contentDesktop = document.getElementById('edit-contact-wrapper');
+    contentDesktop.innerHTML = editContactDesktopHTML(acronym, color, i);
+  } else {
+    let contentMobile = document.getElementById('edit-contact-wrapper-mobile');
+    contentMobile.innerHTML = editContactMobileHTML(acronym, color, i);
+  }
 }
 
 function validatePhoneNumber(input) {
   input.value = input.value.replace(/[^\d+\/\s-]/g, '');
 }
 
-function saveEditedContact(i) {
+async function saveEditedContact(i, target) {
   deleteUnusedLetter(i);
-  let name = document.getElementById('edit-name');
-  let mail = document.getElementById('edit-mail');
-  let tel = document.getElementById('edit-tel');
+  let name = document.getElementById(`edit-name-${target}`);
+  let mail = document.getElementById(`edit-mail-${target}`);
+  let tel = document.getElementById(`edit-tel-${target}`);
   contacts[i].name = firstLettersUppercase(name.value);
   contacts[i].mail = mail.value;
   contacts[i].phone = tel.value;
 
-  saveContacts();
-  classlistRemoveAndAdd('edit-contact-wrapper', 'd-block', 'd-none');
+  console.log('target:', target);
+
+  // if (target == 'desktop') {
+  //   classlistRemoveAndAdd('edit-contact-wrapper', 'd-block', 'd-none');
+  // } else {
+  //   classlistRemoveAndAdd('edit-contact-wrapper-mobile', 'd-block', 'd-none');
+  // }
+  await saveContacts();
   init();
+  openContactInfo(i);
 }
 
 async function deleteContact(i) {
@@ -203,35 +229,29 @@ async function deleteContact(i) {
 
   if (window.innerWidth < 800) {
     closeChangesMenuMobile();
+    toggleContactInfoMobile();
   }
 
   await saveContacts();
   document.getElementById('contact-info').innerHTML = '';
   init();
 
-  selectBannerDeleted();
-}
-
-function selectBannerDeleted() {
-  if (window.innerWidth > 800) {
-    let bannerContactDeleted = document.getElementById('banner-contact-deleted');
-    animateBannerContacts(bannerContactDeleted);
-  } else {
-    let bannerContactDeletedMobile = document.getElementById('banner-contact-deleted-mobile');
-    animateBannerContacts(bannerContactDeletedMobile);
-  }
+  animateBannerContacts('banner-contact-deleted', 'banner-contact-deleted-mobile');
 }
 
 function deleteUnusedLetter(i) {
   let index = letters.indexOf(contacts[i].name.charAt(0));
-  console.log('contacts[i].name', contacts[i].name.charAt(0));
-  console.log('letters:', letters);
-  console.log('index:', index);
   letters.splice(index, 1);
-  console.log('letters:', letters);
 }
 
-async function animateBannerContacts(banner) {
+async function animateBannerContacts(idDesktop, idMobile) {
+  let banner;
+  if (window.innerWidth > 800) {
+    banner = document.getElementById(idDesktop);
+  } else {
+    banner = document.getElementById(idMobile);
+  }
+
   banner.style = 'display: flex';
   await timeOut(2000);
   banner.style = 'display: none';

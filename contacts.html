@@ -54,11 +54,15 @@
 
       <section id="contact-info"> </section>
 
-      <div id="banner-contact-created" class="banner-contact-desktop" style="display: none">
+      <div id="banner-contact-created" style="display: none">
         <p>Contact succesfully created</p>
       </div>
 
-      <div id="banner-contact-deleted" class="banner-contact-desktop" style="display: none">
+      <div id="banner-contact-created-mobile" style="display: none">
+        <p>Contact succesfully created</p>
+      </div>
+
+      <div id="banner-contact-deleted" style="display: none">
         <p>Contact succesfully deleted</p>
       </div>
 
@@ -97,7 +101,7 @@
                 <img id="profile-img" src="assets/img/icons/person_white.svg" alt="Profile Image" />
               </div>
 
-              <form class="inputButtonsWrapper" onsubmit="addContact(); return false">
+              <form class="inputButtonsWrapper" onsubmit="addContact('desktop'); return false">
                 <div class="inputFieldContainer height-unset">
                   <div class="inputFieldBox pos-rel">
                     <input
@@ -106,7 +110,7 @@
                       maxlength="100"
                       class="inputField"
                       placeholder="Name"
-                      id="add-name"
+                      id="add-name-desktop"
                       name="add-name"
                       autocomplete="off"
                       title="This is an error message"
@@ -121,7 +125,7 @@
                       maxlength="100"
                       class="inputField"
                       placeholder="Email"
-                      id="add-mail"
+                      id="add-mail-desktop"
                       name="add-mail"
                       autocomplete="none"
                       required
@@ -136,7 +140,7 @@
                       maxlength="100"
                       class="inputField"
                       placeholder="Phone"
-                      id="add-tel"
+                      id="add-tel-desktop"
                       name="add-tel"
                       autocomplete="none"
                       required
@@ -173,6 +177,13 @@
     </section>
 
     <section
+      id="edit-contact-wrapper-mobile"
+      class="d-none"
+      onclick="classlistRemoveAndAdd('add-contact-wrapper', 'd-block', 'd-none')"
+    >
+    </section>
+
+    <section
       id="add-contact-wrapper-mobile"
       onclick="classlistRemoveAndAdd('add-contact-wrapper-mobile', 'd-block', 'd-none')"
       class="d-none"
@@ -199,7 +210,7 @@
               <img id="profile-img-mobile" src="assets/img/icons/person_white.svg" alt="Profile Image" />
             </div>
 
-            <form class="inputButtonWrapperMobile" onsubmit="addContact(); return false">
+            <form class="inputButtonWrapperMobile" onsubmit="addContact('mobile'); return false">
               <div class="inputFieldContainerMobile">
                 <div class="inputFieldBoxMobile">
                   <input
@@ -208,7 +219,7 @@
                     maxlength="100"
                     class="inputFieldMobile"
                     placeholder="Name"
-                    id="add-name"
+                    id="add-name-mobile"
                     name="add-name"
                     autocomplete="off"
                     title="This is an error message"
@@ -222,7 +233,7 @@
                     maxlength="100"
                     class="inputFieldMobile"
                     placeholder="Email"
-                    id="add-mail"
+                    id="add-mail-mobile"
                     name="add-mail"
                     autocomplete="none"
                     required
@@ -236,7 +247,7 @@
                     maxlength="100"
                     class="inputFieldMobile"
                     placeholder="Phone"
-                    id="add-tel"
+                    id="add-tel-mobile"
                     name="add-tel"
                     autocomplete="none"
                     required

@@ -94,11 +94,14 @@ function toggleContactInfoMobile() {
 function openChangesMenuMobile() {
   classlistAdd('changesMobileWrapper', 'd-flex');
   classlistAdd('changesMobile', 'show-overlay-menu');
+  classlistAdd('optionsContactMobile', 'd-none');
+  console.log('changesMobile');
 }
 
 function closeChangesMenuMobile() {
   classlistRemove('changesMobile', 'show-overlay-menu');
   classlistRemove('changesMobileWrapper', 'd-flex');
+  classlistRemove('optionsContactMobile', 'd-none');
 }
 
 function classlistToggle(id, toggle) {
@@ -106,6 +109,7 @@ function classlistToggle(id, toggle) {
 }
 
 function classlistAdd(id, add) {
+  console.log('classList Added');
   document.getElementById(id).classList.add(add);
 }
 
@@ -125,19 +129,29 @@ async function addContact(target) {
 
   contacts.push({ name: firstLettersUppercase(name.value), mail: mail.value, phone: tel.value });
 
-  await saveContacts();
+  saveContacts();
 
   closePopup('add-contact-wrapper', 'add-contact-wrapper-mobile');
   let index = findContactIndex(name.value);
   openContactInfo(index);
   clearPopup(name, mail, tel);
 
-  await animateBannerContacts('banner-contact-created', 'banner-contact-created-mobile');
-  await init();
+  animateBannerContacts('banner-contact-created', 'banner-contact-created-mobile');
+  init();
 }
 
 function findContactIndex(name) {
   return contacts.findIndex((obj) => obj.name.toLowerCase() === name.toLowerCase());
+}
+
+function closeAddContactMobile() {
+  classlistRemove('add-contact-mobile', 'show-overlay-menu-y');
+  setTimeout(() => classlistRemoveAndAdd('add-contact-wrapper-mobile', 'd-block', 'd-none'), 250);
+}
+
+function openAddContactMobile() {
+  classlistRemoveAndAdd('add-contact-wrapper-mobile', 'd-none', 'd-block');
+  setTimeout(() => classlistAdd('add-contact-mobile', 'show-overlay-menu-y'), 50);
 }
 
 function closePopup(id1, id2) {
@@ -247,16 +261,16 @@ function deleteUnusedLetter(i) {
 async function animateBannerContacts(idDesktop, idMobile) {
   let banner;
   if (window.innerWidth > 800) {
-    banner = document.getElementById(idDesktop);
+    banner = idDesktop;
   } else {
-    banner = document.getElementById(idMobile);
+    banner = idMobile;
   }
 
   console.log('banner:', banner);
 
-  classlistAdd('banner', 'show-overlay-menu-y');
-  // await timeOut(2000);
-  // classlistRemove('banner', 'show-overlay-menu-y');
+  classlistAdd(banner, 'show-overlay-menu-y');
+  await timeOut(2000);
+  classlistRemove(banner, 'show-overlay-menu-y');
 }
 
 function toggleBackground(i) {

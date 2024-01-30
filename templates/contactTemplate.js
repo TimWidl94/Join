@@ -102,7 +102,7 @@ function editContactDesktopHTML(acronym, color, i) {
 
                     <form class="inputButtonsWrapper" onsubmit="saveEditedContact(${i}, 'desktop'); return false">
                         <div class="inputFieldContainer height-unset">
-                            <div class="inputFieldBox">
+                            <div class="inputFieldBox pos-rel">
                             <input type="text" class="inputField" placeholder="Name" id="edit-name-desktop" required autocomplete="none" />
                             <img src="assets/img/icons/person.svg" alt="Person" class="inputImgPerson" />
                             </div>

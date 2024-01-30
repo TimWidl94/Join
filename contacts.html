@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contacts</title>
-    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/style.css?v=1.0" />
     <script src="./includeHTML.js"></script>
     <script src="./javascript/loadData.js"></script>
     <script src="./script.js"></script>
@@ -28,7 +28,7 @@
 
       <div id="basic-info-wrapper"> </div>
 
-      <div id="banner-contact-deleted-mobile" style="display: none">
+      <div id="banner-contact-deleted-mobile">
         <p>Contact succesfully deleted</p>
       </div>
     </section>
@@ -36,7 +36,8 @@
     <button
       class="buttonGreyContactsMobile"
       id="addContactMobile"
-      onclick="classlistRemoveAndAdd('add-contact-wrapper-mobile', 'd-none', 'd-block')"
+      onclick="openAddContactMobile();
+      "
       ><img class="btnImgContactsMobile" src="assets/img/icons/person_add.svg" alt=""
     /></button>
 
@@ -66,7 +67,7 @@
         <p>Contact succesfully deleted</p>
       </div>
 
-      <div id="banner-contact-created-mobile" style="display: none">
+      <div id="banner-contact-created-mobile">
         <p>Contact succesfully created</p>
       </div>
     </section>
@@ -103,49 +104,55 @@
 
               <form class="inputButtonsWrapper" onsubmit="addContact('desktop'); return false">
                 <div class="inputFieldContainer height-unset">
-                  <div class="inputFieldBox pos-rel">
-                    <input
-                      type="text"
-                      minlength="2"
-                      maxlength="100"
-                      class="inputField"
-                      placeholder="Name"
-                      id="add-name-desktop"
-                      name="add-name"
-                      autocomplete="off"
-                      title="This is an error message"
-                      required
-                    />
-                    <img src="assets/img/icons/person.svg" alt="Person" class="inputImgPerson" />
+                  <div class="inputWrapper">
+                    <div class="inputFieldBox">
+                      <input
+                        type="text"
+                        minlength="2"
+                        maxlength="100"
+                        class="inputField"
+                        placeholder="Name"
+                        id="add-name-desktop"
+                        name="add-name"
+                        autocomplete="off"
+                        title="This is an error message"
+                        required
+                      />
+                      <img src="assets/img/icons/person.svg" alt="Person" class="inputImgPerson" />
+                    </div>
                     <div class="error-message">Username is a required field.</div>
                   </div>
-                  <div class="inputFieldBox">
-                    <input
-                      type="email"
-                      maxlength="100"
-                      class="inputField"
-                      placeholder="Email"
-                      id="add-mail-desktop"
-                      name="add-mail"
-                      autocomplete="none"
-                      required
-                    />
-                    <img src="assets/img/icons/mail.svg" alt="Mail" class="inputImgMail" />
+                  <div class="inputWrapper">
+                    <div class="inputFieldBox">
+                      <input
+                        type="email"
+                        maxlength="100"
+                        class="inputField"
+                        placeholder="Email"
+                        id="add-mail-desktop"
+                        name="add-mail"
+                        autocomplete="none"
+                        required
+                      />
+                      <img src="assets/img/icons/mail.svg" alt="Mail" class="inputImgMail" />
+                    </div>
                     <div class="error-message">Email is a required field.</div>
                   </div>
-                  <div class="inputFieldBox">
-                    <input
-                      type="tel"
-                      oninput="validatePhoneNumber(this)"
-                      maxlength="100"
-                      class="inputField"
-                      placeholder="Phone"
-                      id="add-tel-desktop"
-                      name="add-tel"
-                      autocomplete="none"
-                      required
-                    />
-                    <img src="assets/img/icons/call.svg" alt="Phone" class="inputImgPhone2" />
+                  <div class="inputWrapper">
+                    <div class="inputFieldBox">
+                      <input
+                        type="tel"
+                        oninput="validatePhoneNumber(this)"
+                        maxlength="100"
+                        class="inputField"
+                        placeholder="Phone"
+                        id="add-tel-desktop"
+                        name="add-tel"
+                        autocomplete="none"
+                        required
+                      />
+                      <img src="assets/img/icons/call.svg" alt="Phone" class="inputImgPhone2" />
+                    </div>
                     <div class="error-message">Phone is a required field.</div>
                   </div>
                 </div>
@@ -179,15 +186,11 @@
     <section
       id="edit-contact-wrapper-mobile"
       class="d-none"
-      onclick="classlistRemoveAndAdd('add-contact-wrapper', 'd-block', 'd-none')"
+      onclick="classlistRemoveAndAdd('edit-contact-wrapper-mobile', 'd-block', 'd-none')"
     >
     </section>
 
-    <section
-      id="add-contact-wrapper-mobile"
-      onclick="classlistRemoveAndAdd('add-contact-wrapper-mobile', 'd-block', 'd-none')"
-      class="d-none"
-    >
+    <section id="add-contact-wrapper-mobile" onclick="closeAddContactMobile()" class="d-none">
       <div class="add-contact-container-mobile">
         <div id="add-contact-mobile" onclick="doNotClose(event)">
           <section class="top-container">

@@ -3,9 +3,10 @@ async function init() {
   await loadUser();
   setUserInitials();
   showTaskForm();
-  setColorToActive('sidebarAddTask');
+  setColorToActive('sidebarAddTask', 'addTask-img', 'bottomBarAddTaskMobile', 'addTaskImgMobile');
 }
-let tasks = [{}];
+let tasks = [];
+let subtasks = [];
 /*Popup function */
 
 function openAddTaskPopup() {
@@ -36,6 +37,7 @@ function addTask() {
     taskDescription: taskDescription,
     taskDueDate: taskDueDate,
     selectedCategory: selectedCategory,
+    subtasks: subtasks,
   });
   console.log(tasks);
 }
@@ -49,15 +51,15 @@ function addSubTask() {
     Subtask bitte bei Bedarf hinzufügen.`;
   } else {
     subTaskError.innerHTML = /*HTML*/ ``;
-    tasks.push({
+    subtasks.push({
       subTaskInput: subTaskInput,
     });
     document.getElementById('subTaskInput').value = '';
-
+    let nr = subtasks.length -1;
     //need iteration
-    subTaskContainer.innerHTML += /*HTML*/ `<div id="" class="subtask-div-list">${subTaskInput}
+    subTaskContainer.innerHTML += /*HTML*/ `<div id="${nr}" class="subtask-div-list">${subTaskInput}
     <div><img class="subtask-div-btn" onclick="editSubTask()" src="./assets/img/icons/edit.svg" alt="">
-    <img class="subtask-div-btn" onclick="deleteSubTask()" src="./assets/img/icons/delete.svg" alt=""></div>
+    <img class="subtask-div-btn" onclick="deleteSubTask(${nr})" src="./assets/img/icons/delete.svg" alt=""></div>
     </div>`;
   }
   //add lear input
@@ -65,7 +67,18 @@ function addSubTask() {
   //add delete and edit funktion
 }
 
-function deleteSubTask() {}
+function deleteSubTask(Number) {
+subtasks.splice(Number, 1);
+subTaskContainer = document.getElementById('subTaskContainer');
+subTaskContainer.innerHTML = ``;
+for (let i = 0; i < subtasks.length; i++) {
+  let nr = subtasks.length -1;
+  subTaskContainer.innerHTML += /*HTML*/ `<div id="${nr}" class="subtask-div-list">${subtasks[i]["subTaskInput"]}
+  <div><img class="subtask-div-btn" onclick="editSubTask()" src="./assets/img/icons/edit.svg" alt="">
+  <img class="subtask-div-btn" onclick="deleteSubTask(${nr})" src="./assets/img/icons/delete.svg" alt=""></div>
+  </div>`
+}
+}
 
 function editSubTask() {}
 
@@ -77,11 +90,21 @@ function showTaskForm() {
       <option value="1">Select contacts to assign</option>
     </select>`;
 
-  for (let i = 0; i < users.length; i++) {
-    let currentUser = users[i].username;
+  for (let i = 0; i < contacts.length; i++) {
+    let currentUser = contacts[i]["name"];
 
     let assignedDropdown = document.getElementById('assignedDropdown');
     assignedDropdown.innerHTML += /*html*/ `
       <option value="">${currentUser}</option>`;
   }
+}
+
+function clearInputValue(){
+  let titel = document.getElementById('taskTitle')
+  let description = document.getElementById('taskDescription')
+  let assignedTo = document.getElementById('')
+  let dueDate = document.getElementById('')
+  let prio = document.getElementById('')
+  let category = document.getElementById('')
+  let subtasks = document.getElementById('')
 }

@@ -1,10 +1,13 @@
 async function init() {
+  await includeHTML()
   await loadData();
   await loadUser();
-  // setUserInitials();
-  showTaskForm();
+  setUserInitials();
   setColorToActive('sidebarAddTask', 'addTask-img', 'bottomBarAddTaskMobile', 'addTaskImgMobile');
+  await renderAddTask();
+  showTaskForm();
 }
+
 let tasks = [];
 let subtasks = [];
 let selectedContacts = [];
@@ -13,6 +16,11 @@ let contactColors = ['#FF7A00', '#9327FF', '#6E52FF', '#FC71FF', '#FFBB2B', '#1F
 let letters = [];
 
 /*Popup function */
+
+function renderAddTask(){
+  content = document.getElementById('main');
+  content.innerHTML = addTaskHtml();
+}
 
 function openAddTaskPopup() {
   document.getElementById('addTaskPopup').classList.remove('d-none');
@@ -49,9 +57,9 @@ function addTask() {
 }
 
 function addSubTask() {
-  let subTaskContainer = document.getElementById('subTaskContainer');
   let subTaskInput = document.getElementById('subTaskInput').value;
   let subTaskError = document.getElementById('subTaskError');
+  let nr = subtasks.length;
   if (subTaskInput == 0) {
     subTaskError.innerHTML = /*HTML*/ `
     Subtask bitte bei Bedarf hinzufügen.`;
@@ -59,16 +67,21 @@ function addSubTask() {
     subTaskError.innerHTML = /*HTML*/ ``;
     subtasks.push({
       subTaskInput: subTaskInput,
+      id: nr,
     });
     document.getElementById('subTaskInput').value = '';
-    let nr = subtasks.length -1;
     //need iteration
-    subTaskContainer.innerHTML += /*HTML*/ `<div id="${nr}" class="subtask-div-list">${subTaskInput}
-    <div><img class="subtask-div-btn" onclick="editSubTask()" src="./assets/img/icons/edit.svg" alt="">
-    <img class="subtask-div-btn" onclick="deleteSubTask(${nr})" src="./assets/img/icons/delete.svg" alt=""></div>
-    </div>`;
+    renderSubTask();
   }
+}
 
+function renderSubTask(){
+  let container = document.getElementById('subTaskContainer');
+  container.innerHTML = ``;
+  for (let i = 0; i < subtasks.length; i++) {
+    let id = subtasks[i]["id"];
+    container.innerHTML += subTaskHtml(id, i);
+  }
 }
 
 function renderSelectedContacts() {
@@ -87,8 +100,29 @@ function renderSelectedContacts() {
   renderLetters();
 }
 
+function findSubtaskPosition(id){
+  let nr = subtasks.findIndex(obj => obj.id === id)
+  return nr;
+}
 
-function editSubTask() {}
+function editSubTask(id) {
+let container = document.getElementById(id);
+let nr = findSubtaskPosition(id);
+let textContent = subtasks[nr]["subTaskInput"]
+container.innerHTML = /*html*/ `
+<input id="editSubTaskInput" type="text" placeholder=${textContent} value=${textContent} />
+<div class="editSubTaskButtonBox">
+<img src="assets/img/icons/delete.svg" alt="Clear Icon" class="inputImgTrash" onclick="deleteSubTask(${id})"/>
+<img src="assets/img/icons/check_black.svg" alt="check" class="inputImgTrash" onclick="addEditSubTask(${id})"/>
+</div>`
+}
+
+function addEditSubTask(i){
+  let subTaskInput = document.getElementById('editSubTaskInput');
+  subtasks[i].subTaskInput = subTaskInput.value;
+  renderSubTask()
+}
+
 
 function showTaskForm() {
   let assignedTo = document.getElementById('assignedTo');
@@ -146,25 +180,22 @@ function getInitials(contact) {
   return initials.toUpperCase();
 }
 
-function deleteSubTask(Number) {
-  subtasks.splice(Number, 1);
+function deleteSubTask(number) {
+
+  let nr = findSubtaskPosition(number);
+
+  subtasks.splice(nr, 1);
   subTaskContainer = document.getElementById('subTaskContainer');
   subTaskContainer.innerHTML = ``;
   for (let i = 0; i < subtasks.length; i++) {
-    let nr = subtasks.length -1;
+    let nr = subtasks[i]["id"];
     subTaskContainer.innerHTML += /*HTML*/ `<div id="${nr}" class="subtask-div-list">${subtasks[i]["subTaskInput"]}
-    <div><img class="subtask-div-btn" onclick="editSubTask()" src="./assets/img/icons/edit.svg" alt="">
+    <div><img class="subtask-div-btn" onclick="editSubTask(${nr})" src="./assets/img/icons/edit.svg" alt="">
     <img class="subtask-div-btn" onclick="deleteSubTask(${nr})" src="./assets/img/icons/delete.svg" alt=""></div>
     </div>`
   }
 }
 
 function clearInputValue(){
-  let titel = document.getElementById('taskTitle')
-  let description = document.getElementById('taskDescription')
-  let assignedTo = document.getElementById('')
-  let dueDate = document.getElementById('')
-  let prio = document.getElementById('')
-  let category = document.getElementById('')
-  let subtasks = document.getElementById('')
+  renderAddTask();
 }

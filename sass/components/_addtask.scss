@@ -225,9 +225,10 @@ span {
   background-size: 32px, 100%;
 }
 .subtask-div {
+  position: relative;
   display: flex;
   justify-content: space-between;
-  margin: 5px 10px;
+  // margin: 5px 10px;
   flex-direction: column;
   &-btn {
     cursor: pointer;
@@ -251,6 +252,18 @@ span {
     font-size: 12px;
   }
 }
+
+.editSubTaskButtonBox{
+  position: absolute;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  right: 40px;
+  gap: 20px;
+}
+
+
 
 #subtasks {
   display: flex;

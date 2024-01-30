@@ -33,7 +33,7 @@ async function init() {
   await updateHTML();
   await includeHTML();
   setUserInitials();
-  setColorToActive('sidebarBoard');
+  setColorToActive('sidebarBoard', 'board-img', 'bottomBarBoardMobile', 'boardImgMobile');
 }
 
 function openAddTaskPopup() {

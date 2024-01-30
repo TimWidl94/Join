@@ -724,7 +724,9 @@ h2 {
   background-color: #29abe2; }
 
 #add-contact-wrapper,
-#edit-contact-wrapper {
+#add-contact-wrapper-mobile,
+#edit-contact-wrapper,
+#edit-contact-wrapper-mobile {
   position: fixed;
   z-index: 2;
   top: 0;
@@ -734,6 +736,7 @@ h2 {
   background-color: rgba(0, 0, 0, 0.4); }
 
 .add-contact-container,
+.add-contact-container-mobile,
 .edit-contact-container {
   display: flex;
   justify-content: center;
@@ -850,6 +853,22 @@ h2 {
 .capital-letters-edit h2 {
   color: #fff; }
 
+#add-contact-wrapper-mobile,
+#edit-contact-wrapper-mobile {
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.4); }
+
+.add-contact-container-mobile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%; }
+
 #contact-mobile {
   margin-top: 50px;
   margin-left: 16px;
@@ -863,6 +882,7 @@ h2 {
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1); }
 
 .top-container {
+  position: relative;
   display: flex;
   width: calc(100% - 2 * 24px);
   height: calc(352px - 2 * 66px);
@@ -909,7 +929,11 @@ h2 {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 100%; }
+  width: 100%;
+  height: 408px;
+  background-color: #fff;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px; }
 
 .profile-mobile {
   display: flex;
@@ -919,7 +943,7 @@ h2 {
   border-radius: 120px;
   border: 4px solid #fff;
   background-color: #d1d1d1;
-  margin-top: -60px; }
+  margin-top: -120px; }
 
 .inputButtonWrapperMobile {
   display: flex;
@@ -1801,15 +1825,15 @@ a {
   align-items: center;
   gap: 4px;
   flex-shrink: 0;
-  border-radius: 8px; }
+  border-radius: 8px;
+  color: #cdcdcd; }
 
 .categoryImgMobile {
   width: 24px;
   height: 24px; }
 
 .menuCategoryMobile p {
-  font-size: 14px;
-  color: #cdcdcd; }
+  font-size: 14px; }
 
 .menuCategoryMobile:hover {
   cursor: pointer;
@@ -1829,18 +1853,20 @@ a {
   gap: 4px;
   align-self: stretch; }
 
-.notes p {
+.notes a {
   padding: 8px 8px;
+  text-decoration: none;
   color: #cdcdcd !important; }
 
-.notes p:hover {
+.notes a:hover {
   cursor: pointer;
   color: #29abe2 !important;
   font-weight: 700; }
 
 .active {
   background-color: #091931;
-  color: #ffffff;
+  color: white !important;
+  font-weight: bold !important;
   opacity: 1; }
 
 .active-img {

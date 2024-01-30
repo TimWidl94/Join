@@ -87,6 +87,7 @@ a {
   gap: 4px;
   flex-shrink: 0;
   border-radius: 8px;
+  color: $color-sidebar-text;
 }
 
 .categoryImgMobile {
@@ -96,7 +97,6 @@ a {
 
 .menuCategoryMobile p {
   font-size: 14px;
-  color: $color-sidebar-text;
 }
 
 .menuCategoryMobile:hover {
@@ -123,12 +123,13 @@ a {
   align-self: stretch;
 }
 
-.notes p {
+.notes a {
   padding: 8px 8px;
+  text-decoration: none;
   color: $color-sidebar-text !important;
 }
 
-.notes p:hover {
+.notes a:hover {
   cursor: pointer;
   color: $secondary-color !important;
   font-weight: 700;
@@ -136,7 +137,8 @@ a {
 
 .active {
   background-color: #091931;
-  color: #ffffff;
+  color: white !important;
+  font-weight: bold !important;
   opacity: 1;
 }
 

@@ -70,7 +70,6 @@ function addSubTask() {
       id: nr,
     });
     document.getElementById('subTaskInput').value = '';
-    //need iteration
     renderSubTask();
   }
 }
@@ -198,4 +197,5 @@ function deleteSubTask(number) {
 
 function clearInputValue(){
   renderAddTask();
+  showTaskForm();
 }

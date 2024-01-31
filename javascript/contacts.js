@@ -4,9 +4,37 @@ let letters = [];
 async function init() {
   await loadData();
   await loadUser();
-  // setUserInitials();
+  setUserInitials();
+  setUserToContacts();
+  setColorToContacts();
   render();
   setColorToActive('sidebarContacts', 'contacts-img', 'bottomBarContactsMobile', 'contactsImgMobile');
+}
+
+function setUserToContacts() {
+  let name = users[user].username;
+  let mail = users[user].email;
+  let isContactExists = false;
+  for (let i = 0; i < contacts.length; i++) {
+    if (contacts[i].name === name) {
+      isContactExists = true;
+      break;
+    }
+  }
+
+  if (!isContactExists) {
+    contacts.push({ name: firstLettersUppercase(name), mail: mail, phone: '', color: '' });
+    console.log('Kontakt wurde hinzugefügt.');
+  } else {
+    console.log('Kontakt existiert bereits.');
+  }
+}
+
+function setColorToContacts() {
+  for (let i = 0; i < contacts.length; i++) {
+    let colorIndex = i % contactColors.length;
+    contacts[i].color = contactColors[colorIndex];
+  }
 }
 
 function render() {
@@ -48,7 +76,7 @@ function setContactsToFirstLetters(letter) {
   for (let i = 0; i < contacts.length; i++) {
     const contact = contacts[i];
     const firstLetter = contact.name.charAt(0);
-    const color = setBackgroundColor(i);
+    const color = contact.color;
     let acronym = getFirstLetters(contact.name);
 
     if (firstLetter.includes(letter)) {
@@ -62,9 +90,9 @@ function sortContactsByAlphabet() {
   return contacts.sort((a, b) => a.name.localeCompare(b.name));
 }
 
-function setBackgroundColor(i) {
-  return contactColors[i % contactColors.length];
-}
+// function setBackgroundColor(i) {
+//   return contactColors[i % contactColors.length];
+// }
 
 function getFirstLetters(str) {
   return str.split(/\s/).reduce((response, word) => (response += word.slice(0, 1)), '');
@@ -73,11 +101,14 @@ function getFirstLetters(str) {
 function openContactInfo(i) {
   let contact = contacts[i];
   let acronym = getFirstLetters(contact.name);
-  const color = setBackgroundColor(i);
+  const color = contact.color;
   let content = document.getElementById('contact-info');
+  classlistRemove('wrapper-contact-info', 'show-overlay-menu');
   content.innerHTML = '';
   content.innerHTML += openContactInfoHTML(contact, acronym, color, i);
-  classlistAdd('wrapper-contact-info', 'show-overlay-menu');
+  setTimeout(() => {
+    classlistAdd('wrapper-contact-info', 'show-overlay-menu');
+  }, 500);
   if (window.innerWidth < 800) {
     toggleContactInfoMobile();
   }
@@ -109,7 +140,6 @@ function classlistToggle(id, toggle) {
 }
 
 function classlistAdd(id, add) {
-  console.log('classList Added');
   document.getElementById(id).classList.add(add);
 }
 
@@ -127,16 +157,22 @@ async function addContact(target) {
   let mail = document.getElementById(`add-mail-${target}`);
   let tel = document.getElementById(`add-tel-${target}`);
 
-  contacts.push({ name: firstLettersUppercase(name.value), mail: mail.value, phone: tel.value });
+  console.log('contacts', contacts);
+  contacts.push({ name: firstLettersUppercase(name.value), mail: mail.value, phone: tel.value, color: '' });
+  console.log('contacts', contacts);
 
-  saveContacts();
-
-  closePopup('add-contact-wrapper', 'add-contact-wrapper-mobile');
+  await saveContacts();
   let index = findContactIndex(name.value);
-  openContactInfo(index);
-  clearPopup(name, mail, tel);
 
-  animateBannerContacts('banner-contact-created', 'banner-contact-created-mobile');
+  setColorToContacts();
+  openContactInfo(index);
+  render();
+
+  clearPopup(name, mail, tel);
+  await closeContactPopup(target, 'add');
+
+  setTimeout(() => animateBannerContacts('banner-contact-created', 'banner-contact-created-mobile'), 250);
+
   init();
 }
 
@@ -144,19 +180,14 @@ function findContactIndex(name) {
   return contacts.findIndex((obj) => obj.name.toLowerCase() === name.toLowerCase());
 }
 
-function closeAddContactMobile() {
-  classlistRemove('add-contact-mobile', 'show-overlay-menu-y');
-  setTimeout(() => classlistRemoveAndAdd('add-contact-wrapper-mobile', 'd-block', 'd-none'), 250);
+function openPopup(id1, id2, direction) {
+  classlistRemoveAndAdd(id1, 'd-none', 'd-block');
+  setTimeout(() => classlistAdd(id2, direction), 50);
 }
 
-function openAddContactMobile() {
-  classlistRemoveAndAdd('add-contact-wrapper-mobile', 'd-none', 'd-block');
-  setTimeout(() => classlistAdd('add-contact-mobile', 'show-overlay-menu-y'), 50);
-}
-
-function closePopup(id1, id2) {
-  classlistRemoveAndAdd(id1, 'd-block', 'd-none');
-  classlistRemoveAndAdd(id2, 'd-block', 'd-none');
+function closePopup(id1, id2, direction) {
+  classlistRemove(id2, direction);
+  setTimeout(() => classlistRemoveAndAdd(id1, 'd-block', 'd-none'), 250);
 }
 
 function firstLettersUppercase(str) {
@@ -174,6 +205,7 @@ function clearPopup(name, mail, tel) {
   tel.value = '';
 }
 
+// noch benötigt?
 async function saveContacts() {
   await setItem('contacts', JSON.stringify(contacts));
 }
@@ -184,9 +216,8 @@ function doNotClose(event) {
 
 function editContact(i, target) {
   let acronym = getFirstLetters(contacts[i].name);
-  const color = setBackgroundColor(i);
+  const color = contacts[i].color;
   renderEditContactDesktopOrMobile(acronym, color, i);
-  console.log('target:', target);
 
   let name1 = document.getElementById(`edit-name-${target}`);
   let mail = document.getElementById(`edit-mail-${target}`);
@@ -195,11 +226,6 @@ function editContact(i, target) {
   name1.value = contacts[i].name;
   mail.value = contacts[i].mail;
   tel.value = contacts[i].phone;
-  if (target == 'desktop') {
-    classlistRemoveAndAdd('edit-contact-wrapper', 'd-none', 'd-block');
-  } else {
-    classlistRemoveAndAdd('edit-contact-wrapper-mobile', 'd-none', 'd-block');
-  }
 }
 
 function renderEditContactDesktopOrMobile(acronym, color, i) {
@@ -225,16 +251,19 @@ async function saveEditedContact(i, target) {
   contacts[i].mail = mail.value;
   contacts[i].phone = tel.value;
 
-  console.log('target:', target);
-
-  // if (target == 'desktop') {
-  //   classlistRemoveAndAdd('edit-contact-wrapper', 'd-block', 'd-none');
-  // } else {
-  //   classlistRemoveAndAdd('edit-contact-wrapper-mobile', 'd-block', 'd-none');
-  // }
   await saveContacts();
   init();
+
+  await closeContactPopup(target, 'edit');
   openContactInfo(i);
+}
+
+async function closeContactPopup(target, type) {
+  if (target == 'desktop') {
+    closePopup(`${type}-contact-wrapper`, `${type}-contact`, 'show-overlay-menu');
+  } else {
+    closePopup(`${type}-contact-wrapper-mobile`, `${type}-contact-mobile`, 'show-overlay-menu-y');
+  }
 }
 
 async function deleteContact(i) {
@@ -267,10 +296,11 @@ async function animateBannerContacts(idDesktop, idMobile) {
   }
 
   console.log('banner:', banner);
-
+  classlistAdd(banner, 'd-flex');
   classlistAdd(banner, 'show-overlay-menu-y');
   await timeOut(2000);
   classlistRemove(banner, 'show-overlay-menu-y');
+  classlistRemove(banner, 'd-flex');
 }
 
 function toggleBackground(i) {
@@ -283,6 +313,7 @@ function toggleBackground(i) {
   document.getElementById(`name-list${i}`).classList.add('color-white');
 }
 
+// noch aktualisieren?
 function validateNameInput() {
   let name = document.getElementById('add-name');
   name.addEventListener('input', function (e) {

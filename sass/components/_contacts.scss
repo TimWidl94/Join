@@ -391,11 +391,6 @@ h2 {
   color: $color-dark;
 }
 
-// .mail p:nth-child(2):hover,
-// .phone p:nth-child(2):hover {
-//   cursor: pointer;
-// }
-
 #banner-contact-created,
 #banner-contact-deleted,
 #banner-contact-created-mobile,
@@ -414,6 +409,13 @@ h2 {
 
 #banner-contact-created {
   margin-top: 50px;
+}
+
+#banner-contact-deleted-mobile {
+  display: none;
+  position: absolute;
+  margin: 0 auto;
+  top: 500px;
 }
 
 #banner-contact-created p,
@@ -465,6 +467,8 @@ h2 {
   background: $color-light;
   margin-right: auto;
   margin-left: auto;
+  transform: translate(2000px);
+  transition: all 250ms ease-in-out;
 }
 
 .left-container {
@@ -609,7 +613,8 @@ form {
   height: 100%;
 }
 
-#add-contact-mobile {
+#add-contact-mobile,
+#edit-contact-mobile {
   transform: translateY(1000px);
   transition: all 250ms ease-in-out;
 }
@@ -773,7 +778,8 @@ form {
   padding: 12px 21px;
 }
 
-.inputImgPerson {
+.inputImgPerson,
+.inputImgPersonMobile {
   position: absolute;
   top: 13px;
   right: 22px;
@@ -789,7 +795,23 @@ form {
   height: 24px;
 }
 
-.inputImgPhone2 {
+.inputImgMailMobile {
+  position: absolute;
+  top: 12px;
+  right: 22px;
+  width: 24px;
+  height: 24px;
+}
+
+.inputImgPhone {
+  position: absolute;
+  top: 12px;
+  right: -20px;
+  width: 24px;
+  height: 24px;
+}
+
+.inputImgPhone2Mobile {
   position: absolute;
   top: 12px;
   right: 22px;
@@ -830,35 +852,66 @@ form {
 
 // === Media Query === //
 @media (max-width: 1250px) {
-  .main {
-    display: none !important;
+  // === Add-Contact / Edit Contact === //
+  #add-contact,
+  #edit-contact {
+    width: calc(100% - 2 * 24px);
+    max-width: 1250px;
   }
 
-  .wrapper-contact-list {
-    left: 0px;
-    display: flex !important;
+  .left-container {
+    width: 50%;
+    padding: 66px 24px;
   }
 
-  .wrapper-contact-info {
-    margin-left: calc(584px - 232px - 25px);
+  .wrapper-profile-and-form {
+    width: calc(100% - 2 * 24px);
+    gap: 24px;
+    padding-left: 24px;
+    padding-right: 24px;
   }
 
-  #add-contact-wrapper {
-    display: none;
+  .profile {
+    min-width: 120px;
   }
 
-  #edit-contact-wrapper {
-    display: none;
+  .inputButtonsWrapper {
+    width: 100%;
+    margin-right: 16px;
+    padding-right: 16px;
   }
-}
 
-@media (max-width: 1000px) {
-  .wrapper-contact-list {
-    display: flex !important;
+  .inputWrapper {
+    width: 100%;
+  }
+
+  .inputFieldContainer {
+    width: calc(100% - 2 * 16px);
+  }
+
+  .inputFieldBox {
+    width: 100%;
+  }
+
+  .inputField {
+    width: 100%;
+  }
+
+  .inputImgPerson,
+  .inputImgMail,
+  .inputImgPhone2 {
+    right: -20px !important;
+  }
+
+  .form-close {
+    width: calc(100% - 2 * 65px);
+    padding: 0px 65px;
   }
 
   .wrapper-contact-info {
     align-items: flex-start;
+    padding-left: unset;
+    left: 100px;
   }
 
   .contact-info-headline {
@@ -911,6 +964,61 @@ form {
   .contact-info-text {
     height: unset;
   }
+}
+
+@media (max-width: 1060px) {
+  .btns-down-right {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 16px;
+  }
+
+  .wrapper-profile-and-form {
+    padding-bottom: 70px;
+  }
+
+  .profile {
+    margin-bottom: 90px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .main {
+    display: none !important;
+  }
+
+  .topbar-left {
+    padding-left: unset !important;
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    margin-right: 12px;
+  }
+
+  .topbar {
+    display: none !important;
+  }
+
+  .topbarMobile {
+    display: flex !important;
+  }
+
+  .menuMobile {
+    display: flex !important;
+  }
+
+  .wrapper-contact-list {
+    left: 0px;
+    display: flex !important;
+  }
+
+  .wrapper-contact-info {
+    margin-left: calc(584px - 232px + 25px);
+  }
+
+  .wrapper-contact-list {
+    display: flex !important;
+  }
 
   // #back-to-contact-list {
   //   display: none !important;
@@ -918,6 +1026,46 @@ form {
 
   .changesMobileWrapper {
     display: none;
+  }
+
+  .left-container {
+    width: 300px;
+  }
+
+  .h2-add-card,
+  .h2-edit-card {
+    font-size: 48px;
+  }
+
+  .left-container p {
+    font-size: 20px;
+  }
+
+  .wrapper-profile-and-form {
+    flex-direction: column;
+    margin-top: -100px;
+  }
+
+  .inputButtonsWrapper {
+    margin-left: 16px;
+    // padding-left: 16px;
+    margin-right: 16px;
+    padding-right: 16px;
+  }
+
+  .btns-down-right {
+    flex-direction: row;
+    margin-top: 30px;
+  }
+
+  .profile {
+    margin-bottom: 0;
+  }
+
+  .form-close {
+    z-index: 2;
+    padding: 0px 40px;
+    width: calc(100% - 2 * 40px);
   }
 }
 
@@ -946,6 +1094,11 @@ form {
     width: calc(100% - 2 * 24px);
   }
 
+  #add-contact,
+  #edit-contact {
+    display: none;
+  }
+
   .add-new-contact {
     display: none;
   }
@@ -959,29 +1112,15 @@ form {
     font-weight: 400;
   }
 
-  .topbar-left {
-    padding-left: unset !important;
-    display: flex;
-    justify-content: flex-end;
-    width: 100%;
-    margin-right: 12px;
-  }
-
-  .topbar {
-    display: none !important;
-  }
-
-  .topbarMobile {
-    display: flex !important;
-  }
-
-  .menuMobile {
-    display: flex !important;
-  }
-
   #addContactMobile {
     display: flex;
   }
+
+  // .inputImgPersonMobile,
+  // .inputImgMailMobile,
+  // .inputImgPhone2Mobile {
+  //   right: -10px !important;
+  // }
 
   // #optionsContactMobile {
   //   display: flex;
@@ -1004,7 +1143,24 @@ form {
 }
 
 @media (max-width: 400px) {
-  .inputFieldBoxMobile {
+  #add-contact-mobile,
+  #edit-contact-mobile {
+    width: calc(100% - 2 * 16px);
+    transform: translateY(0);
+  }
+
+  #contact-mobile {
+    width: 100%;
+    height: auto;
+  }
+
+  .inputFieldBoxMobile,
+  .inputFieldMobile {
+    width: 100%;
+    // width: calc(100% - 2 * 16px);
+  }
+
+  .inputFieldContainerMobile {
     width: calc(100% - 2 * 16px);
   }
 }
@@ -1026,5 +1182,13 @@ form {
 
   .start-letter {
     padding: 17px 18px;
+  }
+
+  .h2-add-card-mobile {
+    font-size: 40px;
+  }
+
+  .top-card-text p {
+    font-size: 18px;
   }
 }

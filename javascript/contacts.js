@@ -4,9 +4,37 @@ let letters = [];
 async function init() {
   await loadData();
   await loadUser();
-  // setUserInitials();
+  setUserInitials();
+  setUserToContacts();
+  setColorToContacts();
   render();
   setColorToActive('sidebarContacts', 'contacts-img', 'bottomBarContactsMobile', 'contactsImgMobile');
+}
+
+function setUserToContacts() {
+  let name = users[user].username;
+  let mail = users[user].email;
+  let isContactExists = false;
+  for (let i = 0; i < contacts.length; i++) {
+    if (contacts[i].name === name) {
+      isContactExists = true;
+      break;
+    }
+  }
+
+  if (!isContactExists) {
+    contacts.push({ name: firstLettersUppercase(name), mail: mail, phone: '', color: '' });
+    console.log('Kontakt wurde hinzugefügt.');
+  } else {
+    console.log('Kontakt existiert bereits.');
+  }
+}
+
+function setColorToContacts() {
+  for (let i = 0; i < contacts.length; i++) {
+    let colorIndex = i % contactColors.length;
+    contacts[i].color = contactColors[colorIndex];
+  }
 }
 
 function render() {
@@ -48,7 +76,7 @@ function setContactsToFirstLetters(letter) {
   for (let i = 0; i < contacts.length; i++) {
     const contact = contacts[i];
     const firstLetter = contact.name.charAt(0);
-    const color = setBackgroundColor(i);
+    const color = contact.color;
     let acronym = getFirstLetters(contact.name);
 
     if (firstLetter.includes(letter)) {
@@ -62,9 +90,9 @@ function sortContactsByAlphabet() {
   return contacts.sort((a, b) => a.name.localeCompare(b.name));
 }
 
-function setBackgroundColor(i) {
-  return contactColors[i % contactColors.length];
-}
+// function setBackgroundColor(i) {
+//   return contactColors[i % contactColors.length];
+// }
 
 function getFirstLetters(str) {
   return str.split(/\s/).reduce((response, word) => (response += word.slice(0, 1)), '');
@@ -73,11 +101,14 @@ function getFirstLetters(str) {
 function openContactInfo(i) {
   let contact = contacts[i];
   let acronym = getFirstLetters(contact.name);
-  const color = setBackgroundColor(i);
+  const color = contact.color;
   let content = document.getElementById('contact-info');
+  classlistRemove('wrapper-contact-info', 'show-overlay-menu');
   content.innerHTML = '';
   content.innerHTML += openContactInfoHTML(contact, acronym, color, i);
-  classlistAdd('wrapper-contact-info', 'show-overlay-menu');
+  setTimeout(() => {
+    classlistAdd('wrapper-contact-info', 'show-overlay-menu');
+  }, 500);
   if (window.innerWidth < 800) {
     toggleContactInfoMobile();
   }
@@ -126,12 +157,17 @@ async function addContact(target) {
   let mail = document.getElementById(`add-mail-${target}`);
   let tel = document.getElementById(`add-tel-${target}`);
 
-  contacts.push({ name: firstLettersUppercase(name.value), mail: mail.value, phone: tel.value });
+  console.log('contacts', contacts);
+  contacts.push({ name: firstLettersUppercase(name.value), mail: mail.value, phone: tel.value, color: '' });
+  console.log('contacts', contacts);
 
-  saveContacts();
-
+  await saveContacts();
   let index = findContactIndex(name.value);
+
+  setColorToContacts();
   openContactInfo(index);
+  render();
+
   clearPopup(name, mail, tel);
   await closeContactPopup(target, 'add');
 
@@ -169,6 +205,7 @@ function clearPopup(name, mail, tel) {
   tel.value = '';
 }
 
+// noch benötigt?
 async function saveContacts() {
   await setItem('contacts', JSON.stringify(contacts));
 }
@@ -179,7 +216,7 @@ function doNotClose(event) {
 
 function editContact(i, target) {
   let acronym = getFirstLetters(contacts[i].name);
-  const color = setBackgroundColor(i);
+  const color = contacts[i].color;
   renderEditContactDesktopOrMobile(acronym, color, i);
 
   let name1 = document.getElementById(`edit-name-${target}`);
@@ -206,7 +243,6 @@ function validatePhoneNumber(input) {
 }
 
 async function saveEditedContact(i, target) {
-  let edit;
   deleteUnusedLetter(i);
   let name = document.getElementById(`edit-name-${target}`);
   let mail = document.getElementById(`edit-mail-${target}`);
@@ -260,10 +296,11 @@ async function animateBannerContacts(idDesktop, idMobile) {
   }
 
   console.log('banner:', banner);
-
+  classlistAdd(banner, 'd-flex');
   classlistAdd(banner, 'show-overlay-menu-y');
   await timeOut(2000);
   classlistRemove(banner, 'show-overlay-menu-y');
+  classlistRemove(banner, 'd-flex');
 }
 
 function toggleBackground(i) {
@@ -276,6 +313,7 @@ function toggleBackground(i) {
   document.getElementById(`name-list${i}`).classList.add('color-white');
 }
 
+// noch aktualisieren?
 function validateNameInput() {
   let name = document.getElementById('add-name');
   name.addEventListener('input', function (e) {

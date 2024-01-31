@@ -5,6 +5,7 @@ async function init() {
   setUserInitials();
   setColorToActive('sidebarAddTask', 'addTask-img', 'bottomBarAddTaskMobile', 'addTaskImgMobile');
   await renderAddTask();
+  await renderSubTask();
   showTaskForm();
 }
 
@@ -20,6 +21,11 @@ let letters = [];
 function renderAddTask() {
   content = document.getElementById('main');
   content.innerHTML = addTaskHtml();
+}
+
+function renderSubTask(){
+  let container = document.getElementById('subtasks');
+  container.innerHTML += subTaskInputHtml();
 }
 
 function openAddTaskPopup() {
@@ -70,16 +76,18 @@ function addSubTask() {
       id: nr,
     });
     document.getElementById('subTaskInput').value = '';
-    renderSubTask();
+    renderGeneratedSubTasks();
+    resetSubTaskInputField();
   }
 }
 
-function renderSubTask() {
+
+function renderGeneratedSubTasks(){
   let container = document.getElementById('subTaskContainer');
   container.innerHTML = ``;
   for (let i = 0; i < subtasks.length; i++) {
     let id = subtasks[i]["id"];
-    container.innerHTML += subTaskHtml(id, i);
+    container.innerHTML += subTasksValueHtml(id, i);
   }
 }
 
@@ -119,7 +127,7 @@ function editSubTask(id) {
 function addEditSubTask(i) {
   let subTaskInput = document.getElementById('editSubTaskInput');
   subtasks[i].subTaskInput = subTaskInput.value;
-  renderSubTask()
+  renderGeneratedSubTasks()
 }
 
 
@@ -290,4 +298,28 @@ function deleteSubTask(number) {
 function clearInputValue() {
   renderAddTask();
   showTaskForm();
+}
+
+function changeButtonsAddTask(){
+  let inputField = document.getElementById('inputFieldBox');
+  
+  inputField.innerHTML = /*html*/ `
+    <input id="subTaskInput" type="text" placeholder="Add new subtask" onclick="" class="PosRel" />
+    <div class="subTaskInputButtons">
+      <img class="subTaskInputImg" onclick="setValueBack('subTaskInput')" src="./assets/img/icons/close.svg" alt="">
+      <img class="subTaskInputImg checkImg" onclick="addSubTask()" src="./assets/img/icons/checkAddTask.svg" alt="">
+    </div>
+  `;
+  document.getElementById('subTaskInput').focus();
+}
+
+function setValueBack(id){
+let inputField = document.getElementById(id);
+inputField.value = ``;
+resetSubTaskInputField();
+}
+
+function resetSubTaskInputField(){
+  let inputContainer = document.getElementById('inputFieldBox');
+  inputContainer.innerHTML = subTaskInputFieldHtml();
 }

@@ -1,6 +1,6 @@
-function subTaskHtml(id, i) {
-  return /*HTML*/ `
-    <li id="${id}" class="subtask-div-list">${subtasks[i]["subTaskInput"]}
+function subTasksValueHtml(id, i){
+    return /*HTML*/ `
+    <li id="${id}" class="subtask-div-list" ondblclick="editSubTask(${id})">${subtasks[i]["subTaskInput"]}
       <div>
         <img class="subtask-div-btn" onclick="editSubTask(${id})" src="./assets/img/icons/edit.svg" alt="">
         <img class="subtask-div-btn" onclick="deleteSubTask(${id})" src="./assets/img/icons/delete.svg" alt="">
@@ -80,16 +80,9 @@ Select task category
         </div>
 
         <div id="subtasks">
-          <p>Subtasks</p>
-          <div class="inputFieldBox">
-            <input id="subTaskInput" type="text" placeholder="Add new subtask" />
-            <img onclick="addSubTask()" class="inputImgPlus" src="assets/img/AddTask/plus.svg" alt="Add Icon" />
-          </div>
-          <div id="subTaskError" class="subtask-div-error"></div>
-          <ul id="subTaskContainer" class="subtask-div" >
-          </ul>
         </div>
-
+        <ul id="subTaskContainer" class="subtask-div ulContainer" >
+        </ul> 
         <div class="btns-down-right-add-task">
           <button onclick="clearInputValue()" id="clear" class="buttonWhite" >
             Clear <img src="assets/img/AddTask/cancel.svg" alt="Clear Icon"
@@ -101,5 +94,23 @@ Select task category
       </section>
     
     `
+}
 
+function subTaskInputHtml(){
+  return /*html*/ `
+  <p>Subtasks</p>
+          <div class="inputFieldBox" id="inputFieldBox">
+            <input id="subTaskInput" type="text" placeholder="Add new subtask" onclick="changeButtonsAddTask()" />
+            <img onclick="addSubTask()" class="inputImgPlus" src="assets/img/AddTask/plus.svg" alt="Add Icon" />
+          </div>
+          <div id="subTaskError" class="subtask-div-error"></div>
+   
+  `
+}
+
+function subTaskInputFieldHtml(){
+  return `
+  <input id="subTaskInput" type="text" placeholder="Add new subtask" onclick="changeButtonsAddTask()" />
+  <img onclick="addSubTask()" class="inputImgPlus" src="assets/img/AddTask/plus.svg" alt="Add Icon" />
+  `
 }

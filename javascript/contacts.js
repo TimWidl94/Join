@@ -4,7 +4,7 @@ let letters = [];
 async function init() {
   await loadData();
   await loadUser();
-  // setUserInitials();
+  setUserInitials();
   setUserToContacts();
   setColorToContacts();
   render();
@@ -103,9 +103,12 @@ function openContactInfo(i) {
   let acronym = getFirstLetters(contact.name);
   const color = contact.color;
   let content = document.getElementById('contact-info');
+  classlistRemove('wrapper-contact-info', 'show-overlay-menu');
   content.innerHTML = '';
   content.innerHTML += openContactInfoHTML(contact, acronym, color, i);
-  classlistAdd('wrapper-contact-info', 'show-overlay-menu');
+  setTimeout(() => {
+    classlistAdd('wrapper-contact-info', 'show-overlay-menu');
+  }, 500);
   if (window.innerWidth < 800) {
     toggleContactInfoMobile();
   }

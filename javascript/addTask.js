@@ -153,6 +153,14 @@ function openDropDown() {
   dropdownImgArrow.classList.toggle('rotate-arrow');
 }
 
+function openDropDownCategory() {
+  let assignedDropdown = document.getElementById("assignedDropdown");
+  let dropdownImgArrow = document.getElementById("dropdownImgArrow");
+  assignedDropdown.classList.toggle('d-none');
+  assignedDropdown.classList.toggle('dropbtn');
+  dropdownImgArrow.classList.toggle('rotate-arrow');
+}
+
 function addAssignedContact(i) {
   let assignedDropdown = document.getElementById(`user-${i}`);
   let checkboxImage = document.getElementById(`checkBox-${i}`);

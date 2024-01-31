@@ -62,10 +62,16 @@ function addTaskHtml(){
 
         <div class="category">
           <p>Category<span>*</span></p>
-          <select id="category-options" class="options-syle">
-            <option>Select task category</option>
-            <option value="user-story">User Story</option>
-            <option value="other">Other</option>
+          <div id="category-options" class="options-syle">
+Select task category
+          </div>
+          <div data-value=user-story">User Story</div>
+            <div data-value="other">Other</div>
+            <div class="dropdown dropdown-category" onclick="openDropDownCategory()">
+                                Select contacts to assign <img id="dropdownImgArrowCategory" class="" src="../assets/img/AddTask/arrow_drop.svg" alt="">
+                              </div>
+    </div>
+
 
           </select>
         </div>

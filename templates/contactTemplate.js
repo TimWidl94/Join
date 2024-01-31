@@ -114,7 +114,7 @@ function editContactDesktopHTML(acronym, color, i) {
                             </div>
                             <div class="inputFieldBox">
                             <input type="tel" oninput="validatePhoneNumber(this)" class="inputField" placeholder="Phone" id="edit-tel-desktop" required autocomplete="none"/>
-                            <img src="assets/img/icons/call.svg" alt="Phone" class="inputImgPhone2" />
+                            <img src="assets/img/icons/call.svg" alt="Phone" class="inputImgPhone" />
                             </div>
                         </div>
 

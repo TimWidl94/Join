@@ -17,7 +17,7 @@ let letters = [];
 
 /*Popup function */
 
-function renderAddTask(){
+function renderAddTask() {
   content = document.getElementById('main');
   content.innerHTML = addTaskHtml();
 }
@@ -74,7 +74,7 @@ function addSubTask() {
   }
 }
 
-function renderSubTask(){
+function renderSubTask() {
   let container = document.getElementById('subTaskContainer');
   container.innerHTML = ``;
   for (let i = 0; i < subtasks.length; i++) {
@@ -99,16 +99,16 @@ function renderSelectedContacts() {
   renderLetters();
 }
 
-function findSubtaskPosition(id){
+function findSubtaskPosition(id) {
   let nr = subtasks.findIndex(obj => obj.id === id)
   return nr;
 }
 
 function editSubTask(id) {
-let container = document.getElementById(id);
-let nr = findSubtaskPosition(id);
-let textContent = subtasks[nr]["subTaskInput"]
-container.innerHTML = /*html*/ `
+  let container = document.getElementById(id);
+  let nr = findSubtaskPosition(id);
+  let textContent = subtasks[nr]["subTaskInput"]
+  container.innerHTML = /*html*/ `
 <input id="editSubTaskInput" type="text" placeholder=${textContent} value=${textContent} />
 <div class="editSubTaskButtonBox">
 <img src="assets/img/icons/delete.svg" alt="Clear Icon" class="inputImgTrash" onclick="deleteSubTask(${id})"/>
@@ -116,7 +116,7 @@ container.innerHTML = /*html*/ `
 </div>`
 }
 
-function addEditSubTask(i){
+function addEditSubTask(i) {
   let subTaskInput = document.getElementById('editSubTaskInput');
   subtasks[i].subTaskInput = subTaskInput.value;
   renderSubTask()
@@ -126,28 +126,61 @@ function addEditSubTask(i){
 function showTaskForm() {
   let assignedTo = document.getElementById('assignedTo');
   assignedTo.innerHTML = /*html*/ `
-    <select name="assigned" id="assignedDropdown" onchange="addAssignedContact()">
-      <option value="1">Select contacts to assign</option>
-    </select>`;
+    <div name="assigned" onchange="addAssignedContact()">
+    <div class=" dropdown" onclick="openDropDown()" style="border-color: rgb(41, 171, 226);">
+                                Select contacts to assign <img id="dropdownImgArrow" class="" src="../assets/img/AddTask/arrow_drop.svg" alt="">
+                              </div>
+    </div>
+    <div id="assignedDropdown">
+      <div id="assignedAddedContacts"></div>
+    </div>
+    `;
 
   for (let i = 0; i < contacts.length; i++) {
     let currentUser = contacts[i]["name"];
-    let assignedDropdown = document.getElementById('assignedDropdown');
+    let assignedDropdown = document.getElementById("assignedDropdown");
     assignedDropdown.innerHTML += /*html*/ `
-      <option onclick="addAssignedContact()" value="${currentUser}">${currentUser}</option>`;
+      <div id="user-${i}" class="flex-checkbox selected-profile" onclick="addAssignedContact(${i})" data-value="${currentUser}">${currentUser}<img id="checkBox-${i}" src="assets/img/icons/checkBox.svg" alt=""></div>`;
+    ;
   }
 }
 
-function addAssignedContact() {
-  let assignedDropdown = document.getElementById('assignedDropdown');
-  let selectedContact = assignedDropdown.value;
+function openDropDown() {
+  let assignedDropdown = document.getElementById("assignedDropdown");
+  let dropdownImgArrow = document.getElementById("dropdownImgArrow");
+  assignedDropdown.classList.toggle('d-none');
+  assignedDropdown.classList.toggle('dropbtn');
+  dropdownImgArrow.classList.toggle('rotate-arrow');
+}
 
+function addAssignedContact(i) {
+  let assignedDropdown = document.getElementById(`user-${i}`);
+  let checkboxImage = document.getElementById(`checkBox-${i}`);
+  let selectedContact = assignedDropdown.getAttribute('data-value');
+  renderContactList(assignedDropdown, checkboxImage, selectedContact);
+
+
+  renderSelectedContacts();
+}
+
+function renderContactList(assignedDropdown, checkboxImage, selectedContact) {
   if (selectedContact !== "1") {
-    selectedContacts.push(selectedContact);
-    renderSelectedContacts();
+    assignedDropdown.classList.toggle('addTask-selected');
+
+    const index = selectedContacts.indexOf(selectedContact);
+    if (assignedDropdown.classList.contains('addTask-selected')) {
+      if (index === -1) {
+        selectedContacts.push(selectedContact);
+      }
+      checkboxImage.src = './assets/img/icons/check_button-white.svg';
+    } else {
+      if (index !== -1) {
+        selectedContacts.splice(index, 1);
+      }
+      checkboxImage.src = './assets/img/icons/checkBox.svg';
+    }
   }
 }
-
 
 function renderSelectedContacts() {
   let content = document.getElementById('assignedAddedContact');
@@ -156,8 +189,7 @@ function renderSelectedContacts() {
   for (let i = 0; i < selectedContacts.length; i++) {
     const contact = selectedContacts[i];
     const initials = getInitials(contact);
-    setBackgroundColor();
-    content.innerHTML += `<div class="assinged-contact-profile selected-profile" style="background-color: ${setBackgroundColor(i)}"; onclick="deleteSelectedContact(${i})">${initials}</div>`;
+    content.innerHTML += `<div class="assinged-contact-profile selected-profile" onclick="deleteSelectedContact(${i})">${initials}</div>`
   }
 }
 
@@ -195,7 +227,7 @@ function deleteSubTask(number) {
   }
 }
 
-function clearInputValue(){
+function clearInputValue() {
   renderAddTask();
   showTaskForm();
 }

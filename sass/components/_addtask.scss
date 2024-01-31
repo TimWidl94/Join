@@ -107,10 +107,16 @@ span {
 .selected-profile {
   cursor: pointer;
 }
+.addTask-selected {
+  color: $color-light;
+    background-color: $primary-color;
+    border-radius: 10px;
+    padding: 7px 16px 7px 16px;
+}
+
 
 #assignedDropdown {
   padding: 12px 16px;
-  width: 100%;
   border-radius: 10px;
   border: 1px solid $color-lightgrey;
   background-color: $color-light;
@@ -118,7 +124,6 @@ span {
   -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;
-  background-image: url('../assets/img/AddTask/arrow_drop.svg');
   background-color: $color-light;
   background-repeat: no-repeat;
   background-position: right 8px top 50%, 0 0;
@@ -127,6 +132,22 @@ span {
 
 #requirement {
   margin-top: 223px;
+}
+.test-6 {
+  display: flex;
+  justify-content: end;
+  max-width: 850px;
+  margin-top: -44px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+.dropdown {
+  padding: 16px;
+    border: 1px solid #A8A8A8;
+    width: 100%;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: #FFFFFF;
 }
 
 .vertical-line {
@@ -206,7 +227,16 @@ span {
   padding-bottom: 24px;
 }
 
-#category-options {
+.rotate-arrow {
+  transform: rotate(180deg);
+}
+.dropdown {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.options-syle {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -251,6 +281,14 @@ span {
     color: $error-red;
     font-size: 12px;
   }
+}
+.flex-checkbox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 7px 16px 7px 16px;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 .editSubTaskButtonBox{

@@ -28,8 +28,6 @@ function setUserToContacts() {
   } else {
     console.log('Kontakt existiert bereits.');
   }
-
-  console.log(contacts);
 }
 
 function setColorToContacts() {
@@ -162,15 +160,17 @@ async function addContact(target) {
 
   await saveContacts();
   let index = findContactIndex(name.value);
+
+  setColorToContacts();
   openContactInfo(index);
+  render();
+
   clearPopup(name, mail, tel);
   await closeContactPopup(target, 'add');
 
   setTimeout(() => animateBannerContacts('banner-contact-created', 'banner-contact-created-mobile'), 250);
 
-  // init();
-  setColorToContacts();
-  render();
+  init();
 }
 
 function findContactIndex(name) {
@@ -293,10 +293,11 @@ async function animateBannerContacts(idDesktop, idMobile) {
   }
 
   console.log('banner:', banner);
-
+  classlistAdd(banner, 'd-flex');
   classlistAdd(banner, 'show-overlay-menu-y');
   await timeOut(2000);
   classlistRemove(banner, 'show-overlay-menu-y');
+  classlistRemove(banner, 'd-flex');
 }
 
 function toggleBackground(i) {

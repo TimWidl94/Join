@@ -777,7 +777,8 @@ form {
   padding: 12px 21px;
 }
 
-.inputImgPerson {
+.inputImgPerson,
+.inputImgPersonMobile {
   position: absolute;
   top: 13px;
   right: 22px;
@@ -785,7 +786,8 @@ form {
   height: 20px;
 }
 
-.inputImgMail {
+.inputImgMail,
+.inputImgMailMobile {
   position: absolute;
   top: 95px;
   right: 22px;
@@ -793,10 +795,10 @@ form {
   height: 24px;
 }
 
-.inputImgPhone2 {
+.inputImgPhone2 .inputImgPhone2Mobile {
   position: absolute;
   top: 12px;
-  right: 22px;
+  right: 0px;
   width: 24px;
   height: 24px;
 }
@@ -882,7 +884,6 @@ form {
 
   .inputFieldContainer {
     width: calc(100% - 2 * 16px);
-    // width: 100%;
   }
 
   .inputFieldBox {
@@ -1096,6 +1097,12 @@ form {
   #addContactMobile {
     display: flex;
   }
+
+  // .inputImgPersonMobile,
+  // .inputImgMailMobile,
+  // .inputImgPhone2Mobile {
+  //   right: -10px !important;
+  // }
 
   // #optionsContactMobile {
   //   display: flex;

@@ -1112,24 +1112,26 @@ form {
   border: 1px solid #d1d1d1;
   padding: 12px 21px; }
 
-.inputImgPerson {
+.inputImgPerson,
+.inputImgPersonMobile {
   position: absolute;
   top: 13px;
   right: 22px;
   width: 20px;
   height: 20px; }
 
-.inputImgMail {
+.inputImgMail,
+.inputImgMailMobile {
   position: absolute;
   top: 95px;
   right: 22px;
   width: 24px;
   height: 24px; }
 
-.inputImgPhone2 {
+.inputImgPhone2 .inputImgPhone2Mobile {
   position: absolute;
   top: 12px;
-  right: 22px;
+  right: 0px;
   width: 24px;
   height: 24px; }
 

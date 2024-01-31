@@ -129,6 +129,9 @@ h1 {
 .overflowHidden {
   overflow: hidden; }
 
+.PosRel {
+  position: relative; }
+
 @font-face {
   font-family: 'Inter', sans-serif;
   src: url(assets/fonts/Inter.ttf); }
@@ -363,7 +366,8 @@ span {
   position: relative;
   display: flex;
   justify-content: space-between;
-  flex-direction: column; }
+  flex-direction: column;
+  height: 32px; }
   .subtask-div-btn {
     cursor: pointer;
     padding: 5px; }
@@ -375,7 +379,8 @@ span {
     width: 100%;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center; }
+    align-items: center;
+    height: 32px; }
   .subtask-div-error {
     color: #ff3d00;
     font-size: 12px; }
@@ -396,6 +401,22 @@ span {
   justify-content: space-between;
   right: 40px;
   gap: 20px; }
+
+.ulContainer {
+  width: calc(100% - 40px); }
+
+.ulContainer input {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-self: stretch;
+  border-radius: 10px;
+  border: 1px solid #d1d1d1;
+  background: #fff;
+  font-family: Inter;
+  font-size: 19px;
+  width: 100%;
+  height: 32px; }
 
 #subtasks {
   display: flex;
@@ -446,6 +467,29 @@ span {
 #create-task p {
   color: #fff !important;
   font-weight: 700; }
+
+.subTaskInputButtons {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  right: 10px;
+  gap: 3px;
+  top: 8px; }
+
+.subTaskInputImg {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  padding: 5px; }
+
+.subTaskInputImg:hover {
+  background-color: #a8a8a8;
+  border-radius: 50%; }
+
+.checkImg {
+  width: 20px;
+  height: 18px; }
 
 .my-body {
   height: 100vh;

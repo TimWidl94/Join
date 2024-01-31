@@ -260,6 +260,7 @@ span {
   justify-content: space-between;
   // margin: 5px 10px;
   flex-direction: column;
+  height: 32px;
   &-btn {
     cursor: pointer;
     padding: 5px;
@@ -275,6 +276,7 @@ span {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    height: 32px;
   }
 
   &-error{
@@ -301,7 +303,27 @@ span {
   gap: 20px;
 }
 
+.inputImgChangeButton{
 
+}
+
+.ulContainer{
+  width: calc(100% - 40px);
+}
+
+.ulContainer input{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-self: stretch;
+  border-radius: 10px;
+  border: 1px solid $color-lightgrey;
+  background: $color-light;
+  font-family: Inter;
+  font-size: 19px;
+  width: 100%;
+  height: 32px;
+}
 
 #subtasks {
   display: flex;
@@ -360,4 +382,32 @@ span {
 #create-task p {
   color: $color-light !important;
   font-weight: 700;
+}
+
+.subTaskInputButtons{
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  right: 10px;
+  gap: 3px;
+  top: 8px;
+}
+
+.subTaskInputImg{
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.subTaskInputImg:hover{
+  background-color: #a8a8a8;
+  border-radius: 50%;
+
+}
+
+.checkImg{
+  width: 20px;
+  height: 18px;
 }

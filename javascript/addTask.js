@@ -128,7 +128,7 @@ function showTaskForm() {
   assignedTo.innerHTML = /*html*/ `
     <div name="assigned" onchange="addAssignedContact()">
       <div id="dropdown" class="dropdown" onclick="openDropDown()">
-      <input class="contact-searchbar" onkeyup="filterAddTaskContact()" type="text" id="search" placeholder="Select contacts to assgin" />
+        <input class="contact-searchbar" onkeyup="filterAddTaskContact()" type="text" id="search" placeholder="Select contacts to assign" />
         <img id="dropdownImgArrow" class="rotate-arrow" src="../assets/img/AddTask/arrow_drop.svg" alt="">
       </div>
     </div>
@@ -139,9 +139,14 @@ function showTaskForm() {
 
   for (let i = 0; i < contacts.length; i++) {
     let currentUser = contacts[i]["name"];
+    let initials = getInitials(currentUser);
     let assignedDropdown = document.getElementById("assignedDropdown");
     assignedDropdown.innerHTML += /*html*/ `
-      <div id="user-${i}" class="flex-checkbox selected-profile" onclick="addAssignedContact(${i})" data-value="${currentUser}">${currentUser}<img id="checkBox-${i}" src="assets/img/icons/checkBox.svg" alt=""></div>`;
+      <div id="user-${i}" class="flex-checkbox selected-profile" onclick="addAssignedContact(${i})" data-value="${currentUser}">
+        <div class="assigned-contact-profile selected-profile" onclick="deleteSelectedContact(${i})">${initials}</div>
+        ${currentUser}
+        <img id="checkBox-${i}" src="assets/img/icons/checkBox.svg" alt="">
+      </div>`;
   }
 }
 
@@ -168,16 +173,21 @@ function filterAddTaskContact() {
 
 
 
-
 function renderAllContacts(contactList) {
   for (let i = 0; i < contactList.length; i++) {
     let currentUser = contactList[i]["name"];
+    let initials = getInitials(currentUser);
     let assignedDropdown = document.getElementById("assignedDropdown");
     assignedDropdown.innerHTML += /*html*/ `
-      <div id="user-${i}" class="flex-checkbox selected-profile" onclick="addAssignedContact(${i})" data-value="${currentUser}">${currentUser}<img id="checkBox-${i}" src="assets/img/icons/checkBox.svg" alt=""></div>`;
+      <div id="user-${i}" class="flex-checkbox selected-profile" onclick="addAssignedContact(${i})" data-value="${currentUser}">
+        <div class="assigned-contact-profile selected-profile" onclick="deleteSelectedContact(${i})">${initials}</div>
+        ${currentUser}
+        <img id="checkBox-${i}" src="assets/img/icons/checkBox.svg" alt="">
+      </div>`;
   }
+  // Zeige die Initialen auch im Hauptformular an
+  document.getElementById('contactInitials').innerHTML = getInitials(contactList[0]["name"]);
 }
-
 
 
 function openDropDown() {
@@ -259,6 +269,7 @@ function getInitials(contact) {
   }
   return initials.toUpperCase();
 }
+
 
 function deleteSubTask(number) {
 

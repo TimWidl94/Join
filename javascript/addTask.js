@@ -128,7 +128,7 @@ function showTaskForm() {
   assignedTo.innerHTML = /*html*/ `
     <div name="assigned" onchange="addAssignedContact()">
     <div class="options-syle" onclick="handleDropdownClick(this)" style="border-color: rgb(41, 171, 226);">
-                                Select contacts to assign<img class="dropDownImg" src="../img/img/arrow_drop_down.svg" alt="">
+                                Select contacts to assign
                               </div>
     </div>
     <div id="assignedDropdown">
@@ -140,31 +140,21 @@ function showTaskForm() {
     let currentUser = contacts[i]["name"];
     let assignedDropdown = document.getElementById('assignedDropdown');
     assignedDropdown.innerHTML += /*html*/ `
-      <div id="test" onclick="addAssignedContact()" value="${currentUser}">${currentUser}</div>`;
-      renderSelectedContacts(test);
+      <div id="user-${i}" onclick="addAssignedContact(${i})" value="${currentUser}">${currentUser}<img id="checkBox0" src="../img/img/Check_button-white.svg" alt=""></div>`;
+;
   }
 }
 
-function addAssignedContact() {
-  let assignedDropdown = document.getElementById('assignedDropdown');
-  let selectedContact = assignedDropdown.value;
+function addAssignedContact(i) {
+  let assignedDropdown = document.getElementById('test-${i}');
+  let selectedContact = assignedDropdown.innerHTML;
 
   if (selectedContact !== "1") {
     selectedContacts.push(selectedContact);
     renderSelectedContacts();
   }
 }
-function renderContactSingle() {
-let content = document.getElementById('test');
-  content.innerHTML = '';
 
-  for (let i = 0; i < selectedContacts.length; i++) {
-    const contact = selectedContacts[i];
-    const initials = getInitials(contact);
-    const setBackgroundColor = setBackgroundColor(i)
-    content.innerHTML += `<div class="assinged-contact-profile selected-profile" style="background-color: ${backgroundColor}" onclick="deleteSelectedContact(${i})">${initials}</div>`
-  }
-}
 
 function renderSelectedContacts() {
   let content = document.getElementById('assignedAddedContact');

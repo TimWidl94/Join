@@ -18,7 +18,7 @@
 
     <section class="wrapper-contact-list" id="wrapper-contact-list">
       <div class="wrapper-contact-add">
-        <div class="add-new-contact" onclick="classlistRemoveAndAdd('add-contact-wrapper', 'd-none', 'd-block')">
+        <div class="add-new-contact" onclick="openPopup('add-contact-wrapper', 'add-contact', 'show-overlay-menu')">
           <p>Add new contact</p>
           <img src="assets/img/icons/person_add.svg" alt="Person Add" />
         </div>
@@ -36,8 +36,7 @@
     <button
       class="buttonGreyContactsMobile"
       id="addContactMobile"
-      onclick="openAddContactMobile();
-      "
+      onclick="openPopup('add-contact-wrapper-mobile', 'add-contact-mobile', 'show-overlay-menu-y');"
       ><img class="btnImgContactsMobile" src="assets/img/icons/person_add.svg" alt=""
     /></button>
 
@@ -75,7 +74,7 @@
     <section
       id="add-contact-wrapper"
       class="d-none"
-      onclick="classlistRemoveAndAdd('add-contact-wrapper', 'd-block', 'd-none')"
+      onclick="closePopup('add-contact-wrapper', 'add-contact', 'show-overlay-menu')"
     >
       <div class="add-contact-container">
         <div id="add-contact" onclick="doNotClose(event)">
@@ -93,7 +92,7 @@
               <img
                 src="assets/img/icons/close.svg"
                 alt="Close"
-                onclick="classlistRemoveAndAdd('add-contact-wrapper', 'd-block', 'd-none')"
+                onclick="closePopup('add-contact-wrapper', 'add-contact', 'show-overlay-menu')"
               />
             </div>
 
@@ -179,18 +178,22 @@
     <section
       id="edit-contact-wrapper"
       class="d-none"
-      onclick=" classlistRemoveAndAdd('edit-contact-wrapper', 'd-block', 'd-none');"
+      onclick="closePopup('edit-contact-wrapper', 'edit-contact', 'show-overlay-menu')"
     >
     </section>
 
     <section
       id="edit-contact-wrapper-mobile"
       class="d-none"
-      onclick="classlistRemoveAndAdd('edit-contact-wrapper-mobile', 'd-block', 'd-none')"
+      onclick="closePopup('edit-contact-wrapper-mobile', 'edit-contact-mobile', 'show-overlay-menu-y')"
     >
     </section>
 
-    <section id="add-contact-wrapper-mobile" onclick="closeAddContactMobile()" class="d-none">
+    <section
+      id="add-contact-wrapper-mobile"
+      onclick="closePopup('add-contact-wrapper-mobile', 'add-contact-mobile', 'show-overlay-menu-y')"
+      class="d-none"
+    >
       <div class="add-contact-container-mobile">
         <div id="add-contact-mobile" onclick="doNotClose(event)">
           <section class="top-container">
@@ -198,7 +201,7 @@
               <img
                 src="assets/img/icons/close-white.svg"
                 alt="Close"
-                onclick="classlistRemoveAndAdd('add-contact-wrapper-mobile', 'd-block', 'd-none')"
+                onclick="closePopup('add-contact-wrapper-mobile', 'add-contact-mobile', 'show-overlay-menu-y')"
               />
             </div>
             <div class="top-card-text">

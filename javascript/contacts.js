@@ -109,7 +109,6 @@ function classlistToggle(id, toggle) {
 }
 
 function classlistAdd(id, add) {
-  console.log('classList Added');
   document.getElementById(id).classList.add(add);
 }
 
@@ -131,12 +130,13 @@ async function addContact(target) {
 
   saveContacts();
 
-  closePopup('add-contact-wrapper', 'add-contact-wrapper-mobile');
   let index = findContactIndex(name.value);
   openContactInfo(index);
   clearPopup(name, mail, tel);
+  await closeContactPopup(target, 'add');
 
-  animateBannerContacts('banner-contact-created', 'banner-contact-created-mobile');
+  setTimeout(() => animateBannerContacts('banner-contact-created', 'banner-contact-created-mobile'), 250);
+
   init();
 }
 
@@ -144,19 +144,14 @@ function findContactIndex(name) {
   return contacts.findIndex((obj) => obj.name.toLowerCase() === name.toLowerCase());
 }
 
-function closeAddContactMobile() {
-  classlistRemove('add-contact-mobile', 'show-overlay-menu-y');
-  setTimeout(() => classlistRemoveAndAdd('add-contact-wrapper-mobile', 'd-block', 'd-none'), 250);
+function openPopup(id1, id2, direction) {
+  classlistRemoveAndAdd(id1, 'd-none', 'd-block');
+  setTimeout(() => classlistAdd(id2, direction), 50);
 }
 
-function openAddContactMobile() {
-  classlistRemoveAndAdd('add-contact-wrapper-mobile', 'd-none', 'd-block');
-  setTimeout(() => classlistAdd('add-contact-mobile', 'show-overlay-menu-y'), 50);
-}
-
-function closePopup(id1, id2) {
-  classlistRemoveAndAdd(id1, 'd-block', 'd-none');
-  classlistRemoveAndAdd(id2, 'd-block', 'd-none');
+function closePopup(id1, id2, direction) {
+  classlistRemove(id2, direction);
+  setTimeout(() => classlistRemoveAndAdd(id1, 'd-block', 'd-none'), 250);
 }
 
 function firstLettersUppercase(str) {
@@ -186,7 +181,6 @@ function editContact(i, target) {
   let acronym = getFirstLetters(contacts[i].name);
   const color = setBackgroundColor(i);
   renderEditContactDesktopOrMobile(acronym, color, i);
-  console.log('target:', target);
 
   let name1 = document.getElementById(`edit-name-${target}`);
   let mail = document.getElementById(`edit-mail-${target}`);
@@ -195,11 +189,6 @@ function editContact(i, target) {
   name1.value = contacts[i].name;
   mail.value = contacts[i].mail;
   tel.value = contacts[i].phone;
-  if (target == 'desktop') {
-    classlistRemoveAndAdd('edit-contact-wrapper', 'd-none', 'd-block');
-  } else {
-    classlistRemoveAndAdd('edit-contact-wrapper-mobile', 'd-none', 'd-block');
-  }
 }
 
 function renderEditContactDesktopOrMobile(acronym, color, i) {
@@ -217,6 +206,7 @@ function validatePhoneNumber(input) {
 }
 
 async function saveEditedContact(i, target) {
+  let edit;
   deleteUnusedLetter(i);
   let name = document.getElementById(`edit-name-${target}`);
   let mail = document.getElementById(`edit-mail-${target}`);
@@ -225,16 +215,19 @@ async function saveEditedContact(i, target) {
   contacts[i].mail = mail.value;
   contacts[i].phone = tel.value;
 
-  console.log('target:', target);
-
-  // if (target == 'desktop') {
-  //   classlistRemoveAndAdd('edit-contact-wrapper', 'd-block', 'd-none');
-  // } else {
-  //   classlistRemoveAndAdd('edit-contact-wrapper-mobile', 'd-block', 'd-none');
-  // }
   await saveContacts();
   init();
+
+  await closeContactPopup(target, 'edit');
   openContactInfo(i);
+}
+
+async function closeContactPopup(target, type) {
+  if (target == 'desktop') {
+    closePopup(`${type}-contact-wrapper`, `${type}-contact`, 'show-overlay-menu');
+  } else {
+    closePopup(`${type}-contact-wrapper-mobile`, `${type}-contact-mobile`, 'show-overlay-menu-y');
+  }
 }
 
 async function deleteContact(i) {

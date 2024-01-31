@@ -17,7 +17,7 @@ let letters = [];
 
 /*Popup function */
 
-function renderAddTask(){
+function renderAddTask() {
   content = document.getElementById('main');
   content.innerHTML = addTaskHtml();
 }
@@ -74,7 +74,7 @@ function addSubTask() {
   }
 }
 
-function renderSubTask(){
+function renderSubTask() {
   let container = document.getElementById('subTaskContainer');
   container.innerHTML = ``;
   for (let i = 0; i < subtasks.length; i++) {
@@ -99,16 +99,16 @@ function renderSelectedContacts() {
   renderLetters();
 }
 
-function findSubtaskPosition(id){
+function findSubtaskPosition(id) {
   let nr = subtasks.findIndex(obj => obj.id === id)
   return nr;
 }
 
 function editSubTask(id) {
-let container = document.getElementById(id);
-let nr = findSubtaskPosition(id);
-let textContent = subtasks[nr]["subTaskInput"]
-container.innerHTML = /*html*/ `
+  let container = document.getElementById(id);
+  let nr = findSubtaskPosition(id);
+  let textContent = subtasks[nr]["subTaskInput"]
+  container.innerHTML = /*html*/ `
 <input id="editSubTaskInput" type="text" placeholder=${textContent} value=${textContent} />
 <div class="editSubTaskButtonBox">
 <img src="assets/img/icons/delete.svg" alt="Clear Icon" class="inputImgTrash" onclick="deleteSubTask(${id})"/>
@@ -116,7 +116,7 @@ container.innerHTML = /*html*/ `
 </div>`
 }
 
-function addEditSubTask(i){
+function addEditSubTask(i) {
   let subTaskInput = document.getElementById('editSubTaskInput');
   subtasks[i].subTaskInput = subTaskInput.value;
   renderSubTask()
@@ -126,15 +126,22 @@ function addEditSubTask(i){
 function showTaskForm() {
   let assignedTo = document.getElementById('assignedTo');
   assignedTo.innerHTML = /*html*/ `
-    <select name="assigned" id="assignedDropdown" onchange="addAssignedContact()">
-      <option value="1">Select contacts to assign</option>
-    </select>`;
+    <div name="assigned" onchange="addAssignedContact()">
+    <div class="options-syle" onclick="handleDropdownClick(this)" style="border-color: rgb(41, 171, 226);">
+                                Select contacts to assign<img class="dropDownImg" src="../img/img/arrow_drop_down.svg" alt="">
+                              </div>
+    </div>
+    <div id="assignedDropdown">
+      <div id="assignedAddedContact"></div>
+    </div>
+    `;
 
   for (let i = 0; i < contacts.length; i++) {
     let currentUser = contacts[i]["name"];
     let assignedDropdown = document.getElementById('assignedDropdown');
     assignedDropdown.innerHTML += /*html*/ `
-      <option onclick="addAssignedContact()" value="${currentUser}">${currentUser}</option>`;
+      <div id="test" onclick="addAssignedContact()" value="${currentUser}">${currentUser}</div>`;
+      renderSelectedContacts(test);
   }
 }
 
@@ -147,7 +154,17 @@ function addAssignedContact() {
     renderSelectedContacts();
   }
 }
+function renderContactSingle() {
+let content = document.getElementById('test');
+  content.innerHTML = '';
 
+  for (let i = 0; i < selectedContacts.length; i++) {
+    const contact = selectedContacts[i];
+    const initials = getInitials(contact);
+    const setBackgroundColor = setBackgroundColor(i)
+    content.innerHTML += `<div class="assinged-contact-profile selected-profile" style="background-color: ${backgroundColor}" onclick="deleteSelectedContact(${i})">${initials}</div>`
+  }
+}
 
 function renderSelectedContacts() {
   let content = document.getElementById('assignedAddedContact');
@@ -156,8 +173,8 @@ function renderSelectedContacts() {
   for (let i = 0; i < selectedContacts.length; i++) {
     const contact = selectedContacts[i];
     const initials = getInitials(contact);
-    setBackgroundColor();
-    content.innerHTML += `<div class="assinged-contact-profile selected-profile" style="background-color: ${setBackgroundColor(i)}"; onclick="deleteSelectedContact(${i})">${initials}</div>`;
+    const setBackgroundColor = setBackgroundColor(i)
+    content.innerHTML += `<div class="assinged-contact-profile selected-profile" style="background-color: ${backgroundColor}" onclick="deleteSelectedContact(${i})">${initials}</div>`
   }
 }
 
@@ -195,7 +212,7 @@ function deleteSubTask(number) {
   }
 }
 
-function clearInputValue(){
+function clearInputValue() {
   renderAddTask();
   showTaskForm();
 }

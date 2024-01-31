@@ -127,31 +127,72 @@ function showTaskForm() {
   let assignedTo = document.getElementById('assignedTo');
   assignedTo.innerHTML = /*html*/ `
     <div name="assigned" onchange="addAssignedContact()">
-    <div class=" dropdown" onclick="openDropDown()" style="border-color: rgb(41, 171, 226);">
-                                Select contacts to assign <img id="dropdownImgArrow" class="" src="../assets/img/AddTask/arrow_drop.svg" alt="">
-                              </div>
+      <div id="dropdown" class="dropdown" onclick="openDropDown()">
+      <input class="contact-searchbar" onkeyup="filterAddTaskContact()" type="text" id="search" placeholder="Select contacts to assgin" />
+        <img id="dropdownImgArrow" class="rotate-arrow" src="../assets/img/AddTask/arrow_drop.svg" alt="">
+      </div>
     </div>
-    <div id="assignedDropdown">
+    <div id="assignedDropdown" class="d-none">
       <div id="assignedAddedContacts"></div>
     </div>
-    `;
+  `;
 
   for (let i = 0; i < contacts.length; i++) {
     let currentUser = contacts[i]["name"];
     let assignedDropdown = document.getElementById("assignedDropdown");
     assignedDropdown.innerHTML += /*html*/ `
       <div id="user-${i}" class="flex-checkbox selected-profile" onclick="addAssignedContact(${i})" data-value="${currentUser}">${currentUser}<img id="checkBox-${i}" src="assets/img/icons/checkBox.svg" alt=""></div>`;
-    ;
   }
 }
+
+function filterAddTaskContact() {
+  let searchTerm = document.getElementById("search").value.toLowerCase();
+  let assignedDropDown = document.getElementById("assignedDropdown");
+  assignedDropDown.innerHTML = "";
+
+  if (searchTerm === "") {
+    renderAllContacts(contacts); 
+    assignedDropDown.classList.remove("d-none");
+  } else {
+    const filteredContacts = contacts.filter(contact => contact.name.toLowerCase().startsWith(searchTerm));
+    renderAllContacts(filteredContacts);
+
+    if (filteredContacts.length === 0) {
+      assignedDropDown.classList.add("d-none");
+    } else {
+      assignedDropDown.classList.remove("d-none");
+    }
+  }
+}
+
+
+
+
+
+function renderAllContacts(contactList) {
+  for (let i = 0; i < contactList.length; i++) {
+    let currentUser = contactList[i]["name"];
+    let assignedDropdown = document.getElementById("assignedDropdown");
+    assignedDropdown.innerHTML += /*html*/ `
+      <div id="user-${i}" class="flex-checkbox selected-profile" onclick="addAssignedContact(${i})" data-value="${currentUser}">${currentUser}<img id="checkBox-${i}" src="assets/img/icons/checkBox.svg" alt=""></div>`;
+  }
+}
+
+
 
 function openDropDown() {
   let assignedDropdown = document.getElementById("assignedDropdown");
   let dropdownImgArrow = document.getElementById("dropdownImgArrow");
+  let dropdown = document.getElementById("dropdown");
+
   assignedDropdown.classList.toggle('d-none');
+  dropdown.classList.toggle('border-active');
   assignedDropdown.classList.toggle('dropbtn');
   dropdownImgArrow.classList.toggle('rotate-arrow');
 }
+
+
+
 
 function openDropDownCategory() {
   let assignedDropdown = document.getElementById("assignedDropdown");

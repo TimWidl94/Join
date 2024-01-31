@@ -1,5 +1,5 @@
-function subTaskHtml(id, i){
-    return /*HTML*/ `
+function subTaskHtml(id, i) {
+  return /*HTML*/ `
     <li id="${id}" class="subtask-div-list">${subtasks[i]["subTaskInput"]}
       <div>
         <img class="subtask-div-btn" onclick="editSubTask(${id})" src="./assets/img/icons/edit.svg" alt="">
@@ -8,19 +8,22 @@ function subTaskHtml(id, i){
     </li>`;
 }
 
-function addTaskHtml(){
-    return /*html*/ `
+
+
+
+function addTaskHtml() {
+  return /*html*/ `
     <section class="container-left">
         <div class="headline-add-task"><h1 class="headline-h1-add-task">Add Task</h1></div>
 
         <div id="title">
           <p>Title<span>*</span></p>
-          <input id="taskTitle" required type="text" placeholder="Enter a title" />
+          <input id="taskTitle" required type="text" class="border-focus" placeholder="Enter a title" />
         </div>
 
         <div id="description">
           <p>Description</p>
-          <textarea id="taskDescription" placeholder="Enter a description"></textarea>
+          <textarea id="taskDescription" class="border-focus" placeholder="Enter a description"></textarea>
         </div>
 
         <p>Assigned to</p>
@@ -65,11 +68,11 @@ function addTaskHtml(){
           <div id="category-options" class="options-syle">
 Select task category
           </div>
-          <div data-value=user-story">User Story</div>
+          <div data-value="user-story">User Story</div>
             <div data-value="other">Other</div>
-            <div class="dropdown dropdown-category" onclick="openDropDownCategory()">
-                                Select contacts to assign <img id="dropdownImgArrowCategory" class="" src="../assets/img/AddTask/arrow_drop.svg" alt="">
-                              </div>
+            <div id="assignedDropdown" class="/*d-none*/">ff
+      <div id="assignedAddedContacts"></div>
+    </div>
     </div>
 
 

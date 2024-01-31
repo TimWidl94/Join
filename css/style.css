@@ -227,6 +227,12 @@ span {
 .selected-profile {
   cursor: pointer; }
 
+.add-task-active {
+  color: #fff;
+  background-color: #2a3647;
+  border-radius: 10px;
+  padding: 7px 16px 7px 16px; }
+
 #assignedDropdown {
   padding: 12px 16px;
   width: 100%;
@@ -237,7 +243,6 @@ span {
   -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;
-  background-image: url("../assets/img/AddTask/arrow_drop.svg");
   background-color: #fff;
   background-repeat: no-repeat;
   background-position: right 8px top 50%, 0 0;
@@ -367,6 +372,11 @@ span {
   .subtask-div-error {
     color: #ff3d00;
     font-size: 12px; }
+
+.flex-checkbox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; }
 
 .editSubTaskButtonBox {
   position: absolute;

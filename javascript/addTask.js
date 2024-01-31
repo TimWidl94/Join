@@ -140,7 +140,7 @@ function showTaskForm() {
     let currentUser = contacts[i]["name"];
     let assignedDropdown = document.getElementById('assignedDropdown');
     assignedDropdown.innerHTML += /*html*/ `
-      <div id="user-${i}" onclick="addAssignedContact(${i})" value="${currentUser}">${currentUser}<img id="checkBox0" src="../img/img/Check_button-white.svg" alt=""></div>`;
+      <div id="user-${i}" class="flex-checkbox" onclick="addAssignedContact(${i})" value="${currentUser}">${currentUser}<img id="checkBox0" src="assets/img/icons/checkBox.svg" alt=""></div>`;
 ;
   }
 }
@@ -150,6 +150,7 @@ function addAssignedContact(i) {
   let selectedContact = assignedDropdown.innerHTML;
 
   if (selectedContact !== "1") {
+    assignedDropdown.classList.add('add-task-active');
     selectedContacts.push(selectedContact);
     renderSelectedContacts();
   }

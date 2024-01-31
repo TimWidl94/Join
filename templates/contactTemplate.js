@@ -32,7 +32,8 @@ function openContactInfoHTML(contact, acronym, color, i) {
         <div class="name-and-changes">
             <h2 id="name">${contact.name}</h2>
             <div class="changes">
-                <div class="edit" onclick="editContact(${i}, 'desktop')">
+                <div class="edit" onclick="editContact(${i}, 'desktop'), openPopup('edit-contact-wrapper', 'edit-contact', 'show-overlay-menu')"
+>
                     <img class="edit-img" src="assets/img/icons/edit.svg" alt="Edit">
                     <p class="edit-p">Edit</p>
                 </div>
@@ -61,7 +62,8 @@ function openContactInfoHTML(contact, acronym, color, i) {
 
     <div id="changesMobileWrapper" onclick="closeChangesMenuMobile()">
       <div id="changesMobile" onclick="doNotClose(event)">
-        <div class="edit" onclick="editContact(${i}, 'mobile')">
+        <div class="edit" onclick="editContact(${i}, 'mobile'), openPopup('edit-contact-wrapper-mobile', 'edit-contact-mobile', 'show-overlay-menu-y')"
+>
           <img class="edit-img" src="assets/img/icons/edit.svg" alt="Edit" />
           <p class="edit-p">Edit</p>
         </div>
@@ -91,7 +93,7 @@ function editContactDesktopHTML(acronym, color, i) {
                 <img
                     src="assets/img/icons/close.svg"
                     alt="Close"
-                    onclick="classlistRemoveAndAdd('edit-contact-wrapper', 'd-block', 'd-none')"
+                    onclick="closePopup('edit-contact-wrapper', 'edit-contact', 'show-overlay-menu')"
                 />
                 </div>
 
@@ -140,7 +142,7 @@ function editContactMobileHTML(acronym, color, i) {
               <img
                 src="assets/img/icons/close-white.svg"
                 alt="Close"
-                onclick="classlistRemoveAndAdd('edit-contact-wrapper-mobile', 'd-block', 'd-none')"
+                onclick="closePopup('edit-contact-wrapper-mobile', 'edit-contact-mobile', 'show-overlay-menu-y')"
               />
             </div>
             <div class="top-card-text">

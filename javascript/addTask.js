@@ -127,35 +127,60 @@ function showTaskForm() {
   let assignedTo = document.getElementById('assignedTo');
   assignedTo.innerHTML = /*html*/ `
     <div name="assigned" onchange="addAssignedContact()">
-    <div class="options-syle" onclick="handleDropdownClick(this)" style="border-color: rgb(41, 171, 226);">
-                                Select contacts to assign
+    <div class=" dropdown" onclick="openDropDown()" style="border-color: rgb(41, 171, 226);">
+                                Select contacts to assign <img id="dropdownImgArrow" class="" src="../assets/img/AddTask/arrow_drop.svg" alt="">
                               </div>
     </div>
     <div id="assignedDropdown">
-      <div id="assignedAddedContact"></div>
+      <div id="assignedAddedContacts"></div>
     </div>
     `;
 
   for (let i = 0; i < contacts.length; i++) {
     let currentUser = contacts[i]["name"];
-    let assignedDropdown = document.getElementById('assignedDropdown');
+    let assignedDropdown = document.getElementById("assignedDropdown");
     assignedDropdown.innerHTML += /*html*/ `
-      <div id="user-${i}" class="flex-checkbox" onclick="addAssignedContact(${i})" value="${currentUser}">${currentUser}<img id="checkBox0" src="assets/img/icons/checkBox.svg" alt=""></div>`;
-;
+      <div id="user-${i}" class="flex-checkbox selected-profile" onclick="addAssignedContact(${i})" data-value="${currentUser}">${currentUser}<img id="checkBox-${i}" src="assets/img/icons/checkBox.svg" alt=""></div>`;
+    ;
   }
+}
+
+function openDropDown() {
+  let assignedDropdown = document.getElementById("assignedDropdown");
+  let dropdownImgArrow = document.getElementById("dropdownImgArrow");
+  assignedDropdown.classList.toggle('d-none');
+  assignedDropdown.classList.toggle('dropbtn');
+  dropdownImgArrow.classList.toggle('rotate-arrow');
 }
 
 function addAssignedContact(i) {
-  let assignedDropdown = document.getElementById('test-${i}');
-  let selectedContact = assignedDropdown.innerHTML;
+  let assignedDropdown = document.getElementById(`user-${i}`);
+  let checkboxImage = document.getElementById(`checkBox-${i}`);
+  let selectedContact = assignedDropdown.getAttribute('data-value');
+  renderContactList(assignedDropdown, checkboxImage, selectedContact);
 
-  if (selectedContact !== "1") {
-    assignedDropdown.classList.add('add-task-active');
-    selectedContacts.push(selectedContact);
-    renderSelectedContacts();
-  }
+
+  renderSelectedContacts();
 }
 
+function renderContactList(assignedDropdown, checkboxImage, selectedContact) {
+  if (selectedContact !== "1") {
+    assignedDropdown.classList.toggle('addTask-selected');
+
+    const index = selectedContacts.indexOf(selectedContact);
+    if (assignedDropdown.classList.contains('addTask-selected')) {
+      if (index === -1) {
+        selectedContacts.push(selectedContact);
+      }
+      checkboxImage.src = './assets/img/icons/check_button-white.svg';
+    } else {
+      if (index !== -1) {
+        selectedContacts.splice(index, 1);
+      }
+      checkboxImage.src = './assets/img/icons/checkBox.svg';
+    }
+  }
+}
 
 function renderSelectedContacts() {
   let content = document.getElementById('assignedAddedContact');
@@ -164,8 +189,7 @@ function renderSelectedContacts() {
   for (let i = 0; i < selectedContacts.length; i++) {
     const contact = selectedContacts[i];
     const initials = getInitials(contact);
-    const setBackgroundColor = setBackgroundColor(i)
-    content.innerHTML += `<div class="assinged-contact-profile selected-profile" style="background-color: ${backgroundColor}" onclick="deleteSelectedContact(${i})">${initials}</div>`
+    content.innerHTML += `<div class="assinged-contact-profile selected-profile" onclick="deleteSelectedContact(${i})">${initials}</div>`
   }
 }
 

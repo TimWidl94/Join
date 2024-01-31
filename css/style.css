@@ -227,7 +227,7 @@ span {
 .selected-profile {
   cursor: pointer; }
 
-.add-task-active {
+.addTask-selected {
   color: #fff;
   background-color: #2a3647;
   border-radius: 10px;
@@ -235,7 +235,6 @@ span {
 
 #assignedDropdown {
   padding: 12px 16px;
-  width: 100%;
   border-radius: 10px;
   border: 1px solid #d1d1d1;
   background-color: #fff;
@@ -334,6 +333,14 @@ span {
   gap: 8px;
   padding-bottom: 24px; }
 
+.rotate-arrow {
+  transform: rotate(180deg); }
+
+.dropdown {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; }
+
 .options-syle {
   display: flex;
   justify-content: space-between;
@@ -376,7 +383,10 @@ span {
 .flex-checkbox {
   display: flex;
   justify-content: space-between;
-  align-items: center; }
+  align-items: center;
+  padding: 7px 16px 7px 16px;
+  margin-top: 5px;
+  margin-bottom: 5px; }
 
 .editSubTaskButtonBox {
   position: absolute;

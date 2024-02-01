@@ -5,7 +5,7 @@ function logInHtml() {
       <h1>Log in</h1>
       <img src="./assets/img/icons/blueUnderline.svg" alt="" class="blueUnderline"/>
      </div>
-    <div class="dp-flex fd-colum InputAndRememberBox">
+    <div class="dp-flex fd-colum InputAndRememberBox" id="inputMainBox">
       <div class="logInInputFieldContainer">
         <div class="inputFieldBox">
           <input type="email" class="logInInputField" placeholder="Email" id="email" minlength="5" required />
@@ -14,9 +14,10 @@ function logInHtml() {
         <div class="inputFieldBox">
           <input type="password" class="logInInputField" placeholder="Password" autocomplete="on" id="password" minlength="1" required />
           <img src="./assets/img/icons/lock.svg" alt="" class="logInInputImgLock" id="passwordIcon" onclick="toggleShowPassword('password', 'passwordIcon')">
-        </div>
+        </div>  
       </div>
-      <div class="checkboxBox">
+      <div class="passwordIsntCorrect d-none" id="passwordDontMatch">Wrong password Ups! Try again.</div>
+      <div class="checkboxBox" id="checkboxBox">
         <div class="gap8 dp-flex remembermeWidth">
           <input type="checkbox" id="checkboxSavePassword" class="checkboxSavePassword" />
           <label for="checkboxSavePassword" ></label>

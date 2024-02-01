@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Add Task</title>
-    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/style.css?version=1.0" />
     <script src="includeHTML.js"></script>
     <script src="./script.js"></script>
     <script src="./javascript/loadData.js"></script>
@@ -12,11 +12,10 @@
     <script src="./templates/addTaskTemplate.js"></script>
     <link rel="icon" type="image/x-icon" href="assets/img/Global/join_logo_black.svg" />
   </head>
-  <body onload="init()">
-    <div w3-include-html="sidebar.html"></div>
+  <body class="body-add-task" onload="init()">
     <div w3-include-html="topbar.html"></div>
 
-    <main class="main-add-task" id="main">
-    </main>
+    <main class="main-add-task" id="main"> </main>
+    <div w3-include-html="sidebar.html"></div>
   </body>
 </html>

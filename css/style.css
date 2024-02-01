@@ -2581,6 +2581,20 @@ input:focus {
   background-color: #EEEDEC;
   cursor: pointer; }
 
+.legalNoticeContainer {
+  overflow-y: scroll;
+  margin: 96px 0px 0px;
+  position: relative;
+  padding: 80px 64px;
+  left: 232px;
+  background-color: #f6f7f8;
+  width: calc(100% - 360px);
+  height: calc(100vh - 256px);
+  display: flex;
+  align-items: start;
+  justify-content: start;
+  flex-direction: column; }
+
 .container {
   margin: 96px 0px 0px;
   max-width: 1208px;

@@ -16,12 +16,14 @@
     <script src="./templates/legalNoticeTemplate.js"></script>
     <script src="./javascript/legalNotice.js"></script>
 </head>
-<body onload="init()">
+<body class="myBody" onload="init()">
     <div w3-include-html="sidebar.html"></div>
     <div w3-include-html="topbar.html"></div>
-    <div class="contentContainer" id="legalNoticeContainer">
+    <div class="legalNoticeWrapper">
+    <div class="textSitesContainer" id="legalNoticeContainer">
       <div class="headline-container" id="headline-container"></div>
       <div id="contentHTML"></div>
+    </div>
     
 </body>
 </html>

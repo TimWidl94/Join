@@ -2582,13 +2582,53 @@ input:focus {
   cursor: pointer; }
 
 .myBody {
-  overflow: unset !important; }
+  overflow-x: hidden;
+  overflow-y: hidden;
+  height: 100vh; }
 
 .h2-help {
   font-size: 27px;
   font-style: normal;
   font-weight: 700;
   text-decoration: underline; }
+
+.h2-legal-notice {
+  color: var(--black, #000);
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 120%;
+  /* 24px */ }
+
+.span-blue {
+  color: var(--Ligth-blue, #29abe2);
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 120%; }
+
+.legalNoticeWrapper {
+  overflow-y: scroll;
+  position: absolute;
+  top: 100px;
+  left: 232px;
+  height: calc(100vh - 100px);
+  width: calc(100vw - 232px);
+  display: inline-flex; }
+
+.textSitesContainer {
+  margin: 96px 0 0 0;
+  position: relative;
+  padding: 0 64px 100px 64px;
+  /* Hier wird der Abstand von 100px hinzugefügt */
+  background-color: #f6f7f8;
+  max-width: calc(1014px + 2 * 64px);
+  display: flex;
+  align-items: start;
+  justify-content: start;
+  flex-direction: column; }
 
 .contentContainer {
   position: relative;
@@ -2602,6 +2642,14 @@ input:focus {
 
 .mb-40 {
   margin-bottom: 40px; }
+
+.p-text-sites {
+  color: var(--black, #000);
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 120%; }
 
 .container {
   margin: 96px 0px 0px;

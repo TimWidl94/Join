@@ -2581,19 +2581,27 @@ input:focus {
   background-color: #EEEDEC;
   cursor: pointer; }
 
-.legalNoticeContainer {
-  overflow-y: scroll;
-  margin: 96px 0px 0px;
+.myBody {
+  overflow: unset !important; }
+
+.h2-help {
+  font-size: 27px;
+  font-style: normal;
+  font-weight: 700;
+  text-decoration: underline; }
+
+.contentContainer {
   position: relative;
-  padding: 80px 64px;
-  left: 232px;
+  padding: 40px 40px;
   background-color: #f6f7f8;
-  width: calc(100% - 360px);
-  height: calc(100vh - 256px);
+  max-width: 1000px;
   display: flex;
   align-items: start;
   justify-content: start;
   flex-direction: column; }
+
+.mb-40 {
+  margin-bottom: 40px; }
 
 .container {
   margin: 96px 0px 0px;

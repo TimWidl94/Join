@@ -1,18 +1,29 @@
 @import '../base/_colors';
 
+.myBody {
+  overflow: unset !important;
+}
+
+.h2-help {
+  font-size: 27px;
+  font-style: normal;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
 .contentContainer {
-  overflow-y: scroll;
-  margin: 96px 0px 0px;
+  // overflow-y: scroll;
   position: relative;
-  padding: 80px 64px;
-  left: 232px;
+  padding: 40px 40px;
   background-color: #f6f7f8;
-  width: calc(100% - 360px);
-  height: calc(100vh - 256px);
+  max-width: 1000px;
+  // height: calc(100vh - 256px);
   display: flex;
   align-items: start;
   justify-content: start;
-  flex-direction: column;..
+  flex-direction: column;
 }
 
-
+.mb-40 {
+  margin-bottom: 40px;
+}

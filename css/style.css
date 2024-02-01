@@ -122,7 +122,7 @@ h1 {
 .gap9 {
   gap: 8px; }
 
-@media (max-width: 1000px) {
+@media (max-width: 800px) {
   h1 {
     font-size: 47px; } }
 
@@ -1247,6 +1247,7 @@ form {
   .inputField {
     width: 100%; }
   .inputImgPerson,
+  .inputImgLock,
   .inputImgMail,
   .inputImgPhone2 {
     right: -20px !important; }
@@ -1834,7 +1835,16 @@ footer {
   flex-shrink: 0;
   border: 0; }
 
-.inputFieldContainer {
+.logInInputField {
+  position: relative;
+  width: 380px;
+  height: 24px;
+  gap: 8px;
+  border-radius: 10px;
+  border: 1px solid #d1d1d1;
+  padding: 12px 21px; }
+
+.logInInputFieldContainer {
   position: relative;
   display: flex;
   height: 152px;
@@ -1850,7 +1860,8 @@ footer {
   align-items: flex-start;
   gap: 32px;
   outline: none;
-  padding-bottom: 16px; }
+  padding-bottom: 16px;
+  width: 100%; }
 
 .inputFieldBox {
   position: relative; }
@@ -1940,21 +1951,21 @@ footer {
   width: 100.03px;
   height: 121.97px; }
 
-.inputImgMail {
+.logInInputImgMail {
   position: absolute;
   right: 25px;
   width: 20px;
   height: 16px;
   top: 16px; }
 
-.inputImgLock {
+.logInInputImgLock {
   position: absolute;
   right: 25px;
   width: 16px;
   height: 21px;
-  top: 95px; }
+  top: 16px; }
 
-.inputImgLock1 {
+.logInInputImgLock1 {
   position: absolute;
   right: 25px;
   width: 16px;
@@ -1986,12 +1997,15 @@ footer {
 .paddingBtm16 {
   padding-bottom: 16px; }
 
+#formBody {
+  max-width: calc(100% - 32px); }
+
 @media (max-width: 800px) {
   .loginScreenBody {
-    width: 396px;
+    max-width: calc(100% - 32px);
     padding: 32px 0px; }
-  .inputField {
-    width: calc(396px - 80px); }
+  .logInInputField {
+    width: calc(100% - 44px); }
   .JoinLogoSmall {
     width: 64px;
     height: 78.031px;
@@ -2016,7 +2030,15 @@ footer {
     flex-direction: column;
     gap: 21px; }
   .buttonLogin {
-    width: 180px; } }
+    width: 180px; }
+  .inputFieldContainerSignUp {
+    gap: 27px;
+    width: calc(100% - 2 * 16px); }
+  .InputAndRememberBox {
+    max-width: 100%;
+    width: 100%; }
+  .logInInputFieldContainer {
+    width: calc(100% - 2 * 16px); } }
 
 .main {
   position: absolute;
@@ -2281,7 +2303,7 @@ a {
 .arrowLeftIcon {
   position: absolute;
   top: 64px;
-  left: 48px;
+  left: 12.375%;
   width: 32px;
   height: 32px; }
 

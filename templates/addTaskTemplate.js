@@ -1,5 +1,5 @@
-function subTasksValueHtml(id, i){
-    return /*HTML*/ `
+function subTasksValueHtml(id, i) {
+  return /*HTML*/ `
     <li id="${id}" class="subtask-div-list" ondblclick="editSubTask(${id})">${subtasks[i]["subTaskInput"]}
       <div>
         <img class="subtask-div-btn" onclick="editSubTask(${id})" src="./assets/img/icons/edit.svg" alt="">
@@ -64,14 +64,19 @@ function addTaskHtml() {
         </div>
 
         <div class="category">
-          <p>Category<span>*</span></p>
-          <div id="category-options" class="options-syle">
-Select task category
-          </div>
-          <div data-value="user-story">User Story</div>
-            <div data-value="other">Other</div>
-            <div id="assignedDropdown" class="/*d-none*/">ff
-      <div id="assignedAddedContacts"></div>
+  <p>Category<span>*</span></p>
+  <div id="dropdownCategory" class="dropdown" onclick="openDropDownCategory()">
+    Select task category 
+    <img id="dropdownImgArrowCategory" class="rotate-arrow" src="../assets/img/AddTask/arrow_drop.svg" alt="">
+  </div>
+  <div id="assignedDropdownCategory" class="category-dropdown d-none">
+    <div class="flex-checkbox" data-value="user-story" onclick="selectCategory('user-story')">User Story</div>
+    <div class="flex-checkbox" data-value="other" onclick="selectCategory('other')">Other</div>
+  </div>
+</div>
+
+</div>
+
     </div>
     </div>
 
@@ -96,7 +101,7 @@ Select task category
     `
 }
 
-function subTaskInputHtml(){
+function subTaskInputHtml() {
   return /*html*/ `
   <p>Subtasks</p>
           <div class="inputFieldBox" id="inputFieldBox">
@@ -108,7 +113,7 @@ function subTaskInputHtml(){
   `
 }
 
-function subTaskInputFieldHtml(){
+function subTaskInputFieldHtml() {
   return `
   <input id="subTaskInput" type="text" placeholder="Add new subtask" onclick="changeButtonsAddTask()" />
   <img onclick="addSubTask()" class="inputImgPlus" src="assets/img/AddTask/plus.svg" alt="Add Icon" />

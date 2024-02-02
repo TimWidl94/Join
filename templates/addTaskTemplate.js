@@ -15,12 +15,12 @@ function addTaskHtml() {
 
         <div id="title-add-task">
           <p>Title<span>*</span></p>
-          <input id="taskTitle" required type="text" placeholder="Enter a title" />
+          <input id="taskTitle" required type="text" class="border-focus" placeholder="Enter a title" />
         </div>
 
         <div id="description">
           <p>Description</p>
-          <textarea id="taskDescription" placeholder="Enter a description"></textarea>
+          <textarea id="taskDescription" class="border-focus" placeholder="Enter a description"></textarea>
         </div>
 
         <p>Assigned to</p>
@@ -61,11 +61,22 @@ function addTaskHtml() {
         </div>
 
         <div class="category">
-          <p>Category<span>*</span></p>
-          <select id="category-options" class="options-syle">
-            <option>Select task category</option>
-            <option value="user-story">User Story</option>
-            <option value="other">Other</option>
+  <p>Category<span>*</span></p>
+  <div id="dropdownCategory" class="dropdown" onclick="openDropDownCategory()">
+    Select task category 
+    <img id="dropdownImgArrowCategory" class="rotate-arrow" src="../assets/img/AddTask/arrow_drop.svg" alt="">
+  </div>
+  <div id="assignedDropdownCategory" class="category-dropdown d-none">
+    <div class="flex-checkbox" data-value="user-story" onclick="selectCategory('user-story')">User Story</div>
+    <div class="flex-checkbox" data-value="other" onclick="selectCategory('other')">Other</div>
+  </div>
+</div>
+
+</div>
+
+    </div>
+    </div>
+
 
           </select>
         </div>

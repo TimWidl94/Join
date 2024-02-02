@@ -102,18 +102,31 @@ span {
     font-size: 12px;
     font-weight: 400;
     line-height: 32px;
-    border-radius: 45%;
-    border: 3px solid white;
-    stroke: #fff;
+    border-radius: 50%;
+    border: 3px solid $color-light;
+    stroke: $color-light;
   }
   &-profile:not(:first-child) {
     margin-left: -10px;
   }
+  &-overview {
+    display: flex;
+    text-align: center;
+    color: $color-light;
+    width: 42px;
+    height: 42px;
+    align-items: center;
+    font-size: 12px;
+    justify-content: center;
+    font-weight: 400;
+    line-height: 32px;
+    border-radius: 50%;
+    border: 3px solid white;
+    stroke: $color-light;
+  }
 }
 
-.selected-profile {
-  cursor: pointer;
-}
+
 .addTask-selected {
   color: $color-light;
   background-color: $primary-color;
@@ -154,11 +167,11 @@ span {
 
 .dropdown {
   padding: 16px;
-  border: 1px solid #a8a8a8;
-  width: 100%;
-  border-radius: 10px;
-  cursor: pointer;
-  background-color: #ffffff;
+    border: 1px solid $color-board-grey;
+    width: 100%;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: $color-light;
 }
 
 .vertical-line-add-task {
@@ -256,7 +269,7 @@ span {
   display: flex;
   flex-direction: column;
   width: 100%;
-  gap: 8px;
+  // gap: 8px;
   padding-bottom: 24px;
 }
 
@@ -267,6 +280,12 @@ span {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  max-width: 409px;
+}
+.dropbtn {
+  max-height: 207px;
+  overflow-y: auto;
+  flex:1;
 }
 
 .options-syle {
@@ -281,7 +300,6 @@ span {
   -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;
-  background-image: url('../assets/img/AddTask/arrow_drop.svg');
   background-color: $color-light;
   background-repeat: no-repeat;
   background-position: right 8px top 50%, 0 0;
@@ -316,6 +334,7 @@ span {
     font-size: 12px;
   }
 }
+
 .flex-checkbox {
   display: flex;
   justify-content: space-between;
@@ -323,9 +342,11 @@ span {
   padding: 7px 16px 7px 16px;
   margin-top: 5px;
   margin-bottom: 5px;
+  cursor: pointer;
 }
 
 .editSubTaskButtonBox {
+
   position: absolute;
   width: 40px;
   display: flex;
@@ -380,7 +401,21 @@ span {
   font-size: 19px;
   width: calc(100% - (2 * 16px));
 }
-
+.category-dropdown {
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: 1px solid #d1d1d1;
+  background-color: #fff;
+  font-size: 16px;
+  margin-top: 1px;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-position: right 8px top 50%, 0 0;
+  background-size: 32px, 100%;
+}
 .inputImgPlus {
   position: absolute;
   top: 11px;
@@ -392,6 +427,20 @@ span {
     background: $color-board-grey;
     border-radius: 50%;
   }
+}
+.border-active {
+  outline: 1px solid $secondary-color;
+}
+
+.border-focus {
+    &:focus {
+      outline: 1px solid $secondary-color;
+    }
+}
+
+.contact-searchbar {
+  border: none;
+  width: 100%;
 }
 
 .btns-down-right-add-task {

@@ -25,7 +25,9 @@ let selectedPrio;
 
 function renderAddTask() {
   content = document.getElementById("main");
+  contentboardTask = document.getElementById("boardAddTask");
   content.innerHTML = addTaskHtml();
+  contentboardTask.innerHTML = addTaskHtml();
 }
 
 function renderSubTask() {

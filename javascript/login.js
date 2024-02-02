@@ -142,10 +142,16 @@ function toggleShowPassword(passwordId, passwordIconId) {
 }
 
 function checkIfPrivatPolicyIsChecked() {
+  let button = document.getElementById('signUpButton')
   let checkButton = document.getElementById("checkboxPrivatPolicy");
   if (checkButton.checked) {
     return true;
   }
+}
+
+function enableButton(){
+  let button = document.getElementById('signUpButton');
+  button.disabled = false;
 }
 
 function showAnimation(id) {
@@ -173,4 +179,5 @@ function animateLogo() {
 function passwordDontMatch(){
   document.getElementById('passwordDontMatch').classList.remove('d-none');
   document.getElementById('checkboxBox').style.paddingTop = '16px';
+  document.getElementById('password').style.borderColor = '#ff3d00';
 }

@@ -149,7 +149,7 @@ function showTaskForm() {
     let color = contacts[i]["color"];
     let assignedDropdown = document.getElementById("assignedDropdown");
     assignedDropdown.innerHTML += /*html*/ `
-      <div id="user-${i}" class="flex-checkbox selected-profile" onclick="addAssignedContact(${i})" data-value="${currentUser}">
+      <div id="user-${i}" class="flex-checkbox selected-profile" onclick="addAssignedContact(${i}, '${color}')" data-value="${currentUser}">
         <div class="assigned-contact-profile selected-profile"><div class="assinged-contact-profile" style="background-color:${color}">${initials}</div>
         ${currentUser}</div>
         <img id="checkBox-${i}" class="flex-checkbox-img"src="assets/img/icons/checkBox.svg" alt="">
@@ -192,7 +192,6 @@ function renderAllContacts(contactList) {
         <img id="checkBox-${i}" src="assets/img/icons/checkBox.svg" alt="">
       </div>`;
   }
-  // Zeige die Initialen auch im Hauptformular an
   document.getElementById('contactInitials').innerHTML = getInitials(contactList[0]["name"]);
 }
 
@@ -216,22 +215,24 @@ function openDropDownCategory() {
 }
 
 
-function addAssignedContact(i) {
+function addAssignedContact(i, color) {
   let assignedDropdown = document.getElementById(`user-${i}`);
   let checkboxImage = document.getElementById(`checkBox-${i}`);
   let selectedContact = assignedDropdown.getAttribute('data-value');
-  renderContactList(assignedDropdown, checkboxImage, selectedContact);
+
+  renderContactList(assignedDropdown, checkboxImage, selectedContact, color);
   renderSelectedContacts();
 }
 
-function renderContactList(assignedDropdown, checkboxImage, selectedContact) {
+function renderContactList(assignedDropdown, checkboxImage, selectedContact, color) {
   if (selectedContact !== "1") {
     assignedDropdown.classList.toggle('addTask-selected');
 
-    const index = selectedContacts.indexOf(selectedContact);
+    const index = selectedContacts.findIndex(contact => contact.name === selectedContact);
+
     if (assignedDropdown.classList.contains('addTask-selected')) {
       if (index === -1) {
-        selectedContacts.push(selectedContact);
+        selectedContacts.push({ name: selectedContact, color: color });
       }
       checkboxImage.src = './assets/img/icons/check_button-white.svg';
     } else {
@@ -250,8 +251,8 @@ function renderSelectedContacts(i) {
   for (let i = 0; i < selectedContacts.length; i++) {
     let contact = selectedContacts[i];
     let initials = getInitials(contact);
-    // let color = contacts[i]["color"];
-    content.innerHTML += `<div class="assinged-contact-overview" style="background-color:${color}">${initials}</div>`
+    // let color = contacts[i]["color"]; style="background-color:${color}
+    content.innerHTML += `<div class="assinged-contact-overview" ">${initials}</div>`
   }
 }
 
@@ -264,6 +265,8 @@ function getInitials(contact) {
   }
   return initials.toUpperCase();
 }
+
+
 
 
 function deleteSubTask(number) {

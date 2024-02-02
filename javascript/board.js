@@ -61,13 +61,14 @@ function startDragging(id) {
 function updateHTML() {
   todoAreaUpdate();
   inProgressUdate();
-  feedbackAeraUdate();
+  feedbackAreaUdate();
   doneUpdate();
   checkTaskAreaDisplayEmpty();
+  renderBoardTasks();
 }
 
 function todoAreaUpdate() {
-  let todo = todos.filter((t) => t['category'] == 'todo');
+  let todo = tasks.filter((t) => t['selectedCategory'] == 'todo');
 
   document.getElementById('todo').innerHTML = '';
 
@@ -78,7 +79,7 @@ function todoAreaUpdate() {
 }
 
 function inProgressUdate() {
-  let inProgress = todos.filter((t) => t['category'] == 'inProgress');
+  let inProgress = tasks.filter((t) => t['selectedCategory'] == 'inProgress');
 
   document.getElementById('inProgress').innerHTML = '';
 
@@ -88,8 +89,8 @@ function inProgressUdate() {
   }
 }
 
-function feedbackAeraUdate() {
-  let awaitFeedback = todos.filter((t) => t['category'] == 'awaitFeedback');
+function feedbackAreaUdate() {
+  let awaitFeedback = tasks.filter((t) => t['selectedCategory'] == 'awaitFeedback');
 
   document.getElementById('awaitFeedback').innerHTML = '';
 
@@ -100,7 +101,7 @@ function feedbackAeraUdate() {
 }
 
 function doneUpdate() {
-  let done = todos.filter((t) => t['category'] == 'done');
+  let done = tasks.filter((t) => t['selectedCategory'] == 'done');
 
   document.getElementById('done').innerHTML = '';
 
@@ -115,7 +116,7 @@ function allowDrop(ev) {
 }
 
 function moveTo(category) {
-  todos[currentDraggedElement]['category'] = category;
+  tasks[currentDraggedElement]['currentState'] = category;
   updateHTML();
 }
 
@@ -137,4 +138,48 @@ function checkTaskAreaDisplayEmpty() {
       dragArea.innerHTML = /*html*/ `<div class="drag-area-empty">No tasks To do</div>`;
     }
   }
+}
+
+async function renderBoardTasks(){
+  renderToDoTasks();
+  renderInProgressTasks();
+  renderAwaitFeedbackTasks();
+  renderDoneTasks();
+  await setItem("tasks", JSON.stringify(tasks));
+}
+
+function renderToDoTasks(){
+  let contentBoxToDo = document.getElementById('todo');
+  for (let i = 0; i < tasks.length; i++) {
+    if(tasks[i]['currentState'] == 'toDo'){
+      contentBoxToDo.innerHTML = generateTodoHTML(i);
+    } else{console.log('dont work')}
+  } 
+}
+
+function renderInProgressTasks(){
+  let contentBoxToDo = document.getElementById('inProgress');
+  for (let i = 0; i < tasks.length; i++) {
+    if(tasks[i]['currentState'] == 'inProgress'){
+      contentBoxToDo.innerHTML = generateTodoHTML(i);
+    } else{console.log('dont work')}
+  } 
+}
+
+function renderAwaitFeedbackTasks(){
+  let contentBoxToDo = document.getElementById('awaitFeedback');
+  for (let i = 0; i < tasks.length; i++) {
+    if(tasks[i]['currentState'] == 'awaitFeedback'){
+      contentBoxToDo.innerHTML = generateTodoHTML(i);
+    } else{console.log('dont work')}
+  } 
+}
+
+function renderDoneTasks(){
+  let contentBoxToDo = document.getElementById('done');
+  for (let i = 0; i < tasks.length; i++) {
+    if(tasks[i]['currentState'] == 'done'){
+      contentBoxToDo.innerHTML = generateTodoHTML(i);
+    } else{console.log('dont work')}
+  } 
 }

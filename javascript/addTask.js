@@ -49,7 +49,7 @@ function closeAddTaskPopup() {
   }, 900);
 }
 
-function addTask() {
+async function addTask() {
   let taskTitle = document.getElementById('taskTitle').value;
   let taskDescription = document.getElementById('taskDescription').value;
   let taskDueDate = document.getElementById('myDateInput').value;
@@ -65,7 +65,9 @@ function addTask() {
     prio: selectedPrio,
     subtasks: subtasks,
     selectedContacts: selectedContacts,
+    currentState: "toDo",
   });
+  await setItem("tasks", JSON.stringify(tasks));
   console.log(tasks);
 }
 

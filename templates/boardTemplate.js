@@ -1,13 +1,13 @@
-function generateTodoHTML(element, i) {
+function generateTodoHTML(i) {
   return /*html*/ `
     
-        <div draggable="true" ondragstart="startDragging(${element['id']})" class="board-task">
+        <div draggable="true" ondragstart="startDragging(${i})" class="board-task">
             <div class="board-task-epic board-task-epic-green">
-                User Story
+                ${tasks[i]["selectedCategory"]}
             </div>
-                <div class="board-task-title">Contact Form & Imprint</div>
+                <div class="board-task-title">${tasks[i]["taskTitle"]}</div>
                 <div class="board-task-description">
-                  Create a contact form and imprint page...
+                ${tasks[i]["taskDescription"]}
                 </div>
                 <div class="board-task-subtask">
                   <div class="board-task-subtask-progress">
@@ -16,11 +16,11 @@ function generateTodoHTML(element, i) {
                       id="progress-${i}"
                       style="width: 0%"></div>
                   </div>
-                  <div class="sboard-task-subtask-counter">0/3 Subtasks</div>
+                  <div class="sboard-task-subtask-counter">0/${tasks[i]["subtasks"].length}</div>
                 </div>
                 <div class="board-task-member">
                   <div class="board-task-member">
-                    <div class="board-task-member-profile">DA</div>
+                    <div class="board-task-member-profile">${tasks[i]["selectedContacts"][0]["name"]}</div>
                     <div class="board-task-member-profile">DA</div>
                   </div>
                   <div class="board-task-member-prio">

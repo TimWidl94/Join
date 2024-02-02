@@ -90,10 +90,6 @@ function sortContactsByAlphabet() {
   return contacts.sort((a, b) => a.name.localeCompare(b.name));
 }
 
-// function setBackgroundColor(i) {
-//   return contactColors[i % contactColors.length];
-// }
-
 function getFirstLetters(str) {
   return str.split(/\s/).reduce((response, word) => (response += word.slice(0, 1)), '');
 }
@@ -103,15 +99,24 @@ function openContactInfo(i) {
   let acronym = getFirstLetters(contact.name);
   const color = contact.color;
   let content = document.getElementById('contact-info');
+  classlistAdd('wrapper-contact-info', 'd-none');
   classlistRemove('wrapper-contact-info', 'show-overlay-menu');
+
   content.innerHTML = '';
   content.innerHTML += openContactInfoHTML(contact, acronym, color, i);
+  classlistRemove('wrapper-contact-info', 'd-none');
+
   setTimeout(() => {
     classlistAdd('wrapper-contact-info', 'show-overlay-menu');
-  }, 500);
+  }, 300);
   if (window.innerWidth < 800) {
     toggleContactInfoMobile();
   }
+}
+
+async function hideTransitionEffect() {
+  classlistAdd('wrapper-contact-info', 'd-none');
+  classlistRemove('wrapper-contact-info', 'show-overlay-menu');
 }
 
 function toggleContactInfoMobile() {

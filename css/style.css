@@ -140,6 +140,9 @@ h1 {
   margin: 0;
   min-height: 100vh; }
 
+.span-required {
+  color: #ff8190; }
+
 .headline {
   display: flex;
   justify-content: center;
@@ -272,8 +275,24 @@ h1 {
   background-position: right 8px top 50%, 0 0;
   background-size: 32px, 100%; }
 
-#requirement-desktop {
+.requirement-desktop {
   margin-top: 223px; }
+
+.bottom-add-task-mobile {
+  position: fixed;
+  bottom: 84px;
+  left: 0;
+  right: 0;
+  display: flex;
+  width: calc(100% - 2 * 16px);
+  padding: 16px;
+  justify-content: space-between;
+  align-items: center;
+  background: #f6f7f8; }
+
+.btns-add-task-mobile-wrapper {
+  display: flex;
+  gap: 16px; }
 
 .test-6 {
   display: flex;
@@ -601,7 +620,23 @@ h1 {
     /* Margin entfernen, um die volle Breite zu nutzen */ }
   .vertical-line-add-task {
     display: none;
-    /* Die vertikale Linie bei kleineren Bildschirmen ausblenden */ } }
+    /* Die vertikale Linie bei kleineren Bildschirmen ausblenden */ }
+  .requirement-desktop {
+    display: none; }
+  .requirement-mobile {
+    display: flex; } }
+
+@media (max-width: 475px) {
+  #clear-mobile {
+    display: none; } }
+
+@media (max-width: 350px) {
+  .bottom-add-task-mobile {
+    padding: 16px 4px;
+    width: calc(100% - 2 * 4px); }
+  .menu-mobile {
+    padding: 2px 8px;
+    width: calc(100% - 2 * 8px); } }
 
 .my-body {
   height: 100vh;
@@ -2226,7 +2261,7 @@ a {
   filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(7500%) hue-rotate(229deg) brightness(108%) contrast(98%); }
 
 .menuMobile {
-  position: absolute;
+  position: fixed;
   left: 0;
   bottom: 0;
   display: flex;

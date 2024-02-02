@@ -228,7 +228,7 @@ function renderContactList(assignedDropdown, checkboxImage, selectedContact, col
   if (selectedContact !== "1") {
     assignedDropdown.classList.toggle('addTask-selected');
 
-    const index = selectedContacts.findIndex(contact => contact.name === selectedContact);
+    const index = selectedContacts.findIndex(contact => contact.name === selectedContact && contact.color === color);
 
     if (assignedDropdown.classList.contains('addTask-selected')) {
       if (index === -1) {
@@ -244,21 +244,22 @@ function renderContactList(assignedDropdown, checkboxImage, selectedContact, col
   }
 }
 
+
 function renderSelectedContacts(i) {
   let content = document.getElementById('assignedAddedContact');
   content.innerHTML = '';
 
   for (let i = 0; i < selectedContacts.length; i++) {
     let contact = selectedContacts[i];
-    let initials = getInitials(contact);
-    // let color = contacts[i]["color"]; style="background-color:${color}
-    content.innerHTML += `<div class="assinged-contact-overview" ">${initials}</div>`
+    let initials = getInitials(contact.name);
+    let color = contact["color"];
+    content.innerHTML += `<div class="assinged-contact-overview" style="background-color:${color}">${initials}</div>`
   }
 }
 
 
-function getInitials(contact) {
-  const nameParts = contact.split(" ");
+function getInitials(contactName) {
+  const nameParts = contactName.split(" ");
   let initials = "";
   for (let i = 0; i < nameParts.length; i++) {
     initials += nameParts[i][0];

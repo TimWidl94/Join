@@ -5,9 +5,11 @@
   min-height: 100vh;
 }
 
+
 .span-required {
   color: #ff8190;
 }
+
 
 .headline {
   display: flex;
@@ -95,31 +97,53 @@
   &-profile {
     display: inline-block;
     text-align: center;
-    color: #ffffff;
-    background-color: #6e52ff;
+    color: #FFFFFF;
     width: 32px;
     height: 32px;
     font-size: 12px;
     font-weight: 400;
     line-height: 32px;
-    border-radius: 45%;
-    border: 3px solid white;
-    stroke: #fff;
+    border-radius: 50%;
+    border: 3px solid $color-light;
+    stroke: $color-light;
   }
   &-profile:not(:first-child) {
     margin-left: -10px;
   }
+  &-overview {
+    display: flex;
+    text-align: center;
+    color: $color-light;
+    width: 42px;
+    height: 42px;
+    align-items: center;
+    font-size: 12px;
+    justify-content: center;
+    font-weight: 400;
+    line-height: 32px;
+    border-radius: 50%;
+    border: 3px solid white;
+    stroke: $color-light;
+  }
 }
 
-.selected-profile {
-  cursor: pointer;
+.assigned-name {
+  padding-left: 10px;
 }
+
 .addTask-selected {
   color: $color-light;
   background-color: $primary-color;
   border-radius: 10px;
   padding: 7px 16px 7px 16px;
 }
+.category-selected {
+  color: $color-light;
+  background-color: $primary-color;
+  border-radius: 10px;
+  padding: 7px 16px 7px 16px;
+}
+
 
 #assignedDropdown {
   padding: 12px 16px;
@@ -172,11 +196,11 @@
 
 .dropdown {
   padding: 16px;
-  border: 1px solid #a8a8a8;
-  width: 100%;
-  border-radius: 10px;
-  cursor: pointer;
-  background-color: #ffffff;
+    border: 1px solid $color-board-grey;
+    width: 100%;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: $color-light;
 }
 
 .vertical-line-add-task {
@@ -242,8 +266,29 @@
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
 }
 
-.priority-options div:nth-child(2) {
-  background: #ffa800;
+// .priority-options div:nth-child(2) {
+  // background: #ffa800;
+  // color: $color-light;
+  // font-size: 21px;
+  // font-weight: 700;
+// }
+
+.priorityUrgentActive{
+  background: #FF3D19 !important;
+  color: $color-light;
+  font-size: 21px;
+  font-weight: 700;
+}
+
+.priorityLowActive{
+  background: #7AE22B !important;
+  color: $color-light;
+  font-size: 21px;
+  font-weight: 700;
+}
+
+.priorityMediumActive{
+  background: #ffa800 !important;
   color: $color-light;
   font-size: 21px;
   font-weight: 700;
@@ -253,7 +298,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  gap: 8px;
+  // gap: 8px;
   padding-bottom: 24px;
 }
 
@@ -264,6 +309,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  max-width: 409px;
+}
+.dropbtn {
+  max-height: 207px;
+  overflow-y: auto;
+  flex:1;
 }
 
 .options-syle {
@@ -278,7 +329,6 @@
   -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;
-  background-image: url('../assets/img/AddTask/arrow_drop.svg');
   background-color: $color-light;
   background-repeat: no-repeat;
   background-position: right 8px top 50%, 0 0;
@@ -313,16 +363,33 @@
     font-size: 12px;
   }
 }
+.hover-checkbox {
+  display: none; 
+  right: 16px;
+  top: 13px;
+  position: absolute;
+}
 .flex-checkbox {
   display: flex;
+  position: relative;
   justify-content: space-between;
   align-items: center;
   padding: 7px 16px 7px 16px;
   margin-top: 5px;
   margin-bottom: 5px;
+  cursor: pointer;
+  &:hover {
+    color: #fff;
+    background-color: #2a3647;
+    border-radius: 10px;
+    .hover-checkbox{
+      display: block;
+    }
+  }
 }
 
 .editSubTaskButtonBox {
+
   position: absolute;
   width: 40px;
   display: flex;
@@ -377,7 +444,21 @@
   font-size: 19px;
   width: calc(100% - (2 * 16px));
 }
-
+.category-dropdown {
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: 1px solid #d1d1d1;
+  background-color: #fff;
+  font-size: 16px;
+  margin-top: 1px;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-position: right 8px top 50%, 0 0;
+  background-size: 32px, 100%;
+}
 .inputImgPlus {
   position: absolute;
   top: 11px;
@@ -389,6 +470,20 @@
     background: $color-board-grey;
     border-radius: 50%;
   }
+}
+.border-active {
+  outline: 1px solid $secondary-color;
+}
+
+.border-focus {
+    &:focus {
+      outline: 1px solid $secondary-color;
+    }
+}
+
+.contact-searchbar {
+  border: none;
+  width: 100%;
 }
 
 .btns-down-right-add-task {

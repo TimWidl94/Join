@@ -15,12 +15,13 @@ function addTaskHtml() {
 
         <div id="title-add-task">
           <p>Title<span class="span-required">*</span></p>
-          <input id="taskTitle" required type="text" placeholder="Enter a title" />
+          <input id="taskTitle" required type="text" class="border-focus" placeholder="Enter a title" />
+
         </div>
 
         <div id="description">
           <p>Description</p>
-          <textarea id="taskDescription" placeholder="Enter a description"></textarea>
+          <textarea id="taskDescription" class="border-focus" placeholder="Enter a description"></textarea>
         </div>
 
         <p>Assigned to</p>
@@ -45,27 +46,39 @@ function addTaskHtml() {
         <div class="priority">
           <p>Prio</p>
           <div class="priority-options">
-            <div>
+            <div id="urgentContainer" onclick="changePrioToUrgent('urgentContainer', 'urgentImg')">
               <p>Urgent</p>
-              <img src="assets/img/AddTask/ArrowUpPrioSign.svg" alt="Prio High" />
+              <img src="assets/img/AddTask/ArrowUpPrioSign.svg" alt="Prio High" id="urgentImg" />
             </div>
-            <div class="selected medium">
+            <div id="mediumContainer" onclick="changePrioToMedium('mediumContainer', 'mediumImg')">
               <p>Medium</p>
-              <img src="assets/img/AddTask/MediumPrioSign.svg" alt="Prio Medium" />
+              <img src="assets/img/AddTask/mediumPrioSignInactive.svg" alt="Prio Medium" id="mediumImg" />
             </div>
-            <div>
+            <div id="lowContainer" onclick="changePrioToLow('lowContainer', 'lowImg')">
               <p>Low</p>
-              <img src="assets/img/AddTask/ArrowDownPrioSign.svg" alt="Prio Low" />
+              <img src="assets/img/AddTask/ArrowDownPrioSign.svg" alt="Prio Low" id="lowImg" />
             </div>
           </div>
         </div>
 
         <div class="category">
-          <p>Category<span class="span-required">*</span></p>
-          <select id="category-options" class="options-syle">
-            <option>Select task category</option>
-            <option value="user-story">User Story</option>
-            <option value="other">Other</option>
+
+  <p>Category<span class="span-required">*</span></p>
+  <div id="dropdownCategory" class="dropdown" onclick="openDropDownCategory()">
+  <div id="showSelectedCategory" data-value="">Select task category</div>
+  <img id="dropdownImgArrowCategory" class="rotate-arrow" src="../assets/img/AddTask/arrow_drop.svg" alt="">
+</div>
+<div id="assignedDropdownCategory" class="category-dropdown d-none">
+  <div id="userStory" class="flex-checkbox" data-value="user-story" onclick="selectCategory('user-story')">User Story</div>
+  <div id="other" class="flex-checkbox" data-value="other" onclick="selectCategory('other')">Other</div>
+</div>
+
+</div>
+
+</div>
+
+    </div>
+    </div>
 
           </select>
         </div>

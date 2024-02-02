@@ -140,9 +140,6 @@ h1 {
   margin: 0;
   min-height: 100vh; }
 
-span {
-  color: #ff8190; }
-
 .headline {
   display: flex;
   justify-content: center;
@@ -220,8 +217,7 @@ span {
   .assinged-contact-profile {
     display: inline-block;
     text-align: center;
-    color: #ffffff;
-    background-color: #6e52ff;
+    color: #FFFFFF;
     width: 32px;
     height: 32px;
     font-size: 12px;
@@ -247,7 +243,16 @@ span {
     border: 3px solid white;
     stroke: #fff; }
 
+.assigned-name {
+  padding-left: 10px; }
+
 .addTask-selected {
+  color: #fff;
+  background-color: #2a3647;
+  border-radius: 10px;
+  padding: 7px 16px 7px 16px; }
+
+.category-selected {
   color: #fff;
   background-color: #2a3647;
   border-radius: 10px;
@@ -419,14 +424,27 @@ span {
     color: #ff3d00;
     font-size: 12px; }
 
+.hover-checkbox {
+  display: none;
+  right: 16px;
+  top: 13px;
+  position: absolute; }
+
 .flex-checkbox {
   display: flex;
+  position: relative;
   justify-content: space-between;
   align-items: center;
   padding: 7px 16px 7px 16px;
   margin-top: 5px;
   margin-bottom: 5px;
   cursor: pointer; }
+  .flex-checkbox:hover {
+    color: #fff;
+    background-color: #2a3647;
+    border-radius: 10px; }
+    .flex-checkbox:hover .hover-checkbox {
+      display: block; }
 
 .editSubTaskButtonBox {
   position: absolute;

@@ -17,7 +17,7 @@ async function init() {
 let tasks = [];
 let subtasks = [];
 let selectedContacts = [];
-
+let selectedCategories = [];
 let letters = [];
 let selectedPrio;
 
@@ -50,12 +50,13 @@ function closeAddTaskPopup() {
 }
 
 function addTask() {
-  let taskTitle = document.getElementById("taskTitle").value;
-  let taskDescription = document.getElementById("taskDescription").value;
-  let taskDueDate = document.getElementById("myDateInput").value; // braucht noch funktion dass vergangene Tage nicht anklickbar sind
-  // prio muss noch hinzugefügt werden
-  let categorySelect = document.getElementById("category-options");
-  let selectedCategory = categorySelect.value;
+  let taskTitle = document.getElementById('taskTitle').value;
+  let taskDescription = document.getElementById('taskDescription').value;
+  let taskDueDate = document.getElementById('myDateInput').value;
+
+  let selectedCategoryElement = document.getElementById('showSelectedCategory');
+  let selectedCategory = selectedCategoryElement.getAttribute('data-value');
+
   tasks.push({
     taskTitle: taskTitle,
     taskDescription: taskDescription,
@@ -67,6 +68,7 @@ function addTask() {
   });
   console.log(tasks);
 }
+
 
 function addSubTask() {
   let subTaskInput = document.getElementById("subTaskInput").value;
@@ -157,7 +159,8 @@ function showTaskForm() {
     assignedDropdown.innerHTML += /*html*/ `
       <div id="user-${i}" class="flex-checkbox selected-profile" onclick="addAssignedContact(${i}, '${color}')" data-value="${currentUser}">
         <div class="assigned-contact-profile selected-profile"><div class="assinged-contact-profile" style="background-color:${color}">${initials}</div>
-        ${currentUser}</div>
+        <span class="assigned-name">${currentUser}</span></div>
+        <img id="hoverCheckbox" class="hover-checkbox" src="assets/img/icons/checkBoxWhite.svg" alt="">
         <img id="checkBox-${i}" class="flex-checkbox-img"src="assets/img/icons/checkBox.svg" alt="">
       `;
   }
@@ -238,7 +241,7 @@ function renderContactList(assignedDropdown, checkboxImage, selectedContact, col
     assignedDropdown.classList.toggle("addTask-selected");
 
     const index = selectedContacts.findIndex(contact => contact.name === selectedContact && contact.color === color);
-
+    let hoverCheckbox = document.getElementById("hover-checkbox");
     if (assignedDropdown.classList.contains('addTask-selected')) {
       if (index === -1) {
         selectedContacts.push({ name: selectedContact, color: color });
@@ -299,9 +302,40 @@ function clearInputValue() {
   showTaskForm();
 }
 
-function changeButtonsAddTask() {
-  let inputField = document.getElementById("inputFieldBox");
+function selectCategory(category) {
+  const userStory = document.getElementById("userStory");
+  const other = document.getElementById("other");
+  const showSelectedCategory = document.getElementById("showSelectedCategory");
+  const assignedDropdownCategory = document.getElementById("assignedDropdownCategory");
+  selectCategoryIfElse(userStory, other, showSelectedCategory, assignedDropdownCategory, category);
+}
 
+function selectCategoryIfElse(userStory, other, showSelectedCategory, assignedDropdownCategory, category) {
+  if (category === "user-story") {
+    userStory.classList.add("category-selected");
+    other.classList.remove("category-selected");
+    showSelectedCategory.setAttribute("data-value", category);
+    showSelectedCategory.innerHTML = `User Story`;
+    assignedDropdownCategory.classList.add("d-none");
+  } else if (category === "other") {
+    other.classList.add("category-selected");
+    userStory.classList.remove("category-selected");
+    showSelectedCategory.setAttribute("data-value", category);
+    showSelectedCategory.innerHTML = `Other`;
+    assignedDropdownCategory.classList.add("d-none");
+  } else {
+    userStory.classList.remove("category-selected");
+    other.classList.remove("category-selected");
+    showSelectedCategory.setAttribute("data-value", "");
+    showSelectedCategory.innerHTML = `Select task category`;
+  }
+}
+
+
+
+function changeButtonsAddTask(){
+  let inputField = document.getElementById('inputFieldBox');
+  
   inputField.innerHTML = /*html*/ `
     <input id="subTaskInput" type="text" placeholder="Add new subtask" onclick="" class="PosRel" />
     <div class="subTaskInputButtons">

@@ -67,7 +67,7 @@ function signupHtml() {
           <div class="passwordDontMatch d-none" id="passwordDontMatch">Ups! your password don't match</div>
       </div>
       <div class="checkboxPrivacyPolicy dp-flex">
-              <input type="checkbox" id="checkboxPrivatPolicy" name="checkboxPrivatPolicy" class="checkboxSavePassword"/>
+              <input type="checkbox" id="checkboxPrivatPolicy" name="checkboxPrivatPolicy" class="checkboxSavePassword" onclick="enableButton()"/>
               <label for="checkboxPrivatPolicy"></label>
               <p class="acceptPrivacyGrey">i accept the 
                   <a href="./privacyPolice.html" class="privacyPolicyLink
@@ -75,7 +75,7 @@ function signupHtml() {
               </p>
           </div>
       <div class="ButtonBox dp-flex">
-          <button class="buttonGrey buttonLogin">Sign up</button>
+          <button class="buttonGrey buttonLogin" id="signUpButton" disabled>Sign up</button>
       </div>
     </form>`;
 }

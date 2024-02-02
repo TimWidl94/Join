@@ -1,8 +1,5 @@
 @import '../base/_colors';
 
-span {
-  color: #ff8190;
-}
 
 .headline {
   display: flex;
@@ -89,7 +86,6 @@ span {
     display: inline-block;
     text-align: center;
     color: #FFFFFF;
-    background-color: #6e52FF;
     width: 32px;
     height: 32px;
     font-size: 12px;
@@ -119,12 +115,21 @@ span {
   }
 }
 
+.assigned-name {
+  padding-left: 10px;
+}
 
 .addTask-selected {
   color: $color-light;
-    background-color: $primary-color;
-    border-radius: 10px;
-    padding: 7px 16px 7px 16px;
+  background-color: $primary-color;
+  border-radius: 10px;
+  padding: 7px 16px 7px 16px;
+}
+.category-selected {
+  color: $color-light;
+  background-color: $primary-color;
+  border-radius: 10px;
+  padding: 7px 16px 7px 16px;
 }
 
 
@@ -302,15 +307,29 @@ span {
     font-size: 12px;
   }
 }
-
+.hover-checkbox {
+  display: none; 
+  right: 16px;
+  top: 13px;
+  position: absolute;
+}
 .flex-checkbox {
   display: flex;
+  position: relative;
   justify-content: space-between;
   align-items: center;
   padding: 7px 16px 7px 16px;
   margin-top: 5px;
   margin-bottom: 5px;
   cursor: pointer;
+  &:hover {
+    color: #fff;
+    background-color: #2a3647;
+    border-radius: 10px;
+    .hover-checkbox{
+      display: block;
+    }
+  }
 }
 
 

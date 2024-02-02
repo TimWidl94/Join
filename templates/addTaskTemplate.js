@@ -66,13 +66,14 @@ function addTaskHtml() {
         <div class="category">
   <p>Category<span>*</span></p>
   <div id="dropdownCategory" class="dropdown" onclick="openDropDownCategory()">
-    Select task category 
-    <img id="dropdownImgArrowCategory" class="rotate-arrow" src="../assets/img/AddTask/arrow_drop.svg" alt="">
-  </div>
-  <div id="assignedDropdownCategory" class="category-dropdown d-none">
-    <div class="flex-checkbox" data-value="user-story" onclick="selectCategory('user-story')">User Story</div>
-    <div class="flex-checkbox" data-value="other" onclick="selectCategory('other')">Other</div>
-  </div>
+  <div id="showSelectedCategory" data-value="">Select task category</div>
+  <img id="dropdownImgArrowCategory" class="rotate-arrow" src="../assets/img/AddTask/arrow_drop.svg" alt="">
+</div>
+<div id="assignedDropdownCategory" class="category-dropdown d-none">
+  <div id="userStory" class="flex-checkbox" data-value="user-story" onclick="selectCategory('user-story')">User Story</div>
+  <div id="other" class="flex-checkbox" data-value="other" onclick="selectCategory('other')">Other</div>
+</div>
+
 </div>
 
 </div>

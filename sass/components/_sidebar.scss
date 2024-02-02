@@ -32,7 +32,8 @@ a {
   align-items: flex-start;
   gap: 15px;
   width: 232px;
-  margin-bottom: 400px;
+  margin-top: 200px;
+  margin-bottom: 200px;
 }
 
 .menu-category {
@@ -115,24 +116,27 @@ a {
 
 .notes {
   display: flex;
-  padding: 0px 0px 64px 40px;
+  padding-bottom: 64px;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: start;
   align-items: flex-start;
   gap: 4px;
   align-self: stretch;
+  // width: 200px;
 }
 
 .notes a {
-  padding: 8px 8px;
+  padding: 8px 40px 8px 40px;
   text-decoration: none;
   color: $color-sidebar-text !important;
+  width: 100px;
 }
 
 .notes a:hover {
   cursor: pointer;
   color: $secondary-color !important;
   font-weight: 700;
+  background-color: #091931;
 }
 
 .active {

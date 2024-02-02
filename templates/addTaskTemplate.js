@@ -1,6 +1,6 @@
 function subTasksValueHtml(id, i) {
   return /*HTML*/ `
-    <li id="${id}" class="subtask-div-list" ondblclick="editSubTask(${id})">${subtasks[i]["subTaskInput"]}
+    <li id="${id}" class="subtask-div-list" ondblclick="editSubTask(${id})">${subtasks[i]['subTaskInput']}
       <div>
         <img class="subtask-div-btn" onclick="editSubTask(${id})" src="./assets/img/icons/edit.svg" alt="">
         <img class="subtask-div-btn" onclick="deleteSubTask(${id})" src="./assets/img/icons/delete.svg" alt="">
@@ -8,15 +8,12 @@ function subTasksValueHtml(id, i) {
     </li>`;
 }
 
-
-
-
 function addTaskHtml() {
   return /*html*/ `
     <section class="container-left">
         <div class="headline-add-task"><h1 class="headline-h1-add-task">Add Task</h1></div>
 
-        <div id="title">
+        <div id="title-add-task">
           <p>Title<span>*</span></p>
           <input id="taskTitle" required type="text" class="border-focus" placeholder="Enter a title" />
         </div>
@@ -32,7 +29,7 @@ function addTaskHtml() {
         <div id="assignedAddedContact" class="assinged-contact">
 
         </div>
-        <div id="requirement">
+        <div id="requirement-desktop">
           <p><span>*</span>This field is required</p>
         </div>
       </section>
@@ -48,17 +45,17 @@ function addTaskHtml() {
         <div class="priority">
           <p>Prio</p>
           <div class="priority-options">
-            <div>
+            <div id="urgentContainer" onclick="changePrioToUrgent('urgentContainer', 'urgentImg')">
               <p>Urgent</p>
-              <img src="assets/img/AddTask/ArrowUpPrioSign.svg" alt="Prio High" />
+              <img src="assets/img/AddTask/ArrowUpPrioSign.svg" alt="Prio High" id="urgentImg" />
             </div>
-            <div class="selected medium">
+            <div id="mediumContainer" onclick="changePrioToMedium('mediumContainer', 'mediumImg')">
               <p>Medium</p>
-              <img src="assets/img/AddTask/MediumPrioSign.svg" alt="Prio Medium" />
+              <img src="assets/img/AddTask/mediumPrioSignInactive.svg" alt="Prio Medium" id="mediumImg" />
             </div>
-            <div>
+            <div id="lowContainer" onclick="changePrioToLow('lowContainer', 'lowImg')">
               <p>Low</p>
-              <img src="assets/img/AddTask/ArrowDownPrioSign.svg" alt="Prio Low" />
+              <img src="assets/img/AddTask/ArrowDownPrioSign.svg" alt="Prio Low" id="lowImg" />
             </div>
           </div>
         </div>
@@ -97,9 +94,12 @@ function addTaskHtml() {
             Create Task <img src="assets/img/AddTask/check_white.svg" alt="Check Icon"
           /></button>
         </div>
+        <div id="requirement-mobile">
+          <p><span>*</span>This field is required</p>
+        </div>
       </section>
     
-    `
+    `;
 }
 
 function subTaskInputHtml() {
@@ -111,12 +111,12 @@ function subTaskInputHtml() {
           </div>
           <div id="subTaskError" class="subtask-div-error"></div>
    
-  `
+  `;
 }
 
 function subTaskInputFieldHtml() {
   return `
   <input id="subTaskInput" type="text" placeholder="Add new subtask" onclick="changeButtonsAddTask()" />
   <img onclick="addSubTask()" class="inputImgPlus" src="assets/img/AddTask/plus.svg" alt="Add Icon" />
-  `
+  `;
 }

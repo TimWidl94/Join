@@ -99,23 +99,25 @@ footer {
   border: 0;
 }
 
-// .inputField {
-// width: 380px;
-// height: 24px;
-// gap: 8px;
-// border-radius: 10px;
-// border: 1px solid rgba(209, 209, 209, 1);
-// padding: 12px 21px;
-// }
+.logInInputField {
+  position: relative;
+  width: 380px;
+  height: 24px;
+  gap: 8px;
+  border-radius: 10px;
+  border: 1px solid #d1d1d1;
+  padding: 12px 21px;
+}
 
-.inputFieldContainer {
+.logInInputFieldContainer {
   position: relative;
   display: flex;
-  height: 152px;
+  // height: 152px;
   flex-direction: column;
   align-items: flex-start;
   gap: 32px;
   outline: none;
+  padding-bottom: 12px;
 }
 
 .inputFieldContainerSignUp {
@@ -126,6 +128,7 @@ footer {
   gap: 32px;
   outline: none;
   padding-bottom: 16px;
+  width: 100%;
 }
 
 .inputFieldBox {
@@ -137,6 +140,7 @@ footer {
   padding: 0px 241px 0px 39px;
   align-items: center;
   align-self: stretch;
+  padding-top: 28px;
 }
 
 .checkboxPrivacyPolicy {
@@ -146,8 +150,8 @@ footer {
 
 .checkboxSavePassword {
   display: inline-block;
-    height: 20px;
-    width: 16px;
+  height: 20px;
+  width: 16px;
   border-radius: 3px;
   border: 2px solid #2a3647;
   cursor: pointer;
@@ -234,7 +238,7 @@ footer {
   height: 121.97px;
 }
 
-.inputImgMail {
+.logInInputImgMail {
   position: absolute;
   right: 25px;
   width: 20px;
@@ -242,15 +246,15 @@ footer {
   top: 16px;
 }
 
-.inputImgLock {
+.logInInputImgLock {
   position: absolute;
   right: 25px;
   width: 16px;
   height: 21px;
-  top: 95px;
+  top: 16px;
 }
 
-.inputImgLock1 {
+.logInInputImgLock1 {
   position: absolute;
   right: 25px;
   width: 16px;
@@ -270,7 +274,7 @@ footer {
   border-color: $error-red;
 }
 
-.passwordDontMatch{
+.passwordDontMatch {
   display: flex;
   align-items: start;
   justify-content: start;
@@ -280,64 +284,98 @@ footer {
   height: 16px;
 }
 
-.padding-none{
+.passwordIsntCorrect{
+  display: flex;
+  align-items: start;
+  justify-content: start;
+  color: $error-red;
+  font-size: 12px;
+  width: 100%;
+  height: 12px;
+}
+
+.padding-none {
   padding: 0;
 }
 
-.paddingBtm16{
+.paddingTopNone{
+  padding-top: 0;
+}
+
+.paddingBtm16 {
   padding-bottom: 16px;
 }
 
+#formBody {
+  max-width: calc(100% - 32px);
+}
 
-@media (max-width: 800px){
-  .loginScreenBody{
-    width: 396px;
+.gap20{
+  gap: 20px;
+}
+
+@media (max-width: 800px) {
+  .loginScreenBody {
+    max-width: calc(100% - 32px);
     padding: 32px 0px;
   }
 
-  .inputField{
-    width: calc(396px - 80px);
+  .logInInputField {
+    width: calc(100% - 44px);
   }
 
-  .JoinLogoSmall{
+  .JoinLogoSmall {
     width: 64px;
     height: 78.031px;
     top: 37px;
     left: 38px;
   }
 
-  .headerRightBox{
+  .headerRightBox {
     position: absolute;
     top: 83%;
     left: 50%;
     transform: translate(-50%);
   }
 
-  .signUpBody{
+  .signUpBody {
     width: 396px;
     padding: 32px 0px;
   }
 
-  .checkboxPrivacyPolicy{
+  .checkboxPrivacyPolicy {
     padding: 32px, 0px;
   }
 
-  .h1Box{
+  .h1Box {
     width: 173px;
   }
 
-  .arrowLeftIcon{
+  .arrowLeftIcon {
     width: 21.33px !important;
     height: 20.74px !important;
   }
 
-  .ButtonBox{
+  .ButtonBox {
     flex-direction: column;
     gap: 21px;
   }
 
-  .buttonLogin{
+  .buttonLogin {
     width: 180px;
   }
+  .inputFieldContainerSignUp {
+    gap: 27px;
+    width: calc(100% - 2 * 16px);
+  }
+  .InputAndRememberBox {
+    max-width: 100%;
+    width: 100%;
+  }
+  .logInInputFieldContainer {
+    width: calc(100% - 2 * 16px);
+  }
+  .passwordIsntCorrect{
+    width: 90%;
+  }
 }
-

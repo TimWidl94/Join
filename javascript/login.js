@@ -80,7 +80,7 @@ function searchForEmail(email, password) {
       users[i]["password"].includes(password)
     ) {
       return true;
-    }
+    } else{passwordDontMatch();}
   }
 }
 
@@ -168,4 +168,9 @@ function animateLogo() {
     document.getElementById('logo').classList.add('d-none'),
     document.getElementById('logo-bg-animation').classList.add('d-none')
   }, 1000);
+}
+
+function passwordDontMatch(){
+  document.getElementById('passwordDontMatch').classList.remove('d-none');
+  document.getElementById('checkboxBox').style.paddingTop = '16px';
 }

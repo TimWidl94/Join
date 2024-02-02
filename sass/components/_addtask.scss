@@ -1,5 +1,10 @@
 @import '../base/_colors';
 
+.body-add-task {
+  margin: 0;
+  min-height: 100vh;
+}
+
 
 .headline {
   display: flex;
@@ -15,8 +20,9 @@
 .main-add-task {
   display: flex;
   justify-content: center;
-  margin-top: calc(206px - 96px);
-  padding-left: 232px;
+  margin-top: calc(110px + 96px);
+  padding-left: calc(232px + 24px);
+  padding-right: 24px;
 }
 
 .container-left {
@@ -27,15 +33,16 @@
   width: 440px;
 }
 
-#title {
+#title-add-task {
   display: flex;
   flex-direction: column;
   width: 100%;
   gap: 8px;
+  padding-top: 48px;
   padding-bottom: 16px;
 }
 
-#title input {
+#title-add-task input {
   padding: 12px 21px;
   gap: 10px;
   border-radius: 10px;
@@ -95,8 +102,8 @@
     border: 3px solid $color-light;
     stroke: $color-light;
   }
-    &-profile:not(:first-child) {
-       margin-left: -10px;
+  &-profile:not(:first-child) {
+    margin-left: -10px;
   }
   &-overview {
     display: flex;
@@ -148,9 +155,13 @@
   background-size: 32px, 100%;
 }
 
-#requirement {
+#requirement-desktop {
   margin-top: 223px;
 }
+
+#requirement-mobile {
+}
+
 .test-6 {
   display: flex;
   justify-content: end;
@@ -159,6 +170,7 @@
   margin-right: 10px;
   cursor: pointer;
 }
+
 .dropdown {
   padding: 16px;
     border: 1px solid $color-board-grey;
@@ -168,10 +180,11 @@
     background-color: $color-light;
 }
 
-.vertical-line {
+.vertical-line-add-task {
   width: 2px;
   height: 400px;
   background-color: $color-lightgrey;
+  margin-top: 118px;
 }
 
 // --- container-right --- //
@@ -181,7 +194,7 @@
   align-items: flex-start;
   margin-left: 48.25px;
   width: 440px;
-  margin-top: 174px;
+  margin-top: 118px;
 }
 
 #due-date {
@@ -230,8 +243,29 @@
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
 }
 
-.priority-options div:nth-child(2) {
-  background: #ffa800;
+// .priority-options div:nth-child(2) {
+  // background: #ffa800;
+  // color: $color-light;
+  // font-size: 21px;
+  // font-weight: 700;
+// }
+
+.priorityUrgentActive{
+  background: #FF3D19 !important;
+  color: $color-light;
+  font-size: 21px;
+  font-weight: 700;
+}
+
+.priorityLowActive{
+  background: #7AE22B !important;
+  color: $color-light;
+  font-size: 21px;
+  font-weight: 700;
+}
+
+.priorityMediumActive{
+  background: #ffa800 !important;
   color: $color-light;
   font-size: 21px;
   font-weight: 700;
@@ -291,7 +325,6 @@
       background: $color-board-grey;
       border-radius: 50%;
     }
-
   }
   &-list {
     display: flex;
@@ -302,7 +335,7 @@
     height: 32px;
   }
 
-  &-error{
+  &-error {
     color: $error-red;
     font-size: 12px;
   }
@@ -332,8 +365,8 @@
   }
 }
 
+.editSubTaskButtonBox {
 
-.editSubTaskButtonBox{
   position: absolute;
   width: 40px;
   display: flex;
@@ -343,15 +376,14 @@
   gap: 20px;
 }
 
-.inputImgChangeButton{
-
+.inputImgChangeButton {
 }
 
-.ulContainer{
+.ulContainer {
   width: calc(100% - 40px);
 }
 
-.ulContainer input{
+.ulContainer input {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -431,7 +463,6 @@
   width: 100%;
 }
 
-
 .btns-down-right-add-task {
   display: inline-flex;
   justify-content: flex-end;
@@ -439,7 +470,7 @@
   flex-direction: row;
   gap: 16px;
   width: 100%;
-  margin-top: 140px;
+  margin-top: 110px;
 }
 
 #clear,
@@ -452,7 +483,7 @@
   font-weight: 700;
 }
 
-.subTaskInputButtons{
+.subTaskInputButtons {
   position: absolute;
   display: flex;
   align-items: center;
@@ -462,20 +493,69 @@
   top: 8px;
 }
 
-.subTaskInputImg{
+.subTaskInputImg {
   width: 24px;
   height: 24px;
   cursor: pointer;
   padding: 5px;
 }
 
-.subTaskInputImg:hover{
+.subTaskInputImg:hover {
   background-color: #a8a8a8;
   border-radius: 50%;
-
 }
 
-.checkImg{
+.checkImg {
   width: 20px;
   height: 18px;
+}
+
+@media (max-width: 1000px) {
+  .main-add-task {
+    padding-left: 24px;
+    margin-top: 110px;
+  }
+}
+
+@media (max-width: 800px) {
+  .body-add-task {
+    display: flex;
+    flex-direction: column; /* Ändern Sie die Richtung der Hauptachse auf Spalte */
+    overflow-y: auto;
+  }
+
+  p {
+    font-size: 16px;
+  }
+
+  .main-add-task {
+    flex-direction: column;
+    margin-top: 48px;
+  }
+
+  .title-and-task {
+    padding-top: 40px;
+  }
+
+  input {
+    font-size: 16px !important;
+  }
+
+  #description textarea {
+    font-size: 16px;
+  }
+
+  .dropdown {
+    font-size: 16px;
+  }
+
+  .container-left,
+  .container-right {
+    width: 100%; /* Breite auf 100% setzen, damit der Inhalt innerhalb der Breite des Bildschirms bleibt */
+    margin: 0; /* Margin entfernen, um die volle Breite zu nutzen */
+  }
+
+  .vertical-line-add-task {
+    display: none; /* Die vertikale Linie bei kleineren Bildschirmen ausblenden */
+  }
 }

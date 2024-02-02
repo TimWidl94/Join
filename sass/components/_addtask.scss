@@ -5,7 +5,7 @@
   min-height: 100vh;
 }
 
-span {
+.span-required {
   color: #ff8190;
 }
 
@@ -136,11 +136,29 @@ span {
   background-size: 32px, 100%;
 }
 
-#requirement-desktop {
+.requirement-desktop {
   margin-top: 223px;
 }
 
-#requirement-mobile {
+.requirement-mobile {
+}
+
+.bottom-add-task-mobile {
+  position: fixed;
+  bottom: 84px;
+  left: 0;
+  right: 0;
+  display: flex;
+  width: calc(100% - 2 * 16px);
+  padding: 16px;
+  justify-content: space-between;
+  align-items: center;
+  background: $summary-background-color;
+}
+
+.btns-add-task-mobile-wrapper {
+  display: flex;
+  gap: 16px;
 }
 
 .test-6 {
@@ -467,5 +485,31 @@ span {
 
   .vertical-line-add-task {
     display: none; /* Die vertikale Linie bei kleineren Bildschirmen ausblenden */
+  }
+
+  .requirement-desktop {
+    display: none;
+  }
+
+  .requirement-mobile {
+    display: flex;
+  }
+}
+
+@media (max-width: 475px) {
+  #clear-mobile {
+    display: none;
+  }
+}
+
+@media (max-width: 350px) {
+  .bottom-add-task-mobile {
+    padding: 16px 4px;
+    width: calc(100% - 2 * 4px);
+  }
+
+  .menu-mobile {
+    padding: 2px 8px;
+    width: calc(100% - 2 * 8px);
   }
 }

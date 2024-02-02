@@ -14,7 +14,7 @@ function addTaskHtml() {
         <div class="headline-add-task"><h1 class="headline-h1-add-task">Add Task</h1></div>
 
         <div id="title-add-task">
-          <p>Title<span>*</span></p>
+          <p>Title<span class="span-required">*</span></p>
           <input id="taskTitle" required type="text" placeholder="Enter a title" />
         </div>
 
@@ -29,15 +29,15 @@ function addTaskHtml() {
         <div id="assignedAddedContact" class="assinged-contact">
 
         </div>
-        <div id="requirement-desktop">
-          <p><span>*</span>This field is required</p>
+        <div class="requirement-desktop">
+          <p><span class="span-required">*</span>This field is required</p>
         </div>
       </section>
 
       <div class="vertical-line-add-task"></div>
 
       <section class="container-right">
-        <p>Due Date<span>*</span></p>
+        <p>Due Date<span class="span-required">*</span></p>
         <div id="due-date">
           <input id="myDateInput" required type="date" />
         </div>
@@ -61,7 +61,7 @@ function addTaskHtml() {
         </div>
 
         <div class="category">
-          <p>Category<span>*</span></p>
+          <p>Category<span class="span-required">*</span></p>
           <select id="category-options" class="options-syle">
             <option>Select task category</option>
             <option value="user-story">User Story</option>
@@ -82,8 +82,18 @@ function addTaskHtml() {
             Create Task <img src="assets/img/AddTask/check_white.svg" alt="Check Icon"
           /></button>
         </div>
-        <div id="requirement-mobile">
-          <p><span>*</span>This field is required</p>
+        <div class="bottom-add-task-mobile">
+          <div class="requirement-mobile">
+            <p><span class="span-required">*</span>This field is required</p>
+          </div>
+          <div class="btns-add-task-mobile-wrapper">
+          <button onclick="clearInputValue()" id="clear-mobile" class="buttonWhite" >
+            Clear <img src="assets/img/AddTask/cancel.svg" alt="Clear Icon"
+          /></button>
+          <button onclick="addTask()" id="create-task-mobile" class="buttonGrey">
+            Create Task <img src="assets/img/AddTask/check_white.svg" alt="Check Icon"
+          /></button>  
+          </div>      
         </div>
       </section>
     

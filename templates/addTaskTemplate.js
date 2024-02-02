@@ -45,17 +45,17 @@ function addTaskHtml() {
         <div class="priority">
           <p>Prio</p>
           <div class="priority-options">
-            <div>
+            <div id="urgentContainer" onclick="changePrioToUrgent('urgentContainer', 'urgentImg')">
               <p>Urgent</p>
-              <img src="assets/img/AddTask/ArrowUpPrioSign.svg" alt="Prio High" />
+              <img src="assets/img/AddTask/ArrowUpPrioSign.svg" alt="Prio High" id="urgentImg" />
             </div>
-            <div class="selected medium">
+            <div id="mediumContainer" onclick="changePrioToMedium('mediumContainer', 'mediumImg')">
               <p>Medium</p>
-              <img src="assets/img/AddTask/MediumPrioSign.svg" alt="Prio Medium" />
+              <img src="assets/img/AddTask/mediumPrioSignInactive.svg" alt="Prio Medium" id="mediumImg" />
             </div>
-            <div>
+            <div id="lowContainer" onclick="changePrioToLow('lowContainer', 'lowImg')">
               <p>Low</p>
-              <img src="assets/img/AddTask/ArrowDownPrioSign.svg" alt="Prio Low" />
+              <img src="assets/img/AddTask/ArrowDownPrioSign.svg" alt="Prio Low" id="lowImg" />
             </div>
           </div>
         </div>

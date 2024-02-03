@@ -1468,11 +1468,9 @@ form {
     display: flex !important; }
   .wrapper-contact-list {
     left: 0px;
-    display: flex !important; }
+    display: flex; }
   .wrapper-contact-info {
     margin-left: calc(584px - 232px + 25px); }
-  .wrapper-contact-list {
-    display: flex !important; }
   .changesMobileWrapper {
     display: none; }
   .left-container {
@@ -1505,8 +1503,9 @@ form {
     padding-left: unset;
     margin-left: 0 !important;
     left: 0 !important;
-    top: 90px;
-    padding-top: 125px;
+    top: 0;
+    margin-top: 0;
+    padding-top: 64px;
     align-items: center;
     justify-content: flex-start; }
   #contact-info {

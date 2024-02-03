@@ -9,42 +9,46 @@
     <script src="./script.js"></script>
   </head>
   <body onload="initScript()">
-    <section class="topbar">
-      <div class="topbar-left">
-        <p>Kanban Project Management Tool</p>
-      </div>
-      <div class="topbar-right">
-        <a href="./help.html"><img src="assets/img/icons/help.svg" alt="Help Icon" /></a>
-        <div id="topbar-user-background" onclick="showMenu()">
-          <div id="topbar-user">
-          </div>
-        </div>
-    </section>
 
-    <div id="topbar-dropdown">
-      <div class="dropdown-content">
-        <a href="#"><p>Legal Notice</p></a>
+    <div class="overflow-x-mobile-working">
+
+      <section class="topbar">
+        <div class="topbar-left">
+          <p>Kanban Project Management Tool</p>
+        </div>
+        <div class="topbar-right">
+          <a href="./help.html"><img src="assets/img/icons/help.svg" alt="Help Icon" /></a>
+          <div id="topbar-user-background" onclick="showMenu()">
+            <div id="topbar-user">
+            </div>
+          </div>
+      </section>
+
+      <div id="topbar-dropdown">
+        <div class="dropdown-content">
+          <a href="#"><p>Legal Notice</p></a>
+        </div>
+        <div class="dropdown-content">
+          <a href="#"><p>Privacy Policy</p></a>
+        </div>
+        <div class="dropdown-content">
+          <a href="#"><p>Log out</p></a>
+        </div>
       </div>
-      <div class="dropdown-content">
-        <a href="#"><p>Privacy Policy</p></a>
-      </div>
-      <div class="dropdown-content">
-        <a href="#"><p>Log out</p></a>
-      </div>
+
+      <section class="topbarMobile" style="display: none;">
+        <div class="topbarLeftMobile">
+            <a href="#">
+          <img src="assets/img/icons/logo-black.svg" alt="">
+        </a>
+        </div>
+        <div class="topbarRightMobile">
+          <div id="topbarUserBackgroundMobile">
+            <div id="topbarUserMobile">
+                <p>G</p>
+            </div>
+          </div>
+      </section>
     </div>
-
-    <section class="topbarMobile" style="display: none;">
-      <div class="topbarLeftMobile">
-          <a href="#">
-        <img src="assets/img/icons/logo-black.svg" alt="">
-      </a>
-      </div>
-      <div class="topbarRightMobile">
-        <div id="topbarUserBackgroundMobile">
-          <div id="topbarUserMobile">
-              <p>G</p>
-          </div>
-        </div>
-    </section>
   </body>
 </html>

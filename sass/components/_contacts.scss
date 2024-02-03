@@ -6,7 +6,8 @@
 }
 
 .overflow-x-mobile-working {
-  overflow-x: hidden;
+  overflow-x: hidden !important;
+  overflow-y: hidden !important;
   position: relative;
 }
 

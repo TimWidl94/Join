@@ -12,7 +12,8 @@ async function init() {
 }
 
 function setUserToContacts() {
-  let name = users[user].username;
+  let name = users[user].username + ' (you)';
+  // let contactsName = name + ' (You)';
   let mail = users[user].email;
   let isContactExists = false;
   for (let i = 0; i < contacts.length; i++) {
@@ -24,9 +25,6 @@ function setUserToContacts() {
 
   if (!isContactExists) {
     contacts.push({ name: firstLettersUppercase(name), mail: mail, phone: '', color: '' });
-    console.log('Kontakt wurde hinzugefügt.');
-  } else {
-    console.log('Kontakt existiert bereits.');
   }
 }
 
@@ -94,19 +92,19 @@ function getFirstLetters(str) {
   return str.split(/\s/).reduce((response, word) => (response += word.slice(0, 1)), '');
 }
 
-async function openContactInfo(i) {
+function openContactInfo(i) {
   let contact = contacts[i];
   let acronym = getFirstLetters(contact.name);
   const color = contact.color;
   let content = document.getElementById('contact-info');
-  // setTimeout(() => classlistAdd('contact-info', 'd-none'), 100);
-  await setTimeout(() => classlistRemove('contact-info', 'show-overlay-menu'), 100);
+  classlistRemove('contact-info', 'show-overlay-menu');
 
   content.innerHTML = '';
-  content.innerHTML += openContactInfoHTML(contact, acronym, color, i);
+  setTimeout(() => (content.innerHTML += openContactInfoHTML(contact, acronym, color, i)), 250);
 
-  await classlistRemove('contact-info', 'd-none');
-  await setTimeout(() => classlistAdd('contact-info', 'show-overlay-menu'), 300);
+  classlistRemove('contact-info', 'd-none');
+  classlistAdd('contact-info', 'transition');
+  setTimeout(() => classlistAdd('contact-info', 'show-overlay-menu'), 300);
   if (window.innerWidth < 800) {
     toggleContactInfoMobile();
   }
@@ -160,9 +158,7 @@ async function addContact(target) {
   let mail = document.getElementById(`add-mail-${target}`);
   let tel = document.getElementById(`add-tel-${target}`);
 
-  console.log('contacts', contacts);
   contacts.push({ name: firstLettersUppercase(name.value), mail: mail.value, phone: tel.value, color: '' });
-  console.log('contacts', contacts);
 
   await saveContacts();
   let index = findContactIndex(name.value);
@@ -174,7 +170,7 @@ async function addContact(target) {
   clearPopup(name, mail, tel);
   await closeContactPopup(target, 'add');
 
-  setTimeout(() => animateBannerContacts('banner-contact-created', 'banner-contact-created-mobile'), 250);
+  animateBannerContacts('banner-contact-created', 'banner-contact-created-mobile');
 
   init();
 }
@@ -292,18 +288,25 @@ function deleteUnusedLetter(i) {
 
 async function animateBannerContacts(idDesktop, idMobile) {
   let banner;
+  let transform;
+
   if (window.innerWidth > 800) {
     banner = idDesktop;
+    transform = 'show-overlay-menu';
   } else {
     banner = idMobile;
+    transform = 'show-overlay-menu-y';
   }
 
+  console.log('window.innerWidth:', window.innerWidth);
   console.log('banner:', banner);
+  console.log('transform:', transform);
+
   classlistAdd(banner, 'd-flex');
-  classlistAdd(banner, 'show-overlay-menu-y');
-  await timeOut(2000);
-  classlistRemove(banner, 'show-overlay-menu-y');
-  classlistRemove(banner, 'd-flex');
+  classlistAdd(banner, transform);
+  await timeOut(1500);
+  classlistRemove(banner, transform);
+  setTimeout(() => classlistRemove(banner, 'd-flex'), 250);
 }
 
 function toggleBackground(i) {

@@ -400,7 +400,6 @@ h2 {
 #banner-contact-deleted,
 #banner-contact-created-mobile,
 #banner-contact-deleted-mobile {
-  display: flex;
   width: 326px;
   height: 74px;
   justify-content: center;
@@ -408,8 +407,23 @@ h2 {
   border-radius: 20px;
   background: $primary-color;
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.15);
-  transform: translateY(1000px);
   transition: all 250ms ease-in-out;
+}
+
+#banner-contact-created,
+#banner-contact-deleted {
+  display: none;
+  transform: translate(1000px);
+}
+
+#banner-contact-created {
+  margin-top: 500px;
+}
+
+#banner-contact-created-mobile,
+#banner-contact-deleted-mobile {
+  display: flex;
+  transform: translateY(1000px);
 }
 
 #banner-contact-created {
@@ -1146,7 +1160,6 @@ form {
   #add-contact-mobile,
   #edit-contact-mobile {
     width: calc(100% - 2 * 16px);
-    transform: translateY(0);
   }
 
   #contact-mobile {

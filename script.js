@@ -11,8 +11,10 @@ function timeOut(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-function showMenu() {
+function showTopbarDropdown() {
+  document.getElementById('topbar-dropdown').classList.toggle('d-flex');
   document.getElementById('topbar-dropdown').classList.toggle('show-overlay-menu');
+  console.log('showMenuTopbar');
 }
 
 function setUserInitials() {

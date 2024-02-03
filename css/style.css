@@ -978,7 +978,6 @@ h2 {
 #banner-contact-deleted,
 #banner-contact-created-mobile,
 #banner-contact-deleted-mobile {
-  display: flex;
   width: 326px;
   height: 74px;
   justify-content: center;
@@ -986,8 +985,20 @@ h2 {
   border-radius: 20px;
   background: #2a3647;
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.15);
-  transform: translateY(1000px);
   transition: all 250ms ease-in-out; }
+
+#banner-contact-created,
+#banner-contact-deleted {
+  display: none;
+  transform: translate(1000px); }
+
+#banner-contact-created {
+  margin-top: 500px; }
+
+#banner-contact-created-mobile,
+#banner-contact-deleted-mobile {
+  display: flex;
+  transform: translateY(1000px); }
 
 #banner-contact-created {
   margin-top: 50px; }
@@ -1546,8 +1557,7 @@ form {
 @media (max-width: 400px) {
   #add-contact-mobile,
   #edit-contact-mobile {
-    width: calc(100% - 2 * 16px);
-    transform: translateY(0); }
+    width: calc(100% - 2 * 16px); }
   #contact-mobile {
     width: calc(100% - 2 * 16px);
     height: auto; }
@@ -2353,7 +2363,7 @@ a {
   top: 0;
   left: 0;
   right: 0;
-  display: flex;
+  display: none;
   justify-content: space-between;
   align-items: center;
   max-width: 100%;
@@ -2440,20 +2450,20 @@ a {
   cursor: pointer; }
 
 #topbar-dropdown {
+  display: none;
   position: absolute;
   top: 100px;
   right: 5px;
   width: 160px;
   transform: translateX(300px);
   transition: all 225ms ease-in-out;
-  display: inline-flex;
   padding: 10px;
   flex-direction: column;
   align-items: flex-start;
   border-radius: 20px 0px 20px 20px;
   background: #2a3647;
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
-  z-index: 2; }
+  z-index: 3; }
 
 .dropdown-content {
   display: flex;

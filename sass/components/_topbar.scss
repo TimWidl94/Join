@@ -6,7 +6,7 @@
   top: 0;
   left: 0;
   right: 0;
-  display: flex;
+  display: none;
   justify-content: space-between;
   align-items: center;
   max-width: 100%;
@@ -110,20 +110,21 @@
 
 // === Topbar Dropdown === //
 #topbar-dropdown {
+  display: none;
   position: absolute;
   top: 100px;
   right: 5px;
   width: 160px;
   transform: translateX(300px);
   transition: all 225ms ease-in-out;
-  display: inline-flex;
+  // display: inline-flex;
   padding: 10px;
   flex-direction: column;
   align-items: flex-start;
   border-radius: 20px 0px 20px 20px;
   background: $primary-color;
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
-  z-index: 2;
+  z-index: 3;
 }
 
 .dropdown-content {

@@ -32,6 +32,5 @@ function greeting() {
     greetingText = 'Good evening,';
   }
 
-  // You can also return the greeting if you want to use it in a different context
   return greetingText;
 }

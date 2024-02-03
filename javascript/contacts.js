@@ -94,21 +94,19 @@ function getFirstLetters(str) {
   return str.split(/\s/).reduce((response, word) => (response += word.slice(0, 1)), '');
 }
 
-function openContactInfo(i) {
+async function openContactInfo(i) {
   let contact = contacts[i];
   let acronym = getFirstLetters(contact.name);
   const color = contact.color;
   let content = document.getElementById('contact-info');
-  classlistAdd('wrapper-contact-info', 'd-none');
-  classlistRemove('wrapper-contact-info', 'show-overlay-menu');
+  // setTimeout(() => classlistAdd('contact-info', 'd-none'), 100);
+  await setTimeout(() => classlistRemove('contact-info', 'show-overlay-menu'), 100);
 
   content.innerHTML = '';
   content.innerHTML += openContactInfoHTML(contact, acronym, color, i);
-  classlistRemove('wrapper-contact-info', 'd-none');
 
-  setTimeout(() => {
-    classlistAdd('wrapper-contact-info', 'show-overlay-menu');
-  }, 300);
+  await classlistRemove('contact-info', 'd-none');
+  await setTimeout(() => classlistAdd('contact-info', 'show-overlay-menu'), 300);
   if (window.innerWidth < 800) {
     toggleContactInfoMobile();
   }

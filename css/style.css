@@ -1753,17 +1753,22 @@ form {
   border: 1px solid #d1d1d1;
   padding: 8px 16px; }
 
+#boardAddTask {
+  display: flex; }
+
 .add-task-popup {
   display: flex;
+  flex-direction: row;
   position: absolute;
   margin: auto;
-  width: -webkit-fill-available;
+  width: 90%;
   justify-content: center;
-  left: 20%;
+  left: 5%;
   padding: 64px 74px;
   z-index: 9;
-  background: white;
-  border-radius: 30px; }
+  border-radius: 30px;
+  background: #FFF;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1); }
   .add-task-popup-close {
     position: absolute;
     right: 40px;

@@ -24,10 +24,16 @@ let selectedPrio;
 /*Popup function */
 
 function renderAddTask() {
-  content = document.getElementById("main");
-  contentboardTask = document.getElementById("boardAddTask");
-  content.innerHTML = addTaskHtml();
-  contentboardTask.innerHTML = addTaskHtml();
+  let contentMain = document.getElementById("main");
+  let contentBoardTask = document.getElementById("boardAddTask");
+
+  if (contentMain) {
+    contentMain.innerHTML = addTaskHtml("main");
+  } 
+
+  if (contentBoardTask) {
+    contentBoardTask.innerHTML = addTaskHtml("boardAddTask");
+  } 
 }
 
 function renderSubTask() {

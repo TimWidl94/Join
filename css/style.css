@@ -708,7 +708,7 @@ h1 {
   position: absolute;
   bottom: 112px;
   right: 32px;
-  z-index: 2; }
+  z-index: 0.5; }
 
 /* Start-Letter-Container */
 #contact-list-container {
@@ -889,11 +889,11 @@ h2 {
 
 #changesMobile {
   position: absolute;
-  bottom: 325px;
-  right: 32px;
+  bottom: 100px;
+  right: 30px;
   transform: translate(200px);
   transition: all 125ms ease-in-out;
-  display: inline-flex;
+  display: none;
   padding: 10px;
   flex-direction: column;
   align-items: flex-start;
@@ -997,7 +997,7 @@ h2 {
 
 #banner-contact-created-mobile,
 #banner-contact-deleted-mobile {
-  display: flex;
+  display: none;
   transform: translateY(1000px); }
 
 #banner-contact-created {
@@ -2363,7 +2363,7 @@ a {
   top: 0;
   left: 0;
   right: 0;
-  display: none;
+  display: flex;
   justify-content: space-between;
   align-items: center;
   max-width: 100%;

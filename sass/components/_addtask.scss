@@ -22,9 +22,9 @@
 
 .main-add-task {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   margin-top: calc(110px + 96px);
-  padding-left: calc(232px + 24px);
+  padding-left: calc(232px + 100px);
   padding-right: 24px;
 }
 

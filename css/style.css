@@ -639,7 +639,7 @@ h1 {
     padding: 2px 8px;
     width: calc(100% - 2 * 8px); } }
 
-.my-body {
+.body-contacts {
   height: 100vh;
   overflow: hidden; }
 

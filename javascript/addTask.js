@@ -77,6 +77,7 @@ async function addTask() {
   });
   await setItem("tasks", JSON.stringify(tasks));
   console.log(tasks);
+  clearInputValue();
 }
 
 

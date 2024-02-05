@@ -1,33 +1,6 @@
-let todos = [
-  {
-    id: 0,
-    title: 'Putzen',
-    category: 'todo',
-  },
-  {
-    id: 1,
-    title: 'Kochen',
-    category: 'todo',
-  },
-  {
-    id: 2,
-    title: 'Einkaufen',
-    category: 'done',
-  },
-  {
-    id: 3,
-    title: 'Einkaufen',
-    category: 'inProgress',
-  },
-  {
-    id: 4,
-    title: 'Einkaufen',
-    category: 'awaitFeedback',
-  },
-];
 let currentDraggedElement;
 
-async function init() {
+async function initBoard() {
   await loadData();
   await loadUser();
   await updateHTML();
@@ -152,7 +125,9 @@ function renderToDoTasks(){
   let contentBoxToDo = document.getElementById('todo');
   for (let i = 0; i < tasks.length; i++) {
     if(tasks[i]['currentState'] == 'toDo'){
+      let number = i;
       contentBoxToDo.innerHTML += generateTodoHTML(i);
+      renderContactsInBoardTask(number);
     } else{console.log('dont work')}
   } 
 }
@@ -161,7 +136,9 @@ function renderInProgressTasks(){
   let contentBoxToDo = document.getElementById('inProgress');
   for (let i = 0; i < tasks.length; i++) {
     if(tasks[i]['currentState'] == 'inProgress'){
+      let number = i;
       contentBoxToDo.innerHTML += generateTodoHTML(i);
+      renderContactsInBoardTask(number);
     } else{console.log('dont work')}
   } 
 }
@@ -171,6 +148,7 @@ function renderAwaitFeedbackTasks(){
   for (let i = 0; i < tasks.length; i++) {
     if(tasks[i]['currentState'] == 'awaitFeedback'){
       contentBoxToDo.innerHTML += generateTodoHTML(i);
+      renderContactsInBoardTask(i);
     } else{console.log('dont work')}
   } 
 }
@@ -180,6 +158,19 @@ function renderDoneTasks(){
   for (let i = 0; i < tasks.length; i++) {
     if(tasks[i]['currentState'] == 'done'){
       contentBoxToDo.innerHTML += generateTodoHTML(i);
+      renderContactsInBoardTask(i);
     } else{console.log('dont work')}
   } 
+}
+
+function renderContactsInBoardTask(number){
+  let x = number;
+  let container = document.getElementById('contactsInBoardTask');
+  for (let i = 0; i < tasks[x]["selectedContacts"][i].length; i++) {
+    let contact = tasks[x]["selectedContacts"][i]["name"];
+    container.innerHTML += `
+    <div class="board-task-member-profile">${contact}</div>
+    `
+    
+  }
 }

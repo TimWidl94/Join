@@ -10,12 +10,14 @@ function subTasksValueHtml(id, i) {
 
 function addTaskHtml() {
   return /*html*/ `
+  <form onsubmit="addTask(); return false" class="formAddTask">
     <section class="container-left">
+      
         <div class="headline-add-task"><h1 class="headline-h1-add-task">Add Task</h1></div>
 
         <div id="title-add-task">
           <p>Title<span class="span-required">*</span></p>
-          <input id="taskTitle" required type="text" class="border-focus" placeholder="Enter a title" />
+          <input id="taskTitle" required type="text" class="border-focus" placeholder="Enter a title"/>
 
         </div>
 
@@ -40,7 +42,7 @@ function addTaskHtml() {
       <section class="container-right">
         <p>Due Date<span class="span-required">*</span></p>
         <div id="due-date">
-          <input id="myDateInput" required type="date" />
+          <input id="myDateInput" required type="date" required/>
         </div>
 
         <div class="priority">
@@ -91,7 +93,7 @@ function addTaskHtml() {
           <button onclick="clearInputValue()" id="clear" class="buttonWhite" >
             Clear <img src="assets/img/AddTask/cancel.svg" alt="Clear Icon"
           /></button>
-          <button onclick="addTask()" id="create-task" class="buttonGrey">
+          <button  id="create-task" class="buttonGrey">
             Create Task <img src="assets/img/AddTask/check_white.svg" alt="Check Icon"
           /></button>
         </div>
@@ -103,13 +105,14 @@ function addTaskHtml() {
           <button onclick="clearInputValue()" id="clear-mobile" class="buttonWhite" >
             Clear <img src="assets/img/AddTask/cancel.svg" alt="Clear Icon"
           /></button>
-          <button onclick="addTask()" id="create-task-mobile" class="buttonGrey">
+          <button id="create-task-mobile" class="buttonGrey">
             Create Task <img src="assets/img/AddTask/check_white.svg" alt="Check Icon"
           /></button>  
           </div>      
         </div>
+
       </section>
-    
+      </form>
     `;
 }
 

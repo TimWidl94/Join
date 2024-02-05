@@ -59,6 +59,10 @@ function openContactInfoHTML(contact, acronym, color, i) {
             <a id="contact-phone" href="tel:${contact.phone}">${contact.phone}</a>
         </div>
     </div>
+
+    <div id="banner-contact-created">
+        <p>Contact succesfully created</p>
+      </div>
   `;
 }
 

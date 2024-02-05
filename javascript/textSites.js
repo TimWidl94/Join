@@ -15,11 +15,9 @@ function initHelp() {
   loadHelpContent();
 }
 
-function checkIfArrayIsEmpty() {
-  if (!user.length > 0) {
-    document.getElementById('sidebarMenu').classList.add('d-none');
-    document.getElementById('arrowContainer').classList.add('d-none');
-  }
+function initPrivacyPolice() {
+  loadPrivacyPolicyH1Html();
+  loadPrivacyPolicyContent();
 }
 
 function loadLegalNoticeH1Html() {
@@ -40,4 +38,21 @@ function loadHelpH1Html() {
 function loadHelpContent() {
   let container = document.getElementById('helpContentHTML');
   container.innerHTML = helpHtmlMain();
+}
+
+function loadPrivacyPolicyH1Html() {
+  let smallContainer = document.getElementById('privacyPoliceHeadline');
+  smallContainer.innerHTML = privacyPolicyH1Html();
+}
+
+function loadPrivacyPolicyContent() {
+  let container = document.getElementById('privacyPoliceContentHTML');
+  container.innerHTML = privacyPolicyHtmlMain();
+}
+
+function checkIfArrayIsEmpty() {
+  if (!user.length > 0) {
+    document.getElementById('sidebarMenu').classList.add('d-none');
+    document.getElementById('arrowContainer').classList.add('d-none');
+  }
 }

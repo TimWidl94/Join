@@ -152,7 +152,7 @@ function renderToDoTasks(){
   let contentBoxToDo = document.getElementById('todo');
   for (let i = 0; i < tasks.length; i++) {
     if(tasks[i]['currentState'] == 'toDo'){
-      contentBoxToDo.innerHTML = generateTodoHTML(i);
+      contentBoxToDo.innerHTML += generateTodoHTML(i);
     } else{console.log('dont work')}
   } 
 }
@@ -161,7 +161,7 @@ function renderInProgressTasks(){
   let contentBoxToDo = document.getElementById('inProgress');
   for (let i = 0; i < tasks.length; i++) {
     if(tasks[i]['currentState'] == 'inProgress'){
-      contentBoxToDo.innerHTML = generateTodoHTML(i);
+      contentBoxToDo.innerHTML += generateTodoHTML(i);
     } else{console.log('dont work')}
   } 
 }
@@ -170,7 +170,7 @@ function renderAwaitFeedbackTasks(){
   let contentBoxToDo = document.getElementById('awaitFeedback');
   for (let i = 0; i < tasks.length; i++) {
     if(tasks[i]['currentState'] == 'awaitFeedback'){
-      contentBoxToDo.innerHTML = generateTodoHTML(i);
+      contentBoxToDo.innerHTML += generateTodoHTML(i);
     } else{console.log('dont work')}
   } 
 }
@@ -179,7 +179,7 @@ function renderDoneTasks(){
   let contentBoxToDo = document.getElementById('done');
   for (let i = 0; i < tasks.length; i++) {
     if(tasks[i]['currentState'] == 'done'){
-      contentBoxToDo.innerHTML = generateTodoHTML(i);
+      contentBoxToDo.innerHTML += generateTodoHTML(i);
     } else{console.log('dont work')}
   } 
 }

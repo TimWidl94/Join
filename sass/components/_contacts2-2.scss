@@ -470,16 +470,12 @@
     left: 0 !important;
     top: 0;
     margin-top: 0;
-    padding-top: 64px;
-    align-items: center;
-    justify-content: flex-start;
+    // padding-top: 64px;
+    padding: 64px 16px 0 16px;
+    width: calc(100% - 2 * 16px);
+    align-items: flex-start;
+    // justify-content: flex-start;
   }
-
-  // #contact-info {
-  //   position: unset;
-  //   top: 0;
-  //   left: 0;
-  // }
 
   .contact-info-headline {
     margin-top: unset;
@@ -529,6 +525,10 @@
 
   .start-letter {
     padding: 17px 24px;
+  }
+
+  #name {
+    font-size: 28px;
   }
 }
 

@@ -60,19 +60,27 @@ function openContactInfoHTML(contact, acronym, color, i) {
         </div>
     </div>
 
-    <div id="changesMobileWrapper" onclick="closeChangesMenuMobile()">
-      <div id="changesMobile" onclick="doNotClose(event)">
-        <div class="edit" onclick="editContact(${i}, 'mobile'), openPopup('edit-contact-wrapper-mobile', 'edit-contact-mobile', 'show-overlay-menu-y')"
->
-          <img class="edit-img" src="assets/img/icons/edit.svg" alt="Edit" />
-          <p class="edit-p">Edit</p>
-        </div>
-        <div class="delete" onclick="deleteContact(${i})">
-          <img class="delete-img" src="assets/img/icons/delete.svg" alt="Delete" />
-          <p>Delete</p>
-        </div>
+    <div id="banner-contact-created">
+        <p>Contact succesfully created</p>
       </div>
+  `;
+}
+
+function changesMobileHTML(i) {
+  return /*html*/ `
+  <div id="changesMobile" onclick="doNotClose(event)">
+    <div
+      class="edit"
+      onclick="editContact(${i}, 'mobile'), openPopup('edit-contact-wrapper-mobile', 'edit-contact-mobile', 'show-overlay-menu-y')"
+    >
+      <img class="edit-img" src="assets/img/icons/edit.svg" alt="Edit" />
+      <p class="edit-p">Edit</p>
     </div>
+    <div class="delete" onclick="deleteContact(${i})">
+      <img class="delete-img" src="assets/img/icons/delete.svg" alt="Delete" />
+      <p>Delete</p>
+    </div>
+  </div>
   `;
 }
 

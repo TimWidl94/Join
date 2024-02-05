@@ -46,17 +46,23 @@
   border: 1px solid rgba(209, 209, 209, 1);
   padding: 8px 16px;
 }
+#boardAddTask {
+  display: flex;
+}
+
 .add-task-popup {
-    display: flex;
-    position: absolute;
-    margin: auto;
-    width: -webkit-fill-available;
-    justify-content: center;
-    left: 20%;
-    padding: 64px 74px;
-    z-index: 9;
-    background: white;
-    border-radius: 30px;
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  margin: auto;
+  width: 90%;
+  justify-content: center;
+  left: 5%;
+  padding: 64px 74px;
+  z-index: 9;
+  border-radius: 30px;
+  background: #FFF;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
 
     &-close {
         position: absolute;
@@ -236,6 +242,7 @@
         }
     }
 }
+
 .headerBoardMobile{
     display: none;
 }
@@ -276,3 +283,4 @@
         overflow: visible !important;
     }
 }
+

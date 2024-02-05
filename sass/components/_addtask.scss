@@ -5,11 +5,9 @@
   min-height: 100vh;
 }
 
-
 .span-required {
   color: #ff8190;
 }
-
 
 .headline {
   display: flex;
@@ -24,9 +22,9 @@
 
 .main-add-task {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   margin-top: calc(110px + 96px);
-  padding-left: calc(232px + 24px);
+  padding-left: calc(232px + 100px);
   padding-right: 24px;
 }
 
@@ -97,7 +95,7 @@
   &-profile {
     display: inline-block;
     text-align: center;
-    color: #FFFFFF;
+    color: #ffffff;
     width: 32px;
     height: 32px;
     font-size: 12px;
@@ -143,7 +141,6 @@
   border-radius: 10px;
   padding: 7px 16px 7px 16px;
 }
-
 
 #assignedDropdown {
   padding: 12px 16px;
@@ -196,11 +193,11 @@
 
 .dropdown {
   padding: 16px;
-    border: 1px solid $color-board-grey;
-    width: 100%;
-    border-radius: 10px;
-    cursor: pointer;
-    background-color: $color-light;
+  border: 1px solid $color-board-grey;
+  width: 100%;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: $color-light;
 }
 
 .vertical-line-add-task {
@@ -267,27 +264,27 @@
 }
 
 // .priority-options div:nth-child(2) {
-  // background: #ffa800;
-  // color: $color-light;
-  // font-size: 21px;
-  // font-weight: 700;
+// background: #ffa800;
+// color: $color-light;
+// font-size: 21px;
+// font-weight: 700;
 // }
 
-.priorityUrgentActive{
-  background: #FF3D19 !important;
+.priorityUrgentActive {
+  background: #ff3d19 !important;
   color: $color-light;
   font-size: 21px;
   font-weight: 700;
 }
 
-.priorityLowActive{
-  background: #7AE22B !important;
+.priorityLowActive {
+  background: #7ae22b !important;
   color: $color-light;
   font-size: 21px;
   font-weight: 700;
 }
 
-.priorityMediumActive{
+.priorityMediumActive {
   background: #ffa800 !important;
   color: $color-light;
   font-size: 21px;
@@ -314,7 +311,7 @@
 .dropbtn {
   max-height: 207px;
   overflow-y: auto;
-  flex:1;
+  flex: 1;
 }
 
 .options-syle {
@@ -364,7 +361,7 @@
   }
 }
 .hover-checkbox {
-  display: none; 
+  display: none;
   right: 16px;
   top: 13px;
   position: absolute;
@@ -382,14 +379,13 @@
     color: #fff;
     background-color: #2a3647;
     border-radius: 10px;
-    .hover-checkbox{
+    .hover-checkbox {
       display: block;
     }
   }
 }
 
 .editSubTaskButtonBox {
-
   position: absolute;
   width: 40px;
   display: flex;
@@ -476,9 +472,9 @@
 }
 
 .border-focus {
-    &:focus {
-      outline: 1px solid $secondary-color;
-    }
+  &:focus {
+    outline: 1px solid $secondary-color;
+  }
 }
 
 .contact-searchbar {

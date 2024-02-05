@@ -101,6 +101,7 @@ function openContactInfo(i) {
 
   content.innerHTML = '';
   setTimeout(() => (content.innerHTML += openContactInfoHTML(contact, acronym, color, i)), 250);
+  renderChangesMobile(i);
 
   classlistRemove('contact-info', 'd-none');
   classlistAdd('contact-info', 'transition');
@@ -125,6 +126,7 @@ function toggleContactInfoMobile() {
 
 function openChangesMenuMobile() {
   classlistAdd('changesMobileWrapper', 'd-flex');
+  classlistAdd('changesMobile', 'd-flex');
   classlistAdd('changesMobile', 'show-overlay-menu');
   classlistAdd('optionsContactMobile', 'd-none');
   console.log('changesMobile');
@@ -132,8 +134,15 @@ function openChangesMenuMobile() {
 
 function closeChangesMenuMobile() {
   classlistRemove('changesMobile', 'show-overlay-menu');
+  classlistRemove('changesMobile', 'd-flex');
   classlistRemove('changesMobileWrapper', 'd-flex');
   classlistRemove('optionsContactMobile', 'd-none');
+}
+
+function renderChangesMobile(i) {
+  let content = document.getElementById('changesMobileWrapper');
+  content.innerHTML = '';
+  content.innerHTML = changesMobileHTML(i);
 }
 
 function classlistToggle(id, toggle) {
@@ -170,9 +179,11 @@ async function addContact(target) {
   clearPopup(name, mail, tel);
   await closeContactPopup(target, 'add');
 
-  animateBannerContacts('banner-contact-created', 'banner-contact-created-mobile');
+  setTimeout(() => {
+    animateBannerContacts('banner-contact-created', 'banner-contact-created-mobile');
+  }, 500);
 
-  init();
+  // init();
 }
 
 function findContactIndex(name) {

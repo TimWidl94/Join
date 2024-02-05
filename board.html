@@ -15,7 +15,7 @@
       type="image/x-icon"
       href="assets/img/Global/join_logo_black.svg" />
   </head>
-  <body onload="init()">
+  <body onload="init()" class="bodyBoard">
     <div w3-include-html="sidebar.html"></div>
     <div w3-include-html="topbar.html"></div>
 
@@ -118,9 +118,14 @@
           </div>
         </section>
       </div>
-      <div class="row space-between">
-        <div>
+      <div class="row space-between mobileBoardHeadSection">
+        <div class="headerBoardMobile">
           <h1>Board</h1>
+          <button class="buttonGrey boardAddTaskButtonMobile" onclick="openAddTaskPopup()">
+            <span class="add-class"
+              ><img src="./assets/img/Board/PlusButton.svg" alt=""
+            /></span>
+          </button>
         </div>
         <div class="search-side">
           <div class="inputFieldBox">
@@ -138,7 +143,7 @@
               class="search-side-input-img" />
           </div>
 
-          <button class="buttonGrey buttonLogin" onclick="openAddTaskPopup()">
+          <button class="buttonGrey buttonLogin mobileButtonHide" onclick="openAddTaskPopup()">
             Add Task
             <span class="add-class"
               ><img src="./assets/img/Board/PlusButton.svg" alt=""
@@ -146,7 +151,7 @@
           </button>
         </div>
       </div>
-      <div class="row">
+      <div class="row boardBoxesForTasksMobile">
         <div class="col-4">
           <div class="board-title">
             To do

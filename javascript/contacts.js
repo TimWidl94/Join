@@ -329,9 +329,16 @@ function toggleBackground(i) {
   document.getElementById(`contact-list-basic-info${i}`).classList.add('bg-primary');
   document.getElementById(`name-list${i}`).classList.add('color-white');
 }
+function validateNameInput() {
+  let name = document.getElementById('add-name-desktop').value;
+  let errorMessage = document.getElementById('error-name');
+  if (name.length >= 2 && name.length <= 50) {
+    errorMessage.innerHTML = 'Name length is okay!';
+  }
+}
 
 // noch aktualisieren?
-function validateNameInput() {
+function validateNameInput2() {
   let name = document.getElementById('add-name');
   name.addEventListener('input', function (e) {
     name.setCustomValidity(''); //remove message when new text is input

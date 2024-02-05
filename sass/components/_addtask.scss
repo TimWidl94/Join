@@ -165,6 +165,7 @@
 }
 
 .bottom-add-task-mobile {
+  display: none !important;
   position: fixed;
   bottom: 84px;
   left: 0;
@@ -529,19 +530,23 @@
   height: 18px;
 }
 
+.formAddTask{
+  display: flex !important;
+}
+
 @media (max-width: 1000px) {
   .main-add-task {
     padding-left: 24px;
     margin-top: 110px;
   }
+  .formAddTask{
+    display: block !important;
+  }
+  
 }
 
 @media (max-width: 800px) {
-  .body-add-task {
-    display: flex;
-    flex-direction: column; /* Ändern Sie die Richtung der Hauptachse auf Spalte */
-    overflow-y: auto;
-  }
+ 
 
   p {
     font-size: 16px;

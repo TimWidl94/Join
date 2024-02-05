@@ -19,9 +19,8 @@ function generateTodoHTML(i) {
                   <div class="sboard-task-subtask-counter">0/${tasks[i]["subtasks"].length}</div>
                 </div>
                 <div class="board-task-member">
-                  <div class="board-task-member">
-                    <div class="board-task-member-profile">${tasks[i]["selectedContacts"][0]["name"]}</div>
-                    <div class="board-task-member-profile">DA</div>
+                  <div class="board-task-member" id="contactsInBoardTask">
+                    
                   </div>
                   <div class="board-task-member-prio">
                     <img src="./assets/img/AddTask/ArrowUpPrioSign.svg" alt="" />

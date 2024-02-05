@@ -26,7 +26,7 @@ function addTaskHtml() {
           <textarea id="taskDescription" class="border-focus" placeholder="Enter a description"></textarea>
         </div>
 
-        <p>Assigned to</p>
+        <p class="text-padding">Assigned to</p>
         <div id="assignedTo">
         </div>
         <div id="assignedAddedContact" class="assinged-contact">
@@ -44,7 +44,7 @@ function addTaskHtml() {
         <div id="due-date">
           <input id="myDateInput" required type="date" required/>
         </div>
-
+        
         <div class="priority">
           <p>Prio</p>
           <div class="priority-options">
@@ -68,7 +68,7 @@ function addTaskHtml() {
   <p>Category<span class="span-required">*</span></p>
   <div id="dropdownCategory" class="dropdown" onclick="openDropDownCategory()">
   <div id="showSelectedCategory" data-value="">Select task category</div>
-  <img id="dropdownImgArrowCategory" class="rotate-arrow" src="../assets/img/AddTask/arrow_drop.svg" alt="">
+  <img id="dropdownImgArrowCategory" class="rotate-arrow dropdown-arrow-hover" src="../assets/img/AddTask/arrow_drop.svg" alt="">
 </div>
 <div id="assignedDropdownCategory" class="category-dropdown d-none">
   <div id="userStory" class="flex-checkbox" data-value="user-story" onclick="selectCategory('user-story')">User Story</div>

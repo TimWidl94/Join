@@ -155,7 +155,7 @@ function showTaskForm() {
     <div name="assigned" onchange="addAssignedContact()">
       <div id="dropdown" class="dropdown" onclick="openDropDown()">
         <input class="contact-searchbar" onkeyup="filterAddTaskContact()" type="text" id="search" placeholder="Select contacts to assign" />
-        <img id="dropdownImgArrow" class="rotate-arrow" src="../assets/img/AddTask/arrow_drop.svg" alt="">
+        <img id="dropdownImgArrow" class="rotate-arrow dropdown-arrow-hover dropdown-arrow-hover" src="../assets/img/AddTask/arrow_drop.svg" alt="">
       </div>
     </div>
     <div id="assignedDropdown" class="d-none">
@@ -232,7 +232,7 @@ function openDropDown() {
 function openDropDownCategory() {
   let assignedDropdownCategory = document.getElementById("assignedDropdownCategory");
   let dropdownImgArrowCategory = document.getElementById("dropdownImgArrowCategory");
-  dropdownCategory.classList.toggle('border-active');
+  dropdownCategory.classList.toggle('border-category-active');
   assignedDropdownCategory.classList.toggle('d-none');
   dropdownImgArrowCategory.classList.toggle('rotate-arrow');
 }
@@ -352,6 +352,7 @@ function changeButtonsAddTask(){
     <input id="subTaskInput" type="text" placeholder="Add new subtask" onclick="" class="PosRel" />
     <div class="subTaskInputButtons">
       <img class="subTaskInputImg" onclick="setValueBack('subTaskInput')" src="./assets/img/icons/close.svg" alt="">
+      <span class="subTaskInputImg-vertical"></span>
       <img class="subTaskInputImg checkImg" onclick="addSubTask()" src="./assets/img/icons/checkAddTask.svg" alt="">
     </div>
   `;

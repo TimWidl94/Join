@@ -11,7 +11,8 @@ async function init() {
   );
   await renderAddTask();
   await renderSubTask();
-  showTaskForm();
+  await showTaskForm();
+  changePrioToMedium('mediumContainer', 'mediumImg');
 }
 
 let tasks = [];
@@ -77,6 +78,7 @@ async function addTask() {
   });
   await setItem("tasks", JSON.stringify(tasks));
   console.log(tasks);
+  clearInputValue();
 }
 
 

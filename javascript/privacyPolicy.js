@@ -1,26 +1,26 @@
-async function init() {
-  
-  await loadData();
-  await loadUser();
-  await loadPrivacyPolicyh1();
-  await includeHTML();
-  await checkIfArrayIsEmpty();
-  loadPrivacyPolicyContent();
-}
+// async function init() {
 
-function checkIfArrayIsEmpty() {
-  if (!user.length > 0) {
-    document.getElementById("sidebarMenu").classList.add("d-none");
-    document.getElementById("arrowContainer").classList.add("d-none");
-  }
-}
+//   await loadData();
+//   await loadUser();
+//   await loadPrivacyPolicyh1();
+//   await includeHTML();
+//   await checkIfArrayIsEmpty();
+//   loadPrivacyPolicyContent();
+// }
 
-function loadPrivacyPolicyh1() {
-  let smallContainer = document.getElementById("headline-container");
-  smallContainer.innerHTML = privacyPolicyH1Html();
-}
+// function checkIfArrayIsEmpty() {
+//   if (!user.length > 0) {
+//     document.getElementById("sidebarMenu").classList.add("d-none");
+//     document.getElementById("arrowContainer").classList.add("d-none");
+//   }
+// }
 
-function loadPrivacyPolicyContent() {
-    let container = document.getElementById("contentHTML");
-    container.innerHTML = privacyPolicyHtmlMain();
-  }
+// function loadPrivacyPolicyh1() {
+//   let smallContainer = document.getElementById("headline-container");
+//   smallContainer.innerHTML = privacyPolicyH1Html();
+// }
+
+// function loadPrivacyPolicyContent() {
+//     let container = document.getElementById("contentHTML");
+//     container.innerHTML = privacyPolicyHtmlMain();
+//   }

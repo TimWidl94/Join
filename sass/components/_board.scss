@@ -256,3 +256,45 @@
         }
     }
 }
+
+.headerBoardMobile{
+    display: none;
+}
+
+@media (max-width: 1000px){
+    .container{
+        position: unset !important;
+        left: 0px !important;
+        margin: 0 !important;
+    }
+    .mobileBoardHeadSection{
+        flex-direction: column !important;
+        align-items: start !important;
+    }
+    .headerBoardMobile{
+        display: flex !important;
+        justify-content: space-between;
+        width: 100%;
+        align-items: center;
+    }
+    .boardBoxesForTasksMobile{
+        flex-direction: column;
+    }
+    .mobileButtonHide{
+        display: none !important;
+    }
+    .col-4{
+        width: 66% !important;
+    }
+    .search-side{
+        width: 100%;
+    }
+    .search-side-bar{
+        max-width: 380%;
+        width: 100%;
+    }
+    .bodyBoard{
+        overflow: visible !important;
+    }
+}
+

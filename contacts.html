@@ -12,7 +12,7 @@
     <script src="./templates/contactTemplate.js"></script>
     <link rel="icon" type="image/x-icon" href="assets/img/Global/join_logo_black.svg" />
   </head>
-  <body class="my-body" onload="includeHTML(), init()">
+  <body class="body-contacts" onload="includeHTML(), init()">
     <div w3-include-html="./sidebar.html"></div>
     <div w3-include-html="./topbar.html"></div>
     <!-- <div class="overflow-x-mobile-working"> -->
@@ -42,10 +42,6 @@
       </section>
 
       <section id="contact-info"> </section>
-
-      <div id="banner-contact-created">
-        <p>Contact succesfully created</p>
-      </div>
 
       <div id="banner-contact-deleted">
         <p>Contact succesfully deleted</p>
@@ -103,14 +99,12 @@
                 <img id="profile-img" src="assets/img/icons/person_white.svg" alt="Profile Image" />
               </div>
 
-              <form class="inputButtonsWrapper" onsubmit="addContact('desktop'); return false">
+              <form class="inputButtonsWrapper" onsubmit="addContact('desktop'), validateNameInput(); return false">
                 <div class="inputFieldContainer height-unset">
                   <div class="inputWrapper">
                     <div class="inputFieldBox">
                       <input
                         type="text"
-                        minlength="2"
-                        maxlength="100"
                         class="inputField"
                         placeholder="Name"
                         id="add-name-desktop"
@@ -121,7 +115,7 @@
                       />
                       <img src="assets/img/icons/person.svg" alt="Person" class="inputImgPerson" />
                     </div>
-                    <div class="error-message">Username is a required field.</div>
+                    <div class="error-message" id="error-name">Username is a required field.</div>
                   </div>
                   <div class="inputWrapper">
                     <div class="inputFieldBox">
@@ -137,7 +131,7 @@
                       />
                       <img src="assets/img/icons/mail.svg" alt="Mail" class="inputImgMail" />
                     </div>
-                    <div class="error-message">Email is a required field.</div>
+                    <div class="error-message" id="error-email">Email is a required field.</div>
                   </div>
                   <div class="inputWrapper">
                     <div class="inputFieldBox">
@@ -154,7 +148,7 @@
                       />
                       <img src="assets/img/icons/call.svg" alt="Phone" class="inputImgPhone" />
                     </div>
-                    <div class="error-message">Phone is a required field.</div>
+                    <div class="error-message" id="error-phone">Phone is a required field.</div>
                   </div>
                 </div>
 

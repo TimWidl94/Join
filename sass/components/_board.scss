@@ -68,6 +68,14 @@
         position: absolute;
         right: 40px;
         cursor: pointer;
+        &:hover {
+          background: $color-board-grey;
+          border-radius: 50%;
+          height: 30px;
+          width: 30px;
+          display: flex;
+          align-items: center;
+        }
     }
 }
 .slide-in {

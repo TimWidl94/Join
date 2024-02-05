@@ -1792,6 +1792,9 @@ form {
     position: absolute;
     right: 40px;
     cursor: pointer; }
+    .add-task-popup-close:hover {
+      background: #a8a8a8;
+      border-radius: 50%; }
 
 .slide-in {
   animation: fadeIn 1s, slideIn .7s linear; }

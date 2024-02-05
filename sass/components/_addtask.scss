@@ -89,10 +89,61 @@
   display: inline-block;
 }
 
+#due-date {
+  position: relative;
+  display: inline-block;
+  position: relative;
+  padding-right: 25px;
+  &::before {
+    content: "";
+    background-image: url('data:image/svg+xml,%3Csvg width%3D%2225%22 height%3D%2224%22 viewBox%3D%220 0 25 24%22 fill%3D%22none%22 xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg id%3D%22event%22%3E%3Cmask id%3D%22mask0_75592_13822%22 style%3D%22mask-type%3Aalpha%22 maskUnits%3D%22userSpaceOnUse%22 x%3D%220%22 y%3D%220%22 width%3D%2225%22 height%3D%2224%22%3E%3Crect id%3D%22Bounding%20box%22 x%3D%220.855469%22 width%3D%2224%22 height%3D%2224%22 fill%3D%22%23D9D9D9%22%2F%3E%3C%2Fmask%3E%3Cg mask%3D%22url(%23mask0_75592_13822)%22%3E%3Cpath id%3D%22event_2%22 d%3D%22M15.3555%2018C14.6555%2018%2014.0638%2017.7583%2013.5805%2017.275C13.0971%2016.7917%2012.8555%2016.2%2012.8555%2015.5C12.8555%2014.8%2013.0971%2014.2083%2013.5805%2013.725C14.0638%2013.2417%2014.6555%2013%2015.3555%2013C16.0555%2013%2016.6471%2013.2417%2017.1305%2013.725C17.6138%2014.2083%2017.8555%2014.8%2017.8555%2015.5C17.8555%2016.2%2017.6138%2016.7917%2017.1305%2017.275C16.6471%2017.7583%2016.0555%2018%2015.3555%2018ZM5.85547%2022C5.30547%2022%204.83464%2021.8042%204.44297%2021.4125C4.0513%2021.0208%203.85547%2020.55%203.85547%2020V6C3.85547%205.45%204.0513%204.97917%204.44297%204.5875C4.83464%204.19583%205.30547%204%205.85547%204H6.85547V3C6.85547%202.71667%206.9513%202.47917%207.14297%202.2875C7.33464%202.09583%207.57214%202%207.85547%202C8.1388%202%208.3763%202.09583%208.56797%202.2875C8.75964%202.47917%208.85547%202.71667%208.85547%203V4H16.8555V3C16.8555%202.71667%2016.9513%202.47917%2017.143%202.2875C17.3346%202.09583%2017.5721%202%2017.8555%202C18.1388%202%2018.3763%202.09583%2018.568%202.2875C18.7596%202.47917%2018.8555%202.71667%2018.8555%203V4H19.8555C20.4055%204%2020.8763%204.19583%2021.268%204.5875C21.6596%204.97917%2021.8555%205.45%2021.8555%206V20C21.8555%2020.55%2021.6596%2021.0208%2021.268%2021.4125C20.8763%2021.8042%2020.4055%2022%2019.8555%2022H5.85547ZM5.85547%2020H19.8555V10H5.85547V20ZM5.85547%208H19.8555V6H5.85547V8Z%22%20fill%3D%22%232A3647%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E');
+    background-size: 24px;
+    background-repeat: no-repeat;
+    background-position: right center;
+    position: absolute;
+    top: 30%;
+    right: 35px;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+  }
+}
+
+input[type="date"]::-webkit-inner-spin-button,
+input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+}
+
+.dropdown-arrow-hover {
+  &:hover {
+    background: $color-board-task-empty;
+    border-radius: 50%;
+  }
+}
+
+.priority-options div {
+  cursor: pointer;
+  &:hover {
+    box-shadow: $box-shadow-btn;
+  }
+}
+.priorityUrgentActive, .priorityMediumActive, .priorityLowActive  {
+  box-shadow: none;
+  &:hover {
+    box-shadow: none;
+  }
+}
+
+.text-padding {
+  padding-bottom: 8px;
+}
+
 .assinged-contact {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
   padding: 21px 0;
   &-profile {
     display: inline-block;
@@ -146,7 +197,11 @@
 
 
 #assignedDropdown {
-  padding: 12px 16px;
+  position: absolute;
+  z-index: 1;
+  margin-top: 71px;
+  min-width: 409px;
+  padding: 21px 16px 0;
   border-radius: 10px;
   border: 1px solid $color-lightgrey;
   background-color: $color-light;
@@ -161,7 +216,9 @@
 }
 
 .requirement-desktop {
-  margin-top: 223px;
+position: absolute;
+    bottom: 70px;
+    padding: 10px 0px;
 }
 
 .requirement-mobile {
@@ -195,6 +252,7 @@
 }
 
 .dropdown {
+  margin-top: 40px;
   padding: 16px;
     border: 1px solid $color-board-grey;
     width: 100%;
@@ -334,28 +392,49 @@
   background-position: right 8px top 50%, 0 0;
   background-size: 32px, 100%;
 }
+
+.d-hover {
+  display: none;
+}
 .subtask-div {
   position: relative;
   display: flex;
   justify-content: space-between;
-  // margin: 5px 10px;
   flex-direction: column;
-  height: 32px;
+  min-height: 40px;
   &-btn {
     cursor: pointer;
     padding: 5px;
     &:hover {
-      background: $color-board-grey;
+      scale: 1.2;
       border-radius: 50%;
     }
   }
   &-list {
     display: flex;
-    width: 100%;
+    width: 95%;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     height: 32px;
+    padding: 7px 10px;
+    margin-bottom: 10px;
+    position: relative;
+  
+    &:hover {
+      border-radius: 10px;
+      background-color: $color-board-task-empty;
+      .d-hover {
+        display: block;
+      }
+    }
+    p {
+      flex: 1;
+      padding: 0 21px;
+    }
+    &::before {
+      content: "•";
+    }
   }
 
   &-error {
@@ -399,11 +478,11 @@
   gap: 20px;
 }
 
-.inputImgChangeButton {
-}
+
 
 .ulContainer {
-  width: calc(100% - 40px);
+  width: 100%;
+  padding-inline-start: 0;
 }
 
 .ulContainer input {
@@ -412,12 +491,14 @@
   align-items: center;
   align-self: stretch;
   border-radius: 10px;
-  border: 1px solid $color-lightgrey;
-  background: $color-light;
+  border: 1px solid $color-board-task-empty;
+  background: $color-board-task-empty;
   font-family: Inter;
   font-size: 19px;
   width: 100%;
   height: 32px;
+  padding-left: 11px;
+  margin-left: 11px;
 }
 
 #subtasks {
@@ -450,7 +531,6 @@
   border: 1px solid #d1d1d1;
   background-color: #fff;
   font-size: 16px;
-  margin-top: 1px;
   -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;
@@ -458,6 +538,9 @@
   background-repeat: no-repeat;
   background-position: right 8px top 50%, 0 0;
   background-size: 32px, 100%;
+  margin-top: -7px;
+  min-width: 409px;
+  z-index: -1;
 }
 .inputImgPlus {
   position: absolute;
@@ -467,12 +550,18 @@
   height: 24px;
   cursor: pointer;
   &:hover {
-    background: $color-board-grey;
+    background: $color-board-task-empty;
     border-radius: 50%;
   }
 }
 .border-active {
   outline: 1px solid $secondary-color;
+  position: absolute;
+  z-index: 2;
+}
+.border-category-active {
+  outline: 1px solid $secondary-color;
+
 }
 
 .border-focus {
@@ -515,17 +604,36 @@
   gap: 3px;
   top: 8px;
 }
-
+.flex-test {
+  display: flex;
+}
 .subTaskInputImg {
   width: 24px;
   height: 24px;
   cursor: pointer;
   padding: 5px;
 }
-
 .subTaskInputImg:hover {
-  background-color: #a8a8a8;
+  background-color: $color-board-task-empty;
   border-radius: 50%;
+}
+.subTaskInputImg-vertical::after {
+  content: "";
+  background-color: $color-board-grey;
+  width: 1px;
+  height: 30px;
+  position: absolute;
+  right: 33px;
+  top: 2px;
+}
+.subTaskInputImg-vertical-1::after {
+  content: "";
+  background-color: $color-board-grey;
+  width: 1px;
+  height: 30px;
+  position: absolute;
+  right: 45px;
+  top: 7px;
 }
 
 .checkImg {
@@ -546,7 +654,7 @@
     flex-direction: column; /* Ändern Sie die Richtung der Hauptachse auf Spalte */
     overflow-y: auto;
   }
-
+ 
   p {
     font-size: 16px;
   }
@@ -570,6 +678,7 @@
 
   .dropdown {
     font-size: 16px;
+    position: relative;
   }
 
   .container-left,

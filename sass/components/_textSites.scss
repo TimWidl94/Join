@@ -12,7 +12,7 @@
   font-size: 27px;
   font-style: normal;
   font-weight: 700;
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 .h2-legal-notice {
@@ -33,7 +33,7 @@
   line-height: 120%;
 }
 
-.legalNoticeWrapper {
+.textSitesWrapper {
   overflow-y: scroll;
   position: absolute;
   top: 100px;
@@ -46,7 +46,7 @@
 .textSitesContainer {
   margin: 96px 0 0 0;
   position: relative;
-  padding: 0 64px 100px 64px; /* Hier wird der Abstand von 100px hinzugefügt */
+  padding: 0 64px 100px 64px;
   background-color: #f6f7f8;
   max-width: calc(1014px + 2 * 64px);
   display: flex;
@@ -55,20 +55,19 @@
   flex-direction: column;
 }
 
-.contentContainer {
-  // overflow-y: scroll;
-  position: relative;
-  padding: 40px 40px;
-  background-color: #f6f7f8;
-  max-width: 1000px;
-  // height: calc(100vh - 256px);
+// .textSitesHeadline {
+//   margin-bottom: 24px;
+// }
+
+.textSitesHeadline {
   display: flex;
-  align-items: start;
-  justify-content: start;
-  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
 }
 
-.mb-40 {
+#helpHeadline {
   margin-bottom: 40px;
 }
 
@@ -82,8 +81,42 @@
 }
 
 @media (max-width: 1000px) {
-  .legalNoticeWrapper {
+  .textSitesWrapper {
     left: unset;
     width: 100vw;
+    height: calc(100vh - 100px - 84px);
+  }
+}
+
+@media (max-width: 800px) {
+  .textSitesContainer {
+    margin: 40px 0 0 0;
+    padding: 0 32px 100px 32px;
+  }
+
+  .headline-container {
+    margin-bottom: 12px;
+  }
+}
+
+@media (max-width: 500px) {
+  .textSitesContainer {
+    padding: 0 16px 100px 16px;
+  }
+}
+
+@media (max-width: 375px) {
+  .h1textSites {
+    text-align: start;
+    font-size: 40px;
+  }
+
+  .headline-container {
+    align-items: flex-start;
+  }
+
+  .arrowContainer {
+    padding-top: 8px;
+    // align-items: start;
   }
 }

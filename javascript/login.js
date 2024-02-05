@@ -21,7 +21,7 @@ function loadSignUpHtml() {
 }
 
 async function signUp() {
-  if (checkIfPrivatPolicyIsChecked()) {
+  if (checkIfPrivatPolicyIsChecked() && checkpPasswordsAreSame()) {
     users.push({
       username: userName.value,
       email: emailSignUp.value,
@@ -32,23 +32,34 @@ async function signUp() {
 
     loadLogIn();
     showAnimation("signedUpMassage");
-  } else {
+  }
+  if (!checkIfPrivatPolicyIsChecked()) {
     showAnimation("acceptPrivacyPolicy");
   }
 }
 
-function checkMatchPassword(){
-  if(document.getElementById('passwordSignUp').value === document.getElementById('checkPasswordSignUp').value){
-    document.getElementById('checkPasswordSignUp').classList.remove('inputRequired');
-    document.getElementById('passwordDontMatch').classList.add('d-none');
-    document.getElementById('inputFieldContainerSignUp').classList.remove('padding-none');
+function checkMatchPassword() {
+  if (
+    document.getElementById("passwordSignUp").value ===
+    document.getElementById("checkPasswordSignUp").value
+  ) {
+    document
+      .getElementById("checkPasswordSignUp")
+      .classList.remove("inputRequired");
+    document.getElementById("passwordDontMatch").classList.add("d-none");
+    document
+      .getElementById("inputFieldContainerSignUp")
+      .classList.remove("padding-none");
   } else {
-    document.getElementById('checkPasswordSignUp').classList.add('inputRequired');
-    document.getElementById('passwordDontMatch').classList.remove('d-none');
-    document.getElementById('inputFieldContainerSignUp').classList.add('padding-none');
+    document
+      .getElementById("checkPasswordSignUp")
+      .classList.add("inputRequired");
+    document.getElementById("passwordDontMatch").classList.remove("d-none");
+    document
+      .getElementById("inputFieldContainerSignUp")
+      .classList.add("padding-none");
   }
 }
-
 
 async function loadUser() {
   let email = document.getElementById("email").value;
@@ -57,7 +68,7 @@ async function loadUser() {
   if (searchForEmail(email, password)) {
     await rememberMe();
     let user = await setUser(email);
-    // 
+    //
     window.location.href = "./summary.html";
   }
 }
@@ -68,7 +79,7 @@ function setUser(email) {
       user = [];
       user.push(i);
       let userAsText = JSON.stringify(user);
-      localStorage.setItem('user', userAsText);
+      localStorage.setItem("user", userAsText);
     }
   }
 }
@@ -80,7 +91,12 @@ function searchForEmail(email, password) {
       users[i]["password"].includes(password)
     ) {
       return true;
-    } else{passwordDontMatch();}
+    } if(users[i]["email"].includes(email) &&
+    !users[i]["password"].includes(password)) {
+      passwordDontMatch();
+    } else{
+      passwordDontMatch();
+    }
   }
 }
 
@@ -91,8 +107,10 @@ function resetForm() {
 
 function logInGuest() {
   let email = "Guest@web.de";
-  let password = "admin123";
-  user.push(1)
+  let password = "Admin123";
+  user.push("2");
+  let userAsText = JSON.stringify(user);
+  localStorage.setItem("user", userAsText);
   if (searchForEmail(email, password)) {
     window.location.href = "./summary.html";
   }
@@ -131,6 +149,7 @@ function loadLocalStorageData() {
 function toggleShowPassword(passwordId, passwordIconId) {
   let passwordField = document.getElementById(passwordId);
   let passwordIcon = document.getElementById(passwordIconId);
+
   if (passwordField.type === "password") {
     passwordField.type = "text";
     passwordIcon.src = "./assets/img/icons/visibilityOff.svg";
@@ -142,15 +161,14 @@ function toggleShowPassword(passwordId, passwordIconId) {
 }
 
 function checkIfPrivatPolicyIsChecked() {
-  let button = document.getElementById('signUpButton')
   let checkButton = document.getElementById("checkboxPrivatPolicy");
   if (checkButton.checked) {
     return true;
   }
 }
 
-function enableButton(){
-  let button = document.getElementById('signUpButton');
+function enableButton() {
+  let button = document.getElementById("signUpButton");
   button.disabled = false;
 }
 
@@ -170,14 +188,28 @@ function addDNone(button) {
 }
 
 function animateLogo() {
-  setTimeout(function() {
-    document.getElementById('logo').classList.add('d-none'),
-    document.getElementById('logo-bg-animation').classList.add('d-none')
+  setTimeout(function () {
+    document.getElementById("logo").classList.add("d-none"),
+      document.getElementById("logo-bg-animation").classList.add("d-none");
   }, 1000);
 }
 
-function passwordDontMatch(){
-  document.getElementById('passwordDontMatch').classList.remove('d-none');
-  document.getElementById('checkboxBox').style.paddingTop = '16px';
-  document.getElementById('password').style.borderColor = '#ff3d00';
+function passwordDontMatch() {
+  document.getElementById("passwordDontMatch").classList.remove("d-none");
+  document.getElementById("checkboxBox").style.paddingTop = "16px";
+  document.getElementById("password").style.borderColor = "#ff3d00";
+}
+
+function passwordDontMatchReverse(){
+  document.getElementById("passwordDontMatch").classList.add("d-none");
+  document.getElementById("checkboxBox").style.paddingTop = "28px";
+  document.getElementById("password").style.borderColor = '#000';
+}
+
+function checkpPasswordsAreSame() {
+  let password = document.getElementById("passwordSignUp").value;
+  let confirmedPassword = document.getElementById("checkPasswordSignUp").value;
+  if (password === confirmedPassword) {
+    return true;
+  }
 }

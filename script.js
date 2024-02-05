@@ -1,4 +1,4 @@
-const STORAGE_TOKEN = 'I8UHSEUE6S7WBQ9YLUAB1XXGX0OVB3VDKU1C7BYI';
+const STORAGE_TOKEN = 'RHO25SVF5CN2JG67S3NXPCD27T30LI1O1R5B02PO';
 const STORAGE_URL = 'https://remote-storage.developerakademie.org/item';
 
 let user = [];

@@ -197,34 +197,34 @@
 
 .inputImgMail {
   position: absolute;
-  top: 95px;
+  top: 12px;
   right: 22px;
-  width: 24px;
-  height: 24px;
+  width: 22px;
+  height: 22px;
 }
 
 .inputImgMailMobile {
   position: absolute;
   top: 12px;
   right: 22px;
-  width: 24px;
-  height: 24px;
+  width: 22px;
+  height: 22px;
 }
 
 .inputImgPhone {
   position: absolute;
   top: 12px;
   right: -20px;
-  width: 24px;
-  height: 24px;
+  width: 26px;
+  height: 26px;
 }
 
 .inputImgPhone2Mobile {
   position: absolute;
   top: 12px;
   right: 22px;
-  width: 24px;
-  height: 24px;
+  width: 26px;
+  height: 26px;
 }
 
 .btns-down-right {
@@ -375,22 +375,6 @@
   }
 }
 
-@media (max-width: 1060px) {
-  .btns-down-right {
-    flex-direction: column;
-    align-items: flex-start;
-    margin-top: 16px;
-  }
-
-  .wrapper-profile-and-form {
-    padding-bottom: 70px;
-  }
-
-  .profile {
-    margin-bottom: 90px;
-  }
-}
-
 @media (max-width: 1000px) {
   .main {
     display: none !important;
@@ -422,12 +406,10 @@
   }
 
   .wrapper-contact-info {
-    margin-left: calc(584px - 232px + 25px);
+    margin-top: calc(225px - 96px);
+    margin-left: calc(400px + 50px);
+    min-height: 1000px;
   }
-
-  // #back-to-contact-list {
-  //   display: none !important;
-  // }
 
   .changesMobileWrapper {
     display: none;
@@ -472,6 +454,12 @@
     padding: 0px 40px;
     width: calc(100% - 2 * 40px);
   }
+
+  #contact-info {
+    position: unset;
+    top: 0;
+    left: 0;
+  }
 }
 
 @media (max-width: 800px) {
@@ -487,11 +475,11 @@
     justify-content: flex-start;
   }
 
-  #contact-info {
-    position: unset;
-    top: 0;
-    left: 0;
-  }
+  // #contact-info {
+  //   position: unset;
+  //   top: 0;
+  //   left: 0;
+  // }
 
   .contact-info-headline {
     margin-top: unset;

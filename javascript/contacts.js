@@ -179,9 +179,11 @@ async function addContact(target) {
   clearPopup(name, mail, tel);
   await closeContactPopup(target, 'add');
 
-  animateBannerContacts('banner-contact-created', 'banner-contact-created-mobile');
+  setTimeout(() => {
+    animateBannerContacts('banner-contact-created', 'banner-contact-created-mobile');
+  }, 500);
 
-  init();
+  // init();
 }
 
 function findContactIndex(name) {

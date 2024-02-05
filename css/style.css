@@ -156,15 +156,17 @@ h1 {
   display: flex;
   justify-content: flex-start;
   margin-top: calc(110px + 96px);
-  padding-left: calc(232px + 100px);
-  padding-right: 24px; }
+  padding-left: calc(232px + 50px);
+  padding-right: 24px;
+  width: calc(100% - 332px - 24px); }
 
 .container-left {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-right: 48.25px;
-  width: 440px; }
+  margin-right: 24.25px;
+  width: 440px;
+  padding: 0px 24px; }
 
 #title-add-task {
   display: flex;
@@ -176,6 +178,7 @@ h1 {
 
 #title-add-task input {
   padding: 12px 21px;
+  width: calc(100% - 2 * 21px);
   gap: 10px;
   border-radius: 10px;
   border: 1px solid #d1d1d1;
@@ -321,8 +324,9 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-left: 48.25px;
+  margin-left: 24.25px;
   width: 440px;
+  padding: 0px 24px;
   margin-top: 118px; }
 
 #due-date {
@@ -334,6 +338,7 @@ h1 {
 
 #due-date input {
   padding: 12px 16px;
+  width: calc(100% - 2 * 16px);
   border-radius: 10px;
   border: 1px solid #d1d1d1;
   background: #fff;
@@ -397,7 +402,7 @@ h1 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 409px; }
+  width: calc(100% - 2 * 17px); }
 
 .dropbtn {
   max-height: 207px;
@@ -590,9 +595,26 @@ h1 {
   height: 18px; }
 
 .formAddTask {
-  display: flex !important; }
+  display: flex !important;
+  width: 100%; }
 
-@media (max-width: 1000px) {
+@media (max-width: 1325px) {
+  .main-add-task {
+    padding-right: 24px; }
+  .container-left,
+  .container-right {
+    width: 100%;
+    max-width: 440px;
+    /* Maximalbreite setzen */ }
+  .headline-h1-add-task {
+    width: 100%; } }
+
+@media (max-width: 1200px) {
+  .container-left,
+  .container-right {
+    padding: 0px 12px; } }
+
+@media (max-width: 1050px) {
   .main-add-task {
     padding-left: 24px;
     margin-top: 110px; }

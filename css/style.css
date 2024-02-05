@@ -220,7 +220,7 @@ h1 {
   .assinged-contact-profile {
     display: inline-block;
     text-align: center;
-    color: #FFFFFF;
+    color: #ffffff;
     width: 32px;
     height: 32px;
     font-size: 12px;
@@ -366,13 +366,13 @@ h1 {
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1); }
 
 .priorityUrgentActive {
-  background: #FF3D19 !important;
+  background: #ff3d19 !important;
   color: #fff;
   font-size: 21px;
   font-weight: 700; }
 
 .priorityLowActive {
-  background: #7AE22B !important;
+  background: #7ae22b !important;
   color: #fff;
   font-size: 21px;
   font-weight: 700; }
@@ -2835,6 +2835,11 @@ input:focus {
   font-style: normal;
   font-weight: 400;
   line-height: 120%; }
+
+@media (max-width: 1000px) {
+  .legalNoticeWrapper {
+    left: unset;
+    width: 100vw; } }
 
 .container {
   margin: 96px 0px 0px;

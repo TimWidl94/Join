@@ -6,7 +6,15 @@ async function initBoard() {
   await updateHTML();
   await includeHTML();
   setUserInitials();
+  setColorToActive(
+    "sidebarBoard",
+    "board-img",
+    "bottomBarBoardMobile",
+    "boardImgMobile"
+  );
+
   setColorToActive('sidebarBoard', 'board-img', 'bottomBarBoardMobile', 'boardImgMobile');
+
 }
 
 function openAddTaskPopup() {
@@ -228,3 +236,62 @@ function renderContactsInBoardTask(x) {
     `;
   }
 }
+
+function filterTasks() {
+  let search = document.getElementById("searchTasks").value.toLowerCase();
+  clearTasksContainer();
+  if (search.trim() === "") {
+    updateHTML();
+  } else {
+    for (let i = 0; i < tasks.length; i++) {
+      let taskTitle = tasks[i]["taskTitle"];
+      let taskDescription = tasks[i]["taskDescription"];
+      if (
+        taskTitle.toLowerCase().includes(search) ||
+        taskDescription.toLowerCase().includes(search)
+      ) {
+        renderSearchedTasks(i);
+      }
+    }
+  }
+}
+
+function clearTasksContainer(){
+  document.getElementById("todo").innerHTML = ``;
+  document.getElementById("inProgress").innerHTML = ``;
+  document.getElementById("awaitFeedback").innerHTML = ``;
+  document.getElementById("done").innerHTML = ``;
+}
+
+function renderSearchedTasks(i){
+
+  if(tasks[i]["currentState"] == 'toDo'){
+  renderSearchedTasksToDo(i);}
+  if(tasks[i]["currentState"] == 'inProgress'){
+  renderSearchedTasksInProgress(i);}
+  if(tasks[i]["currentState"] == 'awaitFeedback'){
+  renderSearchedTasksAwaitFeedback(i);}
+  if(tasks[i]["currentState"] == 'done'){
+  renderSearchedTasksDone(i);}
+}
+
+function renderSearchedTasksToDo(i) {
+  let contentBoxToDo = document.getElementById("todo");
+    contentBoxToDo.innerHTML += generateTodoHTML(i);
+}
+
+function renderSearchedTasksInProgress(i) {
+  let contentBoxInProress = document.getElementById("inProgress");
+    contentBoxInProress.innerHTML += generateTodoHTML(i);
+}
+
+function renderSearchedTasksAwaitFeedback(i) {
+  let contentBoxAwaitFeedback = document.getElementById("awaitFeedback");
+    contentBoxAwaitFeedback.innerHTML += generateTodoHTML(i);
+}
+
+function renderSearchedTasksDone(i) {
+  let contentBoxDone = document.getElementById("done");
+    contentBoxDone.innerHTML += generateTodoHTML(i);
+}
+

@@ -276,7 +276,8 @@
   height: 100%;
 }
 
-.aTPopup {
+.aTPopup,
+.atPopupEdit {
   position: absolute;
   right: 0;
   top: 200px;
@@ -288,11 +289,7 @@
   border-radius: 30px;
   padding: 48px 40px;
   gap: 24px;
-  // remove
-  //   margin: 16px;
   background-color: $color-light;
-  // transform: translate(1100px);
-  // transition: all 125ms ease-in-out;
 }
 
 .aTPopupTop {
@@ -361,6 +358,11 @@
   gap: 40px;
 }
 
+.aTPopupPrioValue {
+  display: flex;
+  gap: 12px;
+}
+
 .aTPopupAssignedTo {
   display: flex;
   flex-direction: column;
@@ -403,20 +405,36 @@
 }
 
 .subtaskContainer {
-  display: inline-flex; /* Änderung: von inline-flex zu inline-block */
+  display: inline-flex;
   align-items: center;
-  gap: 12px;
-  padding: 6px 16px; /* Änderung: Padding nur für oberen und unteren Bereich */
+  flex-direction: column;
+  gap: 6px;
   border-radius: 12px;
-}
-
-.subtaskContainer:hover {
-  background-color: rgba(0, 0, 0, 0.05);
-  cursor: pointer;
 }
 
 .subtaskContainer p {
   font-size: 16px;
+}
+
+.subtask {
+  display: flex;
+  gap: 12px;
+  padding: 6px 16px;
+  border-radius: 12px;
+}
+
+.subtask:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+}
+
+.checkboxSubtaskATPopup {
+  display: inline-block;
+  height: 20px;
+  width: 16px;
+  border-radius: 3px;
+  border: 2px solid #2a3647;
+  cursor: pointer;
 }
 
 .aTPopupButtonsBottom {
@@ -443,6 +461,7 @@
 .aTPopupDelete:hover .aTPopupP,
 .aTPopupEdit:hover .aTPopupP {
   color: $secondary-color;
+  font-weight: bold;
   cursor: pointer;
 }
 

@@ -371,11 +371,18 @@
 
 .assigned-contact-profile-container {
   display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+  cursor: pointer;
+}
+
+.assigned-contact {
+  display: flex;
+  justify-content: start;
   align-items: center;
-  flex-direction: row;
   padding: 7px 16px;
   gap: 16px;
-  cursor: pointer;
 }
 
 .assigned-contact-profile {

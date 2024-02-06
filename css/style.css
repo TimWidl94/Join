@@ -140,6 +140,10 @@ h1 {
   margin: 0;
   min-height: 100vh; }
 
+#showSelectedCategory {
+  font-size: 20px; }
+
+
 .span-required {
   color: #ff8190; }
 
@@ -396,7 +400,8 @@ input[type='date']::-webkit-calendar-picker-indicator {
   background: #fff;
   font-family: Inter;
   color: #d1d1d1;
-  font-size: 19px; }
+  font-size: 20px; }
+
 
 .priority {
   display: flex;
@@ -604,7 +609,8 @@ input[type='date']::-webkit-calendar-picker-indicator {
   background-size: 32px, 100%;
   margin-top: -7px;
   min-width: 409px;
-  z-index: -1; }
+
+  z-index: 0; }
 
 .inputImgPlus {
   position: absolute;
@@ -2153,6 +2159,7 @@ form {
   display: flex;
   gap: 12px; }
 
+
 .aTPopupAssignedTo {
   display: flex;
   flex-direction: column;
@@ -2207,6 +2214,7 @@ form {
   background-color: rgba(0, 0, 0, 0.05);
   cursor: pointer; }
 
+
 .checkboxSubtaskATPopup {
   display: inline-block;
   height: 20px;
@@ -2214,6 +2222,10 @@ form {
   border-radius: 3px;
   border: 2px solid #2a3647;
   cursor: pointer; }
+
+.subtaskContainer p {
+  font-size: 16px; }
+
 
 .aTPopupButtonsBottom {
   display: flex;
@@ -2237,6 +2249,7 @@ form {
 .aTPopupEdit:hover .aTPopupP {
   color: #29abe2;
   font-weight: bold;
+
   cursor: pointer; }
 
 .aTPopupDelete:hover .delete-img {

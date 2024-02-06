@@ -28,7 +28,7 @@ function logInHtml() {
     <div class="ButtonBox dp-flex">
       <button class="buttonGrey buttonLogin" id="logInBtn">
         Log in
-      </button>..
+      </button>
       <button class="buttonWhite buttonLogin" onclick="logInGuest()">
         Guest Log in
       </button>

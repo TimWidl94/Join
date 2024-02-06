@@ -34,11 +34,54 @@ function openTaskPopup(i) {
 
   taskPopup.innerHTML = '';
   taskPopup.innerHTML = generateTaskPopupHTML(i);
+
+  renderAssignedToContacs(i);
+  renderSubtasks(i);
 }
 
 function closeTaskPopup() {
   document.getElementById('aTPopup').classList.remove('d-flex');
   document.getElementById('aTPopup').classList.add('d-none');
+}
+
+function renderAssignedToContacs(i) {
+  let assingedToContainer = document.getElementById('assigned-contact-profile-container');
+  assingedToContainer.innerHTML = '';
+
+  const task = tasks[i];
+  const contact = contacts[i];
+
+  if (task.selectedContacts?.length > 0) {
+    for (let j = 0; j < task.selectedContacts.length; j++) {
+      const selectedContact = task.selectedContacts[j];
+      // const contactColor = getContactColor(i);
+      const capitalLetters = getFirstLetters(selectedContact.name);
+      assingedToContainer.innerHTML += /*html*/ `
+        <div class="assigned-contact">
+        <div class="assinged-contact-profile" style="background-color: #20d7c2">${capitalLetters}</div>
+                <p class="aTPopupP">${selectedContact.name}</p>
+        </div>
+      `;
+    }
+  }
+}
+
+function renderSubtasks(i) {
+  let subTaskContainer = document.getElementById('subtaskContainer');
+  subTaskContainer.innerHTML = '';
+
+  const task = tasks[i];
+
+  if (task.subtasks?.length > 0) {
+    for (let j = 0; j < task.subtasks.length; j++) {
+      const subTask = task.subtasks[j];
+      subTaskContainer.innerHTML += /*html*/ `
+        <input type="checkbox" id="checkboxSubtaskATPopupNr-1" class="checkboxSubtaskATPopup" />
+        <label for="checkboxSubtastNotFinished" ></label>
+        <p class="aTPopupP">${subTask.subTaskInput}</p>
+      `;
+    }
+  }
 }
 
 function startDragging(id) {

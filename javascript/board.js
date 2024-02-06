@@ -12,6 +12,7 @@ async function initBoard() {
     "bottomBarBoardMobile",
     "boardImgMobile"
   );
+  resetCountOfSearch();
 }
 
 function openAddTaskPopup() {
@@ -136,7 +137,7 @@ function renderToDoTasks() {
     if (tasks[i]["currentState"] == "toDo") {
       contentBoxToDo.innerHTML += generateTodoHTML(i);
       renderContactsInBoardTask(i);
-    } 
+    }
   }
 }
 
@@ -146,7 +147,7 @@ function renderInProgressTasks() {
     if (tasks[i]["currentState"] == "inProgress") {
       contentBoxToDo.innerHTML += generateTodoHTML(i);
       renderContactsInBoardTask(i);
-    } 
+    }
   }
 }
 
@@ -156,7 +157,7 @@ async function renderAwaitFeedbackTasks() {
     if (tasks[i]["currentState"] == "awaitFeedback") {
       contentBoxToDo.innerHTML += await generateTodoHTML(i);
       renderContactsInBoardTask(i);
-    } 
+    }
   }
 }
 
@@ -166,7 +167,7 @@ async function renderDoneTasks() {
     if (tasks[i]["currentState"] == "done") {
       contentBoxToDo.innerHTML += await generateTodoHTML(i);
       renderContactsInBoardTask(i);
-    } 
+    }
   }
 }
 
@@ -174,10 +175,79 @@ function renderContactsInBoardTask(x) {
   let container = document.getElementById("contactsInBoardTask" + x);
   for (let i = 0; i < tasks[x]["selectedContacts"].length; i++) {
     let contact = tasks[x]["selectedContacts"][i]["name"];
-  
-      container.innerHTML += `
+
+    container.innerHTML += `
     <div class="board-task-member-profile">${contact}</div>
     `;
-    
   }
+}
+
+let searchedToDo = [];
+let searchedInProgress = [];
+let searchedAwaitFeedback = [];
+let searchedDone = [];
+
+function filterTasks() {
+  let search = document.getElementById("searchTasks").value.toLowerCase();
+  clearTasksContainer();
+  if (search.trim() === "") {
+    updateHTML();
+  } else {
+    for (let i = 0; i < tasks.length; i++) {
+      let taskTitle = tasks[i]["taskTitle"];
+      let taskDescription = tasks[i]["taskDescription"];
+      if (
+        taskTitle.toLowerCase().includes(search) ||
+        taskDescription.toLowerCase().includes(search)
+      ) {
+        renderSearchedTasks(i);
+      }
+    }
+  }
+}
+
+function clearTasksContainer(){
+  document.getElementById("todo").innerHTML = ``;
+  document.getElementById("inProgress").innerHTML = ``;
+  document.getElementById("awaitFeedback").innerHTML = ``;
+  document.getElementById("done").innerHTML = ``;
+}
+
+function renderSearchedTasks(i){
+
+  if(tasks[i]["currentState"] == 'toDo'){
+  renderSearchedTasksToDo(i);}
+  if(tasks[i]["currentState"] == 'inProgress'){
+  renderSearchedTasksInProgress(i);}
+  if(tasks[i]["currentState"] == 'awaitFeedback'){
+  renderSearchedTasksAwaitFeedback(i);}
+  if(tasks[i]["currentState"] == 'done'){
+  renderSearchedTasksDone(i);}
+}
+
+function renderSearchedTasksToDo(i) {
+  let contentBoxToDo = document.getElementById("todo");
+    contentBoxToDo.innerHTML += generateTodoHTML(i);
+}
+
+function renderSearchedTasksInProgress(i) {
+  let contentBoxInProress = document.getElementById("inProgress");
+    contentBoxInProress.innerHTML += generateTodoHTML(i);
+}
+
+function renderSearchedTasksAwaitFeedback(i) {
+  let contentBoxAwaitFeedback = document.getElementById("awaitFeedback");
+    contentBoxAwaitFeedback.innerHTML += generateTodoHTML(i);
+}
+
+function renderSearchedTasksDone(i) {
+  let contentBoxDone = document.getElementById("done");
+    contentBoxDone.innerHTML += generateTodoHTML(i);
+}
+
+function resetCountOfSearch() {
+  searchedToDo.splice(0, 100);
+  searchedInProgress.splice(0, 100);
+  searchedAwaitFeedback.splice(0, 100);
+  searchedDone.splice(0, 100);
 }

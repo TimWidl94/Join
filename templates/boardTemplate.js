@@ -1,13 +1,13 @@
 function generateTodoHTML(i) {
   return /*html*/ `
     
-        <div draggable="true" ondragstart="startDragging(${i})" class="board-task">
+        <div draggable="true" ondragstart="startDragging(${i})" class="board-task" onclick="openTaskPopup(${i})">
             <div class="board-task-epic board-task-epic-green">
-                ${tasks[i]["selectedCategory"]}
+                ${tasks[i]['selectedCategory']}
             </div>
-                <div class="board-task-title">${tasks[i]["taskTitle"]}</div>
+                <div class="board-task-title">${tasks[i]['taskTitle']}</div>
                 <div class="board-task-description">
-                ${tasks[i]["taskDescription"]}
+                ${tasks[i]['taskDescription']}
                 </div>
                 <div class="board-task-subtask">
                   <div class="board-task-subtask-progress">
@@ -16,7 +16,7 @@ function generateTodoHTML(i) {
                       id="progress-${i}"
                       style="width: 0%"></div>
                   </div>
-                  <div class="sboard-task-subtask-counter">0/${tasks[i]["subtasks"].length}</div>
+                  <div class="sboard-task-subtask-counter">0/${tasks[i]['subtasks'].length}</div>
                 </div>
                 <div class="board-task-member">
                   <div class="board-task-member" id="contactsInBoardTask${i}">

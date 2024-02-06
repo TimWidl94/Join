@@ -166,51 +166,54 @@ function subTaskInputFieldHtml() {
 
 function generateTaskPopupHTML(i) {
   return /*html*/ `
-  <div class="aTPopupTop">
-            <div class="aTPopupCategory"><p>${tasks[i].selectedCategory}</p></div>
-            <div class="ATPopupClose" onclick="closeTaskPopup()"><img src="assets/img/icons/close.svg" alt="Close" /></div>
-          </div>
-          
-          <div class="aTPopupHeadline">
-            <h1 class="aTPopupH1">${tasks[i].taskTitle}</h1>
-          </div>
-          
-          <div class="aTPopupDescription"><p class="aTPopupP">${tasks[i].taskDescription}</p></div>
-          
-          <div class="aTPopupDueDate">
-            <div class="aTPopupDateText"><span class="aTPopupSpan">Due date:</span></div>
-            <div class="aTPopupDateValue" id="aTPopupDateValue"><p class="aTPopupP">${tasks[i].taskDueDate}</p></div>
-          </div>
-          
-          <div class="aTPopupPrio">
-            <div class="aTPopupPrioText"><span class="aTPopupSpan">Priority:</span></div>
-            <div class="aTPopupDateValue" id="aTPopupDateValue"><p class="aTPopupP">${tasks[i].prio}</p></div>
-          </div>
-          
-          <div class="aTPopupAssignedTo">
-            <span class="aTPopupSpan">Assigned to:</span>
-            <div class="assigned-contact-profile-container" id="assigned-contact-profile-container">
-              <div class="assinged-contact-profile" style="background-color: #20d7c2">EM</div>
-              <p class="aTPopupP">Emmanuel Mauer</p></div>
-            
-          </div>
-          
-          <div class="aTPopupSubtasks">
-            <span class="aTPopupSpan">Subtasks</span>
-            <div class="subtaskContainer" id="subtaskContainer">
-            </div>
-          </div>
-    
-          <div class="aTPopupButtonsBottom">
-            <div class="aTPopupDelete">
-              <img class="delete-img" src="assets/img/icons/delete.svg" alt="Delete" />
-              <p class="aTPopupP">Delete</p>
-            </div>
-            <div class="aTPopupVerticalLine"></div>
-            <div class="aTPopupEdit">
-              <img class="edit-img" src="assets/img/icons/edit.svg" alt="Edit" />
-              <p class="aTPopupP">Edit</p>
-            </div>
-          </div>
+    <div class="aTPopup d-none" id="aTPopup"> 
+      <div class="aTPopupTop">
+        <div class="aTPopupCategory"><p>${tasks[i].selectedCategory}</p></div>
+        <div class="ATPopupClose" onclick="closeTaskPopup()"><img src="assets/img/icons/close.svg" alt="Close" /></div>
+      </div>
+      
+      <div class="aTPopupHeadline">
+        <h1 class="aTPopupH1">${tasks[i].taskTitle}</h1>
+      </div>
+      
+      <div class="aTPopupDescription"><p class="aTPopupP">${tasks[i].taskDescription}</p></div>
+      
+      <div class="aTPopupDueDate">
+        <div class="aTPopupDateText"><span class="aTPopupSpan">Due date:</span></div>
+        <div class="aTPopupDateValue" id="aTPopupDateValue"><p class="aTPopupP">${tasks[i].taskDueDate}</p></div>
+      </div>
+      
+      <div class="aTPopupPrio">
+        <div class="aTPopupPrioText"><span class="aTPopupSpan">Priority:</span></div>
+        <div class="aTPopupPrioValue" id="aTPopupPrioValue">
+          <p class="aTPopupP">${tasks[i].prio}</p>
+          <img id="aTPopupPrioImg" alt="Prio-Img">
+        </div>
+      </div>
+      
+      <div class="aTPopupAssignedTo">
+        <span class="aTPopupSpan">Assigned to:</span>
+        <div class="assigned-contact-profile-container" id="assigned-contact-profile-container"> </div>         
+      </div>
+      
+      <div class="aTPopupSubtasks">
+        <span class="aTPopupSpan">Subtasks</span>
+        <div class="subtaskContainer" id="subtaskContainer">
+        </div>
+      </div>
+
+      <div class="aTPopupButtonsBottom">
+        <div class="aTPopupDelete" onclick="deleteTask(i)">
+          <img class="delete-img" src="assets/img/icons/delete.svg" alt="Delete" />
+          <p class="aTPopupP">Delete</p>
+        </div>
+        <div class="aTPopupVerticalLine"></div>
+        <div class="aTPopupEdit">
+          <img class="edit-img" src="assets/img/icons/edit.svg" alt="Edit" />
+          <p class="aTPopupP">Edit</p>
+        </div>
+      </div>
+    </div>
+    <div class="atPopupEdit d-none" id="aTPopupEdit"> </div>
   `;
 }

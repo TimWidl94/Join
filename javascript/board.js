@@ -36,7 +36,7 @@ function closeAddTaskPopup() {
 }
 
 function openTaskPopup(i) {
-  let taskPopup = document.getElementById('aTPopup');
+  let taskPopup = document.getElementById('aTPopupContainer');
   taskPopup.classList.remove('d-none');
   taskPopup.classList.add('d-flex');
 
@@ -45,11 +45,12 @@ function openTaskPopup(i) {
 
   renderAssignedToContacs(i);
   renderSubtasks(i);
+  selectPrioImage(i);
 }
 
 function closeTaskPopup() {
-  document.getElementById('aTPopup').classList.remove('d-flex');
-  document.getElementById('aTPopup').classList.add('d-none');
+  document.getElementById('aTPopupContainer').classList.remove('d-flex');
+  document.getElementById('aTPopupContainer').classList.add('d-none');
 }
 
 function renderAssignedToContacs(i) {
@@ -57,7 +58,7 @@ function renderAssignedToContacs(i) {
   assingedToContainer.innerHTML = '';
 
   const task = tasks[i];
-  const contact = contacts[i];
+  // const contact = contacts[i];
 
   if (task.selectedContacts?.length > 0) {
     for (let j = 0; j < task.selectedContacts.length; j++) {
@@ -75,16 +76,9 @@ function renderAssignedToContacs(i) {
 }
 
 function getContactColor(selectedContactName) {
-  console.log('name:', selectedContactName);
-
   let index = contacts.findIndex((contact) => contact.name === selectedContactName);
-
   if (index !== -1) {
-    console.log('index:', index);
-    console.log('contacts[index].color', contacts[index].color);
     return contacts[index].color;
-  } else {
-    console.log('Contact not found');
   }
 }
 
@@ -98,11 +92,26 @@ function renderSubtasks(i) {
     for (let j = 0; j < task.subtasks.length; j++) {
       const subTask = task.subtasks[j];
       subTaskContainer.innerHTML += /*html*/ `
-        <input type="checkbox" id="checkboxSubtaskATPopupNr-1" class="checkboxSubtaskATPopup" />
-        <label for="checkboxSubtastNotFinished" ></label>
-        <p class="aTPopupP">${subTask.subTaskInput}</p>
+        <div class="subtask">
+          <input type="checkbox" id="checkboxSubtask-${j}" class="checkboxSavePassword" />
+          <label for="checkboxSubtask-${j}" ></label>
+          <p class="aTPopupP">${subTask.subTaskInput}</p>
+        </div>
       `;
     }
+  }
+}
+
+function selectPrioImage(i) {
+  let prio = tasks[i].prio;
+  let prioImage = document.getElementById('aTPopupPrioImg');
+  console.log('prio:', prio);
+  if (prio == 'low') {
+    prioImage.src = 'assets/img/AddTask/ArrowDownPrioSign.svg';
+  } else if (prio == 'medium') {
+    prioImage.src = 'assets/img/AddTask/mediumPrioSignInactive.svg';
+  } else {
+    prioImage.src = 'assets/img/addTask/ArrowUpPrioSign.svg';
   }
 }
 

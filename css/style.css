@@ -619,7 +619,9 @@ input[type='date']::-webkit-calendar-picker-indicator {
   background-size: 32px, 100%;
   margin-top: -7px;
   min-width: 409px;
-  z-index: -1; }
+
+  z-index: 0; }
+
 
 .inputImgPlus {
   position: absolute;

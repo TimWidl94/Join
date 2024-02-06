@@ -1,45 +1,48 @@
-@import "../base/_colors";
-@import "../layout/_grid.scss";
+@import '../base/_colors';
+@import '../layout/_grid.scss';
 @import '../base/_abstracts';
 
+.board-wrapper-all {
+  display: flex;
+}
+
 .flex-start {
-    justify-content: flex-start;
+  justify-content: flex-start;
 }
 
 .drag-area {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  cursor: pointer;
 }
 
 .drag-area-empty {
-    display: flex;
-    height: 48px;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    align-self: stretch;
-    border-radius: 10px;
-    color: $color-board-grey;
-    border: 1px dashed var(--icon, $color-board-grey);
-    background: $color-board-task-empty;
-    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.16);
-    cursor: pointer;
+  display: flex;
+  height: 48px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  align-self: stretch;
+  border-radius: 10px;
+  color: $color-board-grey;
+  border: 1px dashed var(--icon, $color-board-grey);
+  background: $color-board-task-empty;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.16);
+  cursor: pointer;
 }
 
 .todo {
-    background-color: white;
-    border: 1px solid black;
-    border-radius: 5px;
-    padding: 10px;
-    margin: 10px;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px;
 }
 
-
 .inputField-search {
-    width: 380px;
+  width: 380px;
   height: 24px;
   gap: 8px;
   border-radius: 10px;
@@ -61,240 +64,451 @@
   padding: 64px 74px;
   z-index: 9;
   border-radius: 30px;
-  background: #FFF;
+  background: #fff;
   box-shadow: $box-shadow-btn-close;
 
-    &-close {
-        position: absolute;
-        cursor: pointer;
-        right: 40px;
-        border-radius: 50%;
-        display: flex;
-        height: 30px;
-        width: 30px;
-        justify-content: center;
-        align-items: center;
-        &:hover {
-          background: $color-board-task-empty;
-          border-radius: 50%;
-          height: 30px;
-          width: 30px;
-        }
+  &-close {
+    position: absolute;
+    cursor: pointer;
+    right: 40px;
+    border-radius: 50%;
+    display: flex;
+    height: 30px;
+    width: 30px;
+    justify-content: center;
+    align-items: center;
+    &:hover {
+      background: $color-board-task-empty;
+      border-radius: 50%;
+      height: 30px;
+      width: 30px;
     }
+  }
 }
-
 
 .slide-in {
-    animation: fadeIn 1s, slideIn .7s linear;
+  animation: fadeIn 1s, slideIn 0.7s linear;
 }
 .slide-out {
-    animation: fadeOut 1s, slideOut .5s linear;
-
+  animation: fadeOut 1s, slideOut 0.5s linear;
 }
 
-
-
-
 .search-side {
-    display: flex;
-    gap: 32px;
+  display: flex;
+  gap: 32px;
 
-    &-bar {
-        padding: 8px 16px;
-        height: 200px;
-        width: 380px;
-        height: 48px;
-        gap: 8px;
-        border-radius: 10px;
-        border: 1px solid rgba(209, 209, 209, 1);
-        padding: 12px 21px;
-        position: relative;
-        &::placeholder {
-            color: $color-lightgrey;
-            top: 12px;
-            position: absolute;
-            font-size: 20px;
-        }
-        &-vertical-line {
-            background-color: $color-lightgrey;
-            width: 2px;
-            height: 30px;
-            position: absolute;
-            right: 45px;
-            top: 10px;
-        }
+  &-bar {
+    padding: 8px 16px;
+    height: 200px;
+    width: 380px;
+    height: 48px;
+    gap: 8px;
+    border-radius: 10px;
+    border: 1px solid rgba(209, 209, 209, 1);
+    padding: 12px 21px;
+    position: relative;
+    &::placeholder {
+      color: $color-lightgrey;
+      top: 12px;
+      position: absolute;
+      font-size: 20px;
     }
-    &-input-img {
-        position: absolute;
-        width: 32px;
-        right: 5px;
-        top: 8px;
-        cursor: pointer;
-        &:hover {
-            background: $color-board-grey;
-            border-radius: 50%;
-        }
+    &-vertical-line {
+      background-color: $color-lightgrey;
+      width: 2px;
+      height: 30px;
+      position: absolute;
+      right: 45px;
+      top: 10px;
     }
+  }
+  &-input-img {
+    position: absolute;
+    width: 32px;
+    right: 5px;
+    top: 8px;
+    cursor: pointer;
+    &:hover {
+      background: $color-board-grey;
+      border-radius: 50%;
+    }
+  }
 }
 
 .board {
-  
-    &-title {
-        display: flex;
-        justify-content: space-between;
-        align-self: flex-start;
-        width: 100%;
-        font-size: 20px;
-        font-weight: 700;
-        color: $dark-blue;
-        margin-bottom: 15.5px;
+  &-title {
+    display: flex;
+    justify-content: space-between;
+    align-self: flex-start;
+    width: 100%;
+    font-size: 20px;
+    font-weight: 700;
+    color: $dark-blue;
+    margin-bottom: 15.5px;
+  }
+
+  &-svg-container {
+    --svg-color: #{$primary-color}; // Standardfarbe
+    --svg-hover-color: #{$secondary-color}; // Hover-Farbe
+
+    width: 24px;
+    height: 25px;
+    background-image: url('data:image/svg+xml,#{$plusButton}');
+    background-size: cover;
+    cursor: pointer;
+    transition: background-image 0.3s ease; // Füge eine sanfte Übergangseffekt hinzu
+
+    &:hover {
+      --svg-color: var(--svg-hover-color); // Ändere die Farbe im :hover-Zustand
     }
 
+    // Setze die Farbe im SVG über eine CSS-Variable
+    &::before {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 100%;
+      background-color: var(--svg-color);
+      mask: url('data:image/svg+xml,#{$plusButton}');
+    }
+  }
 
-    &-svg-container {
-        --svg-color: #{$primary-color}; // Standardfarbe
-        --svg-hover-color: #{$secondary-color}; // Hover-Farbe
-      
-        width: 24px;
-        height: 25px;
-        background-image: url('data:image/svg+xml,#{$plusButton}');
-        background-size: cover;
-        cursor: pointer;
-        transition: background-image 0.3s ease; // Füge eine sanfte Übergangseffekt hinzu
-      
-        &:hover {
-          --svg-color: var(--svg-hover-color); // Ändere die Farbe im :hover-Zustand
-        }
-      
-        // Setze die Farbe im SVG über eine CSS-Variable
-        &::before {
-          content: '';
-          display: block;
-          width: 100%;
-          height: 100%;
-          background-color: var(--svg-color);
-          mask: url('data:image/svg+xml,#{$plusButton}');
-        }
+  &-task {
+    padding: 16px;
+    background: $color-light;
+    border-radius: $border-radius;
+    box-shadow: 0px 0px 10px 3px #00000014;
+
+    &-epic {
+      padding: 4px 16px;
+      border-radius: 8px;
+      color: $color-light;
+      width: fit-content;
+      font-size: 16px;
+      margin-bottom: 24px;
+    }
+
+    &-epic {
+      &-blue {
+        background: $color-board-story-blue;
       }
-   
-    &-task {
-        padding: 16px;
-        background: $color-light;
-        border-radius: $border-radius;
-        box-shadow: 0px 0px 10px 3px #00000014;
-
-        &-epic {
-            padding: 4px 16px;
-            border-radius: 8px;
-            color: $color-light;
-            width: fit-content;
-            font-size: 16px;
-            margin-bottom: 24px;
-        }
-
-        &-epic {
-            &-blue {
-                background: $color-board-story-blue;
-            }
-            &-green {
-                background: $color-board-story-green;
-            }
-        }
-
-        &-title {
-            font-family: "Inter", sans-serif;
-            font-weight: 700;
-            padding-bottom: 8px;
-        }
-        &-description {
-            color: $color-board-grey;
-            font-size: 16px;
-            font-style: normal;
-            font-weight: 400;
-            margin-bottom: 24px;
-        }
-        &-subtask {
-            display: flex;
-            justify-content: space-between;
-            gap: 11px;
-        }
-
-        &-subtask-progress {
-            width: 128px;
-            height: 8px;
-            background-color: #F4F4F4;
-            border: none;
-            border-radius: 8px;
-            margin-bottom: 24px;
-        }
-        &-subtask-counter {
-            font-size: 12px;
-            font-style: normal;
-            font-weight: 400;
-        }
-        &-member {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            &-profile {
-                display: inline-block;
-                text-align: center;
-                color: #FFFFFF;
-                background-color: #6e52FF;
-                width: 32px;
-                height: 32px;
-                font-size: 12px;
-                font-weight: 400;
-                line-height: 32px;
-                border-radius: 45%;
-                border: 3px solid white;
-                stroke: #FFF;
-            }
-            &-profile:not(:first-child) {
-                margin-left: -10px;
-            }
-        }
+      &-green {
+        background: $color-board-story-green;
+      }
     }
+
+    &-title {
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      padding-bottom: 8px;
+    }
+    &-description {
+      color: $color-board-grey;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      margin-bottom: 24px;
+    }
+    &-subtask {
+      display: flex;
+      justify-content: space-between;
+      gap: 11px;
+    }
+
+    &-subtask-progress {
+      width: 128px;
+      height: 8px;
+      background-color: #f4f4f4;
+      border: none;
+      border-radius: 8px;
+      margin-bottom: 24px;
+    }
+    &-subtask-counter {
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 400;
+    }
+    &-member {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      &-profile {
+        display: inline-block;
+        text-align: center;
+        color: #ffffff;
+        background-color: #6e52ff;
+        width: 32px;
+        height: 32px;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 32px;
+        border-radius: 45%;
+        border: 3px solid white;
+        stroke: #fff;
+      }
+      &-profile:not(:first-child) {
+        margin-left: -10px;
+      }
+    }
+  }
 }
 
-.headerBoardMobile{
-    display: none;
+.headerBoardMobile {
+  display: none;
 }
 
-@media (max-width: 1000px){
-    .container{
-        position: unset !important;
-        left: 0px !important;
-        margin: 0 !important;
-    }
-    .mobileBoardHeadSection{
-        flex-direction: column !important;
-        align-items: start !important;
-    }
-    .headerBoardMobile{
-        display: flex !important;
-        justify-content: space-between;
-        width: 100%;
-        align-items: center;
-    }
-    .boardBoxesForTasksMobile{
-        flex-direction: column;
-    }
-    .mobileButtonHide{
-        display: none !important;
-    }
-    .col-4{
-        width: 66% !important;
-    }
-    .search-side{
-        width: 100%;
-    }
-    .search-side-bar{
-        max-width: 380%;
-        width: 100%;
-    }
-    .bodyBoard{
-        overflow: visible !important;
-    }
+// ====== Task Popup ====== //
+
+.aTPopupWrapper {
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  //   background-color: #d1d1d1;
 }
 
+.aTPopupContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.aTPopup {
+  position: absolute;
+  right: 0;
+  top: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  width: 525px;
+  min-height: 700px;
+  border-radius: 30px;
+  padding: 48px 40px;
+  gap: 24px;
+  // remove
+  //   margin: 16px;
+  background-color: $color-light;
+  // transform: translate(1100px);
+  // transition: all 125ms ease-in-out;
+}
+
+.aTPopupTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.aTPopupCategory {
+  display: inline-block;
+  background-color: #0038ff;
+  border-radius: 8px;
+  color: white;
+  font-size: 23px;
+  padding: 4px 24px;
+}
+
+.aTPopupCategory p {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 100;
+}
+
+.ATPopupClose {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+.ATPopupClose:hover {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.ATPopupClose img {
+  height: 24px;
+  width: 24px;
+}
+
+.aTPopupHeadline {
+  display: flex;
+  justify-content: start;
+}
+
+.aTPopupH1 {
+  text-align: left;
+  font-size: 61px;
+  font-weight: 700;
+  color: $color-dark;
+}
+
+.aTPopupDescription {
+  text-align: left;
+}
+
+.aTPopupDueDate {
+  display: flex;
+  gap: 16px;
+}
+
+.aTPopupPrio {
+  display: flex;
+  gap: 40px;
+}
+
+.aTPopupAssignedTo {
+  display: flex;
+  flex-direction: column;
+  min-height: 50px;
+  max-height: 500px;
+  gap: 4px;
+}
+
+.assigned-contact-profile-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+  cursor: pointer;
+}
+
+.assigned-contact {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding: 7px 16px;
+  gap: 16px;
+}
+
+.assigned-contact-profile {
+  display: flex;
+  align-items: center;
+  height: 42px;
+  width: 42px;
+}
+
+.aTPopupSubtasks {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.aTPopupSubtasks span {
+  margin-bottom: 8px;
+}
+
+.subtaskContainer {
+  display: inline-flex; /* Änderung: von inline-flex zu inline-block */
+  align-items: center;
+  gap: 12px;
+  padding: 6px 16px; /* Änderung: Padding nur für oberen und unteren Bereich */
+  border-radius: 12px;
+}
+
+.subtaskContainer:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+}
+
+.subtaskContainer p {
+  font-size: 16px;
+}
+
+.aTPopupButtonsBottom {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  gap: 16px;
+}
+
+.aTPopupDelete,
+.aTPopupEdit {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.aTPopupDelete p,
+.aTPopupEdit p {
+  font-size: 16px;
+  color: $primary-color;
+}
+
+.aTPopupDelete:hover .aTPopupP,
+.aTPopupEdit:hover .aTPopupP {
+  color: $secondary-color;
+  cursor: pointer;
+}
+
+.aTPopupDelete:hover .delete-img {
+  filter: invert(65%) sepia(27%) saturate(3883%) hue-rotate(165deg) brightness(94%) contrast(88%);
+}
+
+.aTPopupEdit:hover .edit-img {
+  filter: invert(65%) sepia(27%) saturate(3883%) hue-rotate(165deg) brightness(94%) contrast(88%);
+}
+
+.aTPopupVerticalLine {
+  width: 2px;
+  height: 24px;
+  background-color: #d1d1d1;
+}
+
+.aTPopupP {
+  font-family: 'Inter', sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 120%;
+  color: $color-dark;
+}
+
+.aTPopupSpan {
+  font-family: 'Inter', sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 120%;
+  color: $primary-color;
+}
+
+@media (max-width: 1000px) {
+  .container {
+    position: unset !important;
+    left: 0px !important;
+    margin: 0 !important;
+  }
+  .mobileBoardHeadSection {
+    flex-direction: column !important;
+    align-items: start !important;
+  }
+  .headerBoardMobile {
+    display: flex !important;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+  }
+  .boardBoxesForTasksMobile {
+    flex-direction: column;
+  }
+  .mobileButtonHide {
+    display: none !important;
+  }
+  .col-4 {
+    width: 66% !important;
+  }
+  .search-side {
+    width: 100%;
+  }
+  .search-side-bar {
+    max-width: 380%;
+    width: 100%;
+  }
+  .bodyBoard {
+    overflow: visible !important;
+  }
+}

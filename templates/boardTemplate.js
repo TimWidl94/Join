@@ -1,13 +1,13 @@
 function generateTodoHTML(i) {
   return /*html*/ `
     
-        <div draggable="true" ondragstart="startDragging(${i})" class="board-task">
+        <div draggable="true" ondragstart="startDragging(${i})" class="board-task" onclick="openTaskPopup(${i})">
             <div class="board-task-epic board-task-epic-green">
-                ${tasks[i]["selectedCategory"]}
+                ${tasks[i]['selectedCategory']}
             </div>
-                <div class="board-task-title">${tasks[i]["taskTitle"]}</div>
+                <div class="board-task-title">${tasks[i]['taskTitle']}</div>
                 <div class="board-task-description">
-                ${tasks[i]["taskDescription"]}
+                ${tasks[i]['taskDescription']}
                 </div>
                 <div class="board-task-subtask">
                   <div class="board-task-subtask-progress">
@@ -16,7 +16,7 @@ function generateTodoHTML(i) {
                       id="progress-${i}"
                       style="width: 0%"></div>
                   </div>
-                  <div class="sboard-task-subtask-counter">0/${tasks[i]["subtasks"].length}</div>
+                  <div class="sboard-task-subtask-counter">0/${tasks[i]['subtasks'].length}</div>
                 </div>
                 <div class="board-task-member">
                   <div class="board-task-member" id="contactsInBoardTask${i}">
@@ -158,8 +158,59 @@ function subTaskInputHtml() {
 }
 
 function subTaskInputFieldHtml() {
-  return `
+  return /*html*/ `
   <input id="subTaskInput" type="text" placeholder="Add new subtask" onclick="changeButtonsAddTask()" />
   <img onclick="addSubTask()" class="inputImgPlus" src="assets/img/AddTask/plus.svg" alt="Add Icon" />
+  `;
+}
+
+function generateTaskPopupHTML(i) {
+  return /*html*/ `
+  <div class="aTPopupTop">
+            <div class="aTPopupCategory"><p>${tasks[i].selectedCategory}</p></div>
+            <div class="ATPopupClose" onclick="closeTaskPopup()"><img src="assets/img/icons/close.svg" alt="Close" /></div>
+          </div>
+          
+          <div class="aTPopupHeadline">
+            <h1 class="aTPopupH1">${tasks[i].taskTitle}</h1>
+          </div>
+          
+          <div class="aTPopupDescription"><p class="aTPopupP">${tasks[i].taskDescription}</p></div>
+          
+          <div class="aTPopupDueDate">
+            <div class="aTPopupDateText"><span class="aTPopupSpan">Due date:</span></div>
+            <div class="aTPopupDateValue" id="aTPopupDateValue"><p class="aTPopupP">${tasks[i].taskDueDate}</p></div>
+          </div>
+          
+          <div class="aTPopupPrio">
+            <div class="aTPopupPrioText"><span class="aTPopupSpan">Priority:</span></div>
+            <div class="aTPopupDateValue" id="aTPopupDateValue"><p class="aTPopupP">${tasks[i].prio}</p></div>
+          </div>
+          
+          <div class="aTPopupAssignedTo">
+            <span class="aTPopupSpan">Assigned to:</span>
+            <div class="assigned-contact-profile-container" id="assigned-contact-profile-container">
+              <div class="assinged-contact-profile" style="background-color: #20d7c2">EM</div>
+              <p class="aTPopupP">Emmanuel Mauer</p></div>
+            
+          </div>
+          
+          <div class="aTPopupSubtasks">
+            <span class="aTPopupSpan">Subtasks</span>
+            <div class="subtaskContainer" id="subtaskContainer">
+            </div>
+          </div>
+    
+          <div class="aTPopupButtonsBottom">
+            <div class="aTPopupDelete">
+              <img class="delete-img" src="assets/img/icons/delete.svg" alt="Delete" />
+              <p class="aTPopupP">Delete</p>
+            </div>
+            <div class="aTPopupVerticalLine"></div>
+            <div class="aTPopupEdit">
+              <img class="edit-img" src="assets/img/icons/edit.svg" alt="Edit" />
+              <p class="aTPopupP">Edit</p>
+            </div>
+          </div>
   `;
 }

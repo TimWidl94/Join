@@ -54,15 +54,29 @@ function renderAssignedToContacs(i) {
   if (task.selectedContacts?.length > 0) {
     for (let j = 0; j < task.selectedContacts.length; j++) {
       const selectedContact = task.selectedContacts[j];
-      // const contactColor = getContactColor(i);
+      const contactColor = getContactColor(selectedContact.name);
       const capitalLetters = getFirstLetters(selectedContact.name);
       assingedToContainer.innerHTML += /*html*/ `
         <div class="assigned-contact">
-        <div class="assinged-contact-profile" style="background-color: #20d7c2">${capitalLetters}</div>
+        <div class="assinged-contact-profile" style="background-color: ${contactColor}">${capitalLetters}</div>
                 <p class="aTPopupP">${selectedContact.name}</p>
         </div>
       `;
     }
+  }
+}
+
+function getContactColor(selectedContactName) {
+  console.log('name:', selectedContactName);
+
+  let index = contacts.findIndex((contact) => contact.name === selectedContactName);
+
+  if (index !== -1) {
+    console.log('index:', index);
+    console.log('contacts[index].color', contacts[index].color);
+    return contacts[index].color;
+  } else {
+    console.log('Contact not found');
   }
 }
 
@@ -222,9 +236,10 @@ function renderContactsInBoardTask(x) {
   let container = document.getElementById('contactsInBoardTask' + x);
   for (let i = 0; i < tasks[x]['selectedContacts'].length; i++) {
     let contact = tasks[x]['selectedContacts'][i]['name'];
+    const contactColor = getContactColor(contact);
 
     container.innerHTML += `
-    <div class="board-task-member-profile">${contact}</div>
+    <div class="board-task-member-profile" style="background-color: ${contactColor}">${contact}</div>
     `;
   }
 }

@@ -170,10 +170,25 @@ h1 {
   src: url(assets/fonts/Inter.ttf);
 }
 
+input {
+  font-family: "Inter", sans-serif !important;
+  font-size: 20px; }
+  input::placeholder {
+    color: #d1d1d1; }
+
+textarea {
+  font-family: "Inter", sans-serif !important;
+  font-size: 20px; }
+  textarea::placeholder {
+    color: #d1d1d1; }
+
 .body-add-task {
   margin: 0;
   min-height: 100vh;
 }
+
+#showSelectedCategory {
+  font-size: 20px; }
 
 .span-required {
   color: #ff8190;
@@ -466,7 +481,7 @@ input[type='date']::-webkit-calendar-picker-indicator {
   background: #fff;
   font-family: Inter;
   color: #d1d1d1;
-  font-size: 19px;
+  font-size: 20px;
 }
 
 .priority {

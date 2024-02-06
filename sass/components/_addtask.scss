@@ -4,6 +4,9 @@
   margin: 0;
   min-height: 100vh;
 }
+#showSelectedCategory {
+  font-size: 20px;
+}
 
 .span-required {
   color: #ff8190;
@@ -298,7 +301,7 @@ input[type='date']::-webkit-calendar-picker-indicator {
   background: $color-light;
   font-family: Inter;
   color: $color-lightgrey;
-  font-size: 19px;
+  font-size: 20px;
 }
 
 .priority {

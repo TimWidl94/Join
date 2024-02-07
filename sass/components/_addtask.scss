@@ -50,9 +50,10 @@
   padding-bottom: 16px;
 }
 
-#title-add-task input {
+#title-add-task input,
+#title-add-task-edit input {
   padding: 12px 21px;
-  width: calc(100% - 2 * 21px);
+  width: calc(100% - 2 * 22px);
   gap: 10px;
   border-radius: 10px;
   border: 1px solid $color-lightgrey;
@@ -60,7 +61,7 @@
   align-self: stretch;
   font-family: Inter;
   font-size: 19px;
-  color: $color-lightgrey;
+  color: $color-dark;
 }
 
 #description {
@@ -71,17 +72,20 @@
   padding-bottom: 16px;
 }
 
-#description textarea {
+#description textarea,
+#description-edit textarea {
   display: flex;
   height: 84px;
   padding: 18px 16px;
+  margin-right: 2px;
+  width: calc(100% - 2 * 18px);
   gap: 10px;
   border-radius: 10px;
   border: 1px solid $color-lightgrey;
   background: $color-light;
   font-size: 19px;
   font-family: Inter;
-  color: $color-lightgrey;
+  color: $color-dark;
 }
 
 #assignedTo {
@@ -293,14 +297,15 @@ input[type='date']::-webkit-calendar-picker-indicator {
   padding-bottom: 24px;
 }
 
-#due-date input {
+#due-date input,
+#due-date-edit input {
   padding: 12px 16px;
-  width: calc(100% - 2 * 16px);
+  width: calc(100% - 2 * 18px);
   border-radius: 10px;
   border: 1px solid $color-lightgrey;
   background: $color-light;
   font-family: Inter;
-  color: $color-lightgrey;
+  color: $color-dark;
   font-size: 20px;
 }
 
@@ -320,7 +325,8 @@ input[type='date']::-webkit-calendar-picker-indicator {
   gap: 16px;
 }
 
-.priority-options div {
+.priority-options div,
+.priority-options-edit div {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -331,13 +337,6 @@ input[type='date']::-webkit-calendar-picker-indicator {
   background: $color-light;
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
 }
-
-// .priority-options div:nth-child(2) {
-// background: #ffa800;
-// color: $color-light;
-// font-size: 21px;
-// font-weight: 700;
-// }
 
 .priorityUrgentActive {
   background: #ff3d19 !important;
@@ -508,7 +507,8 @@ input[type='date']::-webkit-calendar-picker-indicator {
   margin-left: 11px;
 }
 
-#subtasks {
+#subtasks,
+#subtasksEdit {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -519,7 +519,8 @@ input[type='date']::-webkit-calendar-picker-indicator {
   position: relative;
 }
 
-#subtasks input {
+#subtasks input,
+#subtasksEdit input {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -653,7 +654,7 @@ input[type='date']::-webkit-calendar-picker-indicator {
   width: 100%;
 }
 
-.addTaskToBoardPopUp{
+.addTaskToBoardPopUp {
   position: absolute;
   top: 100%;
   left: 50%;
@@ -670,11 +671,11 @@ input[type='date']::-webkit-calendar-picker-indicator {
   width: 300px;
 }
 
-.moveToCenterAddTask{
+.moveToCenterAddTask {
   transform: translate(-50%, -850%);
 }
 
-.addTaskToBoardImg{
+.addTaskToBoardImg {
   width: 30px;
   height: 30px;
 }

@@ -147,13 +147,18 @@ function renderSubTasksInput() {
   container.innerHTML += subTaskInputHtml();
 }
 
-function renderSubTasksEditable(i, id) {
-  let container = document.getElementById(id);
+function renderSubTasksEditable(i, id1) {
+  let container = document.getElementById(id1);
   container.innerHTML = ``;
 
-  for (let i = 0; i < subtasks.length; i++) {
-    let id = subtasks[i]['id'];
-    container.innerHTML += subTasksValueHtml(id, i);
+  const task = tasks[i];
+
+  if (task.subtasks?.length > 0) {
+    for (let j = 0; j < task.subtasks.length; j++) {
+      let subTask = task.subtasks[j];
+      let id = task.subtasks[j]['id'];
+      container.innerHTML += subTasksValueEditHtml(id, subTask);
+    }
   }
 }
 

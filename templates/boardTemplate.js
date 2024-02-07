@@ -30,10 +30,9 @@ function generateTodoHTML(i, img) {
 }
 
 function subTasksValueHtml(id, i) {
-  console.log('Test123');
   return /*HTML*/ `
-    <li id="${id}" class="subtask-div-list" ondblclick="editSubTask(${id})"><p>${subtasks[i]['subTaskInput']}</p>
-      <div class="d-hover">
+    <li id="${id}" class="subtask-div-list" ondbclick="editSubTask(${id})"><p>${subtasks[i]['subTaskInput']}</p>
+      <div class="d-hover" >
         <img class="subtask-div-btn" onclick="editSubTask(${id})" src="./assets/img/icons/edit.svg" alt="">
         <span class="subTaskInputImg-vertical-1"></span>
         <img class="subtask-div-btn" onclick="deleteSubTask(${id})" src="./assets/img/icons/delete.svg" alt="">
@@ -156,6 +155,17 @@ function subTaskInputFieldHtml() {
   <input id="subTaskInput" type="text" placeholder="Add new subtask" onclick="changeButtonsAddTask()" />
   <img onclick="addSubTask()" class="inputImgPlus" src="assets/img/AddTask/plus.svg" alt="Add Icon" />
   `;
+}
+
+function subTasksValueEditHtml(id, subTask) {
+  return /*HTML*/ `
+    <li id="${id}" class="subtask-div-list" ondclick="editSubTask(${id})"><p>${subTask['subTaskInput']}</p>
+      <div class="d-hover" >
+        <img class="subtask-div-btn" onclick="editSubTask(${id})" src="./assets/img/icons/edit.svg" alt="">
+        <span class="subTaskInputImg-vertical-1"></span>
+        <img class="subtask-div-btn" onclick="deleteSubTask(${id})" src="./assets/img/icons/delete.svg" alt="">
+      </div>
+    </li>`;
 }
 
 function generateTaskPopupHTML(i) {

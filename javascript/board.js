@@ -128,49 +128,69 @@ function updateHTML() {
   renderBoardTasks();
 }
 
-function todoAreaUpdate() {
+async function todoAreaUpdate() {
   let todo = tasks.filter((t) => t['selectedCategory'] == 'toDo');
 
   document.getElementById('todo').innerHTML = '';
-
+  
   for (let index = 0; index < todo.length; index++) {
     const element = todo[index];
-    document.getElementById('todo').innerHTML += generateTodoHTML(element);
+    await setPrioImg(i);
+    document.getElementById('todo').innerHTML += generateTodoHTML(element, img);
   }
 }
 
-function inProgressUdate() {
+
+async function inProgressUdate() {
   let inProgress = tasks.filter((t) => t['selectedCategory'] == 'inProgress');
 
   document.getElementById('inProgress').innerHTML = '';
 
   for (let index = 0; index < inProgress.length; index++) {
     const element = inProgress[index];
-    document.getElementById('inProgress').innerHTML += generateTodoHTML(element);
+    await setPrioImg(i);
+    document.getElementById('inProgress').innerHTML += generateTodoHTML(element, img);
   }
 }
 
-function feedbackAreaUdate() {
+async function feedbackAreaUdate() {
   let awaitFeedback = tasks.filter((t) => t['selectedCategory'] == 'awaitFeedback');
 
   document.getElementById('awaitFeedback').innerHTML = '';
 
   for (let index = 0; index < awaitFeedback.length; index++) {
     const element = awaitFeedback[index];
-    document.getElementById('awaitFeedback').innerHTML += generateTodoHTML(element);
+    await setPrioImg(i);
+    document.getElementById('awaitFeedback').innerHTML += generateTodoHTML(element, img);
   }
 }
 
-function doneUpdate() {
+async function doneUpdate() {
   let done = tasks.filter((t) => t['selectedCategory'] == 'done');
 
   document.getElementById('done').innerHTML = '';
 
   for (let index = 0; index < done.length; index++) {
     const element = done[index];
-    document.getElementById('done').innerHTML += generateTodoHTML(element);
+    await setPrioImg(i);
+    document.getElementById('done').innerHTML += generateTodoHTML(element, img);
   }
 }
+
+function setPrioImg(i){
+  if(tasks[i]["prio"] == "low"){
+    let img = "./assets/img/AddTask/ArrowDownPrioSign.svg";
+    return img;
+  }
+  if(tasks[i]["prio"] == "medium"){
+    let img = "./assets/img/AddTask/mediumPrioSignInactive.svg";
+    return img;
+  }
+  if(tasks[i]["prio"] == "urgent"){
+    let img = "./assets/img/AddTask/ArrowUpPrioSign.svg";
+    return img;
+  }
+  }
 
 function allowDrop(ev) {
   ev.preventDefault();
@@ -209,21 +229,23 @@ async function renderBoardTasks() {
   await setItem('tasks', JSON.stringify(tasks));
 }
 
-function renderToDoTasks() {
+async function renderToDoTasks() {
   let contentBoxToDo = document.getElementById('todo');
   for (let i = 0; i < tasks.length; i++) {
     if (tasks[i]['currentState'] == 'toDo') {
-      contentBoxToDo.innerHTML += generateTodoHTML(i);
+      let img = await setPrioImg(i)
+      contentBoxToDo.innerHTML += generateTodoHTML(i, img);
       renderContactsInBoardTask(i);
     }
   }
 }
 
-function renderInProgressTasks() {
+async function renderInProgressTasks() {
   let contentBoxToDo = document.getElementById('inProgress');
   for (let i = 0; i < tasks.length; i++) {
     if (tasks[i]['currentState'] == 'inProgress') {
-      contentBoxToDo.innerHTML += generateTodoHTML(i);
+      let img = await setPrioImg(i)
+      contentBoxToDo.innerHTML += generateTodoHTML(i, img);
       renderContactsInBoardTask(i);
     }
   }
@@ -233,7 +255,8 @@ async function renderAwaitFeedbackTasks() {
   let contentBoxToDo = document.getElementById('awaitFeedback');
   for (let i = 0; i < tasks.length; i++) {
     if (tasks[i]['currentState'] == 'awaitFeedback') {
-      contentBoxToDo.innerHTML += await generateTodoHTML(i);
+      let img = await setPrioImg(i)
+      contentBoxToDo.innerHTML += await generateTodoHTML(i, img);
       renderContactsInBoardTask(i);
     }
   }
@@ -243,7 +266,8 @@ async function renderDoneTasks() {
   let contentBoxToDo = document.getElementById('done');
   for (let i = 0; i < tasks.length; i++) {
     if (tasks[i]['currentState'] == 'done') {
-      contentBoxToDo.innerHTML += await generateTodoHTML(i);
+      let img = await setPrioImg(i)
+      contentBoxToDo.innerHTML += await generateTodoHTML(i, img);
       renderContactsInBoardTask(i);
     }
   }

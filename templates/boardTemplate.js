@@ -166,7 +166,7 @@ function subTaskInputFieldHtml() {
 
 function generateTaskPopupHTML(i) {
   return /*html*/ `
-    <div class="aTPopup d-none" id="aTPopup"> 
+    <div class="aTPopup" id="aTPopup"> 
       <div class="aTPopupTop">
         <div class="aTPopupCategory"><p>${tasks[i].selectedCategory}</p></div>
         <div class="ATPopupClose" onclick="closeTaskPopup()"><img src="assets/img/icons/close.svg" alt="Close" /></div>
@@ -203,7 +203,7 @@ function generateTaskPopupHTML(i) {
       </div>
 
       <div class="aTPopupButtonsBottom">
-        <div class="aTPopupDelete" onclick="deleteTask(i)">
+        <div class="aTPopupDelete" onclick="deleteTask(${i})">
           <img class="delete-img" src="assets/img/icons/delete.svg" alt="Delete" />
           <p class="aTPopupP">Delete</p>
         </div>

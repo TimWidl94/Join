@@ -6,15 +6,8 @@ async function initBoard() {
   await updateHTML();
   await includeHTML();
   setUserInitials();
-  setColorToActive(
-    "sidebarBoard",
-    "board-img",
-    "bottomBarBoardMobile",
-    "boardImgMobile"
-  );
-
   setColorToActive('sidebarBoard', 'board-img', 'bottomBarBoardMobile', 'boardImgMobile');
-
+  // setColorToActive('sidebarBoard', 'board-img', 'bottomBarBoardMobile', 'boardImgMobile');
 }
 
 function openAddTaskPopup() {
@@ -58,7 +51,6 @@ function renderAssignedToContacs(i) {
   assingedToContainer.innerHTML = '';
 
   const task = tasks[i];
-  // const contact = contacts[i];
 
   if (task.selectedContacts?.length > 0) {
     for (let j = 0; j < task.selectedContacts.length; j++) {
@@ -105,7 +97,6 @@ function renderSubtasks(i) {
 function selectPrioImage(i) {
   let prio = tasks[i].prio;
   let prioImage = document.getElementById('aTPopupPrioImg');
-  console.log('prio:', prio);
   if (prio == 'low') {
     prioImage.src = 'assets/img/AddTask/ArrowDownPrioSign.svg';
   } else if (prio == 'medium') {
@@ -113,6 +104,12 @@ function selectPrioImage(i) {
   } else {
     prioImage.src = 'assets/img/addTask/ArrowUpPrioSign.svg';
   }
+}
+
+function deleteTask(i) {
+  tasks.splice(i, 1);
+  closeTaskPopup();
+  updateHTML();
 }
 
 function startDragging(id) {
@@ -132,14 +129,13 @@ async function todoAreaUpdate() {
   let todo = tasks.filter((t) => t['selectedCategory'] == 'toDo');
 
   document.getElementById('todo').innerHTML = '';
-  
+
   for (let index = 0; index < todo.length; index++) {
     const element = todo[index];
     await setPrioImg(i);
     document.getElementById('todo').innerHTML += generateTodoHTML(element, img);
   }
 }
-
 
 async function inProgressUdate() {
   let inProgress = tasks.filter((t) => t['selectedCategory'] == 'inProgress');
@@ -177,20 +173,20 @@ async function doneUpdate() {
   }
 }
 
-function setPrioImg(i){
-  if(tasks[i]["prio"] == "low"){
-    let img = "./assets/img/AddTask/ArrowDownPrioSign.svg";
+function setPrioImg(i) {
+  if (tasks[i]['prio'] == 'low') {
+    let img = './assets/img/AddTask/ArrowDownPrioSign.svg';
     return img;
   }
-  if(tasks[i]["prio"] == "medium"){
-    let img = "./assets/img/AddTask/mediumPrioSignInactive.svg";
+  if (tasks[i]['prio'] == 'medium') {
+    let img = './assets/img/AddTask/mediumPrioSignInactive.svg';
     return img;
   }
-  if(tasks[i]["prio"] == "urgent"){
-    let img = "./assets/img/AddTask/ArrowUpPrioSign.svg";
+  if (tasks[i]['prio'] == 'urgent') {
+    let img = './assets/img/AddTask/ArrowUpPrioSign.svg';
     return img;
   }
-  }
+}
 
 function allowDrop(ev) {
   ev.preventDefault();
@@ -233,7 +229,7 @@ async function renderToDoTasks() {
   let contentBoxToDo = document.getElementById('todo');
   for (let i = 0; i < tasks.length; i++) {
     if (tasks[i]['currentState'] == 'toDo') {
-      let img = await setPrioImg(i)
+      let img = await setPrioImg(i);
       contentBoxToDo.innerHTML += generateTodoHTML(i, img);
       renderContactsInBoardTask(i);
     }
@@ -244,7 +240,7 @@ async function renderInProgressTasks() {
   let contentBoxToDo = document.getElementById('inProgress');
   for (let i = 0; i < tasks.length; i++) {
     if (tasks[i]['currentState'] == 'inProgress') {
-      let img = await setPrioImg(i)
+      let img = await setPrioImg(i);
       contentBoxToDo.innerHTML += generateTodoHTML(i, img);
       renderContactsInBoardTask(i);
     }
@@ -255,7 +251,7 @@ async function renderAwaitFeedbackTasks() {
   let contentBoxToDo = document.getElementById('awaitFeedback');
   for (let i = 0; i < tasks.length; i++) {
     if (tasks[i]['currentState'] == 'awaitFeedback') {
-      let img = await setPrioImg(i)
+      let img = await setPrioImg(i);
       contentBoxToDo.innerHTML += await generateTodoHTML(i, img);
       renderContactsInBoardTask(i);
     }
@@ -266,7 +262,7 @@ async function renderDoneTasks() {
   let contentBoxToDo = document.getElementById('done');
   for (let i = 0; i < tasks.length; i++) {
     if (tasks[i]['currentState'] == 'done') {
-      let img = await setPrioImg(i)
+      let img = await setPrioImg(i);
       contentBoxToDo.innerHTML += await generateTodoHTML(i, img);
       renderContactsInBoardTask(i);
     }
@@ -286,60 +282,59 @@ function renderContactsInBoardTask(x) {
 }
 
 function filterTasks() {
-  let search = document.getElementById("searchTasks").value.toLowerCase();
+  let search = document.getElementById('searchTasks').value.toLowerCase();
   clearTasksContainer();
-  if (search.trim() === "") {
+  if (search.trim() === '') {
     updateHTML();
   } else {
     for (let i = 0; i < tasks.length; i++) {
-      let taskTitle = tasks[i]["taskTitle"];
-      let taskDescription = tasks[i]["taskDescription"];
-      if (
-        taskTitle.toLowerCase().includes(search) ||
-        taskDescription.toLowerCase().includes(search)
-      ) {
+      let taskTitle = tasks[i]['taskTitle'];
+      let taskDescription = tasks[i]['taskDescription'];
+      if (taskTitle.toLowerCase().includes(search) || taskDescription.toLowerCase().includes(search)) {
         renderSearchedTasks(i);
       }
     }
   }
 }
 
-function clearTasksContainer(){
-  document.getElementById("todo").innerHTML = ``;
-  document.getElementById("inProgress").innerHTML = ``;
-  document.getElementById("awaitFeedback").innerHTML = ``;
-  document.getElementById("done").innerHTML = ``;
+function clearTasksContainer() {
+  document.getElementById('todo').innerHTML = ``;
+  document.getElementById('inProgress').innerHTML = ``;
+  document.getElementById('awaitFeedback').innerHTML = ``;
+  document.getElementById('done').innerHTML = ``;
 }
 
-function renderSearchedTasks(i){
-
-  if(tasks[i]["currentState"] == 'toDo'){
-  renderSearchedTasksToDo(i);}
-  if(tasks[i]["currentState"] == 'inProgress'){
-  renderSearchedTasksInProgress(i);}
-  if(tasks[i]["currentState"] == 'awaitFeedback'){
-  renderSearchedTasksAwaitFeedback(i);}
-  if(tasks[i]["currentState"] == 'done'){
-  renderSearchedTasksDone(i);}
+function renderSearchedTasks(i) {
+  if (tasks[i]['currentState'] == 'toDo') {
+    renderSearchedTasksToDo(i);
+  }
+  if (tasks[i]['currentState'] == 'inProgress') {
+    renderSearchedTasksInProgress(i);
+  }
+  if (tasks[i]['currentState'] == 'awaitFeedback') {
+    renderSearchedTasksAwaitFeedback(i);
+  }
+  if (tasks[i]['currentState'] == 'done') {
+    renderSearchedTasksDone(i);
+  }
 }
 
 function renderSearchedTasksToDo(i) {
-  let contentBoxToDo = document.getElementById("todo");
-    contentBoxToDo.innerHTML += generateTodoHTML(i);
+  let contentBoxToDo = document.getElementById('todo');
+  contentBoxToDo.innerHTML += generateTodoHTML(i);
 }
 
 function renderSearchedTasksInProgress(i) {
-  let contentBoxInProress = document.getElementById("inProgress");
-    contentBoxInProress.innerHTML += generateTodoHTML(i);
+  let contentBoxInProress = document.getElementById('inProgress');
+  contentBoxInProress.innerHTML += generateTodoHTML(i);
 }
 
 function renderSearchedTasksAwaitFeedback(i) {
-  let contentBoxAwaitFeedback = document.getElementById("awaitFeedback");
-    contentBoxAwaitFeedback.innerHTML += generateTodoHTML(i);
+  let contentBoxAwaitFeedback = document.getElementById('awaitFeedback');
+  contentBoxAwaitFeedback.innerHTML += generateTodoHTML(i);
 }
 
 function renderSearchedTasksDone(i) {
-  let contentBoxDone = document.getElementById("done");
-    contentBoxDone.innerHTML += generateTodoHTML(i);
+  let contentBoxDone = document.getElementById('done');
+  contentBoxDone.innerHTML += generateTodoHTML(i);
 }
-

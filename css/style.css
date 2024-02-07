@@ -646,7 +646,8 @@ input[type='date']::-webkit-calendar-picker-indicator {
   z-index: 2; }
 
 .border-category-active {
-  outline: 1px solid #29abe2; }
+  outline: 1px solid #29abe2;
+  z-index: 2; }
 
 .border-focus:focus {
   outline: 1px solid #29abe2; }

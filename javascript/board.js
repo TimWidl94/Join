@@ -11,8 +11,16 @@ async function initBoard() {
 }
 
 function openAddTaskPopup() {
+  // remove next 2 columns
+  console.log('works!');
+  console.log('contentBoardTask', contentBoardTask);
+  let contentBoardTask = document.getElementById('boardAddTask');
+  contentBoardTask.innerHTML = addTaskHtml();
+
+  // remove
   document.getElementById('addTaskPopup').classList.remove('d-none');
   document.getElementById('addTaskPopup').classList.add('slide-in');
+  console.log('works!');
 }
 
 function closeAddTaskPopup() {
@@ -29,21 +37,21 @@ function closeAddTaskPopup() {
 }
 
 function openTaskPopup(i) {
-  let taskPopup = document.getElementById('aTPopupContainer');
+  let taskPopup = document.getElementById('aTPopupWrapper');
   taskPopup.classList.remove('d-none');
-  taskPopup.classList.add('d-flex');
+  taskPopup.classList.add('d-block');
 
   taskPopup.innerHTML = '';
   taskPopup.innerHTML = generateTaskPopupHTML(i);
 
   renderAssignedToContacs(i);
-  renderSubtasks(i);
+  renderSubtasks(i, 'subtaskContainerPopup');
   selectPrioImage(i);
 }
 
 function closeTaskPopup() {
-  document.getElementById('aTPopupContainer').classList.remove('d-flex');
-  document.getElementById('aTPopupContainer').classList.add('d-none');
+  document.getElementById('aTPopupWrapper').classList.remove('d-block');
+  document.getElementById('aTPopupWrapper').classList.add('d-none');
 }
 
 function renderAssignedToContacs(i) {
@@ -74,8 +82,8 @@ function getContactColor(selectedContactName) {
   }
 }
 
-function renderSubtasks(i) {
-  let subTaskContainer = document.getElementById('subtaskContainer');
+function renderSubtasks(i, id) {
+  let subTaskContainer = document.getElementById(id);
   subTaskContainer.innerHTML = '';
 
   const task = tasks[i];
@@ -110,6 +118,43 @@ function deleteTask(i) {
   tasks.splice(i, 1);
   closeTaskPopup();
   updateHTML();
+}
+
+function editTask(i) {
+  let popupInfo = document.getElementById('aTPopup');
+  let popupEdit = document.getElementById('aTPopupEdit');
+
+  popupEdit.classList.remove('d-none');
+  popupInfo.classList.add('d-none');
+  renderSubTasksInput();
+  renderSubTasksEditable(i, 'subTaskContainerEdit');
+
+  let title = document.getElementById('taskTitleEdit');
+  let description = document.getElementById('taskDescriptionEdit');
+  let dueDate = document.getElementById('myDateInputEdit');
+  let prio = tasks[i].prio;
+
+  title.value = tasks[i].taskTitle;
+  description.value = tasks[i].taskDescription;
+  dueDate.value = tasks[i].taskDueDate;
+  // prio = select;
+
+  console.log('tasks[i].taskTitle;', tasks[i].taskTitle);
+}
+
+function renderSubTasksInput() {
+  let container = document.getElementById('subtasksEdit');
+  container.innerHTML += subTaskInputHtml();
+}
+
+function renderSubTasksEditable(i, id) {
+  let container = document.getElementById(id);
+  container.innerHTML = ``;
+
+  for (let i = 0; i < subtasks.length; i++) {
+    let id = subtasks[i]['id'];
+    container.innerHTML += subTasksValueHtml(id, i);
+  }
 }
 
 function startDragging(id) {
@@ -337,4 +382,8 @@ function renderSearchedTasksAwaitFeedback(i) {
 function renderSearchedTasksDone(i) {
   let contentBoxDone = document.getElementById('done');
   contentBoxDone.innerHTML += generateTodoHTML(i);
+}
+
+function doNotClose(event) {
+  event.stopPropagation();
 }

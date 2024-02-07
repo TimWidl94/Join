@@ -1866,7 +1866,7 @@ form {
         font-size: 16px; }
 
 .container {
-  margin: 96px 0px 0px;
+  margin: 100px 0px 0px;
   max-width: 1208px;
   position: relative;
   padding: 80px 64px;
@@ -2413,7 +2413,7 @@ form {
   .container {
     position: unset !important;
     left: 0px !important;
-    margin: 0 !important; }
+    margin: 5px 0px 0px !important; }
   .mobileBoardHeadSection {
     flex-direction: column !important;
     align-items: start !important; }
@@ -3411,7 +3411,7 @@ input:focus {
     padding-top: 8px; } }
 
 .container {
-  margin: 96px 0px 0px;
+  margin: 100px 0px 0px;
   max-width: 1208px;
   position: relative;
   padding: 80px 64px;

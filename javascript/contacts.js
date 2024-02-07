@@ -11,20 +11,31 @@ async function init() {
   setColorToActive('sidebarContacts', 'contacts-img', 'bottomBarContactsMobile', 'contactsImgMobile');
 }
 
-function setUserToContacts() {
-  let name = users[user].username + ' (you)';
-  // let contactsName = name + ' (You)';
+async function setUserToContacts() {
+  let name = users[user].username;
   let mail = users[user].email;
-  let isContactExists = false;
-  for (let i = 0; i < contacts.length; i++) {
-    if (contacts[i].name === name) {
-      isContactExists = true;
-      break;
+  let userWithYou = name + ' (you)';
+  let userExistsIndex = contacts.findIndex((contact) => contact.name === name);
+  let userWithYouExistsIndex = contacts.findIndex((contact) => contact.name === userWithYou);
+
+  if (userExistsIndex === -1) {
+    // Füge den Benutzerkontakt hinzu, falls noch nicht vorhanden
+    contacts.push({ name: firstLettersUppercase(name), mail: mail, phone: '', color: '' });
+    userExistsIndex = contacts.length - 1; // Index des neuen Benutzerkontakts
+
+    if (userWithYouExistsIndex === -1) {
+      // Füge den Kontakt mit " (you)" hinzu, falls noch nicht vorhanden
+      contacts.push({ name: userWithYou, mail: mail, phone: '', color: '' });
     }
   }
+}
 
-  if (!isContactExists) {
-    contacts.push({ name: firstLettersUppercase(name), mail: mail, phone: '', color: '' });
+function setUsernameInContacts(userName) {
+  let userWithYou = userName + ' (you)';
+  let userWithYouExistsIndex = contacts.findIndex((contact) => contact.name === userWithYou);
+
+  if (userWithYouExistsIndex === -1) {
+    contacts.push({ name: userWithYou });
   }
 }
 
@@ -172,6 +183,7 @@ async function addContact(target) {
   await saveContacts();
   let index = findContactIndex(name.value);
 
+  init();
   setColorToContacts();
   openContactInfo(index);
   render();
@@ -182,8 +194,6 @@ async function addContact(target) {
   setTimeout(() => {
     animateBannerContacts('banner-contact-created', 'banner-contact-created-mobile');
   }, 500);
-
-  // init();
 }
 
 function findContactIndex(name) {
@@ -266,6 +276,7 @@ async function saveEditedContact(i, target) {
 
   await closeContactPopup(target, 'edit');
   openContactInfo(i);
+  init();
 }
 
 async function closeContactPopup(target, type) {

@@ -133,11 +133,13 @@ function editSubTask(id) {
   let container = document.getElementById(id);
   let nr = findSubtaskPosition(id);
   let textContent = subtasks[nr]['subTaskInput'];
-  container.innerHTML = /*html*/ `
+  container.innerHTML = /*html*/ `<div class="test-2">
 <input id="editSubTaskInput" type="text" placeholder=${textContent} value=${textContent} />
 <div class="editSubTaskButtonBox">
 <img src="assets/img/icons/delete.svg" alt="Clear Icon" class="inputImgTrash" onclick="deleteSubTask(${id})"/>
-<img src="assets/img/icons/check_black.svg" alt="check" class="inputImgTrash" onclick="addEditSubTask(${id})"/>
+<span class="subTaskInputImg-vertical-edit"></span>
+<img src="./assets/img/icons/checkAddTask.svg" alt="check" class="inputImgTrash" onclick="addEditSubTask(${id})"/>
+</div>
 </div>`;
 }
 
@@ -168,7 +170,7 @@ function showTaskForm() {
     let assignedDropdown = document.getElementById('assignedDropdown');
     assignedDropdown.innerHTML += /*html*/ `
       <div id="user-${i}" class="flex-checkbox selected-profile" onclick="addAssignedContact(${i}, '${color}')" data-value="${currentUser}">
-        <div class="assigned-contact-profile selected-profile"><div class="assinged-contact-profile" style="background-color:${color}">${initials}</div>
+        <div class="selected-profile"><div class="assinged-contact-profile" style="background-color:${color}">${initials}</div>
         <span class="assigned-name">${currentUser}</span></div>
         <img id="hoverCheckbox" class="hover-checkbox" src="assets/img/icons/checkBoxWhite.svg" alt="">
         <img id="checkBox-${i}" class="flex-checkbox-img"src="assets/img/icons/checkBox.svg" alt="">

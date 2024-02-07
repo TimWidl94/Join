@@ -11,10 +11,11 @@
     <script src="./javascript/loadData.js"></script>
     <script src="./templates/textSitesTemplate.js"></script>
     <script src="./javascript/textSites.js"></script>
+    <script src="./templates/sideBarAndTopBar.js"></script>
   </head>
-  <body onload="initPrivacyPolice()">
-    <div w3-include-html="sidebar.html"></div>
-    <div w3-include-html="topbar.html"></div>
+  <body onload="initPrivacyPolicyOffline()">
+    <div id="topBarContainer"></div>
+    <div id="sideBarContainer"></div>
 
     <div class="textSitesWrapper">
       <div class="textSitesContainer" id="privatPolicyContainer">

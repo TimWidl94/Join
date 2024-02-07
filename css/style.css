@@ -2873,17 +2873,29 @@ a {
   gap: 4px;
   align-self: stretch; }
 
-.notes a {
-  padding: 8px 40px 8px 40px;
+.noteLink {
+  padding: 8px 20px 8px 60px;
   text-decoration: none;
   color: #cdcdcd !important;
   width: calc(100% - 2 * 40px); }
 
-.notes a:hover {
+.noteLink:hover {
   cursor: pointer;
   color: #29abe2 !important;
-  font-weight: 700;
-  background-color: #091931; }
+  font-weight: 700; }
+
+.inactiveNote {
+  padding: 8px 20px 8px 60px;
+  text-decoration: none;
+  color: #cdcdcd !important;
+  width: calc(100% - 2 * 40px);
+  cursor: auto; }
+
+.inactiveNote a {
+  padding: 8px 40px 8px 40px;
+  text-decoration: none;
+  color: #cdcdcd !important;
+  width: calc(100% - 2 * 40px); }
 
 .active {
   background-color: #091931;
@@ -2908,7 +2920,8 @@ a {
   max-width: 100%;
   padding: 20px 0px;
   background: #fff;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1); }
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
+  height: 48px; }
 
 .topbar-left {
   color: #000;
@@ -3321,7 +3334,7 @@ input:focus {
 
 .h1-text-sites {
   color: #000;
-  font-family: Inter;
+  font-family: 'Inter', sans-serif;
   font-size: 61px;
   font-style: normal;
   font-weight: 700;
@@ -3331,16 +3344,18 @@ input:focus {
 
 .h2-text-sites {
   color: #000;
-  font-family: Inter;
+  font-family: 'Inter', sans-serif;
   font-size: 27px;
   font-style: normal;
-  font-weight: 700;
-  line-height: 120%;
-  /* 24px */ }
+  font-weight: bold;
+  line-height: 24px;
+  /* 24px */
+  margin: 0;
+  margin-bottom: 2px; }
 
 .span-blue {
   color: #29abe2;
-  font-family: Inter;
+  font-family: 'Inter', sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -3378,11 +3393,12 @@ input:focus {
 
 .p-text-sites {
   color: var(--black, #000);
-  font-family: Inter;
+  font-family: 'Inter', sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
-  line-height: 120%; }
+  line-height: 120%;
+  margin-bottom: 19.2px; }
 
 @media (max-width: 1000px) {
   .textSitesWrapper {

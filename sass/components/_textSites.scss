@@ -10,7 +10,7 @@
 
 .h1-text-sites {
   color: $color-dark;
-  font-family: Inter;
+  font-family: 'Inter', sans-serif;
   font-size: 61px;
   font-style: normal;
   font-weight: 700;
@@ -20,16 +20,18 @@
 
 .h2-text-sites {
   color: $color-dark;
-  font-family: Inter;
+  font-family: 'Inter', sans-serif;
   font-size: 27px;
   font-style: normal;
-  font-weight: 700;
-  line-height: 120%; /* 24px */
+  font-weight: bold;
+  line-height: 24px; /* 24px */
+  margin: 0;
+  margin-bottom: 2px;
 }
 
 .span-blue {
   color: $secondary-color;
-  font-family: Inter;
+  font-family: 'Inter', sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -76,11 +78,12 @@
 
 .p-text-sites {
   color: var(--black, #000);
-  font-family: Inter;
+  font-family: 'Inter', sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
   line-height: 120%;
+  margin-bottom: 19.2px;
 }
 
 @media (max-width: 1000px) {

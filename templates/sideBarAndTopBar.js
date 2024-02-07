@@ -1,25 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Topbar</title>
-    <script src="./javascript/topbar.js"></script>
-    <script src="./javascript/contacts.js"></script>
-    <script src="./script.js"></script>
-  </head>
-  <body onload="initScript()">
+function sideBarHtml(){
+    return `
+    <section class="main">
+    <a href="./logIn.html">
+      <div class="logo">
+        <img src="assets/img/icons/logo-white.svg" alt="Join Logo" />
+      </div>
+    </a>
+    <section class="notes">
+      <a href="./privacyPolicyOffline.html" id="privacyPolicyLink" class="noteLink">Privacy Policy</a>
+      <a href="./legalNoticeOffline.html" id="legalNoticeLink" class="noteLink">Legal Notice</a>
+    </section>
+  </section>
+    `
+}
 
-      <section class="topbar" id="topbarSection">
+function topBarHtml(){
+return `
+<section class="topbar" id="topbarSection">
         <div class="topbar-left">
           <p>Kanban Project Management Tool</p>
         </div>
-        <div class="topbar-right" id="topbar-right">
-          <a href="./help.html"><img src="assets/img/icons/help.svg" alt="Help Icon" id="helpIcon" /></a>
-          <div id="topbar-user-background" onclick="showTopbarDropdown()">
-            <div id="topbar-user">
-            </div>
-          </div>
       </section>
 
       <div id="topbar-dropdown">
@@ -50,5 +50,5 @@
             </div>
           </div>
       </section>
-  </body>
-</html>
+`
+}

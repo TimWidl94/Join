@@ -4,6 +4,8 @@ const STORAGE_URL = 'https://remote-storage.developerakademie.org/item';
 let user = [];
 let users = [];
 let contacts = [];
+let legalNoticeOffline = true;
+let privacyPolicyOffline = true;
 
 function initScript() {}
 
@@ -42,3 +44,11 @@ function setColorToActive(id1, id2, id3, id4) {
 function getFirstLetters(str) {
   return str.split(/\s/).reduce((response, word) => (response += word.slice(0, 1)), '');
 }
+
+function setMenuColorToActive(id){
+  let container = document.getElementById(id)
+  container.classList.add("active");
+  container.classList.add("inactiveNote");
+  container.classList.remove("noteLink");
+  container.style.hoverColor = "#cdcdcd"
+ }

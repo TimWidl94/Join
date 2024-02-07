@@ -128,18 +128,33 @@ a {
   // width: 200px;
 }
 
-.notes a {
-  padding: 8px 40px 8px 40px;
+.noteLink{
+  padding: 8px 20px 8px 60px;
   text-decoration: none;
   color: $color-sidebar-text !important;
   width: calc(100% - 2 * 40px);
 }
 
-.notes a:hover {
+.noteLink:hover {
   cursor: pointer;
   color: $secondary-color !important;
   font-weight: 700;
-  background-color: #091931;
+  // background-color: #091931;
+}
+
+.inactiveNote{
+  padding: 8px 20px 8px 60px;
+  text-decoration: none;
+  color: $color-sidebar-text !important;
+  width: calc(100% - 2 * 40px);
+  cursor: auto;
+}
+
+.inactiveNote a {
+    padding: 8px 40px 8px 40px;
+  text-decoration: none;
+  color: $color-sidebar-text !important;
+  width: calc(100% - 2 * 40px);
 }
 
 .active {

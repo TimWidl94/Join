@@ -21,7 +21,7 @@ function loadSignUpHtml() {
 }
 
 async function signUp() {
-  if (checkIfPrivatPolicyIsChecked() && checkpPasswordsAreSame()) {
+  if (checkIfPrivatPolicyIsChecked() && checkPasswordsAreSame()) {
     users.push({
       username: userName.value,
       email: emailSignUp.value,
@@ -206,10 +206,12 @@ function passwordDontMatchReverse(){
   document.getElementById("password").style.borderColor = '#000';
 }
 
-function checkpPasswordsAreSame() {
+function checkPasswordsAreSame() {
   let password = document.getElementById("passwordSignUp").value;
   let confirmedPassword = document.getElementById("checkPasswordSignUp").value;
   if (password === confirmedPassword) {
     return true;
   }
 }
+
+function jumpToPrivacyPolicyBeforeLogIn(){}

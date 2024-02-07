@@ -70,7 +70,7 @@ function signupHtml() {
               <input type="checkbox" id="checkboxPrivatPolicy" name="checkboxPrivatPolicy" class="checkboxSavePassword" onclick="enableButton()"/>
               <label for="checkboxPrivatPolicy"></label>
               <p class="acceptPrivacyGrey">i accept the 
-                  <a href="./privacyPolice.html" class="privacyPolicyLink
+                  <a href="./privacyPolicyOffline.html" target=”_blank” class="privacyPolicyLink
                   ">Privacy policy</a>
               </p>
           </div>

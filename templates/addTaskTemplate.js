@@ -134,3 +134,13 @@ function subTaskInputFieldHtml() {
   <img onclick="addSubTask()" class="inputImgPlus" src="assets/img/AddTask/plus.svg" alt="Add Icon" />
   `;
 }
+
+
+function addedTaskToBoardHtml(){
+  return `
+  <div class="signedUpMassage d-none" id="addedTaskToBoard">
+  <p class="p-whiteText">Task Added to board</p>
+  <img class="addTasktoBoard" src="assets/img/icons/board_icon_white.svg">
+  </div>
+  `
+}

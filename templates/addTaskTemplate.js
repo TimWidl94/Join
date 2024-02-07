@@ -17,7 +17,7 @@ function addTaskHtml() {
 
         <div id="title-add-task">
           <p>Title<span class="span-required">*</span></p>
-          <input id="taskTitle" required type="text" class="border-focus" placeholder="Enter a title"/>
+          <input id="taskTitle" required type="text" class="border-focus" placeholder="Enter a title" onkeydown="checkIfFormIsFilled()"/>
 
         </div>
 
@@ -42,7 +42,7 @@ function addTaskHtml() {
       <section class="container-right">
         <p>Due Date<span class="span-required">*</span></p>
         <div id="due-date">
-          <input id="myDateInput" required type="date" required/>
+          <input id="myDateInput" required type="date" required onkeydown="checkIfFormIsFilled()"/>
         </div>
         
         <div class="priority">
@@ -93,7 +93,7 @@ function addTaskHtml() {
           <button onclick="clearInputValue()" id="clear" class="buttonWhite" >
             Clear <img src="assets/img/AddTask/cancel.svg" alt="Clear Icon"
           /></button>
-          <button  id="create-task" class="buttonGrey">
+          <button  id="create-task" class="buttonGrey" disabled>
             Create Task <img src="assets/img/AddTask/check_white.svg" alt="Check Icon"
           /></button>
         </div>

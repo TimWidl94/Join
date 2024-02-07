@@ -16,6 +16,7 @@ let selectedContacts = [];
 let selectedCategories = [];
 let letters = [];
 let selectedPrio;
+let categoryIsSelected = false;
 
 /*Popup function */
 
@@ -317,6 +318,7 @@ function selectCategory(category) {
   const showSelectedCategory = document.getElementById('showSelectedCategory');
   const assignedDropdownCategory = document.getElementById('assignedDropdownCategory');
   selectCategoryIfElse(userStory, other, showSelectedCategory, assignedDropdownCategory, category);
+  checkIfFormIsFilled();
 }
 
 function selectCategoryIfElse(userStory, other, showSelectedCategory, assignedDropdownCategory, category) {
@@ -326,12 +328,14 @@ function selectCategoryIfElse(userStory, other, showSelectedCategory, assignedDr
     showSelectedCategory.setAttribute('data-value', category);
     showSelectedCategory.innerHTML = `User Story`;
     assignedDropdownCategory.classList.add('d-none');
+    let categoryIsSelected = true;
   } else if (category === 'other') {
     other.classList.add('category-selected');
     userStory.classList.remove('category-selected');
     showSelectedCategory.setAttribute('data-value', category);
     showSelectedCategory.innerHTML = `Other`;
     assignedDropdownCategory.classList.add('d-none');
+    let categoryIsSelected = true;
   } else {
     userStory.classList.remove('category-selected');
     other.classList.remove('category-selected');
@@ -399,4 +403,12 @@ function changePrioToLow(idContainer, idImg) {
   document.getElementById('urgentImg').src = './assets/img/addTask/ArrowUpPrioSign.svg';
   document.getElementById('mediumContainer').classList.remove('priorityMediumActive');
   document.getElementById('mediumImg').src = './assets/img/addTask/mediumPrioSignInactive.svg';
+}
+
+function checkIfFormIsFilled(){
+  let title = document.getElementById('taskTitle');
+  let dueDate = document.getElementById('myDateInput');
+  if(categoryIsSelected = true && title.value > "" && dueDate.value > ""){
+    document.getElementById('create-task').disabled = false;
+  }
 }

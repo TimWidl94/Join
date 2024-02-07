@@ -1,4 +1,4 @@
-function generateTodoHTML(i) {
+function generateTodoHTML(i, img) {
   return /*html*/ `
     
         <div draggable="true" ondragstart="startDragging(${i})" class="board-task" onclick="openTaskPopup(${i})">
@@ -22,7 +22,7 @@ function generateTodoHTML(i) {
                   <div class="board-task-member" id="contactsInBoardTask${i}">
                   </div>
                   <div class="board-task-member-prio">
-                    <img src="./assets/img/AddTask/ArrowUpPrioSign.svg" alt="" />
+                    <img src="${img}" alt="" id="taskImg${i}"/>
                 </div>
             </div>
         </div>

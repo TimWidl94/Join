@@ -152,9 +152,8 @@ input[type='date']::-webkit-calendar-picker-indicator {
 .assinged-contact {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   position: relative;
-  padding: 21px 0;
+  top: 36px;
   &-profile {
     display: inline-block;
     text-align: center;
@@ -174,7 +173,6 @@ input[type='date']::-webkit-calendar-picker-indicator {
   &-overview {
     display: flex;
     text-align: center;
-    color: $color-light;
     width: 42px;
     height: 42px;
     align-items: center;
@@ -185,9 +183,15 @@ input[type='date']::-webkit-calendar-picker-indicator {
     border-radius: 50%;
     border: 3px solid white;
     stroke: $color-light;
+    color: $color-light;
   }
 }
-
+.test-2 {
+  width: 426px;
+  position: absolute;
+  z-index: 4;
+  margin: 20px 0px 0px -21px;
+}
 .assigned-name {
   padding-left: 10px;
 }
@@ -197,6 +201,9 @@ input[type='date']::-webkit-calendar-picker-indicator {
   background-color: $primary-color;
   border-radius: 10px;
   padding: 7px 16px 7px 16px;
+  &:hover {
+    background-color: #1d2127!important;
+  }
 }
 .category-selected {
   color: $color-light;
@@ -209,8 +216,8 @@ input[type='date']::-webkit-calendar-picker-indicator {
   position: absolute;
   z-index: 1;
   margin-top: 71px;
-  min-width: 409px;
-  padding: 21px 16px 0;
+  min-width: 439px;
+  padding: 21px 0px 0;
   border-radius: 10px;
   border: 1px solid $color-lightgrey;
   background-color: $color-light;
@@ -411,6 +418,10 @@ input[type='date']::-webkit-calendar-picker-indicator {
   justify-content: space-between;
   flex-direction: column;
   min-height: 40px;
+  &-text {
+    flex: 1;
+    padding-left: 20px;
+  }
   &-btn {
     cursor: pointer;
     padding: 5px;
@@ -429,10 +440,15 @@ input[type='date']::-webkit-calendar-picker-indicator {
     padding: 7px 10px;
     margin-bottom: 10px;
     position: relative;
-
+    &-hover-items {
+      opacity: 0;
+    }
     &:hover {
       border-radius: 10px;
       background-color: $color-board-task-empty;
+      .subtask-div-list-hover-items {
+        opacity: 1;
+      }
       .d-hover {
         display: block;
       }
@@ -454,7 +470,7 @@ input[type='date']::-webkit-calendar-picker-indicator {
 .hover-checkbox {
   display: none;
   right: 16px;
-  top: 13px;
+  top: 14px;
   position: absolute;
 }
 .flex-checkbox {
@@ -467,24 +483,33 @@ input[type='date']::-webkit-calendar-picker-indicator {
   margin-bottom: 5px;
   cursor: pointer;
   &:hover {
-    color: #fff;
-    background-color: #2a3647;
+    background-color: $color-lightgrey;
     border-radius: 10px;
-    .hover-checkbox {
-      display: block;
-    }
   }
 }
 
 .editSubTaskButtonBox {
   position: absolute;
-  width: 40px;
+  width: 60px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  right: 40px;
-  gap: 20px;
+  top: -10px;
+  right: -13px;
+  gap: 8px;
 }
+
+.editSubTaskButtonBox img {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  
+  &:hover {
+    background: $color-board-task-empty;
+    border-radius: 50%;
+  }
+}
+
 
 .ulContainer {
   width: 100%;
@@ -495,16 +520,15 @@ input[type='date']::-webkit-calendar-picker-indicator {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  align-self: stretch;
-  border-radius: 10px;
-  border: 1px solid $color-board-task-empty;
-  background: $color-board-task-empty;
-  font-family: Inter;
   font-size: 19px;
+  border: transparent;
   width: 100%;
-  height: 32px;
+  height: 43px;    
+  margin-top: -20px;
   padding-left: 11px;
   margin-left: 11px;
+  border-bottom: 1px solid #29abe2;
+  background-image: linear-gradient(to right, transparent 100%, #29abe2 5%);
 }
 
 #subtasks,
@@ -634,6 +658,28 @@ input[type='date']::-webkit-calendar-picker-indicator {
   right: 33px;
   top: 2px;
 }
+
+.subTaskInputImg-vertical-added::after  {
+  content: '';
+  background-color: #a8a8a8;
+  width: 1px;
+  height: 30px;
+  position: absolute;
+  right: 44px;
+  top: 7px;
+}
+
+.subTaskInputImg-vertical-edit::after  {
+  content: '';
+  background-color: #a8a8a8;
+  width: 1px;
+  height: 30px;
+  position: absolute;
+  right: 30px;
+  top: -3px;
+}
+
+
 .subTaskInputImg-vertical-1::after {
   content: '';
   background-color: $color-board-grey;
@@ -643,6 +689,7 @@ input[type='date']::-webkit-calendar-picker-indicator {
   right: 45px;
   top: 7px;
 }
+
 
 .checkImg {
   width: 20px;

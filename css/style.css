@@ -281,9 +281,8 @@ input[type='date']::-webkit-calendar-picker-indicator {
 .assinged-contact {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   position: relative;
-  padding: 21px 0; }
+  top: 36px; }
   .assinged-contact-profile {
     display: inline-block;
     text-align: center;
@@ -301,7 +300,6 @@ input[type='date']::-webkit-calendar-picker-indicator {
   .assinged-contact-overview {
     display: flex;
     text-align: center;
-    color: #fff;
     width: 42px;
     height: 42px;
     align-items: center;
@@ -311,7 +309,14 @@ input[type='date']::-webkit-calendar-picker-indicator {
     line-height: 32px;
     border-radius: 50%;
     border: 3px solid white;
-    stroke: #fff; }
+    stroke: #fff;
+    color: #fff; }
+
+.test-2 {
+  width: 426px;
+  position: absolute;
+  z-index: 4;
+  margin: 20px 0px 0px -21px; }
 
 .assigned-name {
   padding-left: 10px; }
@@ -321,6 +326,8 @@ input[type='date']::-webkit-calendar-picker-indicator {
   background-color: #2a3647;
   border-radius: 10px;
   padding: 7px 16px 7px 16px; }
+  .addTask-selected:hover {
+    background-color: #1d2127 !important; }
 
 .category-selected {
   color: #fff;
@@ -332,8 +339,8 @@ input[type='date']::-webkit-calendar-picker-indicator {
   position: absolute;
   z-index: 1;
   margin-top: 71px;
-  min-width: 409px;
-  padding: 21px 16px 0;
+  min-width: 439px;
+  padding: 21px 0px 0;
   border-radius: 10px;
   border: 1px solid #d1d1d1;
   background-color: #fff;
@@ -508,6 +515,9 @@ input[type='date']::-webkit-calendar-picker-indicator {
   justify-content: space-between;
   flex-direction: column;
   min-height: 40px; }
+  .subtask-div-text {
+    flex: 1;
+    padding-left: 20px; }
   .subtask-div-btn {
     cursor: pointer;
     padding: 5px; }
@@ -524,9 +534,13 @@ input[type='date']::-webkit-calendar-picker-indicator {
     padding: 7px 10px;
     margin-bottom: 10px;
     position: relative; }
+    .subtask-div-list-hover-items {
+      opacity: 0; }
     .subtask-div-list:hover {
       border-radius: 10px;
       background-color: #e7e7e7; }
+      .subtask-div-list:hover .subtask-div-list-hover-items {
+        opacity: 1; }
       .subtask-div-list:hover .d-hover {
         display: block; }
     .subtask-div-list p {
@@ -541,7 +555,7 @@ input[type='date']::-webkit-calendar-picker-indicator {
 .hover-checkbox {
   display: none;
   right: 16px;
-  top: 13px;
+  top: 14px;
   position: absolute; }
 
 .flex-checkbox {
@@ -554,20 +568,26 @@ input[type='date']::-webkit-calendar-picker-indicator {
   margin-bottom: 5px;
   cursor: pointer; }
   .flex-checkbox:hover {
-    color: #fff;
-    background-color: #2a3647;
+    background-color: #d1d1d1;
     border-radius: 10px; }
-    .flex-checkbox:hover .hover-checkbox {
-      display: block; }
 
 .editSubTaskButtonBox {
   position: absolute;
-  width: 40px;
+  width: 60px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  right: 40px;
-  gap: 20px; }
+  top: -10px;
+  right: -13px;
+  gap: 8px; }
+
+.editSubTaskButtonBox img {
+  width: 24px;
+  height: 24px;
+  cursor: pointer; }
+  .editSubTaskButtonBox img:hover {
+    background: #e7e7e7;
+    border-radius: 50%; }
 
 .ulContainer {
   width: 100%;
@@ -577,16 +597,15 @@ input[type='date']::-webkit-calendar-picker-indicator {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  align-self: stretch;
-  border-radius: 10px;
-  border: 1px solid #e7e7e7;
-  background: #e7e7e7;
-  font-family: Inter;
   font-size: 19px;
+  border: transparent;
   width: 100%;
-  height: 32px;
+  height: 43px;
+  margin-top: -20px;
   padding-left: 11px;
-  margin-left: 11px; }
+  margin-left: 11px;
+  border-bottom: 1px solid #29abe2;
+  background-image: linear-gradient(to right, transparent 100%, #29abe2 5%); }
 
 #subtasks,
 #subtasksEdit {
@@ -703,6 +722,24 @@ input[type='date']::-webkit-calendar-picker-indicator {
   position: absolute;
   right: 33px;
   top: 2px; }
+
+.subTaskInputImg-vertical-added::after {
+  content: '';
+  background-color: #a8a8a8;
+  width: 1px;
+  height: 30px;
+  position: absolute;
+  right: 44px;
+  top: 7px; }
+
+.subTaskInputImg-vertical-edit::after {
+  content: '';
+  background-color: #a8a8a8;
+  width: 1px;
+  height: 30px;
+  position: absolute;
+  right: 30px;
+  top: -3px; }
 
 .subTaskInputImg-vertical-1::after {
   content: '';
@@ -3244,11 +3281,11 @@ input:focus {
   cursor: pointer;
   background: #29abe2; }
 
-.inputImgTrash {
+/* .inputImgTrash{
   right: 25px;
-  width: 16px;
-  height: 21px; }
-
+  width: 24px;
+  height: 24px;
+} */
 .boardAddTaskButtonMobile {
   padding: 24px 15px;
   font-size: 21px;

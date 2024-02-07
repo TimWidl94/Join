@@ -11,13 +11,6 @@ async function initBoard() {
 }
 
 function openAddTaskPopup() {
-  // remove next 2 columns
-  console.log('works!');
-  console.log('contentBoardTask', contentBoardTask);
-  let contentBoardTask = document.getElementById('boardAddTask');
-  contentBoardTask.innerHTML = addTaskHtml();
-
-  // remove
   document.getElementById('addTaskPopup').classList.remove('d-none');
   document.getElementById('addTaskPopup').classList.add('slide-in');
   console.log('works!');
@@ -140,6 +133,20 @@ function editTask(i) {
   // prio = select;
 
   console.log('tasks[i].taskTitle;', tasks[i].taskTitle);
+}
+
+async function saveEditedTask(i) {
+  let title = document.getElementById('taskTitleEdit');
+  let description = document.getElementById('taskDescriptionEdit');
+  let dueDate = document.getElementById('myDateInputEdit');
+
+  tasks[i].taskTitle = title.value;
+  tasks[i].taskDescription = description.value;
+  tasks[i].taskDueDate = dueDate.value;
+
+  await setItem('tasks', JSON.stringify(tasks));
+  closeTaskPopup();
+  renderBoardTasks();
 }
 
 function renderSubTasksInput() {
@@ -277,6 +284,7 @@ async function renderBoardTasks() {
 
 async function renderToDoTasks() {
   let contentBoxToDo = document.getElementById('todo');
+  contentBoxToDo.innerHTML = '';
   for (let i = 0; i < tasks.length; i++) {
     if (tasks[i]['currentState'] == 'toDo') {
       let img = await setPrioImg(i);
@@ -288,6 +296,7 @@ async function renderToDoTasks() {
 
 async function renderInProgressTasks() {
   let contentBoxToDo = document.getElementById('inProgress');
+  contentBoxToDo.innerHTML = '';
   for (let i = 0; i < tasks.length; i++) {
     if (tasks[i]['currentState'] == 'inProgress') {
       let img = await setPrioImg(i);
@@ -299,6 +308,7 @@ async function renderInProgressTasks() {
 
 async function renderAwaitFeedbackTasks() {
   let contentBoxToDo = document.getElementById('awaitFeedback');
+  contentBoxToDo.innerHTML = '';
   for (let i = 0; i < tasks.length; i++) {
     if (tasks[i]['currentState'] == 'awaitFeedback') {
       let img = await setPrioImg(i);
@@ -310,6 +320,7 @@ async function renderAwaitFeedbackTasks() {
 
 async function renderDoneTasks() {
   let contentBoxToDo = document.getElementById('done');
+  contentBoxToDo.innerHTML = '';
   for (let i = 0; i < tasks.length; i++) {
     if (tasks[i]['currentState'] == 'done') {
       let img = await setPrioImg(i);
@@ -321,6 +332,7 @@ async function renderDoneTasks() {
 
 function renderContactsInBoardTask(x) {
   let container = document.getElementById('contactsInBoardTask' + x);
+  container.innerHTML = '';
   for (let i = 0; i < tasks[x]['selectedContacts'].length; i++) {
     let contact = tasks[x]['selectedContacts'][i]['name'];
     const contactColor = getContactColor(contact);

@@ -136,13 +136,24 @@ h1 {
   font-family: 'Inter', sans-serif;
   src: url(assets/fonts/Inter.ttf); }
 
+input {
+  font-family: "Inter", sans-serif !important;
+  font-size: 20px; }
+  input::placeholder {
+    color: #d1d1d1; }
+
+textarea {
+  font-family: "Inter", sans-serif !important;
+  font-size: 20px; }
+  textarea::placeholder {
+    color: #d1d1d1; }
+
 .body-add-task {
   margin: 0;
   min-height: 100vh; }
 
 #showSelectedCategory {
   font-size: 20px; }
-
 
 .span-required {
   color: #ff8190; }
@@ -402,7 +413,6 @@ input[type='date']::-webkit-calendar-picker-indicator {
   color: #d1d1d1;
   font-size: 20px; }
 
-
 .priority {
   display: flex;
   flex-direction: column;
@@ -609,7 +619,6 @@ input[type='date']::-webkit-calendar-picker-indicator {
   background-size: 32px, 100%;
   margin-top: -7px;
   min-width: 409px;
-
   z-index: 0; }
 
 .inputImgPlus {
@@ -702,6 +711,29 @@ input[type='date']::-webkit-calendar-picker-indicator {
 .formAddTask {
   display: flex !important;
   width: 100%; }
+
+.addTaskToBoardPopUp {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%);
+  display: flex;
+  height: 74px;
+  padding: 0px 25px;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 20px;
+  background: var(--Version-2-main-color, #2a3647);
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.15);
+  transition: transform 1s ease-in-out, opacity 0.5s ease-in-out;
+  width: 300px; }
+
+.moveToCenterAddTask {
+  transform: translate(-50%, -850%); }
+
+.addTaskToBoardImg {
+  width: 30px;
+  height: 30px; }
 
 @media (max-width: 1325px) {
   .main-add-task {
@@ -2159,7 +2191,6 @@ form {
   display: flex;
   gap: 12px; }
 
-
 .aTPopupAssignedTo {
   display: flex;
   flex-direction: column;
@@ -2214,7 +2245,6 @@ form {
   background-color: rgba(0, 0, 0, 0.05);
   cursor: pointer; }
 
-
 .checkboxSubtaskATPopup {
   display: inline-block;
   height: 20px;
@@ -2222,10 +2252,6 @@ form {
   border-radius: 3px;
   border: 2px solid #2a3647;
   cursor: pointer; }
-
-.subtaskContainer p {
-  font-size: 16px; }
-
 
 .aTPopupButtonsBottom {
   display: flex;
@@ -2249,7 +2275,6 @@ form {
 .aTPopupEdit:hover .aTPopupP {
   color: #29abe2;
   font-weight: bold;
-
   cursor: pointer; }
 
 .aTPopupDelete:hover .delete-img {

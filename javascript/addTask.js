@@ -79,6 +79,7 @@ async function addTask() {
   await setItem("tasks", JSON.stringify(tasks));
   console.log(tasks);
   clearInputValue();
+  showPopUpAddedTaskToBoard();
 }
 
 
@@ -312,6 +313,19 @@ function deleteSubTask(number) {
 function clearInputValue() {
   renderAddTask();
   showTaskForm();
+  changePrioToMedium('mediumContainer', 'mediumImg');
+}
+
+async function showPopUpAddedTaskToBoard(){
+  let popup = document.getElementById('addedTaskToBoard');
+  popup.classList.remove("d-none");
+  await setTimeout(() => moveToCenter(popup), 200);
+  setTimeout(() => window.location.href = "./board.html", 3000)
+
+}
+
+function moveToCenter(popup) {
+  popup.classList.add("moveToCenterAddTask");
 }
 
 function selectCategory(category) {

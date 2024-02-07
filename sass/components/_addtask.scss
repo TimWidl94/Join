@@ -653,6 +653,32 @@ input[type='date']::-webkit-calendar-picker-indicator {
   width: 100%;
 }
 
+.addTaskToBoardPopUp{
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%);
+  display: flex;
+  height: 74px;
+  padding: 0px 25px;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 20px;
+  background: var(--Version-2-main-color, #2a3647);
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.15);
+  transition: transform 1s ease-in-out, opacity 0.5s ease-in-out;
+  width: 300px;
+}
+
+.moveToCenterAddTask{
+  transform: translate(-50%, -850%);
+}
+
+.addTaskToBoardImg{
+  width: 30px;
+  height: 30px;
+}
+
 @media (max-width: 1325px) {
   .main-add-task {
     // padding-left: calc(232px + 24px);

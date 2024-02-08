@@ -1,4 +1,5 @@
 let currentDraggedElement;
+let selectedPrioPopupEdit;
 
 async function initBoard() {
   await loadData();
@@ -147,10 +148,10 @@ function editTask(i) {
   description.value = tasks[i].taskDescription;
   dueDate.value = tasks[i].taskDueDate;
 
-  setPrioEdit(i, tasks[i].prio);
+  setPrioEdit(tasks[i].prio);
 }
 
-function setPrioEdit(i, prio) {
+function setPrioEdit(prio) {
   console.log('prio:', prio);
   if (prio == 'low') {
     classlistAdd('lowContainerEdit', 'priorityLowActive');
@@ -172,6 +173,22 @@ function renderEditTask(i) {
   showTaskForm('assignedToEdit');
 }
 
+function changePriorityEdit(idContainer, idImg, priority) {
+  let prioContainer = document.getElementById(idContainer);
+  let img = document.getElementById(idImg);
+
+  document.getElementById('urgentContainerEdit').classList.remove('priorityUrgentActive');
+  document.getElementById('urgentImgEdit').src = './assets/img/addTask/ArrowUpPrioSign.svg';
+  document.getElementById('mediumContainerEdit').classList.remove('priorityMediumActive');
+  document.getElementById('mediumImgEdit').src = './assets/img/addTask/mediumPrioSignInactive.svg';
+  document.getElementById('lowContainerEdit').classList.remove('priorityLowActive');
+  document.getElementById('lowImgEdit').src = './assets/img/addTask/ArrowDownPrioSign.svg';
+
+  prioContainer.classList.add('priority' + priority.charAt(0).toUpperCase() + priority.slice(1) + 'Active');
+  img.src = './assets/img/addTask/' + priority + 'PrioActive.svg';
+  selectedPrioPopupEdit = priority;
+}
+
 async function saveEditedTask(i) {
   let title = document.getElementById('taskTitleEdit');
   let description = document.getElementById('taskDescriptionEdit');
@@ -180,6 +197,7 @@ async function saveEditedTask(i) {
   tasks[i].taskTitle = title.value;
   tasks[i].taskDescription = description.value;
   tasks[i].taskDueDate = dueDate.value;
+  tasks[i].prio = selectedPrioPopupEdit;
 
   await setItem('tasks', JSON.stringify(tasks));
   closeTaskPopup();

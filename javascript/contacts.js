@@ -228,7 +228,6 @@ function clearPopup(name, mail, tel) {
   tel.value = '';
 }
 
-// noch benötigt?
 async function saveContacts() {
   await setItem('contacts', JSON.stringify(contacts));
 }

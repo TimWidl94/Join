@@ -168,7 +168,7 @@ function subTasksValueEditHtml(id, subTask) {
     </li>`;
 }
 
-function generateTaskPopupHTML(i, img) {
+function generateTaskPopupHTML(i, img, date) {
   return /*html*/ `
     <div class="aTPopupContainer" id="aTPopupContainer"> 
       <div class="aTPopup" id="aTPopup" onclick="doNotClose(event)"> 
@@ -185,7 +185,7 @@ function generateTaskPopupHTML(i, img) {
         
         <div class="aTPopupDueDate">
           <div class="aTPopupDateText"><span class="aTPopupSpan">Due date:</span></div>
-          <div class="aTPopupDateValue" id="aTPopupDateValue"><p class="aTPopupP">${tasks[i].taskDueDate}</p></div>
+          <div class="aTPopupDateValue" id="aTPopupDateValue"><p class="aTPopupP">${date}</p></div>
         </div>
         
         <div class="aTPopupPrio">
@@ -310,7 +310,7 @@ function generateTaskPopupHTML(i, img) {
         </div>
 
         <div class="btn-edit-task">
-          <button onclick="addTask()" id="create-task" class="buttonGrey">
+          <button id="create-task" class="buttonGrey">
             Ok <img src="assets/img/AddTask/check_white.svg" alt="Check Icon"
           /></button>
         </div>

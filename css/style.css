@@ -1930,6 +1930,7 @@ form {
   width: 25%; }
 
 .col-4 {
+  max-width: 223.23px;
   width: 33.33%; }
 
 .col-6 {
@@ -1947,11 +1948,18 @@ form {
 .flex-start {
   justify-content: flex-start; }
 
+.boardWidth {
+  max-width: calc(100% - 592px);
+  width: 100%; }
+
 .drag-area {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  cursor: pointer; }
+  cursor: pointer;
+  min-width: 100%;
+  height: calc(100% + 221px);
+  min-height: 40px; }
 
 .drag-area-empty {
   display: flex;
@@ -3491,6 +3499,7 @@ input:focus {
   width: 25%; }
 
 .col-4 {
+  max-width: 223.23px;
   width: 33.33%; }
 
 .col-6 {

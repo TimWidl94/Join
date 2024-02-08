@@ -52,3 +52,12 @@ function setMenuColorToActive(id){
   container.classList.remove("noteLink");
   container.style.hoverColor = "#cdcdcd"
  }
+
+ function checkForUserName(){
+  for (let i = 0; i < users.length; i++) {
+    let userName = users[i]["username"];
+    if(userName === users[user]["username"]){
+      return userName;
+    }
+  }
+}

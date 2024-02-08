@@ -14,7 +14,6 @@ let tasks = [];
 let subtasks = [];
 let selectedContacts = [];
 let selectedCategories = [];
-// let letters = [];
 let selectedPrio;
 let categoryIsSelected = false;
 
@@ -74,7 +73,6 @@ async function addTask() {
     currentState: 'toDo',
   });
   await setItem('tasks', JSON.stringify(tasks));
-  console.log(tasks);
   clearInputValue();
   showPopUpAddedTaskToBoard();
 }

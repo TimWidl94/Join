@@ -61,8 +61,9 @@ function openTaskPopup(i) {
   taskPopup.classList.add('d-block');
 
   let img = setPrioImg(i);
+  let date = convertDateFormat(tasks[i].taskDueDate);
   taskPopup.innerHTML = '';
-  taskPopup.innerHTML = generateTaskPopupHTML(i, img);
+  taskPopup.innerHTML = generateTaskPopupHTML(i, img, date);
 
   renderAssignedToContacs(i);
   renderSubtasks(i, 'subtaskContainerPopup');
@@ -125,6 +126,12 @@ function setPrioImg(i) {
   }
 }
 
+function convertDateFormat(date) {
+  let parts = date.split('-');
+  let newDate = parts[2] + '/' + parts[1] + '/' + parts[0];
+  return newDate;
+}
+
 function deleteTask(i) {
   tasks.splice(i, 1);
   closeTaskPopup();
@@ -147,8 +154,7 @@ function editTask(i) {
   description.value = tasks[i].taskDescription;
   dueDate.value = tasks[i].taskDueDate;
 
-  // setPrioEdit(tasks[i].prio);
-  console.log('tasks:', tasks);
+  setPrioEdit(tasks[i].prio);
 }
 
 function setPrioEdit(prio) {
@@ -198,10 +204,10 @@ async function saveEditedTask(i) {
   tasks[i].taskDueDate = dueDate.value;
   tasks[i].prio = selectedPrioPopupEdit;
 
-  await setItem('tasks', JSON.stringify(tasks));
   closeTaskPopup();
   renderBoardTasks();
-  console.log('tasks:', tasks);
+  updateHTML();
+  // await setItem('tasks', JSON.stringify(tasks));
 }
 
 function renderSubTasksInput() {
@@ -376,7 +382,6 @@ function renderContactsInBoardTask(x) {
   for (let i = 0; i < tasks[x]['selectedContacts'].length; i++) {
     let contact = tasks[x]['selectedContacts'][i]['name'];
     const contactColor = getContactColor(contact);
-    console.log(contactColor);
 
     container.innerHTML += `
     <div class="board-task-member-profile" style="background-color: ${contactColor}">${contact}</div>

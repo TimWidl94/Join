@@ -202,7 +202,7 @@ input[type='date']::-webkit-calendar-picker-indicator {
   border-radius: 10px;
   padding: 7px 16px 7px 16px;
   &:hover {
-    background-color: #1d2127!important;
+    background-color: #1d2127 !important;
   }
 }
 .category-selected {
@@ -503,13 +503,12 @@ input[type='date']::-webkit-calendar-picker-indicator {
   width: 24px;
   height: 24px;
   cursor: pointer;
-  
+
   &:hover {
     background: $color-board-task-empty;
     border-radius: 50%;
   }
 }
-
 
 .ulContainer {
   width: 100%;
@@ -523,7 +522,7 @@ input[type='date']::-webkit-calendar-picker-indicator {
   font-size: 19px;
   border: transparent;
   width: 100%;
-  height: 43px;    
+  height: 43px;
   margin-top: -20px;
   padding-left: 11px;
   margin-left: 11px;
@@ -659,7 +658,7 @@ input[type='date']::-webkit-calendar-picker-indicator {
   top: 2px;
 }
 
-.subTaskInputImg-vertical-added::after  {
+.subTaskInputImg-vertical-added::after {
   content: '';
   background-color: #a8a8a8;
   width: 1px;
@@ -669,7 +668,7 @@ input[type='date']::-webkit-calendar-picker-indicator {
   top: 7px;
 }
 
-.subTaskInputImg-vertical-edit::after  {
+.subTaskInputImg-vertical-edit::after {
   content: '';
   background-color: #a8a8a8;
   width: 1px;
@@ -678,7 +677,6 @@ input[type='date']::-webkit-calendar-picker-indicator {
   right: 30px;
   top: -3px;
 }
-
 
 .subTaskInputImg-vertical-1::after {
   content: '';
@@ -689,7 +687,6 @@ input[type='date']::-webkit-calendar-picker-indicator {
   right: 45px;
   top: 7px;
 }
-
 
 .checkImg {
   width: 20px;

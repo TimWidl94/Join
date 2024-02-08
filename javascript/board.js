@@ -50,12 +50,12 @@ function openTaskPopup(i) {
   taskPopup.classList.remove('d-none');
   taskPopup.classList.add('d-block');
 
+  let img = setPrioImg(i);
   taskPopup.innerHTML = '';
-  taskPopup.innerHTML = generateTaskPopupHTML(i);
+  taskPopup.innerHTML = generateTaskPopupHTML(i, img);
 
   renderAssignedToContacs(i);
   renderSubtasks(i, 'subtaskContainerPopup');
-  selectPrioImage(i);
 }
 
 function closeTaskPopup() {
@@ -74,12 +74,7 @@ function renderAssignedToContacs(i) {
       const selectedContact = task.selectedContacts[j];
       const contactColor = getContactColor(selectedContact.name);
       const capitalLetters = getFirstLetters(selectedContact.name);
-      assingedToContainer.innerHTML += /*html*/ `
-        <div class="assigned-contact">
-        <div class="assinged-contact-profile" style="background-color: ${contactColor}">${capitalLetters}</div>
-                <p class="aTPopupP">${selectedContact.name}</p>
-        </div>
-      `;
+      assingedToContainer.innerHTML += renderAssignedToContacsInfoHtml(contactColor, capitalLetters, selectedContact);
     }
   }
 }
@@ -100,26 +95,23 @@ function renderSubtasks(i, id) {
   if (task.subtasks?.length > 0) {
     for (let j = 0; j < task.subtasks.length; j++) {
       const subTask = task.subtasks[j];
-      subTaskContainer.innerHTML += /*html*/ `
-        <div class="subtask">
-          <input type="checkbox" id="checkboxSubtask-${j}" class="checkboxSavePassword" />
-          <label for="checkboxSubtask-${j}" ></label>
-          <p class="aTPopupP">${subTask.subTaskInput}</p>
-        </div>
-      `;
+      subTaskContainer.innerHTML += renderSubtasksInfoHtml(j, subTask);
     }
   }
 }
 
-function selectPrioImage(i) {
-  let prio = tasks[i].prio;
-  let prioImage = document.getElementById('aTPopupPrioImg');
-  if (prio == 'low') {
-    prioImage.src = 'assets/img/AddTask/ArrowDownPrioSign.svg';
-  } else if (prio == 'medium') {
-    prioImage.src = 'assets/img/AddTask/mediumPrioSignInactive.svg';
-  } else {
-    prioImage.src = 'assets/img/addTask/ArrowUpPrioSign.svg';
+function setPrioImg(i) {
+  if (tasks[i]['prio'] == 'low') {
+    let img = './assets/img/AddTask/ArrowDownPrioSign.svg';
+    return img;
+  }
+  if (tasks[i]['prio'] == 'medium') {
+    let img = './assets/img/AddTask/mediumPrioSignInactive.svg';
+    return img;
+  }
+  if (tasks[i]['prio'] == 'urgent') {
+    let img = './assets/img/AddTask/ArrowUpPrioSign.svg';
+    return img;
   }
 }
 
@@ -140,53 +132,21 @@ function editTask(i) {
   let title = document.getElementById('taskTitleEdit');
   let description = document.getElementById('taskDescriptionEdit');
   let dueDate = document.getElementById('myDateInputEdit');
-  let prio = tasks[i].prio;
 
   title.value = tasks[i].taskTitle;
   description.value = tasks[i].taskDescription;
   dueDate.value = tasks[i].taskDueDate;
-  // prio = select;
+  selectPrioEdit(i, tasks[i].prio);
+}
 
-  console.log('tasks[i].taskTitle;', tasks[i].taskTitle);
+function selectPrioEdit(i, prio) {
+  console.log('prio:', prio);
 }
 
 function renderEditTask(i) {
   renderSubTasksInput();
   renderSubTasksEditable(i, 'subTaskContainerEdit');
-  // renderAssignedToDropdownEdit();
-  // renderAssignedToContacsEdit();
   showTaskForm('assignedToEdit');
-}
-
-function renderAssignedToDropdownEdit() {
-  let assignedTo = document.getElementById('assignedTo');
-  assignedTo.innerHTML = /*html*/ `
-    <div name="assigned" onchange="addAssignedContact()">
-      <div id="dropdown" class="dropdown" onclick="openDropDown()">
-        <input class="contact-searchbar" onkeyup="filterAddTaskContact()" type="text" id="search" placeholder="Select contacts to assign" />
-        <img id="dropdownImgArrow" class="rotate-arrow dropdown-arrow-hover dropdown-arrow-hover" src="../assets/img/AddTask/arrow_drop.svg" alt="">
-      </div>
-    </div>
-    <div id="assignedDropdown" class="d-none">
-      <div id="assignedAddedContacts"></div>
-    </div>
-  `;
-}
-
-function renderAssignedToContacsEdit() {
-  for (let i = 0; i < contacts.length; i++) {
-    let currentUser = contacts[i]['name'];
-    let initials = getInitials(currentUser);
-    let color = contacts[i]['color'];
-    let assignedDropdown = document.getElementById('assignedDropdown');
-    assignedDropdown.innerHTML += /*html*/ `
-      <div id="user-${i}" class="flex-checkbox selected-profile" onclick="addAssignedContact(${i}, '${color}')" data-value="${currentUser}">
-        <div class="selected-profile"><div class="assinged-contact-profile" style="background-color:${color}">${initials}</div>
-        <span class="assigned-name">${currentUser}</span></div>
-        <img id="hoverCheckbox" class="hover-checkbox" src="assets/img/icons/checkBoxWhite.svg" alt="">
-        <img id="checkBox-${i}" class="flex-checkbox-img"src="assets/img/icons/checkBox.svg" alt="">
-      `;
-  }
 }
 
 async function saveEditedTask(i) {
@@ -281,21 +241,6 @@ async function doneUpdate() {
     const element = done[index];
     await setPrioImg(i);
     document.getElementById('done').innerHTML += generateTodoHTML(element, img);
-  }
-}
-
-function setPrioImg(i) {
-  if (tasks[i]['prio'] == 'low') {
-    let img = './assets/img/AddTask/ArrowDownPrioSign.svg';
-    return img;
-  }
-  if (tasks[i]['prio'] == 'medium') {
-    let img = './assets/img/AddTask/mediumPrioSignInactive.svg';
-    return img;
-  }
-  if (tasks[i]['prio'] == 'urgent') {
-    let img = './assets/img/AddTask/ArrowUpPrioSign.svg';
-    return img;
   }
 }
 

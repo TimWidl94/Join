@@ -14,7 +14,7 @@ let tasks = [];
 let subtasks = [];
 let selectedContacts = [];
 let selectedCategories = [];
-let letters = [];
+// let letters = [];
 let selectedPrio;
 let categoryIsSelected = false;
 
@@ -108,21 +108,21 @@ function renderGeneratedSubTasks(id) {
   }
 }
 
-function renderSelectedContacts() {
-  let content = document.getElementById('basic-info-wrapper');
-  content.innerHTML = '';
+// function renderSelectedContacts() {
+//   let content = document.getElementById('basic-info-wrapper');
+//   content.innerHTML = '';
 
-  for (let i = 0; i < contacts.length; i++) {
-    const contact = contacts[i];
-    const firstLetter = contact.name.charAt(0);
+//   for (let i = 0; i < contacts.length; i++) {
+//     const contact = contacts[i];
+//     const firstLetter = contact.name.charAt(0);
 
-    if (!letters.includes(firstLetter)) {
-      letters.push(firstLetter);
-    }
-  }
-  sortLetters();
-  renderLetters();
-}
+//     if (!letters.includes(firstLetter)) {
+//       letters.push(firstLetter);
+//     }
+//   }
+//   sortLetters();
+//   renderLetters();
+// }
 
 function findSubtaskPosition(id) {
   let nr = subtasks.findIndex((obj) => obj.id === id);

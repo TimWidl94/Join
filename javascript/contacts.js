@@ -279,7 +279,7 @@ async function saveEditedContact(i, target) {
 
   await closeContactPopup(target, 'edit');
   openContactInfo(i);
-  init();
+  // init();
 }
 
 async function closeContactPopup(target, type) {
@@ -292,6 +292,8 @@ async function closeContactPopup(target, type) {
 
 async function deleteContact(i) {
   deleteUnusedLetter(i);
+  console.log('tasks bevor function', tasks);
+  deleteSelectedContact(i);
   contacts.splice(i, 1);
 
   if (window.innerWidth < 800) {
@@ -309,6 +311,26 @@ async function deleteContact(i) {
 function deleteUnusedLetter(i) {
   let index = letters.indexOf(contacts[i].name.charAt(0));
   letters.splice(index, 1);
+}
+
+async function deleteSelectedContact(x) {
+  console.log('tasks bevor deletion', tasks);
+
+  for (let i = 0; i < tasks.length; i++) {
+    let task = tasks[i];
+
+    for (let j = 0; j < task.selectedContacts.length; j++) {
+      let contact = task.selectedContacts[j];
+
+      if (contact.name === contacts[x].name) {
+        task.selectedContacts.splice(j, 1);
+        j--;
+        console.log('selectedContact deleted');
+      }
+    }
+  }
+  console.log('tasks after deletion', tasks);
+  await setItem('tasks', JSON.stringify(tasks));
 }
 
 async function animateBannerContacts(idDesktop, idMobile) {

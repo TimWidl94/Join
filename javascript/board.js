@@ -7,6 +7,24 @@ async function initBoard() {
   await includeHTML();
   setUserInitials();
   setColorToActive('sidebarBoard', 'board-img', 'bottomBarBoardMobile', 'boardImgMobile');
+  await renderAddTask();
+  await renderSubTask();
+  await showTaskForm()
+
+}
+
+function renderAddTask() {
+  let contentMain = document.getElementById('main');
+  let contentBoardTask = document.getElementById('boardAddTask');
+
+  if (contentMain) {
+    contentMain.innerHTML = addTaskHtml('main');
+  }
+
+  if (contentBoardTask) {
+    console.log('addTask Popup rendered');
+    contentBoardTask.innerHTML = addTaskHtml('boardAddTask');
+  }
 }
 
 function openAddTaskPopup() {

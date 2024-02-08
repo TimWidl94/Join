@@ -23,10 +23,10 @@ async function setUserToContacts() {
     contacts.push({ name: firstLettersUppercase(name), mail: mail, phone: '', color: '' });
     userExistsIndex = contacts.length - 1; // Index des neuen Benutzerkontakts
 
-    if (userWithYouExistsIndex === -1) {
-      // Füge den Kontakt mit " (you)" hinzu, falls noch nicht vorhanden
-      contacts.push({ name: userWithYou, mail: mail, phone: '', color: '' });
-    }
+  // if (userWithYouExistsIndex === -1) {
+    // Füge den Kontakt mit " (you)" hinzu, falls noch nicht vorhanden
+    // contacts.push({ name: userWithYou, mail: mail, phone: '', color: '' });
+  // }
   }
 }
 
@@ -87,12 +87,32 @@ function setContactsToFirstLetters(letter) {
     const firstLetter = contact.name.charAt(0);
     const color = contact.color;
     let acronym = getFirstLetters(contact.name);
-
+    let username = checkForUserName();
     if (firstLetter.includes(letter)) {
       sortContactsByAlphabet();
-      contactBox.innerHTML += generateContactsHTML(contact, color, acronym, i);
+      if(contacts[i]["name"] === username)
+      {contactBox.innerHTML += generateContactsYouHTML(contact, color, acronym, i)}
+      else{
+      contactBox.innerHTML += generateContactsHTML(contact, color, acronym, i);}
     }
   }
+  saveContacts();
+}
+
+function renderContacts(){
+  
+  
+}
+
+
+
+function findUserIndexByContactName(contactName) {
+  for (let i = 0; i < users.length; i++) {
+    if (users[i]["username"] === contactName) {
+      return i;
+    }
+  }
+  return -1; 
 }
 
 function sortContactsByAlphabet() {
@@ -109,9 +129,12 @@ function openContactInfo(i) {
   const color = contact.color;
   let content = document.getElementById('contact-info');
   classlistRemove('contact-info', 'show-overlay-menu');
-
+  let username = checkForUserName();
   content.innerHTML = '';
-  setTimeout(() => (content.innerHTML += openContactInfoHTML(contact, acronym, color, i)), 250);
+  if(contacts[i]["name"] === username){ 
+    setTimeout(() => (content.innerHTML += openContactInfoYouHTML(contact, acronym, color, i)), 250);}
+  else{
+    setTimeout(() => (content.innerHTML += openContactInfoHTML(contact, acronym, color, i)), 250);}
   renderChangesMobile(i);
 
   classlistRemove('contact-info', 'd-none');
@@ -121,6 +144,7 @@ function openContactInfo(i) {
     toggleContactInfoMobile();
   }
 }
+
 
 async function hideTransitionEffect() {
   classlistAdd('wrapper-contact-info', 'd-none');

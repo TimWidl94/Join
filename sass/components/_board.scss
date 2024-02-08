@@ -10,11 +10,19 @@
   justify-content: flex-start;
 }
 
+.boardWidth{
+  max-width: calc(100% - 592px);
+  width: 100%;
+}
+
 .drag-area {
   display: flex;
   flex-direction: column;
   gap: 16px;
   cursor: pointer;
+  min-width: 100%;
+  height: calc(100% + 221px);
+  min-height: 40px;
 }
 
 .drag-area-empty {

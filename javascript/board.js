@@ -10,6 +10,7 @@ async function initBoard() {
   await renderAddTask();
   await renderSubTask();
   await showTaskForm('assignedTo');
+  checkTaskAreaDisplayEmpty();
 }
 
 // function checkIfFormEditPopupIsFilled() {
@@ -214,7 +215,6 @@ function updateHTML() {
   inProgressUdate();
   feedbackAreaUdate();
   doneUpdate();
-  checkTaskAreaDisplayEmpty();
   renderBoardTasks();
 }
 
@@ -270,9 +270,10 @@ function allowDrop(ev) {
   ev.preventDefault();
 }
 
-function moveTo(category) {
+async function moveTo(category) {
   tasks[currentDraggedElement]['currentState'] = category;
-  updateHTML();
+  await updateHTML();
+  checkTaskAreaDisplayEmpty();
 }
 
 function highlight(id) {
@@ -289,7 +290,7 @@ function checkTaskAreaDisplayEmpty() {
   for (let i = 0; i < dragAreas.length; i++) {
     let dragArea = dragAreas[i];
 
-    if (dragArea.children.length === 0) {
+    if (dragArea.children.length < 1) {
       dragArea.innerHTML = /*html*/ `<div class="drag-area-empty">No tasks To do</div>`;
     }
   }
@@ -311,7 +312,7 @@ async function renderToDoTasks() {
       let img = await setPrioImg(i);
       contentBoxToDo.innerHTML += generateTodoHTML(i, img);
       renderContactsInBoardTask(i);
-    }
+    } 
   }
 }
 
@@ -323,7 +324,7 @@ async function renderInProgressTasks() {
       let img = await setPrioImg(i);
       contentBoxToDo.innerHTML += generateTodoHTML(i, img);
       renderContactsInBoardTask(i);
-    }
+    } 
   }
 }
 
@@ -335,7 +336,7 @@ async function renderAwaitFeedbackTasks() {
       let img = await setPrioImg(i);
       contentBoxToDo.innerHTML += await generateTodoHTML(i, img);
       renderContactsInBoardTask(i);
-    }
+    } 
   }
 }
 
@@ -347,7 +348,7 @@ async function renderDoneTasks() {
       let img = await setPrioImg(i);
       contentBoxToDo.innerHTML += await generateTodoHTML(i, img);
       renderContactsInBoardTask(i);
-    }
+    } 
   }
 }
 
@@ -401,6 +402,7 @@ function renderSearchedTasks(i) {
   if (tasks[i]['currentState'] == 'done') {
     renderSearchedTasksDone(i);
   }
+  checkTaskAreaDisplayEmpty();
 }
 
 function renderSearchedTasksToDo(i) {
@@ -425,4 +427,25 @@ function renderSearchedTasksDone(i) {
 
 function doNotClose(event) {
   event.stopPropagation();
+}
+
+function noTasksForSelectedCategory(){
+  let toDo = [];
+  let inProgress = [];
+  let awaitFeedback = [];
+  let done = [];
+  for (let i = 0; i < tasks.length; i++) {
+    if (tasks[i]['currentState'] == 'toDo') {
+      toDo +1;
+    }
+    if (tasks[i]['currentState'] == 'inProgress') {
+      inProgress +1;
+    }
+    if (tasks[i]['currentState'] == 'awaitFeedback') {
+      awaitFeedback +1;
+    }
+    if (tasks[i]['currentState'] == 'done') {
+      done +1;
+    }
+  }
 }

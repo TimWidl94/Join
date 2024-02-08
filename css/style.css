@@ -1908,7 +1908,12 @@ form {
   position: relative;
   padding: 80px 64px;
   left: 232px;
-  background-color: #f6f7f8; }
+  background-color: #f6f7f8;
+  overflow-y: scroll;
+  height: 100vh; }
+
+.container::-webkit-scrollbar {
+  display: none; }
 
 .row {
   display: flex;
@@ -3476,7 +3481,12 @@ input:focus {
   position: relative;
   padding: 80px 64px;
   left: 232px;
-  background-color: #f6f7f8; }
+  background-color: #f6f7f8;
+  overflow-y: scroll;
+  height: 100vh; }
+
+.container::-webkit-scrollbar {
+  display: none; }
 
 .row {
   display: flex;

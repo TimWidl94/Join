@@ -445,25 +445,4 @@ function renderSearchedTasksDone(i) {
 
 function doNotClose(event) {
   event.stopPropagation();
-}
 
-function noTasksForSelectedCategory() {
-  let toDo = [];
-  let inProgress = [];
-  let awaitFeedback = [];
-  let done = [];
-  for (let i = 0; i < tasks.length; i++) {
-    if (tasks[i]['currentState'] == 'toDo') {
-      toDo + 1;
-    }
-    if (tasks[i]['currentState'] == 'inProgress') {
-      inProgress + 1;
-    }
-    if (tasks[i]['currentState'] == 'awaitFeedback') {
-      awaitFeedback + 1;
-    }
-    if (tasks[i]['currentState'] == 'done') {
-      done + 1;
-    }
-  }
-}

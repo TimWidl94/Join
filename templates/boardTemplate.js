@@ -300,7 +300,6 @@ function generateTaskPopupHTML(i) {
   `;
 }
 
-/*TEST*/
 function subTasksValueHtml(id, i) {
   return /*HTML*/ `
     <li id="${id}" class="subtask-div-list" ondblclick="editSubTask(${id})"><div class="subtask-div-text">${subtasks[i]['subTaskInput']}</div>

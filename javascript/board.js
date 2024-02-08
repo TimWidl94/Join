@@ -445,4 +445,4 @@ function renderSearchedTasksDone(i) {
 
 function doNotClose(event) {
   event.stopPropagation();
-
+}

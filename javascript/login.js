@@ -43,21 +43,13 @@ function checkMatchPassword() {
     document.getElementById("passwordSignUp").value ===
     document.getElementById("checkPasswordSignUp").value
   ) {
-    document
-      .getElementById("checkPasswordSignUp")
-      .classList.remove("inputRequired");
+    document.getElementById("checkPasswordSignUp").classList.remove("inputRequired");
     document.getElementById("passwordDontMatch").classList.add("d-none");
-    document
-      .getElementById("inputFieldContainerSignUp")
-      .classList.remove("padding-none");
+    document.getElementById("inputFieldContainerSignUp").classList.remove("padding-none");
   } else {
-    document
-      .getElementById("checkPasswordSignUp")
-      .classList.add("inputRequired");
+    document.getElementById("checkPasswordSignUp").classList.add("inputRequired");
     document.getElementById("passwordDontMatch").classList.remove("d-none");
-    document
-      .getElementById("inputFieldContainerSignUp")
-      .classList.add("padding-none");
+    document.getElementById("inputFieldContainerSignUp").classList.add("padding-none");
   }
 }
 
@@ -68,7 +60,6 @@ async function loadUser() {
   if (searchForEmail(email, password)) {
     await rememberMe();
     let user = await setUser(email);
-    //
     window.location.href = "./summary.html";
   }
 }
@@ -91,12 +82,13 @@ function searchForEmail(email, password) {
       users[i]["password"].includes(password)
     ) {
       return true;
-    } if(users[i]["email"].includes(email) &&
-    !users[i]["password"].includes(password)) {
-      passwordDontMatch();
-    } else{
-      passwordDontMatch();
     }
+    if (
+      users[i]["email"].includes(email) &&
+      !users[i]["password"].includes(password)
+    ) {
+      passwordDontMatch();
+    } 
   }
 }
 
@@ -200,10 +192,10 @@ function passwordDontMatch() {
   document.getElementById("password").style.borderColor = "#ff3d00";
 }
 
-function passwordDontMatchReverse(){
+function passwordDontMatchReverse() {
   document.getElementById("passwordDontMatch").classList.add("d-none");
   document.getElementById("checkboxBox").style.paddingTop = "28px";
-  document.getElementById("password").style.borderColor = '#000';
+  document.getElementById("password").style.borderColor = "#000";
 }
 
 function checkPasswordsAreSame() {
@@ -214,4 +206,4 @@ function checkPasswordsAreSame() {
   }
 }
 
-function jumpToPrivacyPolicyBeforeLogIn(){}
+function jumpToPrivacyPolicyBeforeLogIn() {}

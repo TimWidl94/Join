@@ -449,7 +449,8 @@ input[type='date']::-webkit-calendar-picker-indicator {
   flex: 1 0 0;
   border-radius: 10px;
   background: #fff;
-  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1); }
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
+  cursor: pointer; }
 
 .priorityUrgentActive {
   background: #ff3d19 !important;

@@ -252,17 +252,17 @@ function generateTaskPopupHTML(i, img) {
           <div class="priorityEdit">
             <span class="aTPopupSpan">Prio</span>
             <div class="priority-options-edit">
-              <div id="urgentContainer" onclick="changePrioToUrgent('urgentContainer', 'urgentImg')">
+              <div id="urgentContainerEdit" onclick="changePrioToUrgent('urgentContainerEdit', 'urgentImgEdit')">
                 <p class="aTPopupP">Urgent</p>
-                <img src="assets/img/AddTask/ArrowUpPrioSign.svg" alt="Prio High" id="urgentImg" />
+                <img src="assets/img/AddTask/ArrowUpPrioSign.svg" alt="Prio High" id="urgentImgEdit" />
               </div>
-              <div id="mediumContainer"  class="priorityMediumActive" onclick="changePrioToMedium('mediumContainer', 'mediumImg')">
+              <div id="mediumContainerEdit" onclick="changePrioToMedium('mediumContainerEdit', 'mediumImgEdit')">
                 <p class="aTPopupP">Medium</p>
-                <img src="assets/img/AddTask/mediumPrioSignInactive.svg" alt="Prio Medium" id="mediumImg" />
+                <img src="assets/img/AddTask/mediumPrioSignInactive.svg" alt="Prio Medium" id="mediumImgEdit" />
               </div>
-              <div id="lowContainer" onclick="changePrioToLow('lowContainer', 'lowImg')">
+              <div id="lowContainerEdit" onclick="changePrioToLow('lowContainerEdit', 'lowImgEdit')">
                 <p class="aTPopupP">Low</p>
-                <img src="assets/img/AddTask/ArrowDownPrioSign.svg" alt="Prio Low" id="lowImg" />
+                <img src="assets/img/AddTask/ArrowDownPrioSign.svg" alt="Prio Low" id="lowImgEdit" />
               </div>
             </div>
           </div>

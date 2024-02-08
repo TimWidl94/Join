@@ -13,6 +13,14 @@ async function initBoard() {
   checkTaskAreaDisplayEmpty();
 }
 
+// function checkIfFormEditPopupIsFilled() {
+//   let title = document.getElementById('taskTitle');
+//   let dueDate = document.getElementById('myDateInput');
+//   if ((categoryIsSelected = true && title.value > '' && dueDate.value > '')) {
+//     document.getElementById('create-task').disabled = false;
+//   }
+// }
+
 function renderAddTask() {
   let contentMain = document.getElementById('main');
   let contentBoardTask = document.getElementById('boardAddTask');
@@ -133,15 +141,29 @@ function editTask(i) {
   let title = document.getElementById('taskTitleEdit');
   let description = document.getElementById('taskDescriptionEdit');
   let dueDate = document.getElementById('myDateInputEdit');
+  let prio = tasks[i].prio;
 
   title.value = tasks[i].taskTitle;
   description.value = tasks[i].taskDescription;
   dueDate.value = tasks[i].taskDueDate;
-  selectPrioEdit(i, tasks[i].prio);
+
+  setPrioEdit(i, tasks[i].prio);
 }
 
-function selectPrioEdit(i, prio) {
+function setPrioEdit(i, prio) {
   console.log('prio:', prio);
+  if (prio == 'low') {
+    classlistAdd('lowContainerEdit', 'priorityLowActive');
+    document.getElementById('lowImgEdit').src = './assets/img/AddTask/lowPrioActive.svg';
+  }
+  if (prio == 'medium') {
+    classlistAdd('mediumContainerEdit', 'priorityMediumActive');
+    document.getElementById('mediumImgEdit').src = './assets/img/AddTask/mediumPrioSign.svg';
+  }
+  if (prio == 'urgent') {
+    classlistAdd('urgentContainerEdit', 'priorityUrgentActive');
+    document.getElementById('urgentImgEdit').src = './assets/img/AddTask/urgentPrioActive.svg';
+  }
 }
 
 function renderEditTask(i) {

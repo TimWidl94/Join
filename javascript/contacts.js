@@ -23,10 +23,10 @@ async function setUserToContacts() {
     contacts.push({ name: firstLettersUppercase(name), mail: mail, phone: '', color: '' });
     userExistsIndex = contacts.length - 1; // Index des neuen Benutzerkontakts
 
-  // if (userWithYouExistsIndex === -1) {
+    // if (userWithYouExistsIndex === -1) {
     // Füge den Kontakt mit " (you)" hinzu, falls noch nicht vorhanden
     // contacts.push({ name: userWithYou, mail: mail, phone: '', color: '' });
-  // }
+    // }
   }
 }
 
@@ -90,29 +90,25 @@ function setContactsToFirstLetters(letter) {
     let username = checkForUserName();
     if (firstLetter.includes(letter)) {
       sortContactsByAlphabet();
-      if(contacts[i]["name"] === username)
-      {contactBox.innerHTML += generateContactsYouHTML(contact, color, acronym, i)}
-      else{
-      contactBox.innerHTML += generateContactsHTML(contact, color, acronym, i);}
+      if (contacts[i]['name'] === username) {
+        contactBox.innerHTML += generateContactsYouHTML(contact, color, acronym, i);
+      } else {
+        contactBox.innerHTML += generateContactsHTML(contact, color, acronym, i);
+      }
     }
   }
   saveContacts();
 }
 
-function renderContacts(){
-  
-  
-}
-
-
+function renderContacts() {}
 
 function findUserIndexByContactName(contactName) {
   for (let i = 0; i < users.length; i++) {
-    if (users[i]["username"] === contactName) {
+    if (users[i]['username'] === contactName) {
       return i;
     }
   }
-  return -1; 
+  return -1;
 }
 
 function sortContactsByAlphabet() {
@@ -131,10 +127,11 @@ function openContactInfo(i) {
   classlistRemove('contact-info', 'show-overlay-menu');
   let username = checkForUserName();
   content.innerHTML = '';
-  if(contacts[i]["name"] === username){ 
-    setTimeout(() => (content.innerHTML += openContactInfoYouHTML(contact, acronym, color, i)), 250);}
-  else{
-    setTimeout(() => (content.innerHTML += openContactInfoHTML(contact, acronym, color, i)), 250);}
+  if (contacts[i]['name'] === username) {
+    setTimeout(() => (content.innerHTML += openContactInfoYouHTML(contact, acronym, color, i)), 250);
+  } else {
+    setTimeout(() => (content.innerHTML += openContactInfoHTML(contact, acronym, color, i)), 250);
+  }
   renderChangesMobile(i);
 
   classlistRemove('contact-info', 'd-none');
@@ -144,7 +141,6 @@ function openContactInfo(i) {
     toggleContactInfoMobile();
   }
 }
-
 
 async function hideTransitionEffect() {
   classlistAdd('wrapper-contact-info', 'd-none');
@@ -178,23 +174,6 @@ function renderChangesMobile(i) {
   let content = document.getElementById('changesMobileWrapper');
   content.innerHTML = '';
   content.innerHTML = changesMobileHTML(i);
-}
-
-function classlistToggle(id, toggle) {
-  document.getElementById(id).classList.toggle(toggle);
-}
-
-function classlistAdd(id, add) {
-  document.getElementById(id).classList.add(add);
-}
-
-function classlistRemove(id, remove) {
-  document.getElementById(id).classList.remove(remove);
-}
-
-function classlistRemoveAndAdd(id, remove, add) {
-  document.getElementById(id).classList.remove(remove);
-  document.getElementById(id).classList.add(add);
 }
 
 async function addContact(target) {

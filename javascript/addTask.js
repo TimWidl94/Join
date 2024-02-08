@@ -168,15 +168,13 @@ function showTaskForm() {
     let initials = getInitials(currentUser);
     let color = contacts[i]['color'];
     let assignedDropdown = document.getElementById('assignedDropdown');
-    assignedDropdown.innerHTML += /*html*/ `
-      <div id="user-${i}" class="flex-checkbox selected-profile" onclick="addAssignedContact(${i}, '${color}')" data-value="${currentUser}">
-        <div class="selected-profile"><div class="assinged-contact-profile" style="background-color:${color}">${initials}</div>
-        <span class="assigned-name">${currentUser}</span></div>
-        <img id="hoverCheckbox" class="hover-checkbox" src="assets/img/icons/checkBoxWhite.svg" alt="">
-        <img id="checkBox-${i}" class="flex-checkbox-img"src="assets/img/icons/checkBox.svg" alt="">
-      `;
-  }
-}
+    let username = checkForUserName();
+ 
+  if(contacts[i]["name"] === username)
+  {assignedDropdown.innerHTML += assignedToUserYouHtml(i, color, currentUser, initials);}
+  else{
+    assignedDropdown.innerHTML += assignedToUserHtml(i, color, currentUser, initials);}
+}}
 
 function filterAddTaskContact() {
   let searchTerm = document.getElementById('search').value.toLowerCase();

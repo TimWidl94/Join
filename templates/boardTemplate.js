@@ -168,7 +168,7 @@ function subTasksValueEditHtml(id, subTask) {
     </li>`;
 }
 
-function generateTaskPopupHTML(i) {
+function generateTaskPopupHTML(i, img) {
   return /*html*/ `
     <div class="aTPopupContainer" id="aTPopupContainer"> 
       <div class="aTPopup" id="aTPopup" onclick="doNotClose(event)"> 
@@ -192,7 +192,7 @@ function generateTaskPopupHTML(i) {
           <div class="aTPopupPrioText"><span class="aTPopupSpan">Priority:</span></div>
           <div class="aTPopupPrioValue" id="aTPopupPrioValue">
             <p class="aTPopupP">${tasks[i].prio}</p>
-            <img id="aTPopupPrioImg" alt="Prio-Img">
+            <img id="aTPopupPrioImg" alt="Prio-Img" src=${img}>
           </div>
         </div>
         
@@ -239,7 +239,7 @@ function generateTaskPopupHTML(i) {
           </div>
 
           <span class="aTPopupSpan">Assigned to</span>
-          <div id="assignedTo"></div>
+          <div id="assignedToEdit"></div>
           <div id="assignedAddedContact" class="assinged-contact">
           </div>
         
@@ -298,6 +298,25 @@ function generateTaskPopupHTML(i) {
       </form>
     </div>
   `;
+}
+
+function renderAssignedToContacsInfoHtml(contactColor, capitalLetters, selectedContact) {
+  return /*html*/ `
+  <div class="assigned-contact">
+  <div class="assinged-contact-profile" style="background-color: ${contactColor}">${capitalLetters}</div>
+          <p class="aTPopupP">${selectedContact.name}</p>
+  </div>
+`;
+}
+
+function renderSubtasksInfoHtml(j, subTask) {
+  return /*html*/ `
+  <div class="subtask">
+    <input type="checkbox" id="checkboxSubtask-${j}" class="checkboxSavePassword" />
+    <label for="checkboxSubtask-${j}" ></label>
+    <p class="aTPopupP">${subTask.subTaskInput}</p>
+  </div>
+`;
 }
 
 function subTasksValueHtml(id, i) {
@@ -437,32 +456,31 @@ function subTaskInputFieldHtml() {
   `;
 }
 
-
-function addedTaskToBoardHtml(){
+function addedTaskToBoardHtml() {
   return `
   <div class="signedUpMassage d-none" id="addedTaskToBoard">
   <p class="p-whiteText">Task Added to board</p>
   <img class="addTasktoBoard" src="assets/img/icons/board_icon_white.svg">
   </div>
-  `
+  `;
 }
 
-function assignedToUserHtml(i, color, currentUser, initials){
+function assignedToUserHtml(i, color, currentUser, initials) {
   return `
   <div id="user-${i}" class="flex-checkbox selected-profile" onclick="addAssignedContact(${i}, '${color}')" data-value="${currentUser}">
   <div class="selected-profile"><div class="assinged-contact-profile" style="background-color:${color}">${initials}</div>
   <span class="assigned-name">${currentUser}</span></div>
   <img id="hoverCheckbox" class="hover-checkbox" src="assets/img/icons/checkBoxWhite.svg" alt="">
   <img id="checkBox-${i}" class="flex-checkbox-img"src="assets/img/icons/checkBox.svg" alt="">
-  `
+  `;
 }
 
-function assignedToUserYouHtml(i, color, currentUser, initials){
+function assignedToUserYouHtml(i, color, currentUser, initials) {
   return `
   <div id="user-${i}" class="flex-checkbox selected-profile" onclick="addAssignedContact(${i}, '${color}')" data-value="${currentUser}">
   <div class="selected-profile"><div class="assinged-contact-profile" style="background-color:${color}">${initials}</div>
   <span class="assigned-name">${currentUser} (you)</span></div>
   <img id="hoverCheckbox" class="hover-checkbox" src="assets/img/icons/checkBoxWhite.svg" alt="">
   <img id="checkBox-${i}" class="flex-checkbox-img"src="assets/img/icons/checkBox.svg" alt="">
-  `
+  `;
 }

@@ -142,17 +142,16 @@ function editTask(i) {
   let title = document.getElementById('taskTitleEdit');
   let description = document.getElementById('taskDescriptionEdit');
   let dueDate = document.getElementById('myDateInputEdit');
-  let prio = tasks[i].prio;
 
   title.value = tasks[i].taskTitle;
   description.value = tasks[i].taskDescription;
   dueDate.value = tasks[i].taskDueDate;
 
-  setPrioEdit(tasks[i].prio);
+  // setPrioEdit(tasks[i].prio);
+  console.log('tasks:', tasks);
 }
 
 function setPrioEdit(prio) {
-  console.log('prio:', prio);
   if (prio == 'low') {
     classlistAdd('lowContainerEdit', 'priorityLowActive');
     document.getElementById('lowImgEdit').src = './assets/img/AddTask/lowPrioActive.svg';
@@ -202,6 +201,7 @@ async function saveEditedTask(i) {
   await setItem('tasks', JSON.stringify(tasks));
   closeTaskPopup();
   renderBoardTasks();
+  console.log('tasks:', tasks);
 }
 
 function renderSubTasksInput() {
@@ -330,7 +330,7 @@ async function renderToDoTasks() {
       let img = await setPrioImg(i);
       contentBoxToDo.innerHTML += generateTodoHTML(i, img);
       renderContactsInBoardTask(i);
-    } 
+    }
   }
 }
 
@@ -342,7 +342,7 @@ async function renderInProgressTasks() {
       let img = await setPrioImg(i);
       contentBoxToDo.innerHTML += generateTodoHTML(i, img);
       renderContactsInBoardTask(i);
-    } 
+    }
   }
 }
 
@@ -354,7 +354,7 @@ async function renderAwaitFeedbackTasks() {
       let img = await setPrioImg(i);
       contentBoxToDo.innerHTML += await generateTodoHTML(i, img);
       renderContactsInBoardTask(i);
-    } 
+    }
   }
 }
 
@@ -366,7 +366,7 @@ async function renderDoneTasks() {
       let img = await setPrioImg(i);
       contentBoxToDo.innerHTML += await generateTodoHTML(i, img);
       renderContactsInBoardTask(i);
-    } 
+    }
   }
 }
 
@@ -447,23 +447,23 @@ function doNotClose(event) {
   event.stopPropagation();
 }
 
-function noTasksForSelectedCategory(){
+function noTasksForSelectedCategory() {
   let toDo = [];
   let inProgress = [];
   let awaitFeedback = [];
   let done = [];
   for (let i = 0; i < tasks.length; i++) {
     if (tasks[i]['currentState'] == 'toDo') {
-      toDo +1;
+      toDo + 1;
     }
     if (tasks[i]['currentState'] == 'inProgress') {
-      inProgress +1;
+      inProgress + 1;
     }
     if (tasks[i]['currentState'] == 'awaitFeedback') {
-      awaitFeedback +1;
+      awaitFeedback + 1;
     }
     if (tasks[i]['currentState'] == 'done') {
-      done +1;
+      done + 1;
     }
   }
 }

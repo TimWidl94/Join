@@ -9,8 +9,7 @@ async function initBoard() {
   setColorToActive('sidebarBoard', 'board-img', 'bottomBarBoardMobile', 'boardImgMobile');
   await renderAddTask();
   await renderSubTask();
-  await showTaskForm()
-
+  await showTaskForm();
 }
 
 function renderAddTask() {
@@ -112,40 +111,6 @@ function renderSubtasks(i, id) {
   }
 }
 
-function renderAssignedToDropdownEdit() {
-  let assignedTo = document.getElementById('assignedTo');
-  assignedTo.innerHTML = /*html*/ `
-    <div name="assigned" onchange="addAssignedContact()">
-      <div id="dropdown" class="dropdown" onclick="openDropDown()">
-        <input class="contact-searchbar" onkeyup="filterAddTaskContact()" type="text" id="search" placeholder="Select contacts to assign" />
-        <img id="dropdownImgArrow" class="rotate-arrow dropdown-arrow-hover dropdown-arrow-hover" src="../assets/img/AddTask/arrow_drop.svg" alt="">
-      </div>
-    </div>
-    <div id="assignedDropdown" class="d-none">
-      <div id="assignedAddedContacts"></div>
-    </div>
-  `;
-
-  renderAssignedToContacsEdit() {};
-}
-
-function renderAssignedToContacsEdit() {
-
-  for (let i = 0; i < contacts.length; i++) {
-    let currentUser = contacts[i]['name'];
-    let initials = getInitials(currentUser);
-    let color = contacts[i]['color'];
-    let assignedDropdown = document.getElementById('assignedDropdown');
-    assignedDropdown.innerHTML += /*html*/ `
-      <div id="user-${i}" class="flex-checkbox selected-profile" onclick="addAssignedContact(${i}, '${color}')" data-value="${currentUser}">
-        <div class="selected-profile"><div class="assinged-contact-profile" style="background-color:${color}">${initials}</div>
-        <span class="assigned-name">${currentUser}</span></div>
-        <img id="hoverCheckbox" class="hover-checkbox" src="assets/img/icons/checkBoxWhite.svg" alt="">
-        <img id="checkBox-${i}" class="flex-checkbox-img"src="assets/img/icons/checkBox.svg" alt="">
-      `;
-  }
-}
-
 function selectPrioImage(i) {
   let prio = tasks[i].prio;
   let prioImage = document.getElementById('aTPopupPrioImg');
@@ -170,8 +135,7 @@ function editTask(i) {
 
   popupEdit.classList.remove('d-none');
   popupInfo.classList.add('d-none');
-  renderSubTasksInput();
-  renderSubTasksEditable(i, 'subTaskContainerEdit');
+  renderEditTask(i);
 
   let title = document.getElementById('taskTitleEdit');
   let description = document.getElementById('taskDescriptionEdit');
@@ -184,6 +148,45 @@ function editTask(i) {
   // prio = select;
 
   console.log('tasks[i].taskTitle;', tasks[i].taskTitle);
+}
+
+function renderEditTask(i) {
+  renderSubTasksInput();
+  renderSubTasksEditable(i, 'subTaskContainerEdit');
+  // renderAssignedToDropdownEdit();
+  // renderAssignedToContacsEdit();
+  showTaskForm('assignedToEdit');
+}
+
+function renderAssignedToDropdownEdit() {
+  let assignedTo = document.getElementById('assignedTo');
+  assignedTo.innerHTML = /*html*/ `
+    <div name="assigned" onchange="addAssignedContact()">
+      <div id="dropdown" class="dropdown" onclick="openDropDown()">
+        <input class="contact-searchbar" onkeyup="filterAddTaskContact()" type="text" id="search" placeholder="Select contacts to assign" />
+        <img id="dropdownImgArrow" class="rotate-arrow dropdown-arrow-hover dropdown-arrow-hover" src="../assets/img/AddTask/arrow_drop.svg" alt="">
+      </div>
+    </div>
+    <div id="assignedDropdown" class="d-none">
+      <div id="assignedAddedContacts"></div>
+    </div>
+  `;
+}
+
+function renderAssignedToContacsEdit() {
+  for (let i = 0; i < contacts.length; i++) {
+    let currentUser = contacts[i]['name'];
+    let initials = getInitials(currentUser);
+    let color = contacts[i]['color'];
+    let assignedDropdown = document.getElementById('assignedDropdown');
+    assignedDropdown.innerHTML += /*html*/ `
+      <div id="user-${i}" class="flex-checkbox selected-profile" onclick="addAssignedContact(${i}, '${color}')" data-value="${currentUser}">
+        <div class="selected-profile"><div class="assinged-contact-profile" style="background-color:${color}">${initials}</div>
+        <span class="assigned-name">${currentUser}</span></div>
+        <img id="hoverCheckbox" class="hover-checkbox" src="assets/img/icons/checkBoxWhite.svg" alt="">
+        <img id="checkBox-${i}" class="flex-checkbox-img"src="assets/img/icons/checkBox.svg" alt="">
+      `;
+  }
 }
 
 async function saveEditedTask(i) {

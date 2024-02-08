@@ -6,7 +6,7 @@ async function init() {
   setColorToActive('sidebarAddTask', 'addTask-img', 'bottomBarAddTaskMobile', 'addTaskImgMobile');
   await renderAddTask();
   await renderSubTask();
-  await showTaskForm();
+  await showTaskForm('assignedTo');
   changePrioToMedium('mediumContainer', 'mediumImg');
 }
 
@@ -149,8 +149,8 @@ function addEditSubTask(i) {
   renderGeneratedSubTasks('subTaskContainer');
 }
 
-function showTaskForm() {
-  let assignedTo = document.getElementById('assignedTo');
+function showTaskForm(id) {
+  let assignedTo = document.getElementById(id);
   assignedTo.innerHTML = /*html*/ `
     <div name="assigned" onchange="addAssignedContact()">
       <div id="dropdown" class="dropdown" onclick="openDropDown()">
@@ -169,12 +169,14 @@ function showTaskForm() {
     let color = contacts[i]['color'];
     let assignedDropdown = document.getElementById('assignedDropdown');
     let username = checkForUserName();
- 
-  if(contacts[i]["name"] === username)
-  {assignedDropdown.innerHTML += assignedToUserYouHtml(i, color, currentUser, initials);}
-  else{
-    assignedDropdown.innerHTML += assignedToUserHtml(i, color, currentUser, initials);}
-}}
+
+    if (contacts[i]['name'] === username) {
+      assignedDropdown.innerHTML += assignedToUserYouHtml(i, color, currentUser, initials);
+    } else {
+      assignedDropdown.innerHTML += assignedToUserHtml(i, color, currentUser, initials);
+    }
+  }
+}
 
 function filterAddTaskContact() {
   let searchTerm = document.getElementById('search').value.toLowerCase();
@@ -297,7 +299,7 @@ function deleteSubTask(number) {
 
 function clearInputValue() {
   renderAddTask();
-  showTaskForm();
+  showTaskForm('assignedTo');
   changePrioToMedium('mediumContainer', 'mediumImg');
 }
 
@@ -405,10 +407,10 @@ function changePrioToLow(idContainer, idImg) {
   document.getElementById('mediumImg').src = './assets/img/addTask/mediumPrioSignInactive.svg';
 }
 
-function checkIfFormIsFilled(){
+function checkIfFormIsFilled() {
   let title = document.getElementById('taskTitle');
   let dueDate = document.getElementById('myDateInput');
-  if(categoryIsSelected = true && title.value > "" && dueDate.value > ""){
+  if ((categoryIsSelected = true && title.value > '' && dueDate.value > '')) {
     document.getElementById('create-task').disabled = false;
   }
 }

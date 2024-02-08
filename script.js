@@ -45,19 +45,36 @@ function getFirstLetters(str) {
   return str.split(/\s/).reduce((response, word) => (response += word.slice(0, 1)), '');
 }
 
-function setMenuColorToActive(id){
-  let container = document.getElementById(id)
-  container.classList.add("active");
-  container.classList.add("inactiveNote");
-  container.classList.remove("noteLink");
-  container.style.hoverColor = "#cdcdcd"
- }
+function setMenuColorToActive(id) {
+  let container = document.getElementById(id);
+  container.classList.add('active');
+  container.classList.add('inactiveNote');
+  container.classList.remove('noteLink');
+  container.style.hoverColor = '#cdcdcd';
+}
 
- function checkForUserName(){
+function checkForUserName() {
   for (let i = 0; i < users.length; i++) {
-    let userName = users[i]["username"];
-    if(userName === users[user]["username"]){
+    let userName = users[i]['username'];
+    if (userName === users[user]['username']) {
       return userName;
     }
   }
+}
+
+function classlistToggle(id, toggle) {
+  document.getElementById(id).classList.toggle(toggle);
+}
+
+function classlistAdd(id, add) {
+  document.getElementById(id).classList.add(add);
+}
+
+function classlistRemove(id, remove) {
+  document.getElementById(id).classList.remove(remove);
+}
+
+function classlistRemoveAndAdd(id, remove, add) {
+  document.getElementById(id).classList.remove(remove);
+  document.getElementById(id).classList.add(add);
 }

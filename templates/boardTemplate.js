@@ -249,7 +249,7 @@ function generateTaskPopupHTML(i, img) {
             <input id="myDateInputEdit" required type="date" />
           </div>
 
-          <div class="priorityEdit">
+          <!-- <div class="priorityEdit">
             <span class="aTPopupSpan">Prio</span>
             <div class="priority-options-edit">
               <div id="urgentContainerEdit" onclick="changePrioToUrgent('urgentContainerEdit', 'urgentImgEdit')">
@@ -265,7 +265,26 @@ function generateTaskPopupHTML(i, img) {
                 <img src="assets/img/AddTask/ArrowDownPrioSign.svg" alt="Prio Low" id="lowImgEdit" />
               </div>
             </div>
+          </div> -->
+
+          <div class="priorityEdit">
+            <span class="aTPopupSpan">Prio</span>
+            <div class="priority-options-edit">
+              <div id="urgentContainerEdit" onclick="changePriorityEdit('urgentContainerEdit', 'urgentImgEdit', 'urgent')">
+                <p class="aTPopupP">Urgent</p>
+                <img src="assets/img/AddTask/ArrowUpPrioSign.svg" alt="Prio High" id="urgentImgEdit" />
+              </div>
+              <div id="mediumContainerEdit" onclick="changePriorityEdit('mediumContainerEdit', 'mediumImgEdit', 'medium')">
+                <p class="aTPopupP">Medium</p>
+                <img src="assets/img/AddTask/mediumPrioSignInactive.svg" alt="Prio Medium" id="mediumImgEdit" />
+              </div>
+              <div id="lowContainerEdit" onclick="changePriorityEdit('lowContainerEdit', 'lowImgEdit', 'low')">
+                <p class="aTPopupP">Low</p>
+                <img src="assets/img/AddTask/ArrowDownPrioSign.svg" alt="Prio Low" id="lowImgEdit" />
+              </div>
+            </div>
           </div>
+
 
           <div class="categoryEdit">
             <p class="aTPopupSpan, text-padding">Category<span class="span-required">*</span></span>

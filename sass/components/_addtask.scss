@@ -348,21 +348,21 @@ input[type='date']::-webkit-calendar-picker-indicator {
 
 .priorityUrgentActive {
   background: #ff3d19 !important;
-  color: $color-light;
+  color: $color-light !important;
   font-size: 21px;
   font-weight: 700;
 }
 
 .priorityLowActive {
   background: #7ae22b !important;
-  color: $color-light;
+  color: $color-light !important;
   font-size: 21px;
   font-weight: 700;
 }
 
 .priorityMediumActive {
   background: #ffa800 !important;
-  color: $color-light;
+  color: $color-light !important;
   font-size: 21px;
   font-weight: 700;
 }

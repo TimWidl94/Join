@@ -284,12 +284,11 @@
   align-items: start;
   margin-right: auto;
   margin-left: auto;
-
   width: 525px;
   min-height: 500px;
   max-height: 75vh;
   border-radius: 30px;
-  padding: 48px 40px;
+  padding: 32px 24px;
   gap: 24px;
   background-color: $summary-background-color;
 }
@@ -408,7 +407,8 @@
 
 .subtaskContainer {
   display: inline-flex;
-  align-items: center;
+  align-items: flex-start;
+  justify-content: center;
   flex-direction: column;
   gap: 6px;
   border-radius: 12px;

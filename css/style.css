@@ -1991,7 +1991,6 @@ form {
   flex-direction: row;
   position: absolute;
   margin: auto;
-  width: 90%;
   justify-content: center;
   left: 5%;
   padding: 64px 74px;

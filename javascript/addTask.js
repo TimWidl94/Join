@@ -179,23 +179,23 @@ function showTaskForm(id) {
 
 function filterAddTaskContact() {
   let searchTerm = document.getElementById('search').value.toLowerCase();
-  let assignedDropDown = document.getElementById('assignedDropdown');
-  assignedDropDown.innerHTML = '';
+  let assignedDropdown = document.getElementById('assignedDropdown');
+  assignedDropdown.innerHTML = '';
 
   if (searchTerm === '') {
     renderContacts(contacts);
-    assignedDropDown.classList.remove('d-none');
+    assignedDropdown.classList.remove('d-none');
   } else {
     const filteredContacts = contacts.filter((contact) => contact.name.toLowerCase().startsWith(searchTerm));
     renderFilteredContacts(filteredContacts);
-
     if (filteredContacts.length === 0) {
-      assignedDropDown.classList.add('d-none');
+      assignedDropdown.classList.add('d-none');
     } else {
-      assignedDropDown.classList.remove('d-none');
+      assignedDropdown.classList.remove('d-none');
     }
   }
 }
+
 function renderContacts(contacts) {
   let assignedDropdown = document.getElementById('assignedDropdown');
   assignedDropdown.innerHTML = '';
@@ -216,9 +216,8 @@ function renderFilteredContacts(filteredContacts) {
     let currentUser = filteredContacts[i]['name'];
     let initials = getInitials(currentUser);
     let color = filteredContacts[i]['color'];
-    assignedDropdown.innerHTML += assignedToUserYouHtml(i, color, currentUser, initials);
+    assignedDropdown.innerHTML += assignedToUserHtml(i, color, currentUser, initials);
   }
-  document.getElementById('contactInitials').innerHTML = getInitials(filteredContacts[0]['name']);
 }
 
 
@@ -242,10 +241,10 @@ function openDropDownCategory() {
 }
 
 function addAssignedContact(i, color) {
-  let assignedDropdown = document.getElementById(`user-${i}`);
-  let checkboxImage = document.getElementById(`checkBox-${i}`);
-
+  let assignedDropdown = document.getElementById('assignedDropdown');
   let selectedContact = assignedDropdown.getAttribute('data-value');
+  
+  let checkboxImage = document.getElementById(`checkBox-${i}`);
   renderContactList(assignedDropdown, checkboxImage, selectedContact, color);
 
   renderSelectedContacts();

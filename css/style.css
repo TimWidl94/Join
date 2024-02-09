@@ -308,7 +308,7 @@ input[type='date']::-webkit-calendar-picker-indicator {
   display: flex;
   justify-content: space-between;
   position: relative;
-  top: 36px; }
+  top: 106px; }
   .assinged-contact-profile {
     display: inline-block;
     text-align: center;
@@ -364,7 +364,6 @@ input[type='date']::-webkit-calendar-picker-indicator {
 #assignedDropdown {
   position: absolute;
   z-index: 1;
-  margin-top: 71px;
   min-width: 439px;
   padding: 21px 0px 0;
   border-radius: 10px;

@@ -143,7 +143,7 @@ function subTaskInputHtml() {
   <span class="aTPopupSpan">Subtasks</span>
           <div class="inputFieldBox" id="inputFieldBox">
             <input id="subTaskInput" type="text" placeholder="Add new subtask" onclick="changeButtonsAddTask()" />
-            <img onclick="addSubTask()" class="inputImgPlus" src="assets/img/AddTask/plus.svg" alt="Add Icon" />
+            <img onclick="addSubTask('subTaskInput')" class="inputImgPlus" src="assets/img/AddTask/plus.svg" alt="Add Icon" />
           </div>
           <div id="subTaskError" class="subtask-div-error"></div>
    
@@ -153,13 +153,13 @@ function subTaskInputHtml() {
 function subTaskInputFieldHtml() {
   return /*html*/ `
   <input id="subTaskInput" type="text" placeholder="Add new subtask" onclick="changeButtonsAddTask()" />
-  <img onclick="addSubTask()" class="inputImgPlus" src="assets/img/AddTask/plus.svg" alt="Add Icon" />
+  <img onclick="addSubTask('subTaskInput')" class="inputImgPlus" src="assets/img/AddTask/plus.svg" alt="Add Icon" />
   `;
 }
 
 function subTasksValueEditHtml(id, subTask) {
   return /*HTML*/ `
-    <li id="${id}" class="subtask-div-list" ondclick="editSubTask(${id})"><p>${subTask['subTaskInput']}</p>
+    <li id="${id}" class="subtask-div-list" ondbclick="editSubTask(${id})"><p>${subTask['subTaskInput']}</p>
       <div class="d-hover" >
         <img class="subtask-div-btn" onclick="editSubTask(${id})" src="./assets/img/icons/edit.svg" alt="">
         <span class="subTaskInputImg-vertical-1"></span>
@@ -454,25 +454,6 @@ function addTaskHtml() {
       </section>
       </form>
     `;
-}
-
-function subTaskInputHtml() {
-  return /*html*/ `
-  <p>Subtasks</p>
-          <div class="inputFieldBox" id="inputFieldBox">
-            <input id="subTaskInput" type="text" placeholder="Add new subtask" onclick="changeButtonsAddTask()" />
-            <img onclick="addSubTask()" class="inputImgPlus" src="assets/img/AddTask/plus.svg" alt="Add Icon" />
-          </div>
-          <div id="subTaskError" class="subtask-div-error"></div>
-   
-  `;
-}
-
-function subTaskInputFieldHtml() {
-  return `
-  <input id="subTaskInput" type="text" placeholder="Add new subtask" onclick="changeButtonsAddTask()" />
-  <img onclick="addSubTask()" class="inputImgPlus" src="assets/img/AddTask/plus.svg" alt="Add Icon" />
-  `;
 }
 
 function addedTaskToBoardHtml() {

@@ -159,6 +159,32 @@ function editTask(i) {
   setPrioEdit(tasks[i].prio);
 }
 
+function renderEditTask(i) {
+  renderSubTasksInput();
+  renderSubTasksEditable(i, 'subTaskContainerEdit');
+  showTaskForm('assignedToEdit');
+}
+
+function renderSubTasksInput() {
+  let container = document.getElementById('subtasksEdit');
+  container.innerHTML += subTaskInputHtml();
+}
+
+function renderSubTasksEditable(i, id1) {
+  let container = document.getElementById(id1);
+  container.innerHTML = ``;
+
+  const task = tasks[i];
+
+  if (task.subtasks?.length > 0) {
+    for (let j = 0; j < task.subtasks.length; j++) {
+      let subTask = task.subtasks[j];
+      let id = task.subtasks[j]['id'];
+      container.innerHTML += subTasksValueEditHtml(id, subTask);
+    }
+  }
+}
+
 function setPrioEdit(prio) {
   if (prio == 'low') {
     classlistAdd('lowContainerEdit', 'priorityLowActive');
@@ -172,12 +198,6 @@ function setPrioEdit(prio) {
     classlistAdd('urgentContainerEdit', 'priorityUrgentActive');
     document.getElementById('urgentImgEdit').src = './assets/img/AddTask/urgentPrioActive.svg';
   }
-}
-
-function renderEditTask(i) {
-  renderSubTasksInput();
-  renderSubTasksEditable(i, 'subTaskContainerEdit');
-  showTaskForm('assignedToEdit');
 }
 
 function changePriorityEdit(idContainer, idImg, priority) {
@@ -207,29 +227,8 @@ async function saveEditedTask(i) {
   tasks[i].prio = selectedPrioPopupEdit;
 
   closeTaskPopup();
-  // renderBoardTasks();
   updateHTML();
   await setItem('stasks', JSON.stringify(tasks));
-}
-
-function renderSubTasksInput() {
-  let container = document.getElementById('subtasksEdit');
-  container.innerHTML += subTaskInputHtml();
-}
-
-function renderSubTasksEditable(i, id1) {
-  let container = document.getElementById(id1);
-  container.innerHTML = ``;
-
-  const task = tasks[i];
-
-  if (task.subtasks?.length > 0) {
-    for (let j = 0; j < task.subtasks.length; j++) {
-      let subTask = task.subtasks[j];
-      let id = task.subtasks[j]['id'];
-      container.innerHTML += subTasksValueEditHtml(id, subTask);
-    }
-  }
 }
 
 function setCategoryBackground(category, id) {

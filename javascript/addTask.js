@@ -77,8 +77,8 @@ async function addTask() {
   showPopUpAddedTaskToBoard();
 }
 
-function addSubTask() {
-  let subTaskInput = document.getElementById('subTaskInput').value;
+function addSubTask(id) {
+  let subTaskInput = document.getElementById(id).value;
   let subTaskError = document.getElementById('subTaskError');
   let nr = subtasks.length;
   if (subTaskInput == 0) {
@@ -352,7 +352,7 @@ function changeButtonsAddTask() {
     <div class="subTaskInputButtons">
       <img class="subTaskInputImg" onclick="setValueBack('subTaskInput')" src="./assets/img/icons/close.svg" alt="">
       <span class="subTaskInputImg-vertical"></span>
-      <img class="subTaskInputImg checkImg" onclick="addSubTask()" src="./assets/img/icons/checkAddTask.svg" alt="">
+      <img class="subTaskInputImg checkImg" onclick="addSubTask('subTaskInput')" src="./assets/img/icons/checkAddTask.svg" alt="">
     </div>
   `;
   document.getElementById('subTaskInput').focus();

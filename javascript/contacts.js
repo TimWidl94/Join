@@ -177,19 +177,20 @@ function renderChangesMobile(i) {
 }
 
 async function addContact(target) {
+  let index;
   let name = document.getElementById(`add-name-${target}`);
   let mail = document.getElementById(`add-mail-${target}`);
   let tel = document.getElementById(`add-tel-${target}`);
 
   contacts.push({ name: firstLettersUppercase(name.value), mail: mail.value, phone: tel.value, color: '' });
 
-  await saveContacts();
-  let index = findContactIndex(name.value);
-
-  init();
   setColorToContacts();
-  openContactInfo(index);
+  await saveContacts();
+  init();
+
   render();
+  index = findContactIndex(name.value);
+  openContactInfo(index);
 
   clearPopup(name, mail, tel);
   await closeContactPopup(target, 'add');

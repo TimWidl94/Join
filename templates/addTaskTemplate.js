@@ -118,10 +118,11 @@ function addTaskHtml() {
 
 function subTaskInputHtml() {
   return /*html*/ `
+  
   <p>Subtasks</p>
           <div class="inputFieldBox" id="inputFieldBox">
             <input id="subTaskInput" type="text" placeholder="Add new subtask" onclick="changeButtonsAddTask()" />
-            <img onclick="addSubTask()" class="inputImgPlus" src="assets/img/AddTask/plus.svg" alt="Add Icon" />
+            <img onclick="addSubTask('subTaskInput')" class="inputImgPlus" src="assets/img/AddTask/plus.svg" alt="Add Icon" />
           </div>
           <div id="subTaskError" class="subtask-div-error"></div>
    
@@ -131,36 +132,15 @@ function subTaskInputHtml() {
 function subTaskInputFieldHtml() {
   return `
   <input id="subTaskInput" type="text" placeholder="Add new subtask" onclick="changeButtonsAddTask()" />
-  <img onclick="addSubTask()" class="inputImgPlus" src="assets/img/AddTask/plus.svg" alt="Add Icon" />
+  <img onclick="addSubTask('subTaskInput')" class="inputImgPlus" src="assets/img/AddTask/plus.svg" alt="Add Icon" />
   `;
 }
 
-
-function addedTaskToBoardHtml(){
+function addedTaskToBoardHtml() {
   return `
   <div class="signedUpMassage d-none" id="addedTaskToBoard">
   <p class="p-whiteText">Task Added to board</p>
   <img class="addTasktoBoard" src="assets/img/icons/board_icon_white.svg">
   </div>
-  `
-}
-
-function assignedToUserHtml(i, color, currentUser, initials){
-  return `
-  <div id="user-${i}" class="flex-checkbox selected-profile" onclick="addAssignedContact(${i}, '${color}')" data-value="${currentUser}">
-  <div class="selected-profile"><div class="assinged-contact-profile" style="background-color:${color}">${initials}</div>
-  <span class="assigned-name">${currentUser}</span></div>
-  <img id="hoverCheckbox" class="hover-checkbox" src="assets/img/icons/checkBoxWhite.svg" alt="">
-  <img id="checkBox-${i}" class="flex-checkbox-img"src="assets/img/icons/checkBox.svg" alt="">
-  `
-}
-
-function assignedToUserYouHtml(i, color, currentUser, initials){
-  return `
-  <div id="user-${i}" class="flex-checkbox selected-profile" onclick="addAssignedContact(${i}, '${color}')" data-value="${currentUser}">
-  <div class="selected-profile"><div class="assinged-contact-profile" style="background-color:${color}">${initials}</div>
-  <span class="assigned-name">${currentUser} (you)</span></div>
-  <img id="hoverCheckbox" class="hover-checkbox" src="assets/img/icons/checkBoxWhite.svg" alt="">
-  <img id="checkBox-${i}" class="flex-checkbox-img"src="assets/img/icons/checkBox.svg" alt="">
-  `
+  `;
 }

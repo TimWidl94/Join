@@ -27,7 +27,7 @@ function legalNoticeHtmlMain() {
       <h2 class="h2-text-sites">Exploring the Board</h2>
       <p class="p-text-sites">
         Email:
-        <a href="mailto:Join-Gruppe-9@mail.de">Join-Gruppe-9@mail.de</a>
+        <a href="mailto:Join-Gruppe-9@mail.de"><span class="span-blue">Join-Gruppe-9@mail.de</span></a>
       </p>
       <h2 class="h2-text-sites">Acceptance of terms</h2>
       <p class="p-text-sites">
@@ -91,7 +91,7 @@ function legalNoticeHtmlMain() {
         of <span class="span-blue">Join</span> and/or your breach of this Legal
         Notice. <br /><br />
         For any questions or notices, please contact us at
-        <a href="mailto:Join-Gruppe-9@mail.de">Join-Gruppe-9@mail.de</a>.
+        <a href="mailto:Join-Gruppe-9@mail.de"><span class="span-blue">Join-Gruppe-9@mail.de</span></a>.
         <br /><br />
         Date: February 1, 2024
       </p>

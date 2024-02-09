@@ -183,7 +183,7 @@ function filterAddTaskContact() {
   assignedDropDown.innerHTML = '';
 
   if (searchTerm === '') {
-    renderAllContacts(contacts);
+    renderContacts(contacts);
     assignedDropDown.classList.remove('d-none');
   } else {
     const filteredContacts = contacts.filter((contact) => contact.name.toLowerCase().startsWith(searchTerm));
@@ -196,6 +196,17 @@ function filterAddTaskContact() {
     }
   }
 }
+function renderContacts(contacts) {
+  let assignedDropdown = document.getElementById('assignedDropdown');
+  assignedDropdown.innerHTML = '';
+
+  for (let i = 0; i < contacts.length; i++) {
+    let currentUser = contacts[i]['name'];
+    let initials = getInitials(currentUser);
+    let color = contacts[i]['color'];
+    assignedDropdown.innerHTML += assignedToUserHtml(i, color, currentUser, initials);
+  }
+}
 
 function renderFilteredContacts(filteredContacts) {
   let assignedDropdown = document.getElementById('assignedDropdown');
@@ -203,7 +214,7 @@ function renderFilteredContacts(filteredContacts) {
 
   for (let i = 0; i < filteredContacts.length; i++) {
     let currentUser = filteredContacts[i]['name'];
-    let initials = getInitials(currentUser); // Vollständiger Name übergeben
+    let initials = getInitials(currentUser);
     let color = filteredContacts[i]['color'];
     assignedDropdown.innerHTML += assignedToUserYouHtml(i, color, currentUser, initials);
   }
@@ -268,9 +279,7 @@ function renderSelectedContacts() {
     let contact = selectedContacts[i];
     let initials = getInitials(contact.name);
     let color = contact['color'];
-    // content.innerHTML += `<div class="assinged-contact-overview" style="background-color:${color}">${initials}</div>`;
-    content.innerHTML += `assignedToUserHtml(i, color, currentUser, initials)`;
-    
+    content.innerHTML += `<div class="assinged-contact-overview" style="background-color:${color}">${initials}</div>`;    
   }
 }
 

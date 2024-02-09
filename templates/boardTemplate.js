@@ -2,7 +2,7 @@ function generateTodoHTML(i, img) {
   return /*html*/ `
     
         <div draggable="true" ondragstart="startDragging(${i})" class="board-task" onclick="openTaskPopup(${i})">
-            <div class="board-task-epic board-task-epic-green">
+            <div class="board-task-epic" id="board-task-epic${i}">
                 ${tasks[i]['selectedCategory']}
             </div>
                 <div class="board-task-title">${tasks[i]['taskTitle']}</div>

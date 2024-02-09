@@ -250,7 +250,20 @@ async function todoAreaUpdate() {
   for (let index = 0; index < todo.length; index++) {
     const element = todo[index];
     await setPrioImg(i);
+    setCategoryBackground(tasks[index]['selectedCategory'], index);
     document.getElementById('todo').innerHTML += generateTodoHTML(element, img);
+  }
+}
+
+function setCategoryBackground(category, index) {
+  console.log('category:', category);
+  if (category == 'user story') {
+    classlistAdd(`board-task-epic${index}`, 'board-task-epic-green');
+  }
+  if (category == 'other') {
+    classlistAdd(`board-task-epic${index}`, 'board-task-epic-blue');
+  } else {
+    console.warn('category not found!');
   }
 }
 
@@ -262,6 +275,8 @@ async function inProgressUdate() {
   for (let index = 0; index < inProgress.length; index++) {
     const element = inProgress[index];
     await setPrioImg(i);
+    setCategoryBackground(tasks[index]['selectedCategory'], index);
+    console.log("tasks[index]['selectedCategory']", tasks[index]['selectedCategory']);
     document.getElementById('inProgress').innerHTML += generateTodoHTML(element, img);
   }
 }

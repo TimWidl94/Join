@@ -173,7 +173,7 @@ function generateTaskPopupHTML(i, img, date) {
     <div class="aTPopupContainer" id="aTPopupContainer"> 
       <div class="aTPopup" id="aTPopup" onclick="doNotClose(event)"> 
         <div class="aTPopupTop">
-          <div class="aTPopupCategory"><p>${tasks[i].selectedCategory}</p></div>
+          <div class="aTPopupCategory" id="aTPopupCategory${i}"><p>${tasks[i].selectedCategory}</p></div>
           <div class="aTPopupClose" onclick="closeTaskPopup()"><img src="assets/img/icons/close.svg" alt="Close" /></div>
         </div>
         

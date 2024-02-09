@@ -64,6 +64,7 @@ function openTaskPopup(i) {
   let date = convertDateFormat(tasks[i].taskDueDate);
   taskPopup.innerHTML = '';
   taskPopup.innerHTML = generateTaskPopupHTML(i, img, date);
+  setCategoryBackground(tasks[i]['selectedCategory'], `aTPopupCategory${i}`);
 
   renderAssignedToContacs(i);
   renderSubtasks(i, 'subtaskContainerPopup');
@@ -85,6 +86,7 @@ function renderAssignedToContacs(i) {
       const selectedContact = task.selectedContacts[j];
       const contactColor = getContactColor(selectedContact.name);
       const capitalLetters = getFirstLetters(selectedContact.name);
+      console.log('capitalLetters', capitalLetters);
       assingedToContainer.innerHTML += renderAssignedToContacsInfoHtml(contactColor, capitalLetters, selectedContact);
     }
   }
@@ -205,9 +207,9 @@ async function saveEditedTask(i) {
   tasks[i].prio = selectedPrioPopupEdit;
 
   closeTaskPopup();
-  renderBoardTasks();
+  // renderBoardTasks();
   updateHTML();
-  // await setItem('tasks', JSON.stringify(tasks));
+  await setItem('stasks', JSON.stringify(tasks));
 }
 
 function renderSubTasksInput() {
@@ -230,12 +232,24 @@ function renderSubTasksEditable(i, id1) {
   }
 }
 
+function setCategoryBackground(category, id) {
+  console.log('category:', category);
+  console.log('id:', id);
+  if (category == 'user-story') {
+    document.getElementById(id).classList.add('board-task-epic-green');
+  }
+  if (category === 'other') {
+    document.getElementById(id).classList.add('board-task-epic-blue');
+  }
+}
+
 function startDragging(id) {
   currentDraggedElement = id;
 }
 
 function updateHTML() {
   todoAreaUpdate();
+  console.log('todoAreaUpdate');
   inProgressUdate();
   feedbackAreaUdate();
   doneUpdate();
@@ -244,38 +258,28 @@ function updateHTML() {
 
 async function todoAreaUpdate() {
   let todo = tasks.filter((t) => t['selectedCategory'] == 'toDo');
-
+  console.log('todo.length', todo.length);
   document.getElementById('todo').innerHTML = '';
 
   for (let index = 0; index < todo.length; index++) {
+    console.log('todoAreaUpdate123');
+
     const element = todo[index];
     await setPrioImg(i);
-    setCategoryBackground(tasks[index]['selectedCategory'], index);
     document.getElementById('todo').innerHTML += generateTodoHTML(element, img);
-  }
-}
-
-function setCategoryBackground(category, index) {
-  console.log('category:', category);
-  if (category == 'user story') {
-    classlistAdd(`board-task-epic${index}`, 'board-task-epic-green');
-  }
-  if (category == 'other') {
-    classlistAdd(`board-task-epic${index}`, 'board-task-epic-blue');
-  } else {
-    console.warn('category not found!');
+    setCategoryBackground(tasks[index]['selectedCategory'], `board-task-epic${i}`);
   }
 }
 
 async function inProgressUdate() {
   let inProgress = tasks.filter((t) => t['selectedCategory'] == 'inProgress');
-
+  console.log('inProgress.length', inProgress.length);
   document.getElementById('inProgress').innerHTML = '';
 
   for (let index = 0; index < inProgress.length; index++) {
     const element = inProgress[index];
     await setPrioImg(i);
-    setCategoryBackground(tasks[index]['selectedCategory'], index);
+    // setCategoryBackground(tasks[index]['selectedCategory'], index);
     console.log("tasks[index]['selectedCategory']", tasks[index]['selectedCategory']);
     document.getElementById('inProgress').innerHTML += generateTodoHTML(element, img);
   }
@@ -283,6 +287,7 @@ async function inProgressUdate() {
 
 async function feedbackAreaUdate() {
   let awaitFeedback = tasks.filter((t) => t['selectedCategory'] == 'awaitFeedback');
+  console.log('awaitFeedback.length', awaitFeedback.length);
 
   document.getElementById('awaitFeedback').innerHTML = '';
 
@@ -295,6 +300,7 @@ async function feedbackAreaUdate() {
 
 async function doneUpdate() {
   let done = tasks.filter((t) => t['selectedCategory'] == 'done');
+  console.log('done.length', done.length);
 
   document.getElementById('done').innerHTML = '';
 
@@ -395,11 +401,11 @@ function renderContactsInBoardTask(x) {
   let container = document.getElementById('contactsInBoardTask' + x);
   container.innerHTML = '';
   for (let i = 0; i < tasks[x]['selectedContacts'].length; i++) {
-    let contact = tasks[x]['selectedContacts'][i]['name'];
-    const contactColor = getContactColor(contact);
+    let contact = getFirstLetters(tasks[x]['selectedContacts'][i]['name']);
+    const contactColor = getContactColor(tasks[x]['selectedContacts'][i]['name']);
 
     container.innerHTML += `
-    <div class="board-task-member-profile" style="background-color: ${contactColor}">${contact}</div>
+    <div class="board-task-member-profile" style="background-color: ${contactColor} !important">${contact}</div>
     `;
   }
 }

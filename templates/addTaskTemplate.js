@@ -144,3 +144,23 @@ function addedTaskToBoardHtml() {
   </div>
   `;
 }
+
+function assignedToUserHtml(i, color, currentUser, initials) {
+  return `
+  <div id="user-${i}" class="flex-checkbox selected-profile" onclick="addAssignedContact(${i}, '${color}')" data-value="${currentUser}">
+  <div class="selected-profile"><div class="assinged-contact-profile" style="background-color:${color}">${initials}</div>
+  <span class="assigned-name">${currentUser}</span></div>
+  <img id="hoverCheckbox" class="hover-checkbox" src="assets/img/icons/checkBoxWhite.svg" alt="">
+  <img id="checkBox-${i}" class="flex-checkbox-img"src="assets/img/icons/checkBox.svg" alt="">
+  `;
+}
+
+function assignedToUserYouHtml(i, color, currentUser, initials) {
+  return `
+  <div id="user-${i}" class="flex-checkbox selected-profile" onclick="addAssignedContact(${i}, '${color}')" data-value="${currentUser}">
+  <div class="selected-profile"><div class="assinged-contact-profile" style="background-color:${color}">${initials}</div>
+  <span class="assigned-name">${currentUser} (you)</span></div>
+  <img id="hoverCheckbox" class="hover-checkbox" src="assets/img/icons/checkBoxWhite.svg" alt="">
+  <img id="checkBox-${i}" class="flex-checkbox-img"src="assets/img/icons/checkBox.svg" alt="">
+  `;
+}

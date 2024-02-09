@@ -13,6 +13,7 @@ async function init() {
 let tasks = [];
 let subtasks = [];
 let selectedContacts = [];
+let filteredContacts = [];
 let selectedCategories = [];
 let selectedPrio;
 let categoryIsSelected = false;
@@ -186,7 +187,7 @@ function filterAddTaskContact() {
     assignedDropDown.classList.remove('d-none');
   } else {
     const filteredContacts = contacts.filter((contact) => contact.name.toLowerCase().startsWith(searchTerm));
-    renderAllContacts(filteredContacts);
+    renderFilteredContacts(filteredContacts);
 
     if (filteredContacts.length === 0) {
       assignedDropDown.classList.add('d-none');
@@ -196,20 +197,20 @@ function filterAddTaskContact() {
   }
 }
 
-function renderAllContacts(contactList) {
-  for (let i = 0; i < contactList.length; i++) {
-    let currentUser = contactList[i]['name'];
-    let initials = getInitials(currentUser);
-    let assignedDropdown = document.getElementById('assignedDropdown');
-    assignedDropdown.innerHTML += /*html*/ `
-      <div id="user-${i}" class="flex-checkbox selected-profile" onclick="addAssignedContact(${i})" data-value="${currentUser}">
-        <div class="assigned-contact-profile selected-profile" onclick="deleteSelectedContact(${i})">${initials}</div>
-        ${currentUser}
-        <img id="checkBox-${i}" src="assets/img/icons/checkBox.svg" alt="">
-      </div>`;
+function renderFilteredContacts(filteredContacts) {
+  let assignedDropdown = document.getElementById('assignedDropdown');
+  assignedDropdown.innerHTML = '';
+
+  for (let i = 0; i < filteredContacts.length; i++) {
+    let currentUser = filteredContacts[i]['name'];
+    let initials = getInitials(currentUser); // Vollständiger Name übergeben
+    let color = filteredContacts[i]['color'];
+    assignedDropdown.innerHTML += assignedToUserYouHtml(i, color, currentUser, initials);
   }
-  document.getElementById('contactInitials').innerHTML = getInitials(contactList[0]['name']);
+  document.getElementById('contactInitials').innerHTML = getInitials(filteredContacts[0]['name']);
 }
+
+
 
 function openDropDown() {
   let assignedDropdown = document.getElementById('assignedDropdown');
@@ -259,7 +260,7 @@ function renderContactList(assignedDropdown, checkboxImage, selectedContact, col
   }
 }
 
-function renderSelectedContacts(i) {
+function renderSelectedContacts() {
   let content = document.getElementById('assignedAddedContact');
   content.innerHTML = '';
 
@@ -267,9 +268,12 @@ function renderSelectedContacts(i) {
     let contact = selectedContacts[i];
     let initials = getInitials(contact.name);
     let color = contact['color'];
-    content.innerHTML += `<div class="assinged-contact-overview" style="background-color:${color}">${initials}</div>`;
+    // content.innerHTML += `<div class="assinged-contact-overview" style="background-color:${color}">${initials}</div>`;
+    content.innerHTML += `assignedToUserHtml(i, color, currentUser, initials)`;
+    
   }
 }
+
 
 function getInitials(contactName) {
   const nameParts = contactName.split(' ');

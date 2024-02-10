@@ -348,12 +348,9 @@ input[type='date']::-webkit-calendar-picker-indicator {
   padding-left: 10px; }
 
 .addTask-selected {
-  color: #fff;
   background-color: #2a3647;
   border-radius: 10px;
   padding: 7px 16px 7px 16px; }
-  .addTask-selected:hover {
-    background-color: #1d2127 !important; }
 
 .category-selected {
   color: #fff;

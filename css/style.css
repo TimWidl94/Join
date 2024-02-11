@@ -1931,16 +1931,12 @@ form {
 
 .container {
   margin: 100px 0px 0px;
-  max-width: 1208px;
+  max-width: 1000px;
   position: relative;
   padding: 80px 64px;
   left: 232px;
   background-color: #f6f7f8;
-  overflow-y: scroll;
   height: 100vh; }
-
-.container::-webkit-scrollbar {
-  display: none; }
 
 .row {
   display: flex;
@@ -1991,7 +1987,23 @@ form {
   cursor: pointer;
   min-width: 100%;
   height: calc(100% + 221px);
-  min-height: 40px; }
+  min-height: 40px;
+  position: relative;
+  top: 40px; }
+
+.overflowYActive {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding: 0px 10px;
+  display: flex;
+  justify-content: center; }
+
+.overflowYActive::-webkit-scrollbar {
+  display: none; }
+
+.heightContainerMax {
+  height: 100%;
+  max-height: 75%; }
 
 .drag-area-empty {
   display: flex;
@@ -2099,11 +2111,17 @@ form {
   display: flex;
   justify-content: space-between;
   align-self: flex-start;
+  align-items: center;
   width: 100%;
+  max-width: 216px;
   font-size: 20px;
   font-weight: 700;
   color: #42526e;
-  margin-bottom: 15.5px; }
+  margin-bottom: 15.5px;
+  position: fixed;
+  z-index: 2;
+  background-color: #f6f7f8;
+  height: 40px; }
 
 .board-svg-container {
   --svg-color: #2a3647;
@@ -3504,16 +3522,12 @@ input:focus {
 
 .container {
   margin: 100px 0px 0px;
-  max-width: 1208px;
+  max-width: 1000px;
   position: relative;
   padding: 80px 64px;
   left: 232px;
   background-color: #f6f7f8;
-  overflow-y: scroll;
   height: 100vh; }
-
-.container::-webkit-scrollbar {
-  display: none; }
 
 .row {
   display: flex;

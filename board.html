@@ -53,8 +53,8 @@
             </button>
           </div>
         </div>
-        <div class="row boardBoxesForTasksMobile">
-          <div class="col-4">
+        <div class="row boardBoxesForTasksMobile heightContainerMax">
+          <div class="col-4 overflowYActive">
             <div class="board-title">
               To do
               <div onclick="openAddTaskPopup()" class="board-svg-container"></div>
@@ -67,7 +67,7 @@
               ondragover="allowDrop(event); highlight('todo')"
             ></div>
           </div>
-          <div class="col-4">
+          <div class="col-4 overflowYActive">
             <div class="board-title">
               In progress
               <div onclick="openAddTaskPopup()" class="board-svg-container"></div>
@@ -80,7 +80,7 @@
               ondragover="allowDrop(event); highlight('inProgress')"
             ></div>
           </div>
-          <div class="col-4">
+          <div class="col-4 overflowYActive">
             <div class="board-title">
               Await feedback
               <div onclick="openAddTaskPopup()" class="board-svg-container"></div>
@@ -93,7 +93,7 @@
               ondragover="allowDrop(event); highlight('awaitFeedback')"
             ></div>
           </div>
-          <div class="col-4">
+          <div class="col-4 overflowYActive">
             <div class="board-title">
               Done
               <div onclick="openAddTaskPopup()" class="board-svg-container"></div>

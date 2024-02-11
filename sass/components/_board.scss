@@ -619,6 +619,29 @@
   margin-bottom: 16px;
 }
 
+.assignedToEdit {
+  display: flex;
+  flex-direction: column;
+  width: calc(100% - 2 * 24px);
+  gap: 8px;
+  position: relative;
+  display: inline-block;
+  min-height: 300px;
+}
+
+.dropdownAssignedEdit {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  // width: calc(100% - 2 * 17px);
+  padding: 16px;
+  border: 1px solid $color-board-grey;
+  width: calc(100% - 2 * 50px);
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: $color-light;
+}
+
 .dropdownEdit {
   display: flex;
   justify-content: space-between;
@@ -629,6 +652,25 @@
   border-radius: 10px;
   cursor: pointer;
   background-color: $color-light;
+}
+
+.assignedDropdownEdit {
+  position: absolute;
+  z-index: 1;
+  margin-top: 71px;
+  min-width: 439px;
+  padding: 21px 0px 0;
+  border-radius: 10px;
+  border: 1px solid $color-lightgrey;
+  background-color: $color-light;
+  font-size: 16px;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: $color-light;
+  background-repeat: no-repeat;
+  background-position: right 8px top 50%, 0 0;
+  background-size: 32px, 100%;
 }
 
 .btn-edit-task {

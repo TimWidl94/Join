@@ -162,7 +162,7 @@ function editTask(i) {
 function renderEditTask(i) {
   renderSubTasksInput(i);
   renderSubTasksEditable(i, 'subTaskContainerEdit');
-  showTaskForm('assignedToEdit');
+  showTaskFormEdit('assignedToEdit');
 }
 
 function renderSubTasksInput(i) {
@@ -183,6 +183,21 @@ function renderSubTasksEditable(i, id1) {
       container.innerHTML += subTasksValueEditHtml(id, subTask);
     }
   }
+}
+
+function showTaskFormEdit(id) {
+  let assignedTo = document.getElementById(id);
+  assignedTo.innerHTML = /*html*/ `
+    <div name="assigned" onchange="addAssignedContact()">
+      <div id="dropdownEdit" class="dropdownEdit" onclick="openDropDown()">
+        <input class="contact-searchbar" onkeyup="filterAddTaskContact()" type="text" id="search" placeholder="Select contacts to assign" />
+        <img id="dropdownImgArrow" class="rotate-arrow dropdown-arrow-hover dropdown-arrow-hover" src="../assets/img/AddTask/arrow_drop.svg" alt="">
+      </div>
+    </div>
+    <div id="assignedDropdown" class="assignedDropdownEdit d-none">
+      <div id="assignedAddedContacts"></div>
+    </div>
+  `;
 }
 
 function changeButtonsAddTaskEdit(id) {
@@ -352,6 +367,15 @@ function checkTaskAreaDisplayEmpty() {
       dragArea.innerHTML = /*html*/ `<div class="drag-area-empty">No tasks To do</div>`;
     }
   }
+}
+
+function selectCategoryEdit(category) {
+  const userStory = document.getElementById('userStory');
+  const other = document.getElementById('other');
+  const showSelectedCategory = document.getElementById('showSelectedCategory');
+  const assignedDropdownCategory = document.getElementById('assignedDropdownCategory');
+  selectCategoryIfElse(userStory, other, showSelectedCategory, assignedDropdownCategory, category);
+  // checkIfFormIsFilledEdit();
 }
 
 async function renderBoardTasks() {

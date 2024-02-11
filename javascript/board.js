@@ -167,12 +167,12 @@ function renderEditTask(i) {
 
 function renderSubTasksInput() {
   let container = document.getElementById('subtasksEdit');
-  container.innerHTML += subTaskInputHtml();
+  container.innerHTML += subTaskInputEditHtml();
 }
 
 function renderSubTasksEditable(i, id1) {
   let container = document.getElementById(id1);
-  container.innerHTML = ``;
+  // container.innerHTML = ``;
 
   const task = tasks[i];
 
@@ -183,6 +183,20 @@ function renderSubTasksEditable(i, id1) {
       container.innerHTML += subTasksValueEditHtml(id, subTask);
     }
   }
+}
+
+function changeButtonsAddTaskEdit(id) {
+  let inputField = document.getElementById(id);
+
+  inputField.innerHTML = /*html*/ `
+    <input id="subTaskInputEdit" type="text" placeholder="Add new subtask" class="PosRel" />
+    <div class="subTaskInputButtons">
+      <img class="subTaskInputImg" onclick="setValueBack('subTaskInputEdit', 'subtasksEdit')" src="./assets/img/icons/close.svg" alt="">
+      <span class="subTaskInputImg-vertical"></span>
+      <img class="subTaskInputImg checkImg" onclick="addSubTask('subTaskInputEdit', 'subTaskContainerEdit')" src="./assets/img/icons/checkAddTask.svg" alt="">
+    </div>
+  `;
+  document.getElementById('subTaskInput').focus();
 }
 
 function setPrioEdit(prio) {

@@ -121,8 +121,8 @@ function subTaskInputHtml() {
   
   <p>Subtasks</p>
           <div class="inputFieldBox" id="inputFieldBox">
-            <input id="subTaskInput" type="text" placeholder="Add new subtask" onclick="changeButtonsAddTask()" />
-            <img onclick="addSubTask('subTaskInput')" class="inputImgPlus" src="assets/img/AddTask/plus.svg" alt="Add Icon" />
+            <input id="subTaskInput" type="text" placeholder="Add new subtask" onclick="changeButtonsAddTask('inputFieldBox')" />
+            <img onclick="addSubTask('subTaskInput', 'subTaskContainer')" class="inputImgPlus" src="assets/img/AddTask/plus.svg" alt="Add Icon" />
           </div>
           <div id="subTaskError" class="subtask-div-error"></div>
    
@@ -131,8 +131,8 @@ function subTaskInputHtml() {
 
 function subTaskInputFieldHtml() {
   return `
-  <input id="subTaskInput" type="text" placeholder="Add new subtask" onclick="changeButtonsAddTask()" />
-  <img onclick="addSubTask('subTaskInput')" class="inputImgPlus" src="assets/img/AddTask/plus.svg" alt="Add Icon" />
+  <input id="subTaskInput" type="text" placeholder="Add new subtask" onclick="changeButtonsAddTask('inputFieldBox')" />
+  <img onclick="addSubTask('subTaskInput', 'inputFieldBox')" class="inputImgPlus" src="assets/img/AddTask/plus.svg" alt="Add Icon" />
   `;
 }
 

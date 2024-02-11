@@ -30,7 +30,8 @@ function renderAddTask() {
 
   if (contentBoardTask) {
     console.log('addTask Popup rendered');
-    contentBoardTask.innerHTML = addTaskHtml('boardAddTask');
+    // contentBoardTask.innerHTML = addTaskHtml('boardAddTask');
+    contentBoardTask.innerHTML = addTaskHtml();
   }
 }
 
@@ -78,8 +79,9 @@ async function addTask() {
   showPopUpAddedTaskToBoard();
 }
 
-function addSubTask(id) {
-  let subTaskInput = document.getElementById(id).value;
+function addSubTask(idInput, idContainer) {
+  console.log('idContainer', idContainer);
+  let subTaskInput = document.getElementById(idInput).value;
   let subTaskError = document.getElementById('subTaskError');
   let nr = subtasks.length;
   if (subTaskInput == 0) {
@@ -91,9 +93,9 @@ function addSubTask(id) {
       subTaskInput: subTaskInput,
       id: nr,
     });
-    document.getElementById('subTaskInput').value = '';
-    renderGeneratedSubTasks('subTaskContainer');
-    resetSubTaskInputField();
+    document.getElementById(idInput).value = '';
+    renderGeneratedSubTasks(idContainer);
+    resetSubTaskInputField(idInput);
   }
 }
 
@@ -106,22 +108,6 @@ function renderGeneratedSubTasks(id) {
     container.innerHTML += subTasksValueHtml(id, i);
   }
 }
-
-// function renderSelectedContacts() {
-//   let content = document.getElementById('basic-info-wrapper');
-//   content.innerHTML = '';
-
-//   for (let i = 0; i < contacts.length; i++) {
-//     const contact = contacts[i];
-//     const firstLetter = contact.name.charAt(0);
-
-//     if (!letters.includes(firstLetter)) {
-//       letters.push(firstLetter);
-//     }
-//   }
-//   sortLetters();
-//   renderLetters();
-// }
 
 function findSubtaskPosition(id) {
   let nr = subtasks.findIndex((obj) => obj.id === id);
@@ -220,8 +206,6 @@ function renderFilteredContacts(filteredContacts) {
   }
 }
 
-
-
 function openDropDown() {
   let assignedDropdown = document.getElementById('assignedDropdown');
   let dropdownImgArrow = document.getElementById('dropdownImgArrow');
@@ -278,10 +262,9 @@ function renderSelectedContacts() {
     let contact = selectedContacts[i];
     let initials = getInitials(contact.name);
     let color = contact['color'];
-    content.innerHTML += `<div class="assinged-contact-overview" style="background-color:${color}">${initials}</div>`;    
+    content.innerHTML += `<div class="assinged-contact-overview" style="background-color:${color}">${initials}</div>`;
   }
 }
-
 
 function getInitials(contactName) {
   const nameParts = contactName.split(' ');
@@ -356,8 +339,8 @@ function selectCategoryIfElse(userStory, other, showSelectedCategory, assignedDr
   }
 }
 
-function changeButtonsAddTask() {
-  let inputField = document.getElementById('inputFieldBox');
+function changeButtonsAddTask(id) {
+  let inputField = document.getElementById(id);
 
   inputField.innerHTML = /*html*/ `
     <input id="subTaskInput" type="text" placeholder="Add new subtask" onclick="" class="PosRel" />
@@ -370,14 +353,14 @@ function changeButtonsAddTask() {
   document.getElementById('subTaskInput').focus();
 }
 
-function setValueBack(id) {
-  let inputField = document.getElementById(id);
+function setValueBack(idInput, idContainer) {
+  let inputField = document.getElementById(idInput);
   inputField.value = ``;
-  resetSubTaskInputField();
+  resetSubTaskInputField(idContainer);
 }
 
-function resetSubTaskInputField() {
-  let inputContainer = document.getElementById('inputFieldBox');
+function resetSubTaskInputField(idContainer) {
+  let inputContainer = document.getElementById(idContainer);
   inputContainer.innerHTML = subTaskInputFieldHtml();
 }
 

@@ -80,7 +80,6 @@ async function addTask() {
 }
 
 function addSubTask(idInput, idContainer) {
-  console.log('idContainer', idContainer);
   let subTaskInput = document.getElementById(idInput).value;
   let subTaskError = document.getElementById('subTaskError');
   let nr = subtasks.length;
@@ -89,18 +88,25 @@ function addSubTask(idInput, idContainer) {
     Subtask bitte bei Bedarf hinzufügen.`;
   } else {
     subTaskError.innerHTML = /*HTML*/ ``;
+    console.log('subtasks before:', subtasks);
     subtasks.push({
       subTaskInput: subTaskInput,
       id: nr,
     });
+    console.log('subtasks after:', subtasks);
     document.getElementById(idInput).value = '';
-    renderGeneratedSubTasks(idContainer);
+    if (idContainer == 'subTaskContainer') {
+      renderGeneratedSubTasks('subTaskContainer');
+    } else {
+      renderGeneratedSubTasksEdit('subTaskContainerEdit');
+    }
+    // renderGeneratedSubTasks(idContainer);
     resetSubTaskInputField(idInput);
   }
 }
 
-function renderGeneratedSubTasks(id) {
-  let container = document.getElementById(id);
+function renderGeneratedSubTasks(idContainer) {
+  let container = document.getElementById(idContainer);
   container.innerHTML = ``;
 
   for (let i = 0; i < subtasks.length; i++) {
@@ -109,19 +115,37 @@ function renderGeneratedSubTasks(id) {
   }
 }
 
+function addExistingSubtasks() {}
+
+function renderGeneratedSubTasksEdit(idContainer) {
+  // addExistingSubtasks();
+  let container = document.getElementById(idContainer);
+  container.innerHTML = ``;
+
+  for (let i = 0; i < subtasks.length; i++) {
+    let id = subtasks[i]['id'];
+    let subtaskInput = subtasks[i]['subTaskInput'];
+    container.innerHTML += subTasksValueEditHtml(id, subtaskInput);
+  }
+}
+
 function findSubtaskPosition(id) {
   let nr = subtasks.findIndex((obj) => obj.id === id);
+  if (nr == -1) {
+    console.log('Number of Subtask not found!');
+  }
   return nr;
 }
 
 function editSubTask(id) {
+  console.log('editSubTask id:', id);
   let container = document.getElementById(id);
   let nr = findSubtaskPosition(id);
   let textContent = subtasks[nr]['subTaskInput'];
   container.innerHTML = /*html*/ `<div class="test-2">
 <input id="editSubTaskInput" type="text" placeholder=${textContent} value=${textContent} />
 <div class="editSubTaskButtonBox">
-<img src="assets/img/icons/delete.svg" alt="Clear Icon" class="inputImgTrash" onclick="deleteSubTask(${id})"/>
+<img src="assets/img/icons/delete.svg" alt="Clear Icon" class="inputImgTrash" onclick="deleteSubTask(${id}, 'subTaskContainer')"/>
 <span class="subTaskInputImg-vertical-edit"></span>
 <img src="./assets/img/icons/checkAddTask.svg" alt="check" class="inputImgTrash" onclick="addEditSubTask(${id})"/>
 </div>
@@ -227,7 +251,7 @@ function openDropDownCategory() {
 function addAssignedContact(i, color) {
   let assignedDropdown = document.getElementById('assignedDropdown');
   let selectedContact = assignedDropdown.getAttribute('data-value');
-  
+
   let checkboxImage = document.getElementById(`checkBox-${i}`);
   renderContactList(assignedDropdown, checkboxImage, selectedContact, color);
 
@@ -275,17 +299,18 @@ function getInitials(contactName) {
   return initials.toUpperCase();
 }
 
-function deleteSubTask(number) {
+function deleteSubTask(number, idContainer) {
   let nr = findSubtaskPosition(number);
+  console.log('subtasks idContainer:', idContainer);
 
   subtasks.splice(nr, 1);
-  subTaskContainer = document.getElementById('subTaskContainer');
+  subTaskContainer = document.getElementById(idContainer);
   subTaskContainer.innerHTML = ``;
   for (let i = 0; i < subtasks.length; i++) {
     let nr = subtasks[i]['id'];
     subTaskContainer.innerHTML += /*HTML*/ `<div id="${nr}" class="subtask-div-list">${subtasks[i]['subTaskInput']}
     <div><img class="subtask-div-btn" onclick="editSubTask(${nr})" src="./assets/img/icons/edit.svg" alt="">
-    <img class="subtask-div-btn" onclick="deleteSubTask(${nr})" src="./assets/img/icons/delete.svg" alt=""></div>
+    <img class="subtask-div-btn" onclick="deleteSubTask(${nr}, '${idContainer}')" src="./assets/img/icons/delete.svg" alt=""></div>
     </div>`;
   }
 }
@@ -347,7 +372,7 @@ function changeButtonsAddTask(id) {
     <div class="subTaskInputButtons">
       <img class="subTaskInputImg" onclick="setValueBack('subTaskInput')" src="./assets/img/icons/close.svg" alt="">
       <span class="subTaskInputImg-vertical"></span>
-      <img class="subTaskInputImg checkImg" onclick="addSubTask('subTaskInput')" src="./assets/img/icons/checkAddTask.svg" alt="">
+      <img class="subTaskInputImg checkImg" onclick="addSubTask('subTaskInput', 'subTaskContainer')" src="./assets/img/icons/checkAddTask.svg" alt="">
     </div>
   `;
   document.getElementById('subTaskInput').focus();

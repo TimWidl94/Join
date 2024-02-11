@@ -2501,14 +2501,28 @@ form {
   width: calc(100% - 16px);
   padding-right: 16px; }
 
-@media (max-width: 1000px) {
-  .container {
-    position: unset !important;
-    left: 0px !important;
-    margin: 5px 0px 0px !important; }
-  .mobileBoardHeadSection {
-    flex-direction: column !important;
-    align-items: start !important; }
+@media (max-width: 1300px) {
+  .overflowYActive {
+    overflow-y: unset;
+    overflow-x: unset;
+    display: unset; }
+  .board-title {
+    position: unset;
+    z-index: unset;
+    background-color: unset; }
+  .drag-area {
+    flex-direction: unset;
+    position: unset;
+    height: 100%;
+    overflow-x: scroll; }
+  .drag-area::-webkit-scrollbar {
+    display: none; }
+  .col-4 {
+    width: 100% !important;
+    max-width: 100% !important; }
+  .wobble-container {
+    max-width: 206px;
+    width: 100%; }
   .headerBoardMobile {
     display: flex !important;
     justify-content: space-between;
@@ -2516,10 +2530,21 @@ form {
     align-items: center; }
   .boardBoxesForTasksMobile {
     flex-direction: column; }
+  .mobileBoardHeadSection {
+    flex-direction: column !important;
+    align-items: start !important; }
   .mobileButtonHide {
     display: none !important; }
-  .col-4 {
-    width: 66% !important; }
+  .container {
+    max-width: calc(100% - 360px) !important; } }
+
+@media (max-width: 1000px) {
+  .container {
+    position: unset !important;
+    left: 0px !important;
+    margin: 5px 0px 0px !important;
+    max-width: calc(100% - 130px) !important;
+    height: 100% !important; }
   .search-side {
     width: 100%; }
   .search-side-bar {
@@ -2527,6 +2552,11 @@ form {
     width: 100%; }
   .bodyBoard {
     overflow: visible !important; } }
+
+@media (max-width: 500px) {
+  .container {
+    padding: 80px 10px !important;
+    max-width: calc(100% - 35px) !important; } }
 
 /*  general section  */
 .dp-flex {

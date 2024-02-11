@@ -1,17 +1,14 @@
 .container {
     margin: 100px 0px 0px;
-    max-width: 1208px;
+    max-width: 1000px;
     position: relative;
     padding: 80px 64px;
     left:  232px;
     background-color: $summary-background-color;
-    overflow-y: scroll;
     height: 100vh;
 }
 
-.container::-webkit-scrollbar{
-    display: none;
-}
+
 
 .row {
     display: flex;

@@ -37,7 +37,7 @@ function subTasksValueHtml(id, i) {
       <div class="d-hover" >
         <img class="subtask-div-btn" onclick="editSubTask(${id})" src="./assets/img/icons/edit.svg" alt="">
         <span class="subTaskInputImg-vertical-1"></span>
-        <img class="subtask-div-btn" onclick="deleteSubTask(${id})" src="./assets/img/icons/delete.svg" alt="">
+        <img class="subtask-div-btn" onclick="deleteSubTask(${id}, 'subTaskContainer')" src="./assets/img/icons/delete.svg" alt="">
       </div>
     </li>`;
 }
@@ -159,13 +159,13 @@ function subTaskInputFieldHtml() {
   `;
 }
 
-function subTasksValueEditHtml(id, subTask) {
+function subTasksValueEditHtml(id, subtaskInput) {
   return /*HTML*/ `
-    <li id="${id}" class="subtask-div-list" ondbclick="editSubTask(${id})"><p>${subTask['subTaskInput']}</p>
+    <li id="${id}" class="subtask-div-list" ondbclick="editSubTask(${id})"><p>${subtaskInput}</p>
       <div class="d-hover" >
         <img class="subtask-div-btn" onclick="editSubTask(${id})" src="./assets/img/icons/edit.svg" alt="">
         <span class="subTaskInputImg-vertical-1"></span>
-        <img class="subtask-div-btn" onclick="deleteSubTask(${id})" src="./assets/img/icons/delete.svg" alt="">
+        <img class="subtask-div-btn" onclick="deleteSubTask(${id}, 'subTaskContainerEdit')" src="./assets/img/icons/delete.svg" alt="">
       </div>
     </li>`;
 }
@@ -327,7 +327,7 @@ function subTasksValueHtml(id, i) {
     <li id="${id}" class="subtask-div-list" ondblclick="editSubTask(${id})"><div class="subtask-div-text">${subtasks[i]['subTaskInput']}</div>
       <div class="subtask-div-list-hover-items">
         <img class="subtask-div-btn" onclick="editSubTask(${id})" src="./assets/img/icons/edit.svg" alt=""><span class="subTaskInputImg-vertical-added"></span>
-        <img class="subtask-div-btn" onclick="deleteSubTask(${id})" src="./assets/img/icons/delete.svg" alt="">
+        <img class="subtask-div-btn" onclick="deleteSubTask(${id}, 'subTaskContainer')" src="./assets/img/icons/delete.svg" alt="">
       </div>
     </li>`;
 }

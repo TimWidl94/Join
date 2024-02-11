@@ -160,19 +160,19 @@ function editTask(i) {
 }
 
 function renderEditTask(i) {
-  renderSubTasksInput();
+  renderSubTasksInput(i);
   renderSubTasksEditable(i, 'subTaskContainerEdit');
   showTaskForm('assignedToEdit');
 }
 
-function renderSubTasksInput() {
+function renderSubTasksInput(i) {
   let container = document.getElementById('subtasksEdit');
-  container.innerHTML += subTaskInputEditHtml();
+  container.innerHTML += subTaskInputEditHtml(i);
 }
 
 function renderSubTasksEditable(i, id1) {
   let container = document.getElementById(id1);
-  // container.innerHTML = ``;
+  container.innerHTML = ``;
 
   const task = tasks[i];
 

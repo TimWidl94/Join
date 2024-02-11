@@ -30,8 +30,7 @@ function renderAddTask() {
 
   if (contentBoardTask) {
     console.log('addTask Popup rendered');
-    // contentBoardTask.innerHTML = addTaskHtml('boardAddTask');
-    contentBoardTask.innerHTML = addTaskHtml();
+    contentBoardTask.innerHTML = addTaskHtml('boardAddTask');
   }
 }
 

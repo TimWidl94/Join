@@ -140,14 +140,14 @@ function addTaskHtml() {
   `;
 }
 
-function subTaskInputEditHtml() {
+function subTaskInputEditHtml(i) {
   return /*html*/ `
   <span class="aTPopupSpan">Subtasks</span>
           <div class="inputFieldBox" id="inputFieldBoxEdit">
-            <input id="subTaskInputEdit" type="text" placeholder="Add new subtask" onclick="changeButtonsAddTaskEdit('inputFieldBoxEdit')" />
-            <img onclick="addSubTask('subTaskInputEdit', 'subTaskContainerEdit')" class="inputImgPlus" src="assets/img/AddTask/plus.svg" alt="Add Icon" />
+            <input id="subTaskInputEdit" type="text" placeholder="Add new subtask" onclick="changeButtonsAddTaskEdit('inputFieldBoxEdit', ${i})" />
+            <img onclick="addSubTaskEdit('subTaskInputEdit', 'subTaskContainerEdit', ${i})" class="inputImgPlus" src="assets/img/AddTask/plus.svg" alt="Add Icon" />
           </div>
-          <div id="subTaskError" class="subtask-div-error"></div>
+          <div id="subTaskErrorEdit" class="subtask-div-error"></div>
    
   `;
 }
@@ -159,9 +159,9 @@ function subTaskInputFieldHtml() {
   `;
 }
 
-function subTasksValueEditHtml(id, subtaskInput) {
+function subTasksValueEditHtml(id, subTaskInput) {
   return /*HTML*/ `
-    <li id="${id}" class="subtask-div-list" ondbclick="editSubTask(${id})"><p>${subtaskInput}</p>
+    <li id="${id}" class="subtask-div-list" ondbclick="editSubTask(${id})"><p class="subtask-div-list-p">${subTaskInput}</p>
       <div class="d-hover" >
         <img class="subtask-div-btn" onclick="editSubTask(${id})" src="./assets/img/icons/edit.svg" alt="">
         <span class="subTaskInputImg-vertical-1"></span>
@@ -272,15 +272,15 @@ function generateTaskPopupHTML(i, img, date) {
 
           <div class="categoryEdit">
             <p class="aTPopupSpan, text-padding">Category<span class="span-required">*</span></span>
-            <div id="dropdownCategory" class="dropdownEdit" onclick="openDropDownCategory()">
-              <div id="showSelectedCategory" data-value="">Select task category
+            <div id="dropdownCategory" class="dropdownEdit" onclick="openDropDownCategoryEdit()">
+              <div id="showSelectedCategoryEdit" data-value="">Select task category
               </div>
-              <img id="dropdownImgArrowCategory" class="rotate-arrow dropdown-arrow-hover" src="../assets/img/AddTask/arrow_drop.svg" alt="">
+              <img id="dropdownImgArrowCategoryEdit" class="rotate-arrow dropdown-arrow-hover" src="../assets/img/AddTask/arrow_drop.svg" alt="">
             </div>
-            <div id="assignedDropdownCategory" class="category-dropdown d-none">
-              <div id="userStory" class="flex-checkbox" data-value="user-story" onclick="selectCategoryEdit('user-story')">User Story
+            <div id="assignedDropdownCategoryEdit" class="category-dropdown d-none">
+              <div id="userStoryEdit" class="flex-checkbox" data-value="user-story" onclick="selectCategoryEdit('user-story')">User Story
               </div>
-              <div id="other" class="flex-checkbox" data-value="other" onclick="selectCategoryEdit('other')">Other
+              <div id="otherEdit" class="flex-checkbox" data-value="other" onclick="selectCategoryEdit('other')">Other
               </div>
             </div>
           </div>

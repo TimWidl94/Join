@@ -258,9 +258,9 @@ function addAssignedContact(i, color) {
   renderSelectedContacts();
 }
 
-function renderContactList(assignedDropdown, checkboxImage,userID , selectedContact, color) {
+function renderContactList(assignedDropdown, checkboxImage, userID, selectedContact, color) {
   if (selectedContact !== '1') {
-    assignedDropdown.classList.add('addTask-selected');
+    assignedDropdown.classList.toggle('addTask-selected');
 
     const index = selectedContacts.findIndex((contact) => contact.name === selectedContact && contact.color === color);
 
@@ -269,17 +269,17 @@ function renderContactList(assignedDropdown, checkboxImage,userID , selectedCont
         selectedContacts.push({ name: selectedContact, color: color });
       }
       checkboxImage.src = './assets/img/icons/check_button-white.svg';
-      userID.classList.add('selected-profile-active-item');
+      // userID.classList.add('selected-profile-active-item');
     } else {
       if (index !== -1) {
         selectedContacts.splice(index, 1);
-        userID.classList.add('selected-profile-active-item');
       }
       checkboxImage.src = './assets/img/icons/checkBox.svg';
-      userID.classList.remove('selected-profile-active-item');
+      // userID.classList.remove('selected-profile-active-item');
     }
   }
 }
+
 
 function renderSelectedContacts() {
   let content = document.getElementById('assignedAddedContact');
@@ -294,6 +294,7 @@ function renderSelectedContacts() {
 }
 
 function getInitials(contactName) {
+  console.log('contactName:', contactName);
   const nameParts = contactName.split(' ');
   let initials = '';
   for (let i = 0; i < nameParts.length; i++) {

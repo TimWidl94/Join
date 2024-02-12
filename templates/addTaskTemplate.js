@@ -159,7 +159,7 @@ function assignedToUserHtml(i, color, currentUser, initials) {
 
 function assignedToUserYouHtml(i, color, currentUser, initials) {
   return `
-  <div id="user-${i}" class="flex-checkbox selected-profile" onclick="addAssignedContact(${i}, '${color}')" data-value="${currentUser}">
+  <div id="user-${i}" class="flex-checkbox selected-profile selected-profile-active-item" onclick="addAssignedContact(${i}, '${color}')" data-value="${currentUser}">
   <div class="selected-profile"><div class="assinged-contact-profile" style="background-color:${color}">${initials}</div>
   <span class="assigned-name">${currentUser} (you)</span></div>
   <img id="hoverCheckbox" class="hover-checkbox" src="assets/img/icons/checkBoxWhite.svg" alt="">

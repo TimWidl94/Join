@@ -195,16 +195,24 @@ input[type='date']::-webkit-calendar-picker-indicator {
 .assigned-name {
   padding-left: 10px;
 }
-
-.addTask-selected {
-  // color: $color-light;
+.selected-profile-active-item {
+  color: $color-light;
   background-color: $primary-color;
   border-radius: 10px;
   padding: 7px 16px 7px 16px;
   &:hover {
-    // background-color: #1d2127 !important;
+    background-color: #1d2127 !important;
   }
 }
+// .addTask-selected {
+//   color: $color-light;
+//   background-color: $primary-color;
+//   border-radius: 10px;
+//   padding: 7px 16px 7px 16px;
+//   &:hover {
+//     background-color: #1d2127 !important;
+//   }
+// }
 .category-selected {
   color: $color-light;
   background-color: $primary-color;

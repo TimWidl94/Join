@@ -252,27 +252,31 @@ function addAssignedContact(i, color) {
   let selectedContact = assignedDropdown.getAttribute('data-value');
 
   let checkboxImage = document.getElementById(`checkBox-${i}`);
-  renderContactList(assignedDropdown, checkboxImage, selectedContact, color);
+  let userID = document.getElementById(`user-${i}`);
+  renderContactList(assignedDropdown, checkboxImage, userID, selectedContact, color);
 
   renderSelectedContacts();
 }
 
-function renderContactList(assignedDropdown, checkboxImage, selectedContact, color) {
+function renderContactList(assignedDropdown, checkboxImage,userID , selectedContact, color) {
   if (selectedContact !== '1') {
-    assignedDropdown.classList.toggle('addTask-selected');
+    assignedDropdown.classList.add('addTask-selected');
 
     const index = selectedContacts.findIndex((contact) => contact.name === selectedContact && contact.color === color);
-    let hoverCheckbox = document.getElementById('hover-checkbox');
+
     if (assignedDropdown.classList.contains('addTask-selected')) {
       if (index === -1) {
         selectedContacts.push({ name: selectedContact, color: color });
       }
       checkboxImage.src = './assets/img/icons/check_button-white.svg';
+      userID.classList.add('selected-profile-active-item');
     } else {
       if (index !== -1) {
         selectedContacts.splice(index, 1);
+        userID.classList.add('selected-profile-active-item');
       }
       checkboxImage.src = './assets/img/icons/checkBox.svg';
+      userID.classList.remove('selected-profile-active-item');
     }
   }
 }

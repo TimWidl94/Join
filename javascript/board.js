@@ -218,7 +218,9 @@ function editTask(i) {
   description.value = tasks[i].taskDescription;
   dueDate.value = tasks[i].taskDueDate;
   selectedCategoryElement.textContent = setCategoryTextContent(i);
+  console.log('selectedCategoryElement.textContent:', selectedCategoryElement.textContent);
   setPrioEdit(tasks[i].prio);
+  selectedPrioPopupEdit = tasks[i].prio;
 }
 
 function setCategoryTextContent(i) {
@@ -243,20 +245,15 @@ function addSubTaskEdit(idInput, idContainer, i) {
       addExistingSubtasks(i);
       addExistingSubtasksExecuted = true;
     }
-    console.log('addSubTaskEdit before:', subtasks);
-    nr = subTaskCounter; // Verwende den Zähler als ID
     subtasks.push({
       subTaskInput: subTaskInput,
       id: subtasks.length,
     });
-    subTaskCounter++; // Inkrementiere den Zähler für die nächste Subtask-ID
-    console.log('addSubTaskEdit after:', subtasks);
 
     document.getElementById(idInput).value = '';
     renderGeneratedSubTasksEdit(idContainer, i);
     resetSubTaskInputField(idInput);
 
-    // Nachdem Sie eine neue Subtask hinzugefügt haben, rufen Sie resetSubTaskIDs() auf
     resetSubTaskIDs();
   }
   setItem('stasks', JSON.stringify(tasks));
@@ -365,6 +362,9 @@ function setPrioEdit(prio) {
     classlistAdd('urgentContainerEdit', 'priorityUrgentActive');
     document.getElementById('urgentImgEdit').src = './assets/img/AddTask/urgentPrioActive.svg';
   }
+  selectedPrioPopupEdit = prio;
+  console.log('selectedPrioPopupEdit prio:', prio);
+  console.log('selectedPrioPopupEdit:', selectedPrioPopupEdit);
 }
 
 function changePriorityEdit(idContainer, idImg, priority) {
@@ -390,6 +390,7 @@ async function saveEditedTask(i) {
 
   let selectedCategoryElement = document.getElementById('showSelectedCategoryEdit');
   let selectedCategory = selectedCategoryElement.getAttribute('data-value');
+  console.log('selectedCategory:', selectedCategory);
 
   tasks[i].taskTitle = title.value;
   tasks[i].taskDescription = description.value;

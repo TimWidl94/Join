@@ -15,49 +15,49 @@
   <body onload="init()">
     <div w3-include-html="sidebar.html"></div>
     <div w3-include-html="topbar.html"></div>
-    <div class="container summary">
+    <div class="containerSummary summary">
       <div class="summary-padding">
         <div class="row-header flex-start">
           <h2 class="summary-h2">Join 360</h2>
           <span class="summary-vertical-line"></span>
           <h3 class="summary-h3">Key Metrics at a Glance</h3>
+          <img class="blueUnderlineMobile" src="./assets/img/summary/blueUnderlineMobile.svg" alt="">
         </div>
-        <div class="row">
-          <div class="col-6 summary-flex">
-            <div class="col-6">
-              <div class="summary-todo summary-gap-default">
-                <img src="../assets/img/Summary/pencil-logo.png" alt="" />
-                <div class="summary-flex-column">
-                  <div class="summary-todo-counter">1</div>
-                  <div
-                    class="summary-todo-counter-text-m summary-todo-counter-text">
-                    To-do
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-6">
-              <div class="summary-todo summary-gap-default">
-                <img src="../assets/img/Summary/hookbutton.png" alt="" />
-                <div class="summary-flex-column">
-                  <div class="summary-todo-counter">1</div>
-                  <div
-                    class="summary-todo-counter-text-m summary-todo-counter-text">
-                    Done
-                  </div>
+      </div>
+      <div class="row">
+        <div class="col-6 summary-flex">
+          <div class="col-6 summarySmallContainerTop">
+            <div class="summary-todo summary-gap-default" onmouseover="hoverTodo('todoImg');" onmouseout="unhoverTodo('todoImg');">
+              <img class="boardImg" src="../assets/img/Summary/pencilBlackDesktop.svg" alt="" id="todoImg"  />
+              <div class="summary-flex-column">
+                <div class="summary-todo-counter">1</div>
+                <div
+                  class="summary-todo-counter-text-m summary-todo-counter-text">
+                  To-do
                 </div>
               </div>
             </div>
           </div>
-          <div class="col-6"></div>
+          <div class="col-6 summarySmallContainerTop">
+            <div class="summary-todo summary-gap-default" onmouseover="hoverDone('doneImg');" onmouseout="unhoverDone('doneImg');">
+              <img class="boardImg" src="../assets/img/Summary/hookButtonBlackDesktop.svg" alt="" id="doneImg"/>
+              <div class="summary-flex-column">
+                <div class="summary-todo-counter">1</div>
+                <div
+                  class="summary-todo-counter-text-m summary-todo-counter-text">
+                  Done
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div class="row">
-        <div class="col-6">
-          <div class="summary-todo summary-gap-urgent">
+        <div class="col-6 boardMiddleContainerMobile">
+          <div class="summary-summarySmallContainerMiddle summary-gap-urgent">
             <div class="col-6">
               <div class="summary-urgent-wrapper">
-                <img src="./assets/img/Summary/urgent-icon.svg" alt="" />
+                <img class="boardImg" src="./assets/img/Summary/urgent-icon.svg" alt="" />
                 <div class="summary-flex-column">
                   <div class="summary-todo-counter">1</div>
                   <div
@@ -74,47 +74,48 @@
             </div>
           </div>
         </div>
-        <div class="col-6" id="col-6">
+        <div class="greetingsMassageContainer" id="col-6">
 
         </div>
       </div>
       <div class="row">
         <div class="col-6 summary-flex-counter">
-          <div class="col-4">
-            <div class="summary-todo summary-gap-default">
+          <div class="col-4 summarySmallContainerDown">
+            <div class="summary-tasksContainerDown summary-gap-default">
               <div class="summary-flex-column">
-                <div class="summary-todo-counter">5</div>
+                <div class="summary-tasksContainerDown-counter">5</div>
                 <div
-                  class="summary-todo-counter-text-m summary-todo-counter-text">
-                  Tasks in Board
+                  class="summary-tasksContainerDown-counter-text-m summary-tasksContainerDown-counter-text">
+                  Tasks in 
+                  <br> Board </br>
                 </div>
               </div>
             </div>
           </div>
-          <div class="col-4">
-            <div class="summary-todo summary-gap-default">
+          <div class="col-4 summarySmallContainerDown">
+            <div class="summary-tasksContainerDown summary-gap-default">
               <div class="summary-flex-column">
-                <div class="summary-todo-counter">2</div>
+                <div class="summary-tasksContainerDown-counter">2</div>
                 <div
-                  class="summary-todo-counter-text-m summary-todo-counter-text">
+                  class="summary-tasksContainerDown-counter-text-m summary-tasksContainerDown-counter-text">
                   Tasks In Progress
                 </div>
               </div>
             </div>
           </div>
-          <div class="col-4">
-            <div class="summary-todo">
+          <div class="col-4 summarySmallContainerDown">
+            <div class="summary-tasksContainerDown summary-gap-default">
               <div class="summary-flex-column">
-                <div class="summary-todo-counter">2</div>
+                <div class="summary-tasksContainerDown-counter">2</div>
                 <div
-                  class="summary-todo-counter-text-m summary-todo-counter-text">
+                  class="summary-tasksContainerDown-counter-text-m summary-tasksContainerDown-counter-text">
                   Awaiting Feedback
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-6"></div>
+        <div class="col-6 d-none"></div>
       </div>
     </div>
 

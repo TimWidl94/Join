@@ -167,7 +167,7 @@ function assignedToUserYouHtml(i, color, currentUser, initials) {
   `;
 }
 
-function subtasksAfterDeletionHtml(i, nr) {
+function subtasksAfterDeletionHtml(i, nr, idContainer) {
   return /*HTML*/ `
   <div id="${nr}" class="subtask-div-list">${subtasks[i]['subTaskInput']}
   <div><img class="subtask-div-btn" onclick="editSubTask(${nr})" src="./assets/img/icons/edit.svg" alt="">

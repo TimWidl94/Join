@@ -114,6 +114,8 @@ function findSubtaskPosition(id) {
   if (nr == -1) {
     console.log('Number of Subtask not found!');
   }
+  console.log('findSubtaskPosition nr:', nr);
+
   return nr;
 }
 
@@ -289,7 +291,7 @@ function deleteSubTask(number, idContainer) {
   subTaskContainer.innerHTML = ``;
   for (let i = 0; i < subtasks.length; i++) {
     let nr = subtasks[i]['id'];
-    subTaskContainer.innerHTML += subtasksAfterDeletionHtml(i, nr);
+    subTaskContainer.innerHTML += subtasksAfterDeletionHtml(i, nr, idContainer);
   }
 }
 

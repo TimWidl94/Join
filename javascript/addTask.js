@@ -94,12 +94,7 @@ function addSubTask(idInput, idContainer) {
     });
     console.log('subtasks after:', subtasks);
     document.getElementById(idInput).value = '';
-    if (idContainer == 'subTaskContainer') {
-      renderGeneratedSubTasks('subTaskContainer');
-    } else {
-      renderGeneratedSubTasksEdit('subTaskContainerEdit');
-    }
-    // renderGeneratedSubTasks(idContainer);
+    renderGeneratedSubTasks(idContainer);
     resetSubTaskInputField(idInput);
   }
 }
@@ -114,25 +109,13 @@ function renderGeneratedSubTasks(idContainer) {
   }
 }
 
-function addExistingSubtasks() {}
-
-function renderGeneratedSubTasksEdit(idContainer) {
-  // addExistingSubtasks();
-  let container = document.getElementById(idContainer);
-  container.innerHTML = ``;
-
-  for (let i = 0; i < subtasks.length; i++) {
-    let id = subtasks[i]['id'];
-    let subtaskInput = subtasks[i]['subTaskInput'];
-    container.innerHTML += subTasksValueEditHtml(id, subtaskInput);
-  }
-}
-
 function findSubtaskPosition(id) {
   let nr = subtasks.findIndex((obj) => obj.id === id);
   if (nr == -1) {
     console.log('Number of Subtask not found!');
   }
+  console.log('findSubtaskPosition nr:', nr);
+
   return nr;
 }
 
@@ -234,7 +217,7 @@ function openDropDown() {
   let dropdownImgArrow = document.getElementById('dropdownImgArrow');
 
   assignedDropdown.classList.toggle('d-none');
-  dropdown.classList.toggle('border-active');
+  // dropdown.classList.toggle('border-active');
   assignedDropdown.classList.toggle('dropbtn');
   dropdownImgArrow.classList.toggle('rotate-arrow');
 }
@@ -242,7 +225,7 @@ function openDropDown() {
 function openDropDownCategory() {
   let assignedDropdownCategory = document.getElementById('assignedDropdownCategory');
   let dropdownImgArrowCategory = document.getElementById('dropdownImgArrowCategory');
-  dropdownCategory.classList.toggle('border-category-active');
+  // dropdownCategory.classList.toggle('border-category-active');
   assignedDropdownCategory.classList.toggle('d-none');
   dropdownImgArrowCategory.classList.toggle('rotate-arrow');
 }
@@ -311,16 +294,14 @@ function getInitials(contactName) {
 function deleteSubTask(number, idContainer) {
   let nr = findSubtaskPosition(number);
   console.log('subtasks idContainer:', idContainer);
-
+  console.log('subtasks befor delete:', subtasks);
   subtasks.splice(nr, 1);
+  console.log('subtasks after delete:', subtasks);
   subTaskContainer = document.getElementById(idContainer);
   subTaskContainer.innerHTML = ``;
   for (let i = 0; i < subtasks.length; i++) {
     let nr = subtasks[i]['id'];
-    subTaskContainer.innerHTML += /*HTML*/ `<div id="${nr}" class="subtask-div-list">${subtasks[i]['subTaskInput']}
-    <div><img class="subtask-div-btn" onclick="editSubTask(${nr})" src="./assets/img/icons/edit.svg" alt="">
-    <img class="subtask-div-btn" onclick="deleteSubTask(${nr}, '${idContainer}')" src="./assets/img/icons/delete.svg" alt=""></div>
-    </div>`;
+    subTaskContainer.innerHTML += subtasksAfterDeletionHtml(i, nr, idContainer);
   }
 }
 

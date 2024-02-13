@@ -476,6 +476,10 @@ input[type='date']::-webkit-calendar-picker-indicator {
     font-size: 12px;
   }
 }
+.subtask-div-list-p {
+  flex: 1;
+  padding: 0 21px;
+}
 .hover-checkbox {
   display: none;
   right: 16px;

@@ -1,5 +1,7 @@
 let currentDraggedElement;
 let selectedPrioPopupEdit;
+let subTaskCounter = 0;
+let addExistingSubtasksExecuted = false;
 
 async function initBoard() {
   await loadData();
@@ -86,7 +88,6 @@ function renderAssignedToContacs(i) {
       const selectedContact = task.selectedContacts[j];
       const contactColor = getContactColor(selectedContact.name);
       const capitalLetters = getFirstLetters(selectedContact.name);
-      console.log('capitalLetters', capitalLetters);
       assingedToContainer.innerHTML += renderAssignedToContacsInfoHtml(contactColor, capitalLetters, selectedContact);
     }
   }
@@ -140,6 +141,66 @@ function deleteTask(i) {
   updateHTML();
 }
 
+function deleteSubTaskEdit(id, idContainer, subTaskInput) {
+  let taskIndex = findTaskEdit(subTaskInput);
+  // let nr = findSubtaskPositionEdit(id, taskIndex);
+  let a;
+  let nr = findSubtaskPositionEdit(id);
+  if (subtasks.length == 0 && taskIndex >= 0) {
+    pushCurrentSubtasksInArray(taskIndex);
+  }
+  subtasks.splice(nr, 1);
+
+  // subTaskContainer = document.getElementById(idContainer);
+  // subTaskContainer.innerHTML = ``;
+  // for (let i = 0; i < subtasks.length; i++) {
+  //   let nr = subtasks[i]['id'];
+  //   subTaskContainer.innerHTML += subtasksAfterDeletionHtml(i, nr, idContainer);
+  // }
+
+  renderGeneratedSubTasksEdit(idContainer, taskIndex);
+
+  // setItem('stasks', JSON.stringify(tasks));
+}
+
+function findTaskEdit(subTaskInput) {
+  for (let i = 0; i < tasks.length; i++) {
+    const task = tasks[i];
+    for (let j = 0; j < task.subtasks.length; j++) {
+      const subtask = task.subtasks[j];
+      if (subtask.subTaskInput === subTaskInput) {
+        console.log('findSubtaskPosition task:', i);
+        return i;
+      }
+    }
+  }
+  console.error('Task not found!');
+  return -1;
+}
+
+function findSubtaskPositionEdit(id) {
+  let nr = subtasks.findIndex((obj) => obj.id === id);
+  if (nr == -1) {
+    console.log('Number of Subtask not found!');
+  }
+  console.log('findSubtaskPosition nr:', nr);
+
+  return nr;
+}
+
+function pushCurrentSubtasksInArray(taskIndex) {
+  let task = tasks[taskIndex];
+  console.log('task.subtasks:', task.subtasks);
+  for (let j = 0; j < task.subtasks.length; j++) {
+    let subtaskInput = task.subtasks[j]['subTaskInput'];
+    let index = j;
+    subtasks.push({
+      subTaskInput: subtaskInput,
+      id: index,
+    });
+  }
+}
+
 function editTask(i) {
   let popupInfo = document.getElementById('aTPopup');
   let popupEdit = document.getElementById('aTPopupEdit');
@@ -151,12 +212,86 @@ function editTask(i) {
   let title = document.getElementById('taskTitleEdit');
   let description = document.getElementById('taskDescriptionEdit');
   let dueDate = document.getElementById('myDateInputEdit');
+  let selectedCategoryElement = document.getElementById('showSelectedCategoryEdit');
 
   title.value = tasks[i].taskTitle;
   description.value = tasks[i].taskDescription;
   dueDate.value = tasks[i].taskDueDate;
-
+  selectedCategoryElement.textContent = setCategoryTextContent(i);
+  console.log('selectedCategoryElement.textContent:', selectedCategoryElement.textContent);
   setPrioEdit(tasks[i].prio);
+  selectedPrioPopupEdit = tasks[i].prio;
+}
+
+function setCategoryTextContent(i) {
+  if (tasks[i].selectedCategory == '') {
+    return 'Select task category';
+  } else {
+    return tasks[i].selectedCategory;
+  }
+}
+
+function addSubTaskEdit(idInput, idContainer, i) {
+  let subTaskInput = document.getElementById(idInput).value;
+  let subTaskError = document.getElementById('subTaskErrorEdit');
+  let nr;
+  if (subTaskInput == 0) {
+    subTaskError.innerHTML = /*HTML*/ `
+    Subtask bitte bei Bedarf hinzufügen.`;
+  } else {
+    subTaskError.innerHTML = /*HTML*/ ``;
+    console.log('addExistingSubtasksExecuted:', addExistingSubtasksExecuted);
+    if (!addExistingSubtasksExecuted && tasks[i].subtasks.length > 0) {
+      addExistingSubtasks(i);
+      addExistingSubtasksExecuted = true;
+    }
+    subtasks.push({
+      subTaskInput: subTaskInput,
+      id: subtasks.length,
+    });
+
+    document.getElementById(idInput).value = '';
+    renderGeneratedSubTasksEdit(idContainer, i);
+    resetSubTaskInputField(idInput);
+
+    resetSubTaskIDs();
+  }
+  setItem('stasks', JSON.stringify(tasks));
+}
+
+function addExistingSubtasks(i) {
+  let task = tasks[i];
+
+  for (let j = 0; j < task.subtasks.length; j++) {
+    let subtaskInput = task.subtasks[j]['subTaskInput'];
+    let index = j;
+    subtasks.push({
+      subTaskInput: subtaskInput,
+      id: index,
+    });
+  }
+}
+
+function resetSubTaskIDs() {
+  for (let i = 0; i < subtasks.length; i++) {
+    subtasks[i].id = i;
+  }
+}
+
+function renderGeneratedSubTasksEdit(idContainer, j) {
+  if (j >= 0) {
+    if (tasks[j].subtasks.length > 0) {
+      deleteExistingSubtasks(j);
+    }
+  }
+
+  let container = document.getElementById(idContainer);
+  container.innerHTML = ``;
+  for (let i = 0; i < subtasks.length; i++) {
+    let id = subtasks[i]['id'];
+    let subTaskInput = subtasks[i]['subTaskInput'];
+    container.innerHTML += subTasksValueEditHtml(id, subTaskInput, j);
+  }
 }
 
 function renderEditTask(i) {
@@ -180,7 +315,7 @@ function renderSubTasksEditable(i, id1) {
     for (let j = 0; j < task.subtasks.length; j++) {
       let subTask = task.subtasks[j];
       let id = task.subtasks[j]['id'];
-      container.innerHTML += subTasksValueEditHtml(id, subTask);
+      container.innerHTML += subTasksValueEditHtml(id, subTask.subTaskInput);
     }
   }
 }
@@ -200,7 +335,7 @@ function showTaskFormEdit(id) {
   `;
 }
 
-function changeButtonsAddTaskEdit(id) {
+function changeButtonsAddTaskEdit(id, i) {
   let inputField = document.getElementById(id);
 
   inputField.innerHTML = /*html*/ `
@@ -208,7 +343,7 @@ function changeButtonsAddTaskEdit(id) {
     <div class="subTaskInputButtons">
       <img class="subTaskInputImg" onclick="setValueBack('subTaskInputEdit', 'subtasksEdit')" src="./assets/img/icons/close.svg" alt="">
       <span class="subTaskInputImg-vertical"></span>
-      <img class="subTaskInputImg checkImg" onclick="addSubTask('subTaskInputEdit', 'subTaskContainerEdit')" src="./assets/img/icons/checkAddTask.svg" alt="">
+      <img class="subTaskInputImg checkImg" onclick="addSubTaskEdit('subTaskInputEdit', 'subTaskContainerEdit', ${i})" src="./assets/img/icons/checkAddTask.svg" alt="">
     </div>
   `;
   document.getElementById('subTaskInput').focus();
@@ -227,6 +362,9 @@ function setPrioEdit(prio) {
     classlistAdd('urgentContainerEdit', 'priorityUrgentActive');
     document.getElementById('urgentImgEdit').src = './assets/img/AddTask/urgentPrioActive.svg';
   }
+  selectedPrioPopupEdit = prio;
+  console.log('selectedPrioPopupEdit prio:', prio);
+  console.log('selectedPrioPopupEdit:', selectedPrioPopupEdit);
 }
 
 function changePriorityEdit(idContainer, idImg, priority) {
@@ -250,19 +388,43 @@ async function saveEditedTask(i) {
   let description = document.getElementById('taskDescriptionEdit');
   let dueDate = document.getElementById('myDateInputEdit');
 
+  let selectedCategoryElement = document.getElementById('showSelectedCategoryEdit');
+  let selectedCategory = selectedCategoryElement.getAttribute('data-value');
+  console.log('selectedCategory:', selectedCategory);
+
   tasks[i].taskTitle = title.value;
   tasks[i].taskDescription = description.value;
   tasks[i].taskDueDate = dueDate.value;
+  tasks[i].selectedCategory = selectedCategory;
   tasks[i].prio = selectedPrioPopupEdit;
+  saveAddedSubtasks(i);
 
   closeTaskPopup();
   updateHTML();
+  // addExistingSubtasksExecuted = false;
   await setItem('stasks', JSON.stringify(tasks));
 }
 
+function saveAddedSubtasks(i) {
+  deleteExistingSubtasks(i);
+  let task = tasks[i];
+
+  for (let j = 0; j < subtasks.length; j++) {
+    let subTaskInput = subtasks[j].subTaskInput;
+    let nr = subtasks[j].id;
+    task.subtasks.push({
+      subTaskInput: subTaskInput,
+      id: nr,
+    });
+  }
+}
+
+function deleteExistingSubtasks(i) {
+  let task = tasks[i];
+  task.subtasks.splice(0, task.subtasks.length); // Entferne alle Elemente aus dem Array
+}
+
 function setCategoryBackground(category, id) {
-  console.log('category:', category);
-  console.log('id:', id);
   if (category == 'user-story') {
     document.getElementById(id).classList.add('board-task-epic-green');
   }
@@ -277,7 +439,6 @@ function startDragging(id) {
 
 function updateHTML() {
   todoAreaUpdate();
-  console.log('todoAreaUpdate');
   inProgressUdate();
   feedbackAreaUdate();
   doneUpdate();
@@ -369,11 +530,19 @@ function checkTaskAreaDisplayEmpty() {
   }
 }
 
+function openDropDownCategoryEdit() {
+  let assignedDropdownCategory = document.getElementById('assignedDropdownCategoryEdit');
+  let dropdownImgArrowCategory = document.getElementById('dropdownImgArrowCategoryEdit');
+  // dropdownCategory.classList.toggle('border-category-active');
+  assignedDropdownCategory.classList.toggle('d-none');
+  dropdownImgArrowCategory.classList.toggle('rotate-arrow');
+}
+
 function selectCategoryEdit(category) {
-  const userStory = document.getElementById('userStory');
-  const other = document.getElementById('other');
-  const showSelectedCategory = document.getElementById('showSelectedCategory');
-  const assignedDropdownCategory = document.getElementById('assignedDropdownCategory');
+  const userStory = document.getElementById('userStoryEdit');
+  const other = document.getElementById('otherEdit');
+  const showSelectedCategory = document.getElementById('showSelectedCategoryEdit');
+  const assignedDropdownCategory = document.getElementById('assignedDropdownCategoryEdit');
   selectCategoryIfElse(userStory, other, showSelectedCategory, assignedDropdownCategory, category);
   // checkIfFormIsFilledEdit();
 }

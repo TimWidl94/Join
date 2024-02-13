@@ -683,8 +683,8 @@
   padding-right: 16px;
 }
 
-@media(max-width: 1300px){
-  .overflowYActive{
+@media (max-width: 1300px) {
+  .overflowYActive {
     overflow-y: unset;
     overflow-x: unset;
     display: unset;
@@ -694,20 +694,20 @@
     z-index: unset;
     background-color: unset;
   }
-  .drag-area{
+  .drag-area {
     flex-direction: unset;
     position: unset;
     height: 100%;
     overflow-x: scroll;
   }
-  .drag-area::-webkit-scrollbar{
+  .drag-area::-webkit-scrollbar {
     display: none;
   }
-  .col-4{
+  .col-4 {
     width: 100% !important;
     max-width: 100% !important;
   }
-  .wobble-container{
+  .wobble-container {
     max-width: 206px;
     width: 100%;
   }
@@ -728,7 +728,7 @@
   .mobileButtonHide {
     display: none !important;
   }
-  .container{
+  .container {
     max-width: calc(100% - 360px) !important;
   }
 }
@@ -741,7 +741,7 @@
     max-width: calc(100% - 130px) !important;
     height: 100% !important;
   }
-  
+
   .col-4 {
     // width: 66% !important;
   }
@@ -757,8 +757,8 @@
   }
 }
 
-@media (max-width:500px){
-  .container{
+@media (max-width: 500px) {
+  .container {
     padding: 80px 10px !important;
     max-width: calc(100% - 35px) !important;
   }

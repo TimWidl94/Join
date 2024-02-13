@@ -250,7 +250,7 @@ function openDropDownCategory() {
 function addAssignedContact(i, color) {
   
   let assignedDropdown = document.getElementById('assignedDropdown');
-  let selectedContact = assignedDropdown.getAttribute('data-value');
+  let selectedContact = contacts[i]["name"];
 
   let checkboxImage = document.getElementById(`checkBox-${i}`);
   let userID = document.getElementById(`user-${i}`);
@@ -292,8 +292,8 @@ function renderSelectedContacts() {
 
   for (let i = 0; i < selectedContacts.length; i++) {
     let contact = selectedContacts[i];
-    let initials = getInitials(contact.selectedContact);
-    let color = selectedContacts['color'];
+    let initials = getInitials(selectedContacts[i]["name"]);
+    let color = contact['color'];
     content.innerHTML += `<div class="assinged-contact-overview" style="background-color:${color}">${initials}</div>`;
   }
 }

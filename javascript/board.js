@@ -11,6 +11,7 @@ async function initBoard() {
   setUserInitials();
   setColorToActive('sidebarBoard', 'board-img', 'bottomBarBoardMobile', 'boardImgMobile');
   await renderAddTask();
+  changePrioToMedium('mediumContainer', 'mediumImg');
   await renderSubTask();
   await showTaskForm('assignedTo');
   checkTaskAreaDisplayEmpty();
@@ -25,17 +26,9 @@ async function initBoard() {
 // }
 
 function renderAddTask() {
-  let contentMain = document.getElementById('main');
   let contentBoardTask = document.getElementById('boardAddTask');
-
-  if (contentMain) {
-    contentMain.innerHTML = addTaskHtml('main');
-  }
-
-  if (contentBoardTask) {
-    console.log('addTask Popup rendered');
-    contentBoardTask.innerHTML = addTaskHtml('boardAddTask');
-  }
+  console.log('addTask Popup rendered');
+  contentBoardTask.innerHTML = addTaskHtml('boardAddTask');
 }
 
 function openAddTaskPopup() {

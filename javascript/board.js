@@ -1,5 +1,7 @@
 let currentDraggedElement;
 let selectedPrioPopupEdit;
+let subTaskCounter = 0;
+let addExistingSubtasksExecuted = false;
 
 async function initBoard() {
   await loadData();
@@ -139,6 +141,66 @@ function deleteTask(i) {
   updateHTML();
 }
 
+function deleteSubTaskEdit(id, idContainer, subTaskInput) {
+  let taskIndex = findTaskEdit(subTaskInput);
+  // let nr = findSubtaskPositionEdit(id, taskIndex);
+  let a;
+  let nr = findSubtaskPositionEdit(id);
+  if (subtasks.length == 0 && taskIndex >= 0) {
+    pushCurrentSubtasksInArray(taskIndex);
+  }
+  subtasks.splice(nr, 1);
+
+  // subTaskContainer = document.getElementById(idContainer);
+  // subTaskContainer.innerHTML = ``;
+  // for (let i = 0; i < subtasks.length; i++) {
+  //   let nr = subtasks[i]['id'];
+  //   subTaskContainer.innerHTML += subtasksAfterDeletionHtml(i, nr, idContainer);
+  // }
+
+  renderGeneratedSubTasksEdit(idContainer, taskIndex);
+
+  // setItem('stasks', JSON.stringify(tasks));
+}
+
+function findTaskEdit(subTaskInput) {
+  for (let i = 0; i < tasks.length; i++) {
+    const task = tasks[i];
+    for (let j = 0; j < task.subtasks.length; j++) {
+      const subtask = task.subtasks[j];
+      if (subtask.subTaskInput === subTaskInput) {
+        console.log('findSubtaskPosition task:', i);
+        return i;
+      }
+    }
+  }
+  console.error('Task not found!');
+  return -1;
+}
+
+function findSubtaskPositionEdit(id) {
+  let nr = subtasks.findIndex((obj) => obj.id === id);
+  if (nr == -1) {
+    console.log('Number of Subtask not found!');
+  }
+  console.log('findSubtaskPosition nr:', nr);
+
+  return nr;
+}
+
+function pushCurrentSubtasksInArray(taskIndex) {
+  let task = tasks[taskIndex];
+  console.log('task.subtasks:', task.subtasks);
+  for (let j = 0; j < task.subtasks.length; j++) {
+    let subtaskInput = task.subtasks[j]['subTaskInput'];
+    let index = j;
+    subtasks.push({
+      subTaskInput: subtaskInput,
+      id: index,
+    });
+  }
+}
+
 function editTask(i) {
   let popupInfo = document.getElementById('aTPopup');
   let popupEdit = document.getElementById('aTPopupEdit');
@@ -176,18 +238,28 @@ function addSubTaskEdit(idInput, idContainer, i) {
     Subtask bitte bei Bedarf hinzufügen.`;
   } else {
     subTaskError.innerHTML = /*HTML*/ ``;
-    if (tasks[i].subtasks.length > 0) {
+    console.log('addExistingSubtasksExecuted:', addExistingSubtasksExecuted);
+    if (!addExistingSubtasksExecuted && tasks[i].subtasks.length > 0) {
       addExistingSubtasks(i);
+      addExistingSubtasksExecuted = true;
     }
-    nr = subtasks.length;
+    console.log('addSubTaskEdit before:', subtasks);
+    nr = subTaskCounter; // Verwende den Zähler als ID
     subtasks.push({
       subTaskInput: subTaskInput,
-      id: nr,
+      id: subtasks.length,
     });
+    subTaskCounter++; // Inkrementiere den Zähler für die nächste Subtask-ID
+    console.log('addSubTaskEdit after:', subtasks);
+
     document.getElementById(idInput).value = '';
-    renderGeneratedSubTasksEdit(idContainer);
+    renderGeneratedSubTasksEdit(idContainer, i);
     resetSubTaskInputField(idInput);
+
+    // Nachdem Sie eine neue Subtask hinzugefügt haben, rufen Sie resetSubTaskIDs() auf
+    resetSubTaskIDs();
   }
+  setItem('stasks', JSON.stringify(tasks));
 }
 
 function addExistingSubtasks(i) {
@@ -203,14 +275,25 @@ function addExistingSubtasks(i) {
   }
 }
 
-function renderGeneratedSubTasksEdit(idContainer) {
+function resetSubTaskIDs() {
+  for (let i = 0; i < subtasks.length; i++) {
+    subtasks[i].id = i;
+  }
+}
+
+function renderGeneratedSubTasksEdit(idContainer, j) {
+  if (j >= 0) {
+    if (tasks[j].subtasks.length > 0) {
+      deleteExistingSubtasks(j);
+    }
+  }
+
   let container = document.getElementById(idContainer);
   container.innerHTML = ``;
-
   for (let i = 0; i < subtasks.length; i++) {
     let id = subtasks[i]['id'];
     let subTaskInput = subtasks[i]['subTaskInput'];
-    container.innerHTML += subTasksValueEditHtml(id, subTaskInput);
+    container.innerHTML += subTasksValueEditHtml(id, subTaskInput, j);
   }
 }
 
@@ -317,11 +400,14 @@ async function saveEditedTask(i) {
 
   closeTaskPopup();
   updateHTML();
+  // addExistingSubtasksExecuted = false;
   await setItem('stasks', JSON.stringify(tasks));
 }
 
 function saveAddedSubtasks(i) {
+  deleteExistingSubtasks(i);
   let task = tasks[i];
+
   for (let j = 0; j < subtasks.length; j++) {
     let subTaskInput = subtasks[j].subTaskInput;
     let nr = subtasks[j].id;
@@ -329,8 +415,12 @@ function saveAddedSubtasks(i) {
       subTaskInput: subTaskInput,
       id: nr,
     });
-    console.log('Saved tasks[i].subtasks:', task.subtasks);
   }
+}
+
+function deleteExistingSubtasks(i) {
+  let task = tasks[i];
+  task.subtasks.splice(0, task.subtasks.length); // Entferne alle Elemente aus dem Array
 }
 
 function setCategoryBackground(category, id) {

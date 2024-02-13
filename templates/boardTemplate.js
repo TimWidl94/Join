@@ -159,13 +159,13 @@ function subTaskInputFieldHtml() {
   `;
 }
 
-function subTasksValueEditHtml(id, subTaskInput) {
+function subTasksValueEditHtml(id, subTaskInput, j) {
   return /*HTML*/ `
     <li id="${id}" class="subtask-div-list" ondbclick="editSubTask(${id})"><p class="subtask-div-list-p">${subTaskInput}</p>
       <div class="d-hover" >
         <img class="subtask-div-btn" onclick="editSubTask(${id})" src="./assets/img/icons/edit.svg" alt="">
         <span class="subTaskInputImg-vertical-1"></span>
-        <img class="subtask-div-btn" onclick="deleteSubTask(${id}, 'subTaskContainerEdit')" src="./assets/img/icons/delete.svg" alt="">
+        <img class="subtask-div-btn" onclick="deleteSubTaskEdit(${id}, 'subTaskContainerEdit', '${subTaskInput}')" src="./assets/img/icons/delete.svg" alt="">
       </div>
     </li>`;
 }

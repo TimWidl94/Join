@@ -146,8 +146,9 @@ function addedTaskToBoardHtml() {
 }
 
 function assignedToUserHtml(i, color, currentUser, initials) {
-  return /*HTML*/ `
-  <div id="user-${i}" class="flex-checkbox selected-profile" onclick="addAssignedContact(${i}, '${color}')" data-value="${currentUser}">
+
+  return `
+  <div id="user-${i}" class="flex-checkbox selected-profile" onclick="addAssignedContact('${i}', '${color}')" data-value="${currentUser}">
     <div class="selected-profile">
       <div class="assinged-contact-profile" style="background-color:${color}">${initials}</div>
       <span class="assigned-name">${currentUser}</span>
@@ -156,6 +157,8 @@ function assignedToUserHtml(i, color, currentUser, initials) {
     <img id="checkBox-${i}" class="flex-checkbox-img" src="assets/img/icons/checkBox.svg" alt="">
   </div>`;
 }
+
+
 
 function assignedToUserYouHtml(i, color, currentUser, initials) {
   return /*HTML*/ `

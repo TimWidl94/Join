@@ -231,34 +231,43 @@ function openDropDownCategory() {
 }
 
 function addAssignedContact(i, color) {
+  
   let assignedDropdown = document.getElementById('assignedDropdown');
-  let selectedContact = assignedDropdown.getAttribute('data-value');
+  let selectedContact = contacts[i]["name"];
 
   let checkboxImage = document.getElementById(`checkBox-${i}`);
-  renderContactList(assignedDropdown, checkboxImage, selectedContact, color);
+  let userID = document.getElementById(`user-${i}`);
+  renderContactList(assignedDropdown, checkboxImage, userID, selectedContact, color);
 
   renderSelectedContacts();
 }
 
-function renderContactList(assignedDropdown, checkboxImage, selectedContact, color) {
+function renderContactList(assignedDropdown, checkboxImage, userID, selectedContact, color) {
   if (selectedContact !== '1') {
     assignedDropdown.classList.toggle('addTask-selected');
 
     const index = selectedContacts.findIndex((contact) => contact.name === selectedContact && contact.color === color);
-    let hoverCheckbox = document.getElementById('hover-checkbox');
+
     if (assignedDropdown.classList.contains('addTask-selected')) {
       if (index === -1) {
-        selectedContacts.push({ name: selectedContact, color: color });
+        selectedContacts.push({ 
+          name: selectedContact, 
+          color: color, 
+        });
       }
       checkboxImage.src = './assets/img/icons/check_button-white.svg';
+      userID.classList.add('selected-profile-active-item');
     } else {
       if (index !== -1) {
         selectedContacts.splice(index, 1);
       }
       checkboxImage.src = './assets/img/icons/checkBox.svg';
+      userID.classList.remove('selected-profile-active-item');
     }
   }
 }
+
+
 
 function renderSelectedContacts() {
   let content = document.getElementById('assignedAddedContact');
@@ -266,13 +275,14 @@ function renderSelectedContacts() {
 
   for (let i = 0; i < selectedContacts.length; i++) {
     let contact = selectedContacts[i];
-    let initials = getInitials(contact.name);
+    let initials = getInitials(selectedContacts[i]["name"]);
     let color = contact['color'];
     content.innerHTML += `<div class="assinged-contact-overview" style="background-color:${color}">${initials}</div>`;
   }
 }
 
 function getInitials(contactName) {
+  // console.log('contactName:', contactName);
   const nameParts = contactName.split(' ');
   let initials = '';
   for (let i = 0; i < nameParts.length; i++) {

@@ -347,10 +347,13 @@ input[type='date']::-webkit-calendar-picker-indicator {
 .assigned-name {
   padding-left: 10px; }
 
-.addTask-selected {
+.selected-profile-active-item {
+  color: #fff;
   background-color: #2a3647;
   border-radius: 10px;
   padding: 7px 16px 7px 16px; }
+  .selected-profile-active-item:hover {
+    background-color: #1d2127 !important; }
 
 .category-selected {
   color: #fff;

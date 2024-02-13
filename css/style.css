@@ -364,7 +364,6 @@ input[type='date']::-webkit-calendar-picker-indicator {
 #assignedDropdown {
   position: absolute;
   z-index: 1;
-  margin-top: 71px;
   min-width: 439px;
   padding: 21px 0px 0;
   border-radius: 10px;
@@ -3279,7 +3278,8 @@ a {
   align-items: center;
   background: #fff;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
-  z-index: 2; }
+  z-index: 2;
+  position: fixed; }
 
 .topbarLeftMobile img {
   width: 40px;

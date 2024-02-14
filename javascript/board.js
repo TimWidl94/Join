@@ -10,9 +10,10 @@ async function initBoard() {
   await includeHTML();
   setUserInitials();
   setColorToActive('sidebarBoard', 'board-img', 'bottomBarBoardMobile', 'boardImgMobile');
-  await renderAddTask();
-  await renderSubTask();
-  await showTaskForm('assignedTo');
+  // await renderAddTaskPopUp();
+
+
+  
   checkTaskAreaDisplayEmpty();
 }
 
@@ -24,24 +25,26 @@ async function initBoard() {
 //   }
 // }
 
-function renderAddTask() {
-  let contentMain = document.getElementById('main');
+function renderAddTaskPopUp() {
   let contentBoardTask = document.getElementById('boardAddTask');
-
-  if (contentMain) {
-    contentMain.innerHTML = addTaskHtml('main');
-  }
-
-  if (contentBoardTask) {
-    console.log('addTask Popup rendered');
-    contentBoardTask.innerHTML = addTaskHtml('boardAddTask');
-  }
+  console.log('addTask Popup rendered');
+  contentBoardTask.innerHTML = addTaskPopUpHtml();
 }
 
-function openAddTaskPopup() {
+async function openAddTaskPopup() {
+  await renderAddTaskPopUp();
+  changePrioToMedium('mediumContainer', 'mediumImg');
+  await renderSubTask();
+  await showTaskForm('assignedTo');
   document.getElementById('addTaskPopup').classList.remove('d-none');
   document.getElementById('addTaskPopup').classList.add('slide-in');
   console.log('works!');
+}
+
+async function addTaskPopUp(){
+  await pushAddTask();
+  renderBoardTasks();
+  closeAddTaskPopup();
 }
 
 function closeAddTaskPopup() {
@@ -169,7 +172,7 @@ function findTaskEdit(subTaskInput) {
     for (let j = 0; j < task.subtasks.length; j++) {
       const subtask = task.subtasks[j];
       if (subtask.subTaskInput === subTaskInput) {
-        console.log('findSubtaskPosition task:', i);
+        // console.log('findSubtaskPosition task:', i);
         return i;
       }
     }
@@ -181,16 +184,16 @@ function findTaskEdit(subTaskInput) {
 function findSubtaskPositionEdit(id) {
   let nr = subtasks.findIndex((obj) => obj.id === id);
   if (nr == -1) {
-    console.log('Number of Subtask not found!');
+    // console.log('Number of Subtask not found!');
   }
-  console.log('findSubtaskPosition nr:', nr);
+  // console.log('findSubtaskPosition nr:', nr);
 
   return nr;
 }
 
 function pushCurrentSubtasksInArray(taskIndex) {
   let task = tasks[taskIndex];
-  console.log('task.subtasks:', task.subtasks);
+  // console.log('task.subtasks:', task.subtasks);
   for (let j = 0; j < task.subtasks.length; j++) {
     let subtaskInput = task.subtasks[j]['subTaskInput'];
     let index = j;
@@ -218,7 +221,7 @@ function editTask(i) {
   description.value = tasks[i].taskDescription;
   dueDate.value = tasks[i].taskDueDate;
   selectedCategoryElement.textContent = setCategoryTextContent(i);
-  console.log('selectedCategoryElement.textContent:', selectedCategoryElement.textContent);
+  // console.log('selectedCategoryElement.textContent:', selectedCategoryElement.textContent);
   setPrioEdit(tasks[i].prio);
   selectedPrioPopupEdit = tasks[i].prio;
 }
@@ -240,7 +243,7 @@ function addSubTaskEdit(idInput, idContainer, i) {
     Subtask bitte bei Bedarf hinzufügen.`;
   } else {
     subTaskError.innerHTML = /*HTML*/ ``;
-    console.log('addExistingSubtasksExecuted:', addExistingSubtasksExecuted);
+    // console.log('addExistingSubtasksExecuted:', addExistingSubtasksExecuted);
     if (!addExistingSubtasksExecuted && tasks[i].subtasks.length > 0) {
       addExistingSubtasks(i);
       addExistingSubtasksExecuted = true;
@@ -363,8 +366,8 @@ function setPrioEdit(prio) {
     document.getElementById('urgentImgEdit').src = './assets/img/AddTask/urgentPrioActive.svg';
   }
   selectedPrioPopupEdit = prio;
-  console.log('selectedPrioPopupEdit prio:', prio);
-  console.log('selectedPrioPopupEdit:', selectedPrioPopupEdit);
+  // console.log('selectedPrioPopupEdit prio:', prio);
+  // console.log('selectedPrioPopupEdit:', selectedPrioPopupEdit);
 }
 
 function changePriorityEdit(idContainer, idImg, priority) {
@@ -390,7 +393,7 @@ async function saveEditedTask(i) {
 
   let selectedCategoryElement = document.getElementById('showSelectedCategoryEdit');
   let selectedCategory = selectedCategoryElement.getAttribute('data-value');
-  console.log('selectedCategory:', selectedCategory);
+  // console.log('selectedCategory:', selectedCategory);
 
   tasks[i].taskTitle = title.value;
   tasks[i].taskDescription = description.value;

@@ -76,6 +76,7 @@ function openTaskPopup(i) {
 function closeTaskPopup() {
   document.getElementById('aTPopupWrapper').classList.remove('d-block');
   document.getElementById('aTPopupWrapper').classList.add('d-none');
+  updateHTML();
 }
 
 function renderAssignedToContacs(i) {
@@ -198,6 +199,7 @@ function pushCurrentSubtasksInArray(taskIndex) {
     subtasks.push({
       subTaskInput: subtaskInput,
       id: index,
+      isActive: false,
     });
   }
 }
@@ -209,6 +211,7 @@ function editTask(i) {
   popupEdit.classList.remove('d-none');
   popupInfo.classList.add('d-none');
   renderEditTask(i);
+  loadSelectedContacts(i);
 
   let title = document.getElementById('taskTitleEdit');
   let description = document.getElementById('taskDescriptionEdit');
@@ -221,6 +224,54 @@ function editTask(i) {
   selectedCategoryElement.textContent = setCategoryTextContent(i);
   setPrioEdit(tasks[i].prio);
   selectedPrioPopupEdit = tasks[i].prio;
+}
+
+function loadSelectedContacts(i) {
+  clearSelectedContactsArray();
+  // addSelectedContactsFromTask(i);
+  // deleteSelectedContactsFromTask(i);
+  renderSelectedContactsEdit(i);
+}
+
+function clearSelectedContactsArray() {
+  for (let i = 0; i < selectedContacts.length; i++) {
+    let selectedContact = selectedContacts[i];
+    selectedContact.splice(i, 1);
+  }
+}
+
+// function addSelectedContactsFromTask(i) {
+//   console.log('task selectedContacts:', tasks[i].selectedContacts);
+//   console.log('selectedContacts before:', selectedContacts);
+
+//   let task = tasks[i];
+
+//   for (let j = 0; j < task.selectedContacts.length; j++) {
+//     let selectedContact = task.selectedContacts[j];
+//     selectedContacts.push(selectedContact);
+//   }
+//   console.log('selectedContacts after:', selectedContacts);
+// }
+
+function renderSelectedContactsEdit(i) {
+  let content = document.getElementById('assignedAddedContact');
+  content.innerHTML = '';
+
+  let task = tasks[i];
+
+  for (let j = 0; j < task.selectedContacts.length; j++) {
+    let contact = task.selectedContacts[j];
+    let initials = getInitials(task.selectedContacts[j]['name']);
+    let color = contact['color'];
+    content.innerHTML += /*html*/ `<div class="assinged-contact-overview" style="background-color:${color}" onclick="removeSelectedContact(${i}, ${j})">${initials}</div>`;
+  }
+}
+
+function removeSelectedContact(i, j) {
+  console.log('task selectedContacts before:', tasks[i].selectedContacts);
+  tasks[i].selectedContacts.splice(j, 1);
+  console.log('task selectedContacts after:', tasks[i].selectedContacts);
+  renderSelectedContactsEdit(i);
 }
 
 function setCategoryTextContent(i) {
@@ -248,6 +299,7 @@ function addSubTaskEdit(idInput, idContainer, i) {
     subtasks.push({
       subTaskInput: subTaskInput,
       id: subtasks.length,
+      isActive: false,
     });
 
     document.getElementById(idInput).value = '';
@@ -268,6 +320,7 @@ function addExistingSubtasks(i) {
     subtasks.push({
       subTaskInput: subtaskInput,
       id: index,
+      isActive: false,
     });
   }
 }
@@ -406,13 +459,13 @@ async function saveEditedTask(i) {
 
   let selectedCategoryElement = document.getElementById('showSelectedCategoryEdit');
   let selectedCategoryValue = selectedCategoryElement.textContent;
-  console.log('selectedContacts:', selectedContacts);
 
   tasks[i].taskTitle = title.value;
   tasks[i].taskDescription = description.value;
   tasks[i].taskDueDate = dueDate.value;
-  // tasks[i].selectedContacts = selectedContacts,
+  // tasks[i].selectedContacts = saveSelectedContactsEdit(i);
   tasks[i].selectedCategory = selectedCategoryValue;
+
   tasks[i].prio = selectedPrioPopupEdit;
   saveAddedSubtasks(i);
 
@@ -420,6 +473,10 @@ async function saveEditedTask(i) {
   updateHTML();
   // addExistingSubtasksExecuted = false;
   await setItem('stasks', JSON.stringify(tasks));
+}
+
+function saveSelectedContactsEdit(i) {
+  return selectedContacts;
 }
 
 function saveAddedSubtasks(i) {
@@ -432,6 +489,7 @@ function saveAddedSubtasks(i) {
     task.subtasks.push({
       subTaskInput: subTaskInput,
       id: nr,
+      isActive: false,
     });
   }
 }

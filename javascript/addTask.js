@@ -94,6 +94,7 @@ function addSubTask(idInput, idContainer) {
     subtasks.push({
       subTaskInput: subTaskInput,
       id: nr,
+      isActive: false,
     });
     document.getElementById(idInput).value = '';
     renderGeneratedSubTasks(idContainer);

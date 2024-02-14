@@ -39,23 +39,29 @@ function renderSubTask() {
   container.innerHTML += subTaskInputHtml();
 }
 
-function openAddTaskPopup() {
-  document.getElementById('addTaskPopup').classList.remove('d-none');
-  document.getElementById('addTaskPopup').classList.add('slide-in');
+// function openAddTaskPopup() {
+  // document.getElementById('addTaskPopup').classList.remove('d-none');
+  // document.getElementById('addTaskPopup').classList.add('slide-in');
+// }
+
+// function closeAddTaskPopup() {
+  // let addTaskPopup = document.getElementById('addTaskPopup');
+  // addTaskPopup.classList.remove('slide-in');
+  // addTaskPopup.classList.add('slide-out');
+// 
+  // setTimeout(function () {
+    // addTaskPopup.classList.remove('slide-out');
+    // addTaskPopup.classList.add('d-none');
+  // }, 900);
+// }
+
+async function addTask(){
+  await pushAddTask()
+  clearInputValue();
+  showPopUpAddedTaskToBoard();
 }
 
-function closeAddTaskPopup() {
-  let addTaskPopup = document.getElementById('addTaskPopup');
-  addTaskPopup.classList.remove('slide-in');
-  addTaskPopup.classList.add('slide-out');
-
-  setTimeout(function () {
-    addTaskPopup.classList.remove('slide-out');
-    addTaskPopup.classList.add('d-none');
-  }, 900);
-}
-
-async function addTask() {
+async function pushAddTask() {
   let taskTitle = document.getElementById('taskTitle').value;
   let taskDescription = document.getElementById('taskDescription').value;
   let taskDueDate = document.getElementById('myDateInput').value;
@@ -74,8 +80,7 @@ async function addTask() {
     currentState: 'toDo',
   });
   await setItem('tasks', JSON.stringify(tasks));
-  clearInputValue();
-  showPopUpAddedTaskToBoard();
+ 
 }
 
 function addSubTask(idInput, idContainer) {
@@ -230,40 +235,45 @@ function openDropDownCategory() {
   dropdownImgArrowCategory.classList.toggle('rotate-arrow');
 }
 
-function addAssignedContact(i, color) {
+async function addAssignedContact(i, color) {
   
   let assignedDropdown = document.getElementById('assignedDropdown');
   let selectedContact = contacts[i]["name"];
-
   let checkboxImage = document.getElementById(`checkBox-${i}`);
   let userID = document.getElementById(`user-${i}`);
+  
   renderContactList(assignedDropdown, checkboxImage, userID, selectedContact, color);
-
-  renderSelectedContacts();
+  await renderSelectedContacts();
 }
 
 function renderContactList(assignedDropdown, checkboxImage, userID, selectedContact, color) {
-  if (selectedContact !== '1') {
+  const index = selectedContacts.findIndex((contact) => contact.name === selectedContact && contact.color === color);
+  if (!checkIfSelectedContactExist(selectedContact)) {
     assignedDropdown.classList.toggle('addTask-selected');
-
-    const index = selectedContacts.findIndex((contact) => contact.name === selectedContact && contact.color === color);
-
-    if (assignedDropdown.classList.contains('addTask-selected')) {
+    if (!selectedContacts.includes(selectedContact)) {
       if (index === -1) {
         selectedContacts.push({ 
           name: selectedContact, 
           color: color, 
-        });
+        });}
       }
       checkboxImage.src = './assets/img/icons/check_button-white.svg';
       userID.classList.add('selected-profile-active-item');
-    } else {
+    }
+    else {
       if (index !== -1) {
         selectedContacts.splice(index, 1);
       }
       checkboxImage.src = './assets/img/icons/checkBox.svg';
       userID.classList.remove('selected-profile-active-item');
+      assignedDropdown.classList.toggle('addTask-selected');
     }
+}
+
+function checkIfSelectedContactExist(selectedContact){
+  for (let i = 0; i < selectedContacts.length; i++) {
+    if(selectedContacts[i]["name"].includes(selectedContact)){
+    return true; }
   }
 }
 
@@ -338,14 +348,14 @@ function selectCategoryIfElse(userStory, other, showSelectedCategory, assignedDr
     showSelectedCategory.setAttribute('data-value', category);
     showSelectedCategory.innerHTML = `User Story`;
     assignedDropdownCategory.classList.add('d-none');
-    let categoryIsSelected = true;
+    categoryIsSelected = true;
   } else if (category === 'other') {
     other.classList.add('category-selected');
     userStory.classList.remove('category-selected');
     showSelectedCategory.setAttribute('data-value', category);
     showSelectedCategory.innerHTML = `Other`;
     assignedDropdownCategory.classList.add('d-none');
-    let categoryIsSelected = true;
+    categoryIsSelected = true;
   } else {
     userStory.classList.remove('category-selected');
     other.classList.remove('category-selected');
@@ -418,7 +428,7 @@ function changePrioToLow(idContainer, idImg) {
 function checkIfFormIsFilled() {
   let title = document.getElementById('taskTitle');
   let dueDate = document.getElementById('myDateInput');
-  if ((categoryIsSelected = true && title.value > '' && dueDate.value > '')) {
+  if ((categoryIsSelected === true && title.value > '' && dueDate.value > '')) {
     document.getElementById('create-task').disabled = false;
   }
 }

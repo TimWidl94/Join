@@ -447,37 +447,28 @@ function updateHTML() {
 
 async function todoAreaUpdate() {
   let todo = tasks.filter((t) => t['selectedCategory'] == 'toDo');
-  console.log('todo.length', todo.length);
   document.getElementById('todo').innerHTML = '';
 
   for (let index = 0; index < todo.length; index++) {
-    console.log('todoAreaUpdate123');
-
     const element = todo[index];
     await setPrioImg(i);
     document.getElementById('todo').innerHTML += generateTodoHTML(element, img);
-    setCategoryBackground(tasks[index]['selectedCategory'], `board-task-epic${i}`);
   }
 }
 
 async function inProgressUdate() {
   let inProgress = tasks.filter((t) => t['selectedCategory'] == 'inProgress');
-  console.log('inProgress.length', inProgress.length);
   document.getElementById('inProgress').innerHTML = '';
 
   for (let index = 0; index < inProgress.length; index++) {
     const element = inProgress[index];
     await setPrioImg(i);
-    // setCategoryBackground(tasks[index]['selectedCategory'], index);
-    console.log("tasks[index]['selectedCategory']", tasks[index]['selectedCategory']);
     document.getElementById('inProgress').innerHTML += generateTodoHTML(element, img);
   }
 }
 
 async function feedbackAreaUdate() {
   let awaitFeedback = tasks.filter((t) => t['selectedCategory'] == 'awaitFeedback');
-  console.log('awaitFeedback.length', awaitFeedback.length);
-
   document.getElementById('awaitFeedback').innerHTML = '';
 
   for (let index = 0; index < awaitFeedback.length; index++) {
@@ -489,8 +480,6 @@ async function feedbackAreaUdate() {
 
 async function doneUpdate() {
   let done = tasks.filter((t) => t['selectedCategory'] == 'done');
-  console.log('done.length', done.length);
-
   document.getElementById('done').innerHTML = '';
 
   for (let index = 0; index < done.length; index++) {
@@ -559,10 +548,11 @@ async function renderToDoTasks() {
   let contentBoxToDo = document.getElementById('todo');
   contentBoxToDo.innerHTML = '';
   for (let i = 0; i < tasks.length; i++) {
-    if (tasks[i]['currentState'] == 'toDo') {
+    if (tasks[i]['currentState'] == 'toDo' && tasks[i]['currentState'].length > 0) {
       let img = await setPrioImg(i);
       contentBoxToDo.innerHTML += generateTodoHTML(i, img);
       renderContactsInBoardTask(i);
+      setCategoryBackground(tasks[i].selectedCategory, `board-task-epic${i}`);
     }
   }
 }
@@ -571,10 +561,11 @@ async function renderInProgressTasks() {
   let contentBoxToDo = document.getElementById('inProgress');
   contentBoxToDo.innerHTML = '';
   for (let i = 0; i < tasks.length; i++) {
-    if (tasks[i]['currentState'] == 'inProgress') {
+    if (tasks[i]['currentState'] == 'inProgress' && tasks[i]['currentState'].length > 0) {
       let img = await setPrioImg(i);
       contentBoxToDo.innerHTML += generateTodoHTML(i, img);
       renderContactsInBoardTask(i);
+      setCategoryBackground(tasks[i].selectedCategory, `board-task-epic${i}`);
     }
   }
 }
@@ -583,10 +574,11 @@ async function renderAwaitFeedbackTasks() {
   let contentBoxToDo = document.getElementById('awaitFeedback');
   contentBoxToDo.innerHTML = '';
   for (let i = 0; i < tasks.length; i++) {
-    if (tasks[i]['currentState'] == 'awaitFeedback') {
+    if (tasks[i]['currentState'] == 'awaitFeedback' && tasks[i]['currentState'].length > 0) {
       let img = await setPrioImg(i);
       contentBoxToDo.innerHTML += await generateTodoHTML(i, img);
       renderContactsInBoardTask(i);
+      setCategoryBackground(tasks[i].selectedCategory, `board-task-epic${i}`);
     }
   }
 }
@@ -595,10 +587,11 @@ async function renderDoneTasks() {
   let contentBoxToDo = document.getElementById('done');
   contentBoxToDo.innerHTML = '';
   for (let i = 0; i < tasks.length; i++) {
-    if (tasks[i]['currentState'] == 'done') {
+    if (tasks[i]['currentState'] == 'done' && tasks[i]['currentState'].length > 0) {
       let img = await setPrioImg(i);
       contentBoxToDo.innerHTML += await generateTodoHTML(i, img);
       renderContactsInBoardTask(i);
+      setCategoryBackground(tasks[i].selectedCategory, `board-task-epic${i}`);
     }
   }
 }

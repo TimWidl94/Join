@@ -12,8 +12,6 @@ async function initBoard() {
   setColorToActive('sidebarBoard', 'board-img', 'bottomBarBoardMobile', 'boardImgMobile');
   // await renderAddTaskPopUp();
 
-
-  
   checkTaskAreaDisplayEmpty();
 }
 
@@ -41,7 +39,7 @@ async function openAddTaskPopup() {
   console.log('works!');
 }
 
-async function addTaskPopUp(){
+async function addTaskPopUp() {
   await pushAddTask();
   renderBoardTasks();
   closeAddTaskPopup();
@@ -221,7 +219,6 @@ function editTask(i) {
   description.value = tasks[i].taskDescription;
   dueDate.value = tasks[i].taskDueDate;
   selectedCategoryElement.textContent = setCategoryTextContent(i);
-  // console.log('selectedCategoryElement.textContent:', selectedCategoryElement.textContent);
   setPrioEdit(tasks[i].prio);
   selectedPrioPopupEdit = tasks[i].prio;
 }
@@ -327,15 +324,31 @@ function showTaskFormEdit(id) {
   let assignedTo = document.getElementById(id);
   assignedTo.innerHTML = /*html*/ `
     <div name="assigned" onchange="addAssignedContact()">
-      <div id="dropdownEdit" class="dropdownEdit" onclick="openDropDown()">
+      <!-- <div id="dropdownEdit" class="dropdownEdit" onclick="openDropDown()"> -->
+      <div id="dropdownEdit" class="dropdown" onclick="openDropDown('assignedDropdown', 'dropdownImgArrow')">
         <input class="contact-searchbar" onkeyup="filterAddTaskContact()" type="text" id="search" placeholder="Select contacts to assign" />
         <img id="dropdownImgArrow" class="rotate-arrow dropdown-arrow-hover dropdown-arrow-hover" src="../assets/img/AddTask/arrow_drop.svg" alt="">
       </div>
     </div>
-    <div id="assignedDropdown" class="assignedDropdownEdit d-none">
+    <!-- <div id="assignedDropdown" class="assignedDropdownEdit d-none"> -->
+    <div id="assignedDropdown" class="d-none">
       <div id="assignedAddedContacts"></div>
     </div>
   `;
+
+  for (let i = 0; i < contacts.length; i++) {
+    let currentUser = contacts[i]['name'];
+    let initials = getInitials(currentUser);
+    let color = contacts[i]['color'];
+    let assignedDropdown = document.getElementById('assignedDropdown');
+    let username = checkForUserName();
+
+    if (contacts[i]['name'] === username) {
+      assignedDropdown.innerHTML += assignedToUserYouHtml(i, color, currentUser, initials);
+    } else {
+      assignedDropdown.innerHTML += assignedToUserHtml(i, color, currentUser, initials);
+    }
+  }
 }
 
 function changeButtonsAddTaskEdit(id, i) {
@@ -392,13 +405,14 @@ async function saveEditedTask(i) {
   let dueDate = document.getElementById('myDateInputEdit');
 
   let selectedCategoryElement = document.getElementById('showSelectedCategoryEdit');
-  let selectedCategory = selectedCategoryElement.getAttribute('data-value');
-  // console.log('selectedCategory:', selectedCategory);
+  let selectedCategoryValue = selectedCategoryElement.textContent;
+  console.log('selectedContacts:', selectedContacts);
 
   tasks[i].taskTitle = title.value;
   tasks[i].taskDescription = description.value;
   tasks[i].taskDueDate = dueDate.value;
-  tasks[i].selectedCategory = selectedCategory;
+  // tasks[i].selectedContacts = selectedContacts,
+  tasks[i].selectedCategory = selectedCategoryValue;
   tasks[i].prio = selectedPrioPopupEdit;
   saveAddedSubtasks(i);
 
@@ -428,10 +442,10 @@ function deleteExistingSubtasks(i) {
 }
 
 function setCategoryBackground(category, id) {
-  if (category == 'user-story') {
+  if (category == 'user-story' || category == 'User Story') {
     document.getElementById(id).classList.add('board-task-epic-green');
   }
-  if (category === 'other') {
+  if (category === 'other' || category === 'Other') {
     document.getElementById(id).classList.add('board-task-epic-blue');
   }
 }

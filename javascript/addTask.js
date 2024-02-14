@@ -40,23 +40,23 @@ function renderSubTask() {
 }
 
 // function openAddTaskPopup() {
-  // document.getElementById('addTaskPopup').classList.remove('d-none');
-  // document.getElementById('addTaskPopup').classList.add('slide-in');
+// document.getElementById('addTaskPopup').classList.remove('d-none');
+// document.getElementById('addTaskPopup').classList.add('slide-in');
 // }
 
 // function closeAddTaskPopup() {
-  // let addTaskPopup = document.getElementById('addTaskPopup');
-  // addTaskPopup.classList.remove('slide-in');
-  // addTaskPopup.classList.add('slide-out');
-// 
-  // setTimeout(function () {
-    // addTaskPopup.classList.remove('slide-out');
-    // addTaskPopup.classList.add('d-none');
-  // }, 900);
+// let addTaskPopup = document.getElementById('addTaskPopup');
+// addTaskPopup.classList.remove('slide-in');
+// addTaskPopup.classList.add('slide-out');
+//
+// setTimeout(function () {
+// addTaskPopup.classList.remove('slide-out');
+// addTaskPopup.classList.add('d-none');
+// }, 900);
 // }
 
-async function addTask(){
-  await pushAddTask()
+async function addTask() {
+  await pushAddTask();
   clearInputValue();
   showPopUpAddedTaskToBoard();
 }
@@ -80,7 +80,6 @@ async function pushAddTask() {
     currentState: 'toDo',
   });
   await setItem('tasks', JSON.stringify(tasks));
- 
 }
 
 function addSubTask(idInput, idContainer) {
@@ -92,12 +91,10 @@ function addSubTask(idInput, idContainer) {
     Subtask bitte bei Bedarf hinzufügen.`;
   } else {
     subTaskError.innerHTML = /*HTML*/ ``;
-    console.log('subtasks before:', subtasks);
     subtasks.push({
       subTaskInput: subTaskInput,
       id: nr,
     });
-    console.log('subtasks after:', subtasks);
     document.getElementById(idInput).value = '';
     renderGeneratedSubTasks(idContainer);
     resetSubTaskInputField(idInput);
@@ -149,7 +146,7 @@ function showTaskForm(id) {
   let assignedTo = document.getElementById(id);
   assignedTo.innerHTML = /*html*/ `
     <div name="assigned" onchange="addAssignedContact()">
-      <div id="dropdown" class="dropdown" onclick="openDropDown()">
+      <div id="dropdown" class="dropdown" onclick="openDropDown('assignedDropdown', 'dropdownImgArrow')">
         <input class="contact-searchbar" onkeyup="filterAddTaskContact()" type="text" id="search" placeholder="Select contacts to assign" />
         <img id="dropdownImgArrow" class="rotate-arrow dropdown-arrow-hover dropdown-arrow-hover" src="../assets/img/AddTask/arrow_drop.svg" alt="">
       </div>
@@ -217,9 +214,9 @@ function renderFilteredContacts(filteredContacts) {
   }
 }
 
-function openDropDown() {
-  let assignedDropdown = document.getElementById('assignedDropdown');
-  let dropdownImgArrow = document.getElementById('dropdownImgArrow');
+function openDropDown(idDropdown, idImgArrow) {
+  let assignedDropdown = document.getElementById(idDropdown);
+  let dropdownImgArrow = document.getElementById(idImgArrow);
 
   assignedDropdown.classList.toggle('d-none');
   // dropdown.classList.toggle('border-active');
@@ -236,12 +233,11 @@ function openDropDownCategory() {
 }
 
 async function addAssignedContact(i, color) {
-  
   let assignedDropdown = document.getElementById('assignedDropdown');
-  let selectedContact = contacts[i]["name"];
+  let selectedContact = contacts[i]['name'];
   let checkboxImage = document.getElementById(`checkBox-${i}`);
   let userID = document.getElementById(`user-${i}`);
-  
+
   renderContactList(assignedDropdown, checkboxImage, userID, selectedContact, color);
   await renderSelectedContacts();
 }
@@ -252,32 +248,31 @@ function renderContactList(assignedDropdown, checkboxImage, userID, selectedCont
     assignedDropdown.classList.toggle('addTask-selected');
     if (!selectedContacts.includes(selectedContact)) {
       if (index === -1) {
-        selectedContacts.push({ 
-          name: selectedContact, 
-          color: color, 
-        });}
+        selectedContacts.push({
+          name: selectedContact,
+          color: color,
+        });
       }
-      checkboxImage.src = './assets/img/icons/check_button-white.svg';
-      userID.classList.add('selected-profile-active-item');
     }
-    else {
-      if (index !== -1) {
-        selectedContacts.splice(index, 1);
-      }
-      checkboxImage.src = './assets/img/icons/checkBox.svg';
-      userID.classList.remove('selected-profile-active-item');
-      assignedDropdown.classList.toggle('addTask-selected');
+    checkboxImage.src = './assets/img/icons/check_button-white.svg';
+    userID.classList.add('selected-profile-active-item');
+  } else {
+    if (index !== -1) {
+      selectedContacts.splice(index, 1);
     }
-}
-
-function checkIfSelectedContactExist(selectedContact){
-  for (let i = 0; i < selectedContacts.length; i++) {
-    if(selectedContacts[i]["name"].includes(selectedContact)){
-    return true; }
+    checkboxImage.src = './assets/img/icons/checkBox.svg';
+    userID.classList.remove('selected-profile-active-item');
+    assignedDropdown.classList.toggle('addTask-selected');
   }
 }
 
-
+function checkIfSelectedContactExist(selectedContact) {
+  for (let i = 0; i < selectedContacts.length; i++) {
+    if (selectedContacts[i]['name'].includes(selectedContact)) {
+      return true;
+    }
+  }
+}
 
 function renderSelectedContacts() {
   let content = document.getElementById('assignedAddedContact');
@@ -285,14 +280,13 @@ function renderSelectedContacts() {
 
   for (let i = 0; i < selectedContacts.length; i++) {
     let contact = selectedContacts[i];
-    let initials = getInitials(selectedContacts[i]["name"]);
+    let initials = getInitials(selectedContacts[i]['name']);
     let color = contact['color'];
     content.innerHTML += `<div class="assinged-contact-overview" style="background-color:${color}">${initials}</div>`;
   }
 }
 
 function getInitials(contactName) {
-  // console.log('contactName:', contactName);
   const nameParts = contactName.split(' ');
   let initials = '';
   for (let i = 0; i < nameParts.length; i++) {
@@ -428,7 +422,7 @@ function changePrioToLow(idContainer, idImg) {
 function checkIfFormIsFilled() {
   let title = document.getElementById('taskTitle');
   let dueDate = document.getElementById('myDateInput');
-  if ((categoryIsSelected === true && title.value > '' && dueDate.value > '')) {
+  if (categoryIsSelected === true && title.value > '' && dueDate.value > '') {
     document.getElementById('create-task').disabled = false;
   }
 }

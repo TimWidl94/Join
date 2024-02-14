@@ -332,9 +332,9 @@ function subTasksValueHtml(id, i) {
     </li>`;
 }
 
-function addTaskHtml() {
+function addTaskPopUpHtml() {
   return /*html*/ `
-  <form onsubmit="addTask(); return false" class="formAddTask">
+  <form onsubmit="addTaskPopUp(); return false" class="formAddTask">
     <section class="container-left">
 
         <div class="headline-add-task"><h1 class="headline-h1-add-task">Add Task</h1></div>

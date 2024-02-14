@@ -10,10 +10,10 @@ async function initBoard() {
   await includeHTML();
   setUserInitials();
   setColorToActive('sidebarBoard', 'board-img', 'bottomBarBoardMobile', 'boardImgMobile');
-  await renderAddTask();
-  changePrioToMedium('mediumContainer', 'mediumImg');
-  await renderSubTask();
-  await showTaskForm('assignedTo');
+  // await renderAddTaskPopUp();
+
+
+  
   checkTaskAreaDisplayEmpty();
 }
 
@@ -25,16 +25,26 @@ async function initBoard() {
 //   }
 // }
 
-function renderAddTask() {
+function renderAddTaskPopUp() {
   let contentBoardTask = document.getElementById('boardAddTask');
   console.log('addTask Popup rendered');
-  contentBoardTask.innerHTML = addTaskHtml('boardAddTask');
+  contentBoardTask.innerHTML = addTaskPopUpHtml();
 }
 
-function openAddTaskPopup() {
+async function openAddTaskPopup() {
+  await renderAddTaskPopUp();
+  changePrioToMedium('mediumContainer', 'mediumImg');
+  await renderSubTask();
+  await showTaskForm('assignedTo');
   document.getElementById('addTaskPopup').classList.remove('d-none');
   document.getElementById('addTaskPopup').classList.add('slide-in');
   console.log('works!');
+}
+
+async function addTaskPopUp(){
+  await pushAddTask();
+  renderBoardTasks();
+  closeAddTaskPopup();
 }
 
 function closeAddTaskPopup() {
@@ -162,7 +172,7 @@ function findTaskEdit(subTaskInput) {
     for (let j = 0; j < task.subtasks.length; j++) {
       const subtask = task.subtasks[j];
       if (subtask.subTaskInput === subTaskInput) {
-        console.log('findSubtaskPosition task:', i);
+        // console.log('findSubtaskPosition task:', i);
         return i;
       }
     }
@@ -174,16 +184,16 @@ function findTaskEdit(subTaskInput) {
 function findSubtaskPositionEdit(id) {
   let nr = subtasks.findIndex((obj) => obj.id === id);
   if (nr == -1) {
-    console.log('Number of Subtask not found!');
+    // console.log('Number of Subtask not found!');
   }
-  console.log('findSubtaskPosition nr:', nr);
+  // console.log('findSubtaskPosition nr:', nr);
 
   return nr;
 }
 
 function pushCurrentSubtasksInArray(taskIndex) {
   let task = tasks[taskIndex];
-  console.log('task.subtasks:', task.subtasks);
+  // console.log('task.subtasks:', task.subtasks);
   for (let j = 0; j < task.subtasks.length; j++) {
     let subtaskInput = task.subtasks[j]['subTaskInput'];
     let index = j;
@@ -211,7 +221,7 @@ function editTask(i) {
   description.value = tasks[i].taskDescription;
   dueDate.value = tasks[i].taskDueDate;
   selectedCategoryElement.textContent = setCategoryTextContent(i);
-  console.log('selectedCategoryElement.textContent:', selectedCategoryElement.textContent);
+  // console.log('selectedCategoryElement.textContent:', selectedCategoryElement.textContent);
   setPrioEdit(tasks[i].prio);
   selectedPrioPopupEdit = tasks[i].prio;
 }
@@ -233,7 +243,7 @@ function addSubTaskEdit(idInput, idContainer, i) {
     Subtask bitte bei Bedarf hinzufügen.`;
   } else {
     subTaskError.innerHTML = /*HTML*/ ``;
-    console.log('addExistingSubtasksExecuted:', addExistingSubtasksExecuted);
+    // console.log('addExistingSubtasksExecuted:', addExistingSubtasksExecuted);
     if (!addExistingSubtasksExecuted && tasks[i].subtasks.length > 0) {
       addExistingSubtasks(i);
       addExistingSubtasksExecuted = true;
@@ -356,8 +366,8 @@ function setPrioEdit(prio) {
     document.getElementById('urgentImgEdit').src = './assets/img/AddTask/urgentPrioActive.svg';
   }
   selectedPrioPopupEdit = prio;
-  console.log('selectedPrioPopupEdit prio:', prio);
-  console.log('selectedPrioPopupEdit:', selectedPrioPopupEdit);
+  // console.log('selectedPrioPopupEdit prio:', prio);
+  // console.log('selectedPrioPopupEdit:', selectedPrioPopupEdit);
 }
 
 function changePriorityEdit(idContainer, idImg, priority) {
@@ -383,7 +393,7 @@ async function saveEditedTask(i) {
 
   let selectedCategoryElement = document.getElementById('showSelectedCategoryEdit');
   let selectedCategory = selectedCategoryElement.getAttribute('data-value');
-  console.log('selectedCategory:', selectedCategory);
+  // console.log('selectedCategory:', selectedCategory);
 
   tasks[i].taskTitle = title.value;
   tasks[i].taskDescription = description.value;
@@ -440,11 +450,11 @@ function updateHTML() {
 
 async function todoAreaUpdate() {
   let todo = tasks.filter((t) => t['selectedCategory'] == 'toDo');
-  console.log('todo.length', todo.length);
+  // console.log('todo.length', todo.length);
   document.getElementById('todo').innerHTML = '';
 
   for (let index = 0; index < todo.length; index++) {
-    console.log('todoAreaUpdate123');
+    // console.log('todoAreaUpdate123');
 
     const element = todo[index];
     await setPrioImg(i);
@@ -455,21 +465,21 @@ async function todoAreaUpdate() {
 
 async function inProgressUdate() {
   let inProgress = tasks.filter((t) => t['selectedCategory'] == 'inProgress');
-  console.log('inProgress.length', inProgress.length);
+  // console.log('inProgress.length', inProgress.length);
   document.getElementById('inProgress').innerHTML = '';
 
   for (let index = 0; index < inProgress.length; index++) {
     const element = inProgress[index];
     await setPrioImg(i);
     // setCategoryBackground(tasks[index]['selectedCategory'], index);
-    console.log("tasks[index]['selectedCategory']", tasks[index]['selectedCategory']);
+    // console.log("tasks[index]['selectedCategory']", tasks[index]['selectedCategory']);
     document.getElementById('inProgress').innerHTML += generateTodoHTML(element, img);
   }
 }
 
 async function feedbackAreaUdate() {
   let awaitFeedback = tasks.filter((t) => t['selectedCategory'] == 'awaitFeedback');
-  console.log('awaitFeedback.length', awaitFeedback.length);
+  // console.log('awaitFeedback.length', awaitFeedback.length);
 
   document.getElementById('awaitFeedback').innerHTML = '';
 
@@ -482,7 +492,7 @@ async function feedbackAreaUdate() {
 
 async function doneUpdate() {
   let done = tasks.filter((t) => t['selectedCategory'] == 'done');
-  console.log('done.length', done.length);
+  // console.log('done.length', done.length);
 
   document.getElementById('done').innerHTML = '';
 

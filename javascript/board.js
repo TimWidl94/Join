@@ -12,8 +12,6 @@ async function initBoard() {
   setColorToActive('sidebarBoard', 'board-img', 'bottomBarBoardMobile', 'boardImgMobile');
   // await renderAddTaskPopUp();
 
-
-  
   checkTaskAreaDisplayEmpty();
 }
 
@@ -41,7 +39,7 @@ async function openAddTaskPopup() {
   console.log('works!');
 }
 
-async function addTaskPopUp(){
+async function addTaskPopUp() {
   await pushAddTask();
   renderBoardTasks();
   closeAddTaskPopup();
@@ -221,7 +219,6 @@ function editTask(i) {
   description.value = tasks[i].taskDescription;
   dueDate.value = tasks[i].taskDueDate;
   selectedCategoryElement.textContent = setCategoryTextContent(i);
-  // console.log('selectedCategoryElement.textContent:', selectedCategoryElement.textContent);
   setPrioEdit(tasks[i].prio);
   selectedPrioPopupEdit = tasks[i].prio;
 }
@@ -327,15 +324,31 @@ function showTaskFormEdit(id) {
   let assignedTo = document.getElementById(id);
   assignedTo.innerHTML = /*html*/ `
     <div name="assigned" onchange="addAssignedContact()">
-      <div id="dropdownEdit" class="dropdownEdit" onclick="openDropDown()">
+      <!-- <div id="dropdownEdit" class="dropdownEdit" onclick="openDropDown()"> -->
+      <div id="dropdownEdit" class="dropdown" onclick="openDropDown('assignedDropdown', 'dropdownImgArrow')">
         <input class="contact-searchbar" onkeyup="filterAddTaskContact()" type="text" id="search" placeholder="Select contacts to assign" />
         <img id="dropdownImgArrow" class="rotate-arrow dropdown-arrow-hover dropdown-arrow-hover" src="../assets/img/AddTask/arrow_drop.svg" alt="">
       </div>
     </div>
-    <div id="assignedDropdown" class="assignedDropdownEdit d-none">
+    <!-- <div id="assignedDropdown" class="assignedDropdownEdit d-none"> -->
+    <div id="assignedDropdown" class="d-none">
       <div id="assignedAddedContacts"></div>
     </div>
   `;
+
+  for (let i = 0; i < contacts.length; i++) {
+    let currentUser = contacts[i]['name'];
+    let initials = getInitials(currentUser);
+    let color = contacts[i]['color'];
+    let assignedDropdown = document.getElementById('assignedDropdown');
+    let username = checkForUserName();
+
+    if (contacts[i]['name'] === username) {
+      assignedDropdown.innerHTML += assignedToUserYouHtml(i, color, currentUser, initials);
+    } else {
+      assignedDropdown.innerHTML += assignedToUserHtml(i, color, currentUser, initials);
+    }
+  }
 }
 
 function changeButtonsAddTaskEdit(id, i) {
@@ -392,13 +405,14 @@ async function saveEditedTask(i) {
   let dueDate = document.getElementById('myDateInputEdit');
 
   let selectedCategoryElement = document.getElementById('showSelectedCategoryEdit');
-  let selectedCategory = selectedCategoryElement.getAttribute('data-value');
-  // console.log('selectedCategory:', selectedCategory);
+  let selectedCategoryValue = selectedCategoryElement.textContent;
+  console.log('selectedContacts:', selectedContacts);
 
   tasks[i].taskTitle = title.value;
   tasks[i].taskDescription = description.value;
   tasks[i].taskDueDate = dueDate.value;
-  tasks[i].selectedCategory = selectedCategory;
+  // tasks[i].selectedContacts = selectedContacts,
+  tasks[i].selectedCategory = selectedCategoryValue;
   tasks[i].prio = selectedPrioPopupEdit;
   saveAddedSubtasks(i);
 
@@ -428,10 +442,10 @@ function deleteExistingSubtasks(i) {
 }
 
 function setCategoryBackground(category, id) {
-  if (category == 'user-story') {
+  if (category == 'user-story' || category == 'User Story') {
     document.getElementById(id).classList.add('board-task-epic-green');
   }
-  if (category === 'other') {
+  if (category === 'other' || category === 'Other') {
     document.getElementById(id).classList.add('board-task-epic-blue');
   }
 }
@@ -450,37 +464,28 @@ function updateHTML() {
 
 async function todoAreaUpdate() {
   let todo = tasks.filter((t) => t['selectedCategory'] == 'toDo');
-  // console.log('todo.length', todo.length);
   document.getElementById('todo').innerHTML = '';
 
   for (let index = 0; index < todo.length; index++) {
-    // console.log('todoAreaUpdate123');
-
     const element = todo[index];
     await setPrioImg(i);
     document.getElementById('todo').innerHTML += generateTodoHTML(element, img);
-    setCategoryBackground(tasks[index]['selectedCategory'], `board-task-epic${i}`);
   }
 }
 
 async function inProgressUdate() {
   let inProgress = tasks.filter((t) => t['selectedCategory'] == 'inProgress');
-  // console.log('inProgress.length', inProgress.length);
   document.getElementById('inProgress').innerHTML = '';
 
   for (let index = 0; index < inProgress.length; index++) {
     const element = inProgress[index];
     await setPrioImg(i);
-    // setCategoryBackground(tasks[index]['selectedCategory'], index);
-    // console.log("tasks[index]['selectedCategory']", tasks[index]['selectedCategory']);
     document.getElementById('inProgress').innerHTML += generateTodoHTML(element, img);
   }
 }
 
 async function feedbackAreaUdate() {
   let awaitFeedback = tasks.filter((t) => t['selectedCategory'] == 'awaitFeedback');
-  // console.log('awaitFeedback.length', awaitFeedback.length);
-
   document.getElementById('awaitFeedback').innerHTML = '';
 
   for (let index = 0; index < awaitFeedback.length; index++) {
@@ -492,8 +497,6 @@ async function feedbackAreaUdate() {
 
 async function doneUpdate() {
   let done = tasks.filter((t) => t['selectedCategory'] == 'done');
-  // console.log('done.length', done.length);
-
   document.getElementById('done').innerHTML = '';
 
   for (let index = 0; index < done.length; index++) {
@@ -562,10 +565,11 @@ async function renderToDoTasks() {
   let contentBoxToDo = document.getElementById('todo');
   contentBoxToDo.innerHTML = '';
   for (let i = 0; i < tasks.length; i++) {
-    if (tasks[i]['currentState'] == 'toDo') {
+    if (tasks[i]['currentState'] == 'toDo' && tasks[i]['currentState'].length > 0) {
       let img = await setPrioImg(i);
       contentBoxToDo.innerHTML += generateTodoHTML(i, img);
       renderContactsInBoardTask(i);
+      setCategoryBackground(tasks[i].selectedCategory, `board-task-epic${i}`);
     }
   }
 }
@@ -574,10 +578,11 @@ async function renderInProgressTasks() {
   let contentBoxToDo = document.getElementById('inProgress');
   contentBoxToDo.innerHTML = '';
   for (let i = 0; i < tasks.length; i++) {
-    if (tasks[i]['currentState'] == 'inProgress') {
+    if (tasks[i]['currentState'] == 'inProgress' && tasks[i]['currentState'].length > 0) {
       let img = await setPrioImg(i);
       contentBoxToDo.innerHTML += generateTodoHTML(i, img);
       renderContactsInBoardTask(i);
+      setCategoryBackground(tasks[i].selectedCategory, `board-task-epic${i}`);
     }
   }
 }
@@ -586,10 +591,11 @@ async function renderAwaitFeedbackTasks() {
   let contentBoxToDo = document.getElementById('awaitFeedback');
   contentBoxToDo.innerHTML = '';
   for (let i = 0; i < tasks.length; i++) {
-    if (tasks[i]['currentState'] == 'awaitFeedback') {
+    if (tasks[i]['currentState'] == 'awaitFeedback' && tasks[i]['currentState'].length > 0) {
       let img = await setPrioImg(i);
       contentBoxToDo.innerHTML += await generateTodoHTML(i, img);
       renderContactsInBoardTask(i);
+      setCategoryBackground(tasks[i].selectedCategory, `board-task-epic${i}`);
     }
   }
 }
@@ -598,10 +604,11 @@ async function renderDoneTasks() {
   let contentBoxToDo = document.getElementById('done');
   contentBoxToDo.innerHTML = '';
   for (let i = 0; i < tasks.length; i++) {
-    if (tasks[i]['currentState'] == 'done') {
+    if (tasks[i]['currentState'] == 'done' && tasks[i]['currentState'].length > 0) {
       let img = await setPrioImg(i);
       contentBoxToDo.innerHTML += await generateTodoHTML(i, img);
       renderContactsInBoardTask(i);
+      setCategoryBackground(tasks[i].selectedCategory, `board-task-epic${i}`);
     }
   }
 }

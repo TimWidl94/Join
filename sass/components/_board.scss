@@ -622,11 +622,10 @@
 .assignedToEdit {
   display: flex;
   flex-direction: column;
-  width: calc(100% - 2 * 24px);
   gap: 8px;
   position: relative;
   display: inline-block;
-  min-height: 300px;
+  margin-top: -32px;
 }
 
 .dropdownAssignedEdit {
@@ -681,6 +680,14 @@
   gap: 16px;
   width: calc(100% - 16px);
   padding-right: 16px;
+}
+
+.assigned-contact-edit {
+  display: flex;
+  position: relative;
+  top: 36px;
+  margin-top: -16px;
+  margin-bottom: 60px;
 }
 
 @media (max-width: 1300px) {
@@ -754,6 +761,10 @@
   }
   .bodyBoard {
     overflow: visible !important;
+  }
+
+  .aTPopupContainer {
+    padding-left: unset;
   }
 }
 

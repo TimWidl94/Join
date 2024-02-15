@@ -202,19 +202,18 @@ function findSubtaskPositionEdit(id) {
 }
 
 // function pushCurrentSubtasksInArray(taskIndex) {
-  // let task = tasks[taskIndex];
-  // console.log('task.subtasks:', task.subtasks);
-  // for (let j = 0; j < task.subtasks.length; j++) {
-    // let subtaskInput = task.subtasks[j]['subTaskInput'];
-    // let index = j;
-    // subtasks.push({
-      // subTaskInput: subtaskInput,
-      // id: index,
-      // isActive: false,
-    // });
-  // }
+// let task = tasks[taskIndex];
+// console.log('task.subtasks:', task.subtasks);
+// for (let j = 0; j < task.subtasks.length; j++) {
+// let subtaskInput = task.subtasks[j]['subTaskInput'];
+// let index = j;
+// subtasks.push({
+// subTaskInput: subtaskInput,
+// id: index,
+// isActive: false,
+// });
 // }
-
+// }
 
 async function editTask(i) {
   let popupInfo = document.getElementById('aTPopup');
@@ -224,10 +223,7 @@ async function editTask(i) {
   popupInfo.classList.add('d-none');
 
   renderEditTask(i);
-
-  loadSelectedContacts(i);
   await pushTasksSubtasks(i);
-
 
   let title = document.getElementById('taskTitleEdit');
   let description = document.getElementById('taskDescriptionEdit');
@@ -243,17 +239,16 @@ async function editTask(i) {
   selectedPrioPopupEdit = tasks[i].prio;
 }
 
-function pushTasksSubtasks(i){
+function pushTasksSubtasks(i) {
+  for (let j = 0; j < tasks[i]['subtasks'].length; j++) {
+    let subTask = tasks[i]['subtasks'][j];
 
-for (let j = 0; j < tasks[i]["subtasks"].length; j++) {
-  let subTask = tasks[i]["subtasks"][j];
-  
-  subtasks.push({
-    subTaskInput: subTask["subTaskInput"],
-    id: subTask["id"],
-    isActive: subTask["isActive"],
-  })
-}
+    subtasks.push({
+      subTaskInput: subTask['subTaskInput'],
+      id: subTask['id'],
+      isActive: subTask['isActive'],
+    });
+  }
 }
 
 function loadSelectedContacts(i) {
@@ -262,7 +257,6 @@ function loadSelectedContacts(i) {
   deleteSelectedContactsFromTask(i);
   renderSelectedContactsEdit(i);
 }
-
 
 function clearSelectedContactsArray() {
   if (selectedContacts.length > 0) {
@@ -341,17 +335,17 @@ function addSubTaskEdit(idInput, idContainer, i) {
 }
 
 // function addExistingSubtasks(i) {
-  // let task = tasks[i];
-// 
-  // for (let j = 0; j < task.subtasks.length; j++) {
-    // let subtaskInput = task.subtasks[j]['subTaskInput'];
-    // let index = j;
-    // subtasks.push({
-      // subTaskInput: subtaskInput,
-      // id: index,
-      // isActive: false,
-    // });
-  // }
+// let task = tasks[i];
+//
+// for (let j = 0; j < task.subtasks.length; j++) {
+// let subtaskInput = task.subtasks[j]['subTaskInput'];
+// let index = j;
+// subtasks.push({
+// subTaskInput: subtaskInput,
+// id: index,
+// isActive: false,
+// });
+// }
 // }
 
 function resetSubTaskIDs() {
@@ -497,7 +491,7 @@ async function saveEditedTask(i) {
   tasks[i].selectedCategory = selectedCategoryValue;
 
   tasks[i].prio = selectedPrioPopupEdit;
-  tasks[i]["subtasks"] = subtasks;
+  tasks[i]['subtasks'] = subtasks;
   // saveAddedSubtasks(i);
 
   closeTaskPopup();
@@ -516,7 +510,7 @@ async function saveEditedTask(i) {
 
 function saveAddedSubtasks(i) {
   deleteExistingSubtasks(i);
-  tasks[i]["subtasks"].push(subtasks);
+  tasks[i]['subtasks'].push(subtasks);
 }
 
 function deleteExistingSubtasks(i) {

@@ -319,14 +319,27 @@
   margin-right: auto;
   margin-left: auto;
   width: 475px;
-  min-height: 400px;
-  max-height: 75vh;
-  overflow: auto;
   border-radius: 30px;
   padding: 40px 24px;
-  gap: 24px;
   background-color: $summary-background-color;
 }
+
+.aTPopupContentWrapper {
+  display: flex;
+  flex-direction: column;
+  // align-items: start;
+  max-height: 80vh; /* Setzen Sie eine maximale Höhe für den Wrapper, um sicherzustellen, dass der Inhalt nicht über den Bildschirm hinausgeht */
+  overflow-y: auto;
+  overflow-x: hidden;
+  width: 100%;
+  gap: 24px;
+}
+
+// .aTPopupDescription,
+// .aTPopupAssignedTo,
+// .aTPopupSubtasks {
+//   // overflow: auto; /* Verhindere, dass der Inhalt dieser Bereiche über das Popup hinausragt */
+// }
 
 .aTPopupTop {
   display: flex;
@@ -401,8 +414,8 @@
 .aTPopupAssignedTo {
   display: flex;
   flex-direction: column;
-  min-height: 50px;
-  max-height: 500px;
+  // min-height: 50px;
+  // max-height: 500px;
   gap: 4px;
 }
 
@@ -440,12 +453,14 @@
 }
 
 .subtaskContainer {
-  display: inline-flex;
+  display: flex;
   align-items: flex-start;
   justify-content: center;
   flex-direction: column;
   gap: 6px;
   border-radius: 12px;
+  // overflow: auto; /* Subtask-Container werden scrollbar, wenn der Inhalt den verfügbaren Platz überschreitet */
+  // max-height: 150px;
 }
 
 .subtaskContainer p {
@@ -688,8 +703,9 @@
   top: 36px;
   margin-top: -16px;
   margin-bottom: 60px;
-  // max-width: 460px;
+  max-width: 100%;
   // overflow: auto;
+  height: 300px;
 }
 
 @media (max-width: 1300px) {
@@ -781,6 +797,36 @@
   .atPopupEdit {
     margin-left: 24px;
     margin-right: 24px;
+  }
+
+  .aTPopupContentWrapper {
+    gap: 12px;
+  }
+
+  .aTPopupContentWrapper::-webkit-scrollbar {
+    display: none;
+  }
+
+  .atPopupEditWrapper::-webkit-scrollbar {
+    display: none;
+  }
+
+  .buttonGrey {
+    height: 38px !important;
+  }
+
+  #assignedDropdown {
+    min-width: unset;
+    width: 100%;
+  }
+
+  .flex-checkbox {
+    padding: 7px 6px 7px 6px;
+  }
+
+  .assigned-name {
+    padding-left: 4px;
+    font-size: 14px;
   }
 }
 

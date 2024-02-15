@@ -25,7 +25,7 @@ async function initBoard() {
 
 function renderAddTaskPopUp() {
   let contentBoardTask = document.getElementById('boardAddTask');
-  console.log('addTask Popup rendered');
+  // console.log('addTask Popup rendered');
   contentBoardTask.innerHTML = addTaskPopUpHtml();
 }
 
@@ -36,7 +36,7 @@ async function openAddTaskPopup() {
   await showTaskForm('assignedTo');
   document.getElementById('addTaskPopup').classList.remove('d-none');
   document.getElementById('addTaskPopup').classList.add('slide-in');
-  console.log('works!');
+  // console.log('works!');
 }
 
 async function addTaskPopUp() {
@@ -68,10 +68,10 @@ function openTaskPopup(i) {
   taskPopup.innerHTML = '';
   taskPopup.innerHTML = generateTaskPopupHTML(i, img, date);
   setCategoryBackground(tasks[i]['selectedCategory'], `aTPopupCategory${i}`);
-  checkSubtasksExisting(i);
+  // checkSubtasksExisting(i);
 
   renderAssignedToContacs(i);
-  renderSubtasks(i, 'subtaskContainerPopup');
+  // renderSubtasks(i, 'subtaskContainerPopup');
 }
 
 function closeTaskPopup() {
@@ -151,7 +151,6 @@ function convertDateFormat(date) {
 function deleteTask(i) {
   tasks.splice(i, 1);
   closeTaskPopup();
-  updateHTML();
 }
 
 function deleteSubTaskEdit(id, idContainer, subTaskInput) {
@@ -254,14 +253,14 @@ function clearSelectedContactsArray() {
 
 function addSelectedContactsFromTask(i) {
   let task = tasks[i];
-  console.log('selectedContacts before:', selectedContacts);
-  console.log('tasks[i].selectedContacts.length:', tasks[i].selectedContacts.length);
+  // console.log('selectedContacts before:', selectedContacts);
+  // console.log('tasks[i].selectedContacts.length:', tasks[i].selectedContacts.length);
   for (let j = 0; j < task.selectedContacts.length; j++) {
     let selectedContact = task.selectedContacts[j];
-    console.log('task.selectedContacts[j]:', task.selectedContacts[j]);
+    // console.log('task.selectedContacts[j]:', task.selectedContacts[j]);
     selectedContacts.push(selectedContact);
   }
-  console.log('selectedContacts after:', selectedContacts);
+  // console.log('selectedContacts after:', selectedContacts);
 }
 
 function deleteSelectedContactsFromTask(i) {
@@ -485,7 +484,6 @@ async function saveEditedTask(i) {
   saveAddedSubtasks(i);
 
   closeTaskPopup();
-  updateHTML();
   // addExistingSubtasksExecuted = false;
   await setItem('stasks', JSON.stringify(tasks));
 }

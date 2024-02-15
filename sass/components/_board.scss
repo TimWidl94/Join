@@ -788,12 +788,19 @@
 }
 
 @media (max-width: 500px) {
-  .container {
-    padding: 80px 10px !important;
-    max-width: calc(100% - 35px) !important;
+  .aTPopupH1 {
+    font-size: 47px;
+  }
+}
+
+@media (max-width: 400px) {
+  .aTPopup,
+  .atPopupEdit {
+    margin-left: 12px;
+    margin-right: 12px;
   }
 
   .aTPopupH1 {
-    font-size: 47px;
+    font-size: 40px;
   }
 }

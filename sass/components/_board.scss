@@ -318,12 +318,12 @@
   align-items: start;
   margin-right: auto;
   margin-left: auto;
-  width: 525px;
-  min-height: 500px;
+  width: 475px;
+  min-height: 400px;
   max-height: 75vh;
   overflow: auto;
   border-radius: 30px;
-  padding: 32px 24px;
+  padding: 40px 24px;
   gap: 24px;
   background-color: $summary-background-color;
 }
@@ -766,11 +766,47 @@
   .aTPopupContainer {
     padding-left: unset;
   }
+
+  .aTPopup,
+  .atPopupEdit {
+    padding: 24px 24px;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 600px) {
+  .aTPopup,
+  .atPopupEdit {
+    margin-left: 24px;
+    margin-right: 24px;
+  }
 }
 
 @media (max-width: 500px) {
   .container {
     padding: 80px 10px !important;
     max-width: calc(100% - 35px) !important;
+  }
+
+  .aTPopupH1 {
+    font-size: 47px;
+  }
+}
+
+@media (max-width: 500px) {
+  .aTPopupH1 {
+    font-size: 47px;
+  }
+}
+
+@media (max-width: 400px) {
+  .aTPopup,
+  .atPopupEdit {
+    margin-left: 12px;
+    margin-right: 12px;
+  }
+
+  .aTPopupH1 {
+    font-size: 40px;
   }
 }

@@ -77,6 +77,7 @@ function closeTaskPopup() {
   document.getElementById('aTPopupWrapper').classList.remove('d-block');
   document.getElementById('aTPopupWrapper').classList.add('d-none');
   updateHTML();
+  subtasks = [];
 }
 
 function renderAssignedToContacs(i) {
@@ -106,11 +107,11 @@ function renderSubtasks(i, id) {
   let subTaskContainer = document.getElementById(id);
   subTaskContainer.innerHTML = '';
 
-  const task = tasks[i];
+  let task = tasks[i];
 
-  if (task.subtasks?.length > 0) {
+  if (task.subtasks.length > 0) {
     for (let j = 0; j < task.subtasks.length; j++) {
-      const subTask = task.subtasks[j];
+      let subTask = task.subtasks[j];
       subTaskContainer.innerHTML += renderSubtasksInfoHtml(j, subTask);
     }
   }
@@ -190,21 +191,21 @@ function findSubtaskPositionEdit(id) {
   return nr;
 }
 
-function pushCurrentSubtasksInArray(taskIndex) {
-  let task = tasks[taskIndex];
+// function pushCurrentSubtasksInArray(taskIndex) {
+  // let task = tasks[taskIndex];
   // console.log('task.subtasks:', task.subtasks);
-  for (let j = 0; j < task.subtasks.length; j++) {
-    let subtaskInput = task.subtasks[j]['subTaskInput'];
-    let index = j;
-    subtasks.push({
-      subTaskInput: subtaskInput,
-      id: index,
-      isActive: false,
-    });
-  }
-}
+  // for (let j = 0; j < task.subtasks.length; j++) {
+    // let subtaskInput = task.subtasks[j]['subTaskInput'];
+    // let index = j;
+    // subtasks.push({
+      // subTaskInput: subtaskInput,
+      // id: index,
+      // isActive: false,
+    // });
+  // }
+// }
 
-function editTask(i) {
+async function editTask(i) {
   let popupInfo = document.getElementById('aTPopup');
   let popupEdit = document.getElementById('aTPopupEdit');
 
@@ -212,6 +213,7 @@ function editTask(i) {
   popupInfo.classList.add('d-none');
   renderEditTask(i);
   loadSelectedContacts(i);
+  await pushTasksSubtasks(i);
 
   let title = document.getElementById('taskTitleEdit');
   let description = document.getElementById('taskDescriptionEdit');
@@ -226,17 +228,30 @@ function editTask(i) {
   selectedPrioPopupEdit = tasks[i].prio;
 }
 
+function pushTasksSubtasks(i){
+
+for (let j = 0; j < tasks[i]["subtasks"].length; j++) {
+  let subTask = tasks[i]["subtasks"][j];
+  
+  subtasks.push({
+    subTaskInput: subTask["subTaskInput"],
+    id: subTask["id"],
+    isActive: subTask["isActive"],
+  })
+}
+}
+
 function loadSelectedContacts(i) {
-  clearSelectedContactsArray();
+  // clearSelectedContactsArray(i);
   // addSelectedContactsFromTask(i);
   // deleteSelectedContactsFromTask(i);
   renderSelectedContactsEdit(i);
 }
 
-function clearSelectedContactsArray() {
-  for (let i = 0; i < selectedContacts.length; i++) {
-    let selectedContact = selectedContacts[i];
-    selectedContact.splice(i, 1);
+function clearSelectedContactsArray(i) {
+  for (let j = 0; j < tasks[i]["selectedContacts"].length; j++) {
+    let selectedContact = tasks[i]["selectedContacts"][j];
+    selectedContact.splice(j, 1);
   }
 }
 
@@ -285,20 +300,15 @@ function setCategoryTextContent(i) {
 function addSubTaskEdit(idInput, idContainer, i) {
   let subTaskInput = document.getElementById(idInput).value;
   let subTaskError = document.getElementById('subTaskErrorEdit');
-  let nr;
+  let nr = subtasks.length;
   if (subTaskInput == 0) {
     subTaskError.innerHTML = /*HTML*/ `
     Subtask bitte bei Bedarf hinzufügen.`;
   } else {
     subTaskError.innerHTML = /*HTML*/ ``;
-    // console.log('addExistingSubtasksExecuted:', addExistingSubtasksExecuted);
-    if (!addExistingSubtasksExecuted && tasks[i].subtasks.length > 0) {
-      addExistingSubtasks(i);
-      addExistingSubtasksExecuted = true;
-    }
     subtasks.push({
       subTaskInput: subTaskInput,
-      id: subtasks.length,
+      id: nr,
       isActive: false,
     });
 
@@ -306,24 +316,24 @@ function addSubTaskEdit(idInput, idContainer, i) {
     renderGeneratedSubTasksEdit(idContainer, i);
     resetSubTaskInputField(idInput);
 
-    resetSubTaskIDs();
+    // resetSubTaskIDs();
   }
-  setItem('stasks', JSON.stringify(tasks));
+  // setItem('tasks', JSON.stringify(tasks));
 }
 
-function addExistingSubtasks(i) {
-  let task = tasks[i];
-
-  for (let j = 0; j < task.subtasks.length; j++) {
-    let subtaskInput = task.subtasks[j]['subTaskInput'];
-    let index = j;
-    subtasks.push({
-      subTaskInput: subtaskInput,
-      id: index,
-      isActive: false,
-    });
-  }
-}
+// function addExistingSubtasks(i) {
+  // let task = tasks[i];
+// 
+  // for (let j = 0; j < task.subtasks.length; j++) {
+    // let subtaskInput = task.subtasks[j]['subTaskInput'];
+    // let index = j;
+    // subtasks.push({
+      // subTaskInput: subtaskInput,
+      // id: index,
+      // isActive: false,
+    // });
+  // }
+// }
 
 function resetSubTaskIDs() {
   for (let i = 0; i < subtasks.length; i++) {
@@ -362,9 +372,9 @@ function renderSubTasksEditable(i, id1) {
   let container = document.getElementById(id1);
   container.innerHTML = ``;
 
-  const task = tasks[i];
+  let task = tasks[i];
 
-  if (task.subtasks?.length > 0) {
+  if (task.subtasks.length > 0) {
     for (let j = 0; j < task.subtasks.length; j++) {
       let subTask = task.subtasks[j];
       let id = task.subtasks[j]['id'];
@@ -415,7 +425,7 @@ function changeButtonsAddTaskEdit(id, i) {
       <img class="subTaskInputImg checkImg" onclick="addSubTaskEdit('subTaskInputEdit', 'subTaskContainerEdit', ${i})" src="./assets/img/icons/checkAddTask.svg" alt="">
     </div>
   `;
-  document.getElementById('subTaskInput').focus();
+  document.getElementById('subTaskInputEdit').focus();
 }
 
 function setPrioEdit(prio) {
@@ -467,12 +477,13 @@ async function saveEditedTask(i) {
   tasks[i].selectedCategory = selectedCategoryValue;
 
   tasks[i].prio = selectedPrioPopupEdit;
-  saveAddedSubtasks(i);
+  tasks[i]["subtasks"] = subtasks;
+  // saveAddedSubtasks(i);
 
   closeTaskPopup();
-  updateHTML();
+  // renderBoardTasks();
   // addExistingSubtasksExecuted = false;
-  await setItem('stasks', JSON.stringify(tasks));
+  // await setItem('stasks', JSON.stringify(tasks));
 }
 
 function saveSelectedContactsEdit(i) {
@@ -481,17 +492,7 @@ function saveSelectedContactsEdit(i) {
 
 function saveAddedSubtasks(i) {
   deleteExistingSubtasks(i);
-  let task = tasks[i];
-
-  for (let j = 0; j < subtasks.length; j++) {
-    let subTaskInput = subtasks[j].subTaskInput;
-    let nr = subtasks[j].id;
-    task.subtasks.push({
-      subTaskInput: subTaskInput,
-      id: nr,
-      isActive: false,
-    });
-  }
+  tasks[i]["subtasks"].push(subtasks);
 }
 
 function deleteExistingSubtasks(i) {
@@ -514,8 +515,8 @@ function startDragging(id) {
 
 function updateHTML() {
   todoAreaUpdate();
-  inProgressUdate();
-  feedbackAreaUdate();
+  inProgressUpdate();
+  feedbackAreaUpdate();
   doneUpdate();
   renderBoardTasks();
 }
@@ -531,7 +532,7 @@ async function todoAreaUpdate() {
   }
 }
 
-async function inProgressUdate() {
+async function inProgressUpdate() {
   let inProgress = tasks.filter((t) => t['selectedCategory'] == 'inProgress');
   document.getElementById('inProgress').innerHTML = '';
 
@@ -542,7 +543,7 @@ async function inProgressUdate() {
   }
 }
 
-async function feedbackAreaUdate() {
+async function feedbackAreaUpdate() {
   let awaitFeedback = tasks.filter((t) => t['selectedCategory'] == 'awaitFeedback');
   document.getElementById('awaitFeedback').innerHTML = '';
 

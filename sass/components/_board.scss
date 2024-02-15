@@ -766,6 +766,12 @@
   .aTPopupContainer {
     padding-left: unset;
   }
+
+  .aTPopup,
+  .atPopupEdit {
+    padding: 24px 24px;
+    gap: 16px;
+  }
 }
 
 @media (max-width: 600px) {

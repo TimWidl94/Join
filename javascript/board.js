@@ -71,7 +71,7 @@ function openTaskPopup(i) {
   // checkSubtasksExisting(i);
 
   renderAssignedToContacs(i);
-  // renderSubtasks(i, 'subtaskContainerPopup');
+  renderSubtasks(i, 'subtaskContainerPopup');
 }
 
 function closeTaskPopup() {

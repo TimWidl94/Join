@@ -442,7 +442,7 @@ function addTaskPopUpHtml() {
 }
 
 function addedTaskToBoardHtml() {
-  return `
+  return /*html*/ `
   <div class="signedUpMassage d-none" id="addedTaskToBoard">
   <p class="p-whiteText">Task Added to board</p>
   <img class="addTasktoBoard" src="assets/img/icons/board_icon_white.svg">
@@ -451,7 +451,7 @@ function addedTaskToBoardHtml() {
 }
 
 function assignedToUserHtml(i, color, currentUser, initials) {
-  return `
+  return /*html*/ `
   <div id="user-${i}" class="flex-checkbox selected-profile" onclick="addAssignedContact(${i}, '${color}')" data-value="${currentUser}">
   <div class="selected-profile"><div class="assinged-contact-profile" style="background-color:${color}">${initials}</div>
   <span class="assigned-name">${currentUser}</span></div>
@@ -461,7 +461,7 @@ function assignedToUserHtml(i, color, currentUser, initials) {
 }
 
 function assignedToUserYouHtml(i, color, currentUser, initials) {
-  return `
+  return /*html*/ `
   <div id="user-${i}" class="flex-checkbox selected-profile" onclick="addAssignedContact(${i}, '${color}')" data-value="${currentUser}">
   <div class="selected-profile"><div class="assinged-contact-profile" style="background-color:${color}">${initials}</div>
   <span class="assigned-name">${currentUser} (you)</span></div>

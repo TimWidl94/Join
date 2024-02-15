@@ -71,7 +71,7 @@ function openTaskPopup(i) {
   // checkSubtasksExisting(i);
 
   renderAssignedToContacs(i);
-  // renderSubtasks(i, 'subtaskContainerPopup');
+  renderSubtasks(i, 'subtaskContainerPopup');
 }
 
 function closeTaskPopup() {
@@ -215,8 +215,6 @@ function pushCurrentSubtasksInArray(taskIndex) {
 }
 
 function editTask(i) {
-  console.log('editTask tasks[i].selectedContacts:', tasks[i].selectedContacts);
-
   let popupInfo = document.getElementById('aTPopup');
   let popupEdit = document.getElementById('aTPopupEdit');
 
@@ -240,39 +238,28 @@ function editTask(i) {
 }
 
 function loadSelectedContacts(i) {
-  console.log('loadSelectedContacts tasks[i].selectedContacts:', tasks[i].selectedContacts);
-  console.log('loadSelectedContacts selectedContacts:', selectedContacts);
   clearSelectedContactsArray();
   addSelectedContactsFromTask(i);
   deleteSelectedContactsFromTask(i);
   renderSelectedContactsEdit(i);
-  clearSelectedContactsArray();
 }
 
 function clearSelectedContactsArray() {
   if (selectedContacts.length > 0) {
-    for (let i = selectedContacts.length - 1; i >= 0; i--) {
-      selectedContacts.splice(i, 1);
-    }
+    selectedContacts = [];
   }
-  console.log('clearSelectedContactsArray:', selectedContacts);
-  // console.log('clearSelectedContactsArray:', tasks[0].selectedContacts);
 }
 
 function addSelectedContactsFromTask(i) {
   let task = tasks[i];
 
-  console.log('addSelectedContactsFromTask tasks[i].selectedContacts:', tasks[i].selectedContacts);
-  console.log('selectedContacts before:', selectedContacts);
   // if ((tasks[i].selectedContacts.length = 0)) {
   //   console.warn('task.selectedContacts.length = 0');
   // }
   for (let j = 0; j < tasks[i].selectedContacts.length; j++) {
     let selectedContact = tasks[i].selectedContacts[j];
-    console.log('addSelectedContactsFromTask task.selectedContacts[j]:', tasks[i].selectedContacts);
     selectedContacts.push(selectedContact);
   }
-  console.log('selectedContacts after:', selectedContacts);
 }
 
 function deleteSelectedContactsFromTask(i) {
@@ -281,20 +268,17 @@ function deleteSelectedContactsFromTask(i) {
   for (let j = task.selectedContacts.length - 1; j >= 0; j--) {
     task.selectedContacts.splice(j, 1);
   }
-  console.log('deleteSelectedContactsFromTask:', tasks[i].selectedContacts);
 }
 
 function renderSelectedContactsEdit(i) {
   let content = document.getElementById('assignedAddedContact');
   content.innerHTML = '';
 
-  console.log('renderSelectedContactsEdit selectedContacts', selectedContacts);
   // console.log('renderSelectedContactsEdit selectedContacts.length', selectedContacts.length);
   for (let j = 0; j < selectedContacts.length; j++) {
     let contact = selectedContacts[j];
     let initials = getInitials(selectedContacts[j]['name']);
     let color = contact['color'];
-    console.log('renderSelectedContactsEdit selectedContacts[j]', selectedContacts[j]);
     content.innerHTML += /*html*/ `<div class="assinged-contact-overview" style="background-color:${color}" onclick="removeSelectedContact(${i}, ${j})">${initials}</div>`;
   }
 }

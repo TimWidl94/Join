@@ -2773,11 +2773,13 @@ form {
     padding: 80px 10px !important;
     max-width: calc(100% - 35px) !important; }
   .aTPopupH1 {
-    font-size: 47px; } }
-
-@media (max-width: 500px) {
-  .aTPopupH1 {
-    font-size: 47px; } }
+    font-size: 47px; }
+  .priority-options div,
+  .priority-options-edit div {
+    padding: 12px 5px; }
+  .priority-options div p,
+  .priority-options-edit div p {
+    font-size: 16px; } }
 
 @media (max-width: 400px) {
   .aTPopup,
@@ -2785,7 +2787,10 @@ form {
     margin-left: 12px;
     margin-right: 12px; }
   .aTPopupH1 {
-    font-size: 40px; } }
+    font-size: 40px; }
+  .priority-options div p,
+  .priority-options-edit div p {
+    display: none; } }
 
 /*  general section  */
 .dp-flex {

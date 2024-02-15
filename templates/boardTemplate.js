@@ -203,7 +203,7 @@ function generateTaskPopupHTML(i, img, date) {
           <div class="assigned-contact-profile-container" id="assigned-contact-profile-container"> </div>         
         </div>
         
-        <div class="aTPopupSubtasks">
+        <div class="aTPopupSubtasks" id="aTPopupSubtasks${i}">
           <span class="aTPopupSpan">Subtasks</span>
           <div class="subtaskContainer" id="subtaskContainerPopup">
           </div>

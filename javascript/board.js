@@ -68,6 +68,7 @@ function openTaskPopup(i) {
   taskPopup.innerHTML = '';
   taskPopup.innerHTML = generateTaskPopupHTML(i, img, date);
   setCategoryBackground(tasks[i]['selectedCategory'], `aTPopupCategory${i}`);
+  checkSubtasksExisting(i);
 
   renderAssignedToContacs(i);
   renderSubtasks(i, 'subtaskContainerPopup');
@@ -77,6 +78,16 @@ function closeTaskPopup() {
   document.getElementById('aTPopupWrapper').classList.remove('d-block');
   document.getElementById('aTPopupWrapper').classList.add('d-none');
   updateHTML();
+}
+
+function checkSubtasksExisting(i) {
+  let container = document.getElementById(`aTPopupSubtasks${i}`);
+
+  if (tasks[i].subtasks.length === 0) {
+    container.classList.add('d-none');
+  } else {
+    container.classList.remove('d-none');
+  }
 }
 
 function renderAssignedToContacs(i) {
@@ -228,49 +239,53 @@ function editTask(i) {
 
 function loadSelectedContacts(i) {
   clearSelectedContactsArray();
-  // addSelectedContactsFromTask(i);
-  // deleteSelectedContactsFromTask(i);
+  addSelectedContactsFromTask(i);
+  deleteSelectedContactsFromTask(i);
   renderSelectedContactsEdit(i);
 }
 
 function clearSelectedContactsArray() {
-  for (let i = 0; i < selectedContacts.length; i++) {
-    let selectedContact = selectedContacts[i];
-    selectedContact.splice(i, 1);
+  if (selectedContacts.length > 0) {
+    for (let i = 0; i < selectedContacts.length; i++) {
+      selectedContacts.splice(i, 1);
+    }
   }
 }
 
-// function addSelectedContactsFromTask(i) {
-//   console.log('task selectedContacts:', tasks[i].selectedContacts);
-//   console.log('selectedContacts before:', selectedContacts);
+function addSelectedContactsFromTask(i) {
+  let task = tasks[i];
+  console.log('selectedContacts before:', selectedContacts);
+  console.log('tasks[i].selectedContacts.length:', tasks[i].selectedContacts.length);
+  for (let j = 0; j < task.selectedContacts.length; j++) {
+    let selectedContact = task.selectedContacts[j];
+    console.log('task.selectedContacts[j]:', task.selectedContacts[j]);
+    selectedContacts.push(selectedContact);
+  }
+  console.log('selectedContacts after:', selectedContacts);
+}
 
-//   let task = tasks[i];
+function deleteSelectedContactsFromTask(i) {
+  let task = tasks[i];
 
-//   for (let j = 0; j < task.selectedContacts.length; j++) {
-//     let selectedContact = task.selectedContacts[j];
-//     selectedContacts.push(selectedContact);
-//   }
-//   console.log('selectedContacts after:', selectedContacts);
-// }
+  for (let j = task.selectedContacts.length - 1; j >= 0; j--) {
+    task.selectedContacts.splice(j, 1);
+  }
+}
 
 function renderSelectedContactsEdit(i) {
   let content = document.getElementById('assignedAddedContact');
   content.innerHTML = '';
 
-  let task = tasks[i];
-
-  for (let j = 0; j < task.selectedContacts.length; j++) {
-    let contact = task.selectedContacts[j];
-    let initials = getInitials(task.selectedContacts[j]['name']);
+  for (let j = 0; j < selectedContacts.length; j++) {
+    let contact = selectedContacts[j];
+    let initials = getInitials(selectedContacts[j]['name']);
     let color = contact['color'];
     content.innerHTML += /*html*/ `<div class="assinged-contact-overview" style="background-color:${color}" onclick="removeSelectedContact(${i}, ${j})">${initials}</div>`;
   }
 }
 
 function removeSelectedContact(i, j) {
-  console.log('task selectedContacts before:', tasks[i].selectedContacts);
-  tasks[i].selectedContacts.splice(j, 1);
-  console.log('task selectedContacts after:', tasks[i].selectedContacts);
+  selectedContacts.splice(j, 1);
   renderSelectedContactsEdit(i);
 }
 
@@ -463,7 +478,7 @@ async function saveEditedTask(i) {
   tasks[i].taskTitle = title.value;
   tasks[i].taskDescription = description.value;
   tasks[i].taskDueDate = dueDate.value;
-  // tasks[i].selectedContacts = saveSelectedContactsEdit(i);
+  tasks[i].selectedContacts = selectedContacts;
   tasks[i].selectedCategory = selectedCategoryValue;
 
   tasks[i].prio = selectedPrioPopupEdit;
@@ -475,9 +490,9 @@ async function saveEditedTask(i) {
   await setItem('stasks', JSON.stringify(tasks));
 }
 
-function saveSelectedContactsEdit(i) {
-  return selectedContacts;
-}
+// function saveSelectedContactsEdit(i) {
+//   return selectedContacts;
+// }
 
 function saveAddedSubtasks(i) {
   deleteExistingSubtasks(i);

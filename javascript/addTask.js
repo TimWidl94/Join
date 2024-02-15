@@ -240,7 +240,7 @@ async function addAssignedContact(i, color) {
   let userID = document.getElementById(`user-${i}`);
 
   renderContactList(assignedDropdown, checkboxImage, userID, selectedContact, color);
-  await renderSelectedContacts();
+  await renderSelectedContacts(i);
 }
 
 function renderContactList(assignedDropdown, checkboxImage, userID, selectedContact, color) {
@@ -275,15 +275,15 @@ function checkIfSelectedContactExist(selectedContact) {
   }
 }
 
-function renderSelectedContacts() {
+function renderSelectedContacts(i) {
   let content = document.getElementById('assignedAddedContact');
   content.innerHTML = '';
 
-  for (let i = 0; i < selectedContacts.length; i++) {
-    let contact = selectedContacts[i];
-    let initials = getInitials(selectedContacts[i]['name']);
+  for (let j = 0; j < selectedContacts.length; j++) {
+    let contact = selectedContacts[j];
+    let initials = getInitials(selectedContacts[j]['name']);
     let color = contact['color'];
-    content.innerHTML += `<div class="assinged-contact-overview" style="background-color:${color}">${initials}</div>`;
+    content.innerHTML += /*html*/ `<div class="assinged-contact-overview" style="background-color:${color}" onclick="removeSelectedContact(${i}, ${j})">${initials}</div>`;
   }
 }
 

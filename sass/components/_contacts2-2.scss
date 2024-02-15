@@ -258,6 +258,10 @@
   position: relative;
 }
 
+.pos-unset {
+  position: unset !important;
+}
+
 // === Media Query === //
 @media (max-width: 1250px) {
   // === Add-Contact / Edit Contact === //
@@ -373,6 +377,10 @@
   .contact-info-text {
     height: unset;
   }
+
+  .topbarMobile {
+    position: unset !important;
+  }
 }
 
 @media (max-width: 1000px) {
@@ -468,11 +476,12 @@
     padding-left: unset;
     margin-left: 0 !important;
     left: 0 !important;
-    top: 0;
-    margin-top: 0;
-    // padding-top: 64px;
+    top: 0px;
+    margin-top: 0px;
+    padding-top: 164px;
     padding: 64px 16px 0 16px;
     width: calc(100% - 2 * 16px);
+    height: calc(100% - 164px - 64px);
     align-items: flex-start;
     // justify-content: flex-start;
   }

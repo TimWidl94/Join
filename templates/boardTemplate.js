@@ -174,130 +174,133 @@ function generateTaskPopupHTML(i, img, date) {
   return /*html*/ `
     <div class="aTPopupContainer" id="aTPopupContainer"> 
       <div class="aTPopup" id="aTPopup" onclick="doNotClose(event)"> 
-        <div class="aTPopupTop">
-          <div class="aTPopupCategory" id="aTPopupCategory${i}"><p>${tasks[i].selectedCategory}</p></div>
-          <div class="aTPopupClose" onclick="closeTaskPopup()"><img src="assets/img/icons/close.svg" alt="Close" /></div>
-        </div>
-        
-        <div class="aTPopupHeadline">
-          <h1 class="aTPopupH1">${tasks[i].taskTitle}</h1>
-        </div>
-        
-        <div class="aTPopupDescription"><p class="aTPopupP">${tasks[i].taskDescription}</p></div>
-        
-        <div class="aTPopupDueDate">
-          <div class="aTPopupDateText"><span class="aTPopupSpan">Due date:</span></div>
-          <div class="aTPopupDateValue" id="aTPopupDateValue"><p class="aTPopupP">${date}</p></div>
-        </div>
-        
-        <div class="aTPopupPrio">
-          <div class="aTPopupPrioText"><span class="aTPopupSpan">Priority:</span></div>
-          <div class="aTPopupPrioValue" id="aTPopupPrioValue">
-            <p class="aTPopupP">${tasks[i].prio}</p>
-            <img id="aTPopupPrioImg" alt="Prio-Img" src=${img}>
+        <div class="aTPopupContentWrapper">
+          <div class="aTPopupTop">
+            <div class="aTPopupCategory" id="aTPopupCategory${i}"><p>${tasks[i].selectedCategory}</p></div>
+            <div class="aTPopupClose" onclick="closeTaskPopup()"><img src="assets/img/icons/close.svg" alt="Close" /></div>
           </div>
-        </div>
-        
-        <div class="aTPopupAssignedTo">
-          <span class="aTPopupSpan">Assigned to:</span>
-          <div class="assigned-contact-profile-container" id="assigned-contact-profile-container"> </div>         
-        </div>
-        
-        <div class="aTPopupSubtasks" id="aTPopupSubtasks${i}">
-          <span class="aTPopupSpan">Subtasks</span>
-          <div class="subtaskContainer" id="subtaskContainerPopup">
+          
+          <div class="aTPopupHeadline">
+            <h1 class="aTPopupH1">${tasks[i].taskTitle}</h1>
           </div>
-        </div>
+          
+          <div class="aTPopupDescription"><p class="aTPopupP">${tasks[i].taskDescription}</p></div>
+          
+          <div class="aTPopupDueDate">
+            <div class="aTPopupDateText"><span class="aTPopupSpan">Due date:</span></div>
+            <div class="aTPopupDateValue" id="aTPopupDateValue"><p class="aTPopupP">${date}</p></div>
+          </div>
+          
+          <div class="aTPopupPrio">
+            <div class="aTPopupPrioText"><span class="aTPopupSpan">Priority:</span></div>
+            <div class="aTPopupPrioValue" id="aTPopupPrioValue">
+              <p class="aTPopupP">${tasks[i].prio}</p>
+              <img id="aTPopupPrioImg" alt="Prio-Img" src=${img}>
+            </div>
+          </div>
+          
+          <div class="aTPopupAssignedTo">
+            <span class="aTPopupSpan">Assigned to:</span>
+            <div class="assigned-contact-profile-container" id="assigned-contact-profile-container"> </div>         
+          </div>
+          
+          <div class="aTPopupSubtasks" id="aTPopupSubtasks${i}">
+            <span class="aTPopupSpan">Subtasks</span>
+            <div class="subtaskContainer" id="subtaskContainerPopup">
+            </div>
+          </div>
 
-        <div class="aTPopupButtonsBottom">
-          <div class="aTPopupDelete" onclick="deleteTask(${i})">
-            <img class="delete-img" src="assets/img/icons/delete.svg" alt="Delete" />
-            <p class="aTPopupP">Delete</p>
-          </div>
-          <div class="aTPopupVerticalLine"></div>
-          <div class="aTPopupEdit" onclick="editTask(${i})">
-            <img class="edit-img" src="assets/img/icons/edit.svg" alt="Edit" />
-            <p class="aTPopupP">Edit</p>
+          <div class="aTPopupButtonsBottom">
+            <div class="aTPopupDelete" onclick="deleteTask(${i})">
+              <img class="delete-img" src="assets/img/icons/delete.svg" alt="Delete" />
+              <p class="aTPopupP">Delete</p>
+            </div>
+            <div class="aTPopupVerticalLine"></div>
+            <div class="aTPopupEdit" onclick="editTask(${i})">
+              <img class="edit-img" src="assets/img/icons/edit.svg" alt="Edit" />
+              <p class="aTPopupP">Edit</p>
+            </div>
           </div>
         </div>
       </div>
 
 
       <form class="atPopupEdit d-none" id="aTPopupEdit" onclick="doNotClose(event)" onsubmit="saveEditedTask(${i}); return false"> 
-       
-        <div class="aTPopupTopEdit">
-          <div class="aTPopupCloseEdit" onclick="closeTaskPopup()"><img src="assets/img/icons/close.svg" alt="Close" /></div>
-        </div>
-
-        <div class="atPopupEditWrapper">
-          <div id="title-add-task-edit">
-            <span class="aTPopupSpan">Title<span class="span-required">*</span></span>
-            <input id="taskTitleEdit" required type="text" class="border-focus" placeholder="Enter a title" />
+        <div class="aTPopupContentWrapper">
+          <div class="aTPopupTopEdit">
+            <div class="aTPopupCloseEdit" onclick="closeTaskPopup()"><img src="assets/img/icons/close.svg" alt="Close" /></div>
           </div>
 
-          <div id="description-edit">
-            <span class="aTPopupSpan">Description</span>
-            <textarea id="taskDescriptionEdit" class="border-focus" placeholder="Enter a description"></textarea>
-          </div>
-
-          <span class="aTPopupSpan">Assigned to</span>
-          <div id="assignedToEdit" class="assignedToEdit"></div>
-          <!-- <div id="assignedAddedContactEdit" class="assinged-contact"> -->
-          <div id="assignedAddedContact" class="assigned-contact-edit">
-          </div>
-        
-
-          <div id="due-date-edit">
-            <p class="aTPopupSpan text-padding">Due Date<span class="span-required">*</span></p>
-            <input id="myDateInputEdit" required type="date" />
-          </div>
-
-          <div class="priorityEdit">
-            <span class="aTPopupSpan">Prio</span>
-            <div class="priority-options-edit">
-              <div id="urgentContainerEdit" onclick="changePriorityEdit('urgentContainerEdit', 'urgentImgEdit', 'urgent')">
-                <p class="aTPopupP">Urgent</p>
-                <img src="assets/img/AddTask/ArrowUpPrioSign.svg" alt="Prio High" id="urgentImgEdit" />
-              </div>
-              <div id="mediumContainerEdit" onclick="changePriorityEdit('mediumContainerEdit', 'mediumImgEdit', 'medium')">
-                <p class="aTPopupP">Medium</p>
-                <img src="assets/img/AddTask/mediumPrioSignInactive.svg" alt="Prio Medium" id="mediumImgEdit" />
-              </div>
-              <div id="lowContainerEdit" onclick="changePriorityEdit('lowContainerEdit', 'lowImgEdit', 'low')">
-                <p class="aTPopupP">Low</p>
-                <img src="assets/img/AddTask/ArrowDownPrioSign.svg" alt="Prio Low" id="lowImgEdit" />
-              </div>
-            </div>
-          </div>
-
-
-          <div class="categoryEdit">
-            <p class="aTPopupSpan, text-padding">Category<span class="span-required">*</span></span>
-            <div id="dropdownCategory" class="dropdownEdit" onclick="openDropDownCategoryEdit()">
-              <div id="showSelectedCategoryEdit" data-value="">Select task category
-              </div>
-              <img id="dropdownImgArrowCategoryEdit" class="rotate-arrow dropdown-arrow-hover" src="../assets/img/AddTask/arrow_drop.svg" alt="">
-            </div>
-            <div id="assignedDropdownCategoryEdit" class="category-dropdown d-none">
-              <div id="userStoryEdit" class="flex-checkbox" data-value="user-story" onclick="selectCategoryEdit('user-story')">User Story
-              </div>
-              <div id="otherEdit" class="flex-checkbox" data-value="other" onclick="selectCategoryEdit('other')">Other
-              </div>
-            </div>
-          </div>
-
-            <div id="subtasksEdit">
+          <div class="atPopupEditWrapper">
+            <div id="title-add-task-edit">
+              <span class="aTPopupSpan">Title<span class="span-required">*</span></span>
+              <input id="taskTitleEdit" required type="text" class="border-focus" placeholder="Enter a title" />
             </div>
 
-            <ul id="subTaskContainerEdit" class="subtask-div ulContainer" >
-            </ul> 
+            <div id="description-edit">
+              <span class="aTPopupSpan">Description</span>
+              <textarea id="taskDescriptionEdit" class="border-focus" placeholder="Enter a description"></textarea>
+            </div>
 
-        </div>
+            <span class="aTPopupSpan">Assigned to</span>
+            <div id="assignedToEdit" class="assignedToEdit"></div>
+            <!-- <div id="assignedAddedContactEdit" class="assinged-contact"> -->
+            <div id="assignedAddedContact" class="assigned-contact-edit">
+            </div>
+          
 
-        <div class="btn-edit-task">
-          <button id="create-task" class="buttonGrey">
-            Ok <img src="assets/img/AddTask/check_white.svg" alt="Check Icon"
-          /></button>
+            <div id="due-date-edit">
+              <p class="aTPopupSpan text-padding">Due Date<span class="span-required">*</span></p>
+              <input id="myDateInputEdit" required type="date" />
+            </div>
+
+            <div class="priorityEdit">
+              <span class="aTPopupSpan">Prio</span>
+              <div class="priority-options-edit">
+                <div id="urgentContainerEdit" onclick="changePriorityEdit('urgentContainerEdit', 'urgentImgEdit', 'urgent')">
+                  <p class="aTPopupP">Urgent</p>
+                  <img src="assets/img/AddTask/ArrowUpPrioSign.svg" alt="Prio High" id="urgentImgEdit" />
+                </div>
+                <div id="mediumContainerEdit" onclick="changePriorityEdit('mediumContainerEdit', 'mediumImgEdit', 'medium')">
+                  <p class="aTPopupP">Medium</p>
+                  <img src="assets/img/AddTask/mediumPrioSignInactive.svg" alt="Prio Medium" id="mediumImgEdit" />
+                </div>
+                <div id="lowContainerEdit" onclick="changePriorityEdit('lowContainerEdit', 'lowImgEdit', 'low')">
+                  <p class="aTPopupP">Low</p>
+                  <img src="assets/img/AddTask/ArrowDownPrioSign.svg" alt="Prio Low" id="lowImgEdit" />
+                </div>
+              </div>
+            </div>
+
+
+            <div class="categoryEdit">
+              <p class="aTPopupSpan, text-padding">Category<span class="span-required">*</span></span>
+              <div id="dropdownCategory" class="dropdownEdit" onclick="openDropDownCategoryEdit()">
+                <div id="showSelectedCategoryEdit" data-value="">Select task category
+                </div>
+                <img id="dropdownImgArrowCategoryEdit" class="rotate-arrow dropdown-arrow-hover" src="../assets/img/AddTask/arrow_drop.svg" alt="">
+              </div>
+              <div id="assignedDropdownCategoryEdit" class="category-dropdown d-none">
+                <div id="userStoryEdit" class="flex-checkbox" data-value="user-story" onclick="selectCategoryEdit('user-story')">User Story
+                </div>
+                <div id="otherEdit" class="flex-checkbox" data-value="other" onclick="selectCategoryEdit('other')">Other
+                </div>
+              </div>
+            </div>
+
+              <div id="subtasksEdit">
+              </div>
+
+              <ul id="subTaskContainerEdit" class="subtask-div ulContainer" >
+              </ul> 
+
+          </div>
+
+          <div class="btn-edit-task">
+            <button id="create-task" class="buttonGrey">
+              Ok <img src="assets/img/AddTask/check_white.svg" alt="Check Icon"
+            /></button>
+          </div>
         </div>
       </form>
     </div>

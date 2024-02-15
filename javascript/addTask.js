@@ -154,6 +154,7 @@ function showTaskForm(id) {
     </div>
     <div id="assignedDropdown" class="d-none">
       <div id="assignedAddedContacts"></div>
+      <div id="assignedAddedContactsEdit"></div>
     </div>
   `;
 
@@ -278,6 +279,7 @@ function checkIfSelectedContactExist(selectedContact) {
 function renderSelectedContacts(i) {
   let content = document.getElementById('assignedAddedContact');
   content.innerHTML = '';
+  console.log('renderSelectedContacts!!!!!!!!!');
 
   for (let j = 0; j < selectedContacts.length; j++) {
     let contact = selectedContacts[j];

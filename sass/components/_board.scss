@@ -688,6 +688,8 @@
   top: 36px;
   margin-top: -16px;
   margin-bottom: 60px;
+  // max-width: 460px;
+  // overflow: auto;
 }
 
 @media (max-width: 1300px) {
@@ -791,11 +793,15 @@
   .aTPopupH1 {
     font-size: 47px;
   }
-}
 
-@media (max-width: 500px) {
-  .aTPopupH1 {
-    font-size: 47px;
+  .priority-options div,
+  .priority-options-edit div {
+    padding: 12px 5px;
+  }
+
+  .priority-options div p,
+  .priority-options-edit div p {
+    font-size: 16px;
   }
 }
 
@@ -808,5 +814,10 @@
 
   .aTPopupH1 {
     font-size: 40px;
+  }
+
+  .priority-options div p,
+  .priority-options-edit div p {
+    display: none;
   }
 }

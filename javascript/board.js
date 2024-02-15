@@ -157,7 +157,7 @@ function deleteTask(i) {
 function deleteSubTaskEdit(id, idContainer, subTaskInput) {
   let taskIndex = findTaskEdit(subTaskInput);
   // let nr = findSubtaskPositionEdit(id, taskIndex);
-  let a;
+  // let a;
   let nr = findSubtaskPositionEdit(id);
   if (subtasks.length == 0 && taskIndex >= 0) {
     pushCurrentSubtasksInArray(taskIndex);

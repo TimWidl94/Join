@@ -116,14 +116,6 @@ function addTaskHtml() {
           <ul id="subTaskContainer" class="subtask-div ulContainer" >
           </ul>
 
-          <div class="btns-down-right-add-task">
-            <button onclick="clearInputValue()" id="clear" class="buttonWhite" >
-              Clear <img src="assets/img/AddTask/cancel.svg" alt="Clear Icon"
-            /></button>
-            <button onclick="addTask()" id="create-task" class="buttonGrey">
-              Create Task <img src="assets/img/AddTask/check_white.svg" alt="Check Icon"
-            /></button>
-          </div>
           <div class="bottom-add-task-mobile">
             <div class="requirement-mobile">
               <p><span class="span-required">*</span>This field is required</p>
@@ -138,6 +130,19 @@ function addTaskHtml() {
             </div>
           </div>
       </section>
+      <div class="btns-down-add-task">
+          <div class="requirement-desktop-addTask">
+            <p class="p-required"><span class="span-required">*</span>This field is required</p>
+          </div>
+          <div class="btns-down-right-add-task">
+            <button onclick="clearInputValue()" id="clear" class="buttonWhite" >
+              Clear <img src="assets/img/AddTask/cancel.svg" alt="Clear Icon"
+            /></button>
+            <button  id="create-task" class="buttonGrey" disabled>
+              Create Task <img src="assets/img/AddTask/check_white.svg" alt="Check Icon"
+            /></button>
+          </div>
+        </div>
   `;
 }
 
@@ -430,14 +435,7 @@ function addTaskPopUpHtml() {
         </div>
         <ul id="subTaskContainer" class="subtask-div ulContainer" >
         </ul>
-        <div class="btns-down-right-add-task">
-          <button onclick="clearInputValue()" id="clear" class="buttonWhite" >
-            Clear <img src="assets/img/AddTask/cancel.svg" alt="Clear Icon"
-          /></button>
-          <button  id="create-task" class="buttonGrey" disabled>
-            Create Task <img src="assets/img/AddTask/check_white.svg" alt="Check Icon"
-          /></button>
-        </div>
+        
         <div class="bottom-add-task-mobile">
           <div class="requirement-mobile">
             <p><span class="span-required">*</span>This field is required</p>
@@ -454,6 +452,19 @@ function addTaskPopUpHtml() {
 
       </section>
       </form>
+      <div class="btns-down-add-task">
+          <div class="requirement-desktop-addTask">
+            <p class="p-required"><span class="span-required">*</span>This field is required</p>
+          </div>
+          <div class="btns-down-right-add-task">
+            <button onclick="clearInputValue()" id="clear" class="buttonWhite" >
+              Clear <img src="assets/img/AddTask/cancel.svg" alt="Clear Icon"
+            /></button>
+            <button  id="create-task" class="buttonGrey" disabled>
+              Create Task <img src="assets/img/AddTask/check_white.svg" alt="Check Icon"
+            /></button>
+          </div>
+        </div>
     `;
 }
 

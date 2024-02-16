@@ -79,6 +79,7 @@
 }
 #boardAddTask {
   display: flex;
+  flex-direction: column;
 }
 
 .add-task-popup {

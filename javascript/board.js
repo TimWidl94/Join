@@ -527,10 +527,6 @@ function setCategoryBackground(category, id) {
   }
 }
 
-function startDragging(id) {
-  currentDraggedElement = id;
-}
-
 function updateHTML() {
   todoAreaUpdate();
   inProgressUpdate();
@@ -591,6 +587,10 @@ async function moveTo(category) {
   tasks[currentDraggedElement]['currentState'] = category;
   await updateHTML();
   checkTaskAreaDisplayEmpty();
+}
+
+function startDragging(id) {
+  currentDraggedElement = id;
 }
 
 function highlight(id) {
@@ -764,4 +764,15 @@ function renderSearchedTasksDone(i) {
 
 function doNotClose(event) {
   event.stopPropagation();
+}
+
+
+function openMenuMoveTo(){
+  let container = document.getElementById('menuMoveToMobile');
+  container.classList.toggle('d-none');
+}
+
+async function moveToMobile(i, category) {
+  tasks[i]["currentState"] = category;
+  await renderBoardTasks();
 }

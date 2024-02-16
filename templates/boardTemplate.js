@@ -1,7 +1,8 @@
 function generateTodoHTML(i, img) {
   return /*html*/ `
     
-        <div draggable="true" ondragstart="startDragging(${i})" class="wobble-container" onclick="openTaskPopup(${i})" ontouchstart="startDragging(${i})">
+        <div draggable="true" ondragstart="startDragging(${i})" class="wobble-container" 
+        onclick="openTaskPopup(${i})" ontouchstart="startDragging(${i})">
       <div class="board-task wobble-element">
             <div class="board-task-epic" id="board-task-epic${i}">
                 ${tasks[i]['selectedCategory']}
@@ -211,6 +212,18 @@ function generateTaskPopupHTML(i, img, date) {
           </div>
 
           <div class="aTPopupButtonsBottom">
+          <div class="aTPopupButtonsBottomMenuContainer"> 
+            <div>
+              <button class="buttonGrey" onclick="openMenuMoveTo()">Move to Category</button>
+            </div>
+            <div class="menuMoveToMobile d-none" id="menuMoveToMobile">
+              <button class="buttonMenuMoveTaskMobile width100" onclick="moveToMobile(${i}, 'toDo')">To do</button>
+              <button class="buttonMenuMoveTaskMobile width100" onclick="moveToMobile(${i}, 'inProgress')">In progress</button>
+              <button class="buttonMenuMoveTaskMobile width100" onclick="moveToMobile(${i}, 'awaitFeedback')">Await feedback</button>
+              <button class="buttonMenuMoveTaskMobile width100" onclick="moveToMobile(${i}, 'done')">Done</button>
+            </div>
+          </div> 
+          <div class=aTPopupButtonsBottomRightContainer>
             <div class="aTPopupDelete" onclick="deleteTask(${i})">
               <img class="delete-img" src="assets/img/icons/delete.svg" alt="Delete" />
               <p class="aTPopupP">Delete</p>
@@ -220,6 +233,7 @@ function generateTaskPopupHTML(i, img, date) {
               <img class="edit-img" src="assets/img/icons/edit.svg" alt="Edit" />
               <p class="aTPopupP">Edit</p>
             </div>
+          </div>
           </div>
         </div>
       </div>

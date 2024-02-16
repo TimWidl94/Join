@@ -496,6 +496,11 @@
   gap: 16px;
 }
 
+.aTPopupButtonsBottomRightContainer{
+display: flex;
+gap: 16px;
+}
+
 .aTPopupDelete,
 .aTPopupEdit {
   display: flex;
@@ -708,6 +713,26 @@
   height: 300px;
 }
 
+.aTPopupButtonsBottomMenuContainer{
+  display: none;
+  position: relative;
+}
+
+.menuMoveToMobile{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+  width: 200px;
+  height: 190px;
+  bottom: 48px;
+}
+
+.width100{
+  width: 100%;
+}
+
 @media (max-width: 1300px) {
   .overflowYActive {
     overflow-y: unset;
@@ -789,6 +814,12 @@
   .atPopupEdit {
     padding: 24px 24px;
     gap: 16px;
+  }
+  .aTPopupButtonsBottomMenuContainer{
+    display: flex !important;
+  }
+  .aTPopupButtonsBottom{
+    justify-content: space-between;
   }
 }
 

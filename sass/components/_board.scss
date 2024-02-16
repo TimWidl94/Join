@@ -330,7 +330,7 @@
   // align-items: start;
   max-height: 80vh; /* Setzen Sie eine maximale Höhe für den Wrapper, um sicherzustellen, dass der Inhalt nicht über den Bildschirm hinausgeht */
   overflow-y: auto;
-  overflow-x: hidden;
+  // overflow-x: hidden;
   width: 100%;
   gap: 24px;
 }
@@ -496,9 +496,9 @@
   gap: 16px;
 }
 
-.aTPopupButtonsBottomRightContainer{
-display: flex;
-gap: 16px;
+.aTPopupButtonsBottomRightContainer {
+  display: flex;
+  gap: 16px;
 }
 
 .aTPopupDelete,
@@ -610,7 +610,7 @@ gap: 16px;
 #due-date-edit {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: calc(100% - 2 * 4px);
   margin-bottom: 16px;
 }
 
@@ -702,23 +702,26 @@ gap: 16px;
   padding-right: 16px;
 }
 
+.assignedAddedContactWrapper {
+  // max-width: 400px;
+  // overflow-x: auto;
+}
+
 .assigned-contact-edit {
   display: flex;
   position: relative;
   top: 36px;
   margin-top: -16px;
   margin-bottom: 60px;
-  max-width: 100%;
-  // overflow: auto;
-  height: 300px;
+  height: 50px;
 }
 
-.aTPopupButtonsBottomMenuContainer{
+.aTPopupButtonsBottomMenuContainer {
   display: none;
   position: relative;
 }
 
-.menuMoveToMobile{
+.menuMoveToMobile {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -729,7 +732,7 @@ gap: 16px;
   bottom: 48px;
 }
 
-.width100{
+.width100 {
   width: 100%;
 }
 
@@ -815,10 +818,10 @@ gap: 16px;
     padding: 24px 24px;
     gap: 16px;
   }
-  .aTPopupButtonsBottomMenuContainer{
+  .aTPopupButtonsBottomMenuContainer {
     display: flex !important;
   }
-  .aTPopupButtonsBottom{
+  .aTPopupButtonsBottom {
     justify-content: space-between;
   }
 }
@@ -842,7 +845,7 @@ gap: 16px;
     display: none;
   }
 
-  .buttonGrey {
+  .btn-edit-task {
     height: 38px !important;
   }
 

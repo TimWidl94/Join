@@ -258,10 +258,9 @@ function generateTaskPopupHTML(i, img, date) {
 
             <span class="aTPopupSpan">Assigned to</span>
             <div id="assignedToEdit" class="assignedToEdit"></div>
-            <!-- <div id="assignedAddedContactEdit" class="assinged-contact"> -->
-            <div id="assignedAddedContact" class="assigned-contact-edit">
+            <div class="assignedAddedContactWrapper">
+              <div id="assignedAddedContact" class="assigned-contact-edit"></div>
             </div>
-          
 
             <div id="due-date-edit">
               <p class="aTPopupSpan text-padding">Due Date<span class="span-required">*</span></p>

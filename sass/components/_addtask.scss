@@ -26,10 +26,10 @@
 .main-add-task {
   display: flex;
   justify-content: flex-start;
+  flex-direction: column;
   margin-top: calc(110px + 96px);
   padding-left: calc(232px + 50px);
-  padding-right: 24px;
-  width: calc(100% - 332px - 24px);
+  padding-right: 50px;
 }
 
 .container-left {
@@ -101,6 +101,7 @@
   position: relative;
   display: inline-block;
   position: relative;
+  padding-top: 8px;
   padding-right: 25px;
   &::before {
     content: '';
@@ -109,7 +110,7 @@
     background-repeat: no-repeat;
     background-position: right center;
     position: absolute;
-    top: 30%;
+    top: 40%;
     right: 35px;
     transform: translateY(-50%);
     width: 24px;
@@ -152,8 +153,8 @@ input[type='date']::-webkit-calendar-picker-indicator {
 .assinged-contact {
   display: flex;
   justify-content: space-between;
-  position: relative;
-  top: 106px;
+  position: unset;
+  padding: 12px 0px;
   &-profile {
     display: inline-block;
     text-align: center;
@@ -238,15 +239,6 @@ input[type='date']::-webkit-calendar-picker-indicator {
   background-size: 32px, 100%;
 }
 
-.requirement-desktop {
-  position: absolute;
-  bottom: 70px;
-  padding: 10px 0px;
-}
-
-.requirement-mobile {
-}
-
 .bottom-add-task-mobile {
   display: none !important;
   position: fixed;
@@ -276,7 +268,7 @@ input[type='date']::-webkit-calendar-picker-indicator {
 }
 
 .dropdown {
-  margin-top: 40px;
+  // margin-top: 40px;
   padding: 16px;
   border: 1px solid $color-board-grey;
   width: 100%;
@@ -378,7 +370,7 @@ input[type='date']::-webkit-calendar-picker-indicator {
   display: flex;
   flex-direction: column;
   width: 100%;
-  // gap: 8px;
+  gap: 8px;
   padding-bottom: 24px;
 }
 
@@ -426,6 +418,9 @@ input[type='date']::-webkit-calendar-picker-indicator {
   justify-content: space-between;
   flex-direction: column;
   min-height: 40px;
+  max-height: 150px;
+  overflow-y: auto;
+  overflow-x: hidden;
   &-text {
     flex: 1;
     padding-left: 20px;
@@ -618,14 +613,23 @@ input[type='date']::-webkit-calendar-picker-indicator {
   width: 100%;
 }
 
+.btns-down-add-task {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 24px;
+  width: calc(488px + 488px + 48.5px - 2 * 24px);
+}
+
+// .requirement-desktop {
+// }
+
 .btns-down-right-add-task {
-  display: inline-flex;
+  display: flex;
   justify-content: flex-end;
   align-items: center;
   flex-direction: row;
   gap: 16px;
-  width: 100%;
-  margin-top: 110px;
 }
 
 #clear,
@@ -736,9 +740,9 @@ input[type='date']::-webkit-calendar-picker-indicator {
   height: 30px;
 }
 
-@media (max-width: 1325px) {
+@media (max-width: 1350px) {
   .main-add-task {
-    // padding-left: calc(232px + 24px);
+    padding-left: calc(232px + 24px);
     padding-right: 24px;
   }
 
@@ -751,6 +755,23 @@ input[type='date']::-webkit-calendar-picker-indicator {
   .headline-h1-add-task {
     width: 100%;
   }
+
+  #assignedDropdown {
+    min-width: unset;
+    width: 100%;
+  }
+
+  .category-dropdown {
+    min-width: unset;
+    width: calc(100% - 2 * 16px);
+  }
+}
+
+@media (max-width: 1310px) {
+  .btns-down-add-task {
+    width: calc(100% - 2 * 24px);
+    // width: 100%;
+  }
 }
 
 @media (max-width: 1200px) {
@@ -760,20 +781,95 @@ input[type='date']::-webkit-calendar-picker-indicator {
   }
 }
 
-@media (max-width: 1050px) {
+@media (max-width: 1000px) {
+  body {
+    overflow: unset;
+  }
+
+  .topbarMobile {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    // right: 0;
+  }
+
   .main-add-task {
     padding-left: 24px;
-    margin-top: 110px;
+    margin-top: 100px;
+    padding-bottom: 100px;
+    overflow: auto;
+    align-items: center;
+    flex-direction: column;
+
+    overflow-x: hidden;
   }
+
   .formAddTask {
-    display: block !important;
+    // display: block !important;
+    align-items: center;
+    flex-direction: column;
+    max-width: 600px;
+    // height: calc(100vh - 200px);
+    // position: absolute;
+    // top: 90px;
+    // bottom: 84px;
+    // left: 0;
+    // right: 0;
+  }
+
+  .container-left {
+    margin-right: unset;
+    max-width: unset;
+    width: 100%;
+  }
+
+  .headline-h1-add-task {
+    font-size: 61px;
+  }
+
+  .dropdown {
+    margin-top: unset;
+  }
+
+  .assinged-contact {
+    height: 50px;
+    position: unset;
+    padding: 12px 0px;
+    max-width: 100%;
+    overflow-y: auto;
+  }
+
+  .vertical-line-add-task {
+    display: none;
+  }
+
+  .container-right {
+    margin-left: unset;
+    margin-top: unset;
+    max-width: unset;
+    width: 100%;
+  }
+
+  .btns-down-add-task {
+    max-width: 600px;
   }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 675px) {
+  .btns-down-add-task {
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+    padding-bottom: 24px;
+  }
+}
+
+@media (max-width: 500px) {
   .body-add-task {
     display: flex;
-    flex-direction: column; /* Ändern Sie die Richtung der Hauptachse auf Spalte */
+    flex-direction: column;
     overflow-y: auto;
   }
 
@@ -783,7 +879,8 @@ input[type='date']::-webkit-calendar-picker-indicator {
 
   .main-add-task {
     flex-direction: column;
-    margin-top: 48px;
+    padding-left: 12px;
+    padding-right: 12px;
   }
 
   .title-and-task {
@@ -803,14 +900,18 @@ input[type='date']::-webkit-calendar-picker-indicator {
     position: relative;
   }
 
+  #showSelectedCategory {
+    font-size: 16px;
+  }
+
   .container-left,
   .container-right {
-    width: 100%; /* Breite auf 100% setzen, damit der Inhalt innerhalb der Breite des Bildschirms bleibt */
-    margin: 0; /* Margin entfernen, um die volle Breite zu nutzen */
+    width: 100%;
+    margin: 0;
   }
 
   .vertical-line-add-task {
-    display: none; /* Die vertikale Linie bei kleineren Bildschirmen ausblenden */
+    display: none;
   }
 
   .requirement-desktop {
@@ -837,5 +938,17 @@ input[type='date']::-webkit-calendar-picker-indicator {
   .menu-mobile {
     padding: 2px 8px;
     width: calc(100% - 2 * 8px);
+  }
+
+  .buttonGrey img {
+    display: none;
+  }
+
+  .buttonWhite img {
+    display: none;
+  }
+
+  .btns-down-right-add-task {
+    justify-content: space-between;
   }
 }

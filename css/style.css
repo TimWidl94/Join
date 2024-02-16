@@ -208,10 +208,10 @@ textarea {
 .main-add-task {
   display: flex;
   justify-content: flex-start;
+  flex-direction: column;
   margin-top: calc(110px + 96px);
   padding-left: calc(232px + 50px);
-  padding-right: 24px;
-  width: calc(100% - 332px - 24px); }
+  padding-right: 50px; }
 
 .container-left {
   display: flex;
@@ -276,6 +276,7 @@ textarea {
   position: relative;
   display: inline-block;
   position: relative;
+  padding-top: 8px;
   padding-right: 25px; }
   #due-date::before {
     content: '';
@@ -284,7 +285,7 @@ textarea {
     background-repeat: no-repeat;
     background-position: right center;
     position: absolute;
-    top: 30%;
+    top: 40%;
     right: 35px;
     transform: translateY(-50%);
     width: 24px;
@@ -319,8 +320,8 @@ input[type='date']::-webkit-calendar-picker-indicator {
 .assinged-contact {
   display: flex;
   justify-content: space-between;
-  position: relative;
-  top: 106px; }
+  position: unset;
+  padding: 12px 0px; }
   .assinged-contact-profile {
     display: inline-block;
     text-align: center;
@@ -390,11 +391,6 @@ input[type='date']::-webkit-calendar-picker-indicator {
   background-position: right 8px top 50%, 0 0;
   background-size: 32px, 100%; }
 
-.requirement-desktop {
-  position: absolute;
-  bottom: 70px;
-  padding: 10px 0px; }
-
 .bottom-add-task-mobile {
   display: none !important;
   position: fixed;
@@ -421,7 +417,6 @@ input[type='date']::-webkit-calendar-picker-indicator {
   cursor: pointer; }
 
 .dropdown {
-  margin-top: 40px;
   padding: 16px;
   border: 1px solid #a8a8a8;
   width: 100%;
@@ -511,6 +506,7 @@ input[type='date']::-webkit-calendar-picker-indicator {
   display: flex;
   flex-direction: column;
   width: 100%;
+  gap: 8px;
   padding-bottom: 24px; }
 
 .rotate-arrow {
@@ -552,7 +548,10 @@ input[type='date']::-webkit-calendar-picker-indicator {
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  min-height: 40px; }
+  min-height: 40px;
+  max-height: 150px;
+  overflow-y: auto;
+  overflow-x: hidden; }
   .subtask-div-text {
     flex: 1;
     padding-left: 20px; }
@@ -717,14 +716,19 @@ input[type='date']::-webkit-calendar-picker-indicator {
   border: none;
   width: 100%; }
 
+.btns-down-add-task {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 24px;
+  width: calc(488px + 488px + 48.5px - 2 * 24px); }
+
 .btns-down-right-add-task {
-  display: inline-flex;
+  display: flex;
   justify-content: flex-end;
   align-items: center;
   flex-direction: row;
-  gap: 16px;
-  width: 100%;
-  margin-top: 110px; }
+  gap: 16px; }
 
 #clear,
 #create-task {
@@ -823,8 +827,9 @@ input[type='date']::-webkit-calendar-picker-indicator {
   width: 30px;
   height: 30px; }
 
-@media (max-width: 1325px) {
+@media (max-width: 1350px) {
   .main-add-task {
+    padding-left: calc(232px + 24px);
     padding-right: 24px; }
   .container-left,
   .container-right {
@@ -832,31 +837,86 @@ input[type='date']::-webkit-calendar-picker-indicator {
     max-width: 440px;
     /* Maximalbreite setzen */ }
   .headline-h1-add-task {
-    width: 100%; } }
+    width: 100%; }
+  #assignedDropdown {
+    min-width: unset;
+    width: 100%; }
+  .category-dropdown {
+    min-width: unset;
+    width: calc(100% - 2 * 16px); } }
+
+@media (max-width: 1310px) {
+  .btns-down-add-task {
+    width: calc(100% - 2 * 24px); } }
 
 @media (max-width: 1200px) {
   .container-left,
   .container-right {
     padding: 0px 12px; } }
 
-@media (max-width: 1050px) {
+@media (max-width: 1000px) {
+  body {
+    overflow: unset; }
+  .topbarMobile {
+    position: fixed !important;
+    top: 0;
+    left: 0; }
   .main-add-task {
     padding-left: 24px;
-    margin-top: 110px; }
+    margin-top: 100px;
+    padding-bottom: 100px;
+    overflow: auto;
+    align-items: center;
+    flex-direction: column;
+    overflow-x: hidden; }
   .formAddTask {
-    display: block !important; } }
+    align-items: center;
+    flex-direction: column;
+    max-width: 600px; }
+  .container-left {
+    margin-right: unset;
+    max-width: unset;
+    width: 100%; }
+  .headline-h1-add-task {
+    font-size: 61px; }
+  .dropdown {
+    margin-top: unset; }
+  .assinged-contact {
+    height: 50px;
+    position: unset;
+    padding: 12px 0px;
+    max-width: 100%;
+    overflow-y: auto; }
+  .vertical-line-add-task {
+    display: none; }
+  .container-right {
+    margin-left: unset;
+    margin-top: unset;
+    max-width: unset;
+    width: 100%; }
+  .btns-down-add-task {
+    max-width: 600px; } }
 
-@media (max-width: 800px) {
+@media (max-width: 675px) {
+  .btns-down-add-task {
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+    padding-bottom: 24px; } }
+
+@media (max-width: 500px) {
   .body-add-task {
     display: flex;
     flex-direction: column;
-    /* Ändern Sie die Richtung der Hauptachse auf Spalte */
     overflow-y: auto; }
   p {
     font-size: 16px; }
   .main-add-task {
     flex-direction: column;
-    margin-top: 48px; }
+    padding-left: 12px;
+    padding-right: 12px; }
   .title-and-task {
     padding-top: 40px; }
   input {
@@ -866,15 +926,14 @@ input[type='date']::-webkit-calendar-picker-indicator {
   .dropdown {
     font-size: 16px;
     position: relative; }
+  #showSelectedCategory {
+    font-size: 16px; }
   .container-left,
   .container-right {
     width: 100%;
-    /* Breite auf 100% setzen, damit der Inhalt innerhalb der Breite des Bildschirms bleibt */
-    margin: 0;
-    /* Margin entfernen, um die volle Breite zu nutzen */ }
+    margin: 0; }
   .vertical-line-add-task {
-    display: none;
-    /* Die vertikale Linie bei kleineren Bildschirmen ausblenden */ }
+    display: none; }
   .requirement-desktop {
     display: none; }
   .requirement-mobile {
@@ -890,7 +949,13 @@ input[type='date']::-webkit-calendar-picker-indicator {
     width: calc(100% - 2 * 4px); }
   .menu-mobile {
     padding: 2px 8px;
-    width: calc(100% - 2 * 8px); } }
+    width: calc(100% - 2 * 8px); }
+  .buttonGrey img {
+    display: none; }
+  .buttonWhite img {
+    display: none; }
+  .btns-down-right-add-task {
+    justify-content: space-between; } }
 
 .body-contacts {
   height: 100vh;
@@ -1709,9 +1774,7 @@ form {
     margin-block-start: 0;
     margin-block-end: 0; }
   .contact-info-text {
-    height: unset; }
-  .topbarMobile {
-    position: unset !important; } }
+    height: unset; } }
 
 @media (max-width: 1000px) {
   .main {
@@ -1730,7 +1793,9 @@ form {
     display: flex !important; }
   .wrapper-contact-list {
     left: 0px;
-    display: flex; }
+    display: flex;
+    bottom: 84px;
+    height: calc(100vh - 90px - 84px - 2 * 32px); }
   .wrapper-contact-info {
     margin-top: calc(225px - 96px);
     margin-left: calc(400px + 50px);
@@ -1782,11 +1847,8 @@ form {
     margin-top: unset;
     padding-right: 120px; }
   .wrapper-contact-list {
-    top: 90px;
-    bottom: 84px;
     height: calc(100vh - 90px - 84px - 2 * 24px);
-    padding: 24px 24px;
-    width: calc(100% - 2 * 24px); }
+    padding: 24px 24px; }
   #add-contact,
   #edit-contact {
     display: none; }
@@ -2404,7 +2466,6 @@ form {
   max-height: 80vh;
   /* Setzen Sie eine maximale Höhe für den Wrapper, um sicherzustellen, dass der Inhalt nicht über den Bildschirm hinausgeht */
   overflow-y: auto;
-  overflow-x: hidden;
   width: 100%;
   gap: 24px; }
 
@@ -2630,7 +2691,7 @@ form {
 #due-date-edit {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: calc(100% - 2 * 4px);
   margin-bottom: 16px; }
 
 .priorityEdit {
@@ -2718,8 +2779,7 @@ form {
   top: 36px;
   margin-top: -16px;
   margin-bottom: 60px;
-  max-width: 100%;
-  height: 300px; }
+  height: 50px; }
 
 .aTPopupButtonsBottomMenuContainer {
   display: none;
@@ -2811,7 +2871,7 @@ form {
     display: none; }
   .atPopupEditWrapper::-webkit-scrollbar {
     display: none; }
-  .buttonGrey {
+  .btn-edit-task {
     height: 38px !important; }
   #assignedDropdown {
     min-width: unset;

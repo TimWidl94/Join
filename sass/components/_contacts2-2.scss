@@ -378,9 +378,9 @@
     height: unset;
   }
 
-  .topbarMobile {
-    position: unset !important;
-  }
+  // .topbarMobile {
+  //   position: unset !important;
+  // }
 }
 
 @media (max-width: 1000px) {
@@ -411,6 +411,8 @@
   .wrapper-contact-list {
     left: 0px;
     display: flex;
+    bottom: 84px;
+    height: calc(100vh - 90px - 84px - 2 * 32px);
   }
 
   .wrapper-contact-info {
@@ -492,11 +494,9 @@
   }
 
   .wrapper-contact-list {
-    top: 90px;
-    bottom: 84px;
     height: calc(100vh - 90px - 84px - 2 * 24px);
     padding: 24px 24px;
-    width: calc(100% - 2 * 24px);
+    // width: calc(100% - 2 * 24px);
   }
 
   #add-contact,

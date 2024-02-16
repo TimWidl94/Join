@@ -15,14 +15,6 @@ async function initBoard() {
   checkTaskAreaDisplayEmpty();
 }
 
-// function checkIfFormEditPopupIsFilled() {
-//   let title = document.getElementById('taskTitle');
-//   let dueDate = document.getElementById('myDateInput');
-//   if ((categoryIsSelected = true && title.value > '' && dueDate.value > '')) {
-//     document.getElementById('create-task').disabled = false;
-//   }
-// }
-
 function renderAddTaskPopUp() {
   let contentBoardTask = document.getElementById('boardAddTask');
   // console.log('addTask Popup rendered');
@@ -400,13 +392,11 @@ function showTaskFormEdit(id) {
   let assignedTo = document.getElementById(id);
   assignedTo.innerHTML = /*html*/ `
     <div name="assigned" onchange="addAssignedContact()">
-      <!-- <div id="dropdownEdit" class="dropdownEdit" onclick="openDropDown()"> -->
       <div id="dropdownEdit" class="dropdown" onclick="openDropDown('assignedDropdown', 'dropdownImgArrow')">
         <input class="contact-searchbar" onkeyup="filterAddTaskContact()" type="text" id="search" placeholder="Select contacts to assign" />
         <img id="dropdownImgArrow" class="rotate-arrow dropdown-arrow-hover dropdown-arrow-hover" src="../assets/img/AddTask/arrow_drop.svg" alt="">
       </div>
     </div>
-    <!-- <div id="assignedDropdown" class="assignedDropdownEdit d-none"> -->
     <div id="assignedDropdown" class="d-none">
       <div id="assignedAddedContacts"></div>
     </div>
@@ -627,7 +617,6 @@ function selectCategoryEdit(category) {
   const showSelectedCategory = document.getElementById('showSelectedCategoryEdit');
   const assignedDropdownCategory = document.getElementById('assignedDropdownCategoryEdit');
   selectCategoryIfElse(userStory, other, showSelectedCategory, assignedDropdownCategory, category);
-  // checkIfFormIsFilledEdit();
 }
 
 async function renderBoardTasks() {
@@ -766,13 +755,12 @@ function doNotClose(event) {
   event.stopPropagation();
 }
 
-
-function openMenuMoveTo(){
+function openMenuMoveTo() {
   let container = document.getElementById('menuMoveToMobile');
   container.classList.toggle('d-none');
 }
 
 async function moveToMobile(i, category) {
-  tasks[i]["currentState"] = category;
+  tasks[i]['currentState'] = category;
   await renderBoardTasks();
 }

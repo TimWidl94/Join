@@ -56,6 +56,7 @@ function renderSubTask() {
 // }
 
 async function addTask() {
+  console.log('tasks');
   await pushAddTask();
   clearInputValue();
   showPopUpAddedTaskToBoard();
@@ -79,6 +80,7 @@ async function pushAddTask() {
     selectedContacts: selectedContacts,
     currentState: 'toDo',
   });
+  console.log('tasks');
   await setItem('tasks', JSON.stringify(tasks));
 }
 
@@ -154,7 +156,7 @@ function showTaskForm(id) {
     </div>
     <div id="assignedDropdown" class="d-none">
       <div id="assignedAddedContacts"></div>
-      <div id="assignedAddedContactsEdit"></div>
+      <!-- <div id="assignedAddedContactsEdit"></div> -->
     </div>
   `;
 

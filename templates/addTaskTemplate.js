@@ -32,9 +32,7 @@ function addTaskHtml() {
         <div id="assignedAddedContact" class="assinged-contact">
 
         </div>
-        <div class="requirement-desktop">
-          <p><span class="span-required">*</span>This field is required</p>
-        </div>
+        
       </section>
 
       <div class="vertical-line-add-task"></div>
@@ -89,14 +87,7 @@ function addTaskHtml() {
         </div>
         <ul id="subTaskContainer" class="subtask-div ulContainer" >
         </ul> 
-        <div class="btns-down-right-add-task">
-          <button onclick="clearInputValue()" id="clear" class="buttonWhite" >
-            Clear <img src="assets/img/AddTask/cancel.svg" alt="Clear Icon"
-          /></button>
-          <button  id="create-task" class="buttonGrey" disabled>
-            Create Task <img src="assets/img/AddTask/check_white.svg" alt="Check Icon"
-          /></button>
-        </div>
+        
         <div class="bottom-add-task-mobile">
           <div class="requirement-mobile">
             <p><span class="span-required">*</span>This field is required</p>
@@ -113,6 +104,19 @@ function addTaskHtml() {
 
       </section>
       </form>
+        <div class="btns-down-add-task">
+          <div class="requirement-desktop-addTask">
+            <p class="p-required"><span class="span-required">*</span>This field is required</p>
+          </div>
+          <div class="btns-down-right-add-task">
+            <button onclick="clearInputValue()" id="clear" class="buttonWhite" >
+              Clear <img src="assets/img/AddTask/cancel.svg" alt="Clear Icon"
+            /></button>
+            <button  id="create-task" class="buttonGrey" disabled>
+              Create Task <img src="assets/img/AddTask/check_white.svg" alt="Check Icon"
+            /></button>
+          </div>
+        </div>
     `;
 }
 
@@ -146,7 +150,6 @@ function addedTaskToBoardHtml() {
 }
 
 function assignedToUserHtml(i, color, currentUser, initials) {
-
   return `
   <div id="user-${i}" class="flex-checkbox selected-profile" onclick="addAssignedContact('${i}', '${color}')" data-value="${currentUser}">
     <div class="selected-profile">
@@ -157,8 +160,6 @@ function assignedToUserHtml(i, color, currentUser, initials) {
     <img id="checkBox-${i}" class="flex-checkbox-img" src="assets/img/icons/checkBox.svg" alt="">
   </div>`;
 }
-
-
 
 function assignedToUserYouHtml(i, color, currentUser, initials) {
   return /*HTML*/ `

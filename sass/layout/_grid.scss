@@ -45,3 +45,29 @@
 .col-12 {
     width: 100%;
 }
+
+.sum-col-3 {
+  width: 25%;
+}
+
+.sum-col-4 {
+  width: 33.33%;
+}
+.sum-col-6 {
+  width: 50%
+}
+.sum-col-8 {
+  width: 66.66%;
+}
+.sum-col-12 {
+  width: 100%;
+}
+
+@media (max-width: 1000px) {
+
+
+  .row-header {
+    align-items: flex-start;
+    display: inline;
+  }
+}

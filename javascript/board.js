@@ -26,9 +26,10 @@ async function openAddTaskPopup() {
   changePrioToMedium('mediumContainer', 'mediumImg');
   await renderSubTask();
   await showTaskForm('assignedTo');
+  document.getElementById('addTaskPopupWrapper').classList.remove('d-none');
   document.getElementById('addTaskPopup').classList.remove('d-none');
   document.getElementById('addTaskPopup').classList.add('slide-in');
-  // console.log('works!');
+  console.log('works!');
 }
 
 async function addTaskPopUp() {
@@ -44,6 +45,7 @@ function closeAddTaskPopup() {
 
   setTimeout(function () {
     addTaskPopup.classList.add('d-none');
+    document.getElementById('addTaskPopupWrapper').classList.add('d-none');
   }, 500);
   setTimeout(function () {
     addTaskPopup.classList.remove('slide-out');

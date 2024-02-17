@@ -43,12 +43,6 @@ return `
           <img src="assets/img/icons/logo-black.svg" alt="">
         </a>
         </div>
-        <div class="topbarRightMobile">
-          <div id="topbarUserBackgroundMobile">
-            <div id="topbarUserMobile" onclick="showTopbarDropdown()">
-                <p>G</p>
-            </div>
-          </div>
       </section>
 `
 }

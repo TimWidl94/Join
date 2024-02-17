@@ -3,6 +3,7 @@ async function initTextSites() {
   await loadUser();
   await includeHTML();
   await checkIfArrayIsEmpty();
+  setUserInitials();
 }
 
 async function initLegalNotice() {

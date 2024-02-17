@@ -3852,6 +3852,15 @@ input:focus {
   width: calc(100vw - 232px);
   display: inline-flex; }
 
+.textSitesWrapperOffline {
+  overflow-y: scroll;
+  position: absolute;
+  top: 100px;
+  left: 232px;
+  height: calc(100vh - 100px);
+  width: calc(100vw - 232px);
+  display: inline-flex; }
+
 .textSitesContainer {
   margin: 96px 0 0 0;
   position: relative;
@@ -3886,7 +3895,12 @@ input:focus {
   .textSitesWrapper {
     left: unset;
     width: 100vw;
-    height: calc(100vh - 100px - 84px); } }
+    height: calc(100vh - 100px - 84px); }
+  .textSitesWrapperOffline {
+    left: unset;
+    width: 100vw; }
+  .topbarRightMobileOffline {
+    display: none; } }
 
 @media (max-width: 800px) {
   .textSitesContainer {

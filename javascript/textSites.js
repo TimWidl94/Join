@@ -3,11 +3,11 @@ async function initTextSites() {
   await loadUser();
   await includeHTML();
   await checkIfArrayIsEmpty();
+  setUserInitials();
 }
 
 async function initLegalNotice() {
   await initTextSites();
-  setUserInitials();
   loadLegalNoticeH1Html();
   loadLegalNoticeContent();
   setMenuColorToActive('legalNoticeLink');
@@ -30,7 +30,6 @@ function initHelp() {
 
 async function initPrivacyPolice() {
   await initTextSites();
-  setUserInitials();
   loadPrivacyPolicyH1Html();
   loadPrivacyPolicyContent();
   setMenuColorToActive('privacyPolicyLink');

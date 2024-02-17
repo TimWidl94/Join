@@ -116,7 +116,7 @@ function addTaskHtml() {
               Create Task <img src="assets/img/AddTask/check_white.svg" alt="Check Icon"
             /></button>
           </div>
-        </div>
+        </div>    
     `;
 }
 

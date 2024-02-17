@@ -83,16 +83,13 @@
 }
 
 .add-task-popup {
+  position: relative;
   display: flex;
   flex-direction: row;
-  width: calc(100% - 2 * 74px);
-  height: 75vh;
-
-  // position: absolute;
-  // margin: auto;
   justify-content: center;
-  left: 5%;
-  padding: 64px 74px;
+  // left: 5%;
+  margin-left: 232px;
+  padding: 64px 64px;
   z-index: 9;
   border-radius: 30px;
   background: #fff;
@@ -750,10 +747,17 @@
 
 .btns-down-add-task-popup {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   width: 100%;
+  justify-content: space-between;
   align-items: center;
   gap: 16px;
+}
+
+@media (min-width: 1300px) {
+  .board-title {
+    z-index: unset;
+  }
 }
 
 @media (max-width: 1300px) {
@@ -852,6 +856,12 @@
   }
 }
 
+@media (max-width: 650px) {
+  .btns-down-add-task-popup {
+    flex-direction: column;
+  }
+}
+
 @media (max-width: 600px) {
   .aTPopup,
   .atPopupEdit {
@@ -899,8 +909,7 @@
   .aTPopupH1 {
     font-size: 47px;
   }
-
-  .priority-options div,
+  s .priority-options div,
   .priority-options-edit div {
     padding: 12px 5px;
   }
@@ -908,6 +917,11 @@
   .priority-options div p,
   .priority-options-edit div p {
     font-size: 16px;
+  }
+  .add-task-popup {
+    padding: 48px 20px !important;
+    margin-left: 16px !important;
+    margin-right: 16px !important;
   }
 }
 

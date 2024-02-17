@@ -16,7 +16,6 @@ p {
   line-height: 120%; /* 24px */
 }
 
-
 .d-none {
   display: none !important;
 }
@@ -42,14 +41,14 @@ h1 {
 
 @media (max-width: 800px) {
   h1 {
-    font-size: 47px;
+    font-size: 47px !important;
   }
 }
 
-.overflowHidden{
+.overflowHidden {
   overflow: hidden;
 }
 
-.PosRel{
+.PosRel {
   position: relative;
 }

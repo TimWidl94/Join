@@ -20,12 +20,17 @@
 
     <div class="board-wrapper-all">
       <div class="container boardWidth">
-        <div id="addTaskPopup" class="add-task-popup d-none">
-          <div onclick="closeAddTaskPopup()" class="add-task-popup-close">
-            <img src="./assets/img/icons/close.svg" alt="" />
+        <section class="addTaskPopupWrapper d-none" id="addTaskPopupWrapper" onclick="closeAddTaskPopup()">
+          <div class="addTaskPopupContainer">
+            <div id="addTaskPopup" class="add-task-popup d-none" onclick="doNotClose(event)">
+              <div onclick="closeAddTaskPopup()" class="add-task-popup-close">
+                <img src="./assets/img/icons/close.svg" alt="" />
+              </div>
+              <div id="boardAddTask"></div>
+            </div>
           </div>
-          <div id="boardAddTask"></div>
-        </div>
+        </section>
+
         <div class="row space-between mobileBoardHeadSection">
           <div class="headerBoardMobile">
             <h1>Board</h1>

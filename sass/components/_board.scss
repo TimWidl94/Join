@@ -85,8 +85,11 @@
 .add-task-popup {
   display: flex;
   flex-direction: row;
-  position: absolute;
-  margin: auto;
+  width: calc(100% - 2 * 74px);
+  height: 75vh;
+
+  // position: absolute;
+  // margin: auto;
   justify-content: center;
   left: 5%;
   padding: 64px 74px;
@@ -294,7 +297,8 @@
 
 // ====== Task Popup ====== //
 
-.aTPopupWrapper {
+.aTPopupWrapper,
+.addTaskPopupWrapper {
   position: fixed;
   z-index: 2;
   top: 0;
@@ -310,6 +314,13 @@
   align-items: center;
   height: 100%;
   padding-left: 232px;
+}
+
+.addTaskPopupContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
 
 .aTPopup,
@@ -737,6 +748,14 @@
   width: 100%;
 }
 
+.btns-down-add-task-popup {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  gap: 16px;
+}
+
 @media (max-width: 1300px) {
   .overflowYActive {
     overflow-y: unset;
@@ -824,6 +843,12 @@
   }
   .aTPopupButtonsBottom {
     justify-content: space-between;
+  }
+}
+
+@media (max-width: 800px) {
+  container {
+    padding: 40px 32px;
   }
 }
 

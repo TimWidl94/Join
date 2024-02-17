@@ -130,7 +130,7 @@ function addTaskHtml() {
             </div>
           </div>
       </section>
-      <div class="btns-down-add-task">
+      <div class="btns-down-add-task-popup">
           <div class="requirement-desktop-addTask">
             <p class="p-required"><span class="span-required">*</span>This field is required</p>
           </div>
@@ -378,9 +378,7 @@ function addTaskPopUpHtml() {
         <div id="assignedAddedContact" class="assinged-contact">
 
         </div>
-        <div class="requirement-desktop">
-          <p><span class="span-required">*</span>This field is required</p>
-        </div>
+        
       </section>
 
       <div class="vertical-line-add-task"></div>
@@ -452,7 +450,7 @@ function addTaskPopUpHtml() {
 
       </section>
       </form>
-      <div class="btns-down-add-task">
+      <div class="btns-down-add-task-popup">
           <div class="requirement-desktop-addTask">
             <p class="p-required"><span class="span-required">*</span>This field is required</p>
           </div>

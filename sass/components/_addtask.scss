@@ -779,6 +779,10 @@ input[type='date']::-webkit-calendar-picker-indicator {
   .container-right {
     padding: 0px 12px;
   }
+
+  .add-task-popup {
+    padding: 64px 37px !important;
+  }
 }
 
 @media (max-width: 1000px) {

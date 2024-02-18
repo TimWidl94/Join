@@ -2186,6 +2186,9 @@ form {
   width: 60px;
   height: 60px; }
 
+.sum-col-50 {
+  width: 42%; }
+
 @media (max-width: 1000px) {
   .containerSummary {
     margin: 0;

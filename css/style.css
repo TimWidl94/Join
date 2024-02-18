@@ -822,8 +822,15 @@ input[type='date']::-webkit-calendar-picker-indicator {
   width: 20px;
   height: 18px; }
 
+.container-left-right-wrapper {
+  display: flex;
+  flex-direction: row;
+  width: 100%; }
+
 .formAddTask {
   display: flex !important;
+  align-items: center;
+  flex-direction: column;
   width: 100%; }
 
 .addTaskToBoardPopUp {
@@ -902,9 +909,9 @@ input[type='date']::-webkit-calendar-picker-indicator {
     margin-left: unset !important;
     margin-left: 24px !important;
     margin-right: 24px !important; }
-  .formAddTask {
-    align-items: center;
-    flex-direction: column; }
+  .container-left-right-wrapper {
+    flex-direction: column;
+    max-width: 600px !important; }
   .container-left {
     margin-right: unset;
     max-width: unset;

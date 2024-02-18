@@ -281,7 +281,6 @@ function checkIfSelectedContactExist(selectedContact) {
 function renderSelectedContacts(i) {
   let content = document.getElementById('assignedAddedContact');
   content.innerHTML = '';
-  console.log('renderSelectedContacts!!!!!!!!!');
 
   for (let j = 0; j < selectedContacts.length; j++) {
     let contact = selectedContacts[j];

@@ -740,8 +740,17 @@ input[type='date']::-webkit-calendar-picker-indicator {
   height: 18px;
 }
 
+.container-left-right-wrapper {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
 .formAddTask {
+  // display: block !important;
   display: flex !important;
+  align-items: center;
+  flex-direction: column;
   width: 100%;
 }
 
@@ -786,16 +795,6 @@ input[type='date']::-webkit-calendar-picker-indicator {
   .container-left {
     min-width: 300px;
   }
-
-  .container-left-popup,
-  .container-right-popup {
-    // width: calc((100vw - 24px - 24px - 48.25px - 24px) / 2);
-    // max-width: 440px;
-  }
-
-  // .container-left-popup {
-  //   width: 440px;
-  // }
 
   .headline-h1-add-task {
     width: 100%;
@@ -864,10 +863,9 @@ input[type='date']::-webkit-calendar-picker-indicator {
     margin-right: 24px !important;
   }
 
-  .formAddTask {
-    // display: block !important;
-    align-items: center;
+  .container-left-right-wrapper {
     flex-direction: column;
+    max-width: 600px !important;
   }
 
   .container-left {

@@ -10,8 +10,10 @@ function subTasksValueHtml(id, i) {
 
 function addTaskHtml() {
   return /*HTML*/ `
+  
   <form onsubmit="addTask(); return false" class="formAddTask">
-    <section class="container-left">
+    <div class="container-left-right-wrapper">
+      <section class="container-left">
       
         <div class="headline-add-task"><h1 class="headline-h1-add-task">Add Task</h1></div>
 
@@ -63,62 +65,61 @@ function addTaskHtml() {
         </div>
 
         <div class="category">
+          <p>Category<span class="span-required">*</span></p>
+          <div id="dropdownCategory" class="dropdown" onclick="openDropDownCategory()">
+            <div id="showSelectedCategory" data-value="">Select task category</div>
+            <img id="dropdownImgArrowCategory" class="rotate-arrow dropdown-arrow-hover" src="../assets/img/AddTask/arrow_drop.svg" alt="">
+          </div>
+          <div id="assignedDropdownCategory" class="category-dropdown d-none">
+            <div id="userStory" class="flex-checkbox" data-value="user-story" onclick="selectCategory('user-story')">User Story</div>
+            <div id="other" class="flex-checkbox" data-value="other" onclick="selectCategory('other')">Other</div>
+          </div>
+        </div>
 
-  <p>Category<span class="span-required">*</span></p>
-  <div id="dropdownCategory" class="dropdown" onclick="openDropDownCategory()">
-  <div id="showSelectedCategory" data-value="">Select task category</div>
-  <img id="dropdownImgArrowCategory" class="rotate-arrow dropdown-arrow-hover" src="../assets/img/AddTask/arrow_drop.svg" alt="">
-</div>
-<div id="assignedDropdownCategory" class="category-dropdown d-none">
-  <div id="userStory" class="flex-checkbox" data-value="user-story" onclick="selectCategory('user-story')">User Story</div>
-  <div id="other" class="flex-checkbox" data-value="other" onclick="selectCategory('other')">Other</div>
-</div>
+          <!-- </div>
 
-</div>
-
-</div>
-
-    </div>
-    </div>
+            </div>
+            </div>
 
           </select>
-        </div>
+        </div> -->
 
-        <div id="subtasks">
-        </div>
-        <ul id="subTaskContainer" class="subtask-div ulContainer" >
-        </ul> 
+        <div id="subtasks"> </div>
         
+        <ul id="subTaskContainer" class="subtask-div ulContainer" > </ul> 
+        
+        <!-- </div> -->
         <div class="bottom-add-task-mobile">
           <div class="requirement-mobile">
             <p><span class="span-required">*</span>This field is required</p>
           </div>
           <div class="btns-add-task-mobile-wrapper">
-          <button onclick="clearInputValue()" id="clear-mobile" class="buttonWhite" >
-            Clear <img src="assets/img/AddTask/cancel.svg" alt="Clear Icon"
-          /></button>
-          <button id="create-task-mobile" class="buttonGrey">
-            Create Task <img src="assets/img/AddTask/check_white.svg" alt="Check Icon"
-          /></button>  
+            <button onclick="clearInputValue()" id="clear-mobile" class="buttonWhite" >
+              Clear <img src="assets/img/AddTask/cancel.svg" alt="Clear Icon"
+            /></button>
+            <button id="create-task-mobile" class="buttonGrey">
+              Create Task <img src="assets/img/AddTask/check_white.svg" alt="Check Icon"
+            /></button>  
           </div>      
         </div>
 
       </section>
-      </form>
-        <div class="btns-down-add-task">
-          <div class="requirement-desktop-addTask">
-            <p class="p-required"><span class="span-required">*</span>This field is required</p>
-          </div>
-          <div class="btns-down-right-add-task">
-            <button onclick="clearInputValue()" id="clear" class="buttonWhite" >
-              Clear <img src="assets/img/AddTask/cancel.svg" alt="Clear Icon"
-            /></button>
-            <button  id="create-task" class="buttonGrey" disabled>
-              Create Task <img src="assets/img/AddTask/check_white.svg" alt="Check Icon"
-            /></button>
-          </div>
-        </div>    
-    `;
+    </div>
+      <div class="btns-down-add-task">
+        <div class="requirement-desktop-addTask">
+          <p class="p-required"><span class="span-required">*</span>This field is required</p>
+        </div>
+        <div class="btns-down-right-add-task">
+          <button onclick="clearInputValue()" id="clear" class="buttonWhite" >
+            Clear <img src="assets/img/AddTask/cancel.svg" alt="Clear Icon"
+          /></button>
+          <button  id="create-task" class="buttonGrey" disabled>
+            Create Task <img src="assets/img/AddTask/check_white.svg" alt="Check Icon"
+          /></button>
+        </div>
+      </div>    
+  </form>
+  `;
 }
 
 function subTaskInputHtml() {

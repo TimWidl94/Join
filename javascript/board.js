@@ -29,7 +29,6 @@ async function openAddTaskPopup() {
   document.getElementById('addTaskPopupWrapper').classList.remove('d-none');
   document.getElementById('addTaskPopup').classList.remove('d-none');
   document.getElementById('addTaskPopup').classList.add('slide-in');
-  console.log('works!');
 }
 
 async function addTaskPopUp() {

@@ -1939,6 +1939,42 @@ form {
   .top-card-text p {
     font-size: 18px; } }
 
+.sum-col-3 {
+  width: 25%; }
+
+.sum-col-4 {
+  width: 28.33%; }
+
+.sum-col-6 {
+  width: 50%; }
+
+.sum-col-8 {
+  width: 66.66%; }
+
+.sum-col-12 {
+  width: 100%; }
+
+.fade-out-mobile {
+  opacity: 0;
+  transition: opacity 1s ease-out; }
+
+.colMobile {
+  width: 100vw;
+  position: absolute;
+  height: 100%;
+  display: none;
+  flex-direction: column;
+  background: white;
+  left: 0;
+  top: 0;
+  align-items: center;
+  z-index: 9999; }
+  .colMobile-flex {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center; }
+
 .containerSummary {
   margin: 100px 0px 0px;
   position: relative;
@@ -1962,14 +1998,14 @@ form {
   display: none;
   position: relative;
   text-align: center;
-  padding-top: 100px; }
+  padding-top: 70px; }
   .summary-vertical-line-mobile:before {
     border-left: 3px solid #29abe2;
     content: "";
     transform: translate(10px, 10px) rotate(90deg);
     height: 56px;
     position: absolute;
-    top: 0px;
+    top: -20px;
     z-index: 0;
     left: 20px; }
 
@@ -2074,6 +2110,7 @@ form {
     .summary-tasksContainerDown-counter {
       display: flex;
       flex-direction: column;
+      font-size: 30px;
       text-align: center;
       font-size: 64px;
       font-weight: 600; }
@@ -2154,10 +2191,53 @@ form {
     width: calc(100% - 10%); } }
 
 @media (max-width: 900px) {
+  .colMobile {
+    display: flex; }
+  .summary-welcome-mobile {
+    line-height: 120%;
+    font-size: 37px;
+    font-weight: 500; }
+  .summary-welcome-name-mobile {
+    color: #29abe2;
+    font-family: "Inter", sans-serif;
+    font-size: 34px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%; }
   .sum-greetings {
-    display: none; } }
+    display: none; }
+  .sum-col-50 {
+    width: 100%; }
+  .sum-col-6 {
+    width: 45%; }
+  .summary-flex {
+    gap: 0; }
+  .boardImg {
+    width: 40px;
+    height: auto; } }
 
 @media (max-width: 800px) {
+  .summary-todo {
+    padding: 10px 10px;
+    min-height: 109px; }
+  .summary-gap-default {
+    gap: 0px; }
+  .summary-todo-counter {
+    font-size: 45px; }
+  .summary-flex-counter {
+    gap: 0; }
+  .summary-todo-counter-text {
+    font-size: 15px; }
+  .summary-tasksContainerDown {
+    padding: 12px 5px; }
+  .summary-tasksContainerDown-counter {
+    font-size: 45px; }
+  .summary-summarySmallContainerMiddle {
+    padding: 28px 8px; }
+  .summary-gap-urgent {
+    gap: 20px; }
+  .summary-tasksContainerDown-counter-text-m {
+    font-size: 15px; }
   .containerSummary {
     padding: 139px 30px; } }
 
@@ -2200,21 +2280,6 @@ form {
   width: 66.66%; }
 
 .col-12 {
-  width: 100%; }
-
-.sum-col-3 {
-  width: 25%; }
-
-.sum-col-4 {
-  width: 33.33%; }
-
-.sum-col-6 {
-  width: 50%; }
-
-.sum-col-8 {
-  width: 66.66%; }
-
-.sum-col-12 {
   width: 100%; }
 
 @media (max-width: 1000px) {
@@ -4028,21 +4093,6 @@ input:focus {
   width: 66.66%; }
 
 .col-12 {
-  width: 100%; }
-
-.sum-col-3 {
-  width: 25%; }
-
-.sum-col-4 {
-  width: 33.33%; }
-
-.sum-col-6 {
-  width: 50%; }
-
-.sum-col-8 {
-  width: 66.66%; }
-
-.sum-col-12 {
   width: 100%; }
 
 @media (max-width: 1000px) {

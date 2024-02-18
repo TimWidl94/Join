@@ -2,9 +2,31 @@ async function init() {
   await includeHTML();
   await loadData();
   await loadUser();
+  mobileGreetings();
   setUserInitials();
   setColorToActive('sidebarSummary', 'summary-img', 'bottomBarSummaryMobile', 'summaryImgMobile');
   insertGreeting();
+}
+
+function mobileGreetings() {
+  let greetMobile = document.getElementById('greetingMobile');
+  let greetingText = greeting();
+  let userName = users[user].username;
+  
+  greetMobile.innerHTML = `
+  <div class="colMobile">
+    <div class="colMobile-flex">
+      <div class="summary-welcome-mobile">${greetingText}</div>
+      <div class="summary-welcome-name-mobile">${userName}</div>
+    </div>
+  </div>`;
+
+  setTimeout(function(){
+    greetMobile.classList.add("fade-out-mobile");
+    setTimeout(function() {
+      greetMobile.classList.add("d-none");
+    }, 1000);
+  }, 1000);
 }
 
 function insertGreeting() {

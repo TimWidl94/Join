@@ -15,7 +15,9 @@
   <body onload="init()">
     <div w3-include-html="sidebar.html"></div>
     <div w3-include-html="topbar.html"></div>
+    <div id="greetingMobile"></div>
     <div class="containerSummary summary">
+      
       <div class="summary-padding">
         <div class="row-header flex-start">
           <h2 class="summary-h2">Join 360</h2>
@@ -29,7 +31,8 @@
           <div class="row">
             <div class="sum-col-12 summary-flex">
               <div class="sum-col-6">
-                <div class="summary-todo summary-gap-default" onmouseover="hoverTodo('todoImg');" onmouseout="unhoverTodo('todoImg');">
+                <a href="/board.html">
+                  <div class="summary-todo summary-gap-default" onmouseover="hoverTodo('todoImg');" onmouseout="unhoverTodo('todoImg');">
                   <img class="boardImg" src="../assets/img/Summary/pencilBlackDesktop.svg" alt="" id="todoImg"  />
                   <div class="summary-flex-column">
                     <div class="summary-todo-counter">1</div>
@@ -39,8 +42,10 @@
                     </div>
                   </div>
                 </div>
+              </a>
               </div>
               <div class="sum-col-6">
+                <a href="/board.html">
                 <div class="summary-todo summary-gap-default" onmouseover="hoverDone('doneImg');" onmouseout="unhoverDone('doneImg');">
                   <img class="boardImg" src="../assets/img/Summary/hookButtonBlackDesktop.svg" alt="" id="doneImg"/>
                   <div class="summary-flex-column">
@@ -51,11 +56,13 @@
                     </div>
                   </div>
                 </div>
+                </a>
               </div>
             </div>
           </div>
           <div class="row">
         <div class="sum-col-12">
+          <a href="/board.html">
               <div class="summary-summarySmallContainerMiddle summary-gap-urgent">
                 <div class="sum-col-6">
                   <div class="summary-urgent-wrapper">
@@ -75,12 +82,14 @@
                   <div class="summary-subtitle">Upcoming Deadline</div>
                 </div>
               </div>
+            </a>
             </div>        
     
             </div>
             <div class="row">
               <div class="sum-col-12 summary-flex-counter">
-                <div class="col-4 summarySmallContainerDown">
+                <div class="sum-col-4">
+                  <a href="/board.html">
                   <div class="summary-tasksContainerDown summary-gap-default">
                     <div class="summary-flex-column">
                       <div class="summary-tasksContainerDown-counter">5</div>
@@ -91,8 +100,10 @@
                       </div>
                     </div>
                   </div>
+                </a>
                 </div>
-                <div class="col-4 summarySmallContainerDown">
+                <div class="sum-col-4">
+                  <a href="/board.html">
                   <div class="summary-tasksContainerDown summary-gap-default">
                     <div class="summary-flex-column">
                       <div class="summary-tasksContainerDown-counter">2</div>
@@ -102,8 +113,10 @@
                       </div>
                     </div>
                   </div>
+                  </a>
                 </div>
-                <div class="col-4 summarySmallContainerDown">
+                <div class="sum-col-4 summarySmallContainerDown">
+                  <a href="/board.html">
                   <div class="summary-tasksContainerDown summary-gap-default">
                     <div class="summary-flex-column">
                       <div class="summary-tasksContainerDown-counter">2</div>
@@ -113,6 +126,7 @@
                       </div>
                     </div>
                   </div>
+                  </a>
                 </div>
               </div>
               <div class="sum-col-6 d-none"></div>

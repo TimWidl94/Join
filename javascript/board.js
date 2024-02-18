@@ -223,7 +223,8 @@ async function editTask(i) {
   let dueDate = document.getElementById('myDateInputEdit');
   let selectedCategoryElement = document.getElementById('showSelectedCategoryEdit');
 
-  loadSelectedContacts(i);
+  await loadSelectedContacts(i);
+  setAssignedToContactsDropdown();
   title.value = tasks[i].taskTitle;
   description.value = tasks[i].taskDescription;
   dueDate.value = tasks[i].taskDueDate;
@@ -293,6 +294,23 @@ function renderSelectedContactsEdit(i) {
 function removeSelectedContact(i, j) {
   selectedContacts.splice(j, 1);
   renderSelectedContactsEdit(i);
+}
+
+function setAssignedToContactsDropdown() {
+  for (let i = 0; i < contacts.length; i++) {
+    let contact = contacts[i];
+    for (let j = 0; j < selectedContacts.length; j++) {
+      if (contact.name === selectedContacts[j].name) {
+        console.log('match i:', i);
+        let userID = document.getElementById(`user-${i}`);
+        let checkboxImage = document.getElementById(`checkBox-${i}`);
+        userID.classList.add('selected-profile-active-item');
+        checkboxImage.src = './assets/img/icons/check_button-white.svg';
+      } else {
+        console.log('no match contact.name === selectedContacts[j].name');
+      }
+    }
+  }
 }
 
 function setCategoryTextContent(i) {

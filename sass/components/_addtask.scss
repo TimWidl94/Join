@@ -160,11 +160,15 @@ input[type='date']::-webkit-calendar-picker-indicator {
   padding-bottom: 8px;
 }
 
+.assinged-contact-wrapper {
+}
+
 .assinged-contact {
   display: flex;
   justify-content: space-between;
   position: unset;
   padding: 12px 0px;
+
   &-profile {
     display: inline-block;
     text-align: center;
@@ -195,6 +199,7 @@ input[type='date']::-webkit-calendar-picker-indicator {
     border: 3px solid white;
     stroke: $color-light;
     color: $color-light;
+    white-space: nowrap;
   }
 }
 .test-2 {
@@ -292,6 +297,11 @@ input[type='date']::-webkit-calendar-picker-indicator {
   height: 415px;
   background-color: $color-lightgrey;
   margin-top: 118px;
+}
+
+.selected-profile {
+  display: flex;
+  align-items: center;
 }
 
 // --- container-right --- //
@@ -436,9 +446,9 @@ input[type='date']::-webkit-calendar-picker-indicator {
 .subtask-div {
   position: relative;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   flex-direction: column;
-  min-height: 40px;
+  min-height: 150px;
   max-height: 150px;
   overflow-y: auto;
   overflow-x: hidden;
@@ -462,7 +472,7 @@ input[type='date']::-webkit-calendar-picker-indicator {
     align-items: center;
     height: 32px;
     padding: 7px 10px;
-    margin-bottom: 10px;
+    margin-bottom: 4px;
     position: relative;
     &-hover-items {
       opacity: 0;
@@ -879,8 +889,8 @@ input[type='date']::-webkit-calendar-picker-indicator {
     height: 50px;
     position: unset;
     padding: 12px 0px;
-    max-width: 100%;
-    overflow-y: auto;
+    // max-width: 100%;
+    // overflow-y: auto;
   }
 
   .vertical-line-add-task {

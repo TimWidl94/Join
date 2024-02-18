@@ -1954,13 +1954,26 @@ form {
 .sum-col-12 {
   width: 100%; }
 
-.sum-greetings-mobile {
+.fade-out-mobile {
+  opacity: 0;
+  transition: opacity 1s ease-out; }
+
+.colMobile {
   width: 100vw;
   position: absolute;
   height: 100%;
-  background: deeppink;
-  /* left: 192px; */
+  display: none;
+  flex-direction: column;
+  background: white;
+  left: 0;
+  top: 0;
+  align-items: center;
   z-index: 9999; }
+  .colMobile-flex {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center; }
 
 .containerSummary {
   margin: 100px 0px 0px;
@@ -2178,6 +2191,19 @@ form {
     width: calc(100% - 10%); } }
 
 @media (max-width: 900px) {
+  .colMobile {
+    display: flex; }
+  .summary-welcome-mobile {
+    line-height: 120%;
+    font-size: 37px;
+    font-weight: 500; }
+  .summary-welcome-name-mobile {
+    color: #29abe2;
+    font-family: "Inter", sans-serif;
+    font-size: 34px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%; }
   .sum-greetings {
     display: none; }
   .sum-col-50 {

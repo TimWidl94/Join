@@ -29,10 +29,11 @@ function addTaskHtml() {
         <p class="text-padding">Assigned to</p>
         <div id="assignedTo">
         </div>
-        <div id="assignedAddedContact" class="assinged-contact">
 
+        <div class="assinged-contact-wrapper">
+          <div id="assignedAddedContact" class="assinged-contact">
+          </div>
         </div>
-        
       </section>
 
       <div class="vertical-line-add-task"></div>

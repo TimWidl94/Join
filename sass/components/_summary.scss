@@ -1,5 +1,31 @@
 @import "../base/_colors";
 
+.sum-col-3 {
+  width: 25%;
+}
+
+.sum-col-4 {
+  width: 28.33%;
+}
+.sum-col-6 {
+  width: 50%
+}
+.sum-col-8 {
+  width: 66.66%;
+}
+.sum-col-12 {
+  width: 100%;
+}
+
+.sum-greetings-mobile {
+  width: 100vw;
+  position: absolute;
+  height: 100%;
+  background: deeppink;
+  /* left: 192px; */
+  z-index: 9999;
+}
+
 .containerSummary {
   margin: 100px 0px 0px;
   position: relative;
@@ -25,14 +51,14 @@
     display: none;
       position: relative;
       text-align: center;
-      padding-top: 100px;
-      &:before {
+      padding-top: 70px;
+            &:before {
         border-left: 3px solid #29abe2;
         content: "";
         transform: translate(10px, 10px) rotate(90deg);
         height: 56px;
         position: absolute;
-        top: 0px;
+        top: -20px;
         z-index: 0;
         left: 20px;
       }
@@ -168,7 +194,6 @@
     color: #000;
     flex-shrink: 0;
     height: 100%;
-
     &:hover {
       cursor: pointer;
       background-color: #2a3647;
@@ -180,6 +205,7 @@
     &-counter {
       display: flex;
       flex-direction: column;
+      font-size: 30px;
 
       text-align: center;
       font-size: 64px;
@@ -329,12 +355,57 @@
   .sum-greetings{
     display: none;
   }
+  .sum-col-50 {
+    width: 100%;
+  }
+  .sum-col-6 {
+    width: 45%;
+  }
+  .summary-flex {
+    gap: 0;
+  }
+  .boardImg {
+    width: 40px;
+    height: auto;
+  }
 }
 
 @media(max-width: 800px){
-  // .sum-col-50 {
-  //   width: calc(100% - 10%);
-  // }
+
+.summary {
+  &-todo {
+      padding: 10px 10px;
+      min-height: 109px;
+    }
+  &-gap-default {
+    gap: 0px;
+  }
+  &-todo-counter {
+    font-size: 45px;
+  }
+  &-flex-counter {
+    gap:0;
+  }
+
+  &-todo-counter-text {
+    font-size: 15px;
+  }
+  &-tasksContainerDown {
+    padding: 12px 5px;
+  }
+  &-tasksContainerDown-counter {
+    font-size: 45px;
+  }
+  &-summarySmallContainerMiddle {
+    padding: 28px 8px;
+}
+  &-gap-urgent {
+    gap: 20px;
+  }
+}
+.summary-tasksContainerDown-counter-text-m {
+  font-size: 15px;
+}
   .containerSummary {
     padding: 139px 30px;
   }

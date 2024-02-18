@@ -105,7 +105,7 @@ function addTaskHtml() {
           </div>
           <div id="assignedDropdownCategory" class="category-dropdown d-none">
             <div id="userStory" class="flex-checkbox" data-value="user-story" onclick="selectCategory('user-story')">User Story</div>
-            <div id="other" class="flex-checkbox" data-value="other" onclick="selectCategory('other')">Other</div>
+            <div id="other" class="flex-checkbox" data-value="technical-task" onclick="selectCategory('Technical Task')">Technical Task</div>
           </div>
         </div>
 
@@ -212,7 +212,7 @@ function addTaskHtml() {
           <div id="assignedDropdownCategory" class="category-dropdown d-none">
             <div id="userStory" class="flex-checkbox" data-value="user-story" onclick="selectCategory('user-story')">User Story
             </div>
-            <div id="other" class="flex-checkbox" data-value="other" onclick="selectCategory('other')">Other
+            <div id="other" class="flex-checkbox" data-value="technical-task" onclick="selectCategory('technical-task')">Technical Task
             </div>
           </div>
         </div>
@@ -408,7 +408,7 @@ function generateTaskPopupHTML(i, img, date) {
               <div id="assignedDropdownCategoryEdit" class="category-dropdown d-none">
                 <div id="userStoryEdit" class="flex-checkbox" data-value="user-story" onclick="selectCategoryEdit('user-story')">User Story
                 </div>
-                <div id="otherEdit" class="flex-checkbox" data-value="other" onclick="selectCategoryEdit('other')">Other
+                <div id="otherEdit" class="flex-checkbox" data-value="technical-task" onclick="selectCategoryEdit('Technical Task')">Technical Task
                 </div>
               </div>
             </div>
@@ -524,7 +524,7 @@ function addTaskPopUpHtml() {
           </div>
           <div id="assignedDropdownCategory" class="category-dropdown d-none">
             <div id="userStory" class="flex-checkbox" data-value="user-story" onclick="selectCategory('user-story')">User Story</div>
-            <div id="other" class="flex-checkbox" data-value="other" onclick="selectCategory('other')">Other</div>
+            <div id="other" class="flex-checkbox" data-value="technical-task" onclick="selectCategory('Technical Task')">Technical Task</div>
           </div>
         </div>
 
@@ -632,7 +632,7 @@ function addTaskPopUpHtml() {
 </div>
 <div id="assignedDropdownCategory" class="category-dropdown d-none">
   <div id="userStory" class="flex-checkbox" data-value="user-story" onclick="selectCategory('user-story')">User Story</div>
-  <div id="other" class="flex-checkbox" data-value="other" onclick="selectCategory('other')">Other</div>
+  <div id="other" class="flex-checkbox" data-value="technical-task" onclick="selectCategory('technical-task')">Technical Task</div>
 </div>
 
 </div>

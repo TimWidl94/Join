@@ -531,7 +531,7 @@ function setCategoryBackground(category, id) {
   if (category == 'user-story' || category == 'User Story') {
     document.getElementById(id).classList.add('board-task-epic-green');
   }
-  if (category === 'other' || category === 'Other') {
+  if (category === 'technical-task' || category === 'Technical Task') {
     document.getElementById(id).classList.add('board-task-epic-blue');
   }
 }
@@ -632,10 +632,10 @@ function openDropDownCategoryEdit() {
 
 function selectCategoryEdit(category) {
   const userStory = document.getElementById('userStoryEdit');
-  const other = document.getElementById('otherEdit');
+  const technicalTask = document.getElementById('otherEdit');
   const showSelectedCategory = document.getElementById('showSelectedCategoryEdit');
   const assignedDropdownCategory = document.getElementById('assignedDropdownCategoryEdit');
-  selectCategoryIfElse(userStory, other, showSelectedCategory, assignedDropdownCategory, category);
+  selectCategoryIfElse(userStory, technicalTask, showSelectedCategory, assignedDropdownCategory, category);
 }
 
 async function renderBoardTasks() {

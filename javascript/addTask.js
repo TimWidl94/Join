@@ -332,31 +332,31 @@ function moveToCenter(popup) {
 
 function selectCategory(category) {
   const userStory = document.getElementById('userStory');
-  const other = document.getElementById('other');
+  const technicalTask = document.getElementById('other');
   const showSelectedCategory = document.getElementById('showSelectedCategory');
   const assignedDropdownCategory = document.getElementById('assignedDropdownCategory');
-  selectCategoryIfElse(userStory, other, showSelectedCategory, assignedDropdownCategory, category);
+  selectCategoryIfElse(userStory, technicalTask, showSelectedCategory, assignedDropdownCategory, category);
   checkIfFormIsFilled();
 }
 
-function selectCategoryIfElse(userStory, other, showSelectedCategory, assignedDropdownCategory, category) {
-  if (category === 'user-story') {
+function selectCategoryIfElse(userStory, technicalTask, showSelectedCategory, assignedDropdownCategory, category) {
+  if (category === 'user-story' || category === 'User Story') {
     userStory.classList.add('category-selected');
-    other.classList.remove('category-selected');
+    technicalTask.classList.remove('category-selected');
     showSelectedCategory.setAttribute('data-value', category);
     showSelectedCategory.innerHTML = `User Story`;
     assignedDropdownCategory.classList.add('d-none');
     categoryIsSelected = true;
-  } else if (category === 'other') {
-    other.classList.add('category-selected');
+  } else if (category === 'technical-task' || category === 'Technical Task') {
+    technicalTask.classList.add('category-selected');
     userStory.classList.remove('category-selected');
     showSelectedCategory.setAttribute('data-value', category);
-    showSelectedCategory.innerHTML = `Other`;
+    showSelectedCategory.innerHTML = `Technical Task`;
     assignedDropdownCategory.classList.add('d-none');
     categoryIsSelected = true;
   } else {
     userStory.classList.remove('category-selected');
-    other.classList.remove('category-selected');
+    technicalTask.classList.remove('category-selected');
     showSelectedCategory.setAttribute('data-value', '');
     showSelectedCategory.innerHTML = `Select task category`;
   }

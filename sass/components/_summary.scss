@@ -304,6 +304,9 @@
   width: 60px;
   height: 60px;
 }
+.sum-col-50 {
+  width: 42%;
+}
 
 
 // .greetingsMassageContainer {
@@ -361,7 +364,6 @@
 .sum-col-50 {
   width: calc(100% - 10%);
 }
-
 }
 
 @media (max-width: 900px) {

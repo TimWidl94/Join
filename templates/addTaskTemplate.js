@@ -43,9 +43,9 @@ function addTaskHtml() {
       <section class="container-right">
         <p>Due Date<span class="span-required">*</span></p>
         <div id="due-date">
-          <input id="myDateInput" required type="date" required onkeydown="checkIfFormIsFilled()"/>
-        </div>
-        
+  <label for="myDateInput"></label>
+  <input id="myDateInput" type="date" required>
+</div>
         <div class="priority">
           <p>Prio</p>
           <div class="priority-options">

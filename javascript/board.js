@@ -21,11 +21,24 @@ function renderAddTaskPopUp() {
   contentBoardTask.innerHTML = addTaskPopUpHtml();
 }
 
+function setMinDateTodayPopup(inputIdPopup) {
+  var today = new Date().toISOString().split('T')[0];
+  document.getElementById(inputIdPopup).setAttribute("min", today);
+  document.getElementById(inputIdPopup).addEventListener("input", function() {
+    var selectedDate = this.value;
+    var currentDate = new Date().toISOString().split('T')[0];
+    if (selectedDate < currentDate) {
+      this.value = today;
+    }
+  });
+}
+
 async function openAddTaskPopup() {
   await renderAddTaskPopUp();
   changePrioToMedium('mediumContainer', 'mediumImg');
   await renderSubTask();
   await showTaskForm('assignedTo');
+  setMinDateTodayPopup("myDateInputPopup");
   document.getElementById('addTaskPopupWrapper').classList.remove('d-none');
   document.getElementById('addTaskPopup').classList.remove('d-none');
   document.getElementById('addTaskPopup').classList.add('slide-in');
@@ -221,6 +234,7 @@ async function editTask(i) {
   let title = document.getElementById('taskTitleEdit');
   let description = document.getElementById('taskDescriptionEdit');
   let dueDate = document.getElementById('myDateInputEdit');
+  setMinDateTodayPopup("myDateInputEdit");
   let selectedCategoryElement = document.getElementById('showSelectedCategoryEdit');
 
   await loadSelectedContacts(i);

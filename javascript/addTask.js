@@ -52,7 +52,6 @@ function setMinDateToday(inputId) {
   });
 }
 
-
 async function addTask() {
   console.log('tasks');
   await pushAddTask();

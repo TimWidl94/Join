@@ -3336,13 +3336,16 @@ footer {
     left: 38px; } }
 
 @media (max-width: 800px) {
+  .logInInputField {
+    width: calc(100% - 58px);
+    padding: 12px 38px 12px 21px; }
+  .logInInputImgMail, .logInInputImgLock {
+    right: 10px; }
   .formBody {
     max-width: 100% !important; }
   .loginScreenBody {
     max-width: calc(100% - 32px);
     padding: 32px 0px; }
-  .logInInputField {
-    width: calc(100% - 44px); }
   .headerRightBox {
     position: absolute;
     top: 83%;

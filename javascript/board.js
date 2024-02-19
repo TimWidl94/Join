@@ -234,6 +234,7 @@ async function editTask(i) {
   let title = document.getElementById('taskTitleEdit');
   let description = document.getElementById('taskDescriptionEdit');
   let dueDate = document.getElementById('myDateInputEdit');
+  setMinDateTodayPopup("myDateInputEdit");
   let selectedCategoryElement = document.getElementById('showSelectedCategoryEdit');
 
   await loadSelectedContacts(i);

@@ -8,6 +8,7 @@ async function init() {
   await renderSubTask();
   await showTaskForm('assignedTo');
   changePrioToMedium('mediumContainer', 'mediumImg');
+  setMinDateToday("myDateInput");
 }
 
 let tasks = [];
@@ -37,6 +38,18 @@ function renderAddTask() {
 function renderSubTask() {
   let container = document.getElementById('subtasks');
   container.innerHTML += subTaskInputHtml();
+}
+
+function setMinDateToday(inputId) {
+  var today = new Date().toISOString().split('T')[0];
+  document.getElementById(inputId).setAttribute("min", today);
+  document.getElementById(inputId).addEventListener("input", function() {
+    var selectedDate = this.value;
+    var currentDate = new Date().toISOString().split('T')[0];
+    if (selectedDate < currentDate) {
+      this.value = today;
+    }
+  });
 }
 
 async function addTask() {

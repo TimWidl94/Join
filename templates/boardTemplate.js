@@ -74,10 +74,12 @@ function addTaskHtml() {
       <div class="vertical-line-add-task"></div>
 
       <section class="container-right">
-        <p>Due Date<span class="span-required">*</span></p>
+
+      <p>Due Date<span class="span-required">*</span></p>
         <div id="due-date">
-          <input id="myDateInput" required type="date" required onkeydown="checkIfFormIsFilled()"/>
-        </div>
+  <label for="myDateInputPopup"></label>
+  <input id="myDateInputPopup" required type="date" required onkeydown="checkIfFormIsFilled()"/>
+</div>
         
         <div class="priority">
           <p>Prio</p>
@@ -495,7 +497,7 @@ function addTaskPopUpHtml() {
       <section class="container-right">
         <p>Due Date<span class="span-required">*</span></p>
         <div id="due-date">
-          <input id="myDateInput" required type="date" required onkeydown="checkIfFormIsFilled()"/>
+          <input id="myDateInputPopup" required type="date" required onkeydown="checkIfFormIsFilled()"/>
         </div>
         
         <div class="priority">

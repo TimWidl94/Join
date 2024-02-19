@@ -743,7 +743,8 @@ input[type='date']::-webkit-calendar-picker-indicator {
   justify-content: space-between;
   align-items: center;
   padding: 0px 24px;
-  width: calc(488px + 488px + 48.5px - 2 * 24px); }
+  width: calc(488px + 488px + 48.5px - 2 * 24px);
+  margin-bottom: 32px; }
 
 .btns-down-right-add-task {
   display: flex;
@@ -874,8 +875,8 @@ input[type='date']::-webkit-calendar-picker-indicator {
   .category-dropdown {
     min-width: unset;
     width: calc(100% - 2 * 16px); }
-  .btns-down-add-task-popup {
-    width: calc(100% - 2 * 24px); } }
+  .test-2 {
+    width: calc(100% - 15px); } }
 
 @media (max-width: 1310px) {
   .btns-down-add-task {
@@ -916,6 +917,7 @@ input[type='date']::-webkit-calendar-picker-indicator {
     margin-right: unset;
     max-width: unset;
     min-width: unset !important;
+    padding: unset;
     width: 100%; }
   .headline-h1-add-task {
     font-size: 61px; }
@@ -931,9 +933,13 @@ input[type='date']::-webkit-calendar-picker-indicator {
     margin-left: unset;
     margin-top: unset;
     max-width: unset;
+    padding: unset;
     width: 100%; }
   .btns-down-add-task {
-    max-width: 600px; } }
+    max-width: 600px; }
+  .test-2 {
+    width: calc(100% - 3%);
+    margin: 20px 0 0 0px; } }
 
 @media (max-width: 675px) {
   .btns-down-add-task {
@@ -2381,7 +2387,8 @@ form {
 
 #boardAddTask {
   display: flex;
-  flex-direction: column; }
+  flex-direction: column;
+  width: 100%; }
 
 .add-task-popup {
   position: relative;
@@ -2936,7 +2943,7 @@ form {
   flex-direction: row;
   width: 100%;
   gap: 16px;
-  padding-bottom: 40px; }
+  margin-bottom: 32px; }
 
 @media (min-width: 1300px) {
   .board-title {
@@ -2977,7 +2984,9 @@ form {
   .mobileButtonHide {
     display: none !important; }
   .container {
-    max-width: calc(100% - 360px) !important; } }
+    max-width: calc(100% - 360px) !important; }
+  .btns-down-add-task-popup {
+    width: calc(100% - 2 * 24px); } }
 
 @media (max-width: 1000px) {
   .container {
@@ -3002,7 +3011,9 @@ form {
   .aTPopupButtonsBottomMenuContainer {
     display: flex !important; }
   .aTPopupButtonsBottom {
-    justify-content: space-between; } }
+    justify-content: space-between; }
+  .btns-down-add-task-popup {
+    width: 100%; } }
 
 @media (max-width: 800px) {
   container {

@@ -1,34 +1,32 @@
 function generateTodoHTML(i, img) {
   return /*html*/ `
-    
-        <div draggable="true" ondragstart="startDragging(${i})" class="wobble-container" 
+    <div draggable="true" ondragstart="startDragging(${i})" class="wobble-container" 
         onclick="openTaskPopup(${i})" ontouchstart="startDragging(${i})">
       <div class="board-task wobble-element">
-            <div class="board-task-epic" id="board-task-epic${i}">
-                ${tasks[i]['selectedCategory']}
-            </div>
-                <div class="board-task-title">${tasks[i]['taskTitle']}</div>
-                <div class="board-task-description">
-                ${tasks[i]['taskDescription']}
-                </div>
-                <div class="board-task-subtask">
-                  <div class="board-task-subtask-progress">
-                    <div
-                      class="progress-done"
-                      id="progress-${i}"
-                      style="width: 0%"></div>
-                  </div>
-                  <div class="sboard-task-subtask-counter">0/${tasks[i]['subtasks'].length}</div>
-                </div>
-                <div class="board-task-member">
-                  <div class="board-task-member" id="contactsInBoardTask${i}">
-                  </div>
-                  <div class="board-task-member-prio">
-                    <img src="${img}" alt="" id="taskImg${i}"/>
-                </div>
-            </div>
-</div>
+        <div class="board-task-epic" id="board-task-epic${i}">
+            ${tasks[i]['selectedCategory']}
         </div>
+        <div class="board-task-title">${tasks[i]['taskTitle']}</div>
+        <div class="board-task-description">
+          ${tasks[i]['taskDescription']}
+        </div>
+        <div class="board-task-subtask">
+          <div class="board-task-subtask-progress">
+            <div
+              class="progress-done"
+              id="progress-${i}"
+              style="width: 0%"></div>
+            </div>
+            <div class="sboard-task-subtask-counter">0/${tasks[i]['subtasks'].length}</div>
+          </div>
+          <div class="board-task-member">
+          <div class="board-task-member" id="contactsInBoardTask${i}"></div>
+          <div class="board-task-member-prio">
+            <img src="${img}" alt="" id="taskImg${i}"/>
+          </div>
+        </div>
+      </div>
+    </div>
         `;
 }
 
@@ -138,7 +136,7 @@ function addTaskHtml() {
 
       </section>
     </div>
-      <div class="btns-down-add-task">
+      <div class="btns-down-add-task-popup">
         <div class="requirement-desktop-addTask">
           <p class="p-required"><span class="span-required">*</span>This field is required</p>
         </div>
@@ -557,7 +555,7 @@ function addTaskPopUpHtml() {
 
       </section>
     </div>
-      <div class="btns-down-add-task">
+      <div class="btns-down-add-task-popup">
         <div class="requirement-desktop-addTask">
           <p class="p-required"><span class="span-required">*</span>This field is required</p>
         </div>
@@ -684,29 +682,51 @@ function addTaskPopUpHtml() {
 
 function addedTaskToBoardHtml() {
   return /*html*/ `
-  <div class="signedUpMassage d-none" id="addedTaskToBoard">
-  <p class="p-whiteText">Task Added to board</p>
-  <img class="addTasktoBoard" src="assets/img/icons/board_icon_white.svg">
-  </div>
+    <div class="signedUpMassage d-none" id="addedTaskToBoard">
+      <p class="p-whiteText">Task Added to board</p>
+      <img class="addTasktoBoard" src="assets/img/icons/board_icon_white.svg">
+    </div>
   `;
 }
 
 function assignedToUserHtml(i, color, currentUser, initials) {
   return /*html*/ `
-  <div id="user-${i}" class="flex-checkbox selected-profile" onclick="addAssignedContact(${i}, '${color}')" data-value="${currentUser}">
-  <div class="selected-profile"><div class="assinged-contact-profile" style="background-color:${color}">${initials}</div>
-  <span class="assigned-name">${currentUser}</span></div>
-  <img id="hoverCheckbox" class="hover-checkbox" src="assets/img/icons/checkBoxWhite.svg" alt="">
-  <img id="checkBox-${i}" class="flex-checkbox-img"src="assets/img/icons/checkBox.svg" alt="">
+    <div id="user-${i}" class="flex-checkbox selected-profile" onclick="addAssignedContact(${i}, '${color}')" data-value="${currentUser}">
+      <div class="selected-profile"><div class="assinged-contact-profile" style="background-color:${color}">${initials}</div>
+      <span class="assigned-name">${currentUser}</span>
+    </div>
+    <img id="hoverCheckbox" class="hover-checkbox" src="assets/img/icons/checkBoxWhite.svg" alt="">
+    <img id="checkBox-${i}" class="flex-checkbox-img"src="assets/img/icons/checkBox.svg" alt="">
   `;
 }
 
 function assignedToUserYouHtml(i, color, currentUser, initials) {
   return /*html*/ `
-  <div id="user-${i}" class="flex-checkbox selected-profile" onclick="addAssignedContact(${i}, '${color}')" data-value="${currentUser}">
-  <div class="selected-profile"><div class="assinged-contact-profile" style="background-color:${color}">${initials}</div>
-  <span class="assigned-name">${currentUser} (you)</span></div>
-  <img id="hoverCheckbox" class="hover-checkbox" src="assets/img/icons/checkBoxWhite.svg" alt="">
-  <img id="checkBox-${i}" class="flex-checkbox-img"src="assets/img/icons/checkBox.svg" alt="">
+    <div id="user-${i}" class="flex-checkbox selected-profile" onclick="addAssignedContact(${i}, '${color}')" data-value="${currentUser}">
+      <div class="selected-profile"><div class="assinged-contact-profile" style="background-color:${color}">${initials}</div>
+      <span class="assigned-name">${currentUser} (you)</span>
+    </div>
+    <img id="hoverCheckbox" class="hover-checkbox" src="assets/img/icons/checkBoxWhite.svg" alt="">
+    <img id="checkBox-${i}" class="flex-checkbox-img"src="assets/img/icons/checkBox.svg" alt="">
+  `;
+}
+
+function renderSelectedContactsEditHtml(i, j, color, initials) {
+  return /*html*/ `
+    <div class="assinged-contact-overview" style="background-color:${color}" onclick="removeSelectedContact(${i}, ${j})">${initials}</div>
+    `;
+}
+
+function showTaskFormEditHtml() {
+  return /*html*/ `
+    <div name="assigned" onchange="addAssignedContact()">
+      <div id="dropdownEdit" class="dropdown" onclick="openDropDown('assignedDropdown', 'dropdownImgArrow')">
+        <input class="contact-searchbar" onkeyup="filterAddTaskContact()" type="text" id="search" placeholder="Select contacts to assign" />
+        <img id="dropdownImgArrow" class="rotate-arrow dropdown-arrow-hover dropdown-arrow-hover" src="../assets/img/AddTask/arrow_drop.svg" alt="">
+      </div>
+    </div>
+    <div id="assignedDropdown" class="d-none">
+      <div id="assignedAddedContacts"></div>
+    </div>
   `;
 }

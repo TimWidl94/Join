@@ -11,13 +11,11 @@ async function initBoard() {
   setUserInitials();
   setColorToActive('sidebarBoard', 'board-img', 'bottomBarBoardMobile', 'boardImgMobile');
   // await renderAddTaskPopUp();
-
   checkTaskAreaDisplayEmpty();
 }
 
 function renderAddTaskPopUp() {
   let contentBoardTask = document.getElementById('boardAddTask');
-  // console.log('addTask Popup rendered');
   contentBoardTask.innerHTML = addTaskPopUpHtml();
 }
 
@@ -61,7 +59,7 @@ function openTaskPopup(i) {
   taskPopup.innerHTML = '';
   taskPopup.innerHTML = generateTaskPopupHTML(i, img, date);
   setCategoryBackground(tasks[i]['selectedCategory'], `aTPopupCategory${i}`);
-  // checkSubtasksExisting(i);
+  checkSubtasksExisting(i);
 
   renderAssignedToContacs(i);
   renderSubtasks(i, 'subtaskContainerPopup');
@@ -287,7 +285,7 @@ function renderSelectedContactsEdit(i) {
     let contact = selectedContacts[j];
     let initials = getInitials(selectedContacts[j]['name']);
     let color = contact['color'];
-    content.innerHTML += /*html*/ `<div class="assinged-contact-overview" style="background-color:${color}" onclick="removeSelectedContact(${i}, ${j})">${initials}</div>`;
+    content.innerHTML += renderSelectedContactsEditHtml(i, j, color, initials);
   }
 }
 
@@ -409,17 +407,7 @@ function renderSubTasksEditable(i, id1) {
 
 function showTaskFormEdit(id) {
   let assignedTo = document.getElementById(id);
-  assignedTo.innerHTML = /*html*/ `
-    <div name="assigned" onchange="addAssignedContact()">
-      <div id="dropdownEdit" class="dropdown" onclick="openDropDown('assignedDropdown', 'dropdownImgArrow')">
-        <input class="contact-searchbar" onkeyup="filterAddTaskContact()" type="text" id="search" placeholder="Select contacts to assign" />
-        <img id="dropdownImgArrow" class="rotate-arrow dropdown-arrow-hover dropdown-arrow-hover" src="../assets/img/AddTask/arrow_drop.svg" alt="">
-      </div>
-    </div>
-    <div id="assignedDropdown" class="d-none">
-      <div id="assignedAddedContacts"></div>
-    </div>
-  `;
+  assignedTo.innerHTML = showTaskFormEditHtml();
 
   for (let i = 0; i < contacts.length; i++) {
     let currentUser = contacts[i]['name'];

@@ -1,7 +1,7 @@
 let currentDraggedElement;
 let selectedPrioPopupEdit;
 let subTaskCounter = 0;
-let addExistingSubtasksExecuted = false;
+// let addExistingSubtasksExecuted = false;
 
 async function initBoard() {
   await loadData();
@@ -21,8 +21,8 @@ function renderAddTaskPopUp() {
 
 function setMinDateTodayPopup(inputIdPopup) {
   var today = new Date().toISOString().split('T')[0];
-  document.getElementById(inputIdPopup).setAttribute("min", today);
-  document.getElementById(inputIdPopup).addEventListener("input", function() {
+  document.getElementById(inputIdPopup).setAttribute('min', today);
+  document.getElementById(inputIdPopup).addEventListener('input', function () {
     var selectedDate = this.value;
     var currentDate = new Date().toISOString().split('T')[0];
     if (selectedDate < currentDate) {
@@ -36,7 +36,7 @@ async function openAddTaskPopup() {
   changePrioToMedium('mediumContainer', 'mediumImg');
   await renderSubTask();
   await showTaskForm('assignedTo');
-  setMinDateTodayPopup("myDateInputPopup");
+  setMinDateTodayPopup('myDateInputPopup');
   document.getElementById('addTaskPopupWrapper').classList.remove('d-none');
   document.getElementById('addTaskPopup').classList.remove('d-none');
   document.getElementById('addTaskPopup').classList.add('slide-in');
@@ -232,7 +232,7 @@ async function editTask(i) {
   let title = document.getElementById('taskTitleEdit');
   let description = document.getElementById('taskDescriptionEdit');
   let dueDate = document.getElementById('myDateInputEdit');
-  setMinDateTodayPopup("myDateInputEdit");
+  setMinDateTodayPopup('myDateInputEdit');
   let selectedCategoryElement = document.getElementById('showSelectedCategoryEdit');
 
   await loadSelectedContacts(i);
@@ -276,8 +276,8 @@ function addSelectedContactsFromTask(i) {
   // if ((tasks[i].selectedContacts.length = 0)) {
   //   console.warn('task.selectedContacts.length = 0');
   // }
-  for (let j = 0; j < tasks[i].selectedContacts.length; j++) {
-    let selectedContact = tasks[i].selectedContacts[j];
+  for (let j = 0; j < task.selectedContacts.length; j++) {
+    let selectedContact = task.selectedContacts[j];
     selectedContacts.push(selectedContact);
   }
 }
@@ -441,14 +441,7 @@ function showTaskFormEdit(id) {
 function changeButtonsAddTaskEdit(id, i) {
   let inputField = document.getElementById(id);
 
-  inputField.innerHTML = /*html*/ `
-    <input id="subTaskInputEdit" type="text" placeholder="Add new subtask" class="PosRel" />
-    <div class="subTaskInputButtons">
-      <img class="subTaskInputImg" onclick="setValueBack('subTaskInputEdit', 'subtasksEdit')" src="./assets/img/icons/close.svg" alt="">
-      <span class="subTaskInputImg-vertical"></span>
-      <img class="subTaskInputImg checkImg" onclick="addSubTaskEdit('subTaskInputEdit', 'subTaskContainerEdit', ${i})" src="./assets/img/icons/checkAddTask.svg" alt="">
-    </div>
-  `;
+  inputField.innerHTML = changeButtonsAddTaskEditHtml(i);
   document.getElementById('subTaskInputEdit').focus();
 }
 
@@ -466,8 +459,6 @@ function setPrioEdit(prio) {
     document.getElementById('urgentImgEdit').src = './assets/img/AddTask/urgentPrioActive.svg';
   }
   selectedPrioPopupEdit = prio;
-  // console.log('selectedPrioPopupEdit prio:', prio);
-  // console.log('selectedPrioPopupEdit:', selectedPrioPopupEdit);
 }
 
 function changePriorityEdit(idContainer, idImg, priority) {
@@ -497,7 +488,6 @@ async function saveEditedTask(i) {
   tasks[i].taskTitle = title.value;
   tasks[i].taskDescription = description.value;
   tasks[i].taskDueDate = dueDate.value;
-  console.log('saveEditedTask selectedContacts', selectedContacts);
   tasks[i].selectedContacts = selectedContacts;
   tasks[i].selectedCategory = selectedCategoryValue;
 
@@ -506,18 +496,9 @@ async function saveEditedTask(i) {
   // saveAddedSubtasks(i);
 
   closeTaskPopup();
-  // renderBoardTasks();
-  // addExistingSubtasksExecuted = false;
-  // await setItem('stasks', JSON.stringify(tasks));
 
   // saveAddedSubtasks(i);
-  // addExistingSubtasksExecuted = false;
-  console.log('saveEditedTask tasks[i].selectedContacts:', tasks[i].selectedContacts);
 }
-
-// function saveSelectedContactsEdit(i) {
-//   return selectedContacts;
-// }
 
 function saveAddedSubtasks(i) {
   deleteExistingSubtasks(i);
@@ -526,7 +507,7 @@ function saveAddedSubtasks(i) {
 
 function deleteExistingSubtasks(i) {
   let task = tasks[i];
-  task.subtasks.splice(0, task.subtasks.length); // Entferne alle Elemente aus dem Array
+  task.subtasks.splice(0, task.subtasks.length);
 }
 
 function setCategoryBackground(category, id) {

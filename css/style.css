@@ -226,6 +226,7 @@ textarea {
   flex-direction: column;
   align-items: flex-start;
   margin-right: 48.25px;
+  width: 440px;
   flex: 1;
   max-width: 50%; }
 
@@ -440,6 +441,7 @@ textarea {
   flex-direction: column;
   align-items: flex-start;
   margin-left: 48.25px;
+  width: 440px;
   margin-top: 118px;
   flex: 1;
   max-width: 50%; }
@@ -726,7 +728,7 @@ textarea {
   justify-content: space-between;
   align-items: center;
   padding: 0px 24px;
-  width: calc(488px + 488px + 48.5px - 2 * 24px);
+  width: calc(488px + 488px - 2 * 24px);
   margin-bottom: 32px; }
 
 .btns-down-right-add-task {
@@ -815,7 +817,7 @@ textarea {
   display: flex !important;
   align-items: center;
   flex-direction: column;
-  width: 100%; }
+  max-width: calc(2 * 488px); }
 
 .addTaskToBoardPopUp {
   position: absolute;
@@ -870,7 +872,12 @@ textarea {
   .container-right {
     padding: 0px 12px; }
   .add-task-popup {
-    padding: 64px 37px !important; } }
+    margin: 0 24px; } }
+
+@media (max-width: 1200px) {
+  .container-left,
+  .container-right {
+    padding: 0px 0px; } }
 
 @media (max-width: 1000px) {
   body {
@@ -896,7 +903,8 @@ textarea {
   .container-left-right-wrapper {
     flex-direction: column;
     max-width: 600px !important; }
-  .container-left {
+  .container-left,
+  .container-left-popup {
     margin-right: unset;
     max-width: unset;
     min-width: unset !important;
@@ -912,26 +920,27 @@ textarea {
     padding: 12px 0px; }
   .vertical-line-add-task {
     display: none; }
-  .container-right {
+  .container-right,
+  .container-right-popup {
     margin-left: unset;
     margin-top: unset;
     max-width: unset;
     padding: unset;
     width: 100%; }
-  .btns-down-add-task {
-    max-width: 600px; }
-  .test-2 {
-    width: calc(100% - 3%);
-    margin: 20px 0 0 0px; } }
-
-@media (max-width: 675px) {
+  .subtask-div {
+    min-height: unset; }
   .btns-down-add-task {
     justify-content: center;
     align-items: center;
     flex-direction: column;
     gap: 24px;
     width: 100%;
-    padding-bottom: 24px; } }
+    padding-bottom: 24px; }
+  .formAddTask {
+    width: 100%; }
+  .test-2 {
+    width: calc(100% - 3%);
+    margin: 20px 0 0 0px; } }
 
 @media (max-width: 500px) {
   .body-add-task {
@@ -983,7 +992,7 @@ textarea {
     padding: 15px 12px; }
   .container-left,
   .container-right {
-    padding: 0px 24px !important; } }
+    padding: 0px 0px !important; } }
 
 @media (max-width: 350px) {
   .bottom-add-task-mobile {
@@ -1112,6 +1121,9 @@ textarea {
 
 .bg-primary {
   background-color: #2a3647; }
+
+.bg-primary:hover {
+  background-color: #1d2127 !important; }
 
 .hover-unset {
   background-color: #2a3647; }
@@ -2380,7 +2392,6 @@ form {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin-left: 232px;
   padding: 64px 64px;
   z-index: 9;
   border-radius: 30px;
@@ -2560,8 +2571,7 @@ form {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
-  padding-left: 232px; }
+  height: 100%; }
 
 .addTaskPopupContainer {
   display: flex;
@@ -2580,6 +2590,12 @@ form {
   border-radius: 30px;
   padding: 40px 24px;
   background-color: #f6f7f8; }
+
+.aTPopupContentWrapper::-webkit-scrollbar {
+  display: none; }
+
+.atPopupEditWrapper::-webkit-scrollbar {
+  display: none; }
 
 .aTPopupContentWrapper {
   display: flex;
@@ -2993,8 +3009,6 @@ form {
     width: 100%; }
   .bodyBoard {
     overflow: visible !important; }
-  .aTPopupContainer {
-    padding-left: unset; }
   .aTPopup,
   .atPopupEdit {
     padding: 24px 24px;
@@ -3021,10 +3035,6 @@ form {
     margin-right: 24px; }
   .aTPopupContentWrapper {
     gap: 12px; }
-  .aTPopupContentWrapper::-webkit-scrollbar {
-    display: none; }
-  .atPopupEditWrapper::-webkit-scrollbar {
-    display: none; }
   .btn-edit-task {
     height: 38px !important; }
   #assignedDropdown {
@@ -3053,6 +3063,10 @@ form {
     margin-left: 16px !important;
     margin-right: 16px !important; } }
 
+@media (max-width: 450px) {
+  .aTPopupButtonsBottom {
+    flex-direction: column; } }
+
 @media (max-width: 400px) {
   .aTPopup,
   .atPopupEdit {
@@ -3063,7 +3077,9 @@ form {
     max-width: 280px; }
   .priority-options div p,
   .priority-options-edit div p {
-    display: none; } }
+    display: none; }
+  #mediumContainerEdit {
+    height: calc(40px - 2 * 12px); } }
 
 /*  general section  */
 .dp-flex {
@@ -3428,9 +3444,7 @@ a {
   justify-content: center;
   align-items: flex-start;
   gap: 15px;
-  width: 232px;
-  margin-top: 200px;
-  margin-bottom: 200px; }
+  width: 232px; }
 
 .menu-category {
   display: flex;

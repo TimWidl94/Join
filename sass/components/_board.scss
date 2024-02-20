@@ -91,7 +91,7 @@
   flex-direction: row;
   justify-content: center;
   // left: 5%;
-  margin-left: 232px;
+  // margin-left: 232px;
   padding: 64px 64px;
   z-index: 9;
   border-radius: 30px;
@@ -317,7 +317,6 @@
   justify-content: center;
   align-items: center;
   height: 100%;
-  padding-left: 232px;
 }
 
 .addTaskPopupContainer {
@@ -338,6 +337,14 @@
   border-radius: 30px;
   padding: 40px 24px;
   background-color: $summary-background-color;
+}
+
+.aTPopupContentWrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.atPopupEditWrapper::-webkit-scrollbar {
+  display: none;
 }
 
 .aTPopupContentWrapper {
@@ -759,11 +766,11 @@
   margin-bottom: 32px;
 }
 
-.progress-done{
-    height: 8px;
-    background-color: $color-board-subtask-bar;
-    border: none;
-    border-radius: 8px;
+.progress-done {
+  height: 8px;
+  background-color: $color-board-subtask-bar;
+  border: none;
+  border-radius: 8px;
 }
 
 @media (min-width: 1300px) {
@@ -849,10 +856,6 @@
     overflow: visible !important;
   }
 
-  .aTPopupContainer {
-    padding-left: unset;
-  }
-
   .aTPopup,
   .atPopupEdit {
     padding: 24px 24px;
@@ -891,14 +894,6 @@
 
   .aTPopupContentWrapper {
     gap: 12px;
-  }
-
-  .aTPopupContentWrapper::-webkit-scrollbar {
-    display: none;
-  }
-
-  .atPopupEditWrapper::-webkit-scrollbar {
-    display: none;
   }
 
   .btn-edit-task {
@@ -945,6 +940,12 @@
   }
 }
 
+@media (max-width: 450px) {
+  .aTPopupButtonsBottom {
+    flex-direction: column;
+  }
+}
+
 @media (max-width: 400px) {
   .aTPopup,
   .atPopupEdit {
@@ -960,5 +961,9 @@
   .priority-options div p,
   .priority-options-edit div p {
     display: none;
+  }
+
+  #mediumContainerEdit {
+    height: calc(40px - 2 * 12px);
   }
 }

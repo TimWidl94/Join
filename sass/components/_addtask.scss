@@ -46,7 +46,7 @@
   flex-direction: column;
   align-items: flex-start;
   margin-right: 48.25px;
-  // width: 440px;
+  width: 440px;
   flex: 1;
   max-width: 50%;
 }
@@ -298,7 +298,7 @@
   flex-direction: column;
   align-items: flex-start;
   margin-left: 48.25px;
-  // width: 440px;
+  width: 440px;
   margin-top: 118px;
   flex: 1;
   max-width: 50%;
@@ -627,7 +627,8 @@
   justify-content: space-between;
   align-items: center;
   padding: 0px 24px;
-  width: calc(488px + 488px + 48.5px - 2 * 24px);
+  width: calc(488px + 488px - 2 * 24px);
+  // padding-top: 150px;
   margin-bottom: 32px;
 }
 
@@ -730,7 +731,7 @@
   display: flex !important;
   align-items: center;
   flex-direction: column;
-  width: 100%;
+  max-width: calc(2 * 488px);
 }
 
 .addTaskToBoardPopUp {
@@ -807,7 +808,15 @@
   }
 
   .add-task-popup {
-    padding: 64px 37px !important;
+    // padding: 64px 37px !important;
+    margin: 0 24px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .container-left,
+  .container-right {
+    padding: 0px 0px;
   }
 }
 
@@ -847,7 +856,8 @@
     max-width: 600px !important;
   }
 
-  .container-left {
+  .container-left,
+  .container-left-popup {
     margin-right: unset;
     max-width: unset;
     min-width: unset !important;
@@ -867,15 +877,14 @@
     height: 50px;
     position: unset;
     padding: 12px 0px;
-    // max-width: 100%;
-    // overflow-y: auto;
   }
 
   .vertical-line-add-task {
     display: none;
   }
 
-  .container-right {
+  .container-right,
+  .container-right-popup {
     margin-left: unset;
     margin-top: unset;
     max-width: unset;
@@ -883,17 +892,10 @@
     width: 100%;
   }
 
-  .btns-down-add-task {
-    max-width: 600px;
+  .subtask-div {
+    min-height: unset;
   }
 
-  .test-2 {
-    width: calc(100% - 3%);
-    margin: 20px 0 0 0px;
-  }
-}
-
-@media (max-width: 675px) {
   .btns-down-add-task {
     justify-content: center;
     align-items: center;
@@ -901,6 +903,15 @@
     gap: 24px;
     width: 100%;
     padding-bottom: 24px;
+  }
+
+  .formAddTask {
+    width: 100%;
+  }
+
+  .test-2 {
+    width: calc(100% - 3%);
+    margin: 20px 0 0 0px;
   }
 }
 
@@ -986,7 +997,7 @@
 
   .container-left,
   .container-right {
-    padding: 0px 24px !important;
+    padding: 0px 0px !important;
   }
 }
 

@@ -138,6 +138,10 @@
   background-color: $primary-color;
 }
 
+.bg-primary:hover {
+  background-color: #1d2127 !important;
+}
+
 // Lösung suchen!!
 .hover-unset {
   background-color: $primary-color;
@@ -148,7 +152,6 @@
 }
 
 .contact-list-basic-info:hover {
-  // background-color: #f6f7f8;
   background-color: $summary-background-color;
   cursor: pointer;
 }

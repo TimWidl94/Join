@@ -19,13 +19,13 @@ function addTaskHtml() {
 
         <div id="title-add-task">
           <p>Title<span class="span-required">*</span></p>
-          <input id="taskTitle" required type="text" class="border-focus" placeholder="Enter a title" onkeydown="checkIfFormIsFilled()"/>
+          <input id="taskTitle" required type="text" maxlength="100" class="border-focus" placeholder="Enter a title" onkeydown="checkIfFormIsFilled()"/>
 
         </div>
 
         <div id="description">
           <p>Description</p>
-          <textarea id="taskDescription" class="border-focus" placeholder="Enter a description"></textarea>
+          <textarea id="taskDescription" class="border-focus" maxlength="200" placeholder="Enter a description"></textarea>
         </div>
 
         <p class="text-padding">Assigned to</p>
@@ -43,9 +43,9 @@ function addTaskHtml() {
       <section class="container-right">
         <p>Due Date<span class="span-required">*</span></p>
         <div id="due-date">
-  <label for="myDateInput"></label>
-  <input id="myDateInput" type="date" required>
-</div>
+          <label for="myDateInput"></label>
+          <input id="myDateInput" type="date" required>
+        </div>
         <div class="priority">
           <p>Prio</p>
           <div class="priority-options">
@@ -71,24 +71,15 @@ function addTaskHtml() {
             <img id="dropdownImgArrowCategory" class="rotate-arrow dropdown-arrow-hover" src="../assets/img/AddTask/arrow_drop.svg" alt="">
           </div>
           <div id="assignedDropdownCategory" class="category-dropdown d-none">
-            <div id="userStory" class="flex-checkbox" data-value="user-story" onclick="selectCategory('user-story')">User Story</div>
+            <div id="userStory" class="flex-checkbox" data-value="user-story" onclick="selectCategory('User Story')">User Story</div>
             <div id="other" class="flex-checkbox" data-value="technical-task" onclick="selectCategory('Technical Task')">Technical Task</div>
           </div>
         </div>
-
-          <!-- </div>
-
-            </div>
-            </div>
-
-          </select>
-        </div> -->
 
         <div id="subtasks"> </div>
         
         <ul id="subTaskContainer" class="subtask-div ulContainer" > </ul> 
         
-        <!-- </div> -->
         <div class="bottom-add-task-mobile">
           <div class="requirement-mobile">
             <p><span class="span-required">*</span>This field is required</p>

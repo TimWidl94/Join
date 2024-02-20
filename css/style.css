@@ -2631,7 +2631,9 @@ form {
   text-align: left;
   font-size: 61px;
   font-weight: 700;
-  color: #000; }
+  color: #000;
+  max-width: 500px;
+  overflow-wrap: anywhere; }
 
 .aTPopupDescription {
   text-align: left; }
@@ -2928,6 +2930,12 @@ form {
   gap: 16px;
   margin-bottom: 32px; }
 
+.progress-done {
+  height: 8px;
+  background-color: #4589FC;
+  border: none;
+  border-radius: 8px; }
+
 @media (min-width: 1300px) {
   .board-title {
     z-index: unset; } }
@@ -3051,7 +3059,8 @@ form {
     margin-left: 12px;
     margin-right: 12px; }
   .aTPopupH1 {
-    font-size: 40px; }
+    font-size: 40px;
+    max-width: 280px; }
   .priority-options div p,
   .priority-options-edit div p {
     display: none; } }

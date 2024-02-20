@@ -9,7 +9,12 @@ async function initBoard() {
   await updateHTML();
   await includeHTML();
   setUserInitials();
-  setColorToActive('sidebarBoard', 'board-img', 'bottomBarBoardMobile', 'boardImgMobile');
+  setColorToActive(
+    "sidebarBoard",
+    "board-img",
+    "bottomBarBoardMobile",
+    "boardImgMobile"
+  );
   // await renderAddTaskPopUp();
   checkTaskAreaDisplayEmpty();
 }
@@ -33,7 +38,7 @@ function setMinDateTodayPopup(inputIdPopup) {
 
 async function openAddTaskPopup() {
   await renderAddTaskPopUp();
-  changePrioToMedium('mediumContainer', 'mediumImg');
+  changePrioToMedium("mediumContainer", "mediumImg");
   await renderSubTask();
   await showTaskForm('assignedTo');
   setMinDateTodayPopup('myDateInputPopup');
@@ -44,43 +49,43 @@ async function openAddTaskPopup() {
 
 async function addTaskPopUp() {
   await pushAddTask();
-  renderBoardTasks();
+  await renderBoardTasks();
   closeAddTaskPopup();
 }
 
 function closeAddTaskPopup() {
-  let addTaskPopup = document.getElementById('addTaskPopup');
-  addTaskPopup.classList.remove('slide-in');
-  addTaskPopup.classList.add('slide-out');
+  let addTaskPopup = document.getElementById("addTaskPopup");
+  addTaskPopup.classList.remove("slide-in");
+  addTaskPopup.classList.add("slide-out");
 
   setTimeout(function () {
-    addTaskPopup.classList.add('d-none');
-    document.getElementById('addTaskPopupWrapper').classList.add('d-none');
+    addTaskPopup.classList.add("d-none");
+    document.getElementById("addTaskPopupWrapper").classList.add("d-none");
   }, 500);
   setTimeout(function () {
-    addTaskPopup.classList.remove('slide-out');
+    addTaskPopup.classList.remove("slide-out");
   }, 900);
 }
 
 function openTaskPopup(i) {
-  let taskPopup = document.getElementById('aTPopupWrapper');
-  taskPopup.classList.remove('d-none');
-  taskPopup.classList.add('d-block');
+  let taskPopup = document.getElementById("aTPopupWrapper");
+  taskPopup.classList.remove("d-none");
+  taskPopup.classList.add("d-block");
 
   let img = setPrioImg(i);
   let date = convertDateFormat(tasks[i].taskDueDate);
-  taskPopup.innerHTML = '';
+  taskPopup.innerHTML = "";
   taskPopup.innerHTML = generateTaskPopupHTML(i, img, date);
+
   setCategoryBackground(tasks[i]['selectedCategory'], `aTPopupCategory${i}`);
   checkSubtasksExisting(i);
-
   renderAssignedToContacs(i);
-  renderSubtasks(i, 'subtaskContainerPopup');
+  renderSubtasks(i, "subtaskContainerPopup");
 }
 
 function closeTaskPopup() {
-  document.getElementById('aTPopupWrapper').classList.remove('d-block');
-  document.getElementById('aTPopupWrapper').classList.add('d-none');
+  document.getElementById("aTPopupWrapper").classList.remove("d-block");
+  document.getElementById("aTPopupWrapper").classList.add("d-none");
   updateHTML();
   subtasks = [];
 }
@@ -89,15 +94,17 @@ function checkSubtasksExisting(i) {
   let container = document.getElementById(`aTPopupSubtasks${i}`);
 
   if (tasks[i].subtasks.length === 0) {
-    container.classList.add('d-none');
+    container.classList.add("d-none");
   } else {
-    container.classList.remove('d-none');
+    container.classList.remove("d-none");
   }
 }
 
 function renderAssignedToContacs(i) {
-  let assingedToContainer = document.getElementById('assigned-contact-profile-container');
-  assingedToContainer.innerHTML = '';
+  let assingedToContainer = document.getElementById(
+    "assigned-contact-profile-container"
+  );
+  assingedToContainer.innerHTML = "";
 
   const task = tasks[i];
 
@@ -106,50 +113,57 @@ function renderAssignedToContacs(i) {
       const selectedContact = task.selectedContacts[j];
       const contactColor = getContactColor(selectedContact.name);
       const capitalLetters = getFirstLetters(selectedContact.name);
-      assingedToContainer.innerHTML += renderAssignedToContacsInfoHtml(contactColor, capitalLetters, selectedContact);
+      assingedToContainer.innerHTML += renderAssignedToContacsInfoHtml(
+        contactColor,
+        capitalLetters,
+        selectedContact
+      );
     }
   }
 }
 
 function getContactColor(selectedContactName) {
-  let index = contacts.findIndex((contact) => contact.name === selectedContactName);
+  let index = contacts.findIndex(
+    (contact) => contact.name === selectedContactName
+  );
   if (index !== -1) {
     return contacts[index].color;
   }
 }
 
-function renderSubtasks(i, id) {
+async function renderSubtasks(i, id) {
   let subTaskContainer = document.getElementById(id);
-  subTaskContainer.innerHTML = '';
+  subTaskContainer.innerHTML = "";
 
   let task = tasks[i];
 
   if (task.subtasks.length > 0) {
     for (let j = 0; j < task.subtasks.length; j++) {
       let subTask = task.subtasks[j];
-      subTaskContainer.innerHTML += renderSubtasksInfoHtml(j, subTask);
+      subTaskContainer.innerHTML += renderSubtasksInfoHtml(j, subTask, i);
     }
   }
+  await checkSubTaskInfoChecked(i);
 }
 
 function setPrioImg(i) {
-  if (tasks[i]['prio'] == 'low') {
-    let img = './assets/img/AddTask/ArrowDownPrioSign.svg';
+  if (tasks[i]["prio"] == "low") {
+    let img = "./assets/img/AddTask/ArrowDownPrioSign.svg";
     return img;
   }
-  if (tasks[i]['prio'] == 'medium') {
-    let img = './assets/img/AddTask/mediumPrioSignInactive.svg';
+  if (tasks[i]["prio"] == "medium") {
+    let img = "./assets/img/AddTask/mediumPrioSignInactive.svg";
     return img;
   }
-  if (tasks[i]['prio'] == 'urgent') {
-    let img = './assets/img/AddTask/ArrowUpPrioSign.svg';
+  if (tasks[i]["prio"] == "urgent") {
+    let img = "./assets/img/AddTask/ArrowUpPrioSign.svg";
     return img;
   }
 }
 
 function convertDateFormat(date) {
-  let parts = date.split('-');
-  let newDate = parts[2] + '/' + parts[1] + '/' + parts[0];
+  let parts = date.split("-");
+  let newDate = parts[2] + "/" + parts[1] + "/" + parts[0];
   return newDate;
 }
 
@@ -191,49 +205,35 @@ function findTaskEdit(subTaskInput) {
       }
     }
   }
-  console.error('Task not found!');
+  console.error("Task not found!");
   return -1;
 }
 
 function findSubtaskPositionEdit(id) {
   let nr = subtasks.findIndex((obj) => obj.id === id);
   if (nr == -1) {
-    // console.log('Number of Subtask not found!');
   }
-  // console.log('findSubtaskPosition nr:', nr);
 
   return nr;
 }
 
-// function pushCurrentSubtasksInArray(taskIndex) {
-// let task = tasks[taskIndex];
-// console.log('task.subtasks:', task.subtasks);
-// for (let j = 0; j < task.subtasks.length; j++) {
-// let subtaskInput = task.subtasks[j]['subTaskInput'];
-// let index = j;
-// subtasks.push({
-// subTaskInput: subtaskInput,
-// id: index,
-// isActive: false,
-// });
-// }
-// }
-
 async function editTask(i) {
-  let popupInfo = document.getElementById('aTPopup');
-  let popupEdit = document.getElementById('aTPopupEdit');
+  let popupInfo = document.getElementById("aTPopup");
+  let popupEdit = document.getElementById("aTPopupEdit");
 
-  popupEdit.classList.remove('d-none');
-  popupInfo.classList.add('d-none');
+  popupEdit.classList.remove("d-none");
+  popupInfo.classList.add("d-none");
 
   renderEditTask(i);
   await pushTasksSubtasks(i);
+
 
   let title = document.getElementById('taskTitleEdit');
   let description = document.getElementById('taskDescriptionEdit');
   let dueDate = document.getElementById('myDateInputEdit');
   setMinDateTodayPopup('myDateInputEdit');
   let selectedCategoryElement = document.getElementById('showSelectedCategoryEdit');
+
 
   await loadSelectedContacts(i);
   setAssignedToContactsDropdown();
@@ -246,13 +246,13 @@ async function editTask(i) {
 }
 
 function pushTasksSubtasks(i) {
-  for (let j = 0; j < tasks[i]['subtasks'].length; j++) {
-    let subTask = tasks[i]['subtasks'][j];
+  for (let j = 0; j < tasks[i]["subtasks"].length; j++) {
+    let subTask = tasks[i]["subtasks"][j];
 
     subtasks.push({
-      subTaskInput: subTask['subTaskInput'],
-      id: subTask['id'],
-      isActive: subTask['isActive'],
+      subTaskInput: subTask["subTaskInput"],
+      id: subTask["id"],
+      isActive: subTask["isActive"],
     });
   }
 }
@@ -291,8 +291,8 @@ function deleteSelectedContactsFromTask(i) {
 }
 
 function renderSelectedContactsEdit(i) {
-  let content = document.getElementById('assignedAddedContact');
-  content.innerHTML = '';
+  let content = document.getElementById("assignedAddedContact");
+  content.innerHTML = "";
 
   // console.log('renderSelectedContactsEdit selectedContacts.length', selectedContacts.length);
   for (let j = 0; j < selectedContacts.length; j++) {
@@ -313,21 +313,21 @@ function setAssignedToContactsDropdown() {
     let contact = contacts[i];
     for (let j = 0; j < selectedContacts.length; j++) {
       if (contact.name === selectedContacts[j].name) {
-        console.log('match i:', i);
+        console.log("match i:", i);
         let userID = document.getElementById(`user-${i}`);
         let checkboxImage = document.getElementById(`checkBox-${i}`);
-        userID.classList.add('selected-profile-active-item');
-        checkboxImage.src = './assets/img/icons/check_button-white.svg';
+        userID.classList.add("selected-profile-active-item");
+        checkboxImage.src = "./assets/img/icons/check_button-white.svg";
       } else {
-        console.log('no match contact.name === selectedContacts[j].name');
+        console.log("no match contact.name === selectedContacts[j].name");
       }
     }
   }
 }
 
 function setCategoryTextContent(i) {
-  if (tasks[i].selectedCategory == '') {
-    return 'Select task category';
+  if (tasks[i].selectedCategory == "") {
+    return "Select task category";
   } else {
     return tasks[i].selectedCategory;
   }
@@ -335,7 +335,7 @@ function setCategoryTextContent(i) {
 
 function addSubTaskEdit(idInput, idContainer, i) {
   let subTaskInput = document.getElementById(idInput).value;
-  let subTaskError = document.getElementById('subTaskErrorEdit');
+  let subTaskError = document.getElementById("subTaskErrorEdit");
   let nr = subtasks.length;
   if (subTaskInput == 0) {
     subTaskError.innerHTML = /*HTML*/ `
@@ -348,28 +348,11 @@ function addSubTaskEdit(idInput, idContainer, i) {
       isActive: false,
     });
 
-    document.getElementById(idInput).value = '';
+    document.getElementById(idInput).value = "";
     renderGeneratedSubTasksEdit(idContainer, i);
     resetSubTaskInputField(idInput);
-
-    // resetSubTaskIDs();
   }
-  // setItem('tasks', JSON.stringify(tasks));
 }
-
-// function addExistingSubtasks(i) {
-// let task = tasks[i];
-//
-// for (let j = 0; j < task.subtasks.length; j++) {
-// let subtaskInput = task.subtasks[j]['subTaskInput'];
-// let index = j;
-// subtasks.push({
-// subTaskInput: subtaskInput,
-// id: index,
-// isActive: false,
-// });
-// }
-// }
 
 function resetSubTaskIDs() {
   for (let i = 0; i < subtasks.length; i++) {
@@ -387,20 +370,20 @@ function renderGeneratedSubTasksEdit(idContainer, j) {
   let container = document.getElementById(idContainer);
   container.innerHTML = ``;
   for (let i = 0; i < subtasks.length; i++) {
-    let id = subtasks[i]['id'];
-    let subTaskInput = subtasks[i]['subTaskInput'];
+    let id = subtasks[i]["id"];
+    let subTaskInput = subtasks[i]["subTaskInput"];
     container.innerHTML += subTasksValueEditHtml(id, subTaskInput, j);
   }
 }
 
 function renderEditTask(i) {
   renderSubTasksInput(i);
-  renderSubTasksEditable(i, 'subTaskContainerEdit');
-  showTaskFormEdit('assignedToEdit');
+  renderSubTasksEditable(i, "subTaskContainerEdit");
+  showTaskFormEdit("assignedToEdit");
 }
 
 function renderSubTasksInput(i) {
-  let container = document.getElementById('subtasksEdit');
+  let container = document.getElementById("subtasksEdit");
   container.innerHTML += subTaskInputEditHtml(i);
 }
 
@@ -413,7 +396,7 @@ function renderSubTasksEditable(i, id1) {
   if (task.subtasks.length > 0) {
     for (let j = 0; j < task.subtasks.length; j++) {
       let subTask = task.subtasks[j];
-      let id = task.subtasks[j]['id'];
+      let id = task.subtasks[j]["id"];
       container.innerHTML += subTasksValueEditHtml(id, subTask.subTaskInput);
     }
   }
@@ -424,16 +407,26 @@ function showTaskFormEdit(id) {
   assignedTo.innerHTML = showTaskFormEditHtml();
 
   for (let i = 0; i < contacts.length; i++) {
-    let currentUser = contacts[i]['name'];
+    let currentUser = contacts[i]["name"];
     let initials = getInitials(currentUser);
-    let color = contacts[i]['color'];
-    let assignedDropdown = document.getElementById('assignedDropdown');
+    let color = contacts[i]["color"];
+    let assignedDropdown = document.getElementById("assignedDropdown");
     let username = checkForUserName();
 
-    if (contacts[i]['name'] === username) {
-      assignedDropdown.innerHTML += assignedToUserYouHtml(i, color, currentUser, initials);
+    if (contacts[i]["name"] === username) {
+      assignedDropdown.innerHTML += assignedToUserYouHtml(
+        i,
+        color,
+        currentUser,
+        initials
+      );
     } else {
-      assignedDropdown.innerHTML += assignedToUserHtml(i, color, currentUser, initials);
+      assignedDropdown.innerHTML += assignedToUserHtml(
+        i,
+        color,
+        currentUser,
+        initials
+      );
     }
   }
 }
@@ -441,22 +434,32 @@ function showTaskFormEdit(id) {
 function changeButtonsAddTaskEdit(id, i) {
   let inputField = document.getElementById(id);
 
-  inputField.innerHTML = changeButtonsAddTaskEditHtml(i);
-  document.getElementById('subTaskInputEdit').focus();
+  inputField.innerHTML = /*html*/ `
+    <input id="subTaskInputEdit" type="text" placeholder="Add new subtask" class="PosRel" />
+    <div class="subTaskInputButtons">
+      <img class="subTaskInputImg" onclick="setValueBack('subTaskInputEdit', 'subtasksEdit')" src="./assets/img/icons/close.svg" alt="">
+      <span class="subTaskInputImg-vertical"></span>
+      <img class="subTaskInputImg checkImg" onclick="addSubTaskEdit('subTaskInputEdit', 'subTaskContainerEdit', ${i})" src="./assets/img/icons/checkAddTask.svg" alt="">
+    </div>
+  `;
+  document.getElementById("subTaskInputEdit").focus();
 }
 
 function setPrioEdit(prio) {
-  if (prio == 'low') {
-    classlistAdd('lowContainerEdit', 'priorityLowActive');
-    document.getElementById('lowImgEdit').src = './assets/img/AddTask/lowPrioActive.svg';
+  if (prio == "low") {
+    classlistAdd("lowContainerEdit", "priorityLowActive");
+    document.getElementById("lowImgEdit").src =
+      "./assets/img/AddTask/lowPrioActive.svg";
   }
-  if (prio == 'medium') {
-    classlistAdd('mediumContainerEdit', 'priorityMediumActive');
-    document.getElementById('mediumImgEdit').src = './assets/img/AddTask/mediumPrioSign.svg';
+  if (prio == "medium") {
+    classlistAdd("mediumContainerEdit", "priorityMediumActive");
+    document.getElementById("mediumImgEdit").src =
+      "./assets/img/AddTask/mediumPrioSign.svg";
   }
-  if (prio == 'urgent') {
-    classlistAdd('urgentContainerEdit', 'priorityUrgentActive');
-    document.getElementById('urgentImgEdit').src = './assets/img/AddTask/urgentPrioActive.svg';
+  if (prio == "urgent") {
+    classlistAdd("urgentContainerEdit", "priorityUrgentActive");
+    document.getElementById("urgentImgEdit").src =
+      "./assets/img/AddTask/urgentPrioActive.svg";
   }
   selectedPrioPopupEdit = prio;
 }
@@ -465,24 +468,36 @@ function changePriorityEdit(idContainer, idImg, priority) {
   let prioContainer = document.getElementById(idContainer);
   let img = document.getElementById(idImg);
 
-  document.getElementById('urgentContainerEdit').classList.remove('priorityUrgentActive');
-  document.getElementById('urgentImgEdit').src = './assets/img/addTask/ArrowUpPrioSign.svg';
-  document.getElementById('mediumContainerEdit').classList.remove('priorityMediumActive');
-  document.getElementById('mediumImgEdit').src = './assets/img/addTask/mediumPrioSignInactive.svg';
-  document.getElementById('lowContainerEdit').classList.remove('priorityLowActive');
-  document.getElementById('lowImgEdit').src = './assets/img/addTask/ArrowDownPrioSign.svg';
+  document
+    .getElementById("urgentContainerEdit")
+    .classList.remove("priorityUrgentActive");
+  document.getElementById("urgentImgEdit").src =
+    "./assets/img/addTask/ArrowUpPrioSign.svg";
+  document
+    .getElementById("mediumContainerEdit")
+    .classList.remove("priorityMediumActive");
+  document.getElementById("mediumImgEdit").src =
+    "./assets/img/addTask/mediumPrioSignInactive.svg";
+  document
+    .getElementById("lowContainerEdit")
+    .classList.remove("priorityLowActive");
+  document.getElementById("lowImgEdit").src =
+    "./assets/img/addTask/ArrowDownPrioSign.svg";
 
-  prioContainer.classList.add('priority' + priority.charAt(0).toUpperCase() + priority.slice(1) + 'Active');
-  img.src = './assets/img/addTask/' + priority + 'PrioActive.svg';
+  prioContainer.classList.add(
+    "priority" + priority.charAt(0).toUpperCase() + priority.slice(1) + "Active"
+  );
+  img.src = "./assets/img/addTask/" + priority + "PrioActive.svg";
   selectedPrioPopupEdit = priority;
 }
 
 async function saveEditedTask(i) {
-  let title = document.getElementById('taskTitleEdit');
-  let description = document.getElementById('taskDescriptionEdit');
-  let dueDate = document.getElementById('myDateInputEdit');
-
-  let selectedCategoryElement = document.getElementById('showSelectedCategoryEdit');
+  let title = document.getElementById("taskTitleEdit");
+  let description = document.getElementById("taskDescriptionEdit");
+  let dueDate = document.getElementById("myDateInputEdit");
+  let selectedCategoryElement = document.getElementById(
+    "showSelectedCategoryEdit"
+  );
   let selectedCategoryValue = selectedCategoryElement.textContent;
 
   tasks[i].taskTitle = title.value;
@@ -490,19 +505,14 @@ async function saveEditedTask(i) {
   tasks[i].taskDueDate = dueDate.value;
   tasks[i].selectedContacts = selectedContacts;
   tasks[i].selectedCategory = selectedCategoryValue;
-
   tasks[i].prio = selectedPrioPopupEdit;
-  tasks[i]['subtasks'] = subtasks;
-  // saveAddedSubtasks(i);
-
+  tasks[i]["subtasks"] = subtasks;
   closeTaskPopup();
-
-  // saveAddedSubtasks(i);
 }
 
 function saveAddedSubtasks(i) {
   deleteExistingSubtasks(i);
-  tasks[i]['subtasks'].push(subtasks);
+  tasks[i]["subtasks"].push(subtasks);
 }
 
 function deleteExistingSubtasks(i) {
@@ -511,11 +521,11 @@ function deleteExistingSubtasks(i) {
 }
 
 function setCategoryBackground(category, id) {
-  if (category == 'user-story' || category == 'User Story') {
-    document.getElementById(id).classList.add('board-task-epic-green');
+  if (category == "user-story" || category == "User Story") {
+    document.getElementById(id).classList.add("board-task-epic-green");
   }
-  if (category === 'technical-task' || category === 'Technical Task') {
-    document.getElementById(id).classList.add('board-task-epic-blue');
+  if (category === "technical-task" || category === "Technical Task") {
+    document.getElementById(id).classList.add("board-task-epic-blue");
   }
 }
 
@@ -528,46 +538,54 @@ function updateHTML() {
 }
 
 async function todoAreaUpdate() {
-  let todo = tasks.filter((t) => t['selectedCategory'] == 'toDo');
-  document.getElementById('todo').innerHTML = '';
+  let todo = tasks.filter((t) => t["selectedCategory"] == "toDo");
+  document.getElementById("todo").innerHTML = "";
 
   for (let index = 0; index < todo.length; index++) {
     const element = todo[index];
     await setPrioImg(i);
-    document.getElementById('todo').innerHTML += generateTodoHTML(element, img);
+    document.getElementById("todo").innerHTML += generateTodoHTML(element, img);
   }
 }
 
 async function inProgressUpdate() {
-  let inProgress = tasks.filter((t) => t['selectedCategory'] == 'inProgress');
-  document.getElementById('inProgress').innerHTML = '';
+  let inProgress = tasks.filter((t) => t["selectedCategory"] == "inProgress");
+  document.getElementById("inProgress").innerHTML = "";
 
   for (let index = 0; index < inProgress.length; index++) {
     const element = inProgress[index];
     await setPrioImg(i);
-    document.getElementById('inProgress').innerHTML += generateTodoHTML(element, img);
+    document.getElementById("inProgress").innerHTML += generateTodoHTML(
+      element,
+      img
+    );
   }
 }
 
 async function feedbackAreaUpdate() {
-  let awaitFeedback = tasks.filter((t) => t['selectedCategory'] == 'awaitFeedback');
-  document.getElementById('awaitFeedback').innerHTML = '';
+  let awaitFeedback = tasks.filter(
+    (t) => t["selectedCategory"] == "awaitFeedback"
+  );
+  document.getElementById("awaitFeedback").innerHTML = "";
 
   for (let index = 0; index < awaitFeedback.length; index++) {
     const element = awaitFeedback[index];
     await setPrioImg(i);
-    document.getElementById('awaitFeedback').innerHTML += generateTodoHTML(element, img);
+    document.getElementById("awaitFeedback").innerHTML += generateTodoHTML(
+      element,
+      img
+    );
   }
 }
 
 async function doneUpdate() {
-  let done = tasks.filter((t) => t['selectedCategory'] == 'done');
-  document.getElementById('done').innerHTML = '';
+  let done = tasks.filter((t) => t["selectedCategory"] == "done");
+  document.getElementById("done").innerHTML = "";
 
   for (let index = 0; index < done.length; index++) {
     const element = done[index];
     await setPrioImg(i);
-    document.getElementById('done').innerHTML += generateTodoHTML(element, img);
+    document.getElementById("done").innerHTML += generateTodoHTML(element, img);
   }
 }
 
@@ -576,9 +594,8 @@ function allowDrop(ev) {
 }
 
 async function moveTo(category) {
-  tasks[currentDraggedElement]['currentState'] = category;
+  tasks[currentDraggedElement]["currentState"] = category;
   await updateHTML();
-  checkTaskAreaDisplayEmpty();
 }
 
 function startDragging(id) {
@@ -586,15 +603,15 @@ function startDragging(id) {
 }
 
 function highlight(id) {
-  document.getElementById(id).classList.add('drag-area-highlight');
+  document.getElementById(id).classList.add("drag-area-highlight");
 }
 
 function removeHighlight(id) {
-  document.getElementById(id).classList.remove('drag-area-highlight');
+  document.getElementById(id).classList.remove("drag-area-highlight");
 }
 
 function checkTaskAreaDisplayEmpty() {
-  let dragAreas = document.getElementsByClassName('drag-area');
+  let dragAreas = document.getElementsByClassName("drag-area");
 
   for (let i = 0; i < dragAreas.length; i++) {
     let dragArea = dragAreas[i];
@@ -606,87 +623,124 @@ function checkTaskAreaDisplayEmpty() {
 }
 
 function openDropDownCategoryEdit() {
-  let assignedDropdownCategory = document.getElementById('assignedDropdownCategoryEdit');
-  let dropdownImgArrowCategory = document.getElementById('dropdownImgArrowCategoryEdit');
+  let assignedDropdownCategory = document.getElementById(
+    "assignedDropdownCategoryEdit"
+  );
+  let dropdownImgArrowCategory = document.getElementById(
+    "dropdownImgArrowCategoryEdit"
+  );
   // dropdownCategory.classList.toggle('border-category-active');
-  assignedDropdownCategory.classList.toggle('d-none');
-  dropdownImgArrowCategory.classList.toggle('rotate-arrow');
+  assignedDropdownCategory.classList.toggle("d-none");
+  dropdownImgArrowCategory.classList.toggle("rotate-arrow");
 }
 
 function selectCategoryEdit(category) {
-  const userStory = document.getElementById('userStoryEdit');
-  const technicalTask = document.getElementById('otherEdit');
-  const showSelectedCategory = document.getElementById('showSelectedCategoryEdit');
-  const assignedDropdownCategory = document.getElementById('assignedDropdownCategoryEdit');
-  selectCategoryIfElse(userStory, technicalTask, showSelectedCategory, assignedDropdownCategory, category);
+  const userStory = document.getElementById("userStoryEdit");
+  const technicalTask = document.getElementById("otherEdit");
+  const showSelectedCategory = document.getElementById(
+    "showSelectedCategoryEdit"
+  );
+  const assignedDropdownCategory = document.getElementById(
+    "assignedDropdownCategoryEdit"
+  );
+  selectCategoryIfElse(
+    userStory,
+    technicalTask,
+    showSelectedCategory,
+    assignedDropdownCategory,
+    category
+  );
 }
 
 async function renderBoardTasks() {
-  renderToDoTasks();
-  renderInProgressTasks();
-  renderAwaitFeedbackTasks();
-  renderDoneTasks();
-  await setItem('tasks', JSON.stringify(tasks));
+  await renderToDoTasks();
+  await renderInProgressTasks();
+  await renderAwaitFeedbackTasks();
+  await renderDoneTasks();
+  await checkTaskAreaDisplayEmpty();
+  await setItem("tasks", JSON.stringify(tasks));
 }
 
 async function renderToDoTasks() {
-  let contentBoxToDo = document.getElementById('todo');
-  contentBoxToDo.innerHTML = '';
+  let contentBoxToDo = document.getElementById("todo");
+  contentBoxToDo.innerHTML = "";
   for (let i = 0; i < tasks.length; i++) {
-    if (tasks[i]['currentState'] == 'toDo' && tasks[i]['currentState'].length > 0) {
+    if (
+      tasks[i]["currentState"] == "toDo" &&
+      tasks[i]["currentState"].length > 0
+    ) {
       let img = await setPrioImg(i);
-      contentBoxToDo.innerHTML += generateTodoHTML(i, img);
+      let x = await checkHowManySubtasksChecked(i);
+      contentBoxToDo.innerHTML += generateTodoHTML(i, img, x);
       renderContactsInBoardTask(i);
       setCategoryBackground(tasks[i].selectedCategory, `board-task-epic${i}`);
+      await taskProgressBar(i);
     }
   }
 }
 
 async function renderInProgressTasks() {
-  let contentBoxToDo = document.getElementById('inProgress');
-  contentBoxToDo.innerHTML = '';
+  let contentBoxToDo = document.getElementById("inProgress");
+  contentBoxToDo.innerHTML = "";
   for (let i = 0; i < tasks.length; i++) {
-    if (tasks[i]['currentState'] == 'inProgress' && tasks[i]['currentState'].length > 0) {
+    if (
+      tasks[i]["currentState"] == "inProgress" &&
+      tasks[i]["currentState"].length > 0
+    ) {
       let img = await setPrioImg(i);
-      contentBoxToDo.innerHTML += generateTodoHTML(i, img);
+      let x = await checkHowManySubtasksChecked(i);
+      contentBoxToDo.innerHTML += generateTodoHTML(i, img, x);
       renderContactsInBoardTask(i);
       setCategoryBackground(tasks[i].selectedCategory, `board-task-epic${i}`);
+      await taskProgressBar(i);
     }
   }
 }
 
 async function renderAwaitFeedbackTasks() {
-  let contentBoxToDo = document.getElementById('awaitFeedback');
-  contentBoxToDo.innerHTML = '';
+  let contentBoxToDo = document.getElementById("awaitFeedback");
+  contentBoxToDo.innerHTML = "";
   for (let i = 0; i < tasks.length; i++) {
-    if (tasks[i]['currentState'] == 'awaitFeedback' && tasks[i]['currentState'].length > 0) {
+    if (
+      tasks[i]["currentState"] == "awaitFeedback" &&
+      tasks[i]["currentState"].length > 0
+    ) {
       let img = await setPrioImg(i);
-      contentBoxToDo.innerHTML += await generateTodoHTML(i, img);
+      let x = await checkHowManySubtasksChecked(i);
+      contentBoxToDo.innerHTML += await generateTodoHTML(i, img, x);
       renderContactsInBoardTask(i);
       setCategoryBackground(tasks[i].selectedCategory, `board-task-epic${i}`);
+      await taskProgressBar(i);
     }
   }
 }
 
 async function renderDoneTasks() {
-  let contentBoxToDo = document.getElementById('done');
-  contentBoxToDo.innerHTML = '';
+  let contentBoxToDo = document.getElementById("done");
+  contentBoxToDo.innerHTML = "";
   for (let i = 0; i < tasks.length; i++) {
-    if (tasks[i]['currentState'] == 'done' && tasks[i]['currentState'].length > 0) {
+    if (
+      tasks[i]["currentState"] == "done" &&
+      tasks[i]["currentState"].length > 0
+    ) {
       let img = await setPrioImg(i);
-      contentBoxToDo.innerHTML += await generateTodoHTML(i, img);
+      let x = await checkHowManySubtasksChecked(i);
+      contentBoxToDo.innerHTML += await generateTodoHTML(i, img, x);
       renderContactsInBoardTask(i);
       setCategoryBackground(tasks[i].selectedCategory, `board-task-epic${i}`);
+      await taskProgressBar(i);
     }
   }
 }
 
 function renderContactsInBoardTask(x) {
-  let container = document.getElementById('contactsInBoardTask' + x);
-  container.innerHTML = '';
-  for (let i = 0; i < tasks[x]['selectedContacts'].length; i++) {
-    let contact = getFirstLetters(tasks[x]['selectedContacts'][i]['name']);
-    const contactColor = getContactColor(tasks[x]['selectedContacts'][i]['name']);
+  let container = document.getElementById("contactsInBoardTask" + x);
+  container.innerHTML = "";
+  for (let i = 0; i < tasks[x]["selectedContacts"].length; i++) {
+    let contact = getFirstLetters(tasks[x]["selectedContacts"][i]["name"]);
+    const contactColor = getContactColor(
+      tasks[x]["selectedContacts"][i]["name"]
+    );
 
     container.innerHTML += `
     <div class="board-task-member-profile" style="background-color: ${contactColor} !important">${contact}</div>
@@ -695,15 +749,18 @@ function renderContactsInBoardTask(x) {
 }
 
 function filterTasks() {
-  let search = document.getElementById('searchTasks').value.toLowerCase();
+  let search = document.getElementById("searchTasks").value.toLowerCase();
   clearTasksContainer();
-  if (search.trim() === '') {
+  if (search.trim() === "") {
     updateHTML();
   } else {
     for (let i = 0; i < tasks.length; i++) {
-      let taskTitle = tasks[i]['taskTitle'];
-      let taskDescription = tasks[i]['taskDescription'];
-      if (taskTitle.toLowerCase().includes(search) || taskDescription.toLowerCase().includes(search)) {
+      let taskTitle = tasks[i]["taskTitle"];
+      let taskDescription = tasks[i]["taskDescription"];
+      if (
+        taskTitle.toLowerCase().includes(search) ||
+        taskDescription.toLowerCase().includes(search)
+      ) {
         renderSearchedTasks(i);
       }
     }
@@ -711,46 +768,60 @@ function filterTasks() {
 }
 
 function clearTasksContainer() {
-  document.getElementById('todo').innerHTML = ``;
-  document.getElementById('inProgress').innerHTML = ``;
-  document.getElementById('awaitFeedback').innerHTML = ``;
-  document.getElementById('done').innerHTML = ``;
+  document.getElementById("todo").innerHTML = ``;
+  document.getElementById("inProgress").innerHTML = ``;
+  document.getElementById("awaitFeedback").innerHTML = ``;
+  document.getElementById("done").innerHTML = ``;
 }
 
 function renderSearchedTasks(i) {
-  if (tasks[i]['currentState'] == 'toDo') {
+  if (tasks[i]["currentState"] == "toDo") {
     renderSearchedTasksToDo(i);
   }
-  if (tasks[i]['currentState'] == 'inProgress') {
+  if (tasks[i]["currentState"] == "inProgress") {
     renderSearchedTasksInProgress(i);
   }
-  if (tasks[i]['currentState'] == 'awaitFeedback') {
+  if (tasks[i]["currentState"] == "awaitFeedback") {
     renderSearchedTasksAwaitFeedback(i);
   }
-  if (tasks[i]['currentState'] == 'done') {
+  if (tasks[i]["currentState"] == "done") {
     renderSearchedTasksDone(i);
   }
   checkTaskAreaDisplayEmpty();
 }
 
-function renderSearchedTasksToDo(i) {
-  let contentBoxToDo = document.getElementById('todo');
-  contentBoxToDo.innerHTML += generateTodoHTML(i);
+async function renderSearchedTasksToDo(i) {
+  let contentBoxToDo = document.getElementById("todo");
+  let img = await setPrioImg(i);
+  let x = await checkHowManySubtasksChecked(i);
+  contentBoxToDo.innerHTML += generateTodoHTML(i, img, x);
+  setCategoryBackground(tasks[i].selectedCategory, `board-task-epic${i}`);
+  await taskProgressBar(i);
 }
 
-function renderSearchedTasksInProgress(i) {
-  let contentBoxInProress = document.getElementById('inProgress');
-  contentBoxInProress.innerHTML += generateTodoHTML(i);
+async function renderSearchedTasksInProgress(i) {
+  let contentBoxInProress = document.getElementById("inProgress");
+  let img = await setPrioImg(i);
+  let x = await checkHowManySubtasksChecked(i);
+  contentBoxInProress.innerHTML += generateTodoHTML(i, img, x);
+  setCategoryBackground(tasks[i].selectedCategory, `board-task-epic${i}`);
+  await taskProgressBar(i);
 }
 
-function renderSearchedTasksAwaitFeedback(i) {
-  let contentBoxAwaitFeedback = document.getElementById('awaitFeedback');
-  contentBoxAwaitFeedback.innerHTML += generateTodoHTML(i);
+async function renderSearchedTasksAwaitFeedback(i) {
+  let contentBoxAwaitFeedback = document.getElementById("awaitFeedback");
+  let img = await setPrioImg(i);
+  contentBoxAwaitFeedback.innerHTML += generateTodoHTML(i, img, x);
+  setCategoryBackground(tasks[i].selectedCategory, `board-task-epic${i}`);
+  await taskProgressBar(i);
 }
 
-function renderSearchedTasksDone(i) {
-  let contentBoxDone = document.getElementById('done');
-  contentBoxDone.innerHTML += generateTodoHTML(i);
+async function renderSearchedTasksDone(i) {
+  let contentBoxDone = document.getElementById("done");
+  let x = await checkHowManySubtasksChecked(i);
+  contentBoxDone.innerHTML += generateTodoHTML(i, img, x);
+  setCategoryBackground(tasks[i].selectedCategory, `board-task-epic${i}`);
+  await taskProgressBar(i);
 }
 
 function doNotClose(event) {
@@ -758,11 +829,60 @@ function doNotClose(event) {
 }
 
 function openMenuMoveTo() {
-  let container = document.getElementById('menuMoveToMobile');
-  container.classList.toggle('d-none');
+  let container = document.getElementById("menuMoveToMobile");
+  container.classList.toggle("d-none");
 }
 
 async function moveToMobile(i, category) {
-  tasks[i]['currentState'] = category;
+  tasks[i]["currentState"] = category;
+  await openMenuMoveTo();
   await renderBoardTasks();
+}
+
+async function subTaskActive(j, i) {
+  let checkbox = document.getElementById("checkboxSubtask-" + j);
+  if(checkbox.checked === false){
+  checkbox.checked = true;
+  tasks[i]["subtasks"][j]["isActive"] = true;
+  await setItem("tasks", JSON.stringify(tasks));
+  return;
+  }
+  if(checkbox.checked === true){
+  checkbox.checked = false;
+  tasks[i]["subtasks"][j]["isActive"] = false;
+  await setItem("tasks", JSON.stringify(tasks));
+  return;
+  }
+}
+
+function checkSubTaskInfoChecked(i) {
+  for (let j = 0; j < tasks[i]["subtasks"].length; j++) {
+    const isActive = tasks[i]["subtasks"][j]["isActive"];
+    let checkbox = document.getElementById("checkboxSubtask-" + j);
+    if (isActive === true) {
+      checkbox.checked = true;
+    }
+    if (isActive === false) {
+      checkbox.checked = false;
+    }
+  }
+}
+
+async function taskProgressBar(i) {
+  let x = await checkHowManySubtasksChecked(i);
+  let progressBar = document.getElementById("progress-" + i);
+  let allSubtasks = tasks[i]["subtasks"].length;
+  let width = (100 / allSubtasks) * x;
+  progressBar.style.width = `${width}%`;
+}
+
+function checkHowManySubtasksChecked(i) {
+  let x = 0;
+  for (let j = 0; j < tasks[i]["subtasks"].length; j++) {
+    let checked = tasks[i]["subtasks"][j]["isActive"];
+    if (checked === true) {
+      x++;
+    }
+  }
+  return x;
 }

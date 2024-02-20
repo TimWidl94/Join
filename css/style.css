@@ -1492,10 +1492,22 @@ h2 {
   padding: 0px 86px;
   margin-top: 60px; }
 
-.form-close img:hover {
+.form-close-img-container,
+.form-close-img-container-mobile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%; }
+
+.form-close-img-container:hover {
   cursor: pointer;
-  filter: invert(65%) sepia(27%) saturate(3883%) hue-rotate(165deg) brightness(94%) contrast(88%);
-  transform: scale(1.1); }
+  background-color: rgba(0, 0, 0, 0.05); }
+
+.form-close-img-container-mobile:hover {
+  cursor: pointer;
+  background-color: #a8a8a8; }
 
 form {
   position: relative; }

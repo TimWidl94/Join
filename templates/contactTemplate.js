@@ -155,11 +155,13 @@ function editContactDesktopHTML(acronym, color, i) {
 
             <section class="right-container">
                 <div class="form-close">
-                <img
-                    src="assets/img/icons/close.svg"
-                    alt="Close"
-                    onclick="closePopup('edit-contact-wrapper', 'edit-contact', 'show-overlay-menu')"
-                />
+                  <div class="form-close-img-container">
+                    <img
+                        src="assets/img/icons/close.svg"
+                        alt="Close"
+                        onclick="closePopup('edit-contact-wrapper', 'edit-contact', 'show-overlay-menu')"
+                    />
+                  </div>
                 </div>
 
                 <div class="wrapper-profile-and-form">
@@ -204,11 +206,13 @@ function editContactMobileHTML(acronym, color, i) {
         <div id="edit-contact-mobile" onclick="doNotClose(event)">
           <section class="top-container">
             <div class="form-close-mobile">
-              <img
-                src="assets/img/icons/close-white.svg"
-                alt="Close"
-                onclick="closePopup('edit-contact-wrapper-mobile', 'edit-contact-mobile', 'show-overlay-menu-y')"
-              />
+              <div class="form-close-img-container-mobile">
+                <img
+                  src="assets/img/icons/close-white.svg"
+                  alt="Close"
+                  onclick="closePopup('edit-contact-wrapper-mobile', 'edit-contact-mobile', 'show-overlay-menu-y')"
+                />
+              </div>
             </div>
             <div class="top-card-text">
               <h2 class="h2-add-card-mobile">Edit Contact</h2>

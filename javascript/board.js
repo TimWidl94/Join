@@ -1,7 +1,7 @@
 let currentDraggedElement;
 let selectedPrioPopupEdit;
 let subTaskCounter = 0;
-let addExistingSubtasksExecuted = false;
+// let addExistingSubtasksExecuted = false;
 
 async function initBoard() {
   await loadData();
@@ -26,8 +26,8 @@ function renderAddTaskPopUp() {
 
 function setMinDateTodayPopup(inputIdPopup) {
   var today = new Date().toISOString().split('T')[0];
-  document.getElementById(inputIdPopup).setAttribute("min", today);
-  document.getElementById(inputIdPopup).addEventListener("input", function() {
+  document.getElementById(inputIdPopup).setAttribute('min', today);
+  document.getElementById(inputIdPopup).addEventListener('input', function () {
     var selectedDate = this.value;
     var currentDate = new Date().toISOString().split('T')[0];
     if (selectedDate < currentDate) {
@@ -41,7 +41,7 @@ async function openAddTaskPopup() {
   changePrioToMedium("mediumContainer", "mediumImg");
   await renderSubTask();
   await showTaskForm('assignedTo');
-  setMinDateTodayPopup("myDateInputPopup");
+  setMinDateTodayPopup('myDateInputPopup');
   document.getElementById('addTaskPopupWrapper').classList.remove('d-none');
   document.getElementById('addTaskPopup').classList.remove('d-none');
   document.getElementById('addTaskPopup').classList.add('slide-in');
@@ -231,7 +231,7 @@ async function editTask(i) {
   let title = document.getElementById('taskTitleEdit');
   let description = document.getElementById('taskDescriptionEdit');
   let dueDate = document.getElementById('myDateInputEdit');
-  setMinDateTodayPopup("myDateInputEdit");
+  setMinDateTodayPopup('myDateInputEdit');
   let selectedCategoryElement = document.getElementById('showSelectedCategoryEdit');
 
 
@@ -276,8 +276,8 @@ function addSelectedContactsFromTask(i) {
   // if ((tasks[i].selectedContacts.length = 0)) {
   //   console.warn('task.selectedContacts.length = 0');
   // }
-  for (let j = 0; j < tasks[i].selectedContacts.length; j++) {
-    let selectedContact = tasks[i].selectedContacts[j];
+  for (let j = 0; j < task.selectedContacts.length; j++) {
+    let selectedContact = task.selectedContacts[j];
     selectedContacts.push(selectedContact);
   }
 }
@@ -510,10 +510,6 @@ async function saveEditedTask(i) {
   closeTaskPopup();
 }
 
-// function saveSelectedContactsEdit(i) {
-//   return selectedContacts;
-// }
-
 function saveAddedSubtasks(i) {
   deleteExistingSubtasks(i);
   tasks[i]["subtasks"].push(subtasks);
@@ -521,7 +517,7 @@ function saveAddedSubtasks(i) {
 
 function deleteExistingSubtasks(i) {
   let task = tasks[i];
-  task.subtasks.splice(0, task.subtasks.length); // Entferne alle Elemente aus dem Array
+  task.subtasks.splice(0, task.subtasks.length);
 }
 
 function setCategoryBackground(category, id) {

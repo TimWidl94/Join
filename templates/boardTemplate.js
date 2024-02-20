@@ -70,11 +70,11 @@ function addTaskHtml() {
 
       <section class="container-right">
 
-      <p>Due Date<span class="span-required">*</span></p>
+        <p>Due Date<span class="span-required">*</span></p>
         <div id="due-date">
-  <label for="myDateInputPopup"></label>
-  <input id="myDateInputPopup" required type="date" required onkeydown="checkIfFormIsFilled()"/>
-</div>
+          <label for="myDateInputPopup"></label>
+          <input id="myDateInputPopup" required type="date" required onkeydown="checkIfFormIsFilled()"/>
+        </div>
         
         <div class="priority">
           <p>Prio</p>
@@ -106,19 +106,10 @@ function addTaskHtml() {
           </div>
         </div>
 
-          <!-- </div>
-
-            </div>
-            </div>
-
-          </select>
-        </div> -->
-
         <div id="subtasks"> </div>
         
         <ul id="subTaskContainer" class="subtask-div ulContainer" > </ul> 
         
-        <!-- </div> -->
         <div class="bottom-add-task-mobile">
           <div class="requirement-mobile">
             <p><span class="span-required">*</span>This field is required</p>
@@ -148,105 +139,6 @@ function addTaskHtml() {
           /></button>
         </div>
       </div>
-
-    <!-- <section class="container-left">
-      <div class="headline-add-task"><h1 class="headline-h1-add-task">Add Task</h1>
-      </div>
-
-      <div id="title-add-task">
-        <p>Title<span class="span-required">*</span></p>
-        <input id="taskTitle" required type="text" class="border-focus" placeholder="Enter a title" />
-      </div>
-
-      <div id="description">
-        <p>Description</p>
-        <textarea id="taskDescription" class="border-focus" placeholder="Enter a description"></textarea>
-      </div>
-
-      <p class="text-padding">Assigned to</p>
-      <div id="assignedTo"></div>
-      <div id="assignedAddedContact" class="assinged-contact">
-      </div>
-
-      <div class="requirement-desktop">
-        <p><span class="span-required">*</span>This field is required</p>
-      </div>
-    </section>
-
-    <div class="vertical-line-add-task"></div>
-
-    <section class="container-right">
-        <p class="text-padding">Due Date<span class="span-required">*</span></p>
-        <div id="due-date">
-          <input id="myDateInput" required type="date" />
-        </div>
-
-        <div class="priority">
-          <p>Prio</p>
-          <div class="priority-options">
-            <div id="urgentContainer" onclick="changePrioToUrgent('urgentContainer', 'urgentImg')">
-              <p>Urgent</p>
-              <img src="assets/img/AddTask/ArrowUpPrioSign.svg" alt="Prio High" id="urgentImg" />
-            </div>
-            <div id="mediumContainer"  class="priorityMediumActive" onclick="changePrioToMedium('mediumContainer', 'mediumImg')">
-              <p>Medium</p>
-              <img src="assets/img/AddTask/mediumPrioSignInactive.svg" alt="Prio Medium" id="mediumImg" />
-            </div>
-            <div id="lowContainer" onclick="changePrioToLow('lowContainer', 'lowImg')">
-              <p>Low</p>
-              <img src="assets/img/AddTask/ArrowDownPrioSign.svg" alt="Prio Low" id="lowImg" />
-            </div>
-          </div>
-        </div>
-
-        <div class="category">
-          <p class="text-padding">Category<span class="span-required">*</span></p>
-          <div id="dropdownCategory" class="dropdown" onclick="openDropDownCategory()">
-            <div id="showSelectedCategory" data-value="">Select task category
-            </div>
-            <img id="dropdownImgArrowCategory" class="rotate-arrow dropdown-arrow-hover" src="../assets/img/AddTask/arrow_drop.svg" alt="">
-          </div>
-          <div id="assignedDropdownCategory" class="category-dropdown d-none">
-            <div id="userStory" class="flex-checkbox" data-value="user-story" onclick="selectCategory('user-story')">User Story
-            </div>
-            <div id="other" class="flex-checkbox" data-value="technical-task" onclick="selectCategory('technical-task')">Technical Task
-            </div>
-          </div>
-        </div>
-
-          <div id="subtasks">
-          </div>
-
-          <ul id="subTaskContainer" class="subtask-div ulContainer" >
-          </ul>
-
-          <div class="bottom-add-task-mobile">
-            <div class="requirement-mobile">
-              <p><span class="span-required">*</span>This field is required</p>
-            </div>
-            <div class="btns-add-task-mobile-wrapper">
-            <button onclick="clearInputValue()" id="clear-mobile" class="buttonWhite" >
-              Clear <img src="assets/img/AddTask/cancel.svg" alt="Clear Icon"
-            /></button>
-            <button onclick="addTask()" id="create-task-mobile" class="buttonGrey">
-              Create Task <img src="assets/img/AddTask/check_white.svg" alt="Check Icon"
-            /></button>
-            </div>
-          </div>
-      </section>
-      <div class="btns-down-add-task-popup">
-          <div class="requirement-desktop-addTask">
-            <p class="p-required"><span class="span-required">*</span>This field is required</p>
-          </div>
-          <div class="btns-down-right-add-task">
-            <button onclick="clearInputValue()" id="clear" class="buttonWhite" >
-              Clear <img src="assets/img/AddTask/cancel.svg" alt="Clear Icon"
-            /></button>
-            <button  id="create-task" class="buttonGrey" disabled>
-              Create Task <img src="assets/img/AddTask/check_white.svg" alt="Check Icon"
-            /></button>
-          </div>
-        </div> -->
   `;
 }
 
@@ -525,19 +417,10 @@ function addTaskPopUpHtml() {
           </div>
         </div>
 
-          <!-- </div>
-
-            </div>
-            </div>
-
-          </select>
-        </div> -->
-
         <div id="subtasks"> </div>
         
         <ul id="subTaskContainer" class="subtask-div ulContainer" > </ul> 
         
-        <!-- </div> -->
         <div class="bottom-add-task-mobile">
           <div class="requirement-mobile">
             <p><span class="span-required">*</span>This field is required</p>
@@ -568,114 +451,6 @@ function addTaskPopUpHtml() {
         </div>
       </div>    
   </form>
-  
-  <!-- <form onsubmit="addTaskPopUp(); return false" class="formAddTask">
-    <section class="container-left">
-
-        <div class="headline-add-task"><h1 class="headline-h1-add-task">Add Task</h1></div>
-
-        <div id="title-add-task">
-          <p>Title<span class="span-required">*</span></p>
-          <input id="taskTitle" required type="text" class="border-focus" placeholder="Enter a title" onkeydown="checkIfFormIsFilled()"/>
-
-        </div>
-
-        <div id="description">
-          <p>Description</p>
-          <textarea id="taskDescription" class="border-focus" placeholder="Enter a description"></textarea>
-        </div>
-
-        <p class="text-padding">Assigned to</p>
-        <div id="assignedTo">
-        </div>
-        <div id="assignedAddedContact" class="assinged-contact">
-
-        </div>
-        
-      </section>
-
-      <div class="vertical-line-add-task"></div>
-
-      <section class="container-right">
-        <p>Due Date<span class="span-required">*</span></p>
-        <div id="due-date">
-          <input id="myDateInput" required type="date" required onkeydown="checkIfFormIsFilled()"/>
-        </div>
-
-        <div class="priority">
-          <p>Prio</p>
-          <div class="priority-options">
-            <div id="urgentContainer" onclick="changePrioToUrgent('urgentContainer', 'urgentImg')">
-              <p>Urgent</p>
-              <img src="assets/img/AddTask/ArrowUpPrioSign.svg" alt="Prio High" id="urgentImg" />
-            </div>
-            <div id="mediumContainer" onclick="changePrioToMedium('mediumContainer', 'mediumImg')">
-              <p>Medium</p>
-              <img src="assets/img/AddTask/mediumPrioSignInactive.svg" alt="Prio Medium" id="mediumImg" />
-            </div>
-            <div id="lowContainer" onclick="changePrioToLow('lowContainer', 'lowImg')">
-              <p>Low</p>
-              <img src="assets/img/AddTask/ArrowDownPrioSign.svg" alt="Prio Low" id="lowImg" />
-            </div>
-          </div>
-        </div>
-
-        <div class="category">
-
-  <p>Category<span class="span-required">*</span></p>
-  <div id="dropdownCategory" class="dropdown" onclick="openDropDownCategory()">
-  <div id="showSelectedCategory" data-value="">Select task category</div>
-  <img id="dropdownImgArrowCategory" class="rotate-arrow dropdown-arrow-hover" src="../assets/img/AddTask/arrow_drop.svg" alt="">
-</div>
-<div id="assignedDropdownCategory" class="category-dropdown d-none">
-  <div id="userStory" class="flex-checkbox" data-value="user-story" onclick="selectCategory('user-story')">User Story</div>
-  <div id="other" class="flex-checkbox" data-value="technical-task" onclick="selectCategory('technical-task')">Technical Task</div>
-</div>
-
-</div>
-
-</div>
-
-    </div>
-    </div>
-
-          </select>
-        </div>
-
-        <div id="subtasks">
-        </div>
-        <ul id="subTaskContainer" class="subtask-div ulContainer" >
-        </ul>
-        
-        <div class="bottom-add-task-mobile">
-          <div class="requirement-mobile">
-            <p><span class="span-required">*</span>This field is required</p>
-          </div>
-          <div class="btns-add-task-mobile-wrapper">
-          <button onclick="clearInputValue()" id="clear-mobile" class="buttonWhite" >
-            Clear <img src="assets/img/AddTask/cancel.svg" alt="Clear Icon"
-          /></button>
-          <button id="create-task-mobile" class="buttonGrey">
-            Create Task <img src="assets/img/AddTask/check_white.svg" alt="Check Icon"
-          /></button>
-          </div>
-        </div>
-
-      </section>
-      </form>
-      <div class="btns-down-add-task-popup">
-          <div class="requirement-desktop-addTask">
-            <p class="p-required"><span class="span-required">*</span>This field is required</p>
-          </div>
-          <div class="btns-down-right-add-task">
-            <button onclick="clearInputValue()" id="clear" class="buttonWhite" >
-              Clear <img src="assets/img/AddTask/cancel.svg" alt="Clear Icon"
-            /></button>
-            <button  id="create-task" class="buttonGrey" disabled>
-              Create Task <img src="assets/img/AddTask/check_white.svg" alt="Check Icon"
-            /></button>
-          </div>
-        </div> -->
     `;
 }
 
@@ -726,6 +501,17 @@ function showTaskFormEditHtml() {
     </div>
     <div id="assignedDropdown" class="d-none">
       <div id="assignedAddedContacts"></div>
+    </div>
+  `;
+}
+
+function changeButtonsAddTaskEditHtml() {
+  return /*html*/ `
+    <input id="subTaskInputEdit" type="text" placeholder="Add new subtask" class="PosRel" />
+    <div class="subTaskInputButtons">
+      <img class="subTaskInputImg" onclick="setValueBack('subTaskInputEdit', 'subtasksEdit')" src="./assets/img/icons/close.svg" alt="">
+      <span class="subTaskInputImg-vertical"></span>
+      <img class="subTaskInputImg checkImg" onclick="addSubTaskEdit('subTaskInputEdit', 'subTaskContainerEdit', ${i})" src="./assets/img/icons/checkAddTask.svg" alt="">
     </div>
   `;
 }

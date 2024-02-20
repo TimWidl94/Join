@@ -198,15 +198,7 @@
     background-color: #1d2127 !important;
   }
 }
-// .addTask-selected {
-//   color: $color-light;
-//   background-color: $primary-color;
-//   border-radius: 10px;
-//   padding: 7px 16px 7px 16px;
-//   &:hover {
-//     background-color: #1d2127 !important;
-//   }
-// }
+
 .category-selected {
   color: $color-light;
   background-color: $primary-color;
@@ -261,7 +253,6 @@
 }
 
 .dropdown {
-  // margin-top: 40px;
   padding: 16px;
   border: 1px solid $color-board-grey;
   width: 100%;
@@ -272,7 +263,7 @@
 
 .vertical-line-add-task {
   width: 2px;
-  height: 415px;
+  height: 420px;
   background-color: $color-lightgrey;
   margin-top: 118px;
 }
@@ -390,7 +381,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  // max-width: 409px;
   width: calc(100% - 2 * 17px);
 }
 
@@ -628,12 +618,8 @@
   align-items: center;
   padding: 0px 24px;
   width: calc(488px + 488px - 2 * 24px);
-  // padding-top: 150px;
   margin-bottom: 32px;
 }
-
-// .requirement-desktop {
-// }
 
 .btns-down-right-add-task {
   display: flex;
@@ -727,7 +713,6 @@
 }
 
 .formAddTask {
-  // display: block !important;
   display: flex !important;
   align-items: center;
   flex-direction: column;
@@ -808,7 +793,6 @@
   }
 
   .add-task-popup {
-    // padding: 64px 37px !important;
     margin: 0 24px;
   }
 }
@@ -829,7 +813,6 @@
     position: fixed !important;
     top: 0;
     left: 0;
-    // right: 0;
   }
 
   .main-add-task {

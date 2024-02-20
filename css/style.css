@@ -419,7 +419,7 @@ textarea {
 
 .vertical-line-add-task {
   width: 2px;
-  height: 415px;
+  height: 420px;
   background-color: #d1d1d1;
   margin-top: 118px; }
 
@@ -2613,7 +2613,6 @@ form {
   display: flex;
   flex-direction: column;
   max-height: 80vh;
-  /* Setzen Sie eine maximale Höhe für den Wrapper, um sicherzustellen, dass der Inhalt nicht über den Bildschirm hinausgeht */
   overflow-y: auto;
   width: 100%;
   gap: 24px; }

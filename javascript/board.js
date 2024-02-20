@@ -1,7 +1,6 @@
 let currentDraggedElement;
 let selectedPrioPopupEdit;
 let subTaskCounter = 0;
-// let addExistingSubtasksExecuted = false;
 
 async function initBoard() {
   await loadData();
@@ -10,7 +9,6 @@ async function initBoard() {
   await includeHTML();
   setUserInitials();
   setColorToActive('sidebarBoard', 'board-img', 'bottomBarBoardMobile', 'boardImgMobile');
-  // await renderAddTaskPopUp();
   checkTaskAreaDisplayEmpty();
 }
 
@@ -212,15 +210,19 @@ async function editTask(i) {
 
   renderEditTask(i);
   await pushTasksSubtasks(i);
+  setMinDateTodayPopup('myDateInputEdit');
+  await loadSelectedContacts(i);
+  setAssignedToContactsDropdown();
 
+  setEditTaskValues(i);
+}
+
+function setEditTaskValues(i) {
   let title = document.getElementById('taskTitleEdit');
   let description = document.getElementById('taskDescriptionEdit');
   let dueDate = document.getElementById('myDateInputEdit');
-  setMinDateTodayPopup('myDateInputEdit');
   let selectedCategoryElement = document.getElementById('showSelectedCategoryEdit');
 
-  await loadSelectedContacts(i);
-  setAssignedToContactsDropdown();
   title.value = tasks[i].taskTitle;
   description.value = tasks[i].taskDescription;
   dueDate.value = tasks[i].taskDueDate;
@@ -257,12 +259,11 @@ function clearSelectedContactsArray() {
 function addSelectedContactsFromTask(i) {
   let task = tasks[i];
 
-  // if ((tasks[i].selectedContacts.length = 0)) {
-  //   console.warn('task.selectedContacts.length = 0');
-  // }
-  for (let j = 0; j < task.selectedContacts.length; j++) {
-    let selectedContact = task.selectedContacts[j];
-    selectedContacts.push(selectedContact);
+  if ((tasks[i].selectedContacts.length = 0)) {
+    for (let j = 0; j < task.selectedContacts.length; j++) {
+      let selectedContact = task.selectedContacts[j];
+      selectedContacts.push(selectedContact);
+    }
   }
 }
 
@@ -296,7 +297,6 @@ function setAssignedToContactsDropdown() {
     let contact = contacts[i];
     for (let j = 0; j < selectedContacts.length; j++) {
       if (contact.name === selectedContacts[j].name) {
-        console.log('match i:', i);
         let userID = document.getElementById(`user-${i}`);
         let checkboxImage = document.getElementById(`checkBox-${i}`);
         userID.classList.add('selected-profile-active-item');
@@ -652,11 +652,15 @@ async function renderDoneTasks() {
 function renderContactsInBoardTask(x) {
   let container = document.getElementById('contactsInBoardTask' + x);
   container.innerHTML = '';
-  for (let i = 0; i < 4; i++) {
-    let contact = getFirstLetters(tasks[x]['selectedContacts'][i]['name']);
-    const contactColor = getContactColor(tasks[x]['selectedContacts'][i]['name']);
+  if (tasks[x]['selectedContacts'].length > 0) {
+    for (let i = 0; i < 4; i++) {
+      if (tasks[x]['selectedContacts'][i]) {
+        let contact = getFirstLetters(tasks[x]['selectedContacts'][i]['name']);
+        const contactColor = getContactColor(tasks[x]['selectedContacts'][i]['name']);
 
-    container.innerHTML += renderContactsInBoardTaskHtml(contact, contactColor);
+        container.innerHTML += renderContactsInBoardTaskHtml(contact, contactColor);
+      }
+    }
   }
   renderIfMoreContactsThanFour(x);
 }

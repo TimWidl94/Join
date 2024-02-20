@@ -160,7 +160,6 @@ function openChangesMenuMobile() {
   classlistAdd('changesMobile', 'd-flex');
   classlistAdd('changesMobile', 'show-overlay-menu');
   classlistAdd('optionsContactMobile', 'd-none');
-  console.log('changesMobile');
 }
 
 function closeChangesMenuMobile() {
@@ -292,7 +291,6 @@ async function closeContactPopup(target, type) {
 
 async function deleteContact(i) {
   deleteUnusedLetter(i);
-  console.log('tasks bevor function', tasks);
   deleteSelectedContact(i);
   contacts.splice(i, 1);
 
@@ -314,8 +312,6 @@ function deleteUnusedLetter(i) {
 }
 
 async function deleteSelectedContact(x) {
-  console.log('tasks bevor deletion', tasks);
-
   for (let i = 0; i < tasks.length; i++) {
     let task = tasks[i];
 
@@ -323,13 +319,13 @@ async function deleteSelectedContact(x) {
       let contact = task.selectedContacts[j];
 
       if (contact.name === contacts[x].name) {
+        console.log('task.selectedContacts before:', task.selectedContacts);
         task.selectedContacts.splice(j, 1);
         j--;
-        console.log('selectedContact deleted');
+        console.log('task.selectedContacts after:', task.selectedContacts);
       }
     }
   }
-  console.log('tasks after deletion', tasks);
   await setItem('tasks', JSON.stringify(tasks));
 }
 
@@ -344,10 +340,6 @@ async function animateBannerContacts(idDesktop, idMobile) {
     banner = idMobile;
     transform = 'show-overlay-menu-y';
   }
-
-  console.log('window.innerWidth:', window.innerWidth);
-  console.log('banner:', banner);
-  console.log('transform:', transform);
 
   classlistAdd(banner, 'd-flex');
   classlistAdd(banner, transform);

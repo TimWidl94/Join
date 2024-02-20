@@ -24,7 +24,7 @@ function generateTodoHTML(i, img, x) {
                   </div>
                   <div class="board-task-member-prio">
                     <img src="${img}" alt="" id="taskImg${i}"/>
-                </div>
+                </div>`
 }
 
 function subTasksValueHtml(id, i) {

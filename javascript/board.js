@@ -208,13 +208,12 @@ async function editTask(i) {
   popupEdit.classList.remove('d-none');
   popupInfo.classList.add('d-none');
 
+  setEditTaskValues(i);
   renderEditTask(i);
   await pushTasksSubtasks(i);
   setMinDateTodayPopup('myDateInputEdit');
   await loadSelectedContacts(i);
   setAssignedToContactsDropdown();
-
-  setEditTaskValues(i);
 }
 
 function setEditTaskValues(i) {
@@ -259,7 +258,7 @@ function clearSelectedContactsArray() {
 function addSelectedContactsFromTask(i) {
   let task = tasks[i];
 
-  if ((tasks[i].selectedContacts.length = 0)) {
+  if (tasks[i].selectedContacts.length > 0) {
     for (let j = 0; j < task.selectedContacts.length; j++) {
       let selectedContact = task.selectedContacts[j];
       selectedContacts.push(selectedContact);

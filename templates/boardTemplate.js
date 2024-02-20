@@ -28,7 +28,7 @@ function generateTodoHTML(i, img, x) {
 }
 
 function subTasksValueHtml(id, i) {
-  return /*HTML*/ `
+  return /*html*/ `
     <li id="${id}" class="subtask-div-list" ondbclick="editSubTask(${id})"><p>${subtasks[i]['subTaskInput']}</p>
       <div class="d-hover" >
         <img class="subtask-div-btn" onclick="editSubTask(${id})" src="./assets/img/icons/edit.svg" alt="">
@@ -162,7 +162,7 @@ function subTaskInputFieldHtml() {
 }
 
 function subTasksValueEditHtml(id, subTaskInput, j) {
-  return /*HTML*/ `
+  return /*html*/ `
     <li id="${id}" class="subtask-div-list" ondbclick="editSubTask(${id})"><p class="subtask-div-list-p">${subTaskInput}</p>
       <div class="d-hover" >
         <img class="subtask-div-btn" onclick="editSubTask(${id})" src="./assets/img/icons/edit.svg" alt="">
@@ -341,7 +341,7 @@ function renderSubtasksInfoHtml(j, subTask, i) {
 }
 
 function subTasksValueHtml(id, i) {
-  return /*HTML*/ `
+  return /*html*/ `
     <li id="${id}" class="subtask-div-list" ondblclick="editSubTask(${id})"><div class="subtask-div-text">${subtasks[i]['subTaskInput']}</div>
       <div class="subtask-div-list-hover-items">
         <img class="subtask-div-btn" onclick="editSubTask(${id})" src="./assets/img/icons/edit.svg" alt=""><span class="subTaskInputImg-vertical-added"></span>
@@ -513,5 +513,17 @@ function changeButtonsAddTaskEditHtml(i) {
       <span class="subTaskInputImg-vertical"></span>
       <img class="subTaskInputImg checkImg" onclick="addSubTaskEdit('subTaskInputEdit', 'subTaskContainerEdit', ${i})" src="./assets/img/icons/checkAddTask.svg" alt="">
     </div>
+  `;
+}
+
+function renderContactsInBoardTaskHtml(contact, contactColor) {
+  return /*html*/ `
+    <div class="board-task-member-profile" style="background-color: ${contactColor} !important">${contact}</div>
+  `;
+}
+
+function renderIfMoreContactsThanFourHtml(additionalContactLength) {
+  return /*html*/ `
+    <div class="board-task-member-profile" style="background-color: #a8a8a8 !important">${additionalContactLength}</div>
   `;
 }

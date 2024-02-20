@@ -652,27 +652,22 @@ async function renderDoneTasks() {
 function renderContactsInBoardTask(x) {
   let container = document.getElementById('contactsInBoardTask' + x);
   container.innerHTML = '';
-  // for (let i = 0; i < tasks[x]['selectedContacts'].length; i++) {
   for (let i = 0; i < 4; i++) {
     let contact = getFirstLetters(tasks[x]['selectedContacts'][i]['name']);
     const contactColor = getContactColor(tasks[x]['selectedContacts'][i]['name']);
 
-    container.innerHTML += `
-    <div class="board-task-member-profile" style="background-color: ${contactColor} !important">${contact}</div>
-    `;
+    container.innerHTML += renderContactsInBoardTaskHtml(contact, contactColor);
   }
-  renderIfMoreContactsThanThree(x);
+  renderIfMoreContactsThanFour(x);
 }
 
-function renderIfMoreContactsThanThree(x) {
+function renderIfMoreContactsThanFour(x) {
   let container = document.getElementById('contactsInBoardTask' + x);
 
   if (tasks[x]['selectedContacts'].length > 4) {
     let additionalContactLength = '+' + (tasks[x]['selectedContacts'].length - 4);
 
-    container.innerHTML += `
-    <div class="board-task-member-profile" style="background-color: #a8a8a8 !important">${additionalContactLength}</div>
-    `;
+    container.innerHTML += renderIfMoreContactsThanFourHtml(additionalContactLength);
   }
 }
 

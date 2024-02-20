@@ -24,7 +24,7 @@ function generateTodoHTML(i, img, x) {
                   </div>
                   <div class="board-task-member-prio">
                     <img src="${img}" alt="" id="taskImg${i}"/>
-                </div>`
+                </div>`;
 }
 
 function subTasksValueHtml(id, i) {
@@ -101,7 +101,7 @@ function addTaskHtml() {
             <img id="dropdownImgArrowCategory" class="rotate-arrow dropdown-arrow-hover" src="../assets/img/AddTask/arrow_drop.svg" alt="">
           </div>
           <div id="assignedDropdownCategory" class="category-dropdown d-none">
-            <div id="userStory" class="flex-checkbox" data-value="user-story" onclick="selectCategory('user-story')">User Story</div>
+            <div id="userStory" class="flex-checkbox" data-value="user-story" onclick="selectCategory('User Story')">User Story</div>
             <div id="other" class="flex-checkbox" data-value="technical-task" onclick="selectCategory('Technical Task')">Technical Task</div>
           </div>
         </div>
@@ -295,7 +295,7 @@ function generateTaskPopupHTML(i, img, date) {
                 <img id="dropdownImgArrowCategoryEdit" class="rotate-arrow dropdown-arrow-hover" src="../assets/img/AddTask/arrow_drop.svg" alt="">
               </div>
               <div id="assignedDropdownCategoryEdit" class="category-dropdown d-none">
-                <div id="userStoryEdit" class="flex-checkbox" data-value="user-story" onclick="selectCategoryEdit('user-story')">User Story
+                <div id="userStoryEdit" class="flex-checkbox" data-value="user-story" onclick="selectCategoryEdit('User Story')">User Story
                 </div>
                 <div id="otherEdit" class="flex-checkbox" data-value="technical-task" onclick="selectCategoryEdit('Technical Task')">Technical Task
                 </div>
@@ -354,7 +354,7 @@ function addTaskPopUpHtml() {
   return /*html*/ `
     <form onsubmit="addTaskPopUp(); return false" class="formAddTask">
     <div class="container-left-right-wrapper">
-      <section class="container-left">
+      <section class="container-left-popup">
       
         <div class="headline-add-task"><h1 class="headline-h1-add-task">Add Task</h1></div>
 
@@ -381,7 +381,7 @@ function addTaskPopUpHtml() {
 
       <div class="vertical-line-add-task"></div>
 
-      <section class="container-right">
+      <section class="container-right-popup">
         <p>Due Date<span class="span-required">*</span></p>
         <div id="due-date">
           <input id="myDateInputPopup" required type="date" required onkeydown="checkIfFormIsFilled()"/>
@@ -412,7 +412,7 @@ function addTaskPopUpHtml() {
             <img id="dropdownImgArrowCategory" class="rotate-arrow dropdown-arrow-hover" src="../assets/img/AddTask/arrow_drop.svg" alt="">
           </div>
           <div id="assignedDropdownCategory" class="category-dropdown d-none">
-            <div id="userStory" class="flex-checkbox" data-value="user-story" onclick="selectCategory('user-story')">User Story</div>
+            <div id="userStory" class="flex-checkbox" data-value="user-story" onclick="selectCategory('User Story')">User Story</div>
             <div id="other" class="flex-checkbox" data-value="technical-task" onclick="selectCategory('Technical Task')">Technical Task</div>
           </div>
         </div>
@@ -505,7 +505,7 @@ function showTaskFormEditHtml() {
   `;
 }
 
-function changeButtonsAddTaskEditHtml() {
+function changeButtonsAddTaskEditHtml(i) {
   return /*html*/ `
     <input id="subTaskInputEdit" type="text" placeholder="Add new subtask" class="PosRel" />
     <div class="subTaskInputButtons">

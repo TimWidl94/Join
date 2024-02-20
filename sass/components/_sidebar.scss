@@ -34,8 +34,6 @@ a {
   align-items: flex-start;
   gap: 15px;
   width: 232px;
-  margin-top: 200px;
-  margin-bottom: 200px;
 }
 
 .menu-category {
@@ -128,7 +126,7 @@ a {
   // width: 200px;
 }
 
-.noteLink{
+.noteLink {
   padding: 8px 20px 8px 60px;
   text-decoration: none;
   color: $color-sidebar-text !important;
@@ -142,7 +140,7 @@ a {
   // background-color: #091931;
 }
 
-.inactiveNote{
+.inactiveNote {
   padding: 8px 20px 8px 60px;
   text-decoration: none;
   color: $color-sidebar-text !important;
@@ -151,7 +149,7 @@ a {
 }
 
 .inactiveNote a {
-    padding: 8px 40px 8px 40px;
+  padding: 8px 40px 8px 40px;
   text-decoration: none;
   color: $color-sidebar-text !important;
   width: calc(100% - 2 * 40px);

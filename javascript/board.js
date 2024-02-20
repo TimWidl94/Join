@@ -839,6 +839,7 @@ function openMenuMoveTo() {
 
 async function moveToMobile(i, category) {
   tasks[i]["currentState"] = category;
+  await openMenuMoveTo();
   await renderBoardTasks();
 }
 

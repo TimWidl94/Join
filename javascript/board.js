@@ -16,24 +16,35 @@ async function initBoard() {
     "boardImgMobile"
   );
   // await renderAddTaskPopUp();
-
   checkTaskAreaDisplayEmpty();
 }
 
 function renderAddTaskPopUp() {
-  let contentBoardTask = document.getElementById("boardAddTask");
-  // console.log('addTask Popup rendered');
+  let contentBoardTask = document.getElementById('boardAddTask');
   contentBoardTask.innerHTML = addTaskPopUpHtml();
+}
+
+function setMinDateTodayPopup(inputIdPopup) {
+  var today = new Date().toISOString().split('T')[0];
+  document.getElementById(inputIdPopup).setAttribute("min", today);
+  document.getElementById(inputIdPopup).addEventListener("input", function() {
+    var selectedDate = this.value;
+    var currentDate = new Date().toISOString().split('T')[0];
+    if (selectedDate < currentDate) {
+      this.value = today;
+    }
+  });
 }
 
 async function openAddTaskPopup() {
   await renderAddTaskPopUp();
   changePrioToMedium("mediumContainer", "mediumImg");
   await renderSubTask();
-  await showTaskForm("assignedTo");
-  document.getElementById("addTaskPopupWrapper").classList.remove("d-none");
-  document.getElementById("addTaskPopup").classList.remove("d-none");
-  document.getElementById("addTaskPopup").classList.add("slide-in");
+  await showTaskForm('assignedTo');
+  setMinDateTodayPopup("myDateInputPopup");
+  document.getElementById('addTaskPopupWrapper').classList.remove('d-none');
+  document.getElementById('addTaskPopup').classList.remove('d-none');
+  document.getElementById('addTaskPopup').classList.add('slide-in');
 }
 
 async function addTaskPopUp() {
@@ -65,9 +76,9 @@ function openTaskPopup(i) {
   let date = convertDateFormat(tasks[i].taskDueDate);
   taskPopup.innerHTML = "";
   taskPopup.innerHTML = generateTaskPopupHTML(i, img, date);
-  setCategoryBackground(tasks[i]["selectedCategory"], `aTPopupCategory${i}`);
-  // checkSubtasksExisting(i);
 
+  setCategoryBackground(tasks[i]['selectedCategory'], `aTPopupCategory${i}`);
+  checkSubtasksExisting(i);
   renderAssignedToContacs(i);
   renderSubtasks(i, "subtaskContainerPopup");
 }
@@ -216,12 +227,13 @@ async function editTask(i) {
   renderEditTask(i);
   await pushTasksSubtasks(i);
 
-  let title = document.getElementById("taskTitleEdit");
-  let description = document.getElementById("taskDescriptionEdit");
-  let dueDate = document.getElementById("myDateInputEdit");
-  let selectedCategoryElement = document.getElementById(
-    "showSelectedCategoryEdit"
-  );
+
+  let title = document.getElementById('taskTitleEdit');
+  let description = document.getElementById('taskDescriptionEdit');
+  let dueDate = document.getElementById('myDateInputEdit');
+  setMinDateTodayPopup("myDateInputEdit");
+  let selectedCategoryElement = document.getElementById('showSelectedCategoryEdit');
+
 
   await loadSelectedContacts(i);
   setAssignedToContactsDropdown();
@@ -285,9 +297,9 @@ function renderSelectedContactsEdit(i) {
   // console.log('renderSelectedContactsEdit selectedContacts.length', selectedContacts.length);
   for (let j = 0; j < selectedContacts.length; j++) {
     let contact = selectedContacts[j];
-    let initials = getInitials(selectedContacts[j]["name"]);
-    let color = contact["color"];
-    content.innerHTML += /*html*/ `<div class="assinged-contact-overview" style="background-color:${color}" onclick="removeSelectedContact(${i}, ${j})">${initials}</div>`;
+    let initials = getInitials(selectedContacts[j]['name']);
+    let color = contact['color'];
+    content.innerHTML += renderSelectedContactsEditHtml(i, j, color, initials);
   }
 }
 
@@ -392,17 +404,7 @@ function renderSubTasksEditable(i, id1) {
 
 function showTaskFormEdit(id) {
   let assignedTo = document.getElementById(id);
-  assignedTo.innerHTML = /*html*/ `
-    <div name="assigned" onchange="addAssignedContact()">
-      <div id="dropdownEdit" class="dropdown" onclick="openDropDown('assignedDropdown', 'dropdownImgArrow')">
-        <input class="contact-searchbar" onkeyup="filterAddTaskContact()" type="text" id="search" placeholder="Select contacts to assign" />
-        <img id="dropdownImgArrow" class="rotate-arrow dropdown-arrow-hover dropdown-arrow-hover" src="../assets/img/AddTask/arrow_drop.svg" alt="">
-      </div>
-    </div>
-    <div id="assignedDropdown" class="d-none">
-      <div id="assignedAddedContacts"></div>
-    </div>
-  `;
+  assignedTo.innerHTML = showTaskFormEditHtml();
 
   for (let i = 0; i < contacts.length; i++) {
     let currentUser = contacts[i]["name"];

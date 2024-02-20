@@ -80,6 +80,7 @@
 #boardAddTask {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .add-task-popup {
@@ -760,7 +761,7 @@
   flex-direction: row;
   width: 100%;
   gap: 16px;
-  padding-bottom: 40px;
+  margin-bottom: 32px;
 }
 
 .progress-done{
@@ -824,6 +825,10 @@
   .container {
     max-width: calc(100% - 360px) !important;
   }
+
+  .btns-down-add-task-popup {
+    width: calc(100% - 2 * 24px);
+  }
 }
 
 @media (max-width: 1000px) {
@@ -863,6 +868,10 @@
   }
   .aTPopupButtonsBottom {
     justify-content: space-between;
+  }
+
+  .btns-down-add-task-popup {
+    width: 100%;
   }
 }
 

@@ -8,6 +8,7 @@ async function init() {
   await renderSubTask();
   await showTaskForm('assignedTo');
   changePrioToMedium('mediumContainer', 'mediumImg');
+  setMinDateToday("myDateInput");
 }
 
 let tasks = [];
@@ -39,21 +40,17 @@ function renderSubTask() {
   container.innerHTML += subTaskInputHtml();
 }
 
-// function openAddTaskPopup() {
-// document.getElementById('addTaskPopup').classList.remove('d-none');
-// document.getElementById('addTaskPopup').classList.add('slide-in');
-// }
-
-// function closeAddTaskPopup() {
-// let addTaskPopup = document.getElementById('addTaskPopup');
-// addTaskPopup.classList.remove('slide-in');
-// addTaskPopup.classList.add('slide-out');
-//
-// setTimeout(function () {
-// addTaskPopup.classList.remove('slide-out');
-// addTaskPopup.classList.add('d-none');
-// }, 900);
-// }
+function setMinDateToday(inputId) {
+  var today = new Date().toISOString().split('T')[0];
+  document.getElementById(inputId).setAttribute("min", today);
+  document.getElementById(inputId).addEventListener("input", function() {
+    var selectedDate = this.value;
+    var currentDate = new Date().toISOString().split('T')[0];
+    if (selectedDate < currentDate) {
+      this.value = today;
+    }
+  });
+}
 
 async function addTask() {
   console.log('tasks');

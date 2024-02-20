@@ -1,5 +1,6 @@
 let contactColors = ['#FF7A00', '#9327FF', '#6E52FF', '#FC71FF', '#FFBB2B', '#1FD7C1', '#462F8A', '#FF4646'];
 let letters = [];
+let nameToCompare;
 
 async function init() {
   await loadData();
@@ -248,6 +249,8 @@ function editContact(i, target) {
   name1.value = contacts[i].name;
   mail.value = contacts[i].mail;
   tel.value = contacts[i].phone;
+
+  nameToCompare = contacts[i].name;
 }
 
 function renderEditContactDesktopOrMobile(acronym, color, i) {
@@ -269,9 +272,12 @@ async function saveEditedContact(i, target) {
   let name = document.getElementById(`edit-name-${target}`);
   let mail = document.getElementById(`edit-mail-${target}`);
   let tel = document.getElementById(`edit-tel-${target}`);
+  let newSavedName = firstLettersUppercase(name.value);
   contacts[i].name = firstLettersUppercase(name.value);
   contacts[i].mail = mail.value;
   contacts[i].phone = tel.value;
+
+  checkTasksSelectedContactNames(newSavedName, i);
 
   await saveContacts();
   init();
@@ -279,6 +285,21 @@ async function saveEditedContact(i, target) {
   await closeContactPopup(target, 'edit');
   openContactInfo(i);
   // init();
+}
+
+async function checkTasksSelectedContactNames(newSavedName, x) {
+  for (let i = 0; i < tasks.length; i++) {
+    let task = tasks[i];
+
+    for (let j = 0; j < task.selectedContacts.length; j++) {
+      let selectedContact = task.selectedContacts[j];
+
+      if (selectedContact.name == nameToCompare) {
+        selectedContact.name = newSavedName;
+        await setItem('tasks', JSON.stringify(tasks));
+      }
+    }
+  }
 }
 
 async function closeContactPopup(target, type) {

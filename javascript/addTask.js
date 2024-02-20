@@ -1,3 +1,11 @@
+let tasks = [];
+let subtasks = [];
+let selectedContacts = [];
+let filteredContacts = [];
+let selectedCategories = [];
+let selectedPrio;
+let categoryIsSelected = false;
+
 async function init() {
   await includeHTML();
   await loadData();
@@ -8,18 +16,8 @@ async function init() {
   await renderSubTask();
   await showTaskForm('assignedTo');
   changePrioToMedium('mediumContainer', 'mediumImg');
-  setMinDateToday("myDateInput");
+  setMinDateToday('myDateInput');
 }
-
-let tasks = [];
-let subtasks = [];
-let selectedContacts = [];
-let filteredContacts = [];
-let selectedCategories = [];
-let selectedPrio;
-let categoryIsSelected = false;
-
-/*Popup function */
 
 function renderAddTask() {
   let contentMain = document.getElementById('main');
@@ -30,7 +28,6 @@ function renderAddTask() {
   }
 
   if (contentBoardTask) {
-    console.log('addTask Popup rendered');
     contentBoardTask.innerHTML = addTaskHtml('boardAddTask');
   }
 }
@@ -42,8 +39,8 @@ function renderSubTask() {
 
 function setMinDateToday(inputId) {
   var today = new Date().toISOString().split('T')[0];
-  document.getElementById(inputId).setAttribute("min", today);
-  document.getElementById(inputId).addEventListener("input", function() {
+  document.getElementById(inputId).setAttribute('min', today);
+  document.getElementById(inputId).addEventListener('input', function () {
     var selectedDate = this.value;
     var currentDate = new Date().toISOString().split('T')[0];
     if (selectedDate < currentDate) {
@@ -53,7 +50,6 @@ function setMinDateToday(inputId) {
 }
 
 async function addTask() {
-  console.log('tasks');
   await pushAddTask();
   clearInputValue();
   showPopUpAddedTaskToBoard();
@@ -63,7 +59,6 @@ async function pushAddTask() {
   let taskTitle = document.getElementById('taskTitle').value;
   let taskDescription = document.getElementById('taskDescription').value;
   let taskDueDate = document.getElementById('myDateInput').value;
-
   let selectedCategoryElement = document.getElementById('showSelectedCategory');
   let selectedCategory = selectedCategoryElement.getAttribute('data-value');
 
@@ -77,7 +72,6 @@ async function pushAddTask() {
     selectedContacts: selectedContacts,
     currentState: 'toDo',
   });
-  console.log('tasks');
   await setItem('tasks', JSON.stringify(tasks));
 }
 
@@ -103,7 +97,7 @@ function addSubTask(idInput, idContainer) {
 
 function renderGeneratedSubTasks(idContainer) {
   let container = document.getElementById(idContainer);
-  container.innerHTML = ``;
+  container.innerHTML = '';
 
   for (let i = 0; i < subtasks.length; i++) {
     let id = subtasks[i]['id'];
@@ -113,27 +107,19 @@ function renderGeneratedSubTasks(idContainer) {
 
 function findSubtaskPosition(id) {
   let nr = subtasks.findIndex((obj) => obj.id === id);
-  if (nr == -1) {
-    console.log('Number of Subtask not found!');
-  }
-  console.log('findSubtaskPosition nr:', nr);
+  // if (nr == -1) {
+  //   console.log('Number of Subtask not found!');
+  // }
+  // console.log('findSubtaskPosition nr:', nr);
 
   return nr;
 }
 
 function editSubTask(id) {
-  console.log('editSubTask id:', id);
   let container = document.getElementById(id);
   let nr = findSubtaskPosition(id);
   let textContent = subtasks[nr]['subTaskInput'];
-  container.innerHTML = /*html*/ `<div class="test-2">
-<input id="editSubTaskInput" type="text" placeholder=${textContent} value=${textContent} />
-<div class="editSubTaskButtonBox">
-<img src="assets/img/icons/delete.svg" alt="Clear Icon" class="inputImgTrash" onclick="deleteSubTask(${id}, 'subTaskContainer')"/>
-<span class="subTaskInputImg-vertical-edit"></span>
-<img src="./assets/img/icons/checkAddTask.svg" alt="check" class="inputImgTrash" onclick="addEditSubTask(${id})"/>
-</div>
-</div>`;
+  container.innerHTML = editSubTaskHtml(textContent, id);
 }
 
 function addEditSubTask(i) {
@@ -144,18 +130,7 @@ function addEditSubTask(i) {
 
 function showTaskForm(id) {
   let assignedTo = document.getElementById(id);
-  assignedTo.innerHTML = /*html*/ `
-    <div name="assigned" onchange="addAssignedContact()">
-      <div id="dropdown" class="dropdown" onclick="openDropDown('assignedDropdown', 'dropdownImgArrow')">
-        <input class="contact-searchbar" onkeyup="filterAddTaskContact()" type="text" id="search" placeholder="Select contacts to assign" />
-        <img id="dropdownImgArrow" class="rotate-arrow dropdown-arrow-hover dropdown-arrow-hover" src="../assets/img/AddTask/arrow_drop.svg" alt="">
-      </div>
-    </div>
-    <div id="assignedDropdown" class="d-none">
-      <div id="assignedAddedContacts"></div>
-      <!-- <div id="assignedAddedContactsEdit"></div> -->
-    </div>
-  `;
+  assignedTo.innerHTML = showTaskFormHtml();
 
   for (let i = 0; i < contacts.length; i++) {
     let currentUser = contacts[i]['name'];
@@ -283,7 +258,7 @@ function renderSelectedContacts(i) {
     let contact = selectedContacts[j];
     let initials = getInitials(selectedContacts[j]['name']);
     let color = contact['color'];
-    content.innerHTML += /*html*/ `<div class="assinged-contact-overview" style="background-color:${color}" onclick="removeSelectedContact(${i}, ${j})">${initials}</div>`;
+    content.innerHTML += renderSelectedContactsHtml(i, j, initials, color);
   }
 }
 
@@ -298,10 +273,7 @@ function getInitials(contactName) {
 
 function deleteSubTask(number, idContainer) {
   let nr = findSubtaskPosition(number);
-  console.log('subtasks idContainer:', idContainer);
-  console.log('subtasks befor delete:', subtasks);
   subtasks.splice(nr, 1);
-  console.log('subtasks after delete:', subtasks);
   subTaskContainer = document.getElementById(idContainer);
   subTaskContainer.innerHTML = ``;
   for (let i = 0; i < subtasks.length; i++) {
@@ -362,14 +334,7 @@ function selectCategoryIfElse(userStory, technicalTask, showSelectedCategory, as
 function changeButtonsAddTask(id) {
   let inputField = document.getElementById(id);
 
-  inputField.innerHTML = /*html*/ `
-    <input id="subTaskInput" type="text" placeholder="Add new subtask" onclick="" class="PosRel" />
-    <div class="subTaskInputButtons">
-      <img class="subTaskInputImg" onclick="setValueBack('subTaskInput')" src="./assets/img/icons/close.svg" alt="">
-      <span class="subTaskInputImg-vertical"></span>
-      <img class="subTaskInputImg checkImg" onclick="addSubTask('subTaskInput', 'subTaskContainer')" src="./assets/img/icons/checkAddTask.svg" alt="">
-    </div>
-  `;
+  inputField.innerHTML = changeButtonsAddTaskHtml();
   document.getElementById('subTaskInput').focus();
 }
 
@@ -423,6 +388,7 @@ function changePrioToLow(idContainer, idImg) {
 function checkIfFormIsFilled() {
   let title = document.getElementById('taskTitle');
   let dueDate = document.getElementById('myDateInput');
+  console.log('dueDate.value:', dueDate.value);
   if (categoryIsSelected === true && title.value > '' && dueDate.value > '') {
     document.getElementById('create-task').disabled = false;
   }

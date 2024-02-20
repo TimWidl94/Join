@@ -350,19 +350,11 @@
 .aTPopupContentWrapper {
   display: flex;
   flex-direction: column;
-  // align-items: start;
-  max-height: 80vh; /* Setzen Sie eine maximale Höhe für den Wrapper, um sicherzustellen, dass der Inhalt nicht über den Bildschirm hinausgeht */
+  max-height: 80vh;
   overflow-y: auto;
-  // overflow-x: hidden;
   width: 100%;
   gap: 24px;
 }
-
-// .aTPopupDescription,
-// .aTPopupAssignedTo,
-// .aTPopupSubtasks {
-//   // overflow: auto; /* Verhindere, dass der Inhalt dieser Bereiche über das Popup hinausragt */
-// }
 
 .aTPopupTop {
   display: flex;
@@ -439,8 +431,6 @@
 .aTPopupAssignedTo {
   display: flex;
   flex-direction: column;
-  // min-height: 50px;
-  // max-height: 500px;
   gap: 4px;
 }
 

@@ -406,6 +406,8 @@
   font-size: 61px;
   font-weight: 700;
   color: $color-dark;
+  max-width: 500px;
+  overflow-wrap: anywhere;
 }
 
 .aTPopupDescription {
@@ -762,6 +764,13 @@
   margin-bottom: 32px;
 }
 
+.progress-done{
+    height: 8px;
+    background-color: $color-board-subtask-bar;
+    border: none;
+    border-radius: 8px;
+}
+
 @media (min-width: 1300px) {
   .board-title {
     z-index: unset;
@@ -950,6 +959,7 @@
 
   .aTPopupH1 {
     font-size: 40px;
+    max-width: 280px;
   }
 
   .priority-options div p,

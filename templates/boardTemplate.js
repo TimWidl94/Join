@@ -1,33 +1,30 @@
-function generateTodoHTML(i, img) {
+function generateTodoHTML(i, img, x) {
   return /*html*/ `
     <div draggable="true" ondragstart="startDragging(${i})" class="wobble-container" 
         onclick="openTaskPopup(${i})" ontouchstart="startDragging(${i})">
       <div class="board-task wobble-element">
-        <div class="board-task-epic" id="board-task-epic${i}">
-            ${tasks[i]['selectedCategory']}
-        </div>
-        <div class="board-task-title">${tasks[i]['taskTitle']}</div>
-        <div class="board-task-description">
-          ${tasks[i]['taskDescription']}
-        </div>
-        <div class="board-task-subtask">
-          <div class="board-task-subtask-progress">
-            <div
-              class="progress-done"
-              id="progress-${i}"
-              style="width: 0%"></div>
+            <div class="board-task-epic" id="board-task-epic${i}">
+                ${tasks[i]['selectedCategory']}
             </div>
-            <div class="sboard-task-subtask-counter">0/${tasks[i]['subtasks'].length}</div>
-          </div>
-          <div class="board-task-member">
-          <div class="board-task-member" id="contactsInBoardTask${i}"></div>
-          <div class="board-task-member-prio">
-            <img src="${img}" alt="" id="taskImg${i}"/>
-          </div>
-        </div>
-      </div>
-    </div>
-        `;
+                <div class="board-task-title">${tasks[i]['taskTitle']}</div>
+                <div class="board-task-description">
+                ${tasks[i]['taskDescription']}
+                </div>
+                <div class="board-task-subtask">
+                  <div class="board-task-subtask-progress">
+                    <div
+                      class="progress-done"
+                      id="progress-${i}"
+                      style="width: 0%"></div>
+                  </div>
+                  <div class="sboard-task-subtask-counter">${x}/${tasks[i]['subtasks'].length}</div>
+                </div>
+                <div class="board-task-member">
+                  <div class="board-task-member" id="contactsInBoardTask${i}">
+                  </div>
+                  <div class="board-task-member-prio">
+                    <img src="${img}" alt="" id="taskImg${i}"/>
+                </div>
 }
 
 function subTasksValueHtml(id, i) {
@@ -441,10 +438,10 @@ function renderAssignedToContacsInfoHtml(contactColor, capitalLetters, selectedC
 `;
 }
 
-function renderSubtasksInfoHtml(j, subTask) {
+function renderSubtasksInfoHtml(j, subTask, i) {
   return /*html*/ `
-  <div class="subtask">
-    <input type="checkbox" id="checkboxSubtask-${j}" class="checkboxSavePassword" />
+  <div class="subtask" onclick="subTaskActive(${j}, ${i})">
+    <input type="checkbox" id="checkboxSubtask-${j}" class="checkboxSavePassword"/>
     <label for="checkboxSubtask-${j}" ></label>
     <p class="aTPopupP">${subTask.subTaskInput}</p>
   </div>
@@ -463,7 +460,7 @@ function subTasksValueHtml(id, i) {
 
 function addTaskPopUpHtml() {
   return /*html*/ `
-    <form onsubmit="addTask(); return false" class="formAddTask">
+    <form onsubmit="addTaskPopUp(); return false" class="formAddTask">
     <div class="container-left-right-wrapper">
       <section class="container-left">
       

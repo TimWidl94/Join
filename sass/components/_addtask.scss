@@ -7,7 +7,13 @@
 #showSelectedCategory {
   font-size: 20px;
 }
-
+.assinged-contact {
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  height: auto;
+  margin-bottom: 20px;
+}
 .span-required {
   color: #ff8190;
 }
@@ -143,7 +149,7 @@
 
 .assinged-contact {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   position: unset;
   padding: 12px 0px;
 
@@ -209,13 +215,12 @@
 #assignedDropdown {
   position: absolute;
   z-index: 1;
-  min-width: 439px;
+  width: 100%;
   padding: 21px 0px 0;
   border-radius: 10px;
   border: 1px solid $color-lightgrey;
   background-color: $color-light;
   font-size: 16px;
-  padding-top: 60px;
   -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;
@@ -906,6 +911,9 @@
     overflow-y: auto;
   }
 
+  #assignedDropdown {
+    padding-top: 0px;
+  }
   p {
     font-size: 16px;
   }

@@ -306,6 +306,13 @@ textarea {
 #showSelectedCategory {
   font-size: 20px; }
 
+.assinged-contact {
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  height: auto;
+  margin-bottom: 20px; }
+
 .span-required {
   color: #ff8190; }
 
@@ -424,7 +431,7 @@ textarea {
 
 .assinged-contact {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   position: unset;
   padding: 12px 0px; }
   .assinged-contact-profile {
@@ -483,13 +490,12 @@ textarea {
 #assignedDropdown {
   position: absolute;
   z-index: 1;
-  min-width: 439px;
+  width: 100%;
   padding: 21px 0px 0;
   border-radius: 10px;
   border: 1px solid #d1d1d1;
   background-color: #fff;
   font-size: 16px;
-  padding-top: 60px;
   -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;
@@ -1061,6 +1067,8 @@ textarea {
     display: flex;
     flex-direction: column;
     overflow-y: auto; }
+  #assignedDropdown {
+    padding-top: 0px; }
   p {
     font-size: 16px; }
   .main-add-task {
@@ -2691,15 +2699,14 @@ form {
   top: 0;
   bottom: 0;
   right: 0;
-  left: 0; }
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.4); }
 
 .aTPopupContainer {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
-  width: 120%;
-  background-color: rgba(0, 0, 0, 0.4); }
+  height: 100%; }
 
 .addTaskPopupContainer {
   display: flex;

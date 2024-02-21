@@ -181,7 +181,7 @@
   }
 }
 .test-2 {
-  width: 426px;
+  width: calc(100% - 12px);
   position: absolute;
   z-index: 4;
   margin: 20px 0px 0px -21px;

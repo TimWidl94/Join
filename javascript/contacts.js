@@ -8,21 +8,8 @@ async function init() {
   setUserInitials();
   setUserToContacts();
   setColorToContacts();
-  render();
+  renderContacts();
   setColorToActive('sidebarContacts', 'contacts-img', 'bottomBarContactsMobile', 'contactsImgMobile');
-}
-
-async function setUserToContacts() {
-  let name = users[user].username;
-  let mail = users[user].email;
-  // let userWithYou = name + ' (you)';
-  let userExistsIndex = contacts.findIndex((contact) => contact.name === name);
-  // let userWithYouExistsIndex = contacts.findIndex((contact) => contact.name === userWithYou);
-
-  if (userExistsIndex === -1) {
-    contacts.push({ name: firstLettersUppercase(name), mail: mail, phone: '', color: '' });
-    userExistsIndex = contacts.length - 1;
-  }
 }
 
 function setUsernameInContacts(userName) {
@@ -41,7 +28,7 @@ function setColorToContacts() {
   }
 }
 
-function render() {
+function renderContacts() {
   let content = document.getElementById('basic-info-wrapper');
   content.innerHTML = '';
 
@@ -169,7 +156,7 @@ async function addContact(target) {
   setColorToContacts();
   await saveContacts();
   init();
-  render();
+  renderContacts();
   index = findContactIndex(name.value);
   openContactInfo(index);
   clearPopup(name, mail, tel);
@@ -213,6 +200,13 @@ function editContact(i, target) {
   nameToCompare = contacts[i].name;
 }
 
+/**
+ * Renders the edit contact interface either for desktop or mobile view based on the window width.
+ * @param {string} acronym - The acronym associated with the contact.
+ * @param {string} color - The color associated with the contact.
+ * @param {number} i - The index of the contact.
+ * @returns {void}
+ */
 function renderEditContactDesktopOrMobile(acronym, color, i) {
   if (window.innerWidth > 800) {
     let contentDesktop = document.getElementById('edit-contact-wrapper');
@@ -349,13 +343,4 @@ function getFirstLetters(str) {
 
 function validatePhoneNumber(input) {
   input.value = input.value.replace(/[^\d+\/\s-]/g, '');
-}
-
-function firstLettersUppercase(str) {
-  let splitStr = '';
-  splitStr = str.toLowerCase().split(' ');
-  for (let i = 0; i < splitStr.length; i++) {
-    splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
-  }
-  return splitStr.join(' ');
 }

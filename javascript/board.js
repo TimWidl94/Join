@@ -8,6 +8,9 @@ async function initBoard() {
   await updateHTML();
   await includeHTML();
   setUserInitials();
+  setUserToContacts();
+  setColorToContacts();
+  // renderContacts();
   setColorToActive('sidebarBoard', 'board-img', 'bottomBarBoardMobile', 'boardImgMobile');
   checkTaskAreaDisplayEmpty();
 }
@@ -89,10 +92,9 @@ function closeTaskPopup() {
     taskPopup.classList.add('d-none');
   }, 500);
 
-  updateHTML(); 
-  subtasks = []; 
+  updateHTML();
+  subtasks = [];
 }
-
 
 function checkSubtasksExisting(i) {
   let container = document.getElementById(`aTPopupSubtasks${i}`);
@@ -311,8 +313,6 @@ function setAssignedToContactsDropdown() {
         let checkboxImage = document.getElementById(`checkBox-${i}`);
         userID.classList.add('selected-profile-active-item');
         checkboxImage.src = './assets/img/icons/check_button-white.svg';
-      } else {
-        console.log('no match contact.name === selectedContacts[j].name');
       }
     }
   }
@@ -398,6 +398,7 @@ function renderSubTasksEditable(i, id1) {
 function showTaskFormEdit(id) {
   let assignedTo = document.getElementById(id);
   assignedTo.innerHTML = showTaskFormEditHtml();
+  sortContactsByAlphabet();
 
   for (let i = 0; i < contacts.length; i++) {
     let currentUser = contacts[i]['name'];
@@ -773,6 +774,12 @@ async function moveToMobile(i, category) {
   await renderBoardTasks();
 }
 
+/**
+ *
+ * @param {*} j
+ * @param {*} i
+ * @returns
+ */
 async function subTaskActive(j, i) {
   let checkbox = document.getElementById('checkboxSubtask-' + j);
   if (checkbox.checked === false) {

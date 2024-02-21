@@ -7,11 +7,9 @@ let contacts = [];
 let legalNoticeOffline = true;
 let privacyPolicyOffline = true;
 
-function initScript() {}
-
-function timeOut(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
+// function timeOut(ms) {
+//   return new Promise((resolve) => setTimeout(resolve, ms));
+// }
 
 function showTopbarDropdown() {
   document.getElementById('topbar-dropdown').classList.toggle('d-flex');
@@ -28,6 +26,28 @@ function setUserInitials() {
   content.innerHTML = /*html*/ `
     <p>${acronym}</p>
   `;
+}
+
+async function setUserToContacts() {
+  let name = users[user].username;
+  let mail = users[user].email;
+  // let userWithYou = name + ' (you)';
+  let userExistsIndex = contacts.findIndex((contact) => contact.name === name);
+  // let userWithYouExistsIndex = contacts.findIndex((contact) => contact.name === userWithYou);
+
+  if (userExistsIndex === -1) {
+    contacts.push({ name: firstLettersUppercase(name), mail: mail, phone: '', color: '' });
+    userExistsIndex = contacts.length - 1;
+  }
+}
+
+function firstLettersUppercase(str) {
+  let splitStr = '';
+  splitStr = str.toLowerCase().split(' ');
+  for (let i = 0; i < splitStr.length; i++) {
+    splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
+  }
+  return splitStr.join(' ');
 }
 
 function setColorToActive(id1, id2, id3, id4) {

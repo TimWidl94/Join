@@ -90,8 +90,6 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-  // left: 5%;
-  // margin-left: 232px;
   padding: 64px 64px;
   z-index: 9;
   border-radius: 30px;
@@ -189,21 +187,20 @@
   }
 
   &-svg-container {
-    --svg-color: #{$primary-color}; // Standardfarbe
-    --svg-hover-color: #{$secondary-color}; // Hover-Farbe
+    --svg-color: #{$primary-color};
+    --svg-hover-color: #{$secondary-color};
 
     width: 24px;
     height: 25px;
     background-image: url('data:image/svg+xml,#{$plusButton}');
     background-size: cover;
     cursor: pointer;
-    transition: background-image 0.3s ease; // Füge eine sanfte Übergangseffekt hinzu
+    transition: background-image 0.3s ease;
 
     &:hover {
-      --svg-color: var(--svg-hover-color); // Ändere die Farbe im :hover-Zustand
+      --svg-color: var(--svg-hover-color);
     }
 
-    // Setze die Farbe im SVG über eine CSS-Variable
     &::before {
       content: '';
       display: block;
@@ -556,7 +553,6 @@
   font-size: 20px;
   font-weight: 400;
   line-height: 120%;
-  // color: $color-dark;
 }
 
 .aTPopupSpan {
@@ -667,7 +663,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  // width: calc(100% - 2 * 17px);
   padding: 16px;
   border: 1px solid $color-board-grey;
   width: calc(100% - 2 * 50px);

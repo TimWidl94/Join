@@ -3,8 +3,8 @@ let subtasks = [];
 let selectedContacts = [];
 let filteredContacts = [];
 let selectedCategories = [];
-let selectedPrio;
 let categoryIsSelected = false;
+let selectedPrio;
 
 async function init() {
   await includeHTML();
@@ -26,7 +26,6 @@ function renderAddTask() {
   if (contentMain) {
     contentMain.innerHTML = addTaskHtml('main');
   }
-
   if (contentBoardTask) {
     contentBoardTask.innerHTML = addTaskHtml('boardAddTask');
   }
@@ -195,7 +194,7 @@ function openDropDown(idDropdown, idImgArrow) {
   let dropdownImgArrow = document.getElementById(idImgArrow);
 
   assignedDropdown.classList.toggle('d-none');
-  // dropdown.classList.toggle('border-active');
+  dropdown.classList.toggle('border-active');
   assignedDropdown.classList.toggle('dropbtn');
   dropdownImgArrow.classList.toggle('rotate-arrow');
 }
@@ -203,7 +202,7 @@ function openDropDown(idDropdown, idImgArrow) {
 function openDropDownCategory() {
   let assignedDropdownCategory = document.getElementById('assignedDropdownCategory');
   let dropdownImgArrowCategory = document.getElementById('dropdownImgArrowCategory');
-  // dropdownCategory.classList.toggle('border-category-active');
+  dropdownCategory.classList.toggle('border-category-active');
   assignedDropdownCategory.classList.toggle('d-none');
   dropdownImgArrowCategory.classList.toggle('rotate-arrow');
 }

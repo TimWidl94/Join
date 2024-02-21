@@ -15,19 +15,13 @@ async function init() {
 async function setUserToContacts() {
   let name = users[user].username;
   let mail = users[user].email;
-  let userWithYou = name + ' (you)';
+  // let userWithYou = name + ' (you)';
   let userExistsIndex = contacts.findIndex((contact) => contact.name === name);
-  let userWithYouExistsIndex = contacts.findIndex((contact) => contact.name === userWithYou);
+  // let userWithYouExistsIndex = contacts.findIndex((contact) => contact.name === userWithYou);
 
   if (userExistsIndex === -1) {
-    // Füge den Benutzerkontakt hinzu, falls noch nicht vorhanden
     contacts.push({ name: firstLettersUppercase(name), mail: mail, phone: '', color: '' });
-    userExistsIndex = contacts.length - 1; // Index des neuen Benutzerkontakts
-
-    // if (userWithYouExistsIndex === -1) {
-    // Füge den Kontakt mit " (you)" hinzu, falls noch nicht vorhanden
-    // contacts.push({ name: userWithYou, mail: mail, phone: '', color: '' });
-    // }
+    userExistsIndex = contacts.length - 1;
   }
 }
 
@@ -59,12 +53,8 @@ function render() {
       letters.push(firstLetter);
     }
   }
-  sortLetters();
-  renderLetters();
-}
-
-function sortLetters() {
   letters.sort();
+  renderLetters();
 }
 
 function renderLetters() {
@@ -101,8 +91,6 @@ function setContactsToFirstLetters(letter) {
   saveContacts();
 }
 
-function renderContacts() {}
-
 function findUserIndexByContactName(contactName) {
   for (let i = 0; i < users.length; i++) {
     if (users[i]['username'] === contactName) {
@@ -110,14 +98,6 @@ function findUserIndexByContactName(contactName) {
     }
   }
   return -1;
-}
-
-function sortContactsByAlphabet() {
-  return contacts.sort((a, b) => a.name.localeCompare(b.name));
-}
-
-function getFirstLetters(str) {
-  return str.split(/\s/).reduce((response, word) => (response += word.slice(0, 1)), '');
 }
 
 function openContactInfo(i) {
@@ -134,7 +114,10 @@ function openContactInfo(i) {
     setTimeout(() => (content.innerHTML += openContactInfoHTML(contact, acronym, color, i)), 250);
   }
   renderChangesMobile(i);
+  openContactInfoAnimations();
+}
 
+function openContactInfoAnimations() {
   classlistRemove('contact-info', 'd-none');
   classlistAdd('contact-info', 'transition');
   setTimeout(() => classlistAdd('contact-info', 'show-overlay-menu'), 300);
@@ -183,21 +166,15 @@ async function addContact(target) {
   let tel = document.getElementById(`add-tel-${target}`);
 
   contacts.push({ name: firstLettersUppercase(name.value), mail: mail.value, phone: tel.value, color: '' });
-
   setColorToContacts();
   await saveContacts();
   init();
-
   render();
   index = findContactIndex(name.value);
   openContactInfo(index);
-
   clearPopup(name, mail, tel);
   await closeContactPopup(target, 'add');
-
-  setTimeout(() => {
-    animateBannerContacts('banner-contact-created', 'banner-contact-created-mobile');
-  }, 500);
+  setTimeout(() => animateBannerContacts('banner-contact-created', 'banner-contact-created-mobile'), 500);
 }
 
 function findContactIndex(name) {
@@ -214,27 +191,10 @@ function closePopup(id1, id2, direction) {
   setTimeout(() => classlistRemoveAndAdd(id1, 'd-block', 'd-none'), 250);
 }
 
-function firstLettersUppercase(str) {
-  let splitStr = '';
-  splitStr = str.toLowerCase().split(' ');
-  for (let i = 0; i < splitStr.length; i++) {
-    splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
-  }
-  return splitStr.join(' ');
-}
-
 function clearPopup(name, mail, tel) {
   name.value = '';
   mail.value = '';
   tel.value = '';
-}
-
-async function saveContacts() {
-  await setItem('contacts', JSON.stringify(contacts));
-}
-
-function doNotClose(event) {
-  event.stopPropagation();
 }
 
 function editContact(i, target) {
@@ -263,10 +223,6 @@ function renderEditContactDesktopOrMobile(acronym, color, i) {
   }
 }
 
-function validatePhoneNumber(input) {
-  input.value = input.value.replace(/[^\d+\/\s-]/g, '');
-}
-
 async function saveEditedContact(i, target) {
   deleteUnusedLetter(i);
   let name = document.getElementById(`edit-name-${target}`);
@@ -277,17 +233,14 @@ async function saveEditedContact(i, target) {
   contacts[i].mail = mail.value;
   contacts[i].phone = tel.value;
 
-  checkTasksSelectedContactNames(newSavedName, i);
-
+  checkTasksSelectedContactNames(newSavedName);
   await saveContacts();
   init();
-
   await closeContactPopup(target, 'edit');
   openContactInfo(i);
-  // init();
 }
 
-async function checkTasksSelectedContactNames(newSavedName, x) {
+async function checkTasksSelectedContactNames(newSavedName) {
   for (let i = 0; i < tasks.length; i++) {
     let task = tasks[i];
 
@@ -323,7 +276,6 @@ async function deleteContact(i) {
   await saveContacts();
   document.getElementById('contact-info').innerHTML = '';
   init();
-
   animateBannerContacts('banner-contact-deleted', 'banner-contact-deleted-mobile');
 }
 
@@ -378,21 +330,32 @@ function toggleBackground(i) {
   document.getElementById(`contact-list-basic-info${i}`).classList.add('bg-primary');
   document.getElementById(`name-list${i}`).classList.add('color-white');
 }
-function validateNameInput() {
-  let name = document.getElementById('add-name-desktop').value;
-  let errorMessage = document.getElementById('error-name');
-  if (name.length >= 2 && name.length <= 50) {
-    errorMessage.innerHTML = 'Name length is okay!';
-  }
+
+async function saveContacts() {
+  await setItem('contacts', JSON.stringify(contacts));
 }
 
-// noch aktualisieren?
-function validateNameInput2() {
-  let name = document.getElementById('add-name');
-  name.addEventListener('input', function (e) {
-    name.setCustomValidity(''); //remove message when new text is input
-  });
-  name.addEventListener('invalid', function (e) {
-    name.setCustomValidity('Please enter your full name'); //custom validation message for invalid text
-  });
+function doNotClose(event) {
+  event.stopPropagation();
+}
+
+function sortContactsByAlphabet() {
+  return contacts.sort((a, b) => a.name.localeCompare(b.name));
+}
+
+function getFirstLetters(str) {
+  return str.split(/\s/).reduce((response, word) => (response += word.slice(0, 1)), '');
+}
+
+function validatePhoneNumber(input) {
+  input.value = input.value.replace(/[^\d+\/\s-]/g, '');
+}
+
+function firstLettersUppercase(str) {
+  let splitStr = '';
+  splitStr = str.toLowerCase().split(' ');
+  for (let i = 0; i < splitStr.length; i++) {
+    splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
+  }
+  return splitStr.join(' ');
 }

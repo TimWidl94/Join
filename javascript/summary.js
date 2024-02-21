@@ -1,3 +1,6 @@
+/**
+ * Initializes variables for task counts
+ */
 let todoTasks = 0;
 let doneTasks = 0;
 let progressTasks = 0;
@@ -5,6 +8,9 @@ let awaitFeedbackTasks = 0;
 let tasksInBoard = 0;
 let urgentTasks = 0;
 
+/**
+ * Initializes the application
+ */
 async function init() {
   await includeHTML();
   await loadData();
@@ -21,26 +27,24 @@ async function init() {
   calculateUrgenTasks();
   renderSummaryContainer();
   insertGreeting();
-
 }
 
+/**
+ * Renders the summary container
+ */
 function renderSummaryContainer(){
   let container = document.getElementById('containerSummary');
   container.innerHTML = summaryHtml();
 }
 
+/**
+ * Displays greetings for mobile users
+ */
 function mobileGreetings() {
   let greetMobile = document.getElementById("greetingMobile");
   let greetingText = greeting();
   let userName = users[user].username;
-
-  greetMobile.innerHTML = `
-  <div class="colMobile">
-    <div class="colMobile-flex">
-      <div class="summary-welcome-mobile">${greetingText}</div>
-      <div class="summary-welcome-name-mobile">${userName}</div>
-    </div>
-  </div>`;
+  greetMobile.innerHTML =  greetMobileTemplate(greetingText, userName);
 
   setTimeout(function () {
     greetMobile.classList.add("fade-out-mobile");
@@ -50,10 +54,12 @@ function mobileGreetings() {
   }, 1000);
 }
 
+/**
+ * Inserts greeting message
+ */
 function insertGreeting() {
   let greet = document.getElementById("col-6");
   let greetingText = greeting();
-  console.log("users:", users[user].username);
   let userName = users[user].username;
   greet.innerHTML = "";
   greet.innerHTML = /*html*/ `
@@ -62,6 +68,9 @@ function insertGreeting() {
   `;
 }
 
+/**
+ * Determines appropriate greeting based on time of day
+ */
 function greeting() {
   let currentTime = new Date();
   let hour = currentTime.getHours();
@@ -78,6 +87,9 @@ function greeting() {
   return greetingText;
 }
 
+/**
+ * Calculates the number of tasks in different states
+ */
 function calculateTasks() {
   for (let i = 0; i < tasks.length; i++) {
     let tasksCategory = tasks[i]["currentState"];
@@ -89,10 +101,14 @@ function calculateTasks() {
   }
 }
 
+/**
+ * Counts the number of urgent tasks
+ */
 function calculateUrgenTasks(){
   for (let i = 0; i < tasks.length; i++) {
-  let tasksPrio = tasks[i]["prio"];
-  if(tasksPrio === 'urgent'){
-    urgentTasks++;}
+    let tasksPrio = tasks[i]["prio"];
+    if(tasksPrio === 'urgent'){
+      urgentTasks++;
+    }
   }
 }

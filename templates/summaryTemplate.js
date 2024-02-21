@@ -1,33 +1,48 @@
+/**
+ * Changes the image source to display a white pencil icon when hovering over a to-do element.
+ */
 function hoverTodo(element) {
   let img = document.getElementById(element);
   img.setAttribute("src", "../assets/img/Summary/pencilWhiteDesktop.svg");
 }
 
+/**
+ * Changes the image source to display a black pencil icon when not hovering over a to-do element.
+ */
 function unhoverTodo(element) {
   let img = document.getElementById(element);
   img.setAttribute("src", "../assets/img/Summary/pencilBlackDesktop.svg");
 }
 
+/**
+ * Changes the image source to display a white checkmark icon when hovering over a done element.
+ */
 function hoverDone(element) {
   let img = document.getElementById(element);
   img.setAttribute("src", "../assets/img/Summary/hookButtonWhiteDesktop.svg");
 }
 
+/**
+ * Changes the image source to display a black checkmark icon when not hovering over a done element.
+ */
 function unhoverDone(element) {
   let img = document.getElementById(element);
   img.setAttribute("src", "../assets/img/Summary/hookButtonBlackDesktop.svg");
 }
 
-function summaryHtml(){
+/**
+ * Generates HTML content for the summary section of the webpage.
+ */
+function summaryHtml() {
   return /*html*/ `
   <div class="summary-padding">
-        <div class="row-header flex-start">
-          <h2 class="summary-h2">Join 360</h2>
-          <span class="summary-vertical-line"></span>
-          <h3 class="summary-h3">Key Metrics at a Glance</h3>
-          <div class="summary-vertical-line-mobile"></div>
-        </div>
-      </div>
+    <div class="row-header flex-start">
+      <h2 class="summary-h2">Join 360</h2>
+      <span class="summary-vertical-line"></span>
+      <h3 class="summary-h3">Key Metrics at a Glance</h3>
+      <div class="summary-vertical-line-mobile"></div>
+    </div>
+  </div>
       <div class="sum-row">
         <div class="sum-col-50">
           <div class="row">
@@ -138,13 +153,21 @@ function summaryHtml(){
             <div class="greetingsMassageContainer" id="col-6">
     
           </div>
-      </div>
-
-       
-      </div>
-      
-    </div>
-
-  
-  `
+      </div>`;
 }
+
+
+/**
+ * Generates HTML content for the mobile greeting section.
+ */
+function greetMobileTemplate(greetingText, userName) {
+  return /*html*/ `
+  <div class="colMobile">
+    <div class="colMobile-flex">
+      <div class="summary-welcome-mobile">${greetingText}</div>
+      <div class="summary-welcome-name-mobile">${userName}</div>
+    </div>
+  </div>
+  `;
+}
+

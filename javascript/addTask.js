@@ -141,7 +141,7 @@ function showTaskForm(id) {
     let assignedDropdown = document.getElementById('assignedDropdown');
     let username = checkForUserName();
 
-    if (contacts[i]['name'] === username) {
+    if (currentUser === username) {
       assignedDropdown.innerHTML += assignedToUserYouHtml(i, color, currentUser, initials);
     } else {
       assignedDropdown.innerHTML += assignedToUserHtml(i, color, currentUser, initials);
@@ -176,6 +176,7 @@ function renderContacts(contacts) {
     let currentUser = contacts[i]['name'];
     let initials = getInitials(currentUser);
     let color = contacts[i]['color'];
+    
     assignedDropdown.innerHTML += assignedToUserHtml(i, color, currentUser, initials);
   }
 }
@@ -183,12 +184,18 @@ function renderContacts(contacts) {
 function renderFilteredContacts(filteredContacts) {
   let assignedDropdown = document.getElementById('assignedDropdown');
   assignedDropdown.innerHTML = '';
+  let username = checkForUserName();
 
   for (let i = 0; i < filteredContacts.length; i++) {
     let currentUser = filteredContacts[i]['name'];
     let initials = getInitials(currentUser);
     let color = filteredContacts[i]['color'];
-    assignedDropdown.innerHTML += assignedToUserHtml(i, color, currentUser, initials);
+
+    if (currentUser === username) {
+      assignedDropdown.innerHTML += assignedToUserYouHtml(i, color, currentUser, initials);
+    } else {
+      assignedDropdown.innerHTML += assignedToUserHtml(i, color, currentUser, initials);
+    }
   }
 }
 

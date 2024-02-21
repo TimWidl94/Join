@@ -316,6 +316,9 @@ textarea {
 .span-required {
   color: #ff8190; }
 
+.padding-fix {
+  padding-top: 0px; }
+
 .headline {
   display: flex;
   justify-content: center;
@@ -492,6 +495,7 @@ textarea {
   z-index: 1;
   width: 100%;
   padding: 21px 0px 0;
+  padding-top: 0px;
   border-radius: 10px;
   border: 1px solid #d1d1d1;
   background-color: #fff;
@@ -813,7 +817,6 @@ textarea {
   background-position: right 8px top 50%, 0 0;
   background-size: 32px, 100%;
   margin-top: -7px;
-  min-width: 409px;
   z-index: 0; }
 
 .inputImgPlus {
@@ -1109,6 +1112,8 @@ textarea {
   .buttonGrey img {
     display: none;
     padding: 15px 12px; }
+  .buttonGreyBoard img {
+    display: block; }
   .buttonWhite img {
     display: none;
     padding: 15px 12px; }
@@ -2540,6 +2545,7 @@ form {
     display: flex;
     height: 30px;
     width: 30px;
+    z-index: 999;
     justify-content: center;
     align-items: center; }
     .add-task-popup-close:hover {
@@ -3156,7 +3162,9 @@ form {
 
 @media (max-width: 800px) {
   container {
-    padding: 40px 32px; } }
+    padding: 40px 32px; }
+  .add-task-popup-close {
+    right: 20px; } }
 
 @media (max-width: 650px) {
   .btns-down-add-task-popup {
@@ -3874,6 +3882,32 @@ input:focus {
   outline: none; }
 
 .buttonGrey {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  color: white;
+  background-color: #2a3647;
+  border-radius: 8px;
+  border: none;
+  gap: 10px;
+  padding: 15px 16px; }
+
+.buttonGrey {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  color: white;
+  background-color: #2a3647;
+  border-radius: 8px;
+  border: none;
+  gap: 10px;
+  padding: 15px 16px; }
+
+.buttonGreyBoard {
   display: flex;
   text-align: center;
   align-items: center;

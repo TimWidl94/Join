@@ -1112,6 +1112,8 @@ textarea {
   .buttonGrey img {
     display: none;
     padding: 15px 12px; }
+  .buttonGreyBoard img {
+    display: block; }
   .buttonWhite img {
     display: none;
     padding: 15px 12px; }
@@ -2543,6 +2545,7 @@ form {
     display: flex;
     height: 30px;
     width: 30px;
+    z-index: 999;
     justify-content: center;
     align-items: center; }
     .add-task-popup-close:hover {
@@ -3159,7 +3162,9 @@ form {
 
 @media (max-width: 800px) {
   container {
-    padding: 40px 32px; } }
+    padding: 40px 32px; }
+  .add-task-popup-close {
+    right: 20px; } }
 
 @media (max-width: 650px) {
   .btns-down-add-task-popup {
@@ -3870,6 +3875,32 @@ input:focus {
   outline: none; }
 
 .buttonGrey {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  color: white;
+  background-color: #2a3647;
+  border-radius: 8px;
+  border: none;
+  gap: 10px;
+  padding: 15px 16px; }
+
+.buttonGrey {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  color: white;
+  background-color: #2a3647;
+  border-radius: 8px;
+  border: none;
+  gap: 10px;
+  padding: 15px 16px; }
+
+.buttonGreyBoard {
   display: flex;
   text-align: center;
   align-items: center;

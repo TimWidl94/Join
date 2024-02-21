@@ -104,6 +104,7 @@
     display: flex;
     height: 30px;
     width: 30px;
+    z-index: 999;
     justify-content: center;
     align-items: center;
     &:hover {
@@ -861,6 +862,9 @@
 @media (max-width: 800px) {
   container {
     padding: 40px 32px;
+  }
+  .add-task-popup-close {
+    right: 20px;
   }
 }
 

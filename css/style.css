@@ -316,6 +316,9 @@ textarea {
 .span-required {
   color: #ff8190; }
 
+.padding-fix {
+  padding-top: 0px; }
+
 .headline {
   display: flex;
   justify-content: center;
@@ -492,6 +495,7 @@ textarea {
   z-index: 1;
   width: 100%;
   padding: 21px 0px 0;
+  padding-top: 0px;
   border-radius: 10px;
   border: 1px solid #d1d1d1;
   background-color: #fff;

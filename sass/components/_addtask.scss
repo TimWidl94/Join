@@ -17,6 +17,9 @@
 .span-required {
   color: #ff8190;
 }
+.padding-fix {
+  padding-top: 0px;
+}
 
 .headline {
   display: flex;
@@ -217,6 +220,7 @@
   z-index: 1;
   width: 100%;
   padding: 21px 0px 0;
+  padding-top: 0px;
   border-radius: 10px;
   border: 1px solid $color-lightgrey;
   background-color: $color-light;

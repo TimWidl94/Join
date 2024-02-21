@@ -1,6 +1,44 @@
 @import '../base/_colors';
 
 /* Logo animation start page */
+@keyframes logoAnimationWhite {
+  0% {
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70vmin; /* Startgröße - ganze Bildschirmbreite */
+    height: auto;
+    opacity: 1;
+  }
+
+  20% {
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+    width: 70vmin; /* Startgröße - ganze Bildschirmbreite */
+    height: auto;
+    opacity: 0;
+  }
+
+  95% {
+    z-index: -2;
+    top: 80px;
+    left: 77px;
+    transform: translate(0%, 0%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translate(0%, 0%);
+    width: 100px;
+    height: auto;
+    height: auto;
+    opacity: 0;
+  }
+}
 @keyframes logoAnimation {
   0% {
     z-index: 1;
@@ -58,8 +96,19 @@
   top: 80px;
   left: 77px;
 }
+#logo-white {
+  width: 100px;
+  height: auto;
+  position: absolute;
+  animation: logoAnimationWhite 1.3s ease-in-out;
+  display: inline;
+  top: 80px;
+  left: 77px;
+}
 
 @keyframes fadeOutLogo {
+
+
   0% {
     opacity: 1;
      background-color: $primary-color;
@@ -165,5 +214,108 @@
   }
   100% {
     transform: translate(0%, 0%) rotate(0deg);
+  }
+}
+@media(max-width: 600px) {
+  .logo-bg-animation {
+    animation: none;
+  }
+  #logo-white {
+    display: none;
+  }
+  
+  #logo {
+    width: 64px;
+    height: auto;
+    position: absolute;
+    animation: logoAnimationMobile 1.3s ease-in-out;
+    display: inline;
+    top: 38px;
+    left: 37px;
+  }
+
+  #logo-white {
+    width: 64px;
+    animation: logoAnimationWhiteMobile 1.3s ease-in-out;
+    display: inline;
+    top: 38px;
+    left: 37px;
+  }
+
+  @keyframes logoAnimationMobile {
+    0% {
+      z-index: 1;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 70vmin; /* Startgröße - ganze Bildschirmbreite */
+      height: auto;
+      opacity: 1;
+    }
+
+    20% {
+      z-index: 1;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 70vmin; /* Startgröße - ganze Bildschirmbreite */
+      height: auto;
+      opacity: 1;
+    }
+
+    95% {
+      z-index: -2;
+      // top: 38px;
+      // left: 37px;
+      transform: translate(0%, 0%);
+      opacity: 1;
+    }
+
+    100% {
+      transform: translate(0%, 0%);
+      width: 64px;
+      height: auto;
+      opacity: 0;
+
+    }
+  }
+
+  @keyframes logoAnimationWhiteMobile {
+    0% {
+      z-index: 1;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 70vmin; 
+      height: auto;
+      opacity: 1;
+    }
+
+    20% {
+      z-index: 1;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 70vmin; 
+      height: auto;
+      opacity: 0;
+    }
+
+    95% {
+      z-index: -2;
+      top: 38px;
+      left: 37px;
+      transform: translate(0%, 0%);
+      opacity: 0;
+    }
+
+    100% {
+      transform: translate(0%, 0%);
+      width: 64px;
+      height: auto;
+      opacity: 0;
+      top: 38px;
+      left: 37px;
+    }
   }
 }

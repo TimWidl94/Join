@@ -11,6 +11,8 @@ async function init() {
   await loadData();
   await loadUser();
   setUserInitials();
+  setUserToContacts();
+  setColorToContacts();
   setColorToActive('sidebarAddTask', 'addTask-img', 'bottomBarAddTaskMobile', 'addTaskImgMobile');
   await renderAddTask();
   await renderSubTask();
@@ -130,6 +132,7 @@ function addEditSubTask(i) {
 function showTaskForm(id) {
   let assignedTo = document.getElementById(id);
   assignedTo.innerHTML = showTaskFormHtml();
+  sortContactsByAlphabet();
 
   for (let i = 0; i < contacts.length; i++) {
     let currentUser = contacts[i]['name'];
@@ -194,7 +197,7 @@ function openDropDown(idDropdown, idImgArrow) {
   let dropdownImgArrow = document.getElementById(idImgArrow);
 
   assignedDropdown.classList.toggle('d-none');
-  dropdown.classList.toggle('border-active');
+  // dropdown.classList.toggle('border-active');
   assignedDropdown.classList.toggle('dropbtn');
   dropdownImgArrow.classList.toggle('rotate-arrow');
 }

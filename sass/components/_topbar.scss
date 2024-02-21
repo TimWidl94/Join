@@ -158,6 +158,12 @@
   transform: translateY(0) !important;
 }
 
-// .hide {
-//   transform: translateX(300px);
-// }
+#topbar-dropdown-help {
+  display: none;
+}
+
+@media (max-width: 1000px) {
+  #topbar-dropdown-help {
+    display: flex !important;
+  }
+}

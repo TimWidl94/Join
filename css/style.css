@@ -7,7 +7,6 @@
     left: 50%;
     transform: translate(-50%, -50%);
     width: 70vmin;
-    /* Startgröße - ganze Bildschirmbreite */
     height: auto;
     opacity: 1; }
   20% {
@@ -16,7 +15,6 @@
     left: 50%;
     transform: translate(-50%, -50%);
     width: 70vmin;
-    /* Startgröße - ganze Bildschirmbreite */
     height: auto;
     opacity: 0; }
   95% {
@@ -39,7 +37,6 @@
     left: 50%;
     transform: translate(-50%, -50%);
     width: 70vmin;
-    /* Startgröße - ganze Bildschirmbreite */
     height: auto;
     opacity: 1; }
   20% {
@@ -48,7 +45,6 @@
     left: 50%;
     transform: translate(-50%, -50%);
     width: 70vmin;
-    /* Startgröße - ganze Bildschirmbreite */
     height: auto;
     opacity: 1; }
   95% {
@@ -142,32 +138,6 @@
     animation-timing-function: ease-out;
     opacity: 0; } }
 
-/*wobble board task animation*/
-.wobble-container {
-  position: relative; }
-
-.wobble-element {
-  background-color: #ccc;
-  top: 0%;
-  left: 0%;
-  transform: translate(0%, 0%);
-  transition: transform 0.5s ease-in-out; }
-
-.wobble-container:hover .wobble-element {
-  animation: wobble 0.5s ease-in-out; }
-
-@keyframes wobble {
-  0% {
-    transform: translate(0%, 0%) rotate(0deg); }
-  25% {
-    transform: translate(0%, 0%) rotate(-5deg); }
-  50% {
-    transform: translate(0%, 0%) rotate(5deg); }
-  75% {
-    transform: translate(0%, 0%) rotate(-5deg); }
-  100% {
-    transform: translate(0%, 0%) rotate(0deg); } }
-
 @media (max-width: 600px) {
   .logo-bg-animation {
     animation: none; }
@@ -194,7 +164,6 @@
       left: 50%;
       transform: translate(-50%, -50%);
       width: 70vmin;
-      /* Startgröße - ganze Bildschirmbreite */
       height: auto;
       opacity: 1; }
     20% {
@@ -203,7 +172,6 @@
       left: 50%;
       transform: translate(-50%, -50%);
       width: 70vmin;
-      /* Startgröße - ganze Bildschirmbreite */
       height: auto;
       opacity: 1; }
     95% {
@@ -245,6 +213,32 @@
       opacity: 0;
       top: 38px;
       left: 37px; } } }
+
+/*wobble board task animation*/
+.wobble-container {
+  position: relative; }
+
+.wobble-element {
+  background-color: #ccc;
+  top: 0%;
+  left: 0%;
+  transform: translate(0%, 0%);
+  transition: transform 0.5s ease-in-out; }
+
+.wobble-container:hover .wobble-element {
+  animation: wobble 0.5s ease-in-out; }
+
+@keyframes wobble {
+  0% {
+    transform: translate(0%, 0%) rotate(0deg); }
+  25% {
+    transform: translate(0%, 0%) rotate(-5deg); }
+  50% {
+    transform: translate(0%, 0%) rotate(5deg); }
+  75% {
+    transform: translate(0%, 0%) rotate(-5deg); }
+  100% {
+    transform: translate(0%, 0%) rotate(0deg); } }
 
 body {
   margin: 0;

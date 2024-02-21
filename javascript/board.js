@@ -62,7 +62,9 @@ function closeAddTaskPopup() {
 
 function openTaskPopup(i) {
   let taskPopup = document.getElementById('aTPopupWrapper');
+  let taskPopupContainer = document.getElementById('aTPopupWrapper');
   taskPopup.classList.remove('d-none');
+  taskPopup.classList.add('slide-in');
   taskPopup.classList.add('d-block');
 
   let img = setPrioImg(i);
@@ -77,11 +79,20 @@ function openTaskPopup(i) {
 }
 
 function closeTaskPopup() {
-  document.getElementById('aTPopupWrapper').classList.remove('d-block');
-  document.getElementById('aTPopupWrapper').classList.add('d-none');
-  updateHTML();
-  subtasks = [];
+  let taskPopup = document.getElementById('aTPopupWrapper');
+  taskPopup.classList.remove('d-block');
+  taskPopup.classList.remove('slide-in');
+  taskPopup.classList.add('slide-out');
+
+  setTimeout(function () {
+    taskPopup.classList.remove('slide-out');
+    taskPopup.classList.add('d-none');
+  }, 500);
+
+  updateHTML(); 
+  subtasks = []; 
 }
+
 
 function checkSubtasksExisting(i) {
   let container = document.getElementById(`aTPopupSubtasks${i}`);

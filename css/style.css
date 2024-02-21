@@ -2693,14 +2693,15 @@ form {
   top: 0;
   bottom: 0;
   right: 0;
-  left: 0;
-  background-color: rgba(0, 0, 0, 0.4); }
+  left: 0; }
 
 .aTPopupContainer {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%; }
+  height: 100%;
+  width: 120%;
+  background-color: rgba(0, 0, 0, 0.4); }
 
 .addTaskPopupContainer {
   display: flex;

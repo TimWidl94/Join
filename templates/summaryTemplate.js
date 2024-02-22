@@ -1,5 +1,7 @@
 /**
  * Changes the image source to display a white pencil icon when hovering over a to-do element.
+ * 
+ * @param {string} element - The ID of the element to be hovered over.
  */
 function hoverTodo(element) {
   let img = document.getElementById(element);
@@ -8,6 +10,8 @@ function hoverTodo(element) {
 
 /**
  * Changes the image source to display a black pencil icon when not hovering over a to-do element.
+ * 
+ * @param {string} element - The ID of the element to be unhovered.
  */
 function unhoverTodo(element) {
   let img = document.getElementById(element);
@@ -16,6 +20,8 @@ function unhoverTodo(element) {
 
 /**
  * Changes the image source to display a white checkmark icon when hovering over a done element.
+ * 
+ * @param {string} element - The ID of the element to be hovered over.
  */
 function hoverDone(element) {
   let img = document.getElementById(element);
@@ -24,6 +30,8 @@ function hoverDone(element) {
 
 /**
  * Changes the image source to display a black checkmark icon when not hovering over a done element.
+ * 
+ * @param {string} element - The ID of the element to be unhovered.
  */
 function unhoverDone(element) {
   let img = document.getElementById(element);
@@ -32,6 +40,8 @@ function unhoverDone(element) {
 
 /**
  * Generates HTML content for the summary section of the webpage.
+ * 
+ * @returns {string} The HTML content for the summary section.
  */
 function summaryHtml() {
   return /*html*/ `
@@ -159,6 +169,10 @@ function summaryHtml() {
 
 /**
  * Generates HTML content for the mobile greeting section.
+ * 
+ * @param {string} greetingText - The greeting text to be displayed.
+ * @param {string} userName - The name of the user to be displayed.
+ * @returns {string} The HTML content for the mobile greeting section.
  */
 function greetMobileTemplate(greetingText, userName) {
   return /*html*/ `

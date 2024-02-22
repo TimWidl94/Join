@@ -565,7 +565,7 @@ function removeHighlight(id) {
 
 function checkTaskAreaDisplayEmpty() {
   let dragAreas = document.getElementsByClassName('drag-area');
-  let categories = ['To Do', 'In Progress', 'Await feedback', 'Done'];
+  let categories = ['To do', 'In progress', 'Await feedback', 'Done'];
 
   for (let i = 0; i < dragAreas.length; i++) {
     let dragArea = dragAreas[i];
@@ -748,6 +748,7 @@ async function renderSearchedTasksInProgress(i) {
 async function renderSearchedTasksAwaitFeedback(i) {
   let contentBoxAwaitFeedback = document.getElementById('awaitFeedback');
   let img = await setPrioImg(i);
+  let x = await checkHowManySubtasksChecked(i);
   contentBoxAwaitFeedback.innerHTML += generateTodoHTML(i, img, x);
   setCategoryBackground(tasks[i].selectedCategory, `board-task-epic${i}`);
   await taskProgressBar(i);
@@ -755,6 +756,7 @@ async function renderSearchedTasksAwaitFeedback(i) {
 
 async function renderSearchedTasksDone(i) {
   let contentBoxDone = document.getElementById('done');
+  let img = await setPrioImg(i);
   let x = await checkHowManySubtasksChecked(i);
   contentBoxDone.innerHTML += generateTodoHTML(i, img, x);
   setCategoryBackground(tasks[i].selectedCategory, `board-task-epic${i}`);

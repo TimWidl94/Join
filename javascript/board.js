@@ -13,11 +13,12 @@ async function initBoard() {
   // renderContacts();
   setColorToActive('sidebarBoard', 'board-img', 'bottomBarBoardMobile', 'boardImgMobile');
   checkTaskAreaDisplayEmpty();
+  console.log('initBoard tasks:', tasks);
 }
 
-function renderAddTaskPopUp(section) {
+function renderAddTaskPopUp(column) {
   let contentBoardTask = document.getElementById('boardAddTask');
-  contentBoardTask.innerHTML = addTaskPopUpHtml(section);
+  contentBoardTask.innerHTML = addTaskPopUpHtml(column);
 }
 
 function setMinDateTodayPopup(inputIdPopup) {
@@ -32,8 +33,8 @@ function setMinDateTodayPopup(inputIdPopup) {
   });
 }
 
-async function openAddTaskPopup(section) {
-  await renderAddTaskPopUp(section);
+async function openAddTaskPopup(column) {
+  await renderAddTaskPopUp(column);
   changePrioToMedium('mediumContainer', 'mediumImg');
   await renderSubTask();
   await showTaskForm('assignedTo');

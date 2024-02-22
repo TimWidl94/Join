@@ -1,6 +1,6 @@
 function addTaskHtml() {
   return /*html*/ `
-    <form onsubmit="addTask('myDateInput'); return false" class="formAddTask">
+    <form onsubmit="addTask('myDateInput', 'To Do'); return false" class="formAddTask">
       <section class="container-left-right-wrapper">
         <section class="container-left">
         

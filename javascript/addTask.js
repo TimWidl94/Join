@@ -50,18 +50,22 @@ function setMinDateToday(inputId) {
   });
 }
 
-async function addTask(id) {
-  await pushAddTask(id);
+async function addTask(id, section) {
+  console.log('addTask section:', section);
+
+  await pushAddTask(id, section);
   clearInputValue();
   showPopUpAddedTaskToBoard();
 }
 
-async function pushAddTask(id) {
+async function pushAddTask(id, section) {
   let taskTitle = document.getElementById('taskTitle').value;
   let taskDescription = document.getElementById('taskDescription').value;
   let taskDueDate = document.getElementById(id).value;
   let selectedCategoryElement = document.getElementById('showSelectedCategory');
   let selectedCategory = selectedCategoryElement.getAttribute('data-value');
+
+  console.log('pushAddTask section:', section);
 
   tasks.push({
     taskTitle: taskTitle,
@@ -71,7 +75,7 @@ async function pushAddTask(id) {
     prio: selectedPrio,
     subtasks: subtasks,
     selectedContacts: selectedContacts,
-    currentState: 'toDo',
+    currentState: section,
   });
   await setItem('tasks', JSON.stringify(tasks));
 }

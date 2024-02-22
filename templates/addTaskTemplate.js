@@ -184,7 +184,7 @@ function assignedToUserHtml(i, color, currentUser, initials, isChoosen) {
 
 function assignedToUserHtmlFILTERED(i, color, currentUser, initials, isChoosen) {
   return /*html*/ `
-    <div id="user-${i}" class="flex-checkbox selected-profile selected_${isChoosen}" onclick="setIsChoosenValue(${i}), addAssignedContactFiltered('${i}', '${color}')" data-value="${currentUser}">
+    <div id="user-${i}" class="flex-checkbox selected-profile selected_${isChoosen}" onclick="addFilteredAssignedContact('${i}', '${color}')" data-value="${currentUser}">
       <div class="selected-profile">
         <div class="assinged-contact-profile" style="background-color:${color}">${initials}</div>
         <span class="assigned-name">${currentUser}</span>

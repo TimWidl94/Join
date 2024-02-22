@@ -9,7 +9,9 @@ let tasksInBoard = 0;
 let urgentTasks = 0;
 
 /**
- * Initializes the application
+ * Initializes the application.
+ * Loads HTML content, login form, and local storage data.
+ * @async
  */
 async function init() {
   await includeHTML();
@@ -30,21 +32,21 @@ async function init() {
 }
 
 /**
- * Renders the summary container
+ * Renders the summary container.
  */
-function renderSummaryContainer(){
+function renderSummaryContainer() {
   let container = document.getElementById('containerSummary');
   container.innerHTML = summaryHtml();
 }
 
 /**
- * Displays greetings for mobile users
+ * Displays greetings for mobile users.
  */
 function mobileGreetings() {
   let greetMobile = document.getElementById("greetingMobile");
   let greetingText = greeting();
   let userName = users[user].username;
-  greetMobile.innerHTML =  greetMobileTemplate(greetingText, userName);
+  greetMobile.innerHTML = greetMobileTemplate(greetingText, userName);
 
   setTimeout(function () {
     greetMobile.classList.add("fade-out-mobile");
@@ -55,7 +57,7 @@ function mobileGreetings() {
 }
 
 /**
- * Inserts greeting message
+ * Inserts greeting message.
  */
 function insertGreeting() {
   let greet = document.getElementById("col-6");
@@ -69,7 +71,8 @@ function insertGreeting() {
 }
 
 /**
- * Determines appropriate greeting based on time of day
+ * Determines appropriate greeting based on time of day.
+ * @returns {string} - Greeting text.
  */
 function greeting() {
   let currentTime = new Date();
@@ -88,26 +91,26 @@ function greeting() {
 }
 
 /**
- * Calculates the number of tasks in different states
+ * Calculates the number of tasks in different states.
  */
 function calculateTasks() {
   for (let i = 0; i < tasks.length; i++) {
     let tasksCategory = tasks[i]["currentState"];
-    if (tasksCategory === "toDo") {todoTasks++;}
-    if (tasksCategory === "done") {doneTasks++;}
-    if (tasksCategory === "awaitFeedback") {awaitFeedbackTasks++;}
-    if (tasksCategory === "inProgress") {progressTasks++;}
+    if (tasksCategory === "toDo") { todoTasks++; }
+    if (tasksCategory === "done") { doneTasks++; }
+    if (tasksCategory === "awaitFeedback") { awaitFeedbackTasks++; }
+    if (tasksCategory === "inProgress") { progressTasks++; }
     tasksInBoard++;
   }
 }
 
 /**
- * Counts the number of urgent tasks
+ * Counts the number of urgent tasks.
  */
-function calculateUrgenTasks(){
+function calculateUrgenTasks() {
   for (let i = 0; i < tasks.length; i++) {
     let tasksPrio = tasks[i]["prio"];
-    if(tasksPrio === 'urgent'){
+    if (tasksPrio === 'urgent') {
       urgentTasks++;
     }
   }

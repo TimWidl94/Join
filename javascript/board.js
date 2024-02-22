@@ -13,7 +13,6 @@ async function initBoard() {
   // renderContacts();
   setColorToActive('sidebarBoard', 'board-img', 'bottomBarBoardMobile', 'boardImgMobile');
   checkTaskAreaDisplayEmpty();
-  console.log('initBoard tasks:', tasks);
 }
 
 function renderAddTaskPopUp(column) {
@@ -566,12 +565,14 @@ function removeHighlight(id) {
 
 function checkTaskAreaDisplayEmpty() {
   let dragAreas = document.getElementsByClassName('drag-area');
+  let categories = ['To Do', 'In Progress', 'Await feedback', 'Done'];
 
   for (let i = 0; i < dragAreas.length; i++) {
     let dragArea = dragAreas[i];
+    let category = categories[i];
 
     if (dragArea.children.length < 1) {
-      dragArea.innerHTML = /*html*/ `<div class="drag-area-empty">No tasks To do</div>`;
+      dragArea.innerHTML = /*html*/ `<div class="drag-area-empty">No task in "${category}"</div>`;
     }
   }
 }

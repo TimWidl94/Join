@@ -51,8 +51,6 @@ function setMinDateToday(inputId) {
 }
 
 async function addTask(id, column) {
-  console.log('addTask section:', column);
-
   await pushAddTask(id, column);
   clearInputValue();
   showPopUpAddedTaskToBoard();
@@ -65,9 +63,6 @@ async function pushAddTask(id, column) {
   let selectedCategoryElement = document.getElementById('showSelectedCategory');
   let selectedCategory = selectedCategoryElement.getAttribute('data-value');
 
-  console.log('pushAddTask column:', column);
-  console.log('pushAddTask tasks before:', tasks);
-
   tasks.push({
     taskTitle: taskTitle,
     taskDescription: taskDescription,
@@ -78,7 +73,6 @@ async function pushAddTask(id, column) {
     selectedContacts: selectedContacts,
     currentState: column,
   });
-  console.log('pushAddTask tasks after:', tasks);
 
   await setItem('tasks', JSON.stringify(tasks));
 }
@@ -404,7 +398,6 @@ function changePrioToLow(idContainer, idImg) {
 function checkIfFormIsFilled(id) {
   let title = document.getElementById('taskTitle');
   let dueDate = document.getElementById(id);
-  console.log('dueDate.value:', dueDate.value);
   if (categoryIsSelected === true && title.value > '' && dueDate.value > '') {
     document.getElementById('create-task').disabled = false;
   }

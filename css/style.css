@@ -3105,7 +3105,8 @@ form {
 
 @media (min-width: 1300px) {
   .board-title {
-    z-index: unset; } }
+    z-index: unset;
+    padding-left: 20px; } }
 
 @media (max-width: 1300px) {
   .overflowYActive {

@@ -316,7 +316,7 @@ async function animateBannerContacts(idDesktop, idMobile) {
 
   classlistAdd(banner, 'd-flex');
   classlistAdd(banner, transform);
-  await timeOut(1500);
+  setTimeout(() => classlistRemove(banner, transform), 3000);
   classlistRemove(banner, transform);
   setTimeout(() => classlistRemove(banner, 'd-flex'), 250);
 }

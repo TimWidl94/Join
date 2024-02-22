@@ -6,6 +6,11 @@ let selectedCategories = [];
 let categoryIsSelected = false;
 let selectedPrio;
 
+/**
+ * Initializes the application.
+ * Loads necessary data and sets up the initial UI.
+ * @async
+ */
 async function init() {
   await includeHTML();
   await loadData();
@@ -21,6 +26,9 @@ async function init() {
   setMinDateToday('myDateInput');
 }
 
+/**
+ * Renders the add task form in the main content area and the board view.
+ */
 function renderAddTask() {
   let contentMain = document.getElementById('main');
   let contentBoardTask = document.getElementById('boardAddTask');
@@ -33,11 +41,18 @@ function renderAddTask() {
   }
 }
 
+/**
+ * Renders the subtask input field.
+ */
 function renderSubTask() {
   let container = document.getElementById('subtasks');
   container.innerHTML += subTaskInputHtml();
 }
 
+/**
+ * Sets the minimum date of an input field to today's date and prevents selecting past dates.
+ * @param {string} inputId - The ID of the input field.
+ */
 function setMinDateToday(inputId) {
   var today = new Date().toISOString().split('T')[0];
   document.getElementById(inputId).setAttribute('min', today);
@@ -50,12 +65,27 @@ function setMinDateToday(inputId) {
   });
 }
 
+/**
+ * Adds a task to the tasks array and stores it in local storage.
+ * @param {string} id - The ID of the input field.
+ * @param {string} column - The column where the task is added.
+ * @async
+ */
 async function addTask(id, column) {
   await pushAddTask(id, column);
   clearInputValue();
   showPopUpAddedTaskToBoard();
 }
 
+
+/**
+ * Adds a new task to the tasks array with the provided details.
+ * Handles async operations.
+ * @async
+ * @param {string} id - The ID of the input field for the due date.
+ * @param {string} column - The column representing the current state of the task.
+ * @returns {void}
+ */
 async function pushAddTask(id, column) {
   let taskTitle = document.getElementById('taskTitle').value;
   let taskDescription = document.getElementById('taskDescription').value;
@@ -63,6 +93,22 @@ async function pushAddTask(id, column) {
   let selectedCategoryElement = document.getElementById('showSelectedCategory');
   let selectedCategory = selectedCategoryElement.getAttribute('data-value');
 
+  addTaskValues(taskTitle, taskDescription, taskDueDate, selectedCategory, selectedPrio, subtasks, selectedContacts, column);
+}
+
+/**
+ * Adds a new task to the tasks array with the provided details.
+ * @param {string} taskTitle - The title of the task.
+ * @param {string} taskDescription - The description of the task.
+ * @param {string} taskDueDate - The due date of the task.
+ * @param {string} selectedCategory - The selected category of the task.
+ * @param {string} selectedPrio - The priority of the task.
+ * @param {Array} subtasks - An array of subtasks associated with the task.
+ * @param {Array} selectedContacts - An array of contacts associated with the task.
+ * @param {string} column - The column representing the current state of the task.
+ * @returns {void}
+ */
+function addTaskValues(taskTitle, taskDescription, taskDueDate, selectedCategory, selectedPrio, subtasks, selectedContacts, column) {
   tasks.push({
     taskTitle: taskTitle,
     taskDescription: taskDescription,
@@ -77,6 +123,12 @@ async function pushAddTask(id, column) {
   await setItem('tasks', JSON.stringify(tasks));
 }
 
+
+/**
+ * Adds a subtask to the subtasks array.
+ * @param {string} idInput - The ID of the subtask input field.
+ * @param {string} idContainer - The ID of the container for subtasks.
+ */
 function addSubTask(idInput, idContainer) {
   let subTaskInput = document.getElementById(idInput).value;
   let subTaskError = document.getElementById('subTaskError');
@@ -97,6 +149,11 @@ function addSubTask(idInput, idContainer) {
   }
 }
 
+/**
+ * Renders the generated subtasks in the specified container.
+ * @param {string} idContainer - The ID of the container where subtasks will be rendered.
+ * @returns {void}
+ */
 function renderGeneratedSubTasks(idContainer) {
   let container = document.getElementById(idContainer);
   container.innerHTML = '';
@@ -107,16 +164,21 @@ function renderGeneratedSubTasks(idContainer) {
   }
 }
 
+/**
+ * Finds the position of a subtask with the given ID.
+ * @param {string} id - The ID of the subtask to find.
+ * @returns {number} - The index of the subtask in the subtasks array, or -1 if not found.
+ */
 function findSubtaskPosition(id) {
   let nr = subtasks.findIndex((obj) => obj.id === id);
-  // if (nr == -1) {
-  //   console.log('Number of Subtask not found!');
-  // }
-  // console.log('findSubtaskPosition nr:', nr);
-
   return nr;
 }
 
+/**
+ * Edits the subtask with the given ID.
+ * @param {string} id - The ID of the subtask to edit.
+ * @returns {void}
+ */
 function editSubTask(id) {
   let container = document.getElementById(id);
   let nr = findSubtaskPosition(id);
@@ -124,12 +186,22 @@ function editSubTask(id) {
   container.innerHTML = editSubTaskHtml(textContent, id);
 }
 
+/**
+ * Adds or edits a subtask at the specified index.
+ * @param {number} i - The index of the subtask.
+ * @returns {void}
+ */
 function addEditSubTask(i) {
   let subTaskInput = document.getElementById('editSubTaskInput');
   subtasks[i].subTaskInput = subTaskInput.value;
   renderGeneratedSubTasks('subTaskContainer');
 }
 
+/**
+ * Displays the task form with assigned contacts.
+ * @param {string} id - The ID of the container to display the task form in.
+ * @returns {void}
+ */
 function showTaskForm(id) {
   let assignedTo = document.getElementById(id);
   assignedTo.innerHTML = showTaskFormHtml();
@@ -150,6 +222,10 @@ function showTaskForm(id) {
   }
 }
 
+/**
+ * Filters contacts based on the search term and renders them.
+ * @returns {void}
+ */
 function filterAddTaskContact() {
   let searchTerm = document.getElementById('search').value.toLowerCase();
   let assignedDropdown = document.getElementById('assignedDropdown');
@@ -169,6 +245,11 @@ function filterAddTaskContact() {
   }
 }
 
+/**
+ * Renders the contacts in the assigned dropdown.
+ * @param {Array} contacts - The array of contacts to render.
+ * @returns {void}
+ */
 function renderContacts(contacts) {
   let assignedDropdown = document.getElementById('assignedDropdown');
   assignedDropdown.innerHTML = '';
@@ -182,6 +263,11 @@ function renderContacts(contacts) {
   }
 }
 
+/**
+ * Renders the filtered contacts in the assigned dropdown.
+ * @param {Array} filteredContacts - The array of filtered contacts to render.
+ * @returns {void}
+ */
 function renderFilteredContacts(filteredContacts) {
   let assignedDropdown = document.getElementById('assignedDropdown');
   assignedDropdown.innerHTML = '';
@@ -200,6 +286,12 @@ function renderFilteredContacts(filteredContacts) {
   }
 }
 
+/**
+ * Toggles the display of a dropdown menu.
+ * @param {string} idDropdown - The ID of the dropdown menu to toggle.
+ * @param {string} idImgArrow - The ID of the arrow icon associated with the dropdown.
+ * @returns {void}
+ */
 function openDropDown(idDropdown, idImgArrow) {
   let assignedDropdown = document.getElementById(idDropdown);
   let dropdownImgArrow = document.getElementById(idImgArrow);
@@ -210,6 +302,10 @@ function openDropDown(idDropdown, idImgArrow) {
   dropdownImgArrow.classList.toggle('rotate-arrow');
 }
 
+/**
+ * Toggles the display of a category dropdown menu.
+ * @returns {void}
+ */
 function openDropDownCategory() {
   let assignedDropdownCategory = document.getElementById('assignedDropdownCategory');
   let dropdownImgArrowCategory = document.getElementById('dropdownImgArrowCategory');
@@ -218,6 +314,12 @@ function openDropDownCategory() {
   dropdownImgArrowCategory.classList.toggle('rotate-arrow');
 }
 
+/**
+ * Adds an assigned contact to the selected contacts list.
+ * @param {number} i - The index of the contact.
+ * @param {string} color - The color associated with the contact.
+ * @returns {void}
+ */
 async function addAssignedContact(i, color) {
   let assignedDropdown = document.getElementById('assignedDropdown');
   let selectedContact = contacts[i]['name'];
@@ -228,7 +330,17 @@ async function addAssignedContact(i, color) {
   await renderSelectedContacts(i);
 }
 
-function renderContactList(assignedDropdown, checkboxImage, userID, selectedContact, color) {
+/**
+ * Adds a selected contact to the list of selected contacts.
+ * 
+ * @param {HTMLElement} assignedDropdown - The dropdown menu element where the contacts will be rendered.
+ * @param {HTMLElement} checkboxImage - The checkbox image for the selected contact.
+ * @param {HTMLElement} userID - The user ID of the selected contact.
+ * @param {string} selectedContact - The selected contact.
+ * @param {string} color - The color of the selected contact.
+ * @returns {void}
+ */
+function addSelectedContact(assignedDropdown, checkboxImage, userID, selectedContact, color) {
   const index = selectedContacts.findIndex((contact) => contact.name === selectedContact && contact.color === color);
   if (!checkIfSelectedContactExist(selectedContact)) {
     assignedDropdown.classList.toggle('addTask-selected');
@@ -242,7 +354,22 @@ function renderContactList(assignedDropdown, checkboxImage, userID, selectedCont
     }
     checkboxImage.src = './assets/img/icons/check_button-white.svg';
     userID.classList.add('selected-profile-active-item');
-  } else {
+  }
+}
+
+/**
+ * Removes a selected contact from the list of selected contacts.
+ * 
+ * @param {HTMLElement} assignedDropdown - The dropdown menu element where the contacts will be rendered.
+ * @param {HTMLElement} checkboxImage - The checkbox image for the selected contact.
+ * @param {HTMLElement} userID - The user ID of the selected contact.
+ * @param {string} selectedContact - The selected contact.
+ * @param {string} color - The color of the selected contact.
+ * @returns {void}
+ */
+function removeSelectedContact(assignedDropdown, checkboxImage, userID, selectedContact, color) {
+  const index = selectedContacts.findIndex((contact) => contact.name === selectedContact && contact.color === color);
+  if (checkIfSelectedContactExist(selectedContact)) {
     if (index !== -1) {
       selectedContacts.splice(index, 1);
     }
@@ -252,6 +379,12 @@ function renderContactList(assignedDropdown, checkboxImage, userID, selectedCont
   }
 }
 
+/**
+ * Checks if the selected contact already exists in the list of selected contacts.
+ * 
+ * @param {string} selectedContact - The selected contact.
+ * @returns {boolean} - Returns true if the selected contact already exists, otherwise false.
+ */
 function checkIfSelectedContactExist(selectedContact) {
   for (let i = 0; i < selectedContacts.length; i++) {
     if (selectedContacts[i]['name'].includes(selectedContact)) {
@@ -260,6 +393,12 @@ function checkIfSelectedContactExist(selectedContact) {
   }
 }
 
+/**
+ * Renders the selected contacts in the "Assigned Contacts" section on the user interface.
+ * 
+ * @param {number} i - The index of the currently selected contact.
+ * @returns {void}
+ */
 function renderSelectedContacts(i) {
   let content = document.getElementById('assignedAddedContact');
   content.innerHTML = '';
@@ -272,6 +411,12 @@ function renderSelectedContacts(i) {
   }
 }
 
+/**
+ * Generates initials from a contact name.
+ * 
+ * @param {string} contactName - The full name of the contact.
+ * @returns {string} The initials generated from the contact name.
+ */
 function getInitials(contactName) {
   const nameParts = contactName.split(' ');
   let initials = '';
@@ -281,6 +426,12 @@ function getInitials(contactName) {
   return initials.toUpperCase();
 }
 
+/**
+ * Deletes a subtask from the list of subtasks.
+ * 
+ * @param {number} number - The number of the subtask to be deleted.
+ * @param {string} idContainer - The ID of the container holding the subtasks.
+ */
 function deleteSubTask(number, idContainer) {
   let nr = findSubtaskPosition(number);
   subtasks.splice(nr, 1);
@@ -292,12 +443,18 @@ function deleteSubTask(number, idContainer) {
   }
 }
 
+/**
+ * Clears the input value and resets the task form.
+ */
 function clearInputValue() {
   renderAddTask();
   showTaskForm('assignedTo');
   changePrioToMedium('mediumContainer', 'mediumImg');
 }
 
+/**
+ * Shows a popup indicating that a task has been added to the board.
+ */
 async function showPopUpAddedTaskToBoard() {
   let popup = document.getElementById('addedTaskToBoard');
   popup.classList.remove('d-none');
@@ -305,10 +462,21 @@ async function showPopUpAddedTaskToBoard() {
   setTimeout(() => (window.location.href = './board.html'), 3000);
 }
 
+/**
+ * Moves a popup to the center of the screen.
+ * 
+ * @param {HTMLElement} popup - The popup element to be moved.
+ */
 function moveToCenter(popup) {
   popup.classList.add('moveToCenterAddTask');
 }
 
+/**
+ * Selects a category for the task.
+ * 
+ * @param {string} category - The category selected for the task.
+ * @param {string} id - The ID of the category element.
+ */
 function selectCategory(category, id) {
   const userStory = document.getElementById('userStory');
   const technicalTask = document.getElementById('other');
@@ -318,6 +486,15 @@ function selectCategory(category, id) {
   checkIfFormIsFilled(id);
 }
 
+/**
+ * Handles the selection of a task category.
+ * 
+ * @param {HTMLElement} userStory - The user story category element.
+ * @param {HTMLElement} technicalTask - The technical task category element.
+ * @param {HTMLElement} showSelectedCategory - The element displaying the selected category.
+ * @param {HTMLElement} assignedDropdownCategory - The dropdown category element.
+ * @param {string} category - The category selected for the task.
+ */
 function selectCategoryIfElse(userStory, technicalTask, showSelectedCategory, assignedDropdownCategory, category) {
   if (category === 'user-story' || category === 'User Story') {
     userStory.classList.add('category-selected');
@@ -341,6 +518,11 @@ function selectCategoryIfElse(userStory, technicalTask, showSelectedCategory, as
   }
 }
 
+/**
+ * Changes the buttons for adding a task.
+ * 
+ * @param {string} id - The ID of the input field.
+ */
 function changeButtonsAddTask(id) {
   let inputField = document.getElementById(id);
 
@@ -348,17 +530,34 @@ function changeButtonsAddTask(id) {
   document.getElementById('subTaskInput').focus();
 }
 
+/**
+ * Sets the value of an input field back to an empty string.
+ * 
+ * @param {string} idInput - The ID of the input field.
+ * @param {string} idContainer - The ID of the container.
+ */
 function setValueBack(idInput, idContainer) {
   let inputField = document.getElementById(idInput);
   inputField.value = ``;
   resetSubTaskInputField(idContainer);
 }
 
+/**
+ * Resets the input field for subtasks.
+ * 
+ * @param {string} idContainer - The ID of the subtask input container.
+ */
 function resetSubTaskInputField(idContainer) {
   let inputContainer = document.getElementById(idContainer);
   inputContainer.innerHTML = subTaskInputFieldHtml();
 }
 
+/**
+ * Changes the priority of a task to medium.
+ * 
+ * @param {string} idContainer - The ID of the priority container.
+ * @param {string} idImg - The ID of the priority image.
+ */
 function changePrioToMedium(idContainer, idImg) {
   let prioContainer = document.getElementById(idContainer);
   let img = document.getElementById(idImg);
@@ -371,6 +570,12 @@ function changePrioToMedium(idContainer, idImg) {
   document.getElementById('lowImg').src = './assets/img/addTask/ArrowDownPrioSign.svg';
 }
 
+/**
+ * Changes the priority of a task to urgent.
+ * 
+ * @param {string} idContainer - The ID of the priority container.
+ * @param {string} idImg - The ID of the priority image.
+ */
 function changePrioToUrgent(idContainer, idImg) {
   let prioContainer = document.getElementById(idContainer);
   let img = document.getElementById(idImg);
@@ -383,6 +588,12 @@ function changePrioToUrgent(idContainer, idImg) {
   document.getElementById('lowImg').src = './assets/img/addTask/ArrowDownPrioSign.svg';
 }
 
+/**
+ * Changes the priority of a task to low.
+ * 
+ * @param {string} idContainer - The ID of the priority container.
+ * @param {string} idImg - The ID of the priority image.
+ */
 function changePrioToLow(idContainer, idImg) {
   let prioContainer = document.getElementById(idContainer);
   let img = document.getElementById(idImg);
@@ -395,6 +606,11 @@ function changePrioToLow(idContainer, idImg) {
   document.getElementById('mediumImg').src = './assets/img/addTask/mediumPrioSignInactive.svg';
 }
 
+/**
+ * Checks if the task form is filled with required information.
+ * 
+ * @param {string} id - The ID of the due date input field.
+ */
 function checkIfFormIsFilled(id) {
   let title = document.getElementById('taskTitle');
   let dueDate = document.getElementById(id);

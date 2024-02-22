@@ -169,9 +169,9 @@ function showTaskFormHtml() {
   `;
 }
 
-function assignedToUserHtml(i, color, currentUser, initials) {
+function assignedToUserHtml(i, color, currentUser, initials, isChoosen) {
   return /*html*/ `
-    <div id="user-${i}" class="flex-checkbox selected-profile" onclick="addAssignedContact('${i}', '${color}')" data-value="${currentUser}">
+    <div id="user-${i}" class="flex-checkbox selected-profile ${isChoosen ? 'selected_true' : 'selected_false'}" onclick="addAssignedContact(${i}, '${color}')" data-value="${currentUser}">
       <div class="selected-profile">
         <div class="assinged-contact-profile" style="background-color:${color}">${initials}</div>
         <span class="assigned-name">${currentUser}</span>
@@ -182,9 +182,9 @@ function assignedToUserHtml(i, color, currentUser, initials) {
   `;
 }
 
-function assignedToUserYouHtml(i, color, currentUser, initials) {
+function assignedToUserYouHtml(i, color, currentUser, initials, isChoosen) {
   return /*html*/ `
-    <div id="user-${i}" class="flex-checkbox selected-profile" onclick="addAssignedContact(${i}, '${color}')" data-value="${currentUser}">
+    <div id="user-${i}" class="flex-checkbox selected-profile ${isChoosen ? 'selected_true' : 'selected_false'}" onclick="addAssignedContact(${i}, '${color}')" data-value="${currentUser}">
       <div class="selected-profile"><div class="assinged-contact-profile" style="background-color:${color}">${initials}</div>
       <span class="assigned-name">${currentUser} (you)</span>
     </div>
@@ -192,6 +192,8 @@ function assignedToUserYouHtml(i, color, currentUser, initials) {
     <img id="checkBox-${i}" class="flex-checkbox-img"src="assets/img/icons/checkBox.svg" alt="">
   `;
 }
+
+
 
 function subtasksAfterDeletionHtml(i, nr, idContainer) {
   return /*html*/ `

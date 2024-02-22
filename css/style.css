@@ -2503,7 +2503,8 @@ form {
   border: 1px dashed var(--icon, #a8a8a8);
   background: #e7e7e7;
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.16);
-  cursor: pointer; }
+  cursor: pointer;
+  padding: 0px 20px; }
 
 .todo {
   background-color: white;

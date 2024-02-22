@@ -12,6 +12,7 @@ async function init() {
   setColorToActive('sidebarContacts', 'contacts-img', 'bottomBarContactsMobile', 'contactsImgMobile');
 }
 
+
 async function setUserToContacts() {
   let name = users[user].username;
   let mail = users[user].email;
@@ -165,7 +166,7 @@ async function addContact(target) {
   let mail = document.getElementById(`add-mail-${target}`);
   let tel = document.getElementById(`add-tel-${target}`);
 
-  contacts.push({ name: firstLettersUppercase(name.value), mail: mail.value, phone: tel.value, color: '' });
+  contacts.push({ name: firstLettersUppercase(name.value), mail: mail.value, phone: tel.value, color: '', isChoosen: false });
   setColorToContacts();
   await saveContacts();
   init();

@@ -93,9 +93,7 @@ async function pushAddTask(id, column) {
   let selectedCategoryElement = document.getElementById('showSelectedCategory');
   let selectedCategory = selectedCategoryElement.getAttribute('data-value');
 
-  addTask(taskTitle, taskDescription, taskDueDate, selectedCategory, selectedPrio, subtasks, selectedContacts, column);
-
-  await setItem('tasks', JSON.stringify(tasks));
+  addTaskValues(taskTitle, taskDescription, taskDueDate, selectedCategory, selectedPrio, subtasks, selectedContacts, column);
 }
 
 /**
@@ -110,7 +108,7 @@ async function pushAddTask(id, column) {
  * @param {string} column - The column representing the current state of the task.
  * @returns {void}
  */
-function addTask(taskTitle, taskDescription, taskDueDate, selectedCategory, selectedPrio, subtasks, selectedContacts, column) {
+function addTaskValues(taskTitle, taskDescription, taskDueDate, selectedCategory, selectedPrio, subtasks, selectedContacts, column) {
   tasks.push({
     taskTitle: taskTitle,
     taskDescription: taskDescription,
@@ -121,6 +119,8 @@ function addTask(taskTitle, taskDescription, taskDueDate, selectedCategory, sele
     selectedContacts: selectedContacts,
     currentState: column,
   });
+
+  await setItem('tasks', JSON.stringify(tasks));
 }
 
 

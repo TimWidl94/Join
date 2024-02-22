@@ -1,8 +1,7 @@
 function generateTodoHTML(i, img, x) {
   return /*html*/ `
-    <div draggable="true" ondragstart="startDragging(${i})" class="wobble-container" 
-        onclick="openTaskPopup(${i})" ontouchstart="startDragging(${i})">
-      <div class="board-task wobble-element">
+    <div class="wobble-container">
+      <div draggable="true"  ondragstart="startDragging(${i})"  class="board-task wobble-element" onclick="openTaskPopup(${i})" ontouchstart="startDragging(${i})">
             <div class="board-task-epic" id="board-task-epic${i}">
                 ${tasks[i]['selectedCategory']}
             </div>

@@ -50,16 +50,16 @@ function setMinDateToday(inputId) {
   });
 }
 
-async function addTask() {
-  await pushAddTask();
+async function addTask(id) {
+  await pushAddTask(id);
   clearInputValue();
   showPopUpAddedTaskToBoard();
 }
 
-async function pushAddTask() {
+async function pushAddTask(id) {
   let taskTitle = document.getElementById('taskTitle').value;
   let taskDescription = document.getElementById('taskDescription').value;
-  let taskDueDate = document.getElementById('myDateInput').value;
+  let taskDueDate = document.getElementById(id).value;
   let selectedCategoryElement = document.getElementById('showSelectedCategory');
   let selectedCategory = selectedCategoryElement.getAttribute('data-value');
 
@@ -176,7 +176,7 @@ function renderContacts(contacts) {
     let currentUser = contacts[i]['name'];
     let initials = getInitials(currentUser);
     let color = contacts[i]['color'];
-    
+
     assignedDropdown.innerHTML += assignedToUserHtml(i, color, currentUser, initials);
   }
 }
@@ -204,7 +204,7 @@ function openDropDown(idDropdown, idImgArrow) {
   let dropdownImgArrow = document.getElementById(idImgArrow);
 
   assignedDropdown.classList.toggle('d-none');
-  // dropdown.classList.toggle('border-active');
+  assignedDropdown.classList.toggle('border-active');
   assignedDropdown.classList.toggle('dropbtn');
   dropdownImgArrow.classList.toggle('rotate-arrow');
 }
@@ -212,7 +212,7 @@ function openDropDown(idDropdown, idImgArrow) {
 function openDropDownCategory() {
   let assignedDropdownCategory = document.getElementById('assignedDropdownCategory');
   let dropdownImgArrowCategory = document.getElementById('dropdownImgArrowCategory');
-  dropdownCategory.classList.toggle('border-category-active');
+  assignedDropdownCategory.classList.toggle('border-category-active');
   assignedDropdownCategory.classList.toggle('d-none');
   dropdownImgArrowCategory.classList.toggle('rotate-arrow');
 }
@@ -308,13 +308,13 @@ function moveToCenter(popup) {
   popup.classList.add('moveToCenterAddTask');
 }
 
-function selectCategory(category) {
+function selectCategory(category, id) {
   const userStory = document.getElementById('userStory');
   const technicalTask = document.getElementById('other');
   const showSelectedCategory = document.getElementById('showSelectedCategory');
   const assignedDropdownCategory = document.getElementById('assignedDropdownCategory');
   selectCategoryIfElse(userStory, technicalTask, showSelectedCategory, assignedDropdownCategory, category);
-  checkIfFormIsFilled();
+  checkIfFormIsFilled(id);
 }
 
 function selectCategoryIfElse(userStory, technicalTask, showSelectedCategory, assignedDropdownCategory, category) {
@@ -394,9 +394,9 @@ function changePrioToLow(idContainer, idImg) {
   document.getElementById('mediumImg').src = './assets/img/addTask/mediumPrioSignInactive.svg';
 }
 
-function checkIfFormIsFilled() {
+function checkIfFormIsFilled(id) {
   let title = document.getElementById('taskTitle');
-  let dueDate = document.getElementById('myDateInput');
+  let dueDate = document.getElementById(id);
   console.log('dueDate.value:', dueDate.value);
   if (categoryIsSelected === true && title.value > '' && dueDate.value > '') {
     document.getElementById('create-task').disabled = false;

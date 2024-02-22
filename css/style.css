@@ -334,7 +334,10 @@ textarea {
   flex-direction: column;
   margin-top: calc(110px + 96px);
   padding-left: calc(232px + 50px);
-  padding-right: 50px; }
+  padding-right: 50px;
+  overflow-x: hidden !important;
+  overflow-y: hidden !important;
+  position: relative; }
 
 .container-left {
   display: flex;
@@ -1133,7 +1136,7 @@ textarea {
   height: 100vh;
   overflow: hidden; }
 
-.overflow-x-mobile-working {
+.overflow-mobile-working {
   overflow-x: hidden !important;
   overflow-y: hidden !important;
   position: relative; }

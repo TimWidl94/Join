@@ -1,6 +1,6 @@
 function addTaskHtml() {
   return /*html*/ `
-    <form onsubmit="addTask(); return false" class="formAddTask">
+    <form onsubmit="addTask('myDateInput'); return false" class="formAddTask">
       <section class="container-left-right-wrapper">
         <section class="container-left">
         
@@ -8,7 +8,7 @@ function addTaskHtml() {
 
           <div id="title-add-task">
             <p>Title<span class="span-required">*</span></p>
-            <input id="taskTitle" required type="text" maxlength="100" class="border-focus" placeholder="Enter a title" onkeydown="checkIfFormIsFilled()"/>
+            <input id="taskTitle" required type="text" maxlength="100" class="border-focus" placeholder="Enter a title" onkeydown="checkIfFormIsFilled('myDateInput')"/>
           </div>
 
           <div id="description">
@@ -61,8 +61,8 @@ function addTaskHtml() {
               <img id="dropdownImgArrowCategory" class="rotate-arrow dropdown-arrow-hover" src="../assets/img/AddTask/arrow_drop.svg" alt="">
             </div>
             <div id="assignedDropdownCategory" class="category-dropdown d-none">
-              <div id="userStory" class="flex-checkbox" data-value="user-story" onclick="selectCategory('User Story')">User Story</div>
-              <div id="other" class="flex-checkbox" data-value="technical-task" onclick="selectCategory('Technical Task')">Technical Task</div>
+              <div id="userStory" class="flex-checkbox" data-value="user-story" onclick="selectCategory('User Story', 'myDateInput')">User Story</div>
+              <div id="other" class="flex-checkbox" data-value="technical-task" onclick="selectCategory('Technical Task', 'myDateInput')">Technical Task</div>
             </div>
           </div>
 

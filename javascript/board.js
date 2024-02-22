@@ -43,8 +43,8 @@ async function openAddTaskPopup() {
   document.getElementById('addTaskPopup').classList.add('slide-in');
 }
 
-async function addTaskPopUp() {
-  await pushAddTask();
+async function addTaskPopUp(id) {
+  await pushAddTask(id);
   await renderBoardTasks();
   closeAddTaskPopup();
 }

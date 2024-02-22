@@ -2477,7 +2477,7 @@ form {
   height: calc(100% + 221px);
   min-height: 40px;
   position: relative;
-  top: 40px; }
+  top: 70px; }
 
 .overflowYActive {
   overflow-y: scroll;
@@ -2497,6 +2497,7 @@ form {
   display: flex;
   height: 48px;
   flex-direction: column;
+  padding: 0 20px;
   justify-content: center;
   align-items: center;
   gap: 10px;

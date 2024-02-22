@@ -41,7 +41,7 @@
 
 .heightContainerMax {
   height: 100%;
-  max-height: 75%;
+  // max-height: 75%;
 }
 
 .drag-area-empty {
@@ -759,6 +759,16 @@
   border-radius: 8px;
 }
 
+.row {
+  overflow-y: auto;
+  padding-top: 32px;
+  margin-bottom: -32px;
+}
+
+.row::-webkit-scrollbar {
+  display: none;
+}
+
 @media (min-width: 1300px) {
   .board-title {
     z-index: unset;
@@ -766,6 +776,10 @@
 }
 
 @media (max-width: 1300px) {
+  // .bodyBoard {
+  //   overflow: visible !important;
+  // }
+
   .overflowYActive {
     overflow-y: unset;
     overflow-x: unset;
@@ -812,6 +826,9 @@
   }
   .container {
     max-width: calc(100% - 360px) !important;
+    height: unset !important;
+    min-height: 100vh !important;
+    overflow-y: auto !important;
   }
 
   .btns-down-add-task-popup {

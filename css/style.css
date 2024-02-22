@@ -2490,8 +2490,7 @@ form {
   display: none; }
 
 .heightContainerMax {
-  height: 100%;
-  max-height: 75%; }
+  height: 100%; }
 
 .drag-area-empty {
   display: flex;
@@ -3096,6 +3095,14 @@ form {
   border: none;
   border-radius: 8px; }
 
+.row {
+  overflow-y: auto;
+  padding-top: 32px;
+  margin-bottom: -32px; }
+
+.row::-webkit-scrollbar {
+  display: none; }
+
 @media (min-width: 1300px) {
   .board-title {
     z-index: unset; } }
@@ -3135,7 +3142,10 @@ form {
   .mobileButtonHide {
     display: none !important; }
   .container {
-    max-width: calc(100% - 360px) !important; }
+    max-width: calc(100% - 360px) !important;
+    height: unset !important;
+    min-height: 100vh !important;
+    overflow-y: auto !important; }
   .btns-down-add-task-popup {
     width: calc(100% - 2 * 24px); } }
 

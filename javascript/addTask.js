@@ -77,7 +77,6 @@ async function addTask(id, column) {
   showPopUpAddedTaskToBoard();
 }
 
-
 /**
  * Adds a new task to the tasks array with the provided details.
  * Handles async operations.
@@ -93,7 +92,16 @@ async function pushAddTask(id, column) {
   let selectedCategoryElement = document.getElementById('showSelectedCategory');
   let selectedCategory = selectedCategoryElement.getAttribute('data-value');
 
-  addTaskValues(taskTitle, taskDescription, taskDueDate, selectedCategory, selectedPrio, subtasks, selectedContacts, column);
+  addTaskValues(
+    taskTitle,
+    taskDescription,
+    taskDueDate,
+    selectedCategory,
+    selectedPrio,
+    subtasks,
+    selectedContacts,
+    column
+  );
 }
 
 /**
@@ -108,7 +116,16 @@ async function pushAddTask(id, column) {
  * @param {string} column - The column representing the current state of the task.
  * @returns {void}
  */
-function addTaskValues(taskTitle, taskDescription, taskDueDate, selectedCategory, selectedPrio, subtasks, selectedContacts, column) {
+async function addTaskValues(
+  taskTitle,
+  taskDescription,
+  taskDueDate,
+  selectedCategory,
+  selectedPrio,
+  subtasks,
+  selectedContacts,
+  column
+) {
   tasks.push({
     taskTitle: taskTitle,
     taskDescription: taskDescription,
@@ -122,7 +139,6 @@ function addTaskValues(taskTitle, taskDescription, taskDueDate, selectedCategory
 
   await setItem('tasks', JSON.stringify(tasks));
 }
-
 
 /**
  * Adds a subtask to the subtasks array.
@@ -211,13 +227,14 @@ function showTaskForm(id) {
     let currentUser = contacts[i]['name'];
     let initials = getInitials(currentUser);
     let color = contacts[i]['color'];
+    let isChoosen = contacts[i]['isChoosen'];
     let assignedDropdown = document.getElementById('assignedDropdown');
     let username = checkForUserName();
 
     if (currentUser === username) {
-      assignedDropdown.innerHTML += assignedToUserYouHtml(i, color, currentUser, initials);
+      assignedDropdown.innerHTML += assignedToUserYouHtml(i, color, currentUser, initials, isChoosen);
     } else {
-      assignedDropdown.innerHTML += assignedToUserHtml(i, color, currentUser, initials);
+      assignedDropdown.innerHTML += assignedToUserHtml(i, color, currentUser, initials, isChoosen);
     }
   }
 }
@@ -227,6 +244,7 @@ function showTaskForm(id) {
  * @returns {void}
  */
 function filterAddTaskContact() {
+  // let updatedFilteredContacts;
   let searchTerm = document.getElementById('search').value.toLowerCase();
   let assignedDropdown = document.getElementById('assignedDropdown');
   assignedDropdown.innerHTML = '';
@@ -235,7 +253,11 @@ function filterAddTaskContact() {
     renderContacts(contacts);
     assignedDropdown.classList.remove('d-none');
   } else {
-    const filteredContacts = contacts.filter((contact) => contact.name.toLowerCase().startsWith(searchTerm));
+    // filterAndSetChosenContacts(contacts, searchTerm);
+    filteredContacts = contacts.filter((contact) => contact.name.toLowerCase().startsWith(searchTerm));
+    // const updatedFilteredContacts = filteredContacts.map((contact) => {
+    //   return { ...contact, isChoosen: true };
+    // });
     renderFilteredContacts(filteredContacts);
     if (filteredContacts.length === 0) {
       assignedDropdown.classList.add('d-none');
@@ -244,6 +266,31 @@ function filterAddTaskContact() {
     }
   }
 }
+
+function setIsChoosenValue(i) {
+  console.log('filteredContacts:', filteredContacts);
+  filteredContacts[i].isChoosen = !filteredContacts[i].isChoosen;
+  // contacts[i].isChoosen = !filteredContacts[i].isChoosen;
+  // console.log('filteredContacts[i].isChoosen:', filteredContacts[i].isChoosen);
+  // showTaskForm('assignedTo');
+  // console.log('filteredContacts[i].isChoosen', filteredContacts[i].isChoosen);
+  // filteredContacts[i].isChoosen = true;
+  // console.log('filteredContacts', filteredContacts);
+  renderFilteredContacts(filteredContacts);
+  // if (filteredContacts.length === 0) {
+  //   assignedDropdown.classList.add('d-none');
+  // } else {
+  //   assignedDropdown.classList.remove('d-none');
+  // }
+}
+
+// function filterAndSetChosenContacts(contacts, searchTerm) {
+//   const filteredContacts = contacts.filter((contact) => contact.name.toLowerCase().startsWith(searchTerm));
+//   const updatedFilteredContacts = filteredContacts.map((contact) => {
+//     return { ...contact, isChoosen: true };
+//   });
+//   return updatedFilteredContacts;
+// }
 
 /**
  * Renders the contacts in the assigned dropdown.
@@ -269,6 +316,7 @@ function renderContacts(contacts) {
  * @returns {void}
  */
 function renderFilteredContacts(filteredContacts) {
+  console.log('renderFilteredContacts:', filteredContacts);
   let assignedDropdown = document.getElementById('assignedDropdown');
   assignedDropdown.innerHTML = '';
   let username = checkForUserName();
@@ -277,11 +325,12 @@ function renderFilteredContacts(filteredContacts) {
     let currentUser = filteredContacts[i]['name'];
     let initials = getInitials(currentUser);
     let color = filteredContacts[i]['color'];
+    let isChoosen = filteredContacts[i]['isChoosen'];
 
     if (currentUser === username) {
-      assignedDropdown.innerHTML += assignedToUserYouHtml(i, color, currentUser, initials);
+      assignedDropdown.innerHTML += assignedToUserYouHtml(i, color, currentUser, initials, isChoosen);
     } else {
-      assignedDropdown.innerHTML += assignedToUserHtml(i, color, currentUser, initials);
+      assignedDropdown.innerHTML += assignedToUserHtmlFILTERED(i, color, currentUser, initials, isChoosen);
     }
   }
 }
@@ -326,13 +375,27 @@ async function addAssignedContact(i, color) {
   let checkboxImage = document.getElementById(`checkBox-${i}`);
   let userID = document.getElementById(`user-${i}`);
 
-  renderContactList(assignedDropdown, checkboxImage, userID, selectedContact, color);
+  // renderContactList(assignedDropdown, checkboxImage, userID, selectedContact, color);
+  addSelectedContact(assignedDropdown, checkboxImage, userID, selectedContact, color);
+  await renderSelectedContacts(i);
+}
+
+async function addAssignedContactFiltered(i, color) {
+  console.log('addAssignedContactFiltered i:', i);
+  console.log('addAssignedContactFiltered color:', color);
+  let assignedDropdown = document.getElementById('assignedDropdown');
+  let selectedContact = filteredContacts[i]['name'];
+  let checkboxImage = document.getElementById(`checkBox-${i}`);
+  let userID = document.getElementById(`user-${i}`);
+
+  // renderContactList(assignedDropdown, checkboxImage, userID, selectedContact, color);
+  addSelectedContact(assignedDropdown, checkboxImage, userID, selectedContact, color);
   await renderSelectedContacts(i);
 }
 
 /**
  * Adds a selected contact to the list of selected contacts.
- * 
+ *
  * @param {HTMLElement} assignedDropdown - The dropdown menu element where the contacts will be rendered.
  * @param {HTMLElement} checkboxImage - The checkbox image for the selected contact.
  * @param {HTMLElement} userID - The user ID of the selected contact.
@@ -359,7 +422,7 @@ function addSelectedContact(assignedDropdown, checkboxImage, userID, selectedCon
 
 /**
  * Removes a selected contact from the list of selected contacts.
- * 
+ *
  * @param {HTMLElement} assignedDropdown - The dropdown menu element where the contacts will be rendered.
  * @param {HTMLElement} checkboxImage - The checkbox image for the selected contact.
  * @param {HTMLElement} userID - The user ID of the selected contact.
@@ -381,7 +444,7 @@ function removeSelectedContact(assignedDropdown, checkboxImage, userID, selected
 
 /**
  * Checks if the selected contact already exists in the list of selected contacts.
- * 
+ *
  * @param {string} selectedContact - The selected contact.
  * @returns {boolean} - Returns true if the selected contact already exists, otherwise false.
  */
@@ -395,7 +458,7 @@ function checkIfSelectedContactExist(selectedContact) {
 
 /**
  * Renders the selected contacts in the "Assigned Contacts" section on the user interface.
- * 
+ *
  * @param {number} i - The index of the currently selected contact.
  * @returns {void}
  */
@@ -413,7 +476,7 @@ function renderSelectedContacts(i) {
 
 /**
  * Generates initials from a contact name.
- * 
+ *
  * @param {string} contactName - The full name of the contact.
  * @returns {string} The initials generated from the contact name.
  */
@@ -428,7 +491,7 @@ function getInitials(contactName) {
 
 /**
  * Deletes a subtask from the list of subtasks.
- * 
+ *
  * @param {number} number - The number of the subtask to be deleted.
  * @param {string} idContainer - The ID of the container holding the subtasks.
  */
@@ -464,7 +527,7 @@ async function showPopUpAddedTaskToBoard() {
 
 /**
  * Moves a popup to the center of the screen.
- * 
+ *
  * @param {HTMLElement} popup - The popup element to be moved.
  */
 function moveToCenter(popup) {
@@ -473,7 +536,7 @@ function moveToCenter(popup) {
 
 /**
  * Selects a category for the task.
- * 
+ *
  * @param {string} category - The category selected for the task.
  * @param {string} id - The ID of the category element.
  */
@@ -488,7 +551,7 @@ function selectCategory(category, id) {
 
 /**
  * Handles the selection of a task category.
- * 
+ *
  * @param {HTMLElement} userStory - The user story category element.
  * @param {HTMLElement} technicalTask - The technical task category element.
  * @param {HTMLElement} showSelectedCategory - The element displaying the selected category.
@@ -520,7 +583,7 @@ function selectCategoryIfElse(userStory, technicalTask, showSelectedCategory, as
 
 /**
  * Changes the buttons for adding a task.
- * 
+ *
  * @param {string} id - The ID of the input field.
  */
 function changeButtonsAddTask(id) {
@@ -532,7 +595,7 @@ function changeButtonsAddTask(id) {
 
 /**
  * Sets the value of an input field back to an empty string.
- * 
+ *
  * @param {string} idInput - The ID of the input field.
  * @param {string} idContainer - The ID of the container.
  */
@@ -544,7 +607,7 @@ function setValueBack(idInput, idContainer) {
 
 /**
  * Resets the input field for subtasks.
- * 
+ *
  * @param {string} idContainer - The ID of the subtask input container.
  */
 function resetSubTaskInputField(idContainer) {
@@ -554,7 +617,7 @@ function resetSubTaskInputField(idContainer) {
 
 /**
  * Changes the priority of a task to medium.
- * 
+ *
  * @param {string} idContainer - The ID of the priority container.
  * @param {string} idImg - The ID of the priority image.
  */
@@ -572,7 +635,7 @@ function changePrioToMedium(idContainer, idImg) {
 
 /**
  * Changes the priority of a task to urgent.
- * 
+ *
  * @param {string} idContainer - The ID of the priority container.
  * @param {string} idImg - The ID of the priority image.
  */
@@ -590,7 +653,7 @@ function changePrioToUrgent(idContainer, idImg) {
 
 /**
  * Changes the priority of a task to low.
- * 
+ *
  * @param {string} idContainer - The ID of the priority container.
  * @param {string} idImg - The ID of the priority image.
  */
@@ -608,7 +671,7 @@ function changePrioToLow(idContainer, idImg) {
 
 /**
  * Checks if the task form is filled with required information.
- * 
+ *
  * @param {string} id - The ID of the due date input field.
  */
 function checkIfFormIsFilled(id) {

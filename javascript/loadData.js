@@ -1,10 +1,11 @@
 async function loadData() {
   try {
-    users = JSON.parse(await getItem("users"));
+    users = JSON.parse(await getItem('users'));
     contacts = JSON.parse(await getItem('contacts'));
+    // contactList = getContactList(contacts);
     tasks = JSON.parse(await getItem('tasks'));
   } catch (e) {
-    console.info("could not load users");
+    console.info('could not load users');
   }
 }
 
@@ -18,7 +19,7 @@ async function getItem(key) {
 async function setItem(key, value) {
   const payload = { key, value, token: STORAGE_TOKEN };
   return await fetch(STORAGE_URL, {
-    method: "POST",
+    method: 'POST',
     body: JSON.stringify(payload),
   }).then((res) => res.json());
 }

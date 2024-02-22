@@ -15,9 +15,9 @@ async function initBoard() {
   checkTaskAreaDisplayEmpty();
 }
 
-function renderAddTaskPopUp() {
+function renderAddTaskPopUp(section) {
   let contentBoardTask = document.getElementById('boardAddTask');
-  contentBoardTask.innerHTML = addTaskPopUpHtml();
+  contentBoardTask.innerHTML = addTaskPopUpHtml(section);
 }
 
 function setMinDateTodayPopup(inputIdPopup) {
@@ -32,8 +32,8 @@ function setMinDateTodayPopup(inputIdPopup) {
   });
 }
 
-async function openAddTaskPopup() {
-  await renderAddTaskPopUp();
+async function openAddTaskPopup(section) {
+  await renderAddTaskPopUp(section);
   changePrioToMedium('mediumContainer', 'mediumImg');
   await renderSubTask();
   await showTaskForm('assignedTo');
@@ -43,8 +43,8 @@ async function openAddTaskPopup() {
   document.getElementById('addTaskPopup').classList.add('slide-in');
 }
 
-async function addTaskPopUp(id) {
-  await pushAddTask(id);
+async function addTaskPopUp(id, section) {
+  await pushAddTask(id, section);
   await renderBoardTasks();
   closeAddTaskPopup();
 }

@@ -648,6 +648,7 @@ textarea {
   display: flex;
   flex-direction: column;
   width: 100%;
+  height: 105px;
   gap: 8px;
   padding-bottom: 24px; }
 
@@ -3104,7 +3105,6 @@ form {
   border-radius: 8px; }
 
 .row {
-  overflow-y: auto;
   padding-top: 32px;
   margin-bottom: -32px; }
 
@@ -3810,8 +3810,8 @@ a {
 
 #topbar-dropdown {
   display: none;
-  position: absolute;
-  top: 100px;
+  position: fixed;
+  top: 85px;
   right: 5px;
   width: 160px;
   transform: translateX(300px);

@@ -113,8 +113,8 @@
 // === Topbar Dropdown === //
 #topbar-dropdown {
   display: none;
-  position: absolute;
-  top: 100px;
+  position: fixed;
+  top: 85px;
   right: 5px;
   width: 160px;
   transform: translateX(300px);

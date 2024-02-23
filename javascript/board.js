@@ -212,7 +212,7 @@ function setPrioImg(i) {
     return img;
   }
   if (tasks[i]['prio'] == 'medium') {
-    let img = './assets/img/AddTask/mediumPrioSignInactive.svg';
+    let img = './assets/img/AddTask/MediumPrioSignInactive.svg';
     return img;
   }
   if (tasks[i]['prio'] == 'urgent') {
@@ -644,7 +644,7 @@ function resetPriorityContainers() {
   document.getElementById('urgentContainerEdit').classList.remove('priorityUrgentActive');
   document.getElementById('urgentImgEdit').src = './assets/img/addTask/ArrowUpPrioSign.svg';
   document.getElementById('mediumContainerEdit').classList.remove('priorityMediumActive');
-  document.getElementById('mediumImgEdit').src = './assets/img/addTask/mediumPrioSignInactive.svg';
+  document.getElementById('mediumImgEdit').src = './assets/img/addTask/MediumPrioSignInactive.svg';
   document.getElementById('lowContainerEdit').classList.remove('priorityLowActive');
   document.getElementById('lowImgEdit').src = './assets/img/addTask/ArrowDownPrioSign.svg';
 }

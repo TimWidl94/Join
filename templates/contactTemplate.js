@@ -1,3 +1,8 @@
+/**
+ * Generates HTML content for displaying a letter container with associated contacts.
+ * @param {string} letter - The letter to be displayed.
+ * @returns {string} - The HTML content for the letter container.
+ */
 function generateLettersHTML(letter) {
   return `
     <div id="start-letter-container">
@@ -9,6 +14,14 @@ function generateLettersHTML(letter) {
     `;
 }
 
+/**
+ * Generates HTML content for displaying contact information.
+ * @param {object} contact - The contact object containing name and email.
+ * @param {string} color - The background color for the contact's initials.
+ * @param {string} acronym - The initials of the contact.
+ * @param {number} i - The index of the contact.
+ * @returns {string} - The HTML content for displaying contact information.
+ */
 function generateContactsHTML(contact, color, acronym, i) {
   return /*html*/ `
     <div id="contact-list-basic-info${i}" class="contact-list-basic-info" onclick="openContactInfo(${i}), toggleBackground(${i})">
@@ -23,6 +36,14 @@ function generateContactsHTML(contact, color, acronym, i) {
     `;
 }
 
+/**
+ * Generates HTML content for displaying contact information, including the current user.
+ * @param {object} contact - The contact information.
+ * @param {string} color - The color associated with the contact.
+ * @param {string} acronym - The acronym representing the contact.
+ * @param {number} i - The index of the contact.
+ * @returns {string} - The HTML content for displaying the contact information.
+ */
 function generateContactsYouHTML(contact, color, acronym, i) {
   return /*html*/ `
     <div id="contact-list-basic-info${i}" class="contact-list-basic-info" onclick="openContactInfo(${i}), toggleBackground(${i})">
@@ -80,6 +101,14 @@ function openContactInfoHTML(contact, acronym, color, i) {
   `;
 }
 
+/**
+ * Generates HTML content for displaying contact information in a popup.
+ * @param {object} contact - The contact information.
+ * @param {string} acronym - The acronym representing the contact.
+ * @param {string} color - The color associated with the contact.
+ * @param {number} i - The index of the contact.
+ * @returns {string} - The HTML content for displaying the contact information.
+ */
 function openContactInfoYouHTML(contact, acronym, color, i) {
   return /*html*/ `
     <div id="basic-info">
@@ -141,6 +170,11 @@ function changesMobileHTML(i) {
   `;
 }
 
+/**
+ * Generates HTML content for displaying options to edit or delete a contact in mobile view.
+ * @param {number} i - The index of the contact.
+ * @returns {string} - The HTML content for the options.
+ */
 function editContactDesktopHTML(acronym, color, i) {
   return /*html*/ `
         <div class="edit-contact-container">
@@ -200,6 +234,13 @@ function editContactDesktopHTML(acronym, color, i) {
       `;
 }
 
+/**
+ * Generates HTML content for editing contact information in mobile view.
+ * @param {string} acronym - The acronym of the contact.
+ * @param {string} color - The background color of the contact's profile.
+ * @param {number} i - The index of the contact.
+ * @returns {string} - The HTML content for editing contact information.
+ */
 function editContactMobileHTML(acronym, color, i) {
   return /*html*/ `
       <div class="edit-contact-container-mobile">

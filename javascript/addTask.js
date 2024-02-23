@@ -683,17 +683,14 @@ function resetSubTaskInputField(idContainer) {
 function changePrioToMedium(idContainer, idImg) {
   let prioContainer = document.getElementById(idContainer);
   let img = document.getElementById(idImg);
-  prioContainer.classList.add("priorityMediumActive");
-  img.src = "./assets/img/addTask/mediumPrioSign.svg";
-  selectedPrio = "medium";
-  document
-    .getElementById("urgentContainer")
-    .classList.remove("priorityUrgentActive");
-  document.getElementById("urgentImg").src =
-    "./assets/img/addTask/ArrowUpPrioSign.svg";
-  document.getElementById("lowContainer").classList.remove("priorityLowActive");
-  document.getElementById("lowImg").src =
-    "./assets/img/addTask/ArrowDownPrioSign.svg";
+
+  prioContainer.classList.add('priorityMediumActive');
+  img.src = './assets/img/addTask/MediumPrioSign.svg';
+  selectedPrio = 'medium';
+  document.getElementById('urgentContainer').classList.remove('priorityUrgentActive');
+  document.getElementById('urgentImg').src = './assets/img/addTask/ArrowUpPrioSign.svg';
+  document.getElementById('lowContainer').classList.remove('priorityLowActive');
+  document.getElementById('lowImg').src = './assets/img/addTask/ArrowDownPrioSign.svg';
 }
 
 /**
@@ -705,17 +702,14 @@ function changePrioToMedium(idContainer, idImg) {
 function changePrioToUrgent(idContainer, idImg) {
   let prioContainer = document.getElementById(idContainer);
   let img = document.getElementById(idImg);
-  prioContainer.classList.add("priorityUrgentActive");
-  img.src = "./assets/img/addTask/urgentPrioActive.svg";
-  selectedPrio = "urgent";
-  document
-    .getElementById("mediumContainer")
-    .classList.remove("priorityMediumActive");
-  document.getElementById("mediumImg").src =
-    "./assets/img/addTask/mediumPrioSignInactive.svg";
-  document.getElementById("lowContainer").classList.remove("priorityLowActive");
-  document.getElementById("lowImg").src =
-    "./assets/img/addTask/ArrowDownPrioSign.svg";
+
+  prioContainer.classList.add('priorityUrgentActive');
+  img.src = './assets/img/addTask/urgentPrioActive.svg';
+  selectedPrio = 'urgent';
+  document.getElementById('mediumContainer').classList.remove('priorityMediumActive');
+  document.getElementById('mediumImg').src = './assets/img/addTask/MediumPrioSignInactive.svg';
+  document.getElementById('lowContainer').classList.remove('priorityLowActive');
+  document.getElementById('lowImg').src = './assets/img/addTask/ArrowDownPrioSign.svg';
 }
 
 /**
@@ -727,19 +721,13 @@ function changePrioToUrgent(idContainer, idImg) {
 function changePrioToLow(idContainer, idImg) {
   let prioContainer = document.getElementById(idContainer);
   let img = document.getElementById(idImg);
-  prioContainer.classList.add("priorityLowActive");
-  img.src = "./assets/img/addTask/lowPrioActive.svg";
-  selectedPrio = "low";
-  document
-    .getElementById("urgentContainer")
-    .classList.remove("priorityUrgentActive");
-  document.getElementById("urgentImg").src =
-    "./assets/img/addTask/ArrowUpPrioSign.svg";
-  document
-    .getElementById("mediumContainer")
-    .classList.remove("priorityMediumActive");
-  document.getElementById("mediumImg").src =
-    "./assets/img/addTask/mediumPrioSignInactive.svg";
+  prioContainer.classList.add('priorityLowActive');
+  img.src = './assets/img/addTask/lowPrioActive.svg';
+  selectedPrio = 'low';
+  document.getElementById('urgentContainer').classList.remove('priorityUrgentActive');
+  document.getElementById('urgentImg').src = './assets/img/addTask/ArrowUpPrioSign.svg';
+  document.getElementById('mediumContainer').classList.remove('priorityMediumActive');
+  document.getElementById('mediumImg').src = './assets/img/addTask/MediumPrioSignInactive.svg';
 }
 
 /**

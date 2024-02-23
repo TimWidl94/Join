@@ -48,7 +48,14 @@ function mobileGreetings() {
   let greetingText = greeting();
   let userName = users[user].username;
   greetMobile.innerHTML = greetMobileTemplate(greetingText, userName);
+  hideGreetMobile(greetMobile);
+}
 
+/**
+ * Hides the mobile greeting after a delay.
+ * @param {HTMLElement} greetMobile - The HTML element for the mobile greeting.
+ */
+function hideGreetMobile(greetMobile) {
   setTimeout(function () {
     greetMobile.classList.add("fade-out-mobile");
     setTimeout(function () {
@@ -87,7 +94,6 @@ function greeting() {
   } else {
     greetingText = "Good evening,";
   }
-
   return greetingText;
 }
 

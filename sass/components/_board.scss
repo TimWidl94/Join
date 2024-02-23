@@ -19,20 +19,20 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
-  cursor: pointer;
   min-width: 100%;
   height: calc(100% + 221px);
   min-height: 40px;
   position: relative;
-  top: 70px;
+  // top: 70px;
 }
 
 .overflowYActive {
-  overflow-y: scroll;
-  overflow-x: hidden;
+  // overflow-y: scroll;
+  // overflow-x: hidden;
   padding: 0px 10px;
   display: flex;
   justify-content: center;
+  flex-direction: column;
 }
 
 .overflowYActive::-webkit-scrollbar {
@@ -40,8 +40,9 @@
 }
 
 .heightContainerMax {
-  height: 100%;
-  // max-height: 75%;
+  height: calc(40% + 221px);
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .drag-area-empty {
@@ -82,7 +83,9 @@
   flex-direction: column;
   width: 100%;
 }
-
+.mobileBoardHeadSection {
+  margin-bottom: 10px;
+}
 .add-task-popup {
   position: relative;
   max-height: 75vh;
@@ -181,9 +184,9 @@
     font-weight: 700;
     color: $dark-blue;
     margin-bottom: 15.5px;
-    position: fixed;
-    z-index: 2;
-    background-color: #f6f7f8;
+    // position: absolute;
+    // z-index: 1;
+    background-color: $summary-background-color;
     height: 40px;
   }
 
@@ -472,8 +475,6 @@
   flex-direction: column;
   gap: 6px;
   border-radius: 12px;
-  // overflow: auto; /* Subtask-Container werden scrollbar, wenn der Inhalt den verfügbaren Platz überschreitet */
-  // max-height: 150px;
 }
 
 .subtaskContainer p {
@@ -760,27 +761,15 @@
 }
 
 .row {
-  overflow-y: auto;
   padding-top: 32px;
-  margin-bottom: -32px;
 }
 
 .row::-webkit-scrollbar {
   display: none;
 }
 
-@media (min-width: 1300px) {
-  .board-title {
-    z-index: unset;
-    padding-left: 20px;
-  }
-}
 
 @media (max-width: 1300px) {
-  // .bodyBoard {
-  //   overflow: visible !important;
-  // }
-
   .overflowYActive {
     overflow-y: unset;
     overflow-x: unset;
@@ -820,6 +809,7 @@
   .mobileBoardHeadSection {
     flex-direction: column !important;
     align-items: start !important;
+    margin-bottom: 10px;
   }
 
   .mobileButtonHide {
@@ -846,9 +836,6 @@
     height: 100% !important;
   }
 
-  .col-4 {
-    // width: 66% !important;
-  }
   .search-side {
     width: 100%;
   }

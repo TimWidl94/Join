@@ -2485,21 +2485,21 @@ form {
   min-width: 100%;
   height: calc(100% + 221px);
   min-height: 40px;
-  position: relative;
-  top: 70px; }
+  position: relative; }
 
 .overflowYActive {
-  overflow-y: scroll;
-  overflow-x: hidden;
   padding: 0px 10px;
   display: flex;
-  justify-content: center; }
+  justify-content: center;
+  flex-direction: column; }
 
 .overflowYActive::-webkit-scrollbar {
   display: none; }
 
 .heightContainerMax {
-  height: 100%; }
+  height: calc(40% + 221px);
+  overflow-y: scroll;
+  overflow-x: hidden; }
 
 .drag-area-empty {
   display: flex;
@@ -2536,6 +2536,9 @@ form {
   display: flex;
   flex-direction: column;
   width: 100%; }
+
+.mobileBoardHeadSection {
+  margin-bottom: 10px; }
 
 .add-task-popup {
   position: relative;
@@ -2621,8 +2624,6 @@ form {
   font-weight: 700;
   color: #42526e;
   margin-bottom: 15.5px;
-  position: absolute;
-  z-index: 1;
   background-color: #f6f7f8;
   height: 40px; }
 
@@ -3105,8 +3106,7 @@ form {
   border-radius: 8px; }
 
 .row {
-  padding-top: 32px;
-  margin-bottom: -32px; }
+  padding-top: 32px; }
 
 .row::-webkit-scrollbar {
   display: none; }
@@ -3142,7 +3142,8 @@ form {
     flex-direction: column; }
   .mobileBoardHeadSection {
     flex-direction: column !important;
-    align-items: start !important; }
+    align-items: start !important;
+    margin-bottom: 10px; }
   .mobileButtonHide {
     display: none !important; }
   .container {

@@ -23,15 +23,16 @@
   height: calc(100% + 221px);
   min-height: 40px;
   position: relative;
-  top: 70px;
+  // top: 70px;
 }
 
 .overflowYActive {
-  overflow-y: scroll;
-  overflow-x: hidden;
+  // overflow-y: scroll;
+  // overflow-x: hidden;
   padding: 0px 10px;
   display: flex;
   justify-content: center;
+  flex-direction: column;
 }
 
 .overflowYActive::-webkit-scrollbar {
@@ -39,8 +40,9 @@
 }
 
 .heightContainerMax {
-  height: 100%;
-  // max-height: 75%;
+  height: calc(40% + 221px);
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .drag-area-empty {
@@ -81,7 +83,9 @@
   flex-direction: column;
   width: 100%;
 }
-
+.mobileBoardHeadSection {
+  margin-bottom: 10px;
+}
 .add-task-popup {
   position: relative;
   max-height: 75vh;
@@ -180,8 +184,8 @@
     font-weight: 700;
     color: $dark-blue;
     margin-bottom: 15.5px;
-    position: absolute;
-    z-index: 1;
+    // position: absolute;
+    // z-index: 1;
     background-color: $summary-background-color;
     height: 40px;
   }
@@ -757,9 +761,7 @@
 }
 
 .row {
-  // overflow-y: auto;
   padding-top: 32px;
-  margin-bottom: -32px;
 }
 
 .row::-webkit-scrollbar {
@@ -807,6 +809,7 @@
   .mobileBoardHeadSection {
     flex-direction: column !important;
     align-items: start !important;
+    margin-bottom: 10px;
   }
 
   .mobileButtonHide {

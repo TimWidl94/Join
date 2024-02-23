@@ -16,6 +16,7 @@ async function initBoard() {
   // renderContacts();
   setColorToActive('sidebarBoard', 'board-img', 'bottomBarBoardMobile', 'boardImgMobile');
   checkTaskAreaDisplayEmpty();
+  setNumberOnContacts();
 }
 
 /**

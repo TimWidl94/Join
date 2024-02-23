@@ -29,6 +29,7 @@ async function init() {
   calculateUrgenTasks();
   renderSummaryContainer();
   insertGreeting();
+  setNumberOnContacts();
 }
 
 /**

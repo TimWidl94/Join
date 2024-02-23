@@ -18,26 +18,28 @@ async function init() {
   setUserInitials();
   setUserToContacts();
   setColorToContacts();
-  setColorToActive('sidebarAddTask', 'addTask-img', 'bottomBarAddTaskMobile', 'addTaskImgMobile');
+  setColorToActive( "sidebarAddTask", "addTask-img", "bottomBarAddTaskMobile", "addTaskImgMobile");
+  await resetIsChoosenValue();
   await renderAddTask();
   await renderSubTask();
-  await showTaskForm('assignedTo');
-  changePrioToMedium('mediumContainer', 'mediumImg');
-  setMinDateToday('myDateInput');
+  await showTaskForm("assignedTo");
+  changePrioToMedium("mediumContainer", "mediumImg");
+  setMinDateToday("myDateInput");
+  setNumberOnContacts();
 }
 
 /**
  * Renders the add task form in the main content area and the board view.
  */
 function renderAddTask() {
-  let contentMain = document.getElementById('main');
-  let contentBoardTask = document.getElementById('boardAddTask');
+  let contentMain = document.getElementById("main");
+  let contentBoardTask = document.getElementById("boardAddTask");
 
   if (contentMain) {
-    contentMain.innerHTML = addTaskHtml('main');
+    contentMain.innerHTML = addTaskHtml("main");
   }
   if (contentBoardTask) {
-    contentBoardTask.innerHTML = addTaskHtml('boardAddTask');
+    contentBoardTask.innerHTML = addTaskHtml("boardAddTask");
   }
 }
 
@@ -45,7 +47,7 @@ function renderAddTask() {
  * Renders the subtask input field.
  */
 function renderSubTask() {
-  let container = document.getElementById('subtasks');
+  let container = document.getElementById("subtasks");
   container.innerHTML += subTaskInputHtml();
 }
 
@@ -54,11 +56,11 @@ function renderSubTask() {
  * @param {string} inputId - The ID of the input field.
  */
 function setMinDateToday(inputId) {
-  var today = new Date().toISOString().split('T')[0];
-  document.getElementById(inputId).setAttribute('min', today);
-  document.getElementById(inputId).addEventListener('input', function () {
+  var today = new Date().toISOString().split("T")[0];
+  document.getElementById(inputId).setAttribute("min", today);
+  document.getElementById(inputId).addEventListener("input", function () {
     var selectedDate = this.value;
-    var currentDate = new Date().toISOString().split('T')[0];
+    var currentDate = new Date().toISOString().split("T")[0];
     if (selectedDate < currentDate) {
       this.value = today;
     }
@@ -86,11 +88,11 @@ async function addTask(id, column) {
  * @returns {void}
  */
 async function pushAddTask(id, column) {
-  let taskTitle = document.getElementById('taskTitle').value;
-  let taskDescription = document.getElementById('taskDescription').value;
+  let taskTitle = document.getElementById("taskTitle").value;
+  let taskDescription = document.getElementById("taskDescription").value;
   let taskDueDate = document.getElementById(id).value;
-  let selectedCategoryElement = document.getElementById('showSelectedCategory');
-  let selectedCategory = selectedCategoryElement.getAttribute('data-value');
+  let selectedCategoryElement = document.getElementById("showSelectedCategory");
+  let selectedCategory = selectedCategoryElement.getAttribute("data-value");
 
   addTaskValues(
     taskTitle,
@@ -137,7 +139,7 @@ async function addTaskValues(
     currentState: column,
   });
 
-  await setItem('tasks', JSON.stringify(tasks));
+  await setItem("tasks", JSON.stringify(tasks));
 }
 
 /**
@@ -147,7 +149,7 @@ async function addTaskValues(
  */
 function addSubTask(idInput, idContainer) {
   let subTaskInput = document.getElementById(idInput).value;
-  let subTaskError = document.getElementById('subTaskError');
+  let subTaskError = document.getElementById("subTaskError");
   let nr = subtasks.length;
   if (subTaskInput == 0) {
     subTaskError.innerHTML = /*HTML*/ `
@@ -159,7 +161,7 @@ function addSubTask(idInput, idContainer) {
       id: nr,
       isActive: false,
     });
-    document.getElementById(idInput).value = '';
+    document.getElementById(idInput).value = "";
     renderGeneratedSubTasks(idContainer);
     resetSubTaskInputField(idInput);
   }
@@ -172,10 +174,10 @@ function addSubTask(idInput, idContainer) {
  */
 function renderGeneratedSubTasks(idContainer) {
   let container = document.getElementById(idContainer);
-  container.innerHTML = '';
+  container.innerHTML = "";
 
   for (let i = 0; i < subtasks.length; i++) {
-    let id = subtasks[i]['id'];
+    let id = subtasks[i]["id"];
     container.innerHTML += subTasksValueHtml(id, i);
   }
 }
@@ -198,7 +200,7 @@ function findSubtaskPosition(id) {
 function editSubTask(id) {
   let container = document.getElementById(id);
   let nr = findSubtaskPosition(id);
-  let textContent = subtasks[nr]['subTaskInput'];
+  let textContent = subtasks[nr]["subTaskInput"];
   container.innerHTML = editSubTaskHtml(textContent, id);
 }
 
@@ -208,9 +210,9 @@ function editSubTask(id) {
  * @returns {void}
  */
 function addEditSubTask(i) {
-  let subTaskInput = document.getElementById('editSubTaskInput');
+  let subTaskInput = document.getElementById("editSubTaskInput");
   subtasks[i].subTaskInput = subTaskInput.value;
-  renderGeneratedSubTasks('subTaskContainer');
+  renderGeneratedSubTasks("subTaskContainer");
 }
 
 /**
@@ -218,24 +220,38 @@ function addEditSubTask(i) {
  * @param {string} id - The ID of the container to display the task form in.
  * @returns {void}
  */
-function showTaskForm(id) {
+async function showTaskForm(id) {
   let assignedTo = document.getElementById(id);
   assignedTo.innerHTML = showTaskFormHtml();
   sortContactsByAlphabet();
 
   for (let i = 0; i < contacts.length; i++) {
-    let currentUser = contacts[i]['name'];
+    let currentUser = contacts[i]["name"];
     let initials = getInitials(currentUser);
-    let color = contacts[i]['color'];
-    let isChoosen = contacts[i]['isChoosen'];
-    let assignedDropdown = document.getElementById('assignedDropdown');
+    let color = contacts[i]["color"];
+    let assignedDropdown = document.getElementById("assignedDropdown");
     let username = checkForUserName();
+    let contactNumber = contacts[i]["nr"];
 
     if (currentUser === username) {
-      assignedDropdown.innerHTML += assignedToUserYouHtml(i, color, currentUser, initials, isChoosen);
+      assignedDropdown.innerHTML += await assignedToUserYouHtml( i, color, currentUser, initials, contactNumber);
+      checkIfSelectedContact(i, contactNumber);
     } else {
-      assignedDropdown.innerHTML += assignedToUserHtml(i, color, currentUser, initials, isChoosen);
+      assignedDropdown.innerHTML += await assignedToUserHtml( i, color, currentUser, initials, contactNumber);
+      checkIfSelectedContact(i, contactNumber);
     }
+  }
+}
+
+function checkIfSelectedContact(i, contactNumber){
+  let userId = document.getElementById(`user-${i}`);
+  let checkboxImage = document.getElementById(`checkBox-${i}`);
+  if(contacts[contactNumber]["isChoosen"] === true){
+    checkboxImage.src = "./assets/img/icons/check_button-white.svg";
+    userId.classList.add("selected-profile-active-item");
+  }
+  if(contacts[contactNumber]["isChoosen"] === false && userId.classList.contains("selected-profile-active-item")){
+    userId.classList.remove("selected-profile-active-item")
   }
 }
 
@@ -243,45 +259,44 @@ function showTaskForm(id) {
  * Filters contacts based on the search term and renders them.
  * @returns {void}
  */
-function filterAddTaskContact() {
+async function filterAddTaskContact() {
   // let updatedFilteredContacts;
-  let searchTerm = document.getElementById('search').value.toLowerCase();
-  let assignedDropdown = document.getElementById('assignedDropdown');
-  assignedDropdown.innerHTML = '';
+  let searchTerm = document.getElementById("search").value.toLowerCase();
+  let assignedDropdown = document.getElementById("assignedDropdown");
+  assignedDropdown.innerHTML = "";
 
-  if (searchTerm === '') {
-    renderContacts(contacts);
-    assignedDropdown.classList.remove('d-none');
+  if (searchTerm === "") {
+    await showTaskForm("assignedTo");
+    assignedDropdown.classList.remove("d-none");
+    openDropDown('assignedDropdown', 'dropdownImgArrow');
   } else {
     // filterAndSetChosenContacts(contacts, searchTerm);
-    filteredContacts = contacts.filter((contact) => contact.name.toLowerCase().startsWith(searchTerm));
+    filteredContacts = contacts.filter((contact) =>
+      contact.name.toLowerCase().startsWith(searchTerm)
+    );
     // const updatedFilteredContacts = filteredContacts.map((contact) => {
     //   return { ...contact, isChoosen: true };
     // });
     renderFilteredContacts(filteredContacts);
     if (filteredContacts.length === 0) {
-      assignedDropdown.classList.add('d-none');
+      assignedDropdown.classList.add("d-none");
     } else {
-      assignedDropdown.classList.remove('d-none');
+      assignedDropdown.classList.remove("d-none");
     }
   }
 }
 
-function setIsChoosenValue(i) {
-  console.log('filteredContacts:', filteredContacts);
-  filteredContacts[i].isChoosen = !filteredContacts[i].isChoosen;
-  // contacts[i].isChoosen = !filteredContacts[i].isChoosen;
-  // console.log('filteredContacts[i].isChoosen:', filteredContacts[i].isChoosen);
-  // showTaskForm('assignedTo');
-  // console.log('filteredContacts[i].isChoosen', filteredContacts[i].isChoosen);
-  // filteredContacts[i].isChoosen = true;
-  // console.log('filteredContacts', filteredContacts);
-  renderFilteredContacts(filteredContacts);
-  // if (filteredContacts.length === 0) {
-  //   assignedDropdown.classList.add('d-none');
-  // } else {
-  //   assignedDropdown.classList.remove('d-none');
-  // }
+async function setIsChoosenValue(i) {
+  if (contacts[i]["isChoosen"] === true) {
+    contacts[i]["isChoosen"] = false;
+    await saveContacts();
+    return;
+  }
+  if (contacts[i]["isChoosen"] === false) {
+    contacts[i]["isChoosen"] = true;
+    await saveContacts();
+    return;
+  }
 }
 
 // function filterAndSetChosenContacts(contacts, searchTerm) {
@@ -297,16 +312,18 @@ function setIsChoosenValue(i) {
  * @param {Array} contacts - The array of contacts to render.
  * @returns {void}
  */
-function renderContacts(contacts) {
-  let assignedDropdown = document.getElementById('assignedDropdown');
-  assignedDropdown.innerHTML = '';
+async function renderContacts(contacts) {
+  let assignedDropdown = document.getElementById("assignedDropdown");
+  assignedDropdown.innerHTML = "";
 
   for (let i = 0; i < contacts.length; i++) {
-    let currentUser = contacts[i]['name'];
+    let currentUser = contacts[i]["name"];
     let initials = getInitials(currentUser);
-    let color = contacts[i]['color'];
+    let color = contacts[i]["color"];
+    let contactNumber = contacts[i]["nr"];
 
-    assignedDropdown.innerHTML += assignedToUserHtml(i, color, currentUser, initials);
+    assignedDropdown.innerHTML += await assignedToUserHtml( i, color, currentUser, initials, contactNumber);
+    checkIfSelectedContact(i);
   }
 }
 
@@ -316,21 +333,23 @@ function renderContacts(contacts) {
  * @returns {void}
  */
 function renderFilteredContacts(filteredContacts) {
-  console.log('renderFilteredContacts:', filteredContacts);
-  let assignedDropdown = document.getElementById('assignedDropdown');
-  assignedDropdown.innerHTML = '';
+  console.log("renderFilteredContacts:", filteredContacts);
+  let assignedDropdown = document.getElementById("assignedDropdown");
+  assignedDropdown.innerHTML = "";
   let username = checkForUserName();
 
   for (let i = 0; i < filteredContacts.length; i++) {
-    let currentUser = filteredContacts[i]['name'];
+    let currentUser = filteredContacts[i]["name"];
     let initials = getInitials(currentUser);
-    let color = filteredContacts[i]['color'];
-    let isChoosen = filteredContacts[i]['isChoosen'];
+    let color = filteredContacts[i]["color"];
+    let contactNumber = filteredContacts[i]["nr"];
 
     if (currentUser === username) {
-      assignedDropdown.innerHTML += assignedToUserYouHtml(i, color, currentUser, initials, isChoosen);
+      assignedDropdown.innerHTML += assignedToUserYouHtml( i, color, currentUser, initials, contactNumber);
+      checkIfSelectedContact(i, contactNumber);
     } else {
-      assignedDropdown.innerHTML += assignedToUserHtmlFILTERED(i, color, currentUser, initials, isChoosen);
+      assignedDropdown.innerHTML += assignedToUserHtml( i, color, currentUser, initials, contactNumber);
+      checkIfSelectedContact(i, contactNumber);
     }
   }
 }
@@ -345,10 +364,10 @@ function openDropDown(idDropdown, idImgArrow) {
   let assignedDropdown = document.getElementById(idDropdown);
   let dropdownImgArrow = document.getElementById(idImgArrow);
 
-  assignedDropdown.classList.toggle('d-none');
-  assignedDropdown.classList.toggle('border-active');
-  assignedDropdown.classList.toggle('dropbtn');
-  dropdownImgArrow.classList.toggle('rotate-arrow');
+  assignedDropdown.classList.toggle("d-none");
+  assignedDropdown.classList.toggle("border-active");
+  assignedDropdown.classList.toggle("dropbtn");
+  dropdownImgArrow.classList.toggle("rotate-arrow");
 }
 
 /**
@@ -356,11 +375,15 @@ function openDropDown(idDropdown, idImgArrow) {
  * @returns {void}
  */
 function openDropDownCategory() {
-  let assignedDropdownCategory = document.getElementById('assignedDropdownCategory');
-  let dropdownImgArrowCategory = document.getElementById('dropdownImgArrowCategory');
-  assignedDropdownCategory.classList.toggle('border-category-active');
-  assignedDropdownCategory.classList.toggle('d-none');
-  dropdownImgArrowCategory.classList.toggle('rotate-arrow');
+  let assignedDropdownCategory = document.getElementById(
+    "assignedDropdownCategory"
+  );
+  let dropdownImgArrowCategory = document.getElementById(
+    "dropdownImgArrowCategory"
+  );
+  assignedDropdownCategory.classList.toggle("border-category-active");
+  assignedDropdownCategory.classList.toggle("d-none");
+  dropdownImgArrowCategory.classList.toggle("rotate-arrow");
 }
 
 /**
@@ -369,27 +392,29 @@ function openDropDownCategory() {
  * @param {string} color - The color associated with the contact.
  * @returns {void}
  */
-async function addAssignedContact(i, color) {
-  let assignedDropdown = document.getElementById('assignedDropdown');
-  let selectedContact = contacts[i]['name'];
+async function addAssignedContact(i, color, contactsNumber) {
+  let assignedDropdown = document.getElementById("assignedDropdown");
+  let selectedContact = await contacts[contactsNumber]["name"];
   let checkboxImage = document.getElementById(`checkBox-${i}`);
   let userID = document.getElementById(`user-${i}`);
 
   // renderContactList(assignedDropdown, checkboxImage, userID, selectedContact, color);
-  addSelectedContact(assignedDropdown, checkboxImage, userID, selectedContact, color);
+  addSelectedContact( assignedDropdown, checkboxImage, userID, selectedContact, color);
+  await setIsChoosenValue(contactsNumber);
   await renderSelectedContacts(i);
 }
 
-async function addAssignedContactFiltered(i, color) {
-  console.log('addAssignedContactFiltered i:', i);
-  console.log('addAssignedContactFiltered color:', color);
-  let assignedDropdown = document.getElementById('assignedDropdown');
-  let selectedContact = filteredContacts[i]['name'];
+async function addFilteredAssignedContact(i, color, contactsNumber) {
+  // console.log('addAssignedContactFiltered i:', i);
+  // console.log('addAssignedContactFiltered color:', color);
+  let assignedDropdown = document.getElementById("assignedDropdown");
+  let selectedContact = filteredContacts[i]["name"];
   let checkboxImage = document.getElementById(`checkBox-${i}`);
   let userID = document.getElementById(`user-${i}`);
 
   // renderContactList(assignedDropdown, checkboxImage, userID, selectedContact, color);
   addSelectedContact(assignedDropdown, checkboxImage, userID, selectedContact, color);
+  await setIsChoosenValue(contactsNumber);
   await renderSelectedContacts(i);
 }
 
@@ -403,10 +428,12 @@ async function addAssignedContactFiltered(i, color) {
  * @param {string} color - The color of the selected contact.
  * @returns {void}
  */
-function addSelectedContact(assignedDropdown, checkboxImage, userID, selectedContact, color) {
-  const index = selectedContacts.findIndex((contact) => contact.name === selectedContact && contact.color === color);
+function addSelectedContact( assignedDropdown, checkboxImage, userID, selectedContact, color) {
+  const index = selectedContacts.findIndex(
+    (contact) => contact.name === selectedContact && contact.color === color
+  );
   if (!checkIfSelectedContactExist(selectedContact)) {
-    assignedDropdown.classList.toggle('addTask-selected');
+    assignedDropdown.classList.toggle("addTask-selected");
     if (!selectedContacts.includes(selectedContact)) {
       if (index === -1) {
         selectedContacts.push({
@@ -415,9 +442,24 @@ function addSelectedContact(assignedDropdown, checkboxImage, userID, selectedCon
         });
       }
     }
-    checkboxImage.src = './assets/img/icons/check_button-white.svg';
-    userID.classList.add('selected-profile-active-item');
+    checkboxImage.src = "./assets/img/icons/check_button-white.svg";
+    userID.classList.add("selected-profile-active-item");
+  } else{
+    removeSelectedContact( assignedDropdown, checkboxImage, userID, selectedContact, color);
   }
+}
+
+function backgroundForSelectedContact(divId){
+  for (let i = 0; i < contacts.length; i++) { 
+  let userId = document.getElementById(`user-${divId}`);
+  let checkboxImage = document.getElementById(`checkBox-${divId}`);
+  if(contacts[i]["isChoosen"] === true){
+    checkboxImage.src = "./assets/img/icons/check_button-white.svg";
+    userID.classList.add("selected-profile-active-item");
+  }
+  if(contacts[i]["isChoosen"] === false && userId.classList.contains("selected-profile-active-item")){
+    userId.classList.remove("selected-profile-active-item")
+  }}
 }
 
 /**
@@ -430,15 +472,17 @@ function addSelectedContact(assignedDropdown, checkboxImage, userID, selectedCon
  * @param {string} color - The color of the selected contact.
  * @returns {void}
  */
-function removeSelectedContact(assignedDropdown, checkboxImage, userID, selectedContact, color) {
-  const index = selectedContacts.findIndex((contact) => contact.name === selectedContact && contact.color === color);
+function removeSelectedContact( assignedDropdown, checkboxImage, userID, selectedContact, color) {
+  let index = selectedContacts.findIndex(
+    (contact) => contact.name === selectedContact && contact.color === color
+  );
   if (checkIfSelectedContactExist(selectedContact)) {
     if (index !== -1) {
       selectedContacts.splice(index, 1);
     }
-    checkboxImage.src = './assets/img/icons/checkBox.svg';
-    userID.classList.remove('selected-profile-active-item');
-    assignedDropdown.classList.toggle('addTask-selected');
+    checkboxImage.src = "./assets/img/icons/checkBox.svg";
+    userID.classList.remove("selected-profile-active-item");
+    assignedDropdown.classList.toggle("addTask-selected");
   }
 }
 
@@ -450,7 +494,7 @@ function removeSelectedContact(assignedDropdown, checkboxImage, userID, selected
  */
 function checkIfSelectedContactExist(selectedContact) {
   for (let i = 0; i < selectedContacts.length; i++) {
-    if (selectedContacts[i]['name'].includes(selectedContact)) {
+    if (selectedContacts[i]["name"].includes(selectedContact)) {
       return true;
     }
   }
@@ -463,13 +507,14 @@ function checkIfSelectedContactExist(selectedContact) {
  * @returns {void}
  */
 function renderSelectedContacts(i) {
-  let content = document.getElementById('assignedAddedContact');
-  content.innerHTML = '';
+  let content = document.getElementById("assignedAddedContact");
+  content.innerHTML = "";
 
   for (let j = 0; j < selectedContacts.length; j++) {
     let contact = selectedContacts[j];
-    let initials = getInitials(selectedContacts[j]['name']);
-    let color = contact['color'];
+    let initials = getInitials(selectedContacts[j]["name"]);
+    let color = contact["color"];
+
     content.innerHTML += renderSelectedContactsHtml(i, j, initials, color);
   }
 }
@@ -481,8 +526,8 @@ function renderSelectedContacts(i) {
  * @returns {string} The initials generated from the contact name.
  */
 function getInitials(contactName) {
-  const nameParts = contactName.split(' ');
-  let initials = '';
+  const nameParts = contactName.split(" ");
+  let initials = "";
   for (let i = 0; i < nameParts.length; i++) {
     initials += nameParts[i][0];
   }
@@ -501,7 +546,7 @@ function deleteSubTask(number, idContainer) {
   subTaskContainer = document.getElementById(idContainer);
   subTaskContainer.innerHTML = ``;
   for (let i = 0; i < subtasks.length; i++) {
-    let nr = subtasks[i]['id'];
+    let nr = subtasks[i]["id"];
     subTaskContainer.innerHTML += subtasksAfterDeletionHtml(i, nr, idContainer);
   }
 }
@@ -511,18 +556,18 @@ function deleteSubTask(number, idContainer) {
  */
 function clearInputValue() {
   renderAddTask();
-  showTaskForm('assignedTo');
-  changePrioToMedium('mediumContainer', 'mediumImg');
+  showTaskForm("assignedTo");
+  changePrioToMedium("mediumContainer", "mediumImg");
 }
 
 /**
  * Shows a popup indicating that a task has been added to the board.
  */
 async function showPopUpAddedTaskToBoard() {
-  let popup = document.getElementById('addedTaskToBoard');
-  popup.classList.remove('d-none');
+  let popup = document.getElementById("addedTaskToBoard");
+  popup.classList.remove("d-none");
   await setTimeout(() => moveToCenter(popup), 200);
-  setTimeout(() => (window.location.href = './board.html'), 3000);
+  setTimeout(() => (window.location.href = "./board.html"), 3000);
 }
 
 /**
@@ -531,7 +576,7 @@ async function showPopUpAddedTaskToBoard() {
  * @param {HTMLElement} popup - The popup element to be moved.
  */
 function moveToCenter(popup) {
-  popup.classList.add('moveToCenterAddTask');
+  popup.classList.add("moveToCenterAddTask");
 }
 
 /**
@@ -541,11 +586,19 @@ function moveToCenter(popup) {
  * @param {string} id - The ID of the category element.
  */
 function selectCategory(category, id) {
-  const userStory = document.getElementById('userStory');
-  const technicalTask = document.getElementById('other');
-  const showSelectedCategory = document.getElementById('showSelectedCategory');
-  const assignedDropdownCategory = document.getElementById('assignedDropdownCategory');
-  selectCategoryIfElse(userStory, technicalTask, showSelectedCategory, assignedDropdownCategory, category);
+  const userStory = document.getElementById("userStory");
+  const technicalTask = document.getElementById("other");
+  const showSelectedCategory = document.getElementById("showSelectedCategory");
+  const assignedDropdownCategory = document.getElementById(
+    "assignedDropdownCategory"
+  );
+  selectCategoryIfElse(
+    userStory,
+    technicalTask,
+    showSelectedCategory,
+    assignedDropdownCategory,
+    category
+  );
   checkIfFormIsFilled(id);
 }
 
@@ -558,25 +611,31 @@ function selectCategory(category, id) {
  * @param {HTMLElement} assignedDropdownCategory - The dropdown category element.
  * @param {string} category - The category selected for the task.
  */
-function selectCategoryIfElse(userStory, technicalTask, showSelectedCategory, assignedDropdownCategory, category) {
-  if (category === 'user-story' || category === 'User Story') {
-    userStory.classList.add('category-selected');
-    technicalTask.classList.remove('category-selected');
-    showSelectedCategory.setAttribute('data-value', category);
+function selectCategoryIfElse(
+  userStory,
+  technicalTask,
+  showSelectedCategory,
+  assignedDropdownCategory,
+  category
+) {
+  if (category === "user-story" || category === "User Story") {
+    userStory.classList.add("category-selected");
+    technicalTask.classList.remove("category-selected");
+    showSelectedCategory.setAttribute("data-value", category);
     showSelectedCategory.innerHTML = `User Story`;
-    assignedDropdownCategory.classList.add('d-none');
+    assignedDropdownCategory.classList.add("d-none");
     categoryIsSelected = true;
-  } else if (category === 'technical-task' || category === 'Technical Task') {
-    technicalTask.classList.add('category-selected');
-    userStory.classList.remove('category-selected');
-    showSelectedCategory.setAttribute('data-value', category);
+  } else if (category === "technical-task" || category === "Technical Task") {
+    technicalTask.classList.add("category-selected");
+    userStory.classList.remove("category-selected");
+    showSelectedCategory.setAttribute("data-value", category);
     showSelectedCategory.innerHTML = `Technical Task`;
-    assignedDropdownCategory.classList.add('d-none');
+    assignedDropdownCategory.classList.add("d-none");
     categoryIsSelected = true;
   } else {
-    userStory.classList.remove('category-selected');
-    technicalTask.classList.remove('category-selected');
-    showSelectedCategory.setAttribute('data-value', '');
+    userStory.classList.remove("category-selected");
+    technicalTask.classList.remove("category-selected");
+    showSelectedCategory.setAttribute("data-value", "");
     showSelectedCategory.innerHTML = `Select task category`;
   }
 }
@@ -590,7 +649,7 @@ function changeButtonsAddTask(id) {
   let inputField = document.getElementById(id);
 
   inputField.innerHTML = changeButtonsAddTaskHtml();
-  document.getElementById('subTaskInput').focus();
+  document.getElementById("subTaskInput").focus();
 }
 
 /**
@@ -624,6 +683,7 @@ function resetSubTaskInputField(idContainer) {
 function changePrioToMedium(idContainer, idImg) {
   let prioContainer = document.getElementById(idContainer);
   let img = document.getElementById(idImg);
+
   prioContainer.classList.add('priorityMediumActive');
   img.src = './assets/img/addTask/MediumPrioSign.svg';
   selectedPrio = 'medium';
@@ -642,6 +702,7 @@ function changePrioToMedium(idContainer, idImg) {
 function changePrioToUrgent(idContainer, idImg) {
   let prioContainer = document.getElementById(idContainer);
   let img = document.getElementById(idImg);
+
   prioContainer.classList.add('priorityUrgentActive');
   img.src = './assets/img/addTask/urgentPrioActive.svg';
   selectedPrio = 'urgent';
@@ -675,9 +736,18 @@ function changePrioToLow(idContainer, idImg) {
  * @param {string} id - The ID of the due date input field.
  */
 function checkIfFormIsFilled(id) {
-  let title = document.getElementById('taskTitle');
+  let title = document.getElementById("taskTitle");
   let dueDate = document.getElementById(id);
-  if (categoryIsSelected === true && title.value > '' && dueDate.value > '') {
-    document.getElementById('create-task').disabled = false;
+  if (categoryIsSelected === true && title.value > "" && dueDate.value > "") {
+    document.getElementById("create-task").disabled = false;
   }
 }
+
+async function resetIsChoosenValue(){
+  for (let i = 0; i < contacts.length; i++) {
+    let contact = contacts[i];
+    contact["isChoosen"] = false;        
+  }
+  await saveContacts();
+}
+

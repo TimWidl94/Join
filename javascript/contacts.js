@@ -15,6 +15,7 @@ async function init() {
   setColorToContacts();
   renderContacts();
   setColorToActive('sidebarContacts', 'contacts-img', 'bottomBarContactsMobile', 'contactsImgMobile');
+  setNumberOnContacts();
 }
 
 /**

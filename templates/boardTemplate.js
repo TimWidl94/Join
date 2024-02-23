@@ -325,7 +325,7 @@ function addTaskPopUpHtml(column) {
             </div>
             <div id="mediumContainer" onclick="changePrioToMedium('mediumContainer', 'mediumImg')">
               <p>Medium</p>
-              <img src="assets/img/AddTask/mediumPrioSignInactive.svg" alt="Prio Medium" id="mediumImg" />
+              <img src="assets/img/AddTask/MediumPrioSignInactive.svg" alt="Prio Medium" id="mediumImg" />
             </div>
             <div id="lowContainer" onclick="changePrioToLow('lowContainer', 'lowImg')">
               <p>Low</p>

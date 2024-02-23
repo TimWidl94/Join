@@ -1,3 +1,7 @@
+/**
+ * Generates HTML content for the legal notice heading.
+ * @returns {string} The HTML content for the legal notice heading.
+ */
 function legalNoticeH1Html() {
   return /*html*/ `
         <h1 class="h1-text-sites">Legal Notice</h1>
@@ -99,6 +103,10 @@ function legalNoticeHtmlMain() {
       `;
 }
 
+/**
+ * Generates HTML content for the main section of the legal notice page.
+ * @returns {string} The HTML content for the main section of the legal notice page.
+ */
 function helpH1Html() {
   return /*html*/ `
       <h1 class="h1-text-sites">Help</h1>
@@ -192,6 +200,10 @@ function privacyPolicyH1Html() {
   `;
 }
 
+/**
+ * Generates HTML content for the main section of the help page.
+ * @returns {string} The HTML content for the main section of the help page.
+ */
 function privacyPolicyHtmlMain() {
   return /*html*/ `
     <p class="p-text-sites">Last updated: January 26, 2024</p>

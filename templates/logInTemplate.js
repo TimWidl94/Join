@@ -1,3 +1,7 @@
+/**
+ * Generates HTML content for the login screen.
+ * @returns {string} The HTML content for the login screen.
+ */
 function logInHtml() {
   return /*html*/ ` 
   <form action="" id="loginScreenBody" class="loginScreenBody" onsubmit="loadUser(); return false" name="logIn">
@@ -37,6 +41,10 @@ function logInHtml() {
   `;
 }
 
+/**
+ * Generates HTML content for the signup form.
+ * @returns {string} The HTML content for the signup form.
+ */
 function signupHtml() {
   return /*html*/ `
     <form action="" id="signUpBody" class="signUpBody" onsubmit="signUp(); return false">

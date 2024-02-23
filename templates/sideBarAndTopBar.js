@@ -1,3 +1,7 @@
+/**
+ * Generates HTML content for the sidebar.
+ * @returns {string} The HTML content for the sidebar.
+ */
 function sideBarHtml(){
     return `
     <section class="main">
@@ -14,6 +18,10 @@ function sideBarHtml(){
     `
 }
 
+/**
+ * Generates HTML content for the top bar.
+ * @returns {string} The HTML content for the top bar.
+ */
 function topBarHtml(){
 return `
 <section class="topbar" id="topbarSection">

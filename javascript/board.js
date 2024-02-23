@@ -459,21 +459,21 @@ function addSubTaskEdit(idInput, idContainer, i) {
   let nr = subtasks.length;
   validateAndAddSubTaskEdit(subTaskInput, subTaskError, nr, idInput, idContainer, i)
 
-    document.getElementById(idInput).value = '';
-    renderGeneratedSubTasksEdit(idContainer, i);
-    resetSubTaskInputField(idInput);
-  }
+  document.getElementById(idInput).value = '';
+  renderGeneratedSubTasksEdit(idContainer, i);
+  resetSubTaskInputField(idInput);
+}
 
 
-  /**
- * Validate and add a subtask during task editing.
- * @param {string} subTaskInput - The input value of the subtask.
- * @param {HTMLElement} subTaskError - The element to display error messages.
- * @param {number} nr - The number of subtasks.
- * @param {string} idInput - The ID of the subtask input field.
- * @param {string} idContainer - The ID of the HTML container for subtasks.
- * @param {number} i - The index of the task.
- */
+/**
+* Validate and add a subtask during task editing.
+* @param {string} subTaskInput - The input value of the subtask.
+* @param {HTMLElement} subTaskError - The element to display error messages.
+* @param {number} nr - The number of subtasks.
+* @param {string} idInput - The ID of the subtask input field.
+* @param {string} idContainer - The ID of the HTML container for subtasks.
+* @param {number} i - The index of the task.
+*/
 function validateAndAddSubTaskEdit(subTaskInput, subTaskError, nr, idInput, idContainer, i) {
   if (subTaskInput.trim() === '') {
     subTaskError.innerHTML = /*HTML*/ `

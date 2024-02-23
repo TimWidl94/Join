@@ -98,3 +98,12 @@ function classlistRemoveAndAdd(id, remove, add) {
   document.getElementById(id).classList.remove(remove);
   document.getElementById(id).classList.add(add);
 }
+
+
+async function setNumberOnContacts(){
+  for (let i = 0; i < contacts.length; i++) {
+    let contact = contacts[i];
+    contact["nr"] = i;
+    await setItem('contacts', JSON.stringify(contacts));
+  }
+}

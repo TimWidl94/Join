@@ -169,9 +169,9 @@ function showTaskFormHtml() {
   `;
 }
 
-function assignedToUserHtml(i, color, currentUser, initials, isChoosen) {
+function assignedToUserHtml(i, color, currentUser, initials, contactNumber) {
   return /*html*/ `
-    <div id="user-${i}" class="flex-checkbox selected-profile selected_${isChoosen}" onclick="addAssignedContact('${i}', '${color}')" data-value="${currentUser}">
+    <div id="user-${i}" class="flex-checkbox selected-profile" onclick="addAssignedContact('${i}', '${color}', ${contactNumber})" data-value="${currentUser}">
       <div class="selected-profile">
         <div class="assinged-contact-profile" style="background-color:${color}">${initials}</div>
         <span class="assigned-name">${currentUser}</span>
@@ -182,22 +182,22 @@ function assignedToUserHtml(i, color, currentUser, initials, isChoosen) {
   `;
 }
 
-function assignedToUserHtmlFILTERED(i, color, currentUser, initials, isChoosen) {
-  return /*html*/ `
-    <div id="user-${i}" class="flex-checkbox selected-profile selected_${isChoosen}" onclick="addFilteredAssignedContact('${i}', '${color}')" data-value="${currentUser}">
-      <div class="selected-profile">
-        <div class="assinged-contact-profile" style="background-color:${color}">${initials}</div>
-        <span class="assigned-name">${currentUser}</span>
-      </div>
-      <img id="hoverCheckbox" class="hover-checkbox" src="assets/img/icons/checkBoxWhite.svg" alt="">
-      <img id="checkBox-${i}" class="flex-checkbox-img" src="assets/img/icons/checkBox.svg" alt="">
-    </div>
-  `;
-}
+// function assignedToUserHtmlFILTERED(i, color, currentUser, initials, contactNumber) {
+//   return /*html*/ `
+//     <div id="user-${i}" class="flex-checkbox selected-profile" onclick="addFilteredAssignedContact('${i}', '${color}', ${contactNumber})" data-value="${currentUser}">
+//       <div class="selected-profile">
+//         <div class="assinged-contact-profile" style="background-color:${color}">${initials}</div>
+//         <span class="assigned-name">${currentUser}</span>
+//       </div>
+//       <img id="hoverCheckbox" class="hover-checkbox" src="assets/img/icons/checkBoxWhite.svg" alt="">
+//       <img id="checkBox-${i}" class="flex-checkbox-img" src="assets/img/icons/checkBox.svg" alt="">
+//     </div>
+//   `;
+// }
 
-function assignedToUserYouHtml(i, color, currentUser, initials, isChoosen) {
+function assignedToUserYouHtml(i, color, currentUser, initials, contactNumber) {
   return /*html*/ `
-    <div id="user-${i}" class="flex-checkbox selected-profile selected_${isChoosen}" onclick="addAssignedContact(${i}, '${color}')" data-value="${currentUser}">
+    <div id="user-${i}" class="flex-checkbox selected-profile" onclick="addAssignedContact(${i}, '${color}', ${contactNumber})" data-value="${currentUser}">
       <div class="selected-profile"><div class="assinged-contact-profile" style="background-color:${color}">${initials}</div>
       <span class="assigned-name">${currentUser} (you)</span>
     </div>

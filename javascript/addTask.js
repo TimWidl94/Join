@@ -25,7 +25,7 @@ async function init() {
   await showTaskForm("assignedTo");
   changePrioToMedium("mediumContainer", "mediumImg");
   setMinDateToday("myDateInput");
-  
+  setNumberOnContacts();
 }
 
 /**
@@ -220,7 +220,7 @@ function addEditSubTask(i) {
  * @param {string} id - The ID of the container to display the task form in.
  * @returns {void}
  */
-function showTaskForm(id) {
+async function showTaskForm(id) {
   let assignedTo = document.getElementById(id);
   assignedTo.innerHTML = showTaskFormHtml();
   sortContactsByAlphabet();
@@ -231,25 +231,26 @@ function showTaskForm(id) {
     let color = contacts[i]["color"];
     let assignedDropdown = document.getElementById("assignedDropdown");
     let username = checkForUserName();
+    let contactNumber = contacts[i]["nr"];
 
     if (currentUser === username) {
-      assignedDropdown.innerHTML += assignedToUserYouHtml( i, color, currentUser, initials);
-      checkIfSelectedContact(i);
+      assignedDropdown.innerHTML += await assignedToUserYouHtml( i, color, currentUser, initials, contactNumber);
+      checkIfSelectedContact(i, contactNumber);
     } else {
-      assignedDropdown.innerHTML += assignedToUserHtml( i, color, currentUser, initials);
-      checkIfSelectedContact(i);
+      assignedDropdown.innerHTML += await assignedToUserHtml( i, color, currentUser, initials, contactNumber);
+      checkIfSelectedContact(i, contactNumber);
     }
   }
 }
 
-function checkIfSelectedContact(i){
+function checkIfSelectedContact(i, contactNumber){
   let userId = document.getElementById(`user-${i}`);
   let checkboxImage = document.getElementById(`checkBox-${i}`);
-  if(contacts[i]["isChoosen"] === true){
+  if(contacts[contactNumber]["isChoosen"] === true){
     checkboxImage.src = "./assets/img/icons/check_button-white.svg";
     userId.classList.add("selected-profile-active-item");
   }
-  if(contacts[i]["isChoosen"] === false && userId.classList.contains("selected-profile-active-item")){
+  if(contacts[contactNumber]["isChoosen"] === false && userId.classList.contains("selected-profile-active-item")){
     userId.classList.remove("selected-profile-active-item")
   }
 }
@@ -258,15 +259,16 @@ function checkIfSelectedContact(i){
  * Filters contacts based on the search term and renders them.
  * @returns {void}
  */
-function filterAddTaskContact() {
+async function filterAddTaskContact() {
   // let updatedFilteredContacts;
   let searchTerm = document.getElementById("search").value.toLowerCase();
   let assignedDropdown = document.getElementById("assignedDropdown");
   assignedDropdown.innerHTML = "";
 
   if (searchTerm === "") {
-    renderContacts(contacts);
+    await showTaskForm("assignedTo");
     assignedDropdown.classList.remove("d-none");
+    openDropDown('assignedDropdown', 'dropdownImgArrow');
   } else {
     // filterAndSetChosenContacts(contacts, searchTerm);
     filteredContacts = contacts.filter((contact) =>
@@ -318,8 +320,9 @@ async function renderContacts(contacts) {
     let currentUser = contacts[i]["name"];
     let initials = getInitials(currentUser);
     let color = contacts[i]["color"];
+    let contactNumber = contacts[i]["nr"];
 
-    assignedDropdown.innerHTML += await assignedToUserHtml( i, color, currentUser, initials);
+    assignedDropdown.innerHTML += await assignedToUserHtml( i, color, currentUser, initials, contactNumber);
     checkIfSelectedContact(i);
   }
 }
@@ -339,12 +342,14 @@ function renderFilteredContacts(filteredContacts) {
     let currentUser = filteredContacts[i]["name"];
     let initials = getInitials(currentUser);
     let color = filteredContacts[i]["color"];
-    let isChoosen = filteredContacts[i]["isChoosen"];
+    let contactNumber = filteredContacts[i]["nr"];
 
     if (currentUser === username) {
-      assignedDropdown.innerHTML += assignedToUserYouHtml( i, color, currentUser, initials, isChoosen);
+      assignedDropdown.innerHTML += assignedToUserYouHtml( i, color, currentUser, initials, contactNumber);
+      checkIfSelectedContact(i, contactNumber);
     } else {
-      assignedDropdown.innerHTML += assignedToUserHtmlFILTERED( i, color, currentUser, initials, isChoosen);
+      assignedDropdown.innerHTML += assignedToUserHtml( i, color, currentUser, initials, contactNumber);
+      checkIfSelectedContact(i, contactNumber);
     }
   }
 }
@@ -387,19 +392,19 @@ function openDropDownCategory() {
  * @param {string} color - The color associated with the contact.
  * @returns {void}
  */
-async function addAssignedContact(i, color) {
+async function addAssignedContact(i, color, contactsNumber) {
   let assignedDropdown = document.getElementById("assignedDropdown");
-  let selectedContact = await contacts[i]["name"];
+  let selectedContact = await contacts[contactsNumber]["name"];
   let checkboxImage = document.getElementById(`checkBox-${i}`);
   let userID = document.getElementById(`user-${i}`);
 
   // renderContactList(assignedDropdown, checkboxImage, userID, selectedContact, color);
   addSelectedContact( assignedDropdown, checkboxImage, userID, selectedContact, color);
-  await setIsChoosenValue(i);
+  await setIsChoosenValue(contactsNumber);
   await renderSelectedContacts(i);
 }
 
-async function addFilteredAssignedContact(i, color) {
+async function addFilteredAssignedContact(i, color, contactsNumber) {
   // console.log('addAssignedContactFiltered i:', i);
   // console.log('addAssignedContactFiltered color:', color);
   let assignedDropdown = document.getElementById("assignedDropdown");
@@ -409,7 +414,7 @@ async function addFilteredAssignedContact(i, color) {
 
   // renderContactList(assignedDropdown, checkboxImage, userID, selectedContact, color);
   addSelectedContact(assignedDropdown, checkboxImage, userID, selectedContact, color);
-  await setIsChoosenValue(i);
+  await setIsChoosenValue(contactsNumber);
   await renderSelectedContacts(i);
 }
 
@@ -757,3 +762,4 @@ async function resetIsChoosenValue(){
   }
   await saveContacts();
 }
+

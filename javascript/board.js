@@ -13,6 +13,7 @@ async function initBoard() {
   // renderContacts();
   setColorToActive('sidebarBoard', 'board-img', 'bottomBarBoardMobile', 'boardImgMobile');
   checkTaskAreaDisplayEmpty();
+  setNumberOnContacts();
 }
 
 function renderAddTaskPopUp(column) {
@@ -65,7 +66,6 @@ function closeAddTaskPopup() {
 
 function openTaskPopup(i) {
   let taskPopup = document.getElementById('aTPopupWrapper');
-  let taskPopupContainer = document.getElementById('aTPopupWrapper');
   taskPopup.classList.remove('d-none');
   taskPopup.classList.add('slide-in');
   taskPopup.classList.add('d-block');

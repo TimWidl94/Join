@@ -219,6 +219,7 @@
   position: relative; }
 
 .wobble-element {
+  cursor: pointer;
   background-color: #ccc;
   top: 0%;
   left: 0%;
@@ -2481,7 +2482,6 @@ form {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  cursor: pointer;
   min-width: 100%;
   height: calc(100% + 221px);
   min-height: 40px;

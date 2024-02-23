@@ -181,9 +181,9 @@
     font-weight: 700;
     color: $dark-blue;
     margin-bottom: 15.5px;
-    position: fixed;
-    z-index: 2;
-    background-color: #f6f7f8;
+    position: absolute;
+    z-index: 1;
+    background-color: $summary-background-color;
     height: 40px;
   }
 
@@ -472,8 +472,6 @@
   flex-direction: column;
   gap: 6px;
   border-radius: 12px;
-  // overflow: auto; /* Subtask-Container werden scrollbar, wenn der Inhalt den verfügbaren Platz überschreitet */
-  // max-height: 150px;
 }
 
 .subtaskContainer p {
@@ -769,17 +767,7 @@
   display: none;
 }
 
-@media (min-width: 1300px) {
-  .board-title {
-    z-index: unset;
-  }
-}
-
 @media (max-width: 1300px) {
-  // .bodyBoard {
-  //   overflow: visible !important;
-  // }
-
   .overflowYActive {
     overflow-y: unset;
     overflow-x: unset;
@@ -845,9 +833,6 @@
     height: 100% !important;
   }
 
-  .col-4 {
-    // width: 66% !important;
-  }
   .search-side {
     width: 100%;
   }

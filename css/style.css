@@ -2612,8 +2612,8 @@ form {
   font-weight: 700;
   color: #42526e;
   margin-bottom: 15.5px;
-  position: fixed;
-  z-index: 2;
+  position: absolute;
+  z-index: 1;
   background-color: #f6f7f8;
   height: 40px; }
 
@@ -3102,10 +3102,6 @@ form {
 
 .row::-webkit-scrollbar {
   display: none; }
-
-@media (min-width: 1300px) {
-  .board-title {
-    z-index: unset; } }
 
 @media (max-width: 1300px) {
   .overflowYActive {
@@ -3932,7 +3928,8 @@ input:focus {
   border-radius: 8px;
   border: none;
   gap: 10px;
-  padding: 15px 16px; }
+  padding: 15px 16px;
+  cursor: pointer; }
 
 .buttonWhite {
   display: flex;

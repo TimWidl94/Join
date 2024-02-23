@@ -13,7 +13,6 @@ async function initBoard() {
   // renderContacts();
   setColorToActive('sidebarBoard', 'board-img', 'bottomBarBoardMobile', 'boardImgMobile');
   checkTaskAreaDisplayEmpty();
-  console.log('initBoard tasks:', tasks);
 }
 
 function renderAddTaskPopUp(column) {
@@ -566,12 +565,14 @@ function removeHighlight(id) {
 
 function checkTaskAreaDisplayEmpty() {
   let dragAreas = document.getElementsByClassName('drag-area');
+  let categories = ['To do', 'In progress', 'Await feedback', 'Done'];
 
   for (let i = 0; i < dragAreas.length; i++) {
     let dragArea = dragAreas[i];
+    let category = categories[i];
 
     if (dragArea.children.length < 1) {
-      dragArea.innerHTML = /*html*/ `<div class="drag-area-empty">No tasks To do</div>`;
+      dragArea.innerHTML = /*html*/ `<div class="drag-area-empty">No task in "${category}"</div>`;
     }
   }
 }
@@ -747,6 +748,7 @@ async function renderSearchedTasksInProgress(i) {
 async function renderSearchedTasksAwaitFeedback(i) {
   let contentBoxAwaitFeedback = document.getElementById('awaitFeedback');
   let img = await setPrioImg(i);
+  let x = await checkHowManySubtasksChecked(i);
   contentBoxAwaitFeedback.innerHTML += generateTodoHTML(i, img, x);
   setCategoryBackground(tasks[i].selectedCategory, `board-task-epic${i}`);
   await taskProgressBar(i);
@@ -754,6 +756,7 @@ async function renderSearchedTasksAwaitFeedback(i) {
 
 async function renderSearchedTasksDone(i) {
   let contentBoxDone = document.getElementById('done');
+  let img = await setPrioImg(i);
   let x = await checkHowManySubtasksChecked(i);
   contentBoxDone.innerHTML += generateTodoHTML(i, img, x);
   setCategoryBackground(tasks[i].selectedCategory, `board-task-epic${i}`);

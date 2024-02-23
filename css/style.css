@@ -487,6 +487,14 @@ textarea {
   .selected-profile-active-item:hover {
     background-color: #1d2127 !important; }
 
+.selected_true {
+  color: #fff;
+  background-color: #2a3647;
+  border-radius: 10px;
+  padding: 7px 16px 7px 16px; }
+  .selected_true:hover {
+    background-color: #1d2127 !important; }
+
 .category-selected {
   color: #fff;
   background-color: #2a3647;
@@ -804,7 +812,7 @@ textarea {
   background: #fff;
   font-family: Inter;
   font-size: 19px;
-  width: calc(100% - (2 * 16px)); }
+  width: calc(100% - (2 * 20px)); }
 
 .category-dropdown {
   padding: 12px 16px;
@@ -1053,8 +1061,6 @@ textarea {
     max-width: unset;
     padding: unset;
     width: 100%; }
-  .subtask-div {
-    min-height: unset; }
   .btns-down-add-task {
     justify-content: center;
     align-items: center;
@@ -1101,7 +1107,9 @@ textarea {
   .requirement-desktop {
     display: none; }
   .requirement-mobile {
-    display: flex; } }
+    display: flex; }
+  .subtask-div {
+    min-height: unset; } }
 
 @media (max-width: 475px) {
   #clear-mobile {

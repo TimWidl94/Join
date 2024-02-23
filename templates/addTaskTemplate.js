@@ -1,3 +1,7 @@
+/**
+ * Generates HTML for the task addition form.
+ * @returns {string} The HTML content for the task addition form.
+ */
 function addTaskHtml() {
   return /*html*/ `
     <form onsubmit="addTask('myDateInput', 'toDo'); return false" class="formAddTask">
@@ -105,6 +109,10 @@ function addTaskHtml() {
   `;
 }
 
+/**
+ * Generates HTML for the subtask input field.
+ * @returns {string} The HTML content for the subtask input field.
+ */
 function subTaskInputHtml() {
   return /*html*/ `
     <p>Subtasks</p>
@@ -116,6 +124,10 @@ function subTaskInputHtml() {
   `;
 }
 
+/**
+ * Generates HTML for the subtask input field.
+ * @returns {string} The HTML content for the subtask input field.
+ */
 function subTaskInputFieldHtml() {
   return /*html*/ `
     <input id="subTaskInput" type="text" placeholder="Add new subtask" onclick="changeButtonsAddTask('inputFieldBox')" />
@@ -123,6 +135,12 @@ function subTaskInputFieldHtml() {
   `;
 }
 
+/**
+ * Generates HTML for a subtask item.
+ * @param {string} id - The ID of the subtask item.
+ * @param {number} i - The index of the subtask.
+ * @returns {string} The HTML content for the subtask item.
+ */
 function subTasksValueHtml(id, i) {
   return /*html*/ `
     <li id="${id}" class="subtask-div-list" ondblclick="editSubTask(${id})"><div class="subtask-div-text">${subtasks[i]['subTaskInput']}</div>
@@ -133,6 +151,12 @@ function subTasksValueHtml(id, i) {
     </li>`;
 }
 
+/**
+ * Generates HTML for editing a subtask.
+ * @param {string} textContent - The text content of the subtask.
+ * @param {string} id - The ID of the subtask item.
+ * @returns {string} The HTML content for editing a subtask.
+ */
 function editSubTaskHtml(textContent, id) {
   return /*html*/ `
     <div class="test-2">
@@ -146,6 +170,10 @@ function editSubTaskHtml(textContent, id) {
   `;
 }
 
+/**
+ * Generates HTML for displaying a message when a task is added to the board.
+ * @returns {string} The HTML content for the task added to board message.
+ */
 function addedTaskToBoardHtml() {
   return /*html*/ `
     <div class="signedUpMassage d-none" id="addedTaskToBoard">
@@ -155,6 +183,10 @@ function addedTaskToBoardHtml() {
   `;
 }
 
+/**
+ * Generates HTML for the task form to add assigned contacts.
+ * @returns {string} The HTML content for the task form to add assigned contacts.
+ */
 function showTaskFormHtml() {
   return /*html*/ `
     <div name="assigned" onchange="addAssignedContact()">
@@ -169,6 +201,15 @@ function showTaskFormHtml() {
   `;
 }
 
+/**
+ * Generates HTML for displaying assigned contacts.
+ * @param {number} i - The index of the contact.
+ * @param {string} color - The color of the contact.
+ * @param {string} currentUser - The name of the contact.
+ * @param {string} initials - The initials of the contact.
+ * @param {boolean} isChoosen - Indicates if the contact is chosen.
+ * @returns {string} The HTML content for displaying assigned contacts.
+ */
 function assignedToUserHtml(i, color, currentUser, initials, isChoosen) {
   return /*html*/ `
     <div id="user-${i}" class="flex-checkbox selected-profile selected_${isChoosen}" onclick="addAssignedContact('${i}', '${color}')" data-value="${currentUser}">
@@ -182,6 +223,16 @@ function assignedToUserHtml(i, color, currentUser, initials, isChoosen) {
   `;
 }
 
+
+/**
+ * Generates HTML for displaying assigned contacts when filtered.
+ * @param {number} i - The index of the contact.
+ * @param {string} color - The color of the contact.
+ * @param {string} currentUser - The name of the contact.
+ * @param {string} initials - The initials of the contact.
+ * @param {boolean} isChoosen - Indicates if the contact is chosen.
+ * @returns {string} The HTML content for displaying assigned contacts when filtered.
+ */
 function assignedToUserHtmlFILTERED(i, color, currentUser, initials, isChoosen) {
   return /*html*/ `
     <div id="user-${i}" class="flex-checkbox selected-profile selected_${isChoosen}" onclick="setIsChoosenValue(${i}), addAssignedContactFiltered('${i}', '${color}')" data-value="${currentUser}">
@@ -195,6 +246,15 @@ function assignedToUserHtmlFILTERED(i, color, currentUser, initials, isChoosen) 
   `;
 }
 
+/**
+ * Generates HTML for displaying assigned contacts for the current user.
+ * @param {number} i - The index of the contact.
+ * @param {string} color - The color of the contact.
+ * @param {string} currentUser - The name of the contact.
+ * @param {string} initials - The initials of the contact.
+ * @param {boolean} isChoosen - Indicates if the contact is chosen.
+ * @returns {string} The HTML content for displaying assigned contacts for the current user.
+ */
 function assignedToUserYouHtml(i, color, currentUser, initials, isChoosen) {
   return /*html*/ `
     <div id="user-${i}" class="flex-checkbox selected-profile selected_${isChoosen}" onclick="addAssignedContact(${i}, '${color}')" data-value="${currentUser}">
@@ -206,6 +266,13 @@ function assignedToUserYouHtml(i, color, currentUser, initials, isChoosen) {
   `;
 }
 
+/**
+ * Generates HTML for subtasks after deletion.
+ * @param {number} i - The index of the subtask.
+ * @param {string} nr - The number of the subtask.
+ * @param {string} idContainer - The ID of the subtask container.
+ * @returns {string} The HTML content for subtasks after deletion.
+ */
 function subtasksAfterDeletionHtml(i, nr, idContainer) {
   return /*html*/ `
     <div id="${nr}" class="subtask-div-list">${subtasks[i]['subTaskInput']}
@@ -216,12 +283,24 @@ function subtasksAfterDeletionHtml(i, nr, idContainer) {
   `;
 }
 
+/**
+ * Generates HTML for rendering selected contacts.
+ * @param {number} i - The index of the contact.
+ * @param {number} j - The index of the selected contact.
+ * @param {string} initials - The initials of the contact.
+ * @param {string} color - The color of the contact.
+ * @returns {string} The HTML content for rendering selected contacts.
+ */
 function renderSelectedContactsHtml(i, j, initials, color) {
   return /*html*/ `
     <div class="assinged-contact-overview" style="background-color:${color}" onclick="removeSelectedContact(${i}, ${j})">${initials}</div>
   `;
 }
 
+/**
+ * Generates HTML for changing buttons in the task form.
+ * @returns {string} The HTML content for changing buttons in the task form.
+ */
 function changeButtonsAddTaskHtml() {
   return /*html*/ `
     <input id="subTaskInput" type="text" placeholder="Add new subtask" onclick="" class="PosRel" />

@@ -1,3 +1,10 @@
+/**
+ * Generates HTML for a todo item.
+ * @param {number} i - The index of the todo item.
+ * @param {string} img - The image source.
+ * @param {number} x - The value of x.
+ * @returns {string} The HTML string for the todo item.
+ */
 function generateTodoHTML(i, img, x) {
   return /*html*/ `
     <div class="wobble-container">
@@ -26,6 +33,12 @@ function generateTodoHTML(i, img, x) {
                 </div>`;
 }
 
+/**
+ * Generates HTML for subtasks.
+ * @param {string} id - The ID of the subtask.
+ * @param {number} i - The index of the subtask.
+ * @returns {string} The HTML string for the subtask.
+ */
 function subTasksValueHtml(id, i) {
   return /*html*/ `
     <li id="${id}" class="subtask-div-list" ondbclick="editSubTask(${id})"><p>${subtasks[i]['subTaskInput']}</p>
@@ -37,95 +50,11 @@ function subTasksValueHtml(id, i) {
     </li>`;
 }
 
-function addTaskHtml() {
-  // return /*html*/ `
-  // <div class="container-left-right-wrapper">
-  //     <section class="container-left">
-  //       <div class="headline-add-task"><h1 class="headline-h1-add-task">Add Task</h1></div>
-  //       <div id="title-add-task">
-  //         <p>Title<span class="span-required">*</span></p>
-  //         <input id="taskTitle" required type="text" class="border-focus" placeholder="Enter a title" onkeydown="checkIfFormIsFilled('myDateInputPopup')"/>
-  //       </div>
-  //       <div id="description">
-  //         <p>Description</p>
-  //         <textarea id="taskDescription" class="border-focus" placeholder="Enter a description"></textarea>
-  //       </div>
-  //       <p class="text-padding">Assigned to</p>
-  //       <div id="assignedTo">
-  //       </div>
-  //       <div class="assinged-contact-wrapper">
-  //         <div id="assignedAddedContact" class="assinged-contact">
-  //         </div>
-  //       </div>
-  //     </section>
-  //     <div class="vertical-line-add-task"></div>
-  //     <section class="container-right">
-  //       <p>Due Date<span class="span-required">*</span></p>
-  //       <div id="due-date">
-  //         <label for="myDateInputPopup"></label>
-  //         <input id="myDateInputPopup" required type="date" required onkeydown="checkIfFormIsFilled()"/>
-  //       </div>
-  //       <div class="priority">
-  //         <p>Prio</p>
-  //         <div class="priority-options">
-  //           <div id="urgentContainer" onclick="changePrioToUrgent('urgentContainer', 'urgentImg')">
-  //             <p>Urgent</p>
-  //             <img src="assets/img/AddTask/ArrowUpPrioSign.svg" alt="Prio High" id="urgentImg" />
-  //           </div>
-  //           <div id="mediumContainer" onclick="changePrioToMedium('mediumContainer', 'mediumImg')">
-  //             <p>Medium</p>
-  //             <img src="assets/img/AddTask/mediumPrioSignInactive.svg" alt="Prio Medium" id="mediumImg" />
-  //           </div>
-  //           <div id="lowContainer" onclick="changePrioToLow('lowContainer', 'lowImg')">
-  //             <p>Low</p>
-  //             <img src="assets/img/AddTask/ArrowDownPrioSign.svg" alt="Prio Low" id="lowImg" />
-  //           </div>
-  //         </div>
-  //       </div>
-  //       <div class="category">
-  //         <p>Category<span class="span-required">*</span></p>
-  //         <div id="dropdownCategory" class="dropdown" onclick="openDropDownCategory()">
-  //           <div id="showSelectedCategory" data-value="">Select task category</div>
-  //           <img id="dropdownImgArrowCategory" class="rotate-arrow dropdown-arrow-hover" src="../assets/img/AddTask/arrow_drop.svg" alt="">
-  //         </div>
-  //         <div id="assignedDropdownCategory" class="category-dropdown d-none">
-  //           <div id="userStory" class="flex-checkbox" data-value="user-story" onclick="selectCategory('User Story', 'myDateInputPopup')">User Story</div>
-  //           <div id="other" class="flex-checkbox" data-value="technical-task" onclick="selectCategory('Technical Task', 'myDateInputPopup')">Technical Task</div>
-  //         </div>
-  //       </div>
-  //       <div id="subtasks"> </div>
-  //       <ul id="subTaskContainer" class="subtask-div ulContainer" > </ul>
-  //       <div class="bottom-add-task-mobile">
-  //         <div class="requirement-mobile">
-  //           <p><span class="span-required">*</span>This field is required</p>
-  //         </div>
-  //         <div class="btns-add-task-mobile-wrapper">
-  //           <button onclick="clearInputValue()" id="clear-mobile" class="buttonWhite" >
-  //             Clear <img src="assets/img/AddTask/cancel.svg" alt="Clear Icon"
-  //           /></button>
-  //           <button id="create-task-mobile" class="buttonGrey">
-  //             Create Task <img src="assets/img/AddTask/check_white.svg" alt="Check Icon"
-  //           /></button>
-  //         </div>
-  //       </div>
-  //     </section>
-  //   </div>
-  //     <div class="btns-down-add-task-popup">
-  //       <div class="requirement-desktop-addTask">
-  //         <p class="p-required"><span class="span-required">*</span>This field is required</p>
-  //       </div>
-  //       <div class="btns-down-right-add-task">
-  //         <button onclick="clearInputValue()" id="clear" class="buttonWhite" >
-  //           Clear <img src="assets/img/AddTask/cancel.svg" alt="Clear Icon"
-  //         /></button>
-  //         <button  id="create-task" class="buttonGrey" disabled>
-  //           Create Task <img src="assets/img/AddTask/check_white.svg" alt="Check Icon"
-  //         /></button>
-  //       </div>
-  //     </div>
-  // `;
-}
-
+/**
+ * Generates HTML for the subtask input field in an editable task popup.
+ * @param {number} i - The index of the task.
+ * @returns {string} - The HTML content for the subtask input field.
+ */
 function subTaskInputEditHtml(i) {
   return /*html*/ `
   <span class="aTPopupSpan">Subtasks</span>
@@ -138,6 +67,10 @@ function subTaskInputEditHtml(i) {
   `;
 }
 
+/**
+ * Generates HTML for the subtask input field in a task popup.
+ * @returns {string} - The HTML content for the subtask input field.
+ */
 function subTaskInputFieldHtml() {
   return /*html*/ `
   <input id="subTaskInput" type="text" placeholder="Add new subtask" onclick="changeButtonsAddTask('inputFieldBox')" />
@@ -145,6 +78,13 @@ function subTaskInputFieldHtml() {
   `;
 }
 
+/**
+ * Generates HTML for a subtask in an editable task popup.
+ * @param {string} id - The ID of the subtask.
+ * @param {string} subTaskInput - The content of the subtask.
+ * @param {number} j - The index of the subtask.
+ * @returns {string} - The HTML content for the subtask.
+ */
 function subTasksValueEditHtml(id, subTaskInput, j) {
   return /*html*/ `
     <li id="${id}" class="subtask-div-list" ondbclick="editSubTask(${id})"><p class="subtask-div-list-p">${subTaskInput}</p>
@@ -156,6 +96,13 @@ function subTasksValueEditHtml(id, subTaskInput, j) {
     </li>`;
 }
 
+/**
+ * Generates HTML for a task popup with specified information.
+ * @param {number} i - The index of the task.
+ * @param {string} img - The image source for the task.
+ * @param {string} date - The due date of the task.
+ * @returns {string} - The HTML content for the task popup.
+ */
 function generateTaskPopupHTML(i, img, date) {
   return /*html*/ `
     <div class="aTPopupContainer" id="aTPopupContainer"> 
@@ -222,8 +169,6 @@ function generateTaskPopupHTML(i, img, date) {
           </div>
         </div>
       </div>
-
-
       <form class="atPopupEdit d-none" id="aTPopupEdit" onclick="doNotClose(event)" onsubmit="saveEditedTask(${i}); return false"> 
         <div class="aTPopupContentWrapper">
           <div class="aTPopupTopEdit">
@@ -438,6 +383,10 @@ function addTaskPopUpHtml(column) {
     `;
 }
 
+/**
+ * Generates HTML content for indicating that a task has been added to the board.
+ * @returns {string} The HTML content for the task added message.
+ */
 function addedTaskToBoardHtml() {
   return /*html*/ `
     <div class="signedUpMassage d-none" id="addedTaskToBoard">
@@ -447,6 +396,14 @@ function addedTaskToBoardHtml() {
   `;
 }
 
+/**
+ * Generates HTML content for assigning a user with specified information.
+ * @param {number} i - The index of the user.
+ * @param {string} color - The background color for the user profile.
+ * @param {string} currentUser - The name of the current user.
+ * @param {string} initials - The initials of the current user.
+ * @returns {string} The HTML content for assigning a user.
+ */
 function assignedToUserHtml(i, color, currentUser, initials) {
   return /*html*/ `
     <div id="user-${i}" class="flex-checkbox selected-profile" onclick="addAssignedContact(${i}, '${color}')" data-value="${currentUser}">
@@ -458,6 +415,14 @@ function assignedToUserHtml(i, color, currentUser, initials) {
   `;
 }
 
+/**
+ * Generates HTML content for assigning the current user with specified information.
+ * @param {number} i - The index of the user.
+ * @param {string} color - The background color for the user profile.
+ * @param {string} currentUser - The name of the current user.
+ * @param {string} initials - The initials of the current user.
+ * @returns {string} The HTML content for assigning the current user.
+ */
 function assignedToUserYouHtml(i, color, currentUser, initials) {
   return /*html*/ `
     <div id="user-${i}" class="flex-checkbox selected-profile" onclick="addAssignedContact(${i}, '${color}')" data-value="${currentUser}">
@@ -469,12 +434,24 @@ function assignedToUserYouHtml(i, color, currentUser, initials) {
   `;
 }
 
+/**
+ * Generates HTML content for rendering selected contacts with specified information for editing.
+ * @param {number} i - The index of the task.
+ * @param {number} j - The index of the selected contact.
+ * @param {string} color - The background color for the contact profile.
+ * @param {string} initials - The initials of the contact.
+ * @returns {string} The HTML content for rendering the selected contact for editing.
+ */
 function renderSelectedContactsEditHtml(i, j, color, initials) {
   return /*html*/ `
     <div class="assinged-contact-overview" style="background-color:${color}" onclick="removeSelectedContact(${i}, ${j})">${initials}</div>
     `;
 }
 
+/**
+ * Generates HTML content for displaying the task form for editing.
+ * @returns {string} The HTML content for displaying the task form for editing.
+ */
 function showTaskFormEditHtml() {
   return /*html*/ `
     <div name="assigned" onchange="addAssignedContact()">
@@ -489,6 +466,11 @@ function showTaskFormEditHtml() {
   `;
 }
 
+/**
+ * Generates HTML content for changing buttons for adding tasks during editing.
+ * @param {number} i - The index of the task.
+ * @returns {string} - The HTML content for changing buttons for adding tasks during editing.
+ */
 function changeButtonsAddTaskEditHtml(i) {
   return /*html*/ `
     <input id="subTaskInputEdit" type="text" placeholder="Add new subtask" class="PosRel" />
@@ -499,13 +481,23 @@ function changeButtonsAddTaskEditHtml(i) {
     </div>
   `;
 }
-
+/**
+ * Generates HTML content for rendering a contact profile in a board task.
+ * @param {string} contact - The name or initials of the contact.
+ * @param {string} contactColor - The background color for the contact profile.
+ * @returns {string} - The HTML content for rendering the contact profile.
+ */
 function renderContactsInBoardTaskHtml(contact, contactColor) {
   return /*html*/ `
     <div class="board-task-member-profile" style="background-color: ${contactColor} !important">${contact}</div>
   `;
 }
 
+/**
+ * Generates HTML content for rendering additional contacts if there are more than four.
+ * @param {number} additionalContactLength - The number of additional contacts beyond the fourth.
+ * @returns {string} - The HTML content for rendering additional contacts.
+ */
 function renderIfMoreContactsThanFourHtml(additionalContactLength) {
   return /*html*/ `
     <div class="board-task-member-profile" style="background-color: #a8a8a8 !important">${additionalContactLength}</div>

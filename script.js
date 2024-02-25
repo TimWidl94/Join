@@ -4,19 +4,24 @@ const STORAGE_URL = 'https://remote-storage.developerakademie.org/item';
 let user = [];
 let users = [];
 let contacts = [];
+let contactColors = ['#FF7A00', '#9327FF', '#6E52FF', '#FC71FF', '#FFBB2B', '#1FD7C1', '#462F8A', '#FF4646'];
 let legalNoticeOffline = true;
 let privacyPolicyOffline = true;
 
-// function timeOut(ms) {
-//   return new Promise((resolve) => setTimeout(resolve, ms));
-// }
-
+/**
+ * Toggles the visibility of the top bar dropdown menu.
+ * @function
+ */
 function showTopbarDropdown() {
   document.getElementById('topbar-dropdown').classList.toggle('d-flex');
   document.getElementById('topbar-dropdown').classList.toggle('show-overlay-menu');
   console.log('showMenuTopbar');
 }
 
+/**
+ * Sets user initials in the top bar.
+ * @function
+ */
 function setUserInitials() {
   let x = user;
 
@@ -28,12 +33,14 @@ function setUserInitials() {
   `;
 }
 
+/**
+ * Adds the user to contacts if not already present.
+ * @function
+ */
 async function setUserToContacts() {
   let name = users[user].username;
   let mail = users[user].email;
-  // let userWithYou = name + ' (you)';
   let userExistsIndex = contacts.findIndex((contact) => contact.name === name);
-  // let userWithYouExistsIndex = contacts.findIndex((contact) => contact.name === userWithYou);
 
   if (userExistsIndex === -1) {
     contacts.push({ name: firstLettersUppercase(name), mail: mail, phone: '', color: '' });
@@ -41,6 +48,12 @@ async function setUserToContacts() {
   }
 }
 
+/**
+ * Capitalizes the first letter of each word in a string.
+ * @param {string} str - The input string.
+ * @returns {string} The string with first letters capitalized.
+ * @function
+ */
 function firstLettersUppercase(str) {
   let splitStr = '';
   splitStr = str.toLowerCase().split(' ');
@@ -50,6 +63,14 @@ function firstLettersUppercase(str) {
   return splitStr.join(' ');
 }
 
+/**
+ * Adds CSS classes to elements to indicate active state.
+ * @function
+ * @param {string} id1 - The ID of the first element.
+ * @param {string} id2 - The ID of the second element.
+ * @param {string} id3 - The ID of the third element.
+ * @param {string} id4 - The ID of the fourth element.
+ */
 function setColorToActive(id1, id2, id3, id4) {
   let textSidebar = document.getElementById(id1);
   textSidebar.classList.add('active');
@@ -61,10 +82,21 @@ function setColorToActive(id1, id2, id3, id4) {
   imageBottombar.classList.add('filter-white');
 }
 
+/**
+ * Retrieves the first letters of each word in a string.
+ * @param {string} str - The input string.
+ * @returns {string} The first letters of each word.
+ * @function
+ */
 function getFirstLetters(str) {
   return str.split(/\s/).reduce((response, word) => (response += word.slice(0, 1)), '');
 }
 
+/**
+ * Sets menu color to active state.
+ * @param {string} id - The ID of the element.
+ * @function
+ */
 function setMenuColorToActive(id) {
   let container = document.getElementById(id);
   container.classList.add('active');
@@ -73,6 +105,11 @@ function setMenuColorToActive(id) {
   container.style.hoverColor = '#cdcdcd';
 }
 
+/**
+ * Checks if the current user's name exists in the list of users.
+ * @returns {string} The user's name if found, otherwise undefined.
+ * @function
+ */
 function checkForUserName() {
   for (let i = 0; i < users.length; i++) {
     let userName = users[i]['username'];
@@ -82,28 +119,86 @@ function checkForUserName() {
   }
 }
 
+/**
+ * Toggles CSS classes on an element.
+ * @param {string} id - The ID of the element.
+ * @param {string} toggle - The class to toggle.
+ * @function
+ */
 function classlistToggle(id, toggle) {
   document.getElementById(id).classList.toggle(toggle);
 }
 
+/**
+ * Adds a CSS class to an element.
+ * @param {string} id - The ID of the element.
+ * @param {string} add - The class to add.
+ * @function
+ */
 function classlistAdd(id, add) {
   document.getElementById(id).classList.add(add);
 }
 
+/**
+ * Removes a CSS class from an element.
+ * @param {string} id - The ID of the element.
+ * @param {string} remove - The class to remove.
+ * @function
+ */
 function classlistRemove(id, remove) {
   document.getElementById(id).classList.remove(remove);
 }
 
+/**
+ * Removes one CSS class and adds another to an element.
+ * @param {string} id - The ID of the element.
+ * @param {string} remove - The class to remove.
+ * @param {string} add - The class to add.
+ * @function
+ */
 function classlistRemoveAndAdd(id, remove, add) {
   document.getElementById(id).classList.remove(remove);
   document.getElementById(id).classList.add(add);
 }
 
-
-async function setNumberOnContacts(){
+/**
+ * Sets a number property on each contact based on its index.
+ * @function
+ */
+async function setNumberOnContacts() {
   for (let i = 0; i < contacts.length; i++) {
     let contact = contacts[i];
-    contact["nr"] = i;
+    contact['nr'] = i;
     await setItem('contacts', JSON.stringify(contacts));
   }
+}
+
+/**
+ * Set colors to each contact.
+ * Assigns colors from predefined contactColors array to each contact in contacts list.
+ * @returns {void}
+ */
+function setColorToContacts() {
+  for (let i = 0; i < contacts.length; i++) {
+    let colorIndex = i % contactColors.length;
+    contacts[i].color = contactColors[colorIndex];
+  }
+}
+
+/**
+ * Sort the contacts array alphabetically by name.
+ * Sorts the contacts array alphabetically by name property.
+ * @returns {Array} The sorted contacts array.
+ */
+function sortContactsByAlphabet() {
+  return contacts.sort((a, b) => a.name.localeCompare(b.name));
+}
+
+/**
+ * Save the contacts array to the storage.
+ * Converts the contacts array to JSON and saves it to the storage.
+ * @returns {Promise<void>} A promise that resolves when the contacts are saved.
+ */
+async function saveContacts() {
+  await setItem('contacts', JSON.stringify(contacts));
 }

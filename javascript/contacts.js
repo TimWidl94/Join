@@ -1,4 +1,3 @@
-let contactColors = ['#FF7A00', '#9327FF', '#6E52FF', '#FC71FF', '#FFBB2B', '#1FD7C1', '#462F8A', '#FF4646'];
 let letters = [];
 let nameToCompare;
 
@@ -30,18 +29,6 @@ function setUsernameInContacts(userName) {
 
   if (userWithYouExistsIndex === -1) {
     contacts.push({ name: userWithYou });
-  }
-}
-
-/**
- * Set colors to each contact.
- * Assigns colors from predefined contactColors array to each contact in contacts list.
- * @returns {void}
- */
-function setColorToContacts() {
-  for (let i = 0; i < contacts.length; i++) {
-    let colorIndex = i % contactColors.length;
-    contacts[i].color = contactColors[colorIndex];
   }
 }
 
@@ -204,7 +191,6 @@ function openChangesMenuMobile() {
   classlistAdd('optionsContactMobile', 'd-none');
 }
 
-
 /**
  * Closes the changes menu for mobile view.
  * @returns {void}
@@ -226,7 +212,6 @@ function renderChangesMobile(i) {
   content.innerHTML = '';
   content.innerHTML = changesMobileHTML(i);
 }
-
 
 /**
  * Processes the addition of a contact.
@@ -390,7 +375,6 @@ async function finalizeEditedContactSave(newSavedName, i, target) {
   openContactInfo(i);
 }
 
-
 /**
  * Check and update the selected contact names in tasks after editing a contact name.
  * @param {string} newSavedName - The new name of the contact after editing.
@@ -515,7 +499,6 @@ async function animateBannerContactsMobile(idMobile) {
   setTimeout(() => classlistRemove(banner, 'd-flex'), 250);
 }
 
-
 /**
  * Toggle the background color of a contact list item.
  * Changes the background color of the selected contact list item.
@@ -533,15 +516,6 @@ function toggleBackground(i) {
 }
 
 /**
- * Save the contacts array to the storage.
- * Converts the contacts array to JSON and saves it to the storage.
- * @returns {Promise<void>} A promise that resolves when the contacts are saved.
- */
-async function saveContacts() {
-  await setItem('contacts', JSON.stringify(contacts));
-}
-
-/**
  * Prevent the default action of closing the event.
  * Stops the propagation of the event to prevent closing.
  * @param {Event} event - The event object.
@@ -549,15 +523,6 @@ async function saveContacts() {
  */
 function doNotClose(event) {
   event.stopPropagation();
-}
-
-/**
- * Sort the contacts array alphabetically by name.
- * Sorts the contacts array alphabetically by name property.
- * @returns {Array} The sorted contacts array.
- */
-function sortContactsByAlphabet() {
-  return contacts.sort((a, b) => a.name.localeCompare(b.name));
 }
 
 /**

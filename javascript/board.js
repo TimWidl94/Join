@@ -13,7 +13,6 @@ async function initBoard() {
   setUserInitials();
   setUserToContacts();
   setColorToContacts();
-  // renderContacts();
   setColorToActive('sidebarBoard', 'board-img', 'bottomBarBoardMobile', 'boardImgMobile');
   checkTaskAreaDisplayEmpty();
   setNumberOnContacts();

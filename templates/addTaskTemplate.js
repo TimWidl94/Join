@@ -201,7 +201,6 @@ function showTaskFormHtml() {
   `;
 }
 
-
 /**
  * Generates HTML for displaying assigned contacts.
  * @param {number} i - The index of the contact.
@@ -211,7 +210,7 @@ function showTaskFormHtml() {
  * @param {boolean} isChoosen - Indicates if the contact is chosen.
  * @returns {string} The HTML content for displaying assigned contacts.
  */
-function assignedToUserHtml(i, color, currentUser, initials, isChoosen) {
+function assignedToUserHtml(i, color, currentUser, initials, contactNumber) {
   return /*html*/ `
     <div id="user-${i}" class="flex-checkbox selected-profile" onclick="addAssignedContact('${i}', '${color}', ${contactNumber})" data-value="${currentUser}">
       <div class="selected-profile">
@@ -223,7 +222,6 @@ function assignedToUserHtml(i, color, currentUser, initials, isChoosen) {
     </div>
   `;
 }
-
 
 // function assignedToUserHtmlFILTERED(i, color, currentUser, initials, contactNumber) {
 //   return /*html*/ `

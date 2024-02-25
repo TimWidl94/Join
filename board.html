@@ -35,26 +35,26 @@
         <div class="row space-between mobileBoardHeadSection">
           <div class="headerBoardMobile">
             <h1>Board</h1>
-            <button class="buttonGreyBoard" onclick="openAddTaskPopup()">
+            <button class="buttonGreyBoard" onclick="openAddTaskPopup('toDo')">
               <span class="add-class"><img src="./assets/img/Board/PlusButton.svg" alt="" /></span>
             </button>
           </div>
           <div class="search-side">
             <div class="inputFieldBox">
               <input
-                type="search"
+                type="text"
                 class="search-side-bar"
                 placeholder="Find Task"
                 id="searchTasks"
                 minlength="5"
                 required=""
-                onkeydown="filterTasks()"
+                onkeyup="filterTasks()"
               />
               <div class="search-side-bar-vertical-line"></div>
               <img src="./assets/img/Board/search.svg" alt="" class="search-side-input-img" />
             </div>
 
-            <button class="buttonGrey buttonLogin mobileButtonHide" onclick="openAddTaskPopup()">
+            <button class="buttonGrey buttonLogin mobileButtonHide" onclick="openAddTaskPopup('toDo')">
               Add Task
               <span class="add-class"><img src="./assets/img/Board/PlusButton.svg" alt="" /></span>
             </button>

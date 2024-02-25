@@ -70,7 +70,6 @@ async function addTaskPopUp(id, section) {
   closeAddTaskPopup();
 }
 
-
 /**
  * Close the add task popup.
  */
@@ -116,7 +115,6 @@ function setupTaskPopup(i) {
   renderAssignedToContacs(i);
   renderSubtasks(i, 'subtaskContainerPopup');
 }
-
 
 /**
  * Close the task popup.
@@ -458,23 +456,22 @@ function addSubTaskEdit(idInput, idContainer, i) {
   let subTaskInput = document.getElementById(idInput).value;
   let subTaskError = document.getElementById('subTaskErrorEdit');
   let nr = subtasks.length;
-  validateAndAddSubTaskEdit(subTaskInput, subTaskError, nr, idInput, idContainer, i)
+  validateAndAddSubTaskEdit(subTaskInput, subTaskError, nr, idInput, idContainer, i);
 
   document.getElementById(idInput).value = '';
   renderGeneratedSubTasksEdit(idContainer, i);
   resetSubTaskInputField(idInput);
 }
 
-
 /**
-* Validate and add a subtask during task editing.
-* @param {string} subTaskInput - The input value of the subtask.
-* @param {HTMLElement} subTaskError - The element to display error messages.
-* @param {number} nr - The number of subtasks.
-* @param {string} idInput - The ID of the subtask input field.
-* @param {string} idContainer - The ID of the HTML container for subtasks.
-* @param {number} i - The index of the task.
-*/
+ * Validate and add a subtask during task editing.
+ * @param {string} subTaskInput - The input value of the subtask.
+ * @param {HTMLElement} subTaskError - The element to display error messages.
+ * @param {number} nr - The number of subtasks.
+ * @param {string} idInput - The ID of the subtask input field.
+ * @param {string} idContainer - The ID of the HTML container for subtasks.
+ * @param {number} i - The index of the task.
+ */
 function validateAndAddSubTaskEdit(subTaskInput, subTaskError, nr, idInput, idContainer, i) {
   if (subTaskInput.trim() === '') {
     subTaskError.innerHTML = /*HTML*/ `
@@ -492,7 +489,6 @@ function validateAndAddSubTaskEdit(subTaskInput, subTaskError, nr, idInput, idCo
     resetSubTaskInputField(idInput);
   }
 }
-
 
 /**
  * Reset the IDs of subtasks.
@@ -591,7 +587,6 @@ function populateAssignedDropdown() {
   }
 }
 
-
 /**
  * Move a task to a different category on mobile devices.
  * @param {number} i - The index of the task.
@@ -683,7 +678,6 @@ function updateTaskInformation(i, taskTitle, taskDescription, taskDueDate, selec
   tasks[i].prio = selectedPrioPopupEdit;
   tasks[i]['subtasks'] = subtasks;
 }
-
 
 /**
  * Check how many subtasks are checked.
@@ -1039,6 +1033,7 @@ async function renderSearchedTasksToDo(i) {
   let contentBoxToDo = document.getElementById('todo');
   let img = await setPrioImg(i);
   let x = await checkHowManySubtasksChecked(i);
+  contentBoxToDo.innerHTML = '';
   contentBoxToDo.innerHTML += generateTodoHTML(i, img, x);
   setCategoryBackground(tasks[i].selectedCategory, `board-task-epic${i}`);
   await taskProgressBar(i);
@@ -1052,6 +1047,7 @@ async function renderSearchedTasksInProgress(i) {
   let contentBoxInProress = document.getElementById('inProgress');
   let img = await setPrioImg(i);
   let x = await checkHowManySubtasksChecked(i);
+  contentBoxInProress.innerHTML = '';
   contentBoxInProress.innerHTML += generateTodoHTML(i, img, x);
   setCategoryBackground(tasks[i].selectedCategory, `board-task-epic${i}`);
   await taskProgressBar(i);
@@ -1065,6 +1061,7 @@ async function renderSearchedTasksAwaitFeedback(i) {
   let contentBoxAwaitFeedback = document.getElementById('awaitFeedback');
   let img = await setPrioImg(i);
   let x = await checkHowManySubtasksChecked(i);
+  contentBoxAwaitFeedback.innerHTML = '';
   contentBoxAwaitFeedback.innerHTML += generateTodoHTML(i, img, x);
   setCategoryBackground(tasks[i].selectedCategory, `board-task-epic${i}`);
   await taskProgressBar(i);
@@ -1078,6 +1075,7 @@ async function renderSearchedTasksDone(i) {
   let contentBoxDone = document.getElementById('done');
   let img = await setPrioImg(i);
   let x = await checkHowManySubtasksChecked(i);
+  contentBoxDone.innerHTML = '';
   contentBoxDone.innerHTML += generateTodoHTML(i, img, x);
   setCategoryBackground(tasks[i].selectedCategory, `board-task-epic${i}`);
   await taskProgressBar(i);

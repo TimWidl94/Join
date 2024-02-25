@@ -1,46 +1,46 @@
 /**
  * Changes the image source to display a white pencil icon when hovering over a to-do element.
- * 
+ *
  * @param {string} element - The ID of the element to be hovered over.
  */
 function hoverTodo(element) {
   let img = document.getElementById(element);
-  img.setAttribute("src", "../assets/img/Summary/pencilWhiteDesktop.svg");
+  img.setAttribute('src', '../assets/img/Summary/pencilWhiteDesktop.svg');
 }
 
 /**
  * Changes the image source to display a black pencil icon when not hovering over a to-do element.
- * 
+ *
  * @param {string} element - The ID of the element to be unhovered.
  */
 function unhoverTodo(element) {
   let img = document.getElementById(element);
-  img.setAttribute("src", "../assets/img/Summary/pencilBlackDesktop.svg");
+  img.setAttribute('src', '../assets/img/Summary/pencilBlackDesktop.svg');
 }
 
 /**
  * Changes the image source to display a white checkmark icon when hovering over a done element.
- * 
+ *
  * @param {string} element - The ID of the element to be hovered over.
  */
 function hoverDone(element) {
   let img = document.getElementById(element);
-  img.setAttribute("src", "../assets/img/Summary/hookButtonWhiteDesktop.svg");
+  img.setAttribute('src', '../assets/img/Summary/hookButtonWhiteDesktop.svg');
 }
 
 /**
  * Changes the image source to display a black checkmark icon when not hovering over a done element.
- * 
+ *
  * @param {string} element - The ID of the element to be unhovered.
  */
 function unhoverDone(element) {
   let img = document.getElementById(element);
-  img.setAttribute("src", "../assets/img/Summary/hookButtonBlackDesktop.svg");
+  img.setAttribute('src', '../assets/img/Summary/hookButtonBlackDesktop.svg');
 }
 
 /**
  * Generates HTML content for the summary section of the webpage.
- * 
+ *
  * @returns {string} The HTML content for the summary section.
  */
 function summaryHtml() {
@@ -105,8 +105,8 @@ function summaryHtml() {
                 </div>
                 <div class="summary-urgent-verical-line"></div>
                 <div class="sum-col-6 summary-date-col">
-                  <div class="summary-date">October 16, 2022</div>
-                  <div class="summary-subtitle">Upcoming Deadline</div>
+                  <div class="summary-date" id="summary-date">October 16, 2022</div>
+                  <div class="summary-subtitle" id="summary-subtitle">Upcoming Deadline</div>
                 </div>
               </div>
             </a>
@@ -166,10 +166,9 @@ function summaryHtml() {
       </div>`;
 }
 
-
 /**
  * Generates HTML content for the mobile greeting section.
- * 
+ *
  * @param {string} greetingText - The greeting text to be displayed.
  * @param {string} userName - The name of the user to be displayed.
  * @returns {string} The HTML content for the mobile greeting section.
@@ -184,4 +183,3 @@ function greetMobileTemplate(greetingText, userName) {
   </div>
   `;
 }
-

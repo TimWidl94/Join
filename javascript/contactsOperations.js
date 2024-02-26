@@ -34,7 +34,7 @@ function setUsernameInContacts(userName) {
  * Render the contacts in the UI.
  * Generates HTML elements for each contact and renders them in the UI based on the first letter of their name.
  */
-function renderContacts() {
+async function renderContacts() {
   let content = document.getElementById('basic-info-wrapper');
   content.innerHTML = '';
 
@@ -98,7 +98,7 @@ async function openContactInfo(i) {
     setTimeout(() => (content.innerHTML += openContactInfoHTML(contact, acronym, color, i)), 250);
   }
   renderChangesMobile(i);
-  openContactInfoAnimations();
+  // await openContactInfoAnimations();
 }
 
 /**
@@ -131,16 +131,14 @@ async function addContact(target, id) {
 async function processContactAddition(target, id, name, mail, tel) {
   setColorToContacts();
   await saveContacts();
-  init();
-  renderContacts();
+  await init();
+  // renderContacts();
   let index = findContactIndex(name.value);
-  await animateBannerContactsAdded(id);
-  await openContactInfo(index);
   clearPopup(name, mail, tel);
   await closeContactPopup(target, 'add');
-  // setTimeout(() => {
-  //   animateBannerContactsAdded(id);
-  // }, 500);
+  await openContactInfo(index);
+  await openContactInfoAnimations();
+  await animateBannerContactsAdded(id);
 }
 
 /**

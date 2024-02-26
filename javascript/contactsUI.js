@@ -40,7 +40,7 @@ function setContactsToFirstLetters(letter) {
 /**
  * Animates the contact information panel.
  */
-function openContactInfoAnimations() {
+async function openContactInfoAnimations() {
   classlistRemove('contact-info', 'd-none');
   classlistAdd('contact-info', 'transition');
   setTimeout(() => classlistAdd('contact-info', 'show-overlay-menu'), 300);
@@ -153,14 +153,13 @@ async function closeContactPopup(target, type) {
 async function animateBannerContactsAdded(target) {
   if (target == 'banner-contact-created') {
     console.log('animateBannerContactsAdded target:', target);
-    animateBannerContactsDesktop(target);
+    await animateBannerContactsDesktop(target);
   } else {
-    animateBannerContactsMobile(target);
-    console.log('animateBannerContactsMobile');
+    await animateBannerContactsMobile(target);
   }
 }
 
-function animateBannerContactsDeleted(target) {
+async function animateBannerContactsDeleted(target) {
   if (target == 'banner-contact-deleted') {
     animateBannerContactsDesktop(target);
     console.log('animateBannerContactsDesktop');
@@ -174,7 +173,7 @@ function animateBannerContactsDeleted(target) {
  * Animate the banner for contact-related actions in desktop view.
  * @param {string} idDesktop - The ID of the banner for desktop view.
  */
-function animateBannerContactsDesktop(idDesktop) {
+async function animateBannerContactsDesktop(idDesktop) {
   let banner = idDesktop;
   console.log('idDesktop:', idDesktop);
   let transform = 'show-overlay-menu';

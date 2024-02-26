@@ -72,7 +72,7 @@ function openContactInfoHTML(contact, acronym, color, i) {
                     <img class="edit-img" src="assets/img/icons/edit.svg" alt="Edit">
                     <p class="edit-p">Edit</p>
                 </div>
-                <div class="delete" onclick="deleteContact(${i})">
+                <div class="delete" onclick="deleteContact(${i}, 'banner-contact-deleted')">
                     <img class="delete-img" src="assets/img/icons/delete.svg" alt="Delete">
                     <p>Delete</p>
                 </div>
@@ -123,7 +123,7 @@ function openContactInfoYouHTML(contact, acronym, color, i) {
                     <img class="edit-img" src="assets/img/icons/edit.svg" alt="Edit">
                     <p class="edit-p">Edit</p>
                 </div>
-                <div class="delete" onclick="deleteContact(${i})">
+                <div class="delete" onclick="deleteContact(${i}, 'banner-contact-deleted')">
                     <img class="delete-img" src="assets/img/icons/delete.svg" alt="Delete">
                     <p>Delete</p>
                 </div>
@@ -162,7 +162,7 @@ function changesMobileHTML(i) {
       <img class="edit-img" src="assets/img/icons/edit.svg" alt="Edit" />
       <p class="edit-p">Edit</p>
     </div>
-    <div class="delete" onclick="deleteContact(${i})">
+    <div class="delete" onclick="deleteContact(${i}, 'banner-contact-deleted-mobile')">
       <img class="delete-img" src="assets/img/icons/delete.svg" alt="Delete" />
       <p>Delete</p>
     </div>
@@ -220,7 +220,7 @@ function editContactDesktopHTML(acronym, color, i) {
                         </div>
 
                         <div class="btns-down-right">
-                            <button id="delete" class="buttonWhite" onclick="deleteContact(${i})">
+                            <button id="delete" class="buttonWhite" onclick="deleteContact(${i}, 'banner-contact-deleted')">
                             Delete 
                             <button id="save" class="buttonGrey">
                             Save <img src="assets/img/icons/check_white.svg" alt="Check Icon"
@@ -313,7 +313,7 @@ function editContactMobileHTML(acronym, color, i) {
                 </div>
 
                 <div class="edit-contact-btns">
-                <button class="buttonWhiteWithImgMobile" onclick="deleteContact(${i})">Delete </button>
+                <button class="buttonWhiteWithImgMobile" onclick="deleteContact(${i}, , 'banner-contact-deleted-mobile')">Delete </button>
                 <button class="buttonGreyWithImgMobile addContactBtnMobile">Save<img src="assets/img/icons/check_white.svg" alt="Check Icon"></button>
               </div>
 

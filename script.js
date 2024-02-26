@@ -136,6 +136,8 @@ function classlistToggle(id, toggle) {
  * @function
  */
 function classlistAdd(id, add) {
+  console.log('classlistAdd id:', id);
+  console.log('classlistAdd add:', add);
   document.getElementById(id).classList.add(add);
 }
 

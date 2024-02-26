@@ -59,6 +59,7 @@
   border: 1px dashed var(--icon, $color-board-grey);
   background: $color-board-task-empty;
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.16);
+  text-align: center;
   cursor: pointer;
 }
 
@@ -138,7 +139,7 @@
     padding: 8px 16px;
     height: 200px;
     width: 380px;
-    height: 48px;
+    height: 24px;
     gap: 8px;
     border-radius: 10px;
     border: 1px solid rgba(209, 209, 209, 1);
@@ -264,6 +265,7 @@
       background-color: #f4f4f4;
       border: none;
       border-radius: 8px;
+      margin-top: 4px;
       margin-bottom: 24px;
     }
     &-subtask-counter {
@@ -787,6 +789,9 @@
   }
   .drag-area::-webkit-scrollbar {
     display: none;
+  }
+  .drag-area-empty {
+    width: 120px;
   }
   .col-4 {
     width: 100% !important;

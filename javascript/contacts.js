@@ -471,6 +471,14 @@ async function deleteSelectedContact(x) {
   await setItem('tasks', JSON.stringify(tasks));
 }
 
+function animateBannerContacts(target) {
+  if (target == 'banner-contact-created' || 'banner-contact-deletet') {
+    animateBannerContactsDesktop(target);
+  } else {
+    animateBannerContactsMobile(target);
+  }
+}
+
 /**
  * Animate the banner for contact-related actions in desktop view.
  * @param {string} idDesktop - The ID of the banner for desktop view.

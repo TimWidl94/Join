@@ -176,36 +176,73 @@ function selectCategory(category, id) {
 }
 
 /**
- * Handles the selection of a task category.
+ * Selects a category for the task.
+ *
+ * @param {string} category - The category selected for the task.
+ * @param {HTMLElement} userStory - The user story category element.
+ * @param {HTMLElement} technicalTask - The technical task category element.
+ * @param {HTMLElement} showSelectedCategory - The element displaying the selected category.
+ * @param {HTMLElement} assignedDropdownCategory - The dropdown category element.
+ */
+function selectCategory(category, userStory, technicalTask, showSelectedCategory, assignedDropdownCategory) {
+  if (category === 'user-story' || category === 'User Story') {
+    selectUserStory(userStory, technicalTask, showSelectedCategory, assignedDropdownCategory);
+  } else if (category === 'technical-task' || category === 'Technical Task') {
+    selectTechnicalTask(userStory, technicalTask, showSelectedCategory, assignedDropdownCategory);
+  } else {
+    selectDefaultCategory(userStory, technicalTask, showSelectedCategory, assignedDropdownCategory);
+  }
+}
+
+/**
+ * Selects the user story category.
  *
  * @param {HTMLElement} userStory - The user story category element.
  * @param {HTMLElement} technicalTask - The technical task category element.
  * @param {HTMLElement} showSelectedCategory - The element displaying the selected category.
  * @param {HTMLElement} assignedDropdownCategory - The dropdown category element.
- * @param {string} category - The category selected for the task.
  */
-function selectCategoryIfElse(userStory, technicalTask, showSelectedCategory, assignedDropdownCategory, category) {
-  if (category === 'user-story' || category === 'User Story') {
-    userStory.classList.add('category-selected');
-    technicalTask.classList.remove('category-selected');
-    showSelectedCategory.setAttribute('data-value', category);
-    showSelectedCategory.innerHTML = `User Story`;
-    assignedDropdownCategory.classList.add('d-none');
-    categoryIsSelected = true;
-  } else if (category === 'technical-task' || category === 'Technical Task') {
-    technicalTask.classList.add('category-selected');
-    userStory.classList.remove('category-selected');
-    showSelectedCategory.setAttribute('data-value', category);
-    showSelectedCategory.innerHTML = `Technical Task`;
-    assignedDropdownCategory.classList.add('d-none');
-    categoryIsSelected = true;
-  } else {
-    userStory.classList.remove('category-selected');
-    technicalTask.classList.remove('category-selected');
-    showSelectedCategory.setAttribute('data-value', '');
-    showSelectedCategory.innerHTML = `Select task category`;
-  }
+function selectUserStory(userStory, technicalTask, showSelectedCategory, assignedDropdownCategory) {
+  userStory.classList.add('category-selected');
+  technicalTask.classList.remove('category-selected');
+  showSelectedCategory.setAttribute('data-value', 'user-story');
+  showSelectedCategory.innerHTML = `User Story`;
+  assignedDropdownCategory.classList.add('d-none');
+  categoryIsSelected = true;
 }
+
+/**
+ * Selects the technical task category.
+ *
+ * @param {HTMLElement} userStory - The user story category element.
+ * @param {HTMLElement} technicalTask - The technical task category element.
+ * @param {HTMLElement} showSelectedCategory - The element displaying the selected category.
+ * @param {HTMLElement} assignedDropdownCategory - The dropdown category element.
+ */
+function selectTechnicalTask(userStory, technicalTask, showSelectedCategory, assignedDropdownCategory) {
+  technicalTask.classList.add('category-selected');
+  userStory.classList.remove('category-selected');
+  showSelectedCategory.setAttribute('data-value', 'technical-task');
+  showSelectedCategory.innerHTML = `Technical Task`;
+  assignedDropdownCategory.classList.add('d-none');
+  categoryIsSelected = true;
+}
+
+/**
+ * Selects the default category.
+ *
+ * @param {HTMLElement} userStory - The user story category element.
+ * @param {HTMLElement} technicalTask - The technical task category element.
+ * @param {HTMLElement} showSelectedCategory - The element displaying the selected category.
+ * @param {HTMLElement} assignedDropdownCategory - The dropdown category element.
+ */
+function selectDefaultCategory(userStory, technicalTask, showSelectedCategory, assignedDropdownCategory) {
+  userStory.classList.remove('category-selected');
+  technicalTask.classList.remove('category-selected');
+  showSelectedCategory.setAttribute('data-value', '');
+  showSelectedCategory.innerHTML = `Select task category`;
+}
+
 
 /**
  * Deletes a subtask from the list of subtasks.

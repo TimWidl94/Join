@@ -2515,6 +2515,7 @@ form {
   border: 1px dashed var(--icon, #a8a8a8);
   background: #e7e7e7;
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.16);
+  text-align: center;
   cursor: pointer; }
 
 .todo {
@@ -2585,7 +2586,7 @@ form {
     padding: 8px 16px;
     height: 200px;
     width: 380px;
-    height: 48px;
+    height: 24px;
     gap: 8px;
     border-radius: 10px;
     border: 1px solid #d1d1d1;
@@ -2683,6 +2684,7 @@ form {
     background-color: #f4f4f4;
     border: none;
     border-radius: 8px;
+    margin-top: 4px;
     margin-bottom: 24px; }
   .board-task-subtask-counter {
     font-size: 12px;
@@ -3127,6 +3129,8 @@ form {
     overflow-x: scroll; }
   .drag-area::-webkit-scrollbar {
     display: none; }
+  .drag-area-empty {
+    width: 120px; }
   .col-4 {
     width: 100% !important;
     max-width: 100% !important; }

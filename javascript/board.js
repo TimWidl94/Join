@@ -828,7 +828,7 @@ function checkTaskAreaDisplayEmpty() {
     let category = categories[i];
 
     if (dragArea.children.length < 1) {
-      dragArea.innerHTML = /*html*/ `<div class="drag-area-empty">No task in "${category}"</div>`;
+      dragArea.innerHTML = /*html*/ `<div class="drag-area-empty">No task in <br>"${category}"</div>`;
     }
   }
 }

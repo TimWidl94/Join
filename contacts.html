@@ -3,15 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contacts | Join</title>
+    <title>Contacts | Join </title>
     <link rel="stylesheet" href="./css/style.css?version=2.0" />
     <script src="./includeHTML.js"></script>
     <script src="./javascript/loadData.js"></script>
-    <script src="./script.js"></script>
+
     <script src="./javascript/addTask.js"></script>
     <script src="./javascript/board.js"></script>
-    <script src="./javascript/contacts.js"></script>
+    <!-- <script src="./javascript/contacts.js"></script> -->
+    <script src="./javascript/contactsOperations.js"></script>
+    <script src="./javascript/contactsUI.js"></script>
     <script src="./templates/contactTemplate.js"></script>
+    <script src="./script.js"></script>
     <link rel="icon" type="image/x-icon" href="assets/img/Global/join_logo_black.svg" />
   </head>
   <body class="body-contacts" onload="includeHTML(), init()">
@@ -103,7 +106,10 @@
                 <img id="profile-img" src="assets/img/icons/person_white.svg" alt="Profile Image" />
               </div>
 
-              <form class="inputButtonsWrapper" onsubmit="addContact('desktop'); return false">
+              <form
+                class="inputButtonsWrapper"
+                onsubmit="addContact('desktop', 'banner-contact-created'); return false"
+              >
                 <div class="inputFieldContainer height-unset">
                   <div class="inputWrapper">
                     <div class="inputFieldBox">
@@ -224,7 +230,10 @@
               <img id="profile-img-mobile" src="assets/img/icons/person_white.svg" alt="Profile Image" />
             </div>
 
-            <form class="inputButtonWrapperMobile" onsubmit="addContact('mobile'); return false">
+            <form
+              class="inputButtonWrapperMobile"
+              onsubmit="addContact('mobile', 'banner-contact-created-mobile'); return false"
+            >
               <div class="inputFieldContainerMobile">
                 <div class="inputFieldBoxMobile">
                   <input

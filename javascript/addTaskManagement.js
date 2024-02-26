@@ -171,7 +171,7 @@ function selectCategory(category, id) {
   const technicalTask = document.getElementById('other');
   const showSelectedCategory = document.getElementById('showSelectedCategory');
   const assignedDropdownCategory = document.getElementById('assignedDropdownCategory');
-  selectCategoryIfElse(userStory, technicalTask, showSelectedCategory, assignedDropdownCategory, category);
+  selectCategoryIfElse(category, userStory, technicalTask, showSelectedCategory, assignedDropdownCategory);
   checkIfFormIsFilled(id);
 }
 
@@ -184,11 +184,11 @@ function selectCategory(category, id) {
  * @param {HTMLElement} showSelectedCategory - The element displaying the selected category.
  * @param {HTMLElement} assignedDropdownCategory - The dropdown category element.
  */
-function selectCategory(category, userStory, technicalTask, showSelectedCategory, assignedDropdownCategory) {
+function selectCategoryIfElse(category, userStory, technicalTask, showSelectedCategory, assignedDropdownCategory) {
   if (category === 'user-story' || category === 'User Story') {
-    selectUserStory(userStory, technicalTask, showSelectedCategory, assignedDropdownCategory);
+    selectUserStory(userStory, technicalTask, showSelectedCategory, assignedDropdownCategory, category);
   } else if (category === 'technical-task' || category === 'Technical Task') {
-    selectTechnicalTask(userStory, technicalTask, showSelectedCategory, assignedDropdownCategory);
+    selectTechnicalTask(userStory, technicalTask, showSelectedCategory, assignedDropdownCategory, category);
   } else {
     selectDefaultCategory(userStory, technicalTask, showSelectedCategory, assignedDropdownCategory);
   }
@@ -202,10 +202,10 @@ function selectCategory(category, userStory, technicalTask, showSelectedCategory
  * @param {HTMLElement} showSelectedCategory - The element displaying the selected category.
  * @param {HTMLElement} assignedDropdownCategory - The dropdown category element.
  */
-function selectUserStory(userStory, technicalTask, showSelectedCategory, assignedDropdownCategory) {
+function selectUserStory(userStory, technicalTask, showSelectedCategory, assignedDropdownCategory, category) {
   userStory.classList.add('category-selected');
   technicalTask.classList.remove('category-selected');
-  showSelectedCategory.setAttribute('data-value', 'user-story');
+  showSelectedCategory.setAttribute('data-value', category);
   showSelectedCategory.innerHTML = `User Story`;
   assignedDropdownCategory.classList.add('d-none');
   categoryIsSelected = true;
@@ -219,10 +219,10 @@ function selectUserStory(userStory, technicalTask, showSelectedCategory, assigne
  * @param {HTMLElement} showSelectedCategory - The element displaying the selected category.
  * @param {HTMLElement} assignedDropdownCategory - The dropdown category element.
  */
-function selectTechnicalTask(userStory, technicalTask, showSelectedCategory, assignedDropdownCategory) {
+function selectTechnicalTask(userStory, technicalTask, showSelectedCategory, assignedDropdownCategory, category) {
   technicalTask.classList.add('category-selected');
   userStory.classList.remove('category-selected');
-  showSelectedCategory.setAttribute('data-value', 'technical-task');
+  showSelectedCategory.setAttribute('data-value', category);
   showSelectedCategory.innerHTML = `Technical Task`;
   assignedDropdownCategory.classList.add('d-none');
   categoryIsSelected = true;
@@ -242,7 +242,6 @@ function selectDefaultCategory(userStory, technicalTask, showSelectedCategory, a
   showSelectedCategory.setAttribute('data-value', '');
   showSelectedCategory.innerHTML = `Select task category`;
 }
-
 
 /**
  * Deletes a subtask from the list of subtasks.

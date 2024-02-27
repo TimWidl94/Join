@@ -347,6 +347,7 @@
     font-style: normal;
     font-weight: 700;
     line-height: 120%;
+    padding: 8px 8px;
   }
   .sum-greetings {
     display: none;
@@ -367,17 +368,29 @@
 }
 
 @media (max-width: 800px) {
+
   .summary {
+    &-h2 {
+      font-size: 25px;
+    }
+
+    &-vertical-line-mobile {
+      padding-top:40px;
+    }
+
     &-todo {
       padding: 10px 10px;
-      min-height: 109px;
+      min-height: 80px;
     }
+
     &-gap-default {
       gap: 0px;
     }
+
     &-todo-counter {
-      font-size: 45px;
+      font-size: 35px;
     }
+
     &-flex-counter {
       gap: 0;
     }
@@ -385,15 +398,19 @@
     &-todo-counter-text {
       font-size: 15px;
     }
+
     &-tasksContainerDown {
       padding: 12px 5px;
     }
+
     &-tasksContainerDown-counter {
-      font-size: 45px;
+      font-size: 35px;
     }
+
     &-summarySmallContainerMiddle {
-      padding: 28px 8px;
+      padding: 8px 8px;
     }
+
     &-gap-urgent {
       gap: 20px;
     }
@@ -402,6 +419,6 @@
     font-size: 15px;
   }
   .containerSummary {
-    padding: 139px 30px;
+    padding: 89px 30px;
   }
 }

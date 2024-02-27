@@ -2384,7 +2384,8 @@ form {
     font-size: 34px;
     font-style: normal;
     font-weight: 700;
-    line-height: 120%; }
+    line-height: 120%;
+    padding: 8px 8px; }
   .sum-greetings {
     display: none; }
   .sum-col-50 {
@@ -2398,13 +2399,17 @@ form {
     height: auto; } }
 
 @media (max-width: 800px) {
+  .summary-h2 {
+    font-size: 25px; }
+  .summary-vertical-line-mobile {
+    padding-top: 40px; }
   .summary-todo {
     padding: 10px 10px;
-    min-height: 109px; }
+    min-height: 80px; }
   .summary-gap-default {
     gap: 0px; }
   .summary-todo-counter {
-    font-size: 45px; }
+    font-size: 35px; }
   .summary-flex-counter {
     gap: 0; }
   .summary-todo-counter-text {
@@ -2412,15 +2417,15 @@ form {
   .summary-tasksContainerDown {
     padding: 12px 5px; }
   .summary-tasksContainerDown-counter {
-    font-size: 45px; }
+    font-size: 35px; }
   .summary-summarySmallContainerMiddle {
-    padding: 28px 8px; }
+    padding: 8px 8px; }
   .summary-gap-urgent {
     gap: 20px; }
   .summary-tasksContainerDown-counter-text-m {
     font-size: 15px; }
   .containerSummary {
-    padding: 139px 30px; } }
+    padding: 89px 30px; } }
 
 .container {
   margin: 100px 0px 0px;
@@ -2467,6 +2472,11 @@ form {
   .row-header {
     align-items: flex-start;
     display: inline; } }
+
+@media (max-width: 800px) {
+  .row {
+    padding-top: 0;
+    padding-bottom: 19px; } }
 
 .board-wrapper-all {
   display: flex; }
@@ -4362,3 +4372,8 @@ input:focus {
   .row-header {
     align-items: flex-start;
     display: inline; } }
+
+@media (max-width: 800px) {
+  .row {
+    padding-top: 0;
+    padding-bottom: 19px; } }

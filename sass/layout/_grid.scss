@@ -56,3 +56,11 @@
     display: inline;
   }
 }
+
+@media (max-width: 800px) {
+
+  .row {
+    padding-top:0;
+    padding-bottom: 19px;
+  }
+}

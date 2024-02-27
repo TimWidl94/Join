@@ -368,7 +368,7 @@ function setPrioEdit(prio) {
   }
   if (prio == 'medium') {
     classlistAdd('mediumContainerEdit', 'priorityMediumActive');
-    document.getElementById('mediumImgEdit').src = './assets/img/AddTask/mediumPrioSign.svg';
+    document.getElementById('mediumImgEdit').src = './assets/img/AddTask/MediumPrioSign.svg';
   }
   if (prio == 'urgent') {
     classlistAdd('urgentContainerEdit', 'priorityUrgentActive');

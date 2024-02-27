@@ -16,6 +16,7 @@ async function init() {
   setNumberOnContacts();
 }
 
+
 /**
  * Set the username in contacts list.
  * If the username exists, append "(you)" to it and add it to the contacts list.
@@ -29,6 +30,7 @@ function setUsernameInContacts(userName) {
     contacts.push({ name: userWithYou });
   }
 }
+
 
 /**
  * Render the contacts in the UI.
@@ -50,6 +52,7 @@ async function renderContacts() {
   renderLetters();
 }
 
+
 /**
  * Render the letters for contact list navigation.
  * Generates HTML elements for each unique letter in the contact list and renders them for navigation.
@@ -66,6 +69,7 @@ function renderLetters() {
   }
 }
 
+
 /**
  * Finds the index of a user by contact name.
  * @param {string} contactName - The name of the contact to search for.
@@ -79,6 +83,7 @@ function findUserIndexByContactName(contactName) {
   }
   return -1;
 }
+
 
 /**
  * Opens the contact information panel.
@@ -101,6 +106,7 @@ async function openContactInfo(i) {
   openContactInfoAnimations();
 }
 
+
 /**
  * Adds a new contact.
  * @param {string} target - The target of the contact addition.
@@ -121,6 +127,7 @@ async function addContact(target, id) {
   await processContactAddition(target, id, name, mail, tel);
 }
 
+
 /**
  * Processes the addition of a contact.
  * @param {string} target - The target of the contact addition.
@@ -140,6 +147,7 @@ async function processContactAddition(target, id, name, mail, tel) {
   setTimeout(() => animateBannerContacts('banner-contact-created', 'banner-contact-created-mobile'), 500);
 }
 
+
 /**
  * Finds the index of a contact by name.
  * @param {string} name - The name of the contact.
@@ -148,6 +156,8 @@ async function processContactAddition(target, id, name, mail, tel) {
 function findContactIndex(name) {
   return contacts.findIndex((obj) => obj.name.toLowerCase() === name.toLowerCase());
 }
+
+
 /**
  * Clears the input fields of a popup.
  * @param {HTMLInputElement} name - The input element for the contact name.
@@ -159,6 +169,7 @@ function clearPopup(name, mail, tel) {
   mail.value = '';
   tel.value = '';
 }
+
 
 /**
  * Edits a contact.
@@ -181,6 +192,7 @@ function editContact(i, target) {
   nameToCompare = contacts[i].name;
 }
 
+
 /**
  * Save the edited contact after making changes.
  * Updates the contact information in the contacts array and saves it.
@@ -200,6 +212,7 @@ async function saveEditedContact(i, target) {
   await finalizeEditedContactSave(newSavedName, i, target);
 }
 
+
 /**
  * Finalizes the saving of the edited contact by performing additional actions.
  * @param {string} newSavedName - The new name of the edited contact.
@@ -214,6 +227,7 @@ async function finalizeEditedContactSave(newSavedName, i, target) {
   await closeContactPopup(target, 'edit');
   openContactInfo(i);
 }
+
 
 /**
  * Check and update the selected contact names in tasks after editing a contact name.
@@ -233,6 +247,7 @@ async function checkTasksSelectedContactNames(newSavedName) {
     }
   }
 }
+
 
 /**
  * Delete a contact from the contacts array.
@@ -255,6 +270,7 @@ async function deleteContact(i, target) {
   await animateBannerContacts('banner-contact-deleted', 'banner-contact-deleted-mobile');
 }
 
+
 /**
  * Delete the unused letter from the letters array.
  * Removes the first letter of the contact name from the letters array if it is no longer used.
@@ -264,6 +280,7 @@ function deleteUnusedLetter(i) {
   let index = letters.indexOf(contacts[i].name.charAt(0));
   letters.splice(index, 1);
 }
+
 
 /**
  * Delete the selected contact from tasks when a contact is deleted.
@@ -286,6 +303,7 @@ async function deleteSelectedContact(x) {
   await setItem('tasks', JSON.stringify(tasks));
 }
 
+
 /**
  * Prevent the default action of closing the event.
  * Stops the propagation of the event to prevent closing.
@@ -294,6 +312,7 @@ async function deleteSelectedContact(x) {
 function doNotClose(event) {
   event.stopPropagation();
 }
+
 
 /**
  * Get the first letters of each word in a string.
@@ -304,6 +323,7 @@ function doNotClose(event) {
 function getFirstLetters(str) {
   return str.split(/\s/).reduce((response, word) => (response += word.slice(0, 1)), '');
 }
+
 
 /**
  * Validate a phone number input.

@@ -13,6 +13,7 @@ async function loadData() {
   }
 }
 
+
 /**
  * Retrieves an item from the storage.
  * @param {string} key - The key of the item to retrieve.
@@ -24,6 +25,7 @@ async function getItem(key) {
     .then((res) => res.json())
     .then((res) => res.data.value);
 }
+
 
 /**
  * Sets an item in the storage.
@@ -38,6 +40,7 @@ async function setItem(key, value) {
     body: JSON.stringify(payload),
   }).then((res) => res.json());
 }
+
 
 /**
  * Loads user data from local storage.

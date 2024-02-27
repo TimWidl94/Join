@@ -8,6 +8,7 @@ let awaitFeedbackTasks = 0;
 let tasksInBoard = 0;
 let urgentTasks = 0;
 
+
 /**
  * Initializes the application.
  * Loads HTML content, login form, and local storage data.
@@ -28,6 +29,7 @@ async function init() {
   checkDeadline();
 }
 
+
 /**
  * Renders the summary container.
  */
@@ -35,6 +37,7 @@ function renderSummaryContainer() {
   let container = document.getElementById('containerSummary');
   container.innerHTML = summaryHtml();
 }
+
 
 /**
  * Displays greetings for mobile users.
@@ -46,6 +49,7 @@ function mobileGreetings() {
   greetMobile.innerHTML = greetMobileTemplate(greetingText, userName);
   hideGreetMobile(greetMobile);
 }
+
 
 /**
  * Hides the mobile greeting after a delay.
@@ -60,6 +64,7 @@ function hideGreetMobile(greetMobile) {
   }, 1000);
 }
 
+
 /**
  * Inserts greeting message.
  */
@@ -73,6 +78,7 @@ function insertGreeting() {
     <div class="summary-welcome-name">${userName}</div>
   `;
 }
+
 
 /**
  * Determines appropriate greeting based on time of day.
@@ -92,6 +98,7 @@ function greeting() {
   }
   return greetingText;
 }
+
 
 /**
  * Calculates the number of tasks in different states.
@@ -115,6 +122,7 @@ function calculateTasks() {
   }
 }
 
+
 /**
  * Counts the number of urgent tasks.
  */
@@ -126,6 +134,7 @@ function calculateUrgenTasks() {
     }
   }
 }
+
 
 /**
  * Replaces the date in the upcoming deadline container
@@ -151,6 +160,7 @@ function checkDeadline() {
   }
 }
 
+
 /**
  * Changes the date format.
  *
@@ -163,6 +173,7 @@ function formatDateToYYYYMMDD() {
   const day = String(today.getDate()).padStart(2, '0');
   return `${year}-${month}-${day}`;
 }
+
 
 /**
  * Formats a date string into "Month Day, Year" format.
@@ -190,6 +201,7 @@ function formatDeadlineDate(inputDate) {
 
   return `${monthName} ${day}, ${year}`;
 }
+
 
 /**
  * Sorts an array of dates in ascending order.

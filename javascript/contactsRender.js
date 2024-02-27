@@ -15,6 +15,7 @@ function generateContactHTML(contact, color, acronym, index) {
   }
 }
 
+
 /**
  * Sets contacts under respective first letters and renders them in the UI.
  * @param {string} letter - The first letter of contacts to be grouped under.
@@ -41,6 +42,7 @@ function setContactsToFirstLetters(letter) {
   saveContacts();
 }
 
+
 /**
  * Animates the contact information panel.
  */
@@ -53,6 +55,7 @@ async function openContactInfoAnimations() {
   }
 }
 
+
 /**
  * Hides the transition effect.
  */
@@ -60,6 +63,7 @@ async function hideTransitionEffect() {
   classlistAdd('wrapper-contact-info', 'd-none');
   classlistRemove('wrapper-contact-info', 'show-overlay-menu');
 }
+
 
 /**
  * Opens the changes menu for mobile view.
@@ -72,6 +76,7 @@ function toggleContactInfoMobile() {
   classlistToggle('back-to-contact-list', 'd-flex');
 }
 
+
 /**
  * Opens the changes menu for mobile view.
  */
@@ -81,6 +86,7 @@ function openChangesMenuMobile() {
   classlistAdd('changesMobile', 'show-overlay-menu');
   classlistAdd('optionsContactMobile', 'd-none');
 }
+
 
 /**
  * Closes the changes menu for mobile view.
@@ -92,6 +98,7 @@ function closeChangesMenuMobile() {
   classlistRemove('optionsContactMobile', 'd-none');
 }
 
+
 /**
  * Renders changes in the contact list for mobile view.
  * @param {number} i - The index of the contact.
@@ -101,6 +108,7 @@ function renderChangesMobile(i) {
   content.innerHTML = '';
   content.innerHTML = changesMobileHTML(i);
 }
+
 
 /**
  * Opens a popup.
@@ -113,6 +121,7 @@ function openPopup(id1, id2, direction) {
   setTimeout(() => classlistAdd(id2, direction), 50);
 }
 
+
 /**
  * Closes a popup.
  * @param {string} id1 - The ID of the first element.
@@ -123,6 +132,7 @@ function closePopup(id1, id2, direction) {
   classlistRemove(id2, direction);
   setTimeout(() => classlistRemoveAndAdd(id1, 'd-block', 'd-none'), 250);
 }
+
 
 /**
  * Renders the edit contact interface either for desktop or mobile view based on the window width.
@@ -140,6 +150,8 @@ function renderEditContactDesktopOrMobile(acronym, color, i) {
   }
 }
 
+
+
 /**
  * Close the contact popup window.
  * Closes the popup window for editing or adding a contact.
@@ -153,6 +165,7 @@ async function closeContactPopup(target, type) {
     closePopup(`${type}-contact-wrapper-mobile`, `${type}-contact-mobile`, 'show-overlay-menu-y');
   }
 }
+
 
 /**
  * Animates the banner for contacts based on screen size.
@@ -178,6 +191,7 @@ async function animateBannerContacts(idDesktop, idMobile) {
   setTimeout(() => classlistRemove(banner, 'd-flex'), 250);
 }
 
+
 /**
  * Waits for a specific time and then removes the class from the banner.
  * @param {string} banner - The banner element from which the class should be removed.
@@ -192,6 +206,7 @@ async function waitForTimeoutAndResolve(banner, transform) {
     }, 2000);
   });
 }
+
 
 /**
  * Toggle the background color of a contact list item.

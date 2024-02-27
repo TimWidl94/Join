@@ -39,7 +39,6 @@ async function saveEditedTask(i) {
   closeTaskPopup();
 }
 
-
 /**
  * Check how many subtasks are checked.
  * @param {number} i - The index of the task.
@@ -143,7 +142,6 @@ function doNotClose(event) {
   event.stopPropagation();
 }
 
-
 /**
  * Move a task to a different category in mobile view.
  * @param {number} i - The index of the task.
@@ -190,7 +188,6 @@ function clearTasksContainer() {
 function openDropDownCategoryEdit() {
   let assignedDropdownCategory = document.getElementById('assignedDropdownCategoryEdit');
   let dropdownImgArrowCategory = document.getElementById('dropdownImgArrowCategoryEdit');
-  // dropdownCategory.classList.toggle('border-category-active');
   assignedDropdownCategory.classList.toggle('d-none');
   dropdownImgArrowCategory.classList.toggle('rotate-arrow');
 }
@@ -316,7 +313,6 @@ function resetPriorityContainers() {
   document.getElementById('lowContainerEdit').classList.remove('priorityLowActive');
   document.getElementById('lowImgEdit').src = './assets/img/addTask/ArrowDownPrioSign.svg';
 }
-
 
 /**
  * Update task information.

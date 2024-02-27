@@ -281,3 +281,109 @@ function removeSelectedContact(assignedDropdown, checkboxImage, userID, selected
     assignedDropdown.classList.toggle('addTask-selected');
   }
 }
+
+/**
+ * Sets the minimum date of an input field to today's date and prevents selecting past dates.
+ * @param {string} inputId - The ID of the input field.
+ */
+function setMinDateToday(inputId) {
+  var today = new Date().toISOString().split('T')[0];
+  document.getElementById(inputId).setAttribute('min', today);
+  document.getElementById(inputId).addEventListener('input', function () {
+    var selectedDate = this.value;
+    var currentDate = new Date().toISOString().split('T')[0];
+    if (selectedDate < currentDate) {
+      this.value = today;
+    }
+  });
+}
+
+/**
+ * Adds a subtask to the subtasks array.
+ * @param {string} idInput - The ID of the subtask input field.
+ * @param {string} idContainer - The ID of the container for subtasks.
+ */
+function addSubTask(idInput, idContainer) {
+  let subTaskInput = document.getElementById(idInput).value;
+  let subTaskError = document.getElementById('subTaskError');
+  let nr = subtasks.length;
+  if (subTaskInput == 0) {
+    subTaskError.innerHTML = /*HTML*/ `
+    Subtask bitte bei Bedarf hinzufügen.`;
+  } else {
+    subTaskError.innerHTML = /*HTML*/ ``;
+    subtasks.push({
+      subTaskInput: subTaskInput,
+      id: nr,
+      isActive: false,
+    });
+    addSubTaskFinalize(idInput, idContainer);
+  }
+}
+
+/**
+ * Adds a subtask and finalizes the process by clearing the input field, rendering generated subtasks, and resetting the input field style.
+ *
+ * @param {string} idInput - The ID of the input field for the subtask.
+ * @param {string} idContainer - The ID of the container where generated subtasks are rendered.
+ */
+function addSubTaskFinalize(idInput, idContainer) {
+  document.getElementById(idInput).value = '';
+  renderGeneratedSubTasks(idContainer);
+  resetSubTaskInputField(idInput);
+}
+
+/**
+ * Finds the position of a subtask with the given ID.
+ *
+ * @param {string} id - The ID of the subtask to find.
+ * @returns {number} - The index of the subtask in the subtasks array, or -1 if not found.
+ */
+function findSubtaskPosition(id) {
+  let nr = subtasks.findIndex((obj) => obj.id === id);
+  return nr;
+}
+
+/**
+ * Checks if the task form is filled with required information.
+ *
+ * @param {string} id - The ID of the due date input field.
+ */
+function checkIfFormIsFilled(id) {
+  let title = document.getElementById('taskTitle');
+  let dueDate = document.getElementById(id);
+  if (categoryIsSelected === true && title.value > '' && dueDate.value > '') {
+    document.getElementById('create-task').disabled = false;
+  }
+}
+
+/**
+ * Sets the value of 'isChoosen' to 'false' for all contacts in the list and saves the updated contacts.
+ */
+async function resetIsChoosenValue() {
+  for (let i = 0; i < contacts.length; i++) {
+    let contact = contacts[i];
+    contact['isChoosen'] = false;
+  }
+  await saveContacts();
+}
+
+/**
+ * Toggles the 'isChoosen' value of the contact at the specified index.
+ * If the value is currently true, it sets it to false, and vice versa.
+ * Saves the updated contacts after toggling.
+ *
+ * @param {number} i - The index of the contact to toggle.
+ */
+async function setIsChoosenValue(i) {
+  if (contacts[i]['isChoosen'] === true) {
+    contacts[i]['isChoosen'] = false;
+    await saveContacts();
+    return;
+  }
+  if (contacts[i]['isChoosen'] === false) {
+    contacts[i]['isChoosen'] = true;
+    await saveContacts();
+    return;
+  }
+}

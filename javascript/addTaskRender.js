@@ -52,50 +52,8 @@ function renderSubTask() {
 }
 
 /**
- * Sets the minimum date of an input field to today's date and prevents selecting past dates.
- * @param {string} inputId - The ID of the input field.
- */
-function setMinDateToday(inputId) {
-  var today = new Date().toISOString().split('T')[0];
-  document.getElementById(inputId).setAttribute('min', today);
-  document.getElementById(inputId).addEventListener('input', function () {
-    var selectedDate = this.value;
-    var currentDate = new Date().toISOString().split('T')[0];
-    if (selectedDate < currentDate) {
-      this.value = today;
-    }
-  });
-}
-
-/**
- * Adds a subtask to the subtasks array.
- * @param {string} idInput - The ID of the subtask input field.
- * @param {string} idContainer - The ID of the container for subtasks.
- */
-function addSubTask(idInput, idContainer) {
-  let subTaskInput = document.getElementById(idInput).value;
-  let subTaskError = document.getElementById('subTaskError');
-  let nr = subtasks.length;
-  if (subTaskInput == 0) {
-    subTaskError.innerHTML = /*HTML*/ `
-    Subtask bitte bei Bedarf hinzufügen.`;
-  } else {
-    subTaskError.innerHTML = /*HTML*/ ``;
-    subtasks.push({
-      subTaskInput: subTaskInput,
-      id: nr,
-      isActive: false,
-    });
-    document.getElementById(idInput).value = '';
-    renderGeneratedSubTasks(idContainer);
-    resetSubTaskInputField(idInput);
-  }
-}
-
-/**
  * Renders the generated subtasks in the specified container.
  * @param {string} idContainer - The ID of the container where subtasks will be rendered.
- * @returns {void}
  */
 function renderGeneratedSubTasks(idContainer) {
   let container = document.getElementById(idContainer);
@@ -108,19 +66,8 @@ function renderGeneratedSubTasks(idContainer) {
 }
 
 /**
- * Finds the position of a subtask with the given ID.
- * @param {string} id - The ID of the subtask to find.
- * @returns {number} - The index of the subtask in the subtasks array, or -1 if not found.
- */
-function findSubtaskPosition(id) {
-  let nr = subtasks.findIndex((obj) => obj.id === id);
-  return nr;
-}
-
-/**
  * Edits the subtask with the given ID.
  * @param {string} id - The ID of the subtask to edit.
- * @returns {void}
  */
 function editSubTask(id) {
   let container = document.getElementById(id);
@@ -132,7 +79,6 @@ function editSubTask(id) {
 /**
  * Adds or edits a subtask at the specified index.
  * @param {number} i - The index of the subtask.
- * @returns {void}
  */
 function addEditSubTask(i) {
   let subTaskInput = document.getElementById('editSubTaskInput');
@@ -143,7 +89,6 @@ function addEditSubTask(i) {
 /**
  * Displays the task form with assigned contacts.
  * @param {string} id - The ID of the container to display the task form in.
- * @returns {void}
  */
 async function showTaskForm(id) {
   let assignedTo = document.getElementById(id);
@@ -182,10 +127,8 @@ function checkIfSelectedContact(i, contactNumber) {
 
 /**
  * Filters contacts based on the search term and renders them.
- * @returns {void}
  */
 async function filterAddTaskContact() {
-  // let updatedFilteredContacts;
   let searchTerm = document.getElementById('search').value.toLowerCase();
   let assignedDropdown = document.getElementById('assignedDropdown');
   assignedDropdown.innerHTML = '';
@@ -195,11 +138,7 @@ async function filterAddTaskContact() {
     assignedDropdown.classList.remove('d-none');
     openDropDown('assignedDropdown', 'dropdownImgArrow');
   } else {
-    // filterAndSetChosenContacts(contacts, searchTerm);
     filteredContacts = contacts.filter((contact) => contact.name.toLowerCase().startsWith(searchTerm));
-    // const updatedFilteredContacts = filteredContacts.map((contact) => {
-    //   return { ...contact, isChoosen: true };
-    // });
     renderFilteredContacts(filteredContacts);
     if (filteredContacts.length === 0) {
       assignedDropdown.classList.add('d-none');
@@ -209,31 +148,9 @@ async function filterAddTaskContact() {
   }
 }
 
-async function setIsChoosenValue(i) {
-  if (contacts[i]['isChoosen'] === true) {
-    contacts[i]['isChoosen'] = false;
-    await saveContacts();
-    return;
-  }
-  if (contacts[i]['isChoosen'] === false) {
-    contacts[i]['isChoosen'] = true;
-    await saveContacts();
-    return;
-  }
-}
-
-// function filterAndSetChosenContacts(contacts, searchTerm) {
-//   const filteredContacts = contacts.filter((contact) => contact.name.toLowerCase().startsWith(searchTerm));
-//   const updatedFilteredContacts = filteredContacts.map((contact) => {
-//     return { ...contact, isChoosen: true };
-//   });
-//   return updatedFilteredContacts;
-// }
-
 /**
  * Renders the contacts in the assigned dropdown.
  * @param {Array} contacts - The array of contacts to render.
- * @returns {void}
  */
 async function renderContacts(contacts) {
   let assignedDropdown = document.getElementById('assignedDropdown');
@@ -253,7 +170,6 @@ async function renderContacts(contacts) {
 /**
  * Renders the filtered contacts in the assigned dropdown.
  * @param {Array} filteredContacts - The array of filtered contacts to render.
- * @returns {void}
  */
 function renderFilteredContacts(filteredContacts) {
   let assignedDropdown = document.getElementById('assignedDropdown');
@@ -280,7 +196,6 @@ function renderFilteredContacts(filteredContacts) {
  * Toggles the display of a dropdown menu.
  * @param {string} idDropdown - The ID of the dropdown menu to toggle.
  * @param {string} idImgArrow - The ID of the arrow icon associated with the dropdown.
- * @returns {void}
  */
 function openDropDown(idDropdown, idImgArrow) {
   let assignedDropdown = document.getElementById(idDropdown);
@@ -294,7 +209,6 @@ function openDropDown(idDropdown, idImgArrow) {
 
 /**
  * Toggles the display of a category dropdown menu.
- * @returns {void}
  */
 function openDropDownCategory() {
   let assignedDropdownCategory = document.getElementById('assignedDropdownCategory');
@@ -308,7 +222,6 @@ function openDropDownCategory() {
  * Adds an assigned contact to the selected contacts list.
  * @param {number} i - The index of the contact.
  * @param {string} color - The color associated with the contact.
- * @returns {void}
  */
 async function addAssignedContact(i, color, contactsNumber) {
   let assignedDropdown = document.getElementById('assignedDropdown');
@@ -316,21 +229,25 @@ async function addAssignedContact(i, color, contactsNumber) {
   let checkboxImage = document.getElementById(`checkBox-${i}`);
   let userID = document.getElementById(`user-${i}`);
 
-  // renderContactList(assignedDropdown, checkboxImage, userID, selectedContact, color);
   addSelectedContact(assignedDropdown, checkboxImage, userID, selectedContact, color);
   await setIsChoosenValue(contactsNumber);
   await renderSelectedContacts(i);
 }
 
+/**
+ * Adds a filtered and assigned contact with specified attributes.
+ * Calls helper functions to update the assigned dropdown, checkbox image, and user ID display.
+ * Also sets the 'isChoosen' value of the contact and renders selected contacts.
+ * @param {number} i - The index of the filtered contact.
+ * @param {string} color - The color to be used for visual representation.
+ * @param {number} contactsNumber - The number of contacts.
+ */
 async function addFilteredAssignedContact(i, color, contactsNumber) {
-  // console.log('addAssignedContactFiltered i:', i);
-  // console.log('addAssignedContactFiltered color:', color);
   let assignedDropdown = document.getElementById('assignedDropdown');
   let selectedContact = filteredContacts[i]['name'];
   let checkboxImage = document.getElementById(`checkBox-${i}`);
   let userID = document.getElementById(`user-${i}`);
 
-  // renderContactList(assignedDropdown, checkboxImage, userID, selectedContact, color);
   addSelectedContact(assignedDropdown, checkboxImage, userID, selectedContact, color);
   await setIsChoosenValue(contactsNumber);
   await renderSelectedContacts(i);
@@ -344,7 +261,6 @@ async function addFilteredAssignedContact(i, color, contactsNumber) {
  * @param {HTMLElement} userID - The user ID of the selected contact.
  * @param {string} selectedContact - The selected contact.
  * @param {string} color - The color of the selected contact.
- * @returns {void}
  */
 function addSelectedContact(assignedDropdown, checkboxImage, userID, selectedContact, color) {
   const index = selectedContacts.findIndex((contact) => contact.name === selectedContact && contact.color === color);
@@ -365,6 +281,11 @@ function addSelectedContact(assignedDropdown, checkboxImage, userID, selectedCon
   }
 }
 
+/**
+ * Sets background for the selected contact based on its 'isChoosen' status.
+ * Updates the visual representation of the contact with the specified div ID.
+ * @param {string} divId - The ID of the HTML div element representing the contact.
+ */
 function backgroundForSelectedContact(divId) {
   for (let i = 0; i < contacts.length; i++) {
     let userId = document.getElementById(`user-${divId}`);
@@ -397,7 +318,6 @@ function checkIfSelectedContactExist(selectedContact) {
  * Renders the selected contacts in the "Assigned Contacts" section on the user interface.
  *
  * @param {number} i - The index of the currently selected contact.
- * @returns {void}
  */
 function renderSelectedContacts(i) {
   let content = document.getElementById('assignedAddedContact');
@@ -456,25 +376,4 @@ function setValueBack(idInput, idContainer) {
 function resetSubTaskInputField(idContainer) {
   let inputContainer = document.getElementById(idContainer);
   inputContainer.innerHTML = subTaskInputFieldHtml();
-}
-
-/**
- * Checks if the task form is filled with required information.
- *
- * @param {string} id - The ID of the due date input field.
- */
-function checkIfFormIsFilled(id) {
-  let title = document.getElementById('taskTitle');
-  let dueDate = document.getElementById(id);
-  if (categoryIsSelected === true && title.value > '' && dueDate.value > '') {
-    document.getElementById('create-task').disabled = false;
-  }
-}
-
-async function resetIsChoosenValue() {
-  for (let i = 0; i < contacts.length; i++) {
-    let contact = contacts[i];
-    contact['isChoosen'] = false;
-  }
-  await saveContacts();
 }

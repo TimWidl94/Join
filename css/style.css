@@ -305,7 +305,7 @@ textarea {
   min-height: 100vh; }
 
 #showSelectedCategory {
-  font-size: 20px; }
+  font-size: 18px; }
 
 .assinged-contact {
   width: 100%;
@@ -1132,7 +1132,9 @@ textarea {
     padding: 15px 12px; }
   .container-left,
   .container-right {
-    padding: 0px 0px !important; } }
+    padding: 0px 0px !important; }
+  #mediumContainer {
+    height: calc(40px - 2 * 12px); } }
 
 @media (max-width: 350px) {
   .bottom-add-task-mobile {
@@ -3400,7 +3402,7 @@ footer {
 
 .privacyPolicyLink {
   color: var(--Ligth-blue, #29abe2);
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -3520,7 +3522,8 @@ footer {
   .logInInputField {
     width: calc(100% - 58px);
     padding: 12px 38px 12px 21px; }
-  .logInInputImgMail, .logInInputImgLock {
+  .logInInputImgMail,
+  .logInInputImgLock {
     right: 10px; }
   .formBody {
     max-width: 100% !important; }

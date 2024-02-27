@@ -132,7 +132,6 @@ async function processContactAddition(target, id, name, mail, tel) {
   setColorToContacts();
   await saveContacts();
   await init();
-  // renderContacts();
   let index = findContactIndex(name.value);
   clearPopup(name, mail, tel);
   openContactInfo(index);
@@ -279,10 +278,8 @@ async function deleteSelectedContact(x) {
       let contact = task.selectedContacts[j];
 
       if (contact.name === contacts[x].name) {
-        console.log('task.selectedContacts before:', task.selectedContacts);
         task.selectedContacts.splice(j, 1);
         j--;
-        console.log('task.selectedContacts after:', task.selectedContacts);
       }
     }
   }

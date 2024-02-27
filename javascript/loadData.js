@@ -7,7 +7,6 @@ async function loadData() {
   try {
     users = JSON.parse(await getItem('users'));
     contacts = JSON.parse(await getItem('contacts'));
-    // contactList = getContactList(contacts);
     tasks = JSON.parse(await getItem('tasks'));
   } catch (e) {
     console.info('could not load users');

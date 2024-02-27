@@ -137,7 +137,6 @@ function renderGeneratedSubTasksEdit(idContainer, j) {
   }
 }
 
-
 /**
  * Start dragging a task.
  * @param {string} id - The ID of the task being dragged.
@@ -404,8 +403,3 @@ async function renderSearchedTasksDone(i) {
   setCategoryBackground(tasks[i].selectedCategory, `board-task-epic${i}`);
   await taskProgressBar(i);
 }
-
-
-
-
-

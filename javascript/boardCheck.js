@@ -330,7 +330,7 @@ function changePriorityEdit(idContainer, idImg, priority) {
  */
 function resetPriorityContainers() {
   document.getElementById('urgentContainerEdit').classList.remove('priorityUrgentActive');
-  document.getElementById('urgentImgEdit').src = './assets/img/addTask/ArrowUpPrioSign.svg';
+  document.getElementById('urgentImgEdit').src = './assets/img/AddTask/ArrowUpPrioSign.svg';
   document.getElementById('mediumContainerEdit').classList.remove('priorityMediumActive');
   document.getElementById('mediumImgEdit').src = './assets/img/addTask/MediumPrioSignInactive.svg';
   document.getElementById('lowContainerEdit').classList.remove('priorityLowActive');

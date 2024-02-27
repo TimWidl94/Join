@@ -2667,13 +2667,15 @@ form {
   .board-task-title {
     font-family: 'Inter', sans-serif;
     font-weight: 700;
-    padding-bottom: 8px; }
+    padding-bottom: 8px;
+    overflow-wrap: break-word; }
   .board-task-description {
     color: #a8a8a8;
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
-    margin-bottom: 24px; }
+    margin-bottom: 24px;
+    overflow-wrap: break-word; }
   .board-task-subtask {
     display: flex;
     justify-content: space-between;

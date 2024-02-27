@@ -332,9 +332,9 @@ function resetPriorityContainers() {
   document.getElementById('urgentContainerEdit').classList.remove('priorityUrgentActive');
   document.getElementById('urgentImgEdit').src = './assets/img/AddTask/ArrowUpPrioSign.svg';
   document.getElementById('mediumContainerEdit').classList.remove('priorityMediumActive');
-  document.getElementById('mediumImgEdit').src = './assets/img/addTask/MediumPrioSignInactive.svg';
+  document.getElementById('mediumImgEdit').src = './assets/img/AddTask/MediumPrioSignInactive.svg';
   document.getElementById('lowContainerEdit').classList.remove('priorityLowActive');
-  document.getElementById('lowImgEdit').src = './assets/img/addTask/ArrowDownPrioSign.svg';
+  document.getElementById('lowImgEdit').src = './assets/img/AddTask/ArrowDownPrioSign.svg';
 }
 
 

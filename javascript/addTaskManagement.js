@@ -141,12 +141,12 @@ function changePrioToUrgent(idContainer, idImg) {
   let img = document.getElementById(idImg);
 
   prioContainer.classList.add('priorityUrgentActive');
-  img.src = './assets/img/addTask/urgentPrioActive.svg';
+  img.src = './assets/img/AddTask/urgentPrioActive.svg';
   selectedPrio = 'urgent';
   document.getElementById('mediumContainer').classList.remove('priorityMediumActive');
-  document.getElementById('mediumImg').src = './assets/img/addTask/MediumPrioSignInactive.svg';
+  document.getElementById('mediumImg').src = './assets/img/AddTask/MediumPrioSignInactive.svg';
   document.getElementById('lowContainer').classList.remove('priorityLowActive');
-  document.getElementById('lowImg').src = './assets/img/addTask/ArrowDownPrioSign.svg';
+  document.getElementById('lowImg').src = './assets/img/AddTask/ArrowDownPrioSign.svg';
 }
 
 
@@ -165,7 +165,7 @@ function changePrioToLow(idContainer, idImg) {
   document.getElementById('urgentContainer').classList.remove('priorityUrgentActive');
   document.getElementById('urgentImg').src = './assets/img/AddTask/ArrowUpPrioSign.svg';
   document.getElementById('mediumContainer').classList.remove('priorityMediumActive');
-  document.getElementById('mediumImg').src = './assets/img/addTask/MediumPrioSignInactive.svg';
+  document.getElementById('mediumImg').src = './assets/img/AddTask/MediumPrioSignInactive.svg';
 }
 
 

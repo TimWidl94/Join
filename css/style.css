@@ -2636,7 +2636,10 @@ form {
   color: #42526e;
   margin-bottom: 15.5px;
   background-color: #f6f7f8;
-  height: 40px; }
+  height: 40px;
+  position: fixed;
+  top: 290px;
+  z-index: 100; }
 
 .board-svg-container {
   --svg-color: #2a3647;
@@ -3156,6 +3159,7 @@ form {
     width: 100% !important;
     max-width: 100% !important; }
   .wobble-container {
+    padding: 20px 15px;
     max-width: 206px;
     width: 100%; }
   .headerBoardMobile {

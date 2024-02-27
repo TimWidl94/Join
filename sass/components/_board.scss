@@ -184,6 +184,9 @@
     margin-bottom: 15.5px;
     background-color: $summary-background-color;
     height: 40px;
+    position: fixed;
+    top: 290px;
+    z-index: 100;
   }
 
   &-svg-container {
@@ -805,6 +808,7 @@
     max-width: 100% !important;
   }
   .wobble-container {
+    padding: 20px 15px;
     max-width: 206px;
     width: 100%;
   }

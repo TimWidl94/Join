@@ -116,18 +116,13 @@ function setUser(email) {
 function searchForEmail(email, password) {
   for (let i = 0; i < users.length; i++) {
     if (
-      users[i]["email"].includes(email) &&
-      users[i]["password"].includes(password)
+      users[i]["email"] === email &&
+      users[i]["password"] === password
     ) {
       return true;
     }
-    if (
-      users[i]["email"].includes(email) &&
-      !users[i]["password"].includes(password)
-    ) {
-      passwordDontMatch();
-    } 
   }
+  passwordDontMatch();
 }
 
 /**

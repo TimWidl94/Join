@@ -27,6 +27,7 @@ async function openAddTaskPopup(column) {
   setMinDateTodayPopup('myDateInputPopup');
   document.getElementById('addTaskPopupWrapper').classList.remove('d-none');
   document.getElementById('addTaskPopup').classList.remove('d-none');
+  document.getElementById('addTaskPopup').classList.remove('slide-out');
   document.getElementById('addTaskPopup').classList.add('slide-in');
 }
 

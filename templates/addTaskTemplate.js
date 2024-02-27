@@ -6,40 +6,31 @@ function addTaskHtml() {
   return /*html*/ `
     <form onsubmit="addTask('myDateInput', 'toDo'); return false" class="formAddTask">
       <section class="container-left-right-wrapper">
-        <section class="container-left">
-        
+        <section class="container-left">   
           <div class="headline-add-task"><h1 class="headline-h1-add-task">Add Task</h1></div>
-
           <div id="title-add-task">
             <p>Title<span class="span-required">*</span></p>
             <input id="taskTitle" required type="text" maxlength="100" class="border-focus" placeholder="Enter a title" onkeydown="checkIfFormIsFilled('myDateInput')"/>
           </div>
-
           <div id="description">
             <p>Description</p>
             <textarea id="taskDescription" class="border-focus" maxlength="200" placeholder="Enter a description"></textarea>
           </div>
-
           <p class="text-padding">Assigned to</p>
           <div id="assignedTo">
           </div>
-
           <div class="assinged-contact-wrapper">
             <div id="assignedAddedContact" class="assinged-contact">
             </div>
           </div>
         </section>
-
         <div class="vertical-line-add-task"></div>
-
         <section class="container-right">
-
           <p>Due Date<span class="span-required">*</span></p>
           <div id="due-date">
             <label for="myDateInput"></label>
             <input id="myDateInput" type="date" required>
           </div>
-
           <div class="priority">
             <p>Prio</p>
             <div class="priority-options">
@@ -57,7 +48,6 @@ function addTaskHtml() {
               </div>
             </div>
           </div>
-
           <div class="category">
             <p>Category<span class="span-required">*</span></p>
             <div id="dropdownCategory" class="dropdown" onclick="openDropDownCategory()">
@@ -69,11 +59,8 @@ function addTaskHtml() {
               <div id="other" class="flex-checkbox" data-value="technical-task" onclick="selectCategory('Technical Task', 'myDateInput')">Technical Task</div>
             </div>
           </div>
-
           <div id="subtasks"> </div>
-          
           <ul id="subTaskContainer" class="subtask-div ulContainer" > </ul> 
-          
           <div class="bottom-add-task-mobile">
             <div class="requirement-mobile">
               <p><span class="span-required">*</span>This field is required</p>
@@ -87,10 +74,8 @@ function addTaskHtml() {
               /></button>  
             </div>      
           </div>
-
         </section>
       </section>
-
         <div class="btns-down-add-task">
           <div class="requirement-desktop-addTask">
             <p class="p-required"><span class="span-required">*</span>This field is required</p>
@@ -104,7 +89,6 @@ function addTaskHtml() {
             /></button>
           </div>
         </div> 
-
     </form>
   `;
 }
@@ -189,7 +173,7 @@ function addedTaskToBoardHtml() {
  */
 function showTaskFormHtml() {
   return /*html*/ `
-    <div name="assigned" onchange="addAssignedContact()">
+    <div name="assigned" >
       <div id="dropdown" class="dropdown" onclick="openDropDown('assignedDropdown', 'dropdownImgArrow')">
         <input class="contact-searchbar" onkeyup="filterAddTaskContact()" type="text" id="search" placeholder="Select contacts to assign" />
         <img id="dropdownImgArrow" class="rotate-arrow dropdown-arrow-hover dropdown-arrow-hover" src="../assets/img/AddTask/arrow_drop.svg" alt="">
@@ -253,11 +237,12 @@ function assignedToUserYouHtml(i, color, currentUser, initials, contactNumber) {
  */
 function subtasksAfterDeletionHtml(i, nr, idContainer) {
   return /*html*/ `
-    <div id="${nr}" class="subtask-div-list">${subtasks[i]['subTaskInput']}
-      <div><img class="subtask-div-btn" onclick="editSubTask(${nr})" src="./assets/img/icons/edit.svg" alt="">
+    <li id="${nr}" class="subtask-div-list" ondblclick="editSubTask(${nr})"><div class="subtask-div-text">${subtasks[i]['subTaskInput']}</div>
+      <div class="subtask-div-list-hover-items">
+        <img class="subtask-div-btn" onclick="editSubTask(${nr})" src="./assets/img/icons/edit.svg" alt=""><span class="subTaskInputImg-vertical-added"></span>
         <img class="subtask-div-btn" onclick="deleteSubTask(${nr}, '${idContainer}')" src="./assets/img/icons/delete.svg" alt="">
       </div>
-    </div>
+    </li>
   `;
 }
 

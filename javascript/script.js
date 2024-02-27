@@ -79,9 +79,10 @@ async function setUserToContacts() {
   let name = users[user].username;
   let mail = users[user].email;
   let userExistsIndex = contacts.findIndex((contact) => contact.name === name);
+  let nr = contacts.length;
 
   if (userExistsIndex === -1) {
-    contacts.push({ name: firstLettersUppercase(name), mail: mail, phone: '', color: '' });
+    contacts.push({ name: firstLettersUppercase(name), mail: mail, phone: '', color: '', nr: nr});
     userExistsIndex = contacts.length - 1;
   }
 }

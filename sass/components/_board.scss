@@ -823,6 +823,7 @@
     justify-content: space-between;
     width: 100%;
     align-items: center;
+    margin-top: 20px;
   }
   .boardBoxesForTasksMobile {
     flex-direction: column;
@@ -905,6 +906,10 @@
   .atPopupEdit {
     margin-left: 24px;
     margin-right: 24px;
+  }
+  
+  .search-side-bar {
+    padding: 12px 0 12px 7px;
   }
 
   .aTPopupContentWrapper {

@@ -20,6 +20,7 @@ function setMinDateTodayPopup(inputIdPopup) {
  * @param {string} column - The column identifier.
  */
 async function openAddTaskPopup(column) {
+  await resetIsChoosenValue();
   await renderAddTaskPopUp(column);
   changePrioToMedium('mediumContainer', 'mediumImg');
   await renderSubTask();

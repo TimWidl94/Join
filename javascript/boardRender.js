@@ -17,6 +17,7 @@ async function initBoard() {
   setColorToActive('sidebarBoard', 'board-img', 'bottomBarBoardMobile', 'boardImgMobile');
   checkTaskAreaDisplayEmpty();
   setNumberOnContacts();
+  await resetIsChoosenValue();
 }
 
 

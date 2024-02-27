@@ -1,4 +1,4 @@
-letters = [];
+let letters = [];
 let nameToCompare;
 
 /**
@@ -98,7 +98,7 @@ async function openContactInfo(i) {
     setTimeout(() => (content.innerHTML += openContactInfoHTML(contact, acronym, color, i)), 250);
   }
   renderChangesMobile(i);
-  // await openContactInfoAnimations();
+  openContactInfoAnimations();
 }
 
 /**
@@ -135,10 +135,10 @@ async function processContactAddition(target, id, name, mail, tel) {
   // renderContacts();
   let index = findContactIndex(name.value);
   clearPopup(name, mail, tel);
+  openContactInfo(index);
+  clearPopup(name, mail, tel);
   await closeContactPopup(target, 'add');
-  await openContactInfo(index);
-  await openContactInfoAnimations();
-  await animateBannerContactsAdded(id);
+  setTimeout(() => animateBannerContacts('banner-contact-created', 'banner-contact-created-mobile'), 500);
 }
 
 /**
@@ -250,10 +250,10 @@ async function deleteContact(i, target) {
     toggleContactInfoMobile();
   }
 
-  await saveContacts();
   document.getElementById('contact-info').innerHTML = '';
+  await saveContacts();
   init();
-  animateBannerContactsDeleted(target);
+  await animateBannerContacts('banner-contact-deleted', 'banner-contact-deleted-mobile');
 }
 
 /**

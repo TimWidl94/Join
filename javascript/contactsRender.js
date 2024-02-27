@@ -28,10 +28,14 @@ function setContactsToFirstLetters(letter) {
     const firstLetter = contact.name.charAt(0);
     const color = contact.color;
     let acronym = getFirstLetters(contact.name);
+    let username = checkForUserName();
     if (firstLetter.includes(letter)) {
       sortContactsByAlphabet();
-      const contactHTML = generateContactHTML(contact, color, acronym, i);
-      contactBox.innerHTML += contactHTML;
+      if (contacts[i]['name'] === username) {
+        contactBox.innerHTML += generateContactsYouHTML(contact, color, acronym, i);
+      } else {
+        contactBox.innerHTML += generateContactsHTML(contact, color, acronym, i);
+      }
     }
   }
   saveContacts();
@@ -150,59 +154,43 @@ async function closeContactPopup(target, type) {
   }
 }
 
-async function animateBannerContactsAdded(target) {
-  if (target == 'banner-contact-created') {
-    console.log('animateBannerContactsAdded target:', target);
-    await animateBannerContactsDesktop(target);
-  } else {
-    await animateBannerContactsMobile(target);
-  }
-}
-
-async function animateBannerContactsDeleted(target) {
-  if (target == 'banner-contact-deleted') {
-    animateBannerContactsDesktop(target);
-    console.log('animateBannerContactsDesktop');
-  } else {
-    animateBannerContactsMobile(target);
-    console.log('animateBannerContactsMobile');
-  }
-}
-
 /**
- * Animate the banner for contact-related actions in desktop view.
- * @param {string} idDesktop - The ID of the banner for desktop view.
+ * Animates the banner for contacts based on screen size.
+ * @param {string} idDesktop - The ID of the banner on a desktop screen.
+ * @param {string} idMobile - The ID of the banner on a mobile screen.
+ * @returns {Promise<void>} - A promise that resolves after the animation completes.
  */
-async function animateBannerContactsDesktop(idDesktop) {
-  let banner = idDesktop;
-  console.log('idDesktop:', idDesktop);
-  let transform = 'show-overlay-menu';
+async function animateBannerContacts(idDesktop, idMobile) {
+  let banner;
+  let transform;
 
-  // classlistAdd(banner, 'd-flex');
-  document.getElementById(banner).classList.add('d-flex');
-  classlistAdd(banner, transform);
-
-  // setTimeout(() => classlistAdd(banner, transform), 2000);
-  setTimeout(() => classlistRemove(banner, transform), 3000);
-  classlistRemove(banner, transform);
-  setTimeout(() => classlistRemove(banner, 'd-flex'), 250);
-}
-
-/**
- * Animate the banner for contact-related actions in mobile view.
- * @param {string} idMobile - The ID of the banner for mobile view.
- */
-async function animateBannerContactsMobile(idMobile) {
-  let banner = idMobile;
-  console.log('idMobile:', idMobile);
-
-  let transform = 'show-overlay-menu-y';
-
+  if (window.innerWidth > 800) {
+    banner = idDesktop;
+    transform = 'show-overlay-menu';
+  } else {
+    banner = idMobile;
+    transform = 'show-overlay-menu-y';
+  }
   classlistAdd(banner, 'd-flex');
   classlistAdd(banner, transform);
-  setTimeout(() => classlistRemove(banner, transform), 3000);
+  await waitForTimeoutAndResolve(banner, transform);
   classlistRemove(banner, transform);
   setTimeout(() => classlistRemove(banner, 'd-flex'), 250);
+}
+
+/**
+ * Waits for a specific time and then removes the class from the banner.
+ * @param {string} banner - The banner element from which the class should be removed.
+ * @param {string} transform - The class to be removed.
+ * @returns {Promise<void>} - A promise that resolves after the timeout expires.
+ */
+async function waitForTimeoutAndResolve(banner, transform) {
+  await new Promise((resolve) => {
+    setTimeout(() => {
+      classlistRemove(banner, transform);
+      resolve();
+    }, 2000);
+  });
 }
 
 /**

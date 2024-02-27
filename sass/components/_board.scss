@@ -6,6 +6,10 @@
   display: flex;
 }
 
+.board-title {
+  padding: 3px 0px;
+}
+
 .flex-start {
   justify-content: flex-start;
 }
@@ -23,6 +27,7 @@
   height: calc(100% + 221px);
   min-height: 40px;
   position: relative;
+  margin: 20px 0px;
 }
 
 .overflowYActive {
@@ -186,7 +191,7 @@
     height: 40px;
     position: fixed;
     top: 290px;
-    z-index: 100;
+    z-index: 1;
   }
 
   &-svg-container {
@@ -796,6 +801,7 @@
     position: unset;
     height: 100%;
     overflow-x: scroll;
+ 
   }
   .drag-area::-webkit-scrollbar {
     display: none;

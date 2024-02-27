@@ -530,8 +530,8 @@
 }
 
 .editSubTaskButtonBox img {
-  width: 24px;
-  height: 24px;
+  width: 21px;
+  height: 21px;
   cursor: pointer;
 
   &:hover {
@@ -914,6 +914,12 @@
   .test-2 {
     width: calc(100% - 3%);
     margin: 20px 0 0 0px;
+  }
+
+  .ulContainer input {
+    margin: -20px 0px 0px -10px;
+    width: 100%;
+    padding: 0px 20px;
   }
 }
 

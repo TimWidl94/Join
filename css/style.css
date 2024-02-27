@@ -767,8 +767,8 @@ textarea {
   gap: 8px; }
 
 .editSubTaskButtonBox img {
-  width: 24px;
-  height: 24px;
+  width: 21px;
+  height: 21px;
   cursor: pointer; }
   .editSubTaskButtonBox img:hover {
     background: #e7e7e7;
@@ -1074,7 +1074,11 @@ textarea {
     width: 100%; }
   .test-2 {
     width: calc(100% - 3%);
-    margin: 20px 0 0 0px; } }
+    margin: 20px 0 0 0px; }
+  .ulContainer input {
+    margin: -20px 0px 0px -10px;
+    width: 100%;
+    padding: 0px 20px; } }
 
 @media (max-width: 500px) {
   .body-add-task {
@@ -2481,6 +2485,9 @@ form {
 .board-wrapper-all {
   display: flex; }
 
+.board-title {
+  padding: 3px 0px; }
+
 .flex-start {
   justify-content: flex-start; }
 
@@ -2495,7 +2502,8 @@ form {
   min-width: 100%;
   height: calc(100% + 221px);
   min-height: 40px;
-  position: relative; }
+  position: relative;
+  margin: 20px 0px; }
 
 .overflowYActive {
   padding: 0px 10px;
@@ -2639,7 +2647,7 @@ form {
   height: 40px;
   position: fixed;
   top: 290px;
-  z-index: 100; }
+  z-index: 1; }
 
 .board-svg-container {
   --svg-color: #2a3647;

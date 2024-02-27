@@ -13,7 +13,6 @@ let privacyPolicyOffline = true;
  * Fetches HTML content from the specified URLs and inserts them into elements with 'w3-include-html' attribute.
  *
  */
-
 async function includeHTML() {
   let includeElements = document.querySelectorAll('[w3-include-html]');
   for (let i = 0; i < includeElements.length; i++) {
@@ -82,7 +81,7 @@ async function setUserToContacts() {
   let nr = contacts.length;
 
   if (userExistsIndex === -1) {
-    contacts.push({ name: firstLettersUppercase(name), mail: mail, phone: '', color: '', nr: nr});
+    contacts.push({ name: firstLettersUppercase(name), mail: mail, phone: '', color: '', nr: nr });
     userExistsIndex = contacts.length - 1;
   }
 }

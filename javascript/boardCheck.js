@@ -320,7 +320,7 @@ function changePriorityEdit(idContainer, idImg, priority) {
   let img = document.getElementById(idImg);
   resetPriorityContainers();
   prioContainer.classList.add('priority' + priority.charAt(0).toUpperCase() + priority.slice(1) + 'Active');
-  img.src = './assets/img/addTask/' + priority + 'PrioActive.svg';
+  img.src = './assets/img/AddTask/' + priority + 'PrioActive.svg';
   selectedPrioPopupEdit = priority;
 }
 

@@ -256,6 +256,8 @@
     padding: 38px 38px;
     color: #000;
     flex-shrink: 0;
+    min-height: 120px;
+    max-height: 90px;
 
     &:hover {
       cursor: pointer;
@@ -307,7 +309,21 @@
     gap: 30px!important;
   }
 }
-
+@media (max-width: 1030px) {
+  .boardImg {
+    width: 40px;
+    height: auto;
+  }
+  .summary-tasksContainerDown-counter {
+    font-size: 54px;
+  }
+  .summary-tasksContainerDown-counter-text-m {
+    font-size: 16px;
+  }
+  .summary-todo-counter {
+    font-size: 54px;
+  }
+}
 @media (max-width: 1000px) {
   .containerSummary {
     margin: 0;
@@ -388,7 +404,9 @@
     &-h2 {
       font-size: 25px;
     }
-
+    &-h3 {
+      font-size: 18px;
+    }
     &-vertical-line-mobile {
       padding-top:40px;
     }

@@ -10,6 +10,7 @@ async function addTask(id, column) {
   showPopUpAddedTaskToBoard();
 }
 
+
 /**
  * Adds a new task to the tasks array with the provided details.
  * Handles async operations.
@@ -36,6 +37,7 @@ async function pushAddTask(id, column) {
     column
   );
 }
+
 
 /**
  * Adds a new task to the tasks array with the provided details.
@@ -73,6 +75,7 @@ async function addTaskValues(
   await setItem('tasks', JSON.stringify(tasks));
 }
 
+
 /**
  * Clears the input value and resets the task form.
  */
@@ -81,6 +84,7 @@ function clearInputValue() {
   showTaskForm('assignedTo');
   changePrioToMedium('mediumContainer', 'mediumImg');
 }
+
 
 /**
  * Shows a popup indicating that a task has been added to the board.
@@ -91,6 +95,7 @@ async function showPopUpAddedTaskToBoard() {
   await setTimeout(() => moveToCenter(popup), 200);
   setTimeout(() => (window.location.href = './board.html'), 3000);
 }
+
 
 /**
  * Changes the buttons for adding a task.
@@ -103,6 +108,7 @@ function changeButtonsAddTask(id) {
   inputField.innerHTML = changeButtonsAddTaskHtml();
   document.getElementById('subTaskInput').focus();
 }
+
 
 /**
  * Changes the priority of a task to medium.
@@ -123,6 +129,7 @@ function changePrioToMedium(idContainer, idImg) {
   document.getElementById('lowImg').src = './assets/img/addTask/ArrowDownPrioSign.svg';
 }
 
+
 /**
  * Changes the priority of a task to urgent.
  *
@@ -142,6 +149,7 @@ function changePrioToUrgent(idContainer, idImg) {
   document.getElementById('lowImg').src = './assets/img/addTask/ArrowDownPrioSign.svg';
 }
 
+
 /**
  * Changes the priority of a task to low.
  *
@@ -160,6 +168,7 @@ function changePrioToLow(idContainer, idImg) {
   document.getElementById('mediumImg').src = './assets/img/addTask/MediumPrioSignInactive.svg';
 }
 
+
 /**
  * Selects a category for the task.
  *
@@ -174,6 +183,7 @@ function selectCategory(category, id) {
   selectCategoryIfElse(category, userStory, technicalTask, showSelectedCategory, assignedDropdownCategory);
   checkIfFormIsFilled(id);
 }
+
 
 /**
  * Selects a category for the task.
@@ -194,6 +204,7 @@ function selectCategoryIfElse(category, userStory, technicalTask, showSelectedCa
   }
 }
 
+
 /**
  * Selects the user story category.
  *
@@ -210,6 +221,7 @@ function selectUserStory(userStory, technicalTask, showSelectedCategory, assigne
   assignedDropdownCategory.classList.add('d-none');
   categoryIsSelected = true;
 }
+
 
 /**
  * Selects the technical task category.
@@ -228,6 +240,7 @@ function selectTechnicalTask(userStory, technicalTask, showSelectedCategory, ass
   categoryIsSelected = true;
 }
 
+
 /**
  * Selects the default category.
  *
@@ -242,6 +255,7 @@ function selectDefaultCategory(userStory, technicalTask, showSelectedCategory, a
   showSelectedCategory.setAttribute('data-value', '');
   showSelectedCategory.innerHTML = `Select task category`;
 }
+
 
 /**
  * Deletes a subtask from the list of subtasks.
@@ -259,6 +273,7 @@ function deleteSubTask(number, idContainer) {
     subTaskContainer.innerHTML += subtasksAfterDeletionHtml(i, nr, idContainer);
   }
 }
+
 
 /**
  * Removes a selected contact from the list of selected contacts.
@@ -282,6 +297,7 @@ function removeSelectedContact(assignedDropdown, checkboxImage, userID, selected
   }
 }
 
+
 /**
  * Sets the minimum date of an input field to today's date and prevents selecting past dates.
  * @param {string} inputId - The ID of the input field.
@@ -297,6 +313,7 @@ function setMinDateToday(inputId) {
     }
   });
 }
+
 
 /**
  * Adds a subtask to the subtasks array.
@@ -321,6 +338,7 @@ function addSubTask(idInput, idContainer) {
   }
 }
 
+
 /**
  * Adds a subtask and finalizes the process by clearing the input field, rendering generated subtasks, and resetting the input field style.
  *
@@ -333,6 +351,7 @@ function addSubTaskFinalize(idInput, idContainer) {
   resetSubTaskInputField(idInput);
 }
 
+
 /**
  * Finds the position of a subtask with the given ID.
  *
@@ -343,6 +362,7 @@ function findSubtaskPosition(id) {
   let nr = subtasks.findIndex((obj) => obj.id === id);
   return nr;
 }
+
 
 /**
  * Checks if the task form is filled with required information.
@@ -357,6 +377,7 @@ function checkIfFormIsFilled(id) {
   }
 }
 
+
 /**
  * Sets the value of 'isChoosen' to 'false' for all contacts in the list and saves the updated contacts.
  */
@@ -367,6 +388,7 @@ async function resetIsChoosenValue() {
   }
   await saveContacts();
 }
+
 
 /**
  * Toggles the 'isChoosen' value of the contact at the specified index.

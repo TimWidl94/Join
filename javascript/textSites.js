@@ -10,6 +10,7 @@ async function initTextSites() {
   setUserInitials();
 }
 
+
 /**
  * Initializes the legal notice page.
  * @returns {void}
@@ -20,6 +21,7 @@ async function initLegalNotice() {
   loadLegalNoticeContent();
   setMenuColorToActive('legalNoticeLink');
 }
+
 
 /**
  * Initializes the legal notice page when offline.
@@ -35,6 +37,7 @@ async function initLegalNoticeOffline() {
   setMenuColorToActive('legalNoticeLink');
 }
 
+
 /**
  * Initializes the help page.
  * @returns {void}
@@ -43,6 +46,7 @@ function initHelp() {
   loadHelpH1Html();
   loadHelpContent();
 }
+
 
 /**
  * Initializes the privacy policy page.
@@ -54,6 +58,7 @@ async function initPrivacyPolice() {
   loadPrivacyPolicyContent();
   setMenuColorToActive('privacyPolicyLink');
 }
+
 
 /**
  * Initializes the privacy policy page when offline.
@@ -69,6 +74,7 @@ async function initPrivacyPolicyOffline() {
   setMenuColorToActive('privacyPolicyLink');
 }
 
+
 /**
  * Loads the legal notice page's main headline.
  * @returns {void}
@@ -77,6 +83,7 @@ function loadLegalNoticeH1Html() {
   let smallContainer = document.getElementById('legalNoticeHeadline');
   smallContainer.innerHTML = legalNoticeH1Html();
 }
+
 
 /**
  * Loads the content of the legal notice page.
@@ -87,6 +94,7 @@ function loadLegalNoticeContent() {
   container.innerHTML = legalNoticeHtmlMain();
 }
 
+
 /**
  * Loads the help page's main headline.
  * @returns {void}
@@ -95,6 +103,7 @@ function loadHelpH1Html() {
   let smallContainer = document.getElementById('helpHeadline');
   smallContainer.innerHTML = helpH1Html();
 }
+
 
 /**
  * Loads the content of the help page.
@@ -105,6 +114,7 @@ function loadHelpContent() {
   container.innerHTML = helpHtmlMain();
 }
 
+
 /**
  * Loads the privacy policy page's main headline.
  * @returns {void}
@@ -114,6 +124,7 @@ function loadPrivacyPolicyH1Html() {
   smallContainer.innerHTML = privacyPolicyH1Html();
 }
 
+
 /**
  * Loads the content of the privacy policy page.
  * @returns {void}
@@ -122,6 +133,7 @@ function loadPrivacyPolicyContent() {
   let container = document.getElementById('privacyPoliceContentHTML');
   container.innerHTML = privacyPolicyHtmlMain();
 }
+
 
 /**
  * Checks if the user array is empty and hides sidebar elements accordingly.
@@ -134,6 +146,7 @@ function checkIfArrayIsEmpty() {
   }
 }
 
+
 /**
  * Initializes the sidebar by populating it with HTML content.
  * @returns {void}
@@ -143,6 +156,7 @@ function initSideBar() {
   container.innerHTML = sideBarHtml();
 }
 
+
 /**
  * Initializes the top bar by populating it with HTML content.
  * @returns {void}
@@ -151,6 +165,7 @@ function initTopBar() {
   let container = document.getElementById('topBarContainer');
   container.innerHTML = topBarHtml();
 }
+
 
 /**
  * Hides the arrow container.

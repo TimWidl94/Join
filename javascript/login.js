@@ -10,6 +10,7 @@ async function init() {
   await loadLocalStorageData();
 }
 
+
 /**
  * Loads the login form HTML content and displays it.
  * @async
@@ -23,6 +24,7 @@ async function loadLogIn() {
   headerRight.classList.remove("d-none");
 }
 
+
 /**
  * Loads the sign-up form HTML content and hides the login form.
  */
@@ -31,6 +33,7 @@ function loadSignUpHtml() {
   document.getElementById("headerRightBox").classList.add("d-none");
   container.innerHTML = signupHtml();
 }
+
 
 /**
  * Handles the sign-up process.
@@ -56,6 +59,7 @@ async function signUp() {
   }
 }
 
+
 /**
  * Checks if the confirmed password matches the original password during sign-up.
  * Updates UI accordingly.
@@ -75,6 +79,7 @@ function checkMatchPassword() {
   }
 }
 
+
 /**
  * Loads user data upon login.
  * Redirects to the summary page if login is successful.
@@ -91,6 +96,7 @@ async function loadUser() {
   }
 }
 
+
 /**
  * Sets user data in local storage based on the provided email.
  * @param {string} email - User's email.
@@ -105,6 +111,7 @@ function setUser(email) {
     }
   }
 }
+
 
 /**
  * Searches for a user's email and password in the user data.
@@ -125,6 +132,7 @@ function searchForEmail(email, password) {
   passwordDontMatch();
 }
 
+
 /**
  * Resets the login form.
  */
@@ -132,6 +140,7 @@ function resetForm() {
   email.value = "";
   password.value = "";
 }
+
 
 /**
  * Logs in the guest user with predefined credentials.
@@ -147,6 +156,7 @@ function logInGuest() {
     window.location.href = "./summary.html";
   }
 }
+
 
 /**
  * Handles the 'Remember Me' functionality.
@@ -168,6 +178,7 @@ function rememberMe() {
   }
 }
 
+
 /**
  * Loads data from local storage into the login form.
  */
@@ -183,6 +194,7 @@ function loadLocalStorageData() {
     checkbox.checked = true;
   }
 }
+
 
 /**
  * Toggles password visibility for a given password field.
@@ -203,6 +215,7 @@ function toggleShowPassword(passwordId, passwordIconId) {
   }
 }
 
+
 /**
  * Checks if the privacy policy checkbox is checked.
  * @returns {boolean} True if checked, false otherwise.
@@ -214,6 +227,7 @@ function checkIfPrivatPolicyIsChecked() {
   }
 }
 
+
 /**
  * Enables the sign-up button.
  */
@@ -221,6 +235,7 @@ function enableButton() {
   let button = document.getElementById("signUpButton");
   button.disabled = false;
 }
+
 
 /**
  * Shows an animation for a specified duration.
@@ -233,6 +248,7 @@ function showAnimation(id) {
   setTimeout(() => addDNone(button), 2000);
 }
 
+
 /**
  * Moves an element to the center of the screen.
  * @param {HTMLElement} button - Element to move.
@@ -241,6 +257,7 @@ function moveToCenter(button) {
   button.classList.add("moveToCenter");
 }
 
+
 /**
  * Adds the 'd-none' class to hide an element.
  * @param {HTMLElement} button - Element to hide.
@@ -248,6 +265,7 @@ function moveToCenter(button) {
 function addDNone(button) {
   button.classList.add("d-none");
 }
+
 
 /**
  * Animates the logo by hiding it after a delay.
@@ -259,6 +277,7 @@ function animateLogo() {
   }, 1000);
 }
 
+
 /**
  * Displays a message indicating password mismatch.
  */
@@ -268,6 +287,7 @@ function passwordDontMatch() {
   document.getElementById("password").style.borderColor = "#ff3d00";
 }
 
+
 /**
  * Reverses the password mismatch message and styling.
  */
@@ -276,6 +296,7 @@ function passwordDontMatchReverse() {
   document.getElementById("checkboxBox").style.paddingTop = "28px";
   document.getElementById("password").style.borderColor = "#000";
 }
+
 
 /**
  * Checks if the passwords during sign-up match.

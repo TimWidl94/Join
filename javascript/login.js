@@ -121,12 +121,6 @@ function searchForEmail(email, password) {
     ) {
       return true;
     }
-    // if (
-      // users[i]["email"].includes(email) &&
-      // !users[i]["password"].includes(password)
-    // ) {
-      // passwordDontMatch();
-    // } 
   }
   passwordDontMatch();
 }

@@ -48,13 +48,11 @@ function closeAddTaskPopup() {
   addTaskPopup.classList.remove('slide-in');
   addTaskPopup.classList.add('slide-out');
 
-  setTimeout(function () {
+  addTaskPopup.addEventListener('animationend', function onAnimationEnd() {
+    addTaskPopup.removeEventListener('animationend', onAnimationEnd);
     addTaskPopup.classList.add('d-none');
     document.getElementById('addTaskPopupWrapper').classList.add('d-none');
-  }, 500);
-  setTimeout(function () {
-    addTaskPopup.classList.remove('slide-out');
-  }, 900);
+  });
 }
 
 /**

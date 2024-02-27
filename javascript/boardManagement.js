@@ -343,11 +343,12 @@ function populateAssignedDropdown() {
     let color = contacts[i]['color'];
     let assignedDropdown = document.getElementById('assignedDropdown');
     let username = checkForUserName();
+    let contactNumber = contacts[i]['nr'];
 
     if (contacts[i]['name'] === username) {
-      assignedDropdown.innerHTML += assignedToUserYouHtml(i, color, currentUser, initials);
+      assignedDropdown.innerHTML += assignedToUserYouHtml(i, color, currentUser, initials, contactNumber);
     } else {
-      assignedDropdown.innerHTML += assignedToUserHtml(i, color, currentUser, initials);
+      assignedDropdown.innerHTML += assignedToUserHtml(i, color, currentUser, initials, contactNumber);
     }
   }
 }

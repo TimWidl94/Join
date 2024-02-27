@@ -25,7 +25,7 @@ async function init() {
   await showTaskForm('assignedTo');
   changePrioToMedium('mediumContainer', 'mediumImg');
   setMinDateToday('myDateInput');
-  setNumberOnContacts();
+  await setNumberOnContacts();
 }
 
 /**
@@ -131,12 +131,13 @@ function editSubTask(id) {
 
 /**
  * Adds or edits a subtask at the specified index.
- * @param {number} i - The index of the subtask.
+ * @param {number} id - The ID of the subtask to save edit.
  * @returns {void}
  */
-function addEditSubTask(i) {
+function addEditSubTask(id) {
   let subTaskInput = document.getElementById('editSubTaskInput');
-  subtasks[i].subTaskInput = subTaskInput.value;
+  let nr = findSubtaskPosition(id);
+  subtasks[nr]["subTaskInput"] = subTaskInput.value;
   renderGeneratedSubTasks('subTaskContainer');
 }
 
@@ -312,7 +313,7 @@ function openDropDownCategory() {
  */
 async function addAssignedContact(i, color, contactsNumber) {
   let assignedDropdown = document.getElementById('assignedDropdown');
-  let selectedContact = await contacts[contactsNumber]['name'];
+  let selectedContact = contacts[contactsNumber]['name'];
   let checkboxImage = document.getElementById(`checkBox-${i}`);
   let userID = document.getElementById(`user-${i}`);
 

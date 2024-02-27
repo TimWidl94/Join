@@ -62,8 +62,12 @@ function closeAddTaskPopup() {
  * @param {number} i - The index of the task.
  */
 function openTaskPopup(i) {
+  let aTPopupBg = document.getElementById('aTPopupBg');
   let taskPopup = document.getElementById('aTPopupWrapper');
+  taskPopup.classList.remove('slide-in');
+  taskPopup.classList.remove('slide-out');
   taskPopup.classList.remove('d-none');
+  aTPopupBg.classList.remove('d-none');
   taskPopup.classList.add('slide-in');
   taskPopup.classList.add('d-block');
 
@@ -89,20 +93,26 @@ function setupTaskPopup(i) {
 /**
  * Close the task popup.
  */
-function closeTaskPopup() {
+async function closeTaskPopup() {
   let taskPopup = document.getElementById('aTPopupWrapper');
-  taskPopup.classList.remove('d-block');
-  taskPopup.classList.remove('slide-in');
+  let aTPopupBg = document.getElementById('aTPopupBg');
+
   taskPopup.classList.add('slide-out');
 
-  setTimeout(function () {
-    taskPopup.classList.remove('slide-out');
-    taskPopup.classList.add('d-none');
-  }, 500);
-
-  updateHTML();
-  subtasks = [];
+  await new Promise(resolve => {
+    taskPopup.addEventListener('animationend', function onAnimationEnd() {
+      taskPopup.removeEventListener('animationend', onAnimationEnd);
+      
+      taskPopup.classList.add('d-none');
+      aTPopupBg.classList.add('d-none');
+      updateHTML();
+      subtasks = [];
+      resolve();
+    });
+  });
 }
+
+
 
 /**
  * Check if subtasks exist for a task and update the display accordingly.

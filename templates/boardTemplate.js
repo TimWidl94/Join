@@ -454,7 +454,7 @@ function renderSelectedContactsEditHtml(i, j, color, initials) {
  */
 function showTaskFormEditHtml() {
   return /*html*/ `
-    <div name="assigned" onchange="addAssignedContact()">
+    <div name="assigned">
       <div id="dropdownEdit" class="dropdown" onclick="openDropDown('assignedDropdown', 'dropdownImgArrow')">
         <input class="contact-searchbar" onkeyup="filterAddTaskContact()" type="text" id="search" placeholder="Select contacts to assign" />
         <img id="dropdownImgArrow" class="rotate-arrow dropdown-arrow-hover dropdown-arrow-hover" src="../assets/img/AddTask/arrow_drop.svg" alt="">

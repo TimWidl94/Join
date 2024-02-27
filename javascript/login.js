@@ -293,8 +293,3 @@ function checkPasswordsAreSame() {
     return true;
   }
 }
-
-/**
- * Jumps to the privacy policy section before logging in.
- */
-function jumpToPrivacyPolicyBeforeLogIn() {}

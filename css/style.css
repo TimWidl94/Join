@@ -2322,7 +2322,9 @@ form {
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
     padding: 38px 38px;
     color: #000;
-    flex-shrink: 0; }
+    flex-shrink: 0;
+    min-height: 120px;
+    max-height: 90px; }
     .summary-todo:hover {
       cursor: pointer;
       background-color: #2a3647;
@@ -2358,6 +2360,17 @@ form {
     margin: 0px 30px; }
   .summary-gap-urgent {
     gap: 30px !important; } }
+
+@media (max-width: 1030px) {
+  .boardImg {
+    width: 40px;
+    height: auto; }
+  .summary-tasksContainerDown-counter {
+    font-size: 54px; }
+  .summary-tasksContainerDown-counter-text-m {
+    font-size: 16px; }
+  .summary-todo-counter {
+    font-size: 54px; } }
 
 @media (max-width: 1000px) {
   .containerSummary {
@@ -2416,6 +2429,8 @@ form {
 @media (max-width: 800px) {
   .summary-h2 {
     font-size: 25px; }
+  .summary-h3 {
+    font-size: 18px; }
   .summary-vertical-line-mobile {
     padding-top: 40px; }
   .summary-todo {

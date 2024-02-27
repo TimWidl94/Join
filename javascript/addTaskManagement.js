@@ -160,7 +160,7 @@ function changePrioToLow(idContainer, idImg) {
   let prioContainer = document.getElementById(idContainer);
   let img = document.getElementById(idImg);
   prioContainer.classList.add('priorityLowActive');
-  img.src = './assets/img/addTask/lowPrioActive.svg';
+  img.src = './assets/img/AddTask/lowPrioActive.svg';
   selectedPrio = 'low';
   document.getElementById('urgentContainer').classList.remove('priorityUrgentActive');
   document.getElementById('urgentImg').src = './assets/img/AddTask/ArrowUpPrioSign.svg';

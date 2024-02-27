@@ -74,7 +74,7 @@ async function initPrivacyPolicyOffline() {
  * @returns {void}
  */
 function loadLegalNoticeH1Html() {
-  let smallContainer = document.getElementById("legalNoticeHeadline");
+  let smallContainer = document.getElementById('legalNoticeHeadline');
   smallContainer.innerHTML = legalNoticeH1Html();
 }
 
@@ -83,7 +83,7 @@ function loadLegalNoticeH1Html() {
  * @returns {void}
  */
 function loadLegalNoticeContent() {
-  let container = document.getElementById("legalNoticeContentHTML");
+  let container = document.getElementById('legalNoticeContentHTML');
   container.innerHTML = legalNoticeHtmlMain();
 }
 
@@ -92,7 +92,7 @@ function loadLegalNoticeContent() {
  * @returns {void}
  */
 function loadHelpH1Html() {
-  let smallContainer = document.getElementById("helpHeadline");
+  let smallContainer = document.getElementById('helpHeadline');
   smallContainer.innerHTML = helpH1Html();
 }
 
@@ -101,7 +101,7 @@ function loadHelpH1Html() {
  * @returns {void}
  */
 function loadHelpContent() {
-  let container = document.getElementById("helpContentHTML");
+  let container = document.getElementById('helpContentHTML');
   container.innerHTML = helpHtmlMain();
 }
 
@@ -110,7 +110,7 @@ function loadHelpContent() {
  * @returns {void}
  */
 function loadPrivacyPolicyH1Html() {
-  let smallContainer = document.getElementById("privacyPoliceHeadline");
+  let smallContainer = document.getElementById('privacyPoliceHeadline');
   smallContainer.innerHTML = privacyPolicyH1Html();
 }
 
@@ -119,7 +119,7 @@ function loadPrivacyPolicyH1Html() {
  * @returns {void}
  */
 function loadPrivacyPolicyContent() {
-  let container = document.getElementById("privacyPoliceContentHTML");
+  let container = document.getElementById('privacyPoliceContentHTML');
   container.innerHTML = privacyPolicyHtmlMain();
 }
 
@@ -129,8 +129,8 @@ function loadPrivacyPolicyContent() {
  */
 function checkIfArrayIsEmpty() {
   if (!user.length > 0) {
-    document.getElementById("sidebarMenu").classList.add("d-none");
-    document.getElementById("arrowContainer").classList.add("d-none");
+    document.getElementById('sidebarMenu').classList.add('d-none');
+    document.getElementById('arrowContainer').classList.add('d-none');
   }
 }
 
@@ -158,9 +158,5 @@ function initTopBar() {
  */
 function hideArrow() {
   let arrowContainer = document.getElementById('arrowContainer');
-  arrowContainer.classList.add("d-none");
+  arrowContainer.classList.add('d-none');
 }
-
-
-
-

@@ -1,4 +1,4 @@
-@import "../base/_colors";
+@import '../base/_colors';
 
 /*  general section  */
 
@@ -18,7 +18,6 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  // width: 100vw;
   height: 100vh;
 }
 
@@ -28,7 +27,6 @@
   justify-content: center;
   flex-direction: column;
   max-width: 422px;
-  // height: 397px;
   padding: 48px 115px 48px 115px;
   border-radius: 30px;
   gap: 32px;
@@ -112,7 +110,6 @@ footer {
 .logInInputFieldContainer {
   position: relative;
   display: flex;
-  // height: 152px;
   flex-direction: column;
   align-items: flex-start;
   gap: 32px;
@@ -172,8 +169,6 @@ footer {
   position: relative;
 }
 
-
-
 .acceptPrivacyGrey {
   font-size: 16px;
   font-style: normal;
@@ -184,7 +179,7 @@ footer {
 
 .privacyPolicyLink {
   color: var(--Ligth-blue, #29abe2);
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -283,7 +278,7 @@ footer {
   height: 16px;
 }
 
-.passwordIsntCorrect{
+.passwordIsntCorrect {
   display: flex;
   align-items: start;
   justify-content: start;
@@ -297,7 +292,7 @@ footer {
   padding: 0;
 }
 
-.paddingTopNone{
+.paddingTopNone {
   padding-top: 0;
 }
 
@@ -309,11 +304,11 @@ footer {
   max-width: calc(100% - 32px);
 }
 
-.gap20{
+.gap20 {
   gap: 20px;
 }
 
-@media(max-width: 1200px){
+@media (max-width: 1200px) {
   .JoinLogoSmall {
     width: 64px;
     height: 78.031px;
@@ -323,23 +318,22 @@ footer {
 }
 
 @media (max-width: 800px) {
-
-  .logInInputField{
+  .logInInputField {
     width: calc(100% - 58px);
     padding: 12px 38px 12px 21px;
   }
-  .logInInputImgMail, .logInInputImgLock {
+  .logInInputImgMail,
+  .logInInputImgLock {
     right: 10px;
   }
 
-  .formBody{
-    max-width: 100% !important
+  .formBody {
+    max-width: 100% !important;
   }
   .loginScreenBody {
     max-width: calc(100% - 32px);
     padding: 32px 0px;
   }
-
 
   .headerRightBox {
     position: absolute;
@@ -385,35 +379,33 @@ footer {
   .logInInputFieldContainer {
     width: calc(100% - 2 * 16px);
   }
-  .passwordIsntCorrect{
+  .passwordIsntCorrect {
     width: 90%;
   }
   .blueUnderline {
-  width: 50%;
+    width: 50%;
   }
-  .checkboxBox{
+  .checkboxBox {
     padding: 0px 179px 0px 39px;
   }
-  .rememberMeFont{
+  .rememberMeFont {
     width: 142px;
   }
 }
 
-@media(max-height: 800px){
-  .logInOverlayBox{
+@media (max-height: 800px) {
+  .logInOverlayBox {
     justify-content: start;
     margin-top: 120px;
     height: 100%;
   }
-  .heightOverflowMobile{
+  .heightOverflowMobile {
     overflow: auto;
   }
-  .footerPositionMobile{
+  .footerPositionMobile {
     top: 705px;
   }
-  .headerRightBox{
+  .headerRightBox {
     top: 650px;
   }
-
-
 }

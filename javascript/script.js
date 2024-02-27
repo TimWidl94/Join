@@ -9,13 +9,51 @@ let legalNoticeOffline = true;
 let privacyPolicyOffline = true;
 
 /**
+ * Includes HTML content into specified elements.
+ * Fetches HTML content from the specified URLs and inserts them into elements with 'w3-include-html' attribute.
+ *
+ */
+
+async function includeHTML() {
+  let includeElements = document.querySelectorAll('[w3-include-html]');
+  for (let i = 0; i < includeElements.length; i++) {
+    const element = includeElements[i];
+    file = element.getAttribute('w3-include-html');
+    let resp = await fetch(file);
+    if (resp.ok) {
+      element.innerHTML = await resp.text();
+    } else {
+      element.innerHTML = 'Page not found';
+    }
+  }
+}
+
+/**
+ * Adds CSS classes to elements to indicate active state.
+ * @function
+ * @param {string} id1 - The ID of the first element.
+ * @param {string} id2 - The ID of the second element.
+ * @param {string} id3 - The ID of the third element.
+ * @param {string} id4 - The ID of the fourth element.
+ */
+function setColorToActive(id1, id2, id3, id4) {
+  let textSidebar = document.getElementById(id1);
+  textSidebar.classList.add('active');
+  let imageSidebar = document.getElementById(id2);
+  imageSidebar.classList.add('filter-white');
+  let textBottombar = document.getElementById(id3);
+  textBottombar.classList.add('active');
+  let imageBottombar = document.getElementById(id4);
+  imageBottombar.classList.add('filter-white');
+}
+
+/**
  * Toggles the visibility of the top bar dropdown menu.
  * @function
  */
 function showTopbarDropdown() {
   document.getElementById('topbar-dropdown').classList.toggle('d-flex');
   document.getElementById('topbar-dropdown').classList.toggle('show-overlay-menu');
-  console.log('showMenuTopbar');
 }
 
 /**
@@ -62,25 +100,6 @@ function firstLettersUppercase(str) {
     splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
   }
   return splitStr.join(' ');
-}
-
-/**
- * Adds CSS classes to elements to indicate active state.
- * @function
- * @param {string} id1 - The ID of the first element.
- * @param {string} id2 - The ID of the second element.
- * @param {string} id3 - The ID of the third element.
- * @param {string} id4 - The ID of the fourth element.
- */
-function setColorToActive(id1, id2, id3, id4) {
-  let textSidebar = document.getElementById(id1);
-  textSidebar.classList.add('active');
-  let imageSidebar = document.getElementById(id2);
-  imageSidebar.classList.add('filter-white');
-  let textBottombar = document.getElementById(id3);
-  textBottombar.classList.add('active');
-  let imageBottombar = document.getElementById(id4);
-  imageBottombar.classList.add('filter-white');
 }
 
 /**

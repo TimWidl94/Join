@@ -83,6 +83,7 @@ function clearInputValue() {
   renderAddTask();
   showTaskForm('assignedTo');
   changePrioToMedium('mediumContainer', 'mediumImg');
+  renderSubTask();
 }
 
 

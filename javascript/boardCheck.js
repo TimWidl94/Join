@@ -15,7 +15,6 @@ function setAssignedToContactsDropdown() {
   }
 }
 
-
 /**
  * Open the move to menu.
  */
@@ -23,7 +22,6 @@ function openMenuMoveTo() {
   let container = document.getElementById('menuMoveToMobile');
   container.classList.toggle('d-none');
 }
-
 
 /**
  * Check if subtask information is checked.
@@ -41,7 +39,6 @@ async function saveEditedTask(i) {
   closeTaskPopup();
 }
 
-
 /**
  * Check how many subtasks are checked.
  * @param {number} i - The index of the task.
@@ -51,7 +48,6 @@ function saveAddedSubtasks(i) {
   deleteExistingSubtasks(i);
   tasks[i]['subtasks'].push(subtasks);
 }
-
 
 /**
  * Check if a task area is empty and display a message if it is.
@@ -70,7 +66,6 @@ function checkTaskAreaDisplayEmpty() {
   }
 }
 
-
 /**
  * Check the active state of subtasks and update the UI.
  * @param {number} i - The index of the task.
@@ -88,7 +83,6 @@ function checkSubTaskInfoChecked(i) {
   }
 }
 
-
 /**
  * Count the number of subtasks that are checked.
  * @param {number} i - The index of the task.
@@ -104,7 +98,6 @@ function checkHowManySubtasksChecked(i) {
   }
   return x;
 }
-
 
 /**
  * Toggle the active state of a subtask.
@@ -128,7 +121,6 @@ async function subTaskActive(j, i) {
   }
 }
 
-
 /**
  * Update the task progress bar based on the completion of subtasks.
  * @param {number} i - The index of the task.
@@ -142,7 +134,6 @@ async function taskProgressBar(i) {
   progressBar.style.width = `${width}%`;
 }
 
-
 /**
  * Prevent closing event propagation.
  * @param {Event} event - The event object.
@@ -150,7 +141,6 @@ async function taskProgressBar(i) {
 function doNotClose(event) {
   event.stopPropagation();
 }
-
 
 /**
  * Move a task to a different category in mobile view.
@@ -162,7 +152,6 @@ async function moveToMobile(i, category) {
   await openMenuMoveTo();
   await renderBoardTasks();
 }
-
 
 /**
  * Filter tasks based on search input.
@@ -183,7 +172,6 @@ function filterTasks() {
   }
 }
 
-
 /**
  * Clear the task containers on the board.
  */
@@ -193,7 +181,6 @@ function clearTasksContainer() {
   document.getElementById('awaitFeedback').innerHTML = ``;
   document.getElementById('done').innerHTML = ``;
 }
-
 
 /**
  * Open the category dropdown for editing a task.
@@ -205,7 +192,6 @@ function openDropDownCategoryEdit() {
   dropdownImgArrowCategory.classList.toggle('rotate-arrow');
 }
 
-
 /**
  * Highlight a drop zone.
  * @param {string} id - The ID of the drop zone to highlight.
@@ -214,7 +200,6 @@ function highlight(id) {
   document.getElementById(id).classList.add('drag-area-highlight');
 }
 
-
 /**
  * Remove highlight from a drop zone.
  * @param {string} id - The ID of the drop zone to remove highlight from.
@@ -222,7 +207,6 @@ function highlight(id) {
 function removeHighlight(id) {
   document.getElementById(id).classList.remove('drag-area-highlight');
 }
-
 
 /**
  * Select a category for editing a task.
@@ -236,7 +220,6 @@ function selectCategoryEdit(category) {
   selectCategoryIfElse(userStory, technicalTask, showSelectedCategory, assignedDropdownCategory, category);
 }
 
-
 /**
  * Allow dropping items into a drop zone.
  * @param {Event} ev - The event object.
@@ -244,7 +227,6 @@ function selectCategoryEdit(category) {
 function allowDrop(ev) {
   ev.preventDefault();
 }
-
 
 /**
  * Move a task to a different category.
@@ -255,7 +237,6 @@ async function moveTo(category) {
   await updateHTML();
 }
 
-
 /**
  * Start dragging an element.
  * @param {number} id - The ID of the element being dragged.
@@ -263,7 +244,6 @@ async function moveTo(category) {
 function startDragging(id) {
   currentDraggedElement = id;
 }
-
 
 /**
  * Update the "To Do" area.
@@ -279,7 +259,6 @@ async function doneUpdate() {
   }
 }
 
-
 /**
  * Update the HTML elements.
  */
@@ -293,7 +272,6 @@ async function feedbackAreaUpdate() {
     document.getElementById('awaitFeedback').innerHTML += generateTodoHTML(element, img);
   }
 }
-
 
 /**
  * Render the "Awaiting Feedback" tasks.
@@ -309,13 +287,13 @@ async function todoAreaUpdate() {
   }
 }
 
-
 /**
  * Active a subtask.
  * @param {number} j - The index of the subtask.
  * @param {number} i - The index of the task.
  */
 function changePriorityEdit(idContainer, idImg, priority) {
+  console.log('changePriorityEdit priority:', priority);
   let prioContainer = document.getElementById(idContainer);
   let img = document.getElementById(idImg);
   resetPriorityContainers();
@@ -323,7 +301,6 @@ function changePriorityEdit(idContainer, idImg, priority) {
   img.src = './assets/img/addTask/' + priority + 'PrioActive.svg';
   selectedPrioPopupEdit = priority;
 }
-
 
 /**
  * Reset priority containers and images.
@@ -336,7 +313,6 @@ function resetPriorityContainers() {
   document.getElementById('lowContainerEdit').classList.remove('priorityLowActive');
   document.getElementById('lowImgEdit').src = './assets/img/addTask/ArrowDownPrioSign.svg';
 }
-
 
 /**
  * Update task information.
@@ -355,7 +331,6 @@ function updateTaskInformation(i, taskTitle, taskDescription, taskDueDate, selec
   tasks[i].prio = selectedPrioPopupEdit;
   tasks[i]['subtasks'] = subtasks;
 }
-
 
 /**
  * Task progress bar.
@@ -377,7 +352,6 @@ function setPrioEdit(prio) {
   selectedPrioPopupEdit = prio;
 }
 
-
 /**
  * Move a task to a different category.
  * @param {string} category - The category to move the task to.
@@ -388,7 +362,6 @@ function showTaskFormEdit(id) {
   sortContactsByAlphabet();
   populateAssignedDropdown();
 }
-
 
 /**
  * Move a task to a different category on mobile devices.
@@ -402,7 +375,6 @@ function changeButtonsAddTaskEdit(id, i) {
   document.getElementById('subTaskInputEdit').focus();
 }
 
-
 /**
  * Save the edited task.
  * @param {number} i - The index of the task.
@@ -412,7 +384,6 @@ function renderEditTask(i) {
   renderSubTasksEditable(i, 'subTaskContainerEdit');
   showTaskFormEdit('assignedToEdit');
 }
-
 
 /**
  * Validate and add a subtask during task editing.

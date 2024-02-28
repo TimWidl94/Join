@@ -355,7 +355,7 @@ function addTaskPopUpHtml(column) {
             <p><span class="span-required">*</span>This field is required</p>
           </div>
           <div class="btns-add-task-mobile-wrapper">
-            <button onclick="clearInputValue()" id="clear-mobile" class="buttonWhite" >
+            <button onclick="clearInputValuePopup()" id="clear-mobile" class="buttonWhite" >
               Clear <img src="assets/img/AddTask/cancel.svg" alt="Clear Icon"
             /></button>
             <button id="create-task-mobile" class="buttonGrey">
@@ -371,7 +371,7 @@ function addTaskPopUpHtml(column) {
           <p class="p-required"><span class="span-required">*</span>This field is required</p>
         </div>
         <div class="btns-down-right-add-task">
-          <button onclick="clearInputValue()" id="clear" class="buttonWhite" >
+          <button onclick="clearInputValuePopup()" id="clear" class="buttonWhite" >
             Clear <img src="assets/img/AddTask/cancel.svg" alt="Clear Icon"
           /></button>
           <button  id="create-task" class="buttonGrey" disabled>

@@ -50,7 +50,7 @@ function addTaskHtml() {
           </div>
           <div class="category">
             <p>Category<span class="span-required">*</span></p>
-            <div id="dropdownCategory" class="dropdown" onclick="openDropDownCategory()">
+            <div id="dropdownCategory" class="dropdown" onclick="openDropDownCategory()" >
               <div id="showSelectedCategory" data-value="">Select task category</div>
               <img id="dropdownImgArrowCategory" class="rotate-arrow dropdown-arrow-hover" src="../assets/img/AddTask/arrow_drop.svg" alt="">
             </div>
@@ -173,7 +173,7 @@ function addedTaskToBoardHtml() {
  */
 function showTaskFormHtml() {
   return /*html*/ `
-    <div name="assigned" >
+    <div name="assigned">
       <div id="dropdown" class="dropdown" onclick="openDropDown('assignedDropdown', 'dropdownImgArrow')">
         <input class="contact-searchbar" onkeyup="filterAddTaskContact()" type="text" id="search" placeholder="Select contacts to assign" />
         <img id="dropdownImgArrow" class="rotate-arrow dropdown-arrow-hover dropdown-arrow-hover" src="../assets/img/AddTask/arrow_drop.svg" alt="">

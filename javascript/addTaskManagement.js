@@ -88,6 +88,17 @@ function clearInputValue() {
 
 
 /**
+ * Clears the input value and resets the task form from the popup.
+ */
+function clearInputValuePopup() {
+  renderAddTaskPopUp();
+  showTaskForm('assignedTo');
+  changePrioToMedium('mediumContainer', 'mediumImg');
+  renderSubTask();
+}
+
+
+/**
  * Shows a popup indicating that a task has been added to the board.
  */
 async function showPopUpAddedTaskToBoard() {

@@ -34,9 +34,10 @@ async function init() {
 function setupEnterKeyListenerNew() {
   document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('subTaskInput').addEventListener('keypress', function (event) {
-      if (event.key === 'Enter') {
+      if (event.key === 'Enter' || event.keyCode == 13) {
         console.log('setupEnterKeyListener');
-        document.getElementById('subTaskInputImgAdd').click();
+        // document.getElementById('subTaskInputImgAdd').click();
+        addSubTask('subTaskInput', 'subTaskContainer');
         event.preventDefault();
       }
     });
@@ -59,8 +60,8 @@ async function addTask(event, id, column) {
   await pushAddTask(id, column);
   clearInputValue();
   showPopUpAddedTaskToBoard();
-  // event.preventDefault();
-  // return false;
+  event.preventDefault();
+  return false;
 }
 
 // /**
@@ -273,7 +274,6 @@ function selectCategoryIfElse(category, userStory, technicalTask, showSelectedCa
     selectDefaultCategory(userStory, technicalTask, showSelectedCategory, assignedDropdownCategory);
   }
 }
-
 
 /**
  * Selects the user story category.

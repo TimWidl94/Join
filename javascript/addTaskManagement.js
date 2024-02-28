@@ -26,9 +26,28 @@ async function init() {
   changePrioToMedium('mediumContainer', 'mediumImg');
   setMinDateToday('myDateInput');
   await setNumberOnContacts();
-  setupEnterKeyListener();
+  // setupEnterKeyListener();
+  setupEnterKeyListenerNew();
   console.log('addTask reloaded');
 }
+
+function setupEnterKeyListenerNew() {
+  document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('subTaskInput').addEventListener('keypress', function (event) {
+      if (event.key === 'Enter') {
+        console.log('setupEnterKeyListener');
+        document.getElementById('subTaskInputImgAdd').click();
+        event.preventDefault();
+      }
+    });
+  });
+}
+
+// document.getElementById('subTaskInput').addEventListener('keypress', function(event) {
+//   if (event.keyCode == 13) {
+//       event.preventDefault();
+//   }
+// });
 
 /**
  * Adds a task to the tasks array and stores it in local storage.
@@ -40,25 +59,25 @@ async function addTask(event, id, column) {
   await pushAddTask(id, column);
   clearInputValue();
   showPopUpAddedTaskToBoard();
-  event.preventDefault();
-  return false;
+  // event.preventDefault();
+  // return false;
 }
 
-/**
- * Registers an event listener for the input field with the ID 'subTaskInput',
- * to respond to the Enter key and call the function 'addSubTask' when the Enter key is pressed.
- */
-function setupEnterKeyListener() {
-  document.addEventListener('DOMContentLoaded', function () {
-    document.getElementById('subTaskInput').addEventListener('keydown', function (event) {
-      if (event.key === 'Enter') {
-        console.log('setupEnterKeyListener');
-        addSubTask('subTaskInput', 'subTaskContainer');
-        event.preventDefault();
-      }
-    });
-  });
-}
+// /**
+//  * Registers an event listener for the input field with the ID 'subTaskInput',
+//  * to respond to the Enter key and call the function 'addSubTask' when the Enter key is pressed.
+//  */
+// function setupEnterKeyListener() {
+//   document.addEventListener('DOMContentLoaded', function () {
+//     document.getElementById('subTaskInput').addEventListener('keydown', function (event) {
+//       if (event.key === 'Enter') {
+//         console.log('setupEnterKeyListener');
+//         addSubTask('subTaskInput', 'subTaskContainer');
+//         event.preventDefault();
+//       }
+//     });
+//   });
+// }
 
 /**
  * Adds a new task to the tasks array with the provided details.

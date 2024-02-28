@@ -164,6 +164,7 @@ function renderFilteredContacts(filteredContacts) {
   }
 }
 
+
 /**
  * Toggles the display of a dropdown menu.
  * @param {string} idDropdown - The ID of the dropdown menu to toggle.
@@ -173,21 +174,75 @@ function openDropDown(idDropdown, idImgArrow) {
   let assignedDropdown = document.getElementById(idDropdown);
   let dropdownImgArrow = document.getElementById(idImgArrow);
 
-  assignedDropdown.classList.toggle('d-none');
-  assignedDropdown.classList.toggle('border-active');
-  assignedDropdown.classList.toggle('dropbtn');
-  dropdownImgArrow.classList.toggle('rotate-arrow');
+  if (assignedDropdown.classList.contains('d-none')) {
+    assignedDropdown.classList.remove('d-none');
+    assignedDropdown.classList.add('border-active', 'dropbtn');
+    dropdownImgArrow.classList.add('rotate-arrow');
+  } else {
+    assignedDropdown.classList.add('d-none');
+    assignedDropdown.classList.remove('border-active', 'dropbtn');
+    dropdownImgArrow.classList.remove('rotate-arrow');
+  }
 }
 
-/**
- * Toggles the display of a category dropdown menu.
- */
+
+// Function to close the dropdown menu
+function closeDropDown() {
+  let assignedDropdown = document.getElementById('assignedDropdown');
+  let dropdownImgArrow = document.getElementById('dropdownImgArrow');
+  let assignedDropdownCategory = document.getElementById('assignedDropdownCategory');
+  let dropdownImgArrowCategory = document.getElementById('dropdownImgArrowCategory');
+
+  assignedDropdown.classList.add('d-none');
+  assignedDropdownCategory.classList.add('d-none');
+  assignedDropdown.classList.remove('border-active', 'dropbtn');
+  dropdownImgArrowCategory.classList.remove('rotate-arrow');
+  dropdownImgArrow.classList.remove('rotate-arrow');
+}
+
+
+// Function to close the dropdown menu with if 
+document.addEventListener('DOMContentLoaded', function() {
+  document.body.addEventListener('click', function(event) {
+    if (!event.target.closest('.dropdown') && 
+        !event.target.closest('.dropdown-arrow-hover') &&
+        !event.target.closest('#assignedDropdown') &&
+        !event.target.closest('#assignedDropdownCategory')) {
+      closeDropDown();
+    }
+  });
+});
+
+
+// Function for openDropDownCategory
 function openDropDownCategory() {
   let assignedDropdownCategory = document.getElementById('assignedDropdownCategory');
   let dropdownImgArrowCategory = document.getElementById('dropdownImgArrowCategory');
-  assignedDropdownCategory.classList.toggle('border-category-active');
-  assignedDropdownCategory.classList.toggle('d-none');
-  dropdownImgArrowCategory.classList.toggle('rotate-arrow');
+
+  if (assignedDropdownCategory.classList.contains('d-none')) {
+    assignedDropdownCategory.classList.remove('d-none');
+    assignedDropdownCategory.classList.add('border-category-active');
+    dropdownImgArrowCategory.classList.add('rotate-arrow');
+  } else {
+    assignedDropdownCategory.classList.add('d-none');
+    assignedDropdownCategory.classList.remove('border-category-active');
+    dropdownImgArrowCategory.classList.remove('rotate-arrow');
+  }
+}
+
+
+// Function for closing DropDownCategory
+function closeDropDownCategory(event) {
+  let assignedDropdownCategory = document.getElementById('assignedDropdownCategory');
+  let dropdownImgArrowCategory = document.getElementById('dropdownImgArrowCategory');
+
+  if (!event.target.closest('#assignedDropdownCategory') && !event.target.closest('#dropdownCategory')) {
+    assignedDropdownCategory.classList.add('d-none');
+    assignedDropdownCategory.classList.remove('border-category-active');
+    dropdownImgArrowCategory.classList.remove('rotate-arrow');
+
+    document.body.removeEventListener('click', closeDropDown);
+  }
 }
 
 /**

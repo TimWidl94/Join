@@ -4,7 +4,7 @@
  */
 function addTaskHtml() {
   return /*html*/ `
-    <form onsubmit="addTask(event, 'myDateInput', 'toDo')" class="formAddTask">
+    <form onsubmit="addTask(event, 'myDateInput', 'toDo'); return false" class="formAddTask">
       <section class="container-left-right-wrapper">
         <section class="container-left">   
           <div class="headline-add-task"><h1 class="headline-h1-add-task">Add Task</h1></div>
@@ -270,7 +270,7 @@ function changeButtonsAddTaskHtml() {
     <div class="subTaskInputButtons">
       <img class="subTaskInputImg" onclick="setValueBack('subTaskInput')" src="./assets/img/icons/close.svg" alt="">
       <span class="subTaskInputImg-vertical"></span>
-      <img class="subTaskInputImg checkImg" onclick="addSubTask('subTaskInput', 'subTaskContainer')" src="./assets/img/icons/checkAddTask.svg" alt="">
+      <img class="subTaskInputImg checkImg" id="subTaskInputImgAdd" onclick="addSubTask('subTaskInput', 'subTaskContainer')" src="./assets/img/icons/checkAddTask.svg" alt="">
     </div>
   `;
 }

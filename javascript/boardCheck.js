@@ -332,7 +332,7 @@ function resetPriorityContainers() {
   document.getElementById('urgentContainerEdit').classList.remove('priorityUrgentActive');
   document.getElementById('urgentImgEdit').src = './assets/img/AddTask/ArrowUpPrioSign.svg';
   document.getElementById('mediumContainerEdit').classList.remove('priorityMediumActive');
-  document.getElementById('mediumImgEdit').src = './assets/img/AddTask/MediumPrioSignInactive.svg';
+  document.getElementById('mediumImgEdit').src = './assets/img/AddTask/mediumPrioSignInactive.svg';
   document.getElementById('lowContainerEdit').classList.remove('priorityLowActive');
   document.getElementById('lowImgEdit').src = './assets/img/AddTask/ArrowDownPrioSign.svg';
 }
@@ -368,7 +368,7 @@ function setPrioEdit(prio) {
   }
   if (prio == 'medium') {
     classlistAdd('mediumContainerEdit', 'priorityMediumActive');
-    document.getElementById('mediumImgEdit').src = './assets/img/AddTask/MediumPrioSign.svg';
+    document.getElementById('mediumImgEdit').src = './assets/img/AddTask/mediumPrioSign.svg';
   }
   if (prio == 'urgent') {
     classlistAdd('urgentContainerEdit', 'priorityUrgentActive');

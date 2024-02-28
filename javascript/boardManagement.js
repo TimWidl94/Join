@@ -158,7 +158,7 @@ function setPrioImg(i) {
     return img;
   }
   if (tasks[i]['prio'] == 'medium') {
-    let img = './assets/img/AddTask/MediumPrioSignInactive.svg';
+    let img = './assets/img/AddTask/mediumPrioSignInactive.svg';
     return img;
   }
   if (tasks[i]['prio'] == 'urgent') {

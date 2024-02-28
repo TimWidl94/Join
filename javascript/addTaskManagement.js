@@ -217,6 +217,7 @@ function selectCategoryIfElse(category, userStory, technicalTask, showSelectedCa
 }
 
 
+
 /**
  * Selects the user story category.
  *

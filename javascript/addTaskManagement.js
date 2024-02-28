@@ -26,7 +26,7 @@ async function init() {
   changePrioToMedium('mediumContainer', 'mediumImg');
   setMinDateToday('myDateInput');
   await setNumberOnContacts();
-  // setupEnterKeyListener();
+  setupEnterKeyListener();
   console.log('addTask reloaded');
 }
 
@@ -132,7 +132,6 @@ function clearInputValue() {
   changePrioToMedium('mediumContainer', 'mediumImg');
   renderSubTask();
 }
-
 
 /**
  * Clears the input value and resets the task form from the popup.

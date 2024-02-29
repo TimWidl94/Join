@@ -1,35 +1,3 @@
-let tasks = [];
-let subtasks = [];
-let selectedContacts = [];
-let filteredContacts = [];
-let selectedCategories = [];
-let categoryIsSelected = false;
-let selectedPrio;
-
-
-/**
- * Initializes the application.
- * Loads necessary data and sets up the initial UI.
- * @async
- */
-async function init() {
-  await includeHTML();
-  await loadData();
-  await loadUser();
-  setUserInitials();
-  setUserToContacts();
-  setColorToContacts();
-  setColorToActive('sidebarAddTask', 'addTask-img', 'bottomBarAddTaskMobile', 'addTaskImgMobile');
-  await resetIsChoosenValue();
-  await renderAddTask();
-  await renderSubTask();
-  await showTaskForm('assignedTo');
-  changePrioToMedium('mediumContainer', 'mediumImg');
-  setMinDateToday('myDateInput');
-  await setNumberOnContacts();
-}
-
-
 /**
  * Renders the add task form in the main content area and the board view.
  */
@@ -45,7 +13,6 @@ function renderAddTask() {
   }
 }
 
-
 /**
  * Renders the subtask input field.
  */
@@ -53,7 +20,6 @@ function renderSubTask() {
   let container = document.getElementById('subtasks');
   container.innerHTML += subTaskInputHtml();
 }
-
 
 /**
  * Renders the generated subtasks in the specified container.
@@ -69,7 +35,6 @@ function renderGeneratedSubTasks(idContainer) {
   }
 }
 
-
 /**
  * Edits the subtask with the given ID.
  * @param {string} id - The ID of the subtask to edit.
@@ -80,7 +45,6 @@ function editSubTask(id) {
   let textContent = subtasks[nr]['subTaskInput'];
   container.innerHTML = editSubTaskHtml(textContent, id);
 }
-
 
 /**
  * Adds or edits a subtask at the specified index.
@@ -93,7 +57,6 @@ function addEditSubTask(id) {
   subtasks[nr]['subTaskInput'] = subTaskInput.value;
   renderGeneratedSubTasks('subTaskContainer');
 }
-
 
 /**
  * Displays the task form with assigned contacts.
@@ -122,7 +85,6 @@ async function showTaskForm(id) {
   }
 }
 
-
 function checkIfSelectedContact(i, contactNumber) {
   let userId = document.getElementById(`user-${i}`);
   let checkboxImage = document.getElementById(`checkBox-${i}`);
@@ -134,7 +96,6 @@ function checkIfSelectedContact(i, contactNumber) {
     userId.classList.remove('selected-profile-active-item');
   }
 }
-
 
 /**
  * Filters contacts based on the search term and renders them.
@@ -159,7 +120,6 @@ async function filterAddTaskContact() {
   }
 }
 
-
 /**
  * Renders the contacts in the assigned dropdown.
  * @param {Array} contacts - The array of contacts to render.
@@ -178,7 +138,6 @@ async function renderContacts(contacts) {
     checkIfSelectedContact(i);
   }
 }
-
 
 /**
  * Renders the filtered contacts in the assigned dropdown.
@@ -206,7 +165,11 @@ function renderFilteredContacts(filteredContacts) {
 }
 
 
-// function open dropdown Assignedto
+/**
+ * Toggles the display of a dropdown menu.
+ * @param {string} idDropdown - The ID of the dropdown menu to toggle.
+ * @param {string} idImgArrow - The ID of the arrow icon associated with the dropdown.
+ */
 function openDropDown(idDropdown, idImgArrow) {
   let assignedDropdown = document.getElementById(idDropdown);
   let dropdownImgArrow = document.getElementById(idImgArrow);
@@ -285,7 +248,6 @@ function closeDropDownCategory(event) {
   }
 }
 
-
 /**
  * Adds an assigned contact to the selected contacts list.
  * @param {number} i - The index of the contact.
@@ -301,7 +263,6 @@ async function addAssignedContact(i, color, contactsNumber) {
   await setIsChoosenValue(contactsNumber);
   await renderSelectedContacts(i);
 }
-
 
 /**
  * Adds a filtered and assigned contact with specified attributes.
@@ -321,7 +282,6 @@ async function addFilteredAssignedContact(i, color, contactsNumber) {
   await setIsChoosenValue(contactsNumber);
   await renderSelectedContacts(i);
 }
-
 
 /**
  * Adds a selected contact to the list of selected contacts.
@@ -351,7 +311,6 @@ function addSelectedContact(assignedDropdown, checkboxImage, userID, selectedCon
   }
 }
 
-
 /**
  * Sets background for the selected contact based on its 'isChoosen' status.
  * Updates the visual representation of the contact with the specified div ID.
@@ -371,7 +330,6 @@ function backgroundForSelectedContact(divId) {
   }
 }
 
-
 /**
  * Checks if the selected contact already exists in the list of selected contacts.
  *
@@ -385,7 +343,6 @@ function checkIfSelectedContactExist(selectedContact) {
     }
   }
 }
-
 
 /**
  * Renders the selected contacts in the "Assigned Contacts" section on the user interface.
@@ -405,7 +362,6 @@ function renderSelectedContacts(i) {
   }
 }
 
-
 /**
  * Generates initials from a contact name.
  *
@@ -421,7 +377,6 @@ function getInitials(contactName) {
   return initials.toUpperCase();
 }
 
-
 /**
  * Moves a popup to the center of the screen.
  *
@@ -430,7 +385,6 @@ function getInitials(contactName) {
 function moveToCenter(popup) {
   popup.classList.add('moveToCenterAddTask');
 }
-
 
 /**
  * Sets the value of an input field back to an empty string.
@@ -443,7 +397,6 @@ function setValueBack(idInput, idContainer) {
   inputField.value = ``;
   resetSubTaskInputField(idContainer);
 }
-
 
 /**
  * Resets the input field for subtasks.

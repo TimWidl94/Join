@@ -1,15 +1,84 @@
+let tasks = [];
+let subtasks = [];
+let selectedContacts = [];
+let filteredContacts = [];
+let selectedCategories = [];
+let categoryIsSelected = false;
+let selectedPrio;
+
+/**
+ * Initializes the application.
+ * Loads necessary data and sets up the initial UI.
+ * @async
+ */
+async function init() {
+  await includeHTML();
+  await loadData();
+  await loadUser();
+  setUserInitials();
+  setUserToContacts();
+  setColorToContacts();
+  setColorToActive('sidebarAddTask', 'addTask-img', 'bottomBarAddTaskMobile', 'addTaskImgMobile');
+  await resetIsChoosenValue();
+  await renderAddTask();
+  await renderSubTask();
+  await showTaskForm('assignedTo');
+  changePrioToMedium('mediumContainer', 'mediumImg');
+  setMinDateToday('myDateInput');
+  await setNumberOnContacts();
+  // setupEnterKeyListener();
+  setupEnterKeyListenerNew();
+  console.log('addTask reloaded');
+}
+
+function setupEnterKeyListenerNew() {
+  document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('subTaskInput').addEventListener('keypress', function (event) {
+      if (event.key === 'Enter' || event.keyCode == 13) {
+        console.log('setupEnterKeyListener');
+        // document.getElementById('subTaskInputImgAdd').click();
+        addSubTask('subTaskInput', 'subTaskContainer');
+        event.preventDefault();
+      }
+    });
+  });
+}
+
+// document.getElementById('subTaskInput').addEventListener('keypress', function(event) {
+//   if (event.keyCode == 13) {
+//       event.preventDefault();
+//   }
+// });
+
 /**
  * Adds a task to the tasks array and stores it in local storage.
  * @param {string} id - The ID of the input field.
  * @param {string} column - The column where the task is added.
  * @async
  */
-async function addTask(id, column) {
+async function addTask(event, id, column) {
   await pushAddTask(id, column);
   clearInputValue();
   showPopUpAddedTaskToBoard();
+  event.preventDefault();
+  return false;
 }
 
+// /**
+//  * Registers an event listener for the input field with the ID 'subTaskInput',
+//  * to respond to the Enter key and call the function 'addSubTask' when the Enter key is pressed.
+//  */
+// function setupEnterKeyListener() {
+//   document.addEventListener('DOMContentLoaded', function () {
+//     document.getElementById('subTaskInput').addEventListener('keydown', function (event) {
+//       if (event.key === 'Enter') {
+//         console.log('setupEnterKeyListener');
+//         addSubTask('subTaskInput', 'subTaskContainer');
+//         event.preventDefault();
+//       }
+//     });
+//   });
+// }
 
 /**
  * Adds a new task to the tasks array with the provided details.
@@ -37,7 +106,6 @@ async function pushAddTask(id, column) {
     column
   );
 }
-
 
 /**
  * Adds a new task to the tasks array with the provided details.
@@ -75,7 +143,6 @@ async function addTaskValues(
   await setItem('tasks', JSON.stringify(tasks));
 }
 
-
 /**
  * Clears the input value and resets the task form.
  */
@@ -85,7 +152,6 @@ function clearInputValue() {
   changePrioToMedium('mediumContainer', 'mediumImg');
   renderSubTask();
 }
-
 
 /**
  * Clears the input value and resets the task form from the popup.
@@ -97,7 +163,6 @@ function clearInputValuePopup() {
   renderSubTask();
 }
 
-
 /**
  * Shows a popup indicating that a task has been added to the board.
  */
@@ -107,7 +172,6 @@ async function showPopUpAddedTaskToBoard() {
   await setTimeout(() => moveToCenter(popup), 200);
   setTimeout(() => (window.location.href = './board.html'), 3000);
 }
-
 
 /**
  * Changes the buttons for adding a task.
@@ -120,7 +184,6 @@ function changeButtonsAddTask(id) {
   inputField.innerHTML = changeButtonsAddTaskHtml();
   document.getElementById('subTaskInput').focus();
 }
-
 
 /**
  * Changes the priority of a task to medium.
@@ -141,7 +204,6 @@ function changePrioToMedium(idContainer, idImg) {
   document.getElementById('lowImg').src = './assets/img/AddTask/ArrowDownPrioSign.svg';
 }
 
-
 /**
  * Changes the priority of a task to urgent.
  *
@@ -161,7 +223,6 @@ function changePrioToUrgent(idContainer, idImg) {
   document.getElementById('lowImg').src = './assets/img/AddTask/ArrowDownPrioSign.svg';
 }
 
-
 /**
  * Changes the priority of a task to low.
  *
@@ -172,14 +233,13 @@ function changePrioToLow(idContainer, idImg) {
   let prioContainer = document.getElementById(idContainer);
   let img = document.getElementById(idImg);
   prioContainer.classList.add('priorityLowActive');
-  img.src = './assets/img/addTask/lowPrioActive.svg';
+  img.src = './assets/img/AddTask/lowPrioActive.svg';
   selectedPrio = 'low';
   document.getElementById('urgentContainer').classList.remove('priorityUrgentActive');
   document.getElementById('urgentImg').src = './assets/img/AddTask/ArrowUpPrioSign.svg';
   document.getElementById('mediumContainer').classList.remove('priorityMediumActive');
   document.getElementById('mediumImg').src = './assets/img/AddTask/mediumPrioSignInactive.svg';
 }
-
 
 /**
  * Selects a category for the task.
@@ -195,7 +255,6 @@ function selectCategory(category, id) {
   selectCategoryIfElse(category, userStory, technicalTask, showSelectedCategory, assignedDropdownCategory);
   checkIfFormIsFilled(id);
 }
-
 
 /**
  * Selects a category for the task.
@@ -216,7 +275,6 @@ function selectCategoryIfElse(category, userStory, technicalTask, showSelectedCa
   }
 }
 
-
 /**
  * Selects the user story category.
  *
@@ -233,7 +291,6 @@ function selectUserStory(userStory, technicalTask, showSelectedCategory, assigne
   assignedDropdownCategory.classList.add('d-none');
   categoryIsSelected = true;
 }
-
 
 /**
  * Selects the technical task category.
@@ -252,7 +309,6 @@ function selectTechnicalTask(userStory, technicalTask, showSelectedCategory, ass
   categoryIsSelected = true;
 }
 
-
 /**
  * Selects the default category.
  *
@@ -267,7 +323,6 @@ function selectDefaultCategory(userStory, technicalTask, showSelectedCategory, a
   showSelectedCategory.setAttribute('data-value', '');
   showSelectedCategory.innerHTML = `Select task category`;
 }
-
 
 /**
  * Deletes a subtask from the list of subtasks.
@@ -285,7 +340,6 @@ function deleteSubTask(number, idContainer) {
     subTaskContainer.innerHTML += subtasksAfterDeletionHtml(i, nr, idContainer);
   }
 }
-
 
 /**
  * Removes a selected contact from the list of selected contacts.
@@ -309,7 +363,6 @@ function removeSelectedContact(assignedDropdown, checkboxImage, userID, selected
   }
 }
 
-
 /**
  * Sets the minimum date of an input field to today's date and prevents selecting past dates.
  * @param {string} inputId - The ID of the input field.
@@ -325,7 +378,6 @@ function setMinDateToday(inputId) {
     }
   });
 }
-
 
 /**
  * Adds a subtask to the subtasks array.
@@ -350,7 +402,6 @@ function addSubTask(idInput, idContainer) {
   }
 }
 
-
 /**
  * Adds a subtask and finalizes the process by clearing the input field, rendering generated subtasks, and resetting the input field style.
  *
@@ -363,7 +414,6 @@ function addSubTaskFinalize(idInput, idContainer) {
   resetSubTaskInputField(idInput);
 }
 
-
 /**
  * Finds the position of a subtask with the given ID.
  *
@@ -374,7 +424,6 @@ function findSubtaskPosition(id) {
   let nr = subtasks.findIndex((obj) => obj.id === id);
   return nr;
 }
-
 
 /**
  * Checks if the task form is filled with required information.
@@ -389,7 +438,6 @@ function checkIfFormIsFilled(id) {
   }
 }
 
-
 /**
  * Sets the value of 'isChoosen' to 'false' for all contacts in the list and saves the updated contacts.
  */
@@ -400,7 +448,6 @@ async function resetIsChoosenValue() {
   }
   await saveContacts();
 }
-
 
 /**
  * Toggles the 'isChoosen' value of the contact at the specified index.
@@ -421,3 +468,23 @@ async function setIsChoosenValue(i) {
     return;
   }
 }
+
+// /**
+//  * This function is used as means to confirm your new subtask with an 'enter' command on the keyboard
+//  *
+//  *
+//  */
+// function handleKeyUp(event) {
+//   // Überprüfe, ob die gedrückte Taste die Enter-Taste ist
+//   if (event.key === 'Enter' || event.keyCode === 13) {
+//     // Überprüfe, ob das Dialog-Element mit der ID "board_modal_task" offen ist
+//     // var boardModalTask = document.getElementById("subTaskInput");
+
+//     // if (boardModalTask && boardModalTask.open) {
+//     //     // Wenn Enter gedrückt wurde und der Dialog offen ist, führe die Funktion aus
+//     //     addNewSubtaskToListModal(ID);
+//     // } else {
+//     // Andernfalls führe die andere Funktion aus
+//     addSubTask('subTaskInput', 'subTaskContainer');
+//   }
+// }

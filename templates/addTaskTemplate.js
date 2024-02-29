@@ -4,7 +4,7 @@
  */
 function addTaskHtml() {
   return /*html*/ `
-    <form onsubmit="addTask('myDateInput', 'toDo'); return false" class="formAddTask">
+    <form onsubmit="addTask(event, 'myDateInput', 'toDo')" class="formAddTask">
       <section class="container-left-right-wrapper">
         <section class="container-left">   
           <div class="headline-add-task"><h1 class="headline-h1-add-task">Add Task</h1></div>
@@ -66,7 +66,8 @@ function addTaskHtml() {
               <p><span class="span-required">*</span>This field is required</p>
             </div>
             <div class="btns-add-task-mobile-wrapper">
-              <button onclick="clearInputValue()" id="clear-mobile" class="buttonWhite" >
+              <!-- <button onclick="clearInputValue()" id="clear-mobile" class="buttonWhite" > -->
+              <button id="clear-mobile" class="buttonWhite" >
                 Clear <img src="assets/img/AddTask/cancel.svg" alt="Clear Icon"
               /></button>
               <button id="create-task-mobile" class="buttonGrey">
@@ -81,7 +82,8 @@ function addTaskHtml() {
             <p class="p-required"><span class="span-required">*</span>This field is required</p>
           </div>
           <div class="btns-down-right-add-task">
-            <button onclick="clearInputValue()" id="clear" class="buttonWhite" >
+            <!-- <button onclick="clearInputValue()" id="clear" class="buttonWhite" > -->
+            <button id="clear" class="buttonWhite" >
               Clear <img src="assets/img/AddTask/cancel.svg" alt="Clear Icon"
             /></button>
             <button  id="create-task" class="buttonGrey" disabled>
@@ -270,7 +272,7 @@ function changeButtonsAddTaskHtml() {
     <div class="subTaskInputButtons">
       <img class="subTaskInputImg" onclick="setValueBack('subTaskInput')" src="./assets/img/icons/close.svg" alt="">
       <span class="subTaskInputImg-vertical"></span>
-      <img class="subTaskInputImg checkImg" onclick="addSubTask('subTaskInput', 'subTaskContainer')" src="./assets/img/icons/checkAddTask.svg" alt="">
+      <img class="subTaskInputImg checkImg" id="subTaskInputImgAdd" onclick="addSubTask('subTaskInput', 'subTaskContainer')" src="./assets/img/icons/checkAddTask.svg" alt="">
     </div>
   `;
 }

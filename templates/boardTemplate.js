@@ -206,7 +206,7 @@ function generateTaskPopupHTML(i, img, date) {
                 </div>
                 <div id="mediumContainerEdit" onclick="changePriorityEdit('mediumContainerEdit', 'mediumImgEdit', 'medium')">
                   <p class="aTPopupP">Medium</p>
-                  <img src="assets/img/AddTask/mediumPrioSignInactive.svg" alt="Prio Medium" id="mediumImgEdit" />
+                  <img src="assets/img/AddTask/MediumPrioSignInactive.svg" alt="Prio Medium" id="mediumImgEdit" />
                 </div>
                 <div id="lowContainerEdit" onclick="changePriorityEdit('lowContainerEdit', 'lowImgEdit', 'low')">
                   <p class="aTPopupP">Low</p>

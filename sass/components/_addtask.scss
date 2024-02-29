@@ -790,7 +790,8 @@
 
   #assignedDropdown {
     min-width: unset;
-    width: 100%;
+    width: calc(100% - 6px);
+    padding-left: 2px;
   }
 
   .category-dropdown {

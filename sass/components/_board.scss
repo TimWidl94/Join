@@ -30,6 +30,15 @@
   margin: 20px 0px;
 }
 
+.drag-area-highlight{
+border: 3px dotted grey;
+width: 170px !important;
+height: 180px;
+background: #F6F7F8 !important;
+z-index: 1;
+}
+
+
 .overflowYActive {
   padding: 0px 10px;
   display: flex;

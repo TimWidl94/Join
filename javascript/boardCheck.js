@@ -188,7 +188,7 @@ function filterTasks() {
  * Clear the task containers on the board.
  */
 function clearTasksContainer() {
-  document.getElementById('todo').innerHTML = ``;
+  document.getElementById('toDo').innerHTML = ``;
   document.getElementById('inProgress').innerHTML = ``;
   document.getElementById('awaitFeedback').innerHTML = ``;
   document.getElementById('done').innerHTML = ``;
@@ -211,7 +211,9 @@ function openDropDownCategoryEdit() {
  * @param {string} id - The ID of the drop zone to highlight.
  */
 function highlight(id) {
-  document.getElementById(id).classList.add('drag-area-highlight');
+  let emptyId = id + 'Empty';
+  let dottedContainer = document.getElementById(emptyId);
+  dottedContainer.classList.remove('d-none');
 }
 
 
@@ -220,7 +222,10 @@ function highlight(id) {
  * @param {string} id - The ID of the drop zone to remove highlight from.
  */
 function removeHighlight(id) {
+  
   document.getElementById(id).classList.remove('drag-area-highlight');
+  let emptyId = id + 'Empty';
+  document.getElementById(emptyId).classList.add('d-none');
 }
 
 
@@ -252,6 +257,7 @@ function allowDrop(ev) {
  */
 async function moveTo(category) {
   tasks[currentDraggedElement]['currentState'] = category;
+  // removeHighlight(category);
   await updateHTML();
 }
 
@@ -300,12 +306,12 @@ async function feedbackAreaUpdate() {
  */
 async function todoAreaUpdate() {
   let todo = tasks.filter((t) => t['selectedCategory'] == 'toDo');
-  document.getElementById('todo').innerHTML = '';
+  document.getElementById('toDo').innerHTML = '';
 
   for (let index = 0; index < todo.length; index++) {
     const element = todo[index];
     await setPrioImg(i);
-    document.getElementById('todo').innerHTML += generateTodoHTML(element, img);
+    document.getElementById('toDo').innerHTML += generateTodoHTML(element, img);
   }
 }
 

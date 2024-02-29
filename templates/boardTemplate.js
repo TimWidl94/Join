@@ -503,3 +503,20 @@ function renderIfMoreContactsThanFourHtml(additionalContactLength) {
     <div class="board-task-member-profile" style="background-color: #a8a8a8 !important">${additionalContactLength}</div>
   `;
 }
+
+
+/**
+ * Generates HTML content for rendering additional contacts if there are more than four.
+ * @param {number} boxId - The container Id for moving the box.
+ * @returns {string} - The HTML content for rendering additional contacts.
+ */
+function moveBoxTasksHtml(boxId){
+let moveContainerId = `'` + boxId + `'`
+let containerId = boxId + 'Empty';
+return /*html*/`
+<div class="board-task drag-area-highlight d-none" id="${containerId}"
+   ondrop="moveTo(${moveContainerId})" 
+   ondragover="allowDrop(event)" 
+   ondragleave="removeHighlight(${moveContainerId})";></div>
+`
+}

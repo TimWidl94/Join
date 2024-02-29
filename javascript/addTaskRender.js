@@ -164,7 +164,6 @@ function renderFilteredContacts(filteredContacts) {
   }
 }
 
-
 /**
  * Toggles the display of a dropdown menu.
  * @param {string} idDropdown - The ID of the dropdown menu to toggle.
@@ -185,7 +184,6 @@ function openDropDown(idDropdown, idImgArrow) {
   }
 }
 
-
 // Function to close the dropdown menu
 function closeDropDown() {
   let assignedDropdown = document.getElementById('assignedDropdown');
@@ -200,19 +198,19 @@ function closeDropDown() {
   dropdownImgArrow.classList.remove('rotate-arrow');
 }
 
-
-// Function to close the dropdown menu with if 
-document.addEventListener('DOMContentLoaded', function() {
-  document.body.addEventListener('click', function(event) {
-    if (!event.target.closest('.dropdown') && 
-        !event.target.closest('.dropdown-arrow-hover') &&
-        !event.target.closest('#assignedDropdown') &&
-        !event.target.closest('#assignedDropdownCategory')) {
+// Function to close the dropdown menu with if
+document.addEventListener('DOMContentLoaded', function () {
+  document.body.addEventListener('click', function (event) {
+    if (
+      !event.target.closest('.dropdown') &&
+      !event.target.closest('.dropdown-arrow-hover') &&
+      !event.target.closest('#assignedDropdown') &&
+      !event.target.closest('#assignedDropdownCategory')
+    ) {
       closeDropDown();
     }
   });
 });
-
 
 // Function for openDropDownCategory
 function openDropDownCategory() {
@@ -229,7 +227,6 @@ function openDropDownCategory() {
     dropdownImgArrowCategory.classList.remove('rotate-arrow');
   }
 }
-
 
 // Function for closing DropDownCategory
 function closeDropDownCategory(event) {
@@ -357,50 +354,4 @@ function renderSelectedContacts(i) {
 
     content.innerHTML += renderSelectedContactsHtml(i, j, initials, color);
   }
-}
-
-/**
- * Generates initials from a contact name.
- *
- * @param {string} contactName - The full name of the contact.
- * @returns {string} The initials generated from the contact name.
- */
-function getInitials(contactName) {
-  const nameParts = contactName.split(' ');
-  let initials = '';
-  for (let i = 0; i < nameParts.length; i++) {
-    initials += nameParts[i][0];
-  }
-  return initials.toUpperCase();
-}
-
-/**
- * Moves a popup to the center of the screen.
- *
- * @param {HTMLElement} popup - The popup element to be moved.
- */
-function moveToCenter(popup) {
-  popup.classList.add('moveToCenterAddTask');
-}
-
-/**
- * Sets the value of an input field back to an empty string.
- *
- * @param {string} idInput - The ID of the input field.
- * @param {string} idContainer - The ID of the container.
- */
-function setValueBack(idInput, idContainer) {
-  let inputField = document.getElementById(idInput);
-  inputField.value = ``;
-  resetSubTaskInputField(idContainer);
-}
-
-/**
- * Resets the input field for subtasks.
- *
- * @param {string} idContainer - The ID of the subtask input container.
- */
-function resetSubTaskInputField(idContainer) {
-  let inputContainer = document.getElementById(idContainer);
-  inputContainer.innerHTML = subTaskInputFieldHtml();
 }

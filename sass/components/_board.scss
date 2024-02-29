@@ -30,14 +30,13 @@
   margin: 20px 0px;
 }
 
-.drag-area-highlight{
-border: 3px dotted grey;
-width: 170px !important;
-height: 180px;
-background: #F6F7F8 !important;
-z-index: 1;
+.drag-area-highlight {
+  border: 3px dotted grey;
+  width: 170px !important;
+  height: 180px;
+  background: #f6f7f8 !important;
+  z-index: 1;
 }
-
 
 .overflowYActive {
   padding: 0px 10px;
@@ -148,9 +147,8 @@ z-index: 1;
 
   &-bar {
     padding: 8px 16px;
-    height: 200px;
     width: 380px;
-    height: 24px;
+    height: 24px !important;
     gap: 8px;
     border-radius: 10px;
     border: 1px solid rgba(209, 209, 209, 1);
@@ -810,7 +808,6 @@ z-index: 1;
     position: unset;
     height: 100%;
     overflow-x: scroll;
- 
   }
   .drag-area::-webkit-scrollbar {
     display: none;
@@ -916,7 +913,7 @@ z-index: 1;
     margin-left: 24px;
     margin-right: 24px;
   }
-  
+
   .search-side-bar {
     padding: 12px 0 12px 7px;
   }

@@ -31,21 +31,6 @@ async function init() {
   console.log('addTask reloaded');
 }
 
-window.addEventListener(
-  'keydown',
-  function (e) {
-    if (e.keyIdentifier == 'U+000A' || e.keyIdentifier == 'Enter' || e.keyCode == 13) {
-      if (e.target.nodeName == 'INPUT' && e.target.type == 'text') {
-        e.preventDefault();
-        console.log('setupEnterKeyListener');
-        addSubTask('subTaskInput', 'subTaskContainer');
-        return false;
-      }
-    }
-  },
-  true
-);
-
 function setupEnterKeyListenerNew() {
   document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('subTaskInput').addEventListener('keypress', function (event) {
@@ -58,12 +43,6 @@ function setupEnterKeyListenerNew() {
     });
   });
 }
-
-// document.getElementById('subTaskInput').addEventListener('keypress', function(event) {
-//   if (event.keyCode == 13) {
-//       event.preventDefault();
-//   }
-// });
 
 /**
  * Adds a task to the tasks array and stores it in local storage.
@@ -79,29 +58,12 @@ async function addTask(event, id, column) {
   return false;
 }
 
-// /**
-//  * Registers an event listener for the input field with the ID 'subTaskInput',
-//  * to respond to the Enter key and call the function 'addSubTask' when the Enter key is pressed.
-//  */
-// function setupEnterKeyListener() {
-//   document.addEventListener('DOMContentLoaded', function () {
-//     document.getElementById('subTaskInput').addEventListener('keydown', function (event) {
-//       if (event.key === 'Enter') {
-//         console.log('setupEnterKeyListener');
-//         addSubTask('subTaskInput', 'subTaskContainer');
-//         event.preventDefault();
-//       }
-//     });
-//   });
-// }
-
 /**
  * Adds a new task to the tasks array with the provided details.
  * Handles async operations.
  * @async
  * @param {string} id - The ID of the input field for the due date.
  * @param {string} column - The column representing the current state of the task.
- * @returns {void}
  */
 async function pushAddTask(id, column) {
   let taskTitle = document.getElementById('taskTitle').value;
@@ -132,7 +94,6 @@ async function pushAddTask(id, column) {
  * @param {Array} subtasks - An array of subtasks associated with the task.
  * @param {Array} selectedContacts - An array of contacts associated with the task.
  * @param {string} column - The column representing the current state of the task.
- * @returns {void}
  */
 async function addTaskValues(
   taskTitle,
@@ -364,7 +325,6 @@ function deleteSubTask(number, idContainer) {
  * @param {HTMLElement} userID - The user ID of the selected contact.
  * @param {string} selectedContact - The selected contact.
  * @param {string} color - The color of the selected contact.
- * @returns {void}
  */
 function removeSelectedContact(assignedDropdown, checkboxImage, userID, selectedContact, color) {
   let index = selectedContacts.findIndex((contact) => contact.name === selectedContact && contact.color === color);
@@ -428,78 +388,3 @@ function addSubTaskFinalize(idInput, idContainer) {
   renderGeneratedSubTasks(idContainer);
   resetSubTaskInputField(idInput);
 }
-
-/**
- * Finds the position of a subtask with the given ID.
- *
- * @param {string} id - The ID of the subtask to find.
- * @returns {number} - The index of the subtask in the subtasks array, or -1 if not found.
- */
-function findSubtaskPosition(id) {
-  let nr = subtasks.findIndex((obj) => obj.id === id);
-  return nr;
-}
-
-/**
- * Checks if the task form is filled with required information.
- *
- * @param {string} id - The ID of the due date input field.
- */
-function checkIfFormIsFilled(id) {
-  let title = document.getElementById('taskTitle');
-  let dueDate = document.getElementById(id);
-  if (categoryIsSelected === true && title.value > '' && dueDate.value > '') {
-    document.getElementById('create-task').disabled = false;
-  }
-}
-
-/**
- * Sets the value of 'isChoosen' to 'false' for all contacts in the list and saves the updated contacts.
- */
-async function resetIsChoosenValue() {
-  for (let i = 0; i < contacts.length; i++) {
-    let contact = contacts[i];
-    contact['isChoosen'] = false;
-  }
-  await saveContacts();
-}
-
-/**
- * Toggles the 'isChoosen' value of the contact at the specified index.
- * If the value is currently true, it sets it to false, and vice versa.
- * Saves the updated contacts after toggling.
- *
- * @param {number} i - The index of the contact to toggle.
- */
-async function setIsChoosenValue(i) {
-  if (contacts[i]['isChoosen'] === true) {
-    contacts[i]['isChoosen'] = false;
-    await saveContacts();
-    return;
-  }
-  if (contacts[i]['isChoosen'] === false) {
-    contacts[i]['isChoosen'] = true;
-    await saveContacts();
-    return;
-  }
-}
-
-// /**
-//  * This function is used as means to confirm your new subtask with an 'enter' command on the keyboard
-//  *
-//  *
-//  */
-// function handleKeyUp(event) {
-//   // Überprüfe, ob die gedrückte Taste die Enter-Taste ist
-//   if (event.key === 'Enter' || event.keyCode === 13) {
-//     // Überprüfe, ob das Dialog-Element mit der ID "board_modal_task" offen ist
-//     // var boardModalTask = document.getElementById("subTaskInput");
-
-//     // if (boardModalTask && boardModalTask.open) {
-//     //     // Wenn Enter gedrückt wurde und der Dialog offen ist, führe die Funktion aus
-//     //     addNewSubtaskToListModal(ID);
-//     // } else {
-//     // Andernfalls führe die andere Funktion aus
-//     addSubTask('subTaskInput', 'subTaskContainer');
-//   }
-// }

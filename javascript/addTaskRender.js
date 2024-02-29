@@ -230,11 +230,13 @@ function closeDropDown() {
   let assignedDropdownCategory = document.getElementById('assignedDropdownCategory');
   let dropdownImgArrowCategory = document.getElementById('dropdownImgArrowCategory');
 
-  assignedDropdown.classList.add('d-none');
-  assignedDropdownCategory.classList.add('d-none');
-  assignedDropdown.classList.remove('border-active', 'dropbtn');
-  dropdownImgArrowCategory.classList.remove('rotate-arrow');
-  dropdownImgArrow.classList.remove('rotate-arrow');
+  if (assignedDropdown) {
+    assignedDropdown.classList.add('d-none');
+    assignedDropdownCategory.classList.add('d-none');
+    assignedDropdown.classList.remove('border-active', 'dropbtn');
+    dropdownImgArrowCategory.classList.remove('rotate-arrow');
+    dropdownImgArrow.classList.remove('rotate-arrow');
+  };
 }
 
 
@@ -244,6 +246,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (!event.target.closest('.dropdown') && 
         !event.target.closest('.dropdown-arrow-hover') &&
         !event.target.closest('#assignedDropdown') &&
+        !event.target.closest('#assignedDropdownCategoryEdit') &&
         !event.target.closest('#assignedDropdownCategory')) {
       closeDropDown();
     }

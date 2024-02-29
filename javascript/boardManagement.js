@@ -32,6 +32,14 @@ async function openAddTaskPopup(column) {
   document.getElementById('addTaskPopup').classList.add('slide-in');
 }
 
+function closeDropdownsExceptDropdowns(event) {
+  let addTaskPopup = document.getElementById('dropdownClose');
+  // Überprüfen, ob der Klick außerhalb der Dropdown-Menüs im Haupt-Popup erfolgt ist
+  if (!event.target.closest('.assignedDropdown') && !event.target.closest('.dropdown-button') && !addTaskPopup.contains(event.target)) {
+    // Schließen Sie die Dropdown-Menüs hier
+  }
+}
+
 
 /**
  * Add a task popup.
@@ -59,6 +67,21 @@ function closeAddTaskPopup() {
     document.getElementById('addTaskPopupWrapper').classList.add('d-none');
   });
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+  document.body.addEventListener('click', function(event) {
+    let addTaskPopup = document.getElementById('addTaskPopupWrapper');
+    // Überprüfen, ob das Popup geöffnet ist
+    if (!addTaskPopup.classList.contains('d-none')) {
+      let dropdownClose = document.getElementById('dropdownClose');
+      // Überprüfen, ob der Klick außerhalb des Popups erfolgt ist
+      if (!dropdownClose.contains(event.target)) {
+        closeAddTaskPopup();
+      }
+    }
+  });
+});
+
 
 
 /**

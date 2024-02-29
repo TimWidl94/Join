@@ -477,7 +477,7 @@ function changeButtonsAddTaskEditHtml(i) {
     <div class="subTaskInputButtons">
       <img class="subTaskInputImg" onclick="setValueBack('subTaskInputEdit', 'subtasksEdit')" src="./assets/img/icons/close.svg" alt="">
       <span class="subTaskInputImg-vertical"></span>
-      <img class="subTaskInputImg checkImg" onclick="addSubTaskEdit('subTaskInputEdit', 'subTaskContainerEdit', ${i})" src="./assets/img/icons/checkAddTask.svg" alt="">
+      <img class="subTaskInputImg checkImg" onclick="addSubTaskEdit('subTaskInputEdit', 'subTaskContainerEdit', ${i})" id="addSubTaskEditBtn" src="./assets/img/icons/checkAddTask.svg" alt="">
     </div>
   `;
 }
@@ -504,19 +504,18 @@ function renderIfMoreContactsThanFourHtml(additionalContactLength) {
   `;
 }
 
-
 /**
  * Generates HTML content for rendering additional contacts if there are more than four.
  * @param {number} boxId - The container Id for moving the box.
  * @returns {string} - The HTML content for rendering additional contacts.
  */
-function moveBoxTasksHtml(boxId){
-let moveContainerId = `'` + boxId + `'`
-let containerId = boxId + 'Empty';
-return /*html*/`
+function moveBoxTasksHtml(boxId) {
+  let moveContainerId = `'` + boxId + `'`;
+  let containerId = boxId + 'Empty';
+  return /*html*/ `
 <div class="board-task drag-area-highlight d-none" id="${containerId}"
    ondrop="moveTo(${moveContainerId})" 
    ondragover="allowDrop(event)" 
    ondragleave="removeHighlight(${moveContainerId})";></div>
-`
+`;
 }

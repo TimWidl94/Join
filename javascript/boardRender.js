@@ -244,7 +244,7 @@ async function renderBoardTasks() {
  * Render tasks in the "To do" category.
  */
 async function renderToDoTasks() {
-  let contentBoxToDo = document.getElementById('todo');
+  let contentBoxToDo = document.getElementById('toDo');
   contentBoxToDo.innerHTML = '';
   for (let i = 0; i < tasks.length; i++) {
     if (tasks[i]['currentState'] == 'toDo' && tasks[i]['currentState'].length > 0) {
@@ -256,6 +256,7 @@ async function renderToDoTasks() {
       await taskProgressBar(i);
     }
   }
+  contentBoxToDo.innerHTML += moveBoxTasksHtml('toDo');
 }
 
 /**
@@ -274,6 +275,7 @@ async function renderInProgressTasks() {
       await taskProgressBar(i);
     }
   }
+  contentBoxToDo.innerHTML += moveBoxTasksHtml('inProgress');
 }
 
 /**
@@ -292,6 +294,7 @@ async function renderAwaitFeedbackTasks() {
       await taskProgressBar(i);
     }
   }
+  contentBoxToDo.innerHTML += moveBoxTasksHtml('awaitFeedback');
 }
 
 /**
@@ -310,6 +313,7 @@ async function renderDoneTasks() {
       await taskProgressBar(i);
     }
   }
+  contentBoxToDo.innerHTML += moveBoxTasksHtml('done');
 }
 
 /**
@@ -371,7 +375,7 @@ function renderSearchedTasks(i) {
  * @param {number} i - The index of the task.
  */
 async function renderSearchedTasksToDo(i) {
-  let contentBoxToDo = document.getElementById('todo');
+  let contentBoxToDo = document.getElementById('toDo');
   let img = await setPrioImg(i);
   let x = await checkHowManySubtasksChecked(i);
   contentBoxToDo.innerHTML = '';

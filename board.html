@@ -70,11 +70,10 @@
             </div>
             <div
               class="board drag-area"
-              id="todo"
-              ondrop="moveTo('toDo')"
-              ondragleave="removeHighlight('todo')"
-              ondragover="allowDrop(event); highlight('todo')"
+              id="toDo"
+              ondragover="highlight('toDo')"
             ></div>
+            
           </div>
           <div class="col-4 overflowYActive">
             <div class="board-title">
@@ -84,10 +83,9 @@
             <div
               class="board drag-area"
               id="inProgress"
-              ondrop="moveTo('inProgress')"
-              ondragleave="removeHighlight('inProgress')"
-              ondragover="allowDrop(event); highlight('inProgress')"
+              ondragover="highlight('inProgress')"
             ></div>
+            
           </div>
           <div class="col-4 overflowYActive">
             <div class="board-title">
@@ -97,10 +95,9 @@
             <div
               class="board drag-area"
               id="awaitFeedback"
-              ondrop="moveTo('awaitFeedback')"
-              ondragleave="removeHighlight('awaitFeedback')"
-              ondragover="allowDrop(event); highlight('awaitFeedback')"
+              ondragover="highlight('awaitFeedback')"
             ></div>
+           
           </div>
           <div class="col-4 overflowYActive">
             <div class="board-title">
@@ -110,10 +107,9 @@
             <div
               class="board drag-area"
               id="done"
-              ondrop="moveTo('done')"
-              ondragleave="removeHighlight('done')"
-              ondragover="allowDrop(event); highlight('done')"
+              ondragover="highlight('done')"
             ></div>
+           
           </div>
         </div>
       </div>

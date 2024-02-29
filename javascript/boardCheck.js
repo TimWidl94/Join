@@ -199,7 +199,9 @@ function openDropDownCategoryEdit() {
 function highlight(id) {
   let emptyId = id + 'Empty';
   let dottedContainer = document.getElementById(emptyId);
-  dottedContainer.classList.remove('d-none');
+  if(tasks[currentDraggedElement]["currentState"] !== id){
+ dottedContainer.classList.remove('d-none');}
+ 
 }
 
 /**

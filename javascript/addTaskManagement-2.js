@@ -65,6 +65,10 @@ window.addEventListener(
         e.preventDefault();
         addSubTask('subTaskInput', 'subTaskContainer');
         return false;
+      } else if (e.target.nodeName == 'INPUT' && e.target.type == 'text' && e.target.id == 'subTaskInputEdit') {
+        e.preventDefault();
+        document.getElementById('addSubTaskEditBtn').click();
+        return false;
       }
     }
   },

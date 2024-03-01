@@ -22,6 +22,19 @@ function renderSubTask() {
   container.innerHTML += subTaskInputHtml();
 }
 
+// Function to close the dropdown menu
+function closeDropDown() {
+  let assignedDropdown = document.getElementById('assignedDropdown');
+  let dropdownImgArrow = document.getElementById('dropdownImgArrow');
+  let assignedDropdownCategory = document.getElementById('assignedDropdownCategory');
+  let dropdownImgArrowCategory = document.getElementById('dropdownImgArrowCategory');
+
+  assignedDropdown.classList.add('d-none');
+  assignedDropdownCategory.classList.add('d-none');
+  assignedDropdown.classList.remove('border-active', 'dropbtn');
+  dropdownImgArrowCategory.classList.remove('rotate-arrow');
+  dropdownImgArrow.classList.remove('rotate-arrow');
+}
 
 /**
  * Renders the generated subtasks in the specified container.
@@ -200,19 +213,38 @@ function openDropDown(idDropdown, idImgArrow) {
 }
 
 
-// Function to close the dropdown menu
+/**
+ * Closes the dropdown menu if the corresponding elements exist in the DOM.
+ */
 function closeDropDown() {
+  // Überprüfen, ob das Dropdown-Menü vorhanden ist
   let assignedDropdown = document.getElementById('assignedDropdown');
-  let dropdownImgArrow = document.getElementById('dropdownImgArrow');
-  let assignedDropdownCategory = document.getElementById('assignedDropdownCategory');
-  let dropdownImgArrowCategory = document.getElementById('dropdownImgArrowCategory');
+  if (assignedDropdown) {
+    // Wenn es vorhanden ist, führen Sie die Schließlogik aus
+    assignedDropdown.classList.add('d-none');
+    assignedDropdown.classList.remove('border-active', 'dropbtn');
+  }
 
-  assignedDropdown.classList.add('d-none');
-  assignedDropdownCategory.classList.add('d-none');
-  assignedDropdown.classList.remove('border-active', 'dropbtn');
-  dropdownImgArrowCategory.classList.remove('rotate-arrow');
-  dropdownImgArrow.classList.remove('rotate-arrow');
+  // Überprüfen, ob das Dropdown-Menü für die Kategorie vorhanden ist
+  let assignedDropdownCategory = document.getElementById('assignedDropdownCategory');
+  if (assignedDropdownCategory) {
+    // Wenn es vorhanden ist, führen Sie die Schließlogik aus
+    assignedDropdownCategory.classList.add('d-none');
+  }
+
+  // Zurücksetzen des Pfeil-Symbols für das Dropdown-Menü
+  let dropdownImgArrow = document.getElementById('dropdownImgArrow');
+  if (dropdownImgArrow) {
+    dropdownImgArrow.classList.remove('rotate-arrow');
+  }
+
+  // Zurücksetzen des Pfeil-Symbols für das Dropdown-Menü der Kategorie
+  let dropdownImgArrowCategory = document.getElementById('dropdownImgArrowCategory');
+  if (dropdownImgArrowCategory) {
+    dropdownImgArrowCategory.classList.remove('rotate-arrow');
+  }
 }
+
 
 
 // Function to close the dropdown menu with if

@@ -14,6 +14,7 @@ function generateLettersHTML(letter) {
     `;
 }
 
+
 /**
  * Generates HTML content for displaying contact information.
  * @param {object} contact - The contact object containing name and email.
@@ -36,6 +37,7 @@ function generateContactsHTML(contact, color, acronym, i) {
     `;
 }
 
+
 /**
  * Generates HTML content for displaying contact information, including the current user.
  * @param {object} contact - The contact information.
@@ -57,6 +59,7 @@ function generateContactsYouHTML(contact, color, acronym, i) {
           </div>
     `;
 }
+
 
 function openContactInfoHTML(contact, acronym, color, i) {
   return /*html*/ `
@@ -100,6 +103,7 @@ function openContactInfoHTML(contact, acronym, color, i) {
       </div>
   `;
 }
+
 
 /**
  * Generates HTML content for displaying contact information in a popup.
@@ -152,6 +156,7 @@ function openContactInfoYouHTML(contact, acronym, color, i) {
   `;
 }
 
+
 function changesMobileHTML(i) {
   return /*html*/ `
   <div id="changesMobile" onclick="doNotClose(event)">
@@ -169,6 +174,7 @@ function changesMobileHTML(i) {
   </div>
   `;
 }
+
 
 /**
  * Generates HTML content for displaying options to edit or delete a contact in mobile view.
@@ -233,6 +239,7 @@ function editContactDesktopHTML(acronym, color, i) {
         </div>
       `;
 }
+
 
 /**
  * Generates HTML content for editing contact information in mobile view.

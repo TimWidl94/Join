@@ -18,6 +18,7 @@ function legalNoticeH1Html() {
     `;
 }
 
+
 function legalNoticeHtmlMain() {
   return /*html*/ `
       <h2 class="h2-text-sites">Imprint</h2>

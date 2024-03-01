@@ -130,6 +130,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
+
 /**
  * Check if subtasks exist for a task and update the display accordingly.
  * @param {number} i - The index of the task.

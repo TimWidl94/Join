@@ -31,6 +31,10 @@ async function init() {
   console.log('addTask reloaded');
 }
 
+/**
+ * Sets up a keypress event listener for the "Enter" key on the subtask input field.
+ * When the "Enter" key is pressed, it adds a new subtask to the container.
+ */
 function setupEnterKeyListenerNew() {
   document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('subTaskInput').addEventListener('keypress', function (event) {

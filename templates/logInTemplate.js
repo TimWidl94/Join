@@ -41,6 +41,7 @@ function logInHtml() {
   `;
 }
 
+
 /**
  * Generates HTML content for the signup form.
  * @returns {string} The HTML content for the signup form.

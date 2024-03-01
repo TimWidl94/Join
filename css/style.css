@@ -992,8 +992,7 @@ textarea {
     width: 100%; }
   #assignedDropdown {
     min-width: unset;
-    width: calc(100% - 6px);
-    padding-left: 2px; }
+    width: 100%; }
   .category-dropdown {
     min-width: unset;
     width: calc(100% - 2 * 16px); }

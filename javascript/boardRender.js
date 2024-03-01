@@ -2,6 +2,7 @@ let currentDraggedElement;
 let selectedPrioPopupEdit;
 let subTaskCounter = 0;
 
+
 /**
  * Initialize the board by loading data, updating HTML elements, and setting initial user settings.
  */
@@ -17,24 +18,8 @@ async function initBoard() {
   checkTaskAreaDisplayEmpty();
   setNumberOnContacts();
   await resetIsChoosenValue();
-  setupEnterKeyListener();
 }
 
-/**
- * Registers an event listener for the input field with the ID 'subTaskInput',
- * to respond to the Enter key and call the function 'addSubTask' when the Enter key is pressed.
- */
-function setupEnterKeyListener() {
-  document.addEventListener('DOMContentLoaded', function () {
-    document.getElementById('subTaskInput').addEventListener('keydown', function (event) {
-      if (event.key === 'Enter') {
-        console.log('setupEnterKeyListener');
-        addSubTask('subTaskInput', 'subTaskContainer');
-        event.preventDefault();
-      }
-    });
-  });
-}
 
 /**
  * Render the add task popup for a specific column.
@@ -44,6 +29,7 @@ function renderAddTaskPopUp(column) {
   let contentBoardTask = document.getElementById('boardAddTask');
   contentBoardTask.innerHTML = addTaskPopUpHtml(column);
 }
+
 
 /**
  * Render the assigned contacts in the task popup.
@@ -65,6 +51,7 @@ function renderAssignedToContacs(i) {
   }
 }
 
+
 /**
  * Render subtasks for a task.
  * @param {number} i - The index of the task.
@@ -85,6 +72,7 @@ async function renderSubtasks(i, id) {
   await checkSubTaskInfoChecked(i);
 }
 
+
 /**
  * Load selected contacts for editing a task.
  * @param {number} i - The index of the task.
@@ -95,6 +83,7 @@ function loadSelectedContacts(i) {
   deleteSelectedContactsFromTask(i);
   renderSelectedContactsEdit(i);
 }
+
 
 /**
  * Set the text content for the category element.
@@ -108,6 +97,7 @@ function setCategoryTextContent(i) {
     return tasks[i].selectedCategory;
   }
 }
+
 
 /**
  * Add a subtask during task editing.
@@ -126,6 +116,7 @@ function addSubTaskEdit(idInput, idContainer, i) {
   resetSubTaskInputField(idInput);
 }
 
+
 /**
  * Reset the IDs of subtasks.
  */
@@ -134,6 +125,7 @@ function resetSubTaskIDs() {
     subtasks[i].id = i;
   }
 }
+
 
 /**
  * Render the generated subtasks for editing.
@@ -155,6 +147,7 @@ function renderGeneratedSubTasksEdit(idContainer, j) {
   }
 }
 
+
 /**
  * Start dragging a task.
  * @param {string} id - The ID of the task being dragged.
@@ -163,6 +156,7 @@ function renderSubTasksInput(i) {
   let container = document.getElementById('subtasksEdit');
   container.innerHTML += subTaskInputEditHtml(i);
 }
+
 
 /**
  * Allow dropping of a task.
@@ -183,6 +177,7 @@ function renderSubTasksEditable(i, id1) {
   }
 }
 
+
 /**
  * Render the board tasks.
  */
@@ -190,6 +185,7 @@ function deleteExistingSubtasks(i) {
   let task = tasks[i];
   task.subtasks.splice(0, task.subtasks.length);
 }
+
 
 /**
  * Render the "To Do" tasks.
@@ -203,6 +199,7 @@ function setCategoryBackground(category, id) {
   }
 }
 
+
 /**
  * Render the "In Progress" tasks.
  */
@@ -213,6 +210,7 @@ function updateHTML() {
   doneUpdate();
   renderBoardTasks();
 }
+
 
 /**
  * Render the "Done" tasks.
@@ -228,6 +226,7 @@ async function inProgressUpdate() {
   }
 }
 
+
 /**
  * Render tasks on the board for all categories.
  */
@@ -239,6 +238,7 @@ async function renderBoardTasks() {
   await checkTaskAreaDisplayEmpty();
   await setItem('tasks', JSON.stringify(tasks));
 }
+
 
 /**
  * Render tasks in the "To do" category.
@@ -258,6 +258,7 @@ async function renderToDoTasks() {
   }
 }
 
+
 /**
  * Render tasks in the "In progress" category.
  */
@@ -275,6 +276,7 @@ async function renderInProgressTasks() {
     }
   }
 }
+
 
 /**
  * Render tasks in the "Await feedback" category.
@@ -294,6 +296,7 @@ async function renderAwaitFeedbackTasks() {
   }
 }
 
+
 /**
  * Render tasks in the "Done" category.
  */
@@ -311,6 +314,7 @@ async function renderDoneTasks() {
     }
   }
 }
+
 
 /**
  * Render contacts associated with a task on the board.
@@ -332,6 +336,7 @@ function renderContactsInBoardTask(x) {
   renderIfMoreContactsThanFour(x);
 }
 
+
 /**
  * Render additional contacts count if more than four contacts associated with a task.
  * @param {number} x - The index of the task.
@@ -345,6 +350,7 @@ function renderIfMoreContactsThanFour(x) {
     container.innerHTML += renderIfMoreContactsThanFourHtml(additionalContactLength);
   }
 }
+
 
 /**
  * Render searched tasks.
@@ -366,6 +372,7 @@ function renderSearchedTasks(i) {
   checkTaskAreaDisplayEmpty();
 }
 
+
 /**
  * Render searched tasks in the "To do" category.
  * @param {number} i - The index of the task.
@@ -379,6 +386,7 @@ async function renderSearchedTasksToDo(i) {
   setCategoryBackground(tasks[i].selectedCategory, `board-task-epic${i}`);
   await taskProgressBar(i);
 }
+
 
 /**
  * Render searched tasks in the "In progress" category.
@@ -394,6 +402,7 @@ async function renderSearchedTasksInProgress(i) {
   await taskProgressBar(i);
 }
 
+
 /**
  * Render searched tasks in the "Await feedback" category.
  * @param {number} i - The index of the task.
@@ -407,6 +416,7 @@ async function renderSearchedTasksAwaitFeedback(i) {
   setCategoryBackground(tasks[i].selectedCategory, `board-task-epic${i}`);
   await taskProgressBar(i);
 }
+
 
 /**
  * Render searched tasks in the "Done" category.

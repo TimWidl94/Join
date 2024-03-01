@@ -63,17 +63,14 @@ function closeAddTaskPopup() {
 document.addEventListener('DOMContentLoaded', function() {
   document.body.addEventListener('click', function(event) {
     let addTaskPopup = document.getElementById('addTaskPopupWrapper');
-    // Überprüfen, ob das Popup geöffnet ist
     if (!addTaskPopup.classList.contains('d-none')) {
       let dropdownClose = document.getElementById('dropdownClose');
-      // Überprüfen, ob der Klick außerhalb des Popups erfolgt ist
       if (!dropdownClose.contains(event.target)) {
         closeAddTaskPopup();
       }
     }
   });
 });
-
 
 
 /**

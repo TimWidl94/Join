@@ -2520,6 +2520,12 @@ form {
 .board-title {
   padding: 3px 0px; }
 
+.closePopupBoard {
+  background-color: rgba(0, 0, 0, 0.4);
+  height: 100%;
+  width: 100%;
+  position: absolute; }
+
 .flex-start {
   justify-content: flex-start; }
 
@@ -2796,8 +2802,7 @@ form {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.4); }
+  height: 100%; }
 
 .aTPopup,
 .atPopupEdit {

@@ -13,12 +13,27 @@ function renderAddTask() {
   }
 }
 
+
 /**
  * Renders the subtask input field.
  */
 function renderSubTask() {
   let container = document.getElementById('subtasks');
   container.innerHTML += subTaskInputHtml();
+}
+
+// Function to close the dropdown menu
+function closeDropDown() {
+  let assignedDropdown = document.getElementById('assignedDropdown');
+  let dropdownImgArrow = document.getElementById('dropdownImgArrow');
+  let assignedDropdownCategory = document.getElementById('assignedDropdownCategory');
+  let dropdownImgArrowCategory = document.getElementById('dropdownImgArrowCategory');
+
+  assignedDropdown.classList.add('d-none');
+  assignedDropdownCategory.classList.add('d-none');
+  assignedDropdown.classList.remove('border-active', 'dropbtn');
+  dropdownImgArrowCategory.classList.remove('rotate-arrow');
+  dropdownImgArrow.classList.remove('rotate-arrow');
 }
 
 /**
@@ -35,6 +50,7 @@ function renderGeneratedSubTasks(idContainer) {
   }
 }
 
+
 /**
  * Edits the subtask with the given ID.
  * @param {string} id - The ID of the subtask to edit.
@@ -45,6 +61,7 @@ function editSubTask(id) {
   let textContent = subtasks[nr]['subTaskInput'];
   container.innerHTML = editSubTaskHtml(textContent, id);
 }
+
 
 /**
  * Adds or edits a subtask at the specified index.
@@ -57,6 +74,7 @@ function addEditSubTask(id) {
   subtasks[nr]['subTaskInput'] = subTaskInput.value;
   renderGeneratedSubTasks('subTaskContainer');
 }
+
 
 /**
  * Displays the task form with assigned contacts.
@@ -85,6 +103,12 @@ async function showTaskForm(id) {
   }
 }
 
+
+/**
+ * Checks if a specific contact is selected and updates the UI accordingly.
+ * @param {number} i - The index of the contact.
+ * @param {number} contactNumber - The identifier of the contact.
+ */
 function checkIfSelectedContact(i, contactNumber) {
   let userId = document.getElementById(`user-${i}`);
   let checkboxImage = document.getElementById(`checkBox-${i}`);
@@ -96,6 +120,7 @@ function checkIfSelectedContact(i, contactNumber) {
     userId.classList.remove('selected-profile-active-item');
   }
 }
+
 
 /**
  * Filters contacts based on the search term and renders them.
@@ -120,6 +145,7 @@ async function filterAddTaskContact() {
   }
 }
 
+
 /**
  * Renders the contacts in the assigned dropdown.
  * @param {Array} contacts - The array of contacts to render.
@@ -138,6 +164,7 @@ async function renderContacts(contacts) {
     checkIfSelectedContact(i);
   }
 }
+
 
 /**
  * Renders the filtered contacts in the assigned dropdown.
@@ -164,6 +191,7 @@ function renderFilteredContacts(filteredContacts) {
   }
 }
 
+
 /**
  * Toggles the display of a dropdown menu.
  * @param {string} idDropdown - The ID of the dropdown menu to toggle.
@@ -184,19 +212,40 @@ function openDropDown(idDropdown, idImgArrow) {
   }
 }
 
-// Function to close the dropdown menu
-function closeDropDown() {
-  let assignedDropdown = document.getElementById('assignedDropdown');
-  let dropdownImgArrow = document.getElementById('dropdownImgArrow');
-  let assignedDropdownCategory = document.getElementById('assignedDropdownCategory');
-  let dropdownImgArrowCategory = document.getElementById('dropdownImgArrowCategory');
 
-  assignedDropdown.classList.add('d-none');
-  assignedDropdownCategory.classList.add('d-none');
-  assignedDropdown.classList.remove('border-active', 'dropbtn');
-  dropdownImgArrowCategory.classList.remove('rotate-arrow');
-  dropdownImgArrow.classList.remove('rotate-arrow');
+/**
+ * Closes the dropdown menu if the corresponding elements exist in the DOM.
+ */
+function closeDropDown() {
+  // Überprüfen, ob das Dropdown-Menü vorhanden ist
+  let assignedDropdown = document.getElementById('assignedDropdown');
+  if (assignedDropdown) {
+    // Wenn es vorhanden ist, führen Sie die Schließlogik aus
+    assignedDropdown.classList.add('d-none');
+    assignedDropdown.classList.remove('border-active', 'dropbtn');
+  }
+
+  // Überprüfen, ob das Dropdown-Menü für die Kategorie vorhanden ist
+  let assignedDropdownCategory = document.getElementById('assignedDropdownCategory');
+  if (assignedDropdownCategory) {
+    // Wenn es vorhanden ist, führen Sie die Schließlogik aus
+    assignedDropdownCategory.classList.add('d-none');
+  }
+
+  // Zurücksetzen des Pfeil-Symbols für das Dropdown-Menü
+  let dropdownImgArrow = document.getElementById('dropdownImgArrow');
+  if (dropdownImgArrow) {
+    dropdownImgArrow.classList.remove('rotate-arrow');
+  }
+
+  // Zurücksetzen des Pfeil-Symbols für das Dropdown-Menü der Kategorie
+  let dropdownImgArrowCategory = document.getElementById('dropdownImgArrowCategory');
+  if (dropdownImgArrowCategory) {
+    dropdownImgArrowCategory.classList.remove('rotate-arrow');
+  }
 }
+
+
 
 // Function to close the dropdown menu with if
 document.addEventListener('DOMContentLoaded', function () {
@@ -211,6 +260,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 });
+
 
 // Function for openDropDownCategory
 function openDropDownCategory() {
@@ -228,6 +278,7 @@ function openDropDownCategory() {
   }
 }
 
+
 // Function for closing DropDownCategory
 function closeDropDownCategory(event) {
   let assignedDropdownCategory = document.getElementById('assignedDropdownCategory');
@@ -241,6 +292,7 @@ function closeDropDownCategory(event) {
     document.body.removeEventListener('click', closeDropDown);
   }
 }
+
 
 /**
  * Adds an assigned contact to the selected contacts list.
@@ -257,6 +309,7 @@ async function addAssignedContact(i, color, contactsNumber) {
   await setIsChoosenValue(contactsNumber);
   await renderSelectedContacts(i);
 }
+
 
 /**
  * Adds a filtered and assigned contact with specified attributes.
@@ -276,6 +329,7 @@ async function addFilteredAssignedContact(i, color, contactsNumber) {
   await setIsChoosenValue(contactsNumber);
   await renderSelectedContacts(i);
 }
+
 
 /**
  * Adds a selected contact to the list of selected contacts.
@@ -305,6 +359,7 @@ function addSelectedContact(assignedDropdown, checkboxImage, userID, selectedCon
   }
 }
 
+
 /**
  * Sets background for the selected contact based on its 'isChoosen' status.
  * Updates the visual representation of the contact with the specified div ID.
@@ -324,6 +379,7 @@ function backgroundForSelectedContact(divId) {
   }
 }
 
+
 /**
  * Checks if the selected contact already exists in the list of selected contacts.
  *
@@ -337,6 +393,7 @@ function checkIfSelectedContactExist(selectedContact) {
     }
   }
 }
+
 
 /**
  * Renders the selected contacts in the "Assigned Contacts" section on the user interface.

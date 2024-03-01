@@ -8,6 +8,7 @@ function hoverTodo(element) {
   img.setAttribute('src', '../assets/img/Summary/pencilWhiteDesktop.svg');
 }
 
+
 /**
  * Changes the image source to display a black pencil icon when not hovering over a to-do element.
  *
@@ -17,6 +18,7 @@ function unhoverTodo(element) {
   let img = document.getElementById(element);
   img.setAttribute('src', '../assets/img/Summary/pencilBlackDesktop.svg');
 }
+
 
 /**
  * Changes the image source to display a white checkmark icon when hovering over a done element.
@@ -28,6 +30,7 @@ function hoverDone(element) {
   img.setAttribute('src', '../assets/img/Summary/hookButtonWhiteDesktop.svg');
 }
 
+
 /**
  * Changes the image source to display a black checkmark icon when not hovering over a done element.
  *
@@ -37,6 +40,7 @@ function unhoverDone(element) {
   let img = document.getElementById(element);
   img.setAttribute('src', '../assets/img/Summary/hookButtonBlackDesktop.svg');
 }
+
 
 /**
  * Generates HTML content for the summary section of the webpage.

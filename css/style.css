@@ -2809,8 +2809,7 @@ form {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.4); }
+  height: 100%; }
 
 .aTPopup,
 .atPopupEdit {

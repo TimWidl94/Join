@@ -169,7 +169,8 @@ function generateTaskPopupHTML(i, img, date) {
           </div>
         </div>
       </div>
-      <form class="atPopupEdit d-none" id="aTPopupEdit" onclick="doNotClose(event)" onsubmit="saveEditedTask(${i}); return false"> 
+      <div onclick="closeDropDown()">
+      <form class="atPopupEdit d-none" id="aTPopupEdit" onsubmit="saveEditedTask(${i}); return false"> 
         <div class="aTPopupContentWrapper">
           <div class="aTPopupTopEdit">
             <div class="aTPopupCloseEdit" onclick="closeTaskPopup()"><img src="assets/img/icons/close.svg" alt="Close" /></div>
@@ -246,6 +247,7 @@ function generateTaskPopupHTML(i, img, date) {
           </div>
         </div>
       </form>
+      </div>
     </div>
   `;
 }

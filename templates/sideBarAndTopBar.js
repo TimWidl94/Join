@@ -18,6 +18,7 @@ function sideBarHtml(){
     `
 }
 
+
 /**
  * Generates HTML content for the top bar.
  * @returns {string} The HTML content for the top bar.

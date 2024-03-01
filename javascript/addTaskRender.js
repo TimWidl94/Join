@@ -173,15 +173,13 @@ function openDropDown(idDropdown, idImgArrow) {
   let assignedDropdown = document.getElementById(idDropdown);
   let dropdownImgArrow = document.getElementById(idImgArrow);
 
-  if (assignedDropdown.classList.contains('d-none')) {
-    assignedDropdown.classList.remove('d-none');
-    assignedDropdown.classList.add('border-active', 'dropbtn');
-    dropdownImgArrow.classList.add('rotate-arrow');
-  } else {
+  if (assignedDropdown) {
     assignedDropdown.classList.add('d-none');
+    assignedDropdownCategory.classList.add('d-none');
     assignedDropdown.classList.remove('border-active', 'dropbtn');
+    dropdownImgArrowCategory.classList.remove('rotate-arrow');
     dropdownImgArrow.classList.remove('rotate-arrow');
-  }
+  };
 }
 
 // Function to close the dropdown menu
@@ -205,6 +203,7 @@ document.addEventListener('DOMContentLoaded', function () {
       !event.target.closest('.dropdown') &&
       !event.target.closest('.dropdown-arrow-hover') &&
       !event.target.closest('#assignedDropdown') &&
+      !event.target.closest('#assignedDropdownCategoryEdit') &&
       !event.target.closest('#assignedDropdownCategory')
     ) {
       closeDropDown();

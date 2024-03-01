@@ -119,6 +119,18 @@ async function closeTaskPopup() {
 }
 
 
+document.addEventListener('DOMContentLoaded', function() {
+  document.body.addEventListener('click', function(event) {
+    let addTaskPopup = document.getElementById('addTaskPopupWrapper');
+    if (!addTaskPopup.classList.contains('d-none')) {
+      let dropdownClose = document.getElementById('dropdownClose');
+      if (!dropdownClose.contains(event.target)) {
+        closeAddTaskPopup();
+      }
+    }
+  });
+});
+
 /**
  * Check if subtasks exist for a task and update the display accordingly.
  * @param {number} i - The index of the task.

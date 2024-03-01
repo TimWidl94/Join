@@ -6,6 +6,7 @@ let selectedCategories = [];
 let categoryIsSelected = false;
 let selectedPrio;
 
+
 /**
  * Initializes the application.
  * Loads necessary data and sets up the initial UI.
@@ -26,10 +27,8 @@ async function init() {
   changePrioToMedium('mediumContainer', 'mediumImg');
   setMinDateToday('myDateInput');
   await setNumberOnContacts();
-  // setupEnterKeyListener();
-  // setupEnterKeyListenerNew();
-  console.log('addTask reloaded');
 }
+
 
 function setupEnterKeyListenerNew() {
   document.addEventListener('DOMContentLoaded', function () {
@@ -50,7 +49,7 @@ function setupEnterKeyListenerNew() {
  * @param {string} column - The column where the task is added.
  * @async
  */
-async function addTask(event, id, column) {
+async function addTask(id, column) {
   await pushAddTask(id, column);
   clearInputValue();
   showPopUpAddedTaskToBoard();
@@ -172,7 +171,7 @@ function changePrioToMedium(idContainer, idImg) {
   let img = document.getElementById(idImg);
 
   prioContainer.classList.add('priorityMediumActive');
-  img.src = './assets/img/AddTask/mediumPrioSign.svg';
+  img.src = './assets/img/AddTask/MediumPrioSign.svg';
   selectedPrio = 'medium';
   document.getElementById('urgentContainer').classList.remove('priorityUrgentActive');
   document.getElementById('urgentImg').src = './assets/img/AddTask/ArrowUpPrioSign.svg';
@@ -194,7 +193,7 @@ function changePrioToUrgent(idContainer, idImg) {
   img.src = './assets/img/AddTask/urgentPrioActive.svg';
   selectedPrio = 'urgent';
   document.getElementById('mediumContainer').classList.remove('priorityMediumActive');
-  document.getElementById('mediumImg').src = './assets/img/AddTask/mediumPrioSignInactive.svg';
+  document.getElementById('mediumImg').src = './assets/img/AddTask/MediumPrioSignInactive.svg';
   document.getElementById('lowContainer').classList.remove('priorityLowActive');
   document.getElementById('lowImg').src = './assets/img/AddTask/ArrowDownPrioSign.svg';
 }
@@ -214,7 +213,7 @@ function changePrioToLow(idContainer, idImg) {
   document.getElementById('urgentContainer').classList.remove('priorityUrgentActive');
   document.getElementById('urgentImg').src = './assets/img/AddTask/ArrowUpPrioSign.svg';
   document.getElementById('mediumContainer').classList.remove('priorityMediumActive');
-  document.getElementById('mediumImg').src = './assets/img/AddTask/mediumPrioSignInactive.svg';
+  document.getElementById('mediumImg').src = './assets/img/AddTask/MediumPrioSignInactive.svg';
 }
 
 /**

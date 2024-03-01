@@ -290,20 +290,23 @@ function selectTechnicalTask(userStory, technicalTask, showSelectedCategory, ass
 }
 
 /**
- * Selects the default category.
+ * Selects a category for the task.
  *
+ * @param {string} category - The category selected for the task.
  * @param {HTMLElement} userStory - The user story category element.
  * @param {HTMLElement} technicalTask - The technical task category element.
  * @param {HTMLElement} showSelectedCategory - The element displaying the selected category.
  * @param {HTMLElement} assignedDropdownCategory - The dropdown category element.
  */
-function selectDefaultCategory(userStory, technicalTask, showSelectedCategory, assignedDropdownCategory) {
-  userStory.classList.remove('category-selected');
-  technicalTask.classList.remove('category-selected');
-  showSelectedCategory.setAttribute('data-value', '');
-  showSelectedCategory.innerHTML = `Select task category`;
+function selectCategoryIfElse(category, userStory, technicalTask, showSelectedCategory, assignedDropdownCategory) {
+  if (category === 'user-story' || category === 'User Story') {
+    selectUserStory(userStory, technicalTask, showSelectedCategory, assignedDropdownCategory, category);
+  } else if (category === 'technical-task' || category === 'Technical Task') {
+    selectTechnicalTask(userStory, technicalTask, showSelectedCategory, assignedDropdownCategory, category);
+  } else {
+    selectDefaultCategory(userStory, technicalTask, showSelectedCategory, assignedDropdownCategory);
+  }
 }
-
 /**
  * Deletes a subtask from the list of subtasks.
  *

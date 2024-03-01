@@ -32,14 +32,6 @@ async function openAddTaskPopup(column) {
   document.getElementById('addTaskPopup').classList.add('slide-in');
 }
 
-function closeDropdownsExceptDropdowns(event) {
-  let addTaskPopup = document.getElementById('dropdownClose');
-  // Überprüfen, ob der Klick außerhalb der Dropdown-Menüs im Haupt-Popup erfolgt ist
-  if (!event.target.closest('.assignedDropdown') && !event.target.closest('.dropdown-button') && !addTaskPopup.contains(event.target)) {
-    // Schließen Sie die Dropdown-Menüs hier
-  }
-}
-
 
 /**
  * Add a task popup.

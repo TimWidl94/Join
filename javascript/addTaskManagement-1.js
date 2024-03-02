@@ -298,7 +298,7 @@ function selectTechnicalTask(userStory, technicalTask, showSelectedCategory, ass
  * @param {HTMLElement} showSelectedCategory - The element displaying the selected category.
  * @param {HTMLElement} assignedDropdownCategory - The dropdown category element.
  */
-function selectCategoryIfElse(userStory, technicalTask, showSelectedCategory, assignedDropdownCategory, category) {
+function selectCategoryIfElse(category, userStory, technicalTask, showSelectedCategory, assignedDropdownCategory) {
   if (category === 'user-story' || category === 'User Story') {
     selectUserStory(userStory, technicalTask, showSelectedCategory, assignedDropdownCategory, category);
   } else if (category === 'technical-task' || category === 'Technical Task') {

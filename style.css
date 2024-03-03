@@ -2816,7 +2816,9 @@ form {
   width: 475px;
   border-radius: 30px;
   padding: 40px 24px;
-  background-color: #f6f7f8; }
+  background-color: #f6f7f8;
+  position: relative;
+}
 
 .aTPopupContentWrapper::-webkit-scrollbar {
   display: none; }

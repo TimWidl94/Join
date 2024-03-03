@@ -2778,7 +2778,7 @@ form {
 .aTPopupWrapper,
 .addTaskPopupWrapper {
   position: fixed;
-  z-index: 2;
+  z-index: 4;
   top: 0;
   bottom: 0;
   right: 0;
@@ -2794,10 +2794,17 @@ form {
   left: 0; }
 
 .closePopupBoard {
-  background-color: rgba(0, 0, 0, 0.4);
   height: 100%;
   width: 100%;
-  position: absolute; }
+  position: absolute;
+  z-index: 5;
+  background-color: rgba(0, 0, 0, 0.4); }
+
+.closePopupBoardLittle {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 5; }
 
 .aTPopupContainer {
   display: flex;
@@ -2813,7 +2820,7 @@ form {
 
 .atPopup {
   position: absolute;
-  z-index: 9; }
+  z-index: 12; }
 
 .aTPopup,
 .atPopupEdit {
@@ -2825,7 +2832,14 @@ form {
   width: 475px;
   border-radius: 30px;
   padding: 40px 24px;
-  background-color: #f6f7f8; }
+  background-color: #f6f7f8;
+  position: absolute;
+  z-index: 10; }
+
+.atPopupEdit {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); }
 
 .aTPopupContentWrapper::-webkit-scrollbar {
   display: none; }
@@ -2864,7 +2878,11 @@ form {
   align-items: center;
   width: 32px;
   height: 32px;
-  border-radius: 50%; }
+  border-radius: 50%;
+  position: absolute;
+  z-index: 8;
+  top: 20px;
+  right: 20px; }
 
 .aTPopupClose:hover {
   cursor: pointer;

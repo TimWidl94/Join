@@ -106,7 +106,8 @@ function subTasksValueEditHtml(id, subTaskInput, j) {
 function generateTaskPopupHTML(i, img, date) {
   return /*html*/ `
     <div class="aTPopupContainer" id="aTPopupContainer"> 
-      <!-- <div class="aTPopup" id="aTPopup" onclick="doNotClose(event)">  -->
+    <div id="dropdownClose" class="closePopupBoardLittle" onclick="closeTaskPopup()"></div>
+
       <div class="aTPopup" id="aTPopup" > 
         <div class="aTPopupContentWrapper">
           <div class="aTPopupTop">

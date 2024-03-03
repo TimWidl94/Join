@@ -54,9 +54,9 @@ function closeAddTaskPopup() {
   addTaskPopup.classList.add('slide-out');
 
   addTaskPopup.addEventListener('animationend', function onAnimationEnd() {
-    addTaskPopup.removeEventListener('animationend', onAnimationEnd);
-    addTaskPopup.classList.add('d-none');
-    document.getElementById('addTaskPopupWrapper').classList.add('d-none');
+  addTaskPopup.removeEventListener('animationend', onAnimationEnd);
+  addTaskPopup.classList.add('d-none');
+  document.getElementById('addTaskPopupWrapper').classList.add('d-none');
   });
 }
 
@@ -118,6 +118,11 @@ async function closeTaskPopup() {
   });
 }
 
+/**
+ * Event listener to close the add task popup when clicking outside of it.
+ * @listens click
+ * @param {Event} event - The click event.
+ */
 document.addEventListener('DOMContentLoaded', function() {
   document.body.addEventListener('click', function(event) {
     let addTaskPopup = document.getElementById('addTaskPopupWrapper');
@@ -125,6 +130,7 @@ document.addEventListener('DOMContentLoaded', function() {
       let dropdownClose = document.getElementById('dropdownClose');
       if (!dropdownClose.contains(event.target)) {
         closeAddTaskPopup();
+        closeTaskPopup();
       }
     }
   });

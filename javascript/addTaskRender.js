@@ -19,23 +19,20 @@ function renderAddTask() {
  */
 function renderSubTask() {
   let container = document.getElementById('subtasks');
+  container.innerHTML += `test`;
   container.innerHTML += subTaskInputHtml();
+  container.innerHTML += `testende`;
 }
 
-// Function to close the dropdown menu
-/* function closeDropDown() {
-  let assignedDropdown = document.getElementById('assignedDropdown');
-  let dropdownImgArrow = document.getElementById('dropdownImgArrow');
-  let assignedDropdownCategory = document.getElementById('assignedDropdownCategory');
-  let dropdownImgArrowCategory = document.getElementById('dropdownImgArrowCategory');
-
-  assignedDropdown.classList.add('d-none');
-  assignedDropdownCategory.classList.add('d-none');
-  assignedDropdown.classList.remove('border-active', 'dropbtn');
-  dropdownImgArrowCategory.classList.remove('rotate-arrow');
-  dropdownImgArrow.classList.remove('rotate-arrow');
-}
+/**
+ * Renders the subtask input field for big AddTask.
  */
+function renderSubTaskAddTask() {
+  let container = document.getElementById('subtasks');
+  container.innerHTML += subTaskInputHtmlAddTask();
+}
+
+
 /**
  * Renders the generated subtasks in the specified container.
  * @param {string} idContainer - The ID of the container where subtasks will be rendered.
@@ -46,7 +43,7 @@ function renderGeneratedSubTasks(idContainer) {
 
   for (let i = 0; i < subtasks.length; i++) {
     let id = subtasks[i]['id'];
-    container.innerHTML += subTasksValueHtml(id, i);
+    container.innerHTML += subTasksValueHtmladdTask(id, i);
   }
 }
 

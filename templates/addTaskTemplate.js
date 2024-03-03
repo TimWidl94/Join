@@ -101,6 +101,21 @@ function subTaskInputHtml() {
   return /*html*/ `
     <p>Subtasks</p>
     <div class="inputFieldBox" id="inputFieldBox">
+      <input id="subTaskInput" class="dropdownSubTaskInput" type="text" placeholder="Add new subtask" onclick="changeButtonsAddTask('inputFieldBox'), doNotClose(event)" />
+      <img onclick="addSubTask('subTaskInput', 'subTaskContainer')" class="inputImgPlus" src="assets/img/AddTask/plus.svg" alt="Add Icon" />
+    </div>
+    <div id="subTaskError" class="subtask-div-error"></div>
+  `;
+}
+
+/**
+ * Generates HTML for the subtask input field for Big AddTask.
+ * @returns {string} The HTML content for the subtask input field.
+ */
+function subTaskInputHtmlAddTask() {
+  return /*html*/ `
+    <p>Subtasks</p>
+    <div class="inputFieldBox" id="inputFieldBox">
       <input id="subTaskInput" class="dropdownSubTaskInput" type="text" placeholder="Add new subtask" onclick="changeButtonsAddTask('inputFieldBox')" />
       <img onclick="addSubTask('subTaskInput', 'subTaskContainer')" class="inputImgPlus" src="assets/img/AddTask/plus.svg" alt="Add Icon" />
     </div>
@@ -128,6 +143,22 @@ function subTaskInputFieldHtml() {
 function subTasksValueHtml(id, i) {
   return /*html*/ `
     <li id="${id}" class="subtask-div-list" onclick="doNotClose(event)" ondblclick="editSubTask(${id})"><div class="subtask-div-text">${subtasks[i]['subTaskInput']}</div>
+      <div class="subtask-div-list-hover-items">
+        <img class="subtask-div-btn" onclick="editSubTask(${id})" src="./assets/img/icons/edit.svg" alt=""><span class="subTaskInputImg-vertical-added"></span>
+        <img class="subtask-div-btn" onclick="deleteSubTask(${id}, 'subTaskContainer')" src="./assets/img/icons/delete.svg" alt="">
+      </div>
+    </li>`;
+}
+
+/**
+ * Generates HTML for a subtask item big AddTask.
+ * @param {string} id - The ID of the subtask item.
+ * @param {number} i - The index of the subtask.
+ * @returns {string} The HTML content for the subtask item.
+ */
+function subTasksValueHtmladdTask(id, i) {
+  return /*html*/ `
+    <li id="${id}" class="subtask-div-list" ondblclick="editSubTask(${id})"><div class="subtask-div-text">${subtasks[i]['subTaskInput']}</div>
       <div class="subtask-div-list-hover-items">
         <img class="subtask-div-btn" onclick="editSubTask(${id})" src="./assets/img/icons/edit.svg" alt=""><span class="subTaskInputImg-vertical-added"></span>
         <img class="subtask-div-btn" onclick="deleteSubTask(${id}, 'subTaskContainer')" src="./assets/img/icons/delete.svg" alt="">

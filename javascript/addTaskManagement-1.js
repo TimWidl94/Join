@@ -251,7 +251,7 @@ function selectCategoryIfElse(userStory, technicalTask, showSelectedCategory, as
   } else if (category === 'technical-task' || category === 'Technical Task') {
     selectTechnicalTask(userStory, technicalTask, showSelectedCategory, assignedDropdownCategory, category);
   } else {
-    selectDefaultCategory(userStory, technicalTask, showSelectedCategory, assignedDropdownCategory);
+    selectDefaultCategory(userStory, technicalTask, showSelectedCategory, assignedDropdownCategory, category);
   }
 }
 
@@ -298,13 +298,13 @@ function selectTechnicalTask(userStory, technicalTask, showSelectedCategory, ass
  * @param {HTMLElement} showSelectedCategory - The element displaying the selected category.
  * @param {HTMLElement} assignedDropdownCategory - The dropdown category element.
  */
-function selectCategoryIfElse(category, userStory, technicalTask, showSelectedCategory, assignedDropdownCategory) {
+function selectCategoryIfElse(userStory, technicalTask, showSelectedCategory, assignedDropdownCategory, category) {
   if (category === 'user-story' || category === 'User Story') {
     selectUserStory(userStory, technicalTask, showSelectedCategory, assignedDropdownCategory, category);
   } else if (category === 'technical-task' || category === 'Technical Task') {
     selectTechnicalTask(userStory, technicalTask, showSelectedCategory, assignedDropdownCategory, category);
   } else {
-    selectDefaultCategory(userStory, technicalTask, showSelectedCategory, assignedDropdownCategory);
+    selectDefaultCategory(userStory, technicalTask, showSelectedCategory, assignedDropdownCategory, category);
   }
 }
 /**

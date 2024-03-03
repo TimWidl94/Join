@@ -108,7 +108,6 @@ function moveToCenter(popup) {
 function setValueBack(idInput, idContainer) {
   let inputField = document.getElementById(idInput);
   inputField.value = ``;
-  resetSubTaskInputField(idContainer);
 }
 
 /**

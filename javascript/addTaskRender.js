@@ -254,6 +254,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (
       !event.target.closest('.dropdown') &&
       !event.target.closest('.dropdownEdit') &&
+      !event.target.closest('.dropdownSubTaskInput') &&
       !event.target.closest('.dropdown-arrow-hover') &&
       !event.target.closest('#assignedDropdown') &&
       !event.target.closest('#assignedDropdownCategory') &&

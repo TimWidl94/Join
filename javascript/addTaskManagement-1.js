@@ -21,7 +21,7 @@ async function init() {
   setColorToActive('sidebarAddTask', 'addTask-img', 'bottomBarAddTaskMobile', 'addTaskImgMobile');
   await resetIsChoosenValue();
   await renderAddTask();
-  await renderSubTask();
+  await renderSubTaskAddTask();
   await showTaskForm('assignedTo');
   changePrioToMedium('mediumContainer', 'mediumImg');
   setMinDateToday('myDateInput');
@@ -40,7 +40,6 @@ function setupEnterKeyListenerNew() {
     document.getElementById('subTaskInput').addEventListener('keypress', function (event) {
       if (event.key === 'Enter' || event.keyCode == 13) {
         console.log('setupEnterKeyListener');
-        // document.getElementById('subTaskInputImgAdd').click();
         addSubTask('subTaskInput', 'subTaskContainer');
         event.preventDefault();
       }

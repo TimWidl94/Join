@@ -232,7 +232,7 @@ function selectCategory(category, id) {
   const technicalTask = document.getElementById('other');
   const showSelectedCategory = document.getElementById('showSelectedCategory');
   const assignedDropdownCategory = document.getElementById('assignedDropdownCategory');
-  selectCategoryIfElse(category, userStory, technicalTask, showSelectedCategory, assignedDropdownCategory);
+  selectCategoryIfElse(userStory, technicalTask, showSelectedCategory, assignedDropdownCategory, category);
   checkIfFormIsFilled(id);
 }
 

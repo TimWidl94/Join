@@ -19,9 +19,7 @@ function renderAddTask() {
  */
 function renderSubTask() {
   let container = document.getElementById('subtasks');
-  container.innerHTML += `test`;
   container.innerHTML += subTaskInputHtml();
-  container.innerHTML += `testende`;
 }
 
 /**

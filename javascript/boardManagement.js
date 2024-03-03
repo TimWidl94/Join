@@ -130,6 +130,7 @@ document.addEventListener('DOMContentLoaded', function() {
       let dropdownClose = document.getElementById('dropdownClose');
       if (!dropdownClose.contains(event.target)) {
         closeAddTaskPopup();
+        closeTaskPopup();
       }
     }
   });

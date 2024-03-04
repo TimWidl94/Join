@@ -275,7 +275,7 @@ function renderSubtasksInfoHtml(j, subTask, i) {
 
 function subTasksValueHtml(id, i) {
   return /*html*/ `
-    <li id="${id}" class="subtask-div-list" ondblclick="editSubTask(${id})"><div class="subtask-div-text">${subtasks[i]['subTaskInput']}</div>
+    <li id="${id}" class="subtask-div-list" onclick="doNotCLose(event)" ondblclick="editSubTask(${id})"><div class="subtask-div-text">${subtasks[i]['subTaskInput']}</div>
       <div class="subtask-div-list-hover-items">
         <img class="subtask-div-btn" onclick="editSubTask(${id})" src="./assets/img/icons/edit.svg" alt=""><span class="subTaskInputImg-vertical-added"></span>
         <img class="subtask-div-btn" onclick="deleteSubTask(${id}, 'subTaskContainer')" src="./assets/img/icons/delete.svg" alt="">

@@ -162,40 +162,13 @@ async function renderContacts(contacts) {
 
 
 /**
- * Clears the content of the assignedDropdown element.
- */
-function clearAssignedDropdown() {
-  let assignedDropdown = document.getElementById('assignedDropdown');
-  assignedDropdown.innerHTML = '';
-}
-
-/**
- * Renders a single contact item in the assignedDropdown element.
- * @param {string} currentUser - The name of the current user.
- * @param {string} color - The color associated with the contact.
- * @param {string} initials - The initials of the contact.
- * @param {number} contactNumber - The contact number.
- */
-function renderContact(currentUser, color, initials, contactNumber) {
-  let username = checkForUserName();
-  let assignedDropdown = document.getElementById('assignedDropdown');
-  let html = '';
-
-  if (currentUser === username) {
-    html = assignedToUserYouHtml(color, currentUser, initials, contactNumber);
-  } else {
-    html = assignedToUserHtml(color, currentUser, initials, contactNumber);
-  }
-
-  assignedDropdown.innerHTML += html;
-}
-
-/**
- * Renders the filtered contacts in the assignedDropdown element.
- * @param {Object[]} filteredContacts - An array of filtered contacts to render.
+ * Renders the filtered contacts in the assigned dropdown.
+ * @param {Array} filteredContacts - The array of filtered contacts to render.
  */
 function renderFilteredContacts(filteredContacts) {
-  clearAssignedDropdown();
+  let assignedDropdown = document.getElementById('assignedDropdown');
+  assignedDropdown.innerHTML = '';
+  let username = checkForUserName();
 
   for (let i = 0; i < filteredContacts.length; i++) {
     let currentUser = filteredContacts[i]['name'];
@@ -203,8 +176,13 @@ function renderFilteredContacts(filteredContacts) {
     let color = filteredContacts[i]['color'];
     let contactNumber = filteredContacts[i]['nr'];
 
-    renderContact(currentUser, color, initials, contactNumber);
-    checkIfSelectedContact(i, contactNumber);
+    if (currentUser === username) {
+      assignedDropdown.innerHTML += assignedToUserYouHtml(i, color, currentUser, initials, contactNumber);
+      checkIfSelectedContact(i, contactNumber);
+    } else {
+      assignedDropdown.innerHTML += assignedToUserHtml(i, color, currentUser, initials, contactNumber);
+      checkIfSelectedContact(i, contactNumber);
+    }
   }
 }
 
@@ -231,32 +209,38 @@ function openDropDown(idDropdown, idImgArrow) {
 
 
 /**
- * Closes the dropdown elements by adding the 'd-none' class and removing specific classes.
- * @param {HTMLElement[]} elements - An array of HTML elements representing the dropdown elements.
+ * Closes the dropdown menu if the corresponding elements exist in the DOM.
  */
-function closeDropdown(elements) {
-  elements.forEach(element => {
-    if (element) {
-      element.classList.add('d-none');
-      if (element.id === 'assignedDropdown' || element.id === 'assignedDropdownCategory') {
-        element.classList.remove('border-active', 'dropbtn');
-      }
-      if (element.id === 'dropdownImgArrow' || element.id === 'dropdownImgArrowCategory') {
-        element.classList.remove('rotate-arrow');
-      }
-    }
-  });
+function closeDropDown() {
+  let assignedDropdown = document.getElementById('assignedDropdown');
+  if (assignedDropdown) {
+    assignedDropdown.classList.add('d-none');
+    assignedDropdown.classList.remove('border-active', 'dropbtn');
+  }
+
+  let assignedDropdownCategory = document.getElementById('assignedDropdownCategory');
+  if (assignedDropdownCategory) {
+    assignedDropdownCategory.classList.add('d-none');
+  }
+
+  let assignedDropdownCategoryEdit = document.getElementById('assignedDropdownCategoryEdit');
+  if (assignedDropdownCategoryEdit) {
+    assignedDropdownCategoryEdit.classList.add('d-none');
+  }
+
+  let dropdownImgArrow = document.getElementById('dropdownImgArrow');
+  if (dropdownImgArrow) {
+    dropdownImgArrow.classList.remove('rotate-arrow');
+  }
+
+  let dropdownImgArrowCategory = document.getElementById('dropdownImgArrowCategory');
+  if (dropdownImgArrowCategory) {
+    dropdownImgArrowCategory.classList.remove('rotate-arrow');
+  }
+
 }
 
-/**
- * Example usage of the closeDropdown function.
- */
-closeDropdown([
-  document.getElementById('assignedDropdown'),
-  document.getElementById('assignedDropdownCategory'),
-  document.getElementById('dropdownImgArrow'),
-  document.getElementById('dropdownImgArrowCategory')
-]);
+
 
 
 // Function to close the dropdown menu with if
@@ -271,9 +255,11 @@ document.addEventListener('DOMContentLoaded', function () {
       !event.target.closest('#assignedDropdownCategory') &&
       !event.target.closest('#assignedDropdownCategoryEdit')
     ) {
+      closeDropDown();
     }
   });
 });
+
 
 
 // Function for openDropDownCategory

@@ -63,11 +63,11 @@ function editSubTask(id) {
  * @param {number} id - The ID of the subtask to save edit.
  * @returns {void}
  */
-function addEditSubTask(id) {
+function addEditSubTask(id, idContainer) {
   let subTaskInput = document.getElementById('editSubTaskInput');
   let nr = findSubtaskPosition(id);
   subtasks[nr]['subTaskInput'] = subTaskInput.value;
-  renderGeneratedSubTasks('subTaskContainer');
+  renderGeneratedSubTasks(idContainer);
 }
 
 

@@ -179,7 +179,7 @@ function editSubTaskHtml(textContent, id) {
       <div class="editSubTaskButtonBox">
         <img src="assets/img/icons/delete.svg" alt="Clear Icon" class="inputImgTrash" onclick="deleteSubTask(${id}, 'subTaskContainer')"/>
         <span class="subTaskInputImg-vertical-edit"></span>
-        <img src="./assets/img/icons/checkAddTask.svg" alt="check" class="inputImgTrash" onclick="addEditSubTask(${id})"/>
+        <img src="./assets/img/icons/checkAddTask.svg" alt="check" class="inputImgTrash" onclick="addEditSubTask(${id}, 'subTaskContainer')"/>
       </div>
     </div>
   `;

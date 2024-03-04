@@ -232,9 +232,9 @@ function deleteSubTaskEdit(id, idContainer, subTaskInput) {
  */
 function findTaskEdit(subTaskInput) {
   for (let i = 0; i < tasks.length; i++) {
-    const task = tasks[i];
+    let task = tasks[i];
     for (let j = 0; j < task.subtasks.length; j++) {
-      const subtask = task.subtasks[j];
+      let subtask = task.subtasks[j];
       if (subtask.subTaskInput === subTaskInput) {
         return i;
       }

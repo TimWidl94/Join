@@ -14,7 +14,6 @@ function setMinDateTodayPopup(inputIdPopup) {
   });
 }
 
-
 /**
  * Open the add task popup for a specific column.
  * @param {string} column - The column identifier.
@@ -32,7 +31,6 @@ async function openAddTaskPopup(column) {
   document.getElementById('addTaskPopup').classList.add('slide-in');
 }
 
-
 /**
  * Add a task popup.
  * @param {string} id - The task identifier.
@@ -44,7 +42,6 @@ async function addTaskPopUp(id, section) {
   closeAddTaskPopup();
 }
 
-
 /**
  * Close the add task popup.
  */
@@ -54,12 +51,12 @@ function closeAddTaskPopup() {
   addTaskPopup.classList.add('slide-out');
 
   addTaskPopup.addEventListener('animationend', function onAnimationEnd() {
-  addTaskPopup.removeEventListener('animationend', onAnimationEnd);
-  addTaskPopup.classList.add('d-none');
-  document.getElementById('addTaskPopupWrapper').classList.add('d-none');
+    addTaskPopup.removeEventListener('animationend', onAnimationEnd);
+    addTaskPopup.classList.add('d-none');
+    document.getElementById('addTaskPopupWrapper').classList.add('d-none');
+    subtasks = [];
   });
 }
-
 
 /**
  * Open a task popup for editing.
@@ -83,7 +80,6 @@ function openTaskPopup(i) {
   setupTaskPopup(i);
 }
 
-
 /**
  * Setup the task popup by setting category background, checking subtasks, and rendering assigned contacts and subtasks.
  * @param {number} i - The index of the task.
@@ -95,7 +91,6 @@ function setupTaskPopup(i) {
   renderSubtasks(i, 'subtaskContainerPopup');
 }
 
-
 /**
  * Close the task popup.
  */
@@ -105,10 +100,10 @@ async function closeTaskPopup() {
 
   taskPopup.classList.add('slide-out');
 
-  await new Promise(resolve => {
+  await new Promise((resolve) => {
     taskPopup.addEventListener('animationend', function onAnimationEnd() {
       taskPopup.removeEventListener('animationend', onAnimationEnd);
-      
+
       taskPopup.classList.add('d-none');
       aTPopupBg.classList.add('d-none');
       updateHTML();
@@ -123,8 +118,8 @@ async function closeTaskPopup() {
  * @listens click
  * @param {Event} event - The click event.
  */
-document.addEventListener('DOMContentLoaded', function() {
-  document.body.addEventListener('click', function(event) {
+document.addEventListener('DOMContentLoaded', function () {
+  document.body.addEventListener('click', function (event) {
     let addTaskPopup = document.getElementById('addTaskPopupWrapper');
     if (!addTaskPopup.classList.contains('d-none')) {
       let dropdownClose = document.getElementById('dropdownClose');
@@ -135,7 +130,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 });
-
 
 /**
  * Check if subtasks exist for a task and update the display accordingly.
@@ -151,7 +145,6 @@ function checkSubtasksExisting(i) {
   }
 }
 
-
 /**
  * Get the color of a contact by its name.
  * @param {string} selectedContactName - The name of the contact.
@@ -163,7 +156,6 @@ function getContactColor(selectedContactName) {
     return contacts[index].color;
   }
 }
-
 
 /**
  * Set the priority image for a task.
@@ -185,7 +177,6 @@ function setPrioImg(i) {
   }
 }
 
-
 /**
  * Convert the date format from YYYY-MM-DD to DD/MM/YYYY.
  * @param {string} date - The date in YYYY-MM-DD format.
@@ -197,7 +188,6 @@ function convertDateFormat(date) {
   return newDate;
 }
 
-
 /**
  * Delete a task.
  * @param {number} i - The index of the task to delete.
@@ -206,7 +196,6 @@ function deleteTask(i) {
   tasks.splice(i, 1);
   closeTaskPopup();
 }
-
 
 /**
  * Delete a subtask during task editing.
@@ -223,7 +212,6 @@ function deleteSubTaskEdit(id, idContainer, subTaskInput) {
   subtasks.splice(nr, 1);
   renderGeneratedSubTasksEdit(idContainer, taskIndex);
 }
-
 
 /**
  * Find the index of a task based on the subtask input field.
@@ -244,7 +232,6 @@ function findTaskEdit(subTaskInput) {
   return -1;
 }
 
-
 /**
  * Find the position of a subtask based on its ID.
  * @param {string} id - The ID of the subtask.
@@ -257,7 +244,6 @@ function findSubtaskPositionEdit(id) {
 
   return nr;
 }
-
 
 /**
  * Edit a task.
@@ -278,7 +264,6 @@ async function editTask(i) {
   setAssignedToContactsDropdown();
 }
 
-
 /**
  * Set the values for editing a task.
  * @param {number} i - The index of the task.
@@ -297,7 +282,6 @@ function setEditTaskValues(i) {
   selectedPrioPopupEdit = tasks[i].prio;
 }
 
-
 /**
  * Push subtasks of a task into the subtasks array.
  * @param {number} i - The index of the task.
@@ -314,7 +298,6 @@ function pushTasksSubtasks(i) {
   }
 }
 
-
 /**
  * Clear the selected contacts array.
  */
@@ -323,7 +306,6 @@ function clearSelectedContactsArray() {
     selectedContacts = [];
   }
 }
-
 
 /**
  * Add selected contacts from a task to the selected contacts array.
@@ -340,7 +322,6 @@ function addSelectedContactsFromTask(i) {
   }
 }
 
-
 /**
  * Delete selected contacts from a task.
  * @param {number} i - The index of the task.
@@ -352,7 +333,6 @@ function deleteSelectedContactsFromTask(i) {
     task.selectedContacts.splice(j, 1);
   }
 }
-
 
 /**
  * Render selected contacts for editing a task.
@@ -370,7 +350,6 @@ function renderSelectedContactsEdit(i) {
   }
 }
 
-
 /**
  * Remove a selected contact from a task.
  * @param {number} i - The index of the task.
@@ -380,7 +359,6 @@ function removeSelectedContact(i, j) {
   selectedContacts.splice(j, 1);
   renderSelectedContactsEdit(i);
 }
-
 
 /**
  * Populate the assigned dropdown menu with contacts.
@@ -401,4 +379,3 @@ function populateAssignedDropdown() {
     }
   }
 }
-

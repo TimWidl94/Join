@@ -27,8 +27,6 @@ async function init() {
   changePrioToMedium('mediumContainer', 'mediumImg');
   setMinDateToday('myDateInput');
   await setNumberOnContacts();
-  // setupEnterKeyListener();
-  // setupEnterKeyListenerNew();
   console.log('addTask reloaded');
 }
 

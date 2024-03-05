@@ -151,7 +151,6 @@ function renderEditContactDesktopOrMobile(acronym, color, i) {
 }
 
 
-
 /**
  * Close the contact popup window.
  * Closes the popup window for editing or adding a contact.

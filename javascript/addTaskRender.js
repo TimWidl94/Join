@@ -22,6 +22,7 @@ function renderSubTask() {
   container.innerHTML += subTaskInputHtml();
 }
 
+
 /**
  * Renders the subtask input field for big AddTask.
  */
@@ -241,8 +242,6 @@ function closeDropDown() {
 }
 
 
-
-
 // Function to close the dropdown menu with if
 document.addEventListener('DOMContentLoaded', function () {
   document.body.addEventListener('click', function (event) {
@@ -259,7 +258,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 });
-
 
 
 // Function for openDropDownCategory

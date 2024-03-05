@@ -14,6 +14,7 @@ function setMinDateTodayPopup(inputIdPopup) {
   });
 }
 
+
 /**
  * Open the add task popup for a specific column.
  * @param {string} column - The column identifier.
@@ -32,6 +33,7 @@ async function openAddTaskPopup(column) {
   subtasks = [];
 }
 
+
 /**
  * Add a task popup.
  * @param {string} id - The task identifier.
@@ -42,6 +44,7 @@ async function addTaskPopUp(id, section) {
   await renderBoardTasks();
   closeAddTaskPopup();
 }
+
 
 /**
  * Close the add task popup.
@@ -58,6 +61,7 @@ function closeAddTaskPopup() {
     subtasks = [];
   });
 }
+
 
 /**
  * Open a task popup for editing.
@@ -81,6 +85,7 @@ function openTaskPopup(i) {
   setupTaskPopup(i);
 }
 
+
 /**
  * Setup the task popup by setting category background, checking subtasks, and rendering assigned contacts and subtasks.
  * @param {number} i - The index of the task.
@@ -91,6 +96,7 @@ function setupTaskPopup(i) {
   renderAssignedToContacs(i);
   renderSubtasks(i, 'subtaskContainerPopup');
 }
+
 
 /**
  * Close the task popup.
@@ -114,6 +120,7 @@ async function closeTaskPopup() {
   });
 }
 
+
 /**
  * Event listener to close the add task popup when clicking outside of it.
  * @listens click
@@ -132,6 +139,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
+
 /**
  * Check if subtasks exist for a task and update the display accordingly.
  * @param {number} i - The index of the task.
@@ -146,6 +154,7 @@ function checkSubtasksExisting(i) {
   }
 }
 
+
 /**
  * Get the color of a contact by its name.
  * @param {string} selectedContactName - The name of the contact.
@@ -157,6 +166,7 @@ function getContactColor(selectedContactName) {
     return contacts[index].color;
   }
 }
+
 
 /**
  * Set the priority image for a task.
@@ -178,6 +188,7 @@ function setPrioImg(i) {
   }
 }
 
+
 /**
  * Convert the date format from YYYY-MM-DD to DD/MM/YYYY.
  * @param {string} date - The date in YYYY-MM-DD format.
@@ -189,6 +200,7 @@ function convertDateFormat(date) {
   return newDate;
 }
 
+
 /**
  * Delete a task.
  * @param {number} i - The index of the task to delete.
@@ -197,6 +209,7 @@ function deleteTask(i) {
   tasks.splice(i, 1);
   closeTaskPopup();
 }
+
 
 /**
  * Delete a subtask during task editing.
@@ -213,6 +226,7 @@ function deleteSubTaskEdit(id, idContainer, subTaskInput) {
   subtasks.splice(nr, 1);
   renderGeneratedSubTasksEdit(idContainer, taskIndex);
 }
+
 
 /**
  * Find the index of a task based on the subtask input field.
@@ -233,6 +247,7 @@ function findTaskEdit(subTaskInput) {
   return -1;
 }
 
+
 /**
  * Find the position of a subtask based on its ID.
  * @param {string} id - The ID of the subtask.
@@ -245,6 +260,7 @@ function findSubtaskPositionEdit(id) {
 
   return nr;
 }
+
 
 /**
  * Edit a task.
@@ -265,6 +281,7 @@ async function editTask(i) {
   setAssignedToContactsDropdown();
 }
 
+
 /**
  * Set the values for editing a task.
  * @param {number} i - The index of the task.
@@ -283,6 +300,7 @@ function setEditTaskValues(i) {
   selectedPrioPopupEdit = tasks[i].prio;
 }
 
+
 /**
  * Push subtasks of a task into the subtasks array.
  * @param {number} i - The index of the task.
@@ -299,6 +317,7 @@ function pushTasksSubtasks(i) {
   }
 }
 
+
 /**
  * Clear the selected contacts array.
  */
@@ -307,6 +326,7 @@ function clearSelectedContactsArray() {
     selectedContacts = [];
   }
 }
+
 
 /**
  * Add selected contacts from a task to the selected contacts array.
@@ -323,6 +343,7 @@ function addSelectedContactsFromTask(i) {
   }
 }
 
+
 /**
  * Delete selected contacts from a task.
  * @param {number} i - The index of the task.
@@ -334,6 +355,7 @@ function deleteSelectedContactsFromTask(i) {
     task.selectedContacts.splice(j, 1);
   }
 }
+
 
 /**
  * Render selected contacts for editing a task.
@@ -351,6 +373,7 @@ function renderSelectedContactsEdit(i) {
   }
 }
 
+
 /**
  * Remove a selected contact from a task.
  * @param {number} i - The index of the task.
@@ -360,6 +383,7 @@ function removeSelectedContact(i, j) {
   selectedContacts.splice(j, 1);
   renderSelectedContactsEdit(i);
 }
+
 
 /**
  * Populate the assigned dropdown menu with contacts.

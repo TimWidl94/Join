@@ -9,6 +9,7 @@ function findSubtaskPosition(id) {
   return nr;
 }
 
+
 /**
  * Checks if the task form is filled with required information.
  *
@@ -22,6 +23,7 @@ function checkIfFormIsFilled(id) {
   }
 }
 
+
 /**
  * Sets the value of 'isChoosen' to 'false' for all contacts in the list and saves the updated contacts.
  */
@@ -32,6 +34,7 @@ async function resetIsChoosenValue() {
   }
   await saveContacts();
 }
+
 
 /**
  * Toggles the 'isChoosen' value of the contact at the specified index.
@@ -52,6 +55,7 @@ async function setIsChoosenValue(i) {
     return;
   }
 }
+
 
 /**
  * Registers an event listener for the input field with the ID 'subTaskInput',
@@ -75,6 +79,7 @@ window.addEventListener(
   true
 );
 
+
 /**
  * Generates initials from a contact name.
  *
@@ -90,6 +95,7 @@ function getInitials(contactName) {
   return initials.toUpperCase();
 }
 
+
 /**
  * Moves a popup to the center of the screen.
  *
@@ -98,6 +104,7 @@ function getInitials(contactName) {
 function moveToCenter(popup) {
   popup.classList.add('moveToCenterAddTask');
 }
+
 
 /**
  * Sets the value of an input field back to an empty string.
@@ -109,6 +116,7 @@ function setValueBack(idInput, idContainer) {
   let inputField = document.getElementById(idInput);
   inputField.value = ``;
 }
+
 
 /**
  * Resets the input field for subtasks.

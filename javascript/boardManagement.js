@@ -47,11 +47,8 @@ async function addTaskPopUp(id, section) {
  */
 async function showPopUpAddedTaskOnBoard() {
   let popup = document.getElementById('addedTaskToBoard');
-  // popup.classList.remove('d-none');
-  // popup.classList.add('moveToCenterAddTask');
   setTimeout(() => popup.classList.add('moveToCenterAddTask'), 200);
   setTimeout(() => popup.classList.remove('moveToCenterAddTask'), 3000);
-  // popup.classList.add('d-none');
 }
 
 /**

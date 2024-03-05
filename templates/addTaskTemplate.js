@@ -93,6 +93,7 @@ function addTaskHtml() {
   `;
 }
 
+
 /**
  * Generates HTML for the subtask input field.
  * @returns {string} The HTML content for the subtask input field.
@@ -107,6 +108,7 @@ function subTaskInputHtml() {
     <div id="subTaskError" class="subtask-div-error"></div>
   `;
 }
+
 
 /**
  * Generates HTML for the subtask input field for Big AddTask.
@@ -123,6 +125,7 @@ function subTaskInputHtmlAddTask() {
   `;
 }
 
+
 /**
  * Generates HTML for the subtask input field.
  * @returns {string} The HTML content for the subtask input field.
@@ -133,6 +136,7 @@ function subTaskInputFieldHtml() {
     <img onclick="addSubTask('subTaskInput', 'inputFieldBox')" class="inputImgPlus" src="assets/img/AddTask/plus.svg" alt="Add Icon" />
   `;
 }
+
 
 /**
  * Generates HTML for a subtask item.
@@ -150,6 +154,7 @@ function subTasksValueHtml(id, i) {
     </li>`;
 }
 
+
 /**
  * Generates HTML for a subtask item big AddTask.
  * @param {string} id - The ID of the subtask item.
@@ -165,6 +170,7 @@ function subTasksValueHtmladdTask(id, i) {
       </div>
     </li>`;
 }
+
 
 /**
  * Generates HTML for editing a subtask.
@@ -185,6 +191,7 @@ function editSubTaskHtml(textContent, id) {
   `;
 }
 
+
 /**
  * Generates HTML for displaying a message when a task is added to the board.
  * @returns {string} The HTML content for the task added to board message.
@@ -197,6 +204,7 @@ function addedTaskToBoardHtml() {
     </div>
   `;
 }
+
 
 /**
  * Generates HTML for the task form to add assigned contacts.
@@ -215,6 +223,7 @@ function showTaskFormHtml() {
     </div>
   `;
 }
+
 
 /**
  * Generates HTML for displaying assigned contacts.
@@ -238,6 +247,7 @@ function assignedToUserHtml(i, color, currentUser, initials, contactNumber) {
   `;
 }
 
+
 /**
  * Generates HTML for displaying assigned contacts for the current user.
  * @param {number} i - The index of the contact.
@@ -247,7 +257,6 @@ function assignedToUserHtml(i, color, currentUser, initials, contactNumber) {
  * @param {boolean} isChoosen - Indicates if the contact is chosen.
  * @returns {string} The HTML content for displaying assigned contacts for the current user.
  */
-
 function assignedToUserYouHtml(i, color, currentUser, initials, contactNumber) {
   return /*html*/ `
     <div id="user-${i}" class="flex-checkbox selected-profile" onclick="addAssignedContact(${i}, '${color}', ${contactNumber})" data-value="${currentUser}">
@@ -258,6 +267,7 @@ function assignedToUserYouHtml(i, color, currentUser, initials, contactNumber) {
     <img id="checkBox-${i}" class="flex-checkbox-img"src="assets/img/icons/checkBox.svg" alt="">
   `;
 }
+
 
 /**
  * Generates HTML for subtasks after deletion.
@@ -277,6 +287,7 @@ function subtasksAfterDeletionHtml(i, nr, idContainer) {
   `;
 }
 
+
 /**
  * Generates HTML for rendering selected contacts.
  * @param {number} i - The index of the contact.
@@ -290,6 +301,7 @@ function renderSelectedContactsHtml(i, j, initials, color) {
     <div class="assinged-contact-overview" style="background-color:${color}" onclick="removeSelectedContact(${i}, ${j})">${initials}</div>
   `;
 }
+
 
 /**
  * Generates HTML for changing buttons in the task form.

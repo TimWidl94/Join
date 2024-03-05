@@ -33,6 +33,7 @@ function generateTodoHTML(i, img, x) {
                 </div>`;
 }
 
+
 /**
  * Generates HTML for subtasks.
  * @param {string} id - The ID of the subtask.
@@ -50,6 +51,7 @@ function subTasksValueHtml(id, i) {
     </li>`;
 }
 
+
 /**
  * Generates HTML for the subtask input field in an editable task popup.
  * @param {number} i - The index of the task.
@@ -63,9 +65,9 @@ function subTaskInputEditHtml(i) {
             <img onclick="addSubTaskEdit('subTaskInputEdit', 'subTaskContainer', ${i})" class="inputImgPlus" src="assets/img/AddTask/plus.svg" alt="Add Icon" />
           </div>
           <div id="subTaskErrorEdit" class="subtask-div-error"></div>
-   
   `;
 }
+
 
 /**
  * Generates HTML for the subtask input field in a task popup.
@@ -77,6 +79,7 @@ function subTaskInputFieldHtml() {
   <img onclick="addSubTask('subTaskInput', 'inputFieldBox')" class="inputImgPlus" src="assets/img/AddTask/plus.svg" alt="Add Icon" />
   `;
 }
+
 
 /**
  * Generates HTML for a subtask in an editable task popup.
@@ -95,6 +98,7 @@ function subTasksValueEditHtml(id, subTaskInput, j) {
       </div>
     </li>`;
 }
+
 
 /**
  * Generates HTML for a task popup with specified information.
@@ -273,6 +277,7 @@ function renderSubtasksInfoHtml(j, subTask, i) {
 `;
 }
 
+
 function subTasksValueHtml(id, i) {
   return /*html*/ `
     <li id="${id}" class="subtask-div-list" onclick="doNotCLose(event)" ondblclick="editSubTask(${id})"><div class="subtask-div-text">${subtasks[i]['subTaskInput']}</div>
@@ -282,6 +287,7 @@ function subTasksValueHtml(id, i) {
       </div>
     </li>`;
 }
+
 
 function addTaskPopUpHtml(column) {
   return /*html*/ `
@@ -387,6 +393,7 @@ function addTaskPopUpHtml(column) {
     `;
 }
 
+
 /**
  * Generates HTML content for indicating that a task has been added to the board.
  * @returns {string} The HTML content for the task added message.
@@ -399,6 +406,7 @@ function addedTaskToBoardHtml() {
     </div>
   `;
 }
+
 
 /**
  * Generates HTML content for assigning a user with specified information.
@@ -419,6 +427,7 @@ function assignedToUserHtml(i, color, currentUser, initials) {
   `;
 }
 
+
 /**
  * Generates HTML content for assigning the current user with specified information.
  * @param {number} i - The index of the user.
@@ -438,6 +447,7 @@ function assignedToUserYouHtml(i, color, currentUser, initials) {
   `;
 }
 
+
 /**
  * Generates HTML content for rendering selected contacts with specified information for editing.
  * @param {number} i - The index of the task.
@@ -451,6 +461,7 @@ function renderSelectedContactsEditHtml(i, j, color, initials) {
     <div class="assinged-contact-overview" style="background-color:${color}" onclick="removeSelectedContact(${i}, ${j})">${initials}</div>
     `;
 }
+
 
 /**
  * Generates HTML content for displaying the task form for editing.
@@ -470,6 +481,7 @@ function showTaskFormEditHtml() {
   `;
 }
 
+
 /**
  * Generates HTML content for changing buttons for adding tasks during editing.
  * @param {number} i - The index of the task.
@@ -485,6 +497,8 @@ function changeButtonsAddTaskEditHtml(i) {
     </div>
   `;
 }
+
+
 /**
  * Generates HTML content for rendering a contact profile in a board task.
  * @param {string} contact - The name or initials of the contact.
@@ -497,6 +511,7 @@ function renderContactsInBoardTaskHtml(contact, contactColor) {
   `;
 }
 
+
 /**
  * Generates HTML content for rendering additional contacts if there are more than four.
  * @param {number} additionalContactLength - The number of additional contacts beyond the fourth.
@@ -507,6 +522,7 @@ function renderIfMoreContactsThanFourHtml(additionalContactLength) {
     <div class="board-task-member-profile" style="background-color: #a8a8a8 !important">${additionalContactLength}</div>
   `;
 }
+
 
 /**
  * Generates HTML content for rendering additional contacts if there are more than four.
@@ -520,6 +536,7 @@ function moveBoxTasksHtml(boxId) {
 <div class="board-task drag-area-highlight d-none" id="${containerId}"
    ondrop="moveTo(${moveContainerId})" 
    ondragover="allowDrop(event)" 
-   ondragleave="removeHighlight(${moveContainerId})";></div>
+   ondragleave="removeHighlight(${moveContainerId})";>
+</div>
 `;
 }

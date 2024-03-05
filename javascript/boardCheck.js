@@ -139,7 +139,8 @@ async function taskProgressBar(i) {
   let progressBar = document.getElementById('progress-' + i);
   let allSubtasks = tasks[i]['subtasks'].length;
   let width = (100 / allSubtasks) * x;
-  progressBar.style.width = `${width}%`;
+  if(width > 0){
+  progressBar.style.width = `${width}%`;}
 }
 
 

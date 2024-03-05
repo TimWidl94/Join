@@ -30,6 +30,7 @@ async function openAddTaskPopup(column) {
   document.getElementById('addTaskPopup').classList.remove('d-none');
   document.getElementById('addTaskPopup').classList.remove('slide-out');
   document.getElementById('addTaskPopup').classList.add('slide-in');
+  subtasks = [];
 }
 
 

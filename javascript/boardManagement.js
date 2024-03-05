@@ -39,13 +39,25 @@ async function openAddTaskPopup(column) {
 async function addTaskPopUp(id, section) {
   await pushAddTask(id, section);
   await renderBoardTasks();
-  closeAddTaskPopup();
+  await closeAddTaskPopup();
+}
+
+/**
+ * Shows a popup indicating that a task has been added to the board.
+ */
+async function showPopUpAddedTaskOnBoard() {
+  let popup = document.getElementById('addedTaskToBoard');
+  // popup.classList.remove('d-none');
+  // popup.classList.add('moveToCenterAddTask');
+  setTimeout(() => popup.classList.add('moveToCenterAddTask'), 200);
+  setTimeout(() => popup.classList.remove('moveToCenterAddTask'), 3000);
+  // popup.classList.add('d-none');
 }
 
 /**
  * Close the add task popup.
  */
-function closeAddTaskPopup() {
+async function closeAddTaskPopup() {
   let addTaskPopup = document.getElementById('addTaskPopup');
   addTaskPopup.classList.remove('slide-in');
   addTaskPopup.classList.add('slide-out');
@@ -55,6 +67,7 @@ function closeAddTaskPopup() {
     addTaskPopup.classList.add('d-none');
     document.getElementById('addTaskPopupWrapper').classList.add('d-none');
     subtasks = [];
+    showPopUpAddedTaskOnBoard();
   });
 }
 

@@ -187,10 +187,16 @@
   .logo-bg-animation {
     animation: none;
   }
+
   #logo-white {
     display: none;
   }
-  
+
+  .login-mobile-position {
+    position: absolute;
+    top:0;
+}
+
   #logo {
     width: 64px;
     height: auto;

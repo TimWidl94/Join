@@ -59,7 +59,7 @@ function summaryHtml() {
   </div>
       <div class="row">
         <div class="sum-col-50">
-          <div class="row">
+          <div class="sum-row-container">
             <div class="sum-col-12 summary-flex">
               <div class="sum-col-6">
                 <a href="/board.html">
@@ -91,7 +91,7 @@ function summaryHtml() {
               </div>
             </div>
           </div>
-          <div class="row">
+          <div class="sum-row-container">
         <div class="sum-col-12">
           <a href="/board.html">
               <div class="summary-summarySmallContainerMiddle summary-gap-urgent">
@@ -117,7 +117,7 @@ function summaryHtml() {
             </div>        
     
             </div>
-            <div class="row">
+            <div class="sum-row-container">
               <div class="sum-col-12 summary-flex-counter">
                 <div class="sum-col-4">
                   <a href="/board.html">

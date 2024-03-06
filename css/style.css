@@ -2491,7 +2491,7 @@ form {
 .row-header {
   display: flex;
   align-items: center;
-  padding-bottom: 28px;
+  padding-bottom: 0;
   background-color: #f6f7f8;
   gap: 32px; }
 
@@ -3214,6 +3214,9 @@ form {
   background-color: #4589FC;
   border: none;
   border-radius: 8px; }
+
+.sum-row-container {
+  margin-bottom: 20px; }
 
 .row {
   padding-top: 32px; }
@@ -4443,7 +4446,7 @@ button:disabled {
 .row-header {
   display: flex;
   align-items: center;
-  padding-bottom: 28px;
+  padding-bottom: 0;
   background-color: #f6f7f8;
   gap: 32px; }
 

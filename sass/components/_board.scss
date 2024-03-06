@@ -53,6 +53,7 @@
   height: calc(40% + 221px);
   overflow-y: scroll;
   overflow-x: hidden;
+  box-sizing: border-box;
 }
 
 .drag-area-empty {

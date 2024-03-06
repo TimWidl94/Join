@@ -2483,11 +2483,6 @@ form {
   padding-bottom: 28px;
   gap: 32px; }
 
-.sum-row {
-  display: flex;
-  padding-bottom: 20px;
-  gap: 32px; }
-
 .row-header {
   display: flex;
   align-items: center;
@@ -2567,8 +2562,7 @@ form {
 .heightContainerMax {
   height: calc(40% + 221px);
   overflow-y: scroll;
-  overflow-x: hidden;
-  box-sizing: border-box; }
+  overflow-x: hidden; }
 
 .drag-area-empty {
   display: flex;
@@ -4434,11 +4428,6 @@ button:disabled {
 .row {
   display: flex;
   padding-bottom: 28px;
-  gap: 32px; }
-
-.sum-row {
-  display: flex;
-  padding-bottom: 20px;
   gap: 32px; }
 
 .row-header {

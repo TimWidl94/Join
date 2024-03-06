@@ -2543,7 +2543,7 @@ form {
   gap: 16px;
   min-width: 100%;
   height: calc(100% + 221px);
-  min-height: 40px;
+  padding-bottom: 100px;
   position: relative;
   margin: 20px 0px; }
 
@@ -2557,7 +2557,6 @@ form {
 .overflowYActive {
   padding: 0px 10px;
   display: flex;
-  justify-content: center;
   flex-direction: column; }
 
 .overflowYActive::-webkit-scrollbar {

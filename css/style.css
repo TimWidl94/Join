@@ -247,8 +247,7 @@
 body {
   margin: 0;
   background-color: #f6f7f8;
-  font-family: 'Inter', sans-serif;
-  overflow: hidden; }
+  font-family: 'Inter', sans-serif; }
 
 p {
   margin-block-start: 0;
@@ -305,7 +304,7 @@ textarea {
 
 .body-add-task {
   margin: 0;
-  min-height: 100vh; }
+  min-height: 90vh; }
 
 #showSelectedCategory {
   font-size: 18px; }
@@ -336,7 +335,7 @@ textarea {
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
-  margin-top: 120px;
+  margin-top: 130px;
   padding-left: calc(232px + 50px);
   padding-right: 50px;
   overflow-x: hidden !important;
@@ -2164,9 +2163,7 @@ form {
 .containerSummary {
   margin: 120px 0px 0px 292px;
   background-color: #f6f7f8;
-  height: 100vh;
-  background-color: #f6f7f8;
-  height: 100vh;
+  height: 88vh;
   max-width: 1200px; }
 
 .sum-row {
@@ -2475,7 +2472,7 @@ form {
   padding: 80px 64px;
   left: 232px;
   background-color: #f6f7f8;
-  height: 100vh; }
+  height: 80vh; }
 
 .row {
   display: flex;
@@ -4429,7 +4426,7 @@ button:disabled {
   padding: 80px 64px;
   left: 232px;
   background-color: #f6f7f8;
-  height: 100vh; }
+  height: 80vh; }
 
 .row {
   display: flex;

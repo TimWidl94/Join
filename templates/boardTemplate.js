@@ -16,7 +16,7 @@ function generateTodoHTML(i, img, x) {
                 <div class="board-task-description">
                 ${tasks[i]['taskDescription']}
                 </div>
-                <div class="board-task-subtask">
+                <div id="subtaskClearIfEmpty-${i}" class="board-task-subtask">
                   <div class="board-task-subtask-progress">
                     <div
                       class="progress-done"

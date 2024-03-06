@@ -132,14 +132,16 @@ async function subTaskActive(j, i) {
  */
 async function taskProgressBar(i) {
   let x = await checkHowManySubtasksChecked(i);
-  let progressBar = document.getElementById('progress-' + i);
+  let progressBar = document.getElementById(`progress-${i}`);
+  let subtaskClearIfEmpty = document.getElementById(`subtaskClearIfEmpty-${i}`);
   let allSubtasks = tasks[i]['subtasks'].length;
   let width = (100 / allSubtasks) * x;
   if (width > 0) {
     progressBar.style.width = `${width}%`;
   }
   if(allSubtasks == 0) {
-    progressBar.innerHTML="";
+    subtaskClearIfEmpty.innerHTML="";
+    console.log(subtaskClearIfEmpty);
   }
 }
 

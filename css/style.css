@@ -3304,12 +3304,12 @@ form {
 @media (max-width: 600px) {
   .aTPopup,
   .atPopupEdit {
-    margin-left: 24px;
-    margin-right: 24px; }
+    margin-right: 24px;
+    width: calc(100% - 4 * 24px); }
+  .aTPopup {
+    margin-left: 24px; }
   .search-side-bar {
     padding: 12px 0 12px 7px; }
-  .aTPopupContentWrapper {
-    gap: 12px; }
   .btn-edit-task {
     height: 38px !important; }
   #assignedDropdown {
@@ -3340,7 +3340,9 @@ form {
 
 @media (max-width: 450px) {
   .aTPopupButtonsBottom {
-    flex-direction: column; } }
+    flex-direction: column; }
+  .aTPopupContentWrapper {
+    gap: 12px; } }
 
 @media (max-width: 400px) {
   .aTPopup,

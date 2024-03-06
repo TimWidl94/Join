@@ -336,7 +336,7 @@ textarea {
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
-  margin-top: calc(110px + 96px);
+  margin-top: 120px;
   padding-left: calc(232px + 50px);
   padding-right: 50px;
   overflow-x: hidden !important;
@@ -695,7 +695,6 @@ textarea {
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
-  min-height: 150px;
   max-height: 150px;
   overflow-y: auto;
   overflow-x: hidden; }

@@ -143,6 +143,9 @@
     animation: none; }
   #logo-white {
     display: none; }
+  .login-mobile-position {
+    position: absolute;
+    top: 0; }
   #logo {
     width: 64px;
     height: auto;
@@ -3675,7 +3678,7 @@ footer {
 @media (max-height: 800px) {
   .logInOverlayBox {
     justify-content: start;
-    margin-top: 120px;
+    margin-top: 130px;
     height: 100%; }
   .heightOverflowMobile {
     overflow: auto; }
@@ -4033,6 +4036,9 @@ input:focus {
   border: none;
   gap: 10px;
   padding: 15px 16px; }
+
+button:disabled {
+  background-color: #6d819b; }
 
 .buttonGreyBoard {
   display: flex;

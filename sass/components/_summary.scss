@@ -41,10 +41,8 @@
 
 .containerSummary {
   margin: 120px 0px 0px 292px;
-  background-color: #f6f7f8;
-  height: 100vh;
-  background-color: #f6f7f8;
-  height: 100vh;
+  background-color: $summary-background-color;
+  height: 88vh;
   max-width: 1200px;
 }
 .sum-row {

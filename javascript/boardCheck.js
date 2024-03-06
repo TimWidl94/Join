@@ -60,11 +60,11 @@ function checkTaskAreaDisplayEmpty() {
     let dragArea = dragAreas[i];
     let category = categories[i];
 
-    console.log('dragArea:', dragArea);
-    console.log('dragArea.children.length:', dragArea.children.length);
+    // console.log('dragArea:', dragArea);
+    // console.log('dragArea.children.length:', dragArea.children.length);
 
     if (dragArea.children.length < 1) {
-      console.log('dragArea:', dragArea);
+      // console.log('dragArea:', dragArea);
       dragArea.innerHTML = /*html*/ `<div class="drag-area-empty">No task in "${category}"</div>`;
     }
   }

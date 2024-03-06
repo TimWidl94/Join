@@ -100,6 +100,7 @@
 
 #capital-letters-list {
   color: $color-light;
+  font-size: 18px;
 }
 
 .start-letter {
@@ -161,6 +162,7 @@
   align-items: center;
   width: 42px;
   height: 42px;
+  flex-shrink: 0;
   border: 2px solid $color-light;
   border-radius: 100px;
 }

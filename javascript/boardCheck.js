@@ -18,9 +18,11 @@ function setAssignedToContactsDropdown() {
 /**
  * Open the move to menu.
  */
-function openMenuMoveTo() {
+function openMenuMoveTo(category) {
   let container = document.getElementById('menuMoveToMobile');
   container.classList.toggle('d-none');
+  let button = document.getElementById(`btn-${category}`);
+  button.classList.add('d-none');
 }
 
 /**

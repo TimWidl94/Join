@@ -6,7 +6,6 @@ let selectedCategories = [];
 let categoryIsSelected = false;
 let selectedPrio;
 
-
 /**
  * Initializes the application.
  * Loads necessary data and sets up the initial UI.
@@ -30,7 +29,6 @@ async function init() {
   console.log('addTask reloaded');
 }
 
-
 /**
  * Sets up a keypress event listener for the "Enter" key on the subtask input field.
  * When the "Enter" key is pressed, it adds a new subtask to the container.
@@ -47,7 +45,6 @@ function setupEnterKeyListenerNew() {
   });
 }
 
-
 /**
  * Adds a task to the tasks array and stores it in local storage.
  * @param {string} id - The ID of the input field.
@@ -61,7 +58,6 @@ async function addTask(event, id, column) {
   event.preventDefault();
   return false;
 }
-
 
 /**
  * Adds a new task to the tasks array with the provided details.
@@ -88,7 +84,6 @@ async function pushAddTask(id, column) {
     column
   );
 }
-
 
 /**
  * Adds a new task to the tasks array with the provided details.
@@ -125,17 +120,16 @@ async function addTaskValues(
   await setItem('tasks', JSON.stringify(tasks));
 }
 
-
 /**
  * Clears the input value and resets the task form.
  */
 function clearInputValue() {
+  subtasks = [];
   renderAddTask();
   showTaskForm('assignedTo');
   changePrioToMedium('mediumContainer', 'mediumImg');
   renderSubTask();
 }
-
 
 /**
  * Clears the input value and resets the task form from the popup.
@@ -147,7 +141,6 @@ function clearInputValuePopup() {
   renderSubTask();
 }
 
-
 /**
  * Shows a popup indicating that a task has been added to the board.
  */
@@ -157,7 +150,6 @@ async function showPopUpAddedTaskToBoard() {
   await setTimeout(() => moveToCenter(popup), 200);
   setTimeout(() => (window.location.href = './board.html'), 3000);
 }
-
 
 /**
  * Changes the buttons for adding a task.
@@ -170,7 +162,6 @@ function changeButtonsAddTask(id) {
   inputField.innerHTML = changeButtonsAddTaskHtml();
   document.getElementById('subTaskInput').focus();
 }
-
 
 /**
  * Changes the priority of a task to medium.
@@ -191,7 +182,6 @@ function changePrioToMedium(idContainer, idImg) {
   document.getElementById('lowImg').src = './assets/img/AddTask/ArrowDownPrioSign.svg';
 }
 
-
 /**
  * Changes the priority of a task to urgent.
  *
@@ -211,7 +201,6 @@ function changePrioToUrgent(idContainer, idImg) {
   document.getElementById('lowImg').src = './assets/img/AddTask/ArrowDownPrioSign.svg';
 }
 
-
 /**
  * Changes the priority of a task to low.
  *
@@ -230,7 +219,6 @@ function changePrioToLow(idContainer, idImg) {
   document.getElementById('mediumImg').src = './assets/img/AddTask/mediumPrioSignInactive.svg';
 }
 
-
 /**
  * Selects a category for the task.
  *
@@ -245,7 +233,6 @@ function selectCategory(category, id) {
   selectCategoryIfElse(userStory, technicalTask, showSelectedCategory, assignedDropdownCategory, category);
   checkIfFormIsFilled(id);
 }
-
 
 /**
  * Selects a category for the task.
@@ -265,7 +252,6 @@ function selectCategoryIfElse(userStory, technicalTask, showSelectedCategory, as
     selectDefaultCategory(userStory, technicalTask, showSelectedCategory, assignedDropdownCategory, category);
   }
 }
-
 
 /**
  * Selects the user story category.
@@ -284,7 +270,6 @@ function selectUserStory(userStory, technicalTask, showSelectedCategory, assigne
   categoryIsSelected = true;
 }
 
-
 /**
  * Selects the technical task category.
  *
@@ -301,7 +286,6 @@ function selectTechnicalTask(userStory, technicalTask, showSelectedCategory, ass
   assignedDropdownCategory.classList.add('d-none');
   categoryIsSelected = true;
 }
-
 
 /**
  * Selects a category for the task.
@@ -322,7 +306,6 @@ function selectCategoryIfElse(userStory, technicalTask, showSelectedCategory, as
   }
 }
 
-
 /**
  * Deletes a subtask from the list of subtasks.
  *
@@ -339,7 +322,6 @@ function deleteSubTask(number, idContainer) {
     subTaskContainer.innerHTML += subtasksAfterDeletionHtml(i, nr, idContainer);
   }
 }
-
 
 /**
  * Removes a selected contact from the list of selected contacts.
@@ -362,7 +344,6 @@ function removeSelectedContact(assignedDropdown, checkboxImage, userID, selected
   }
 }
 
-
 /**
  * Sets the minimum date of an input field to today's date and prevents selecting past dates.
  * @param {string} inputId - The ID of the input field.
@@ -378,7 +359,6 @@ function setMinDateToday(inputId) {
     }
   });
 }
-
 
 /**
  * Adds a subtask to the subtasks array.
@@ -402,7 +382,6 @@ function addSubTask(idInput, idContainer) {
     addSubTaskFinalize(idInput, idContainer);
   }
 }
-
 
 /**
  * Adds a subtask and finalizes the process by clearing the input field, rendering generated subtasks, and resetting the input field style.

@@ -2363,6 +2363,10 @@ form {
   .summary-gap-urgent {
     gap: 30px !important; } }
 
+@media (max-width: 1300px) {
+  .sum-col-6 {
+    width: 44%; } }
+
 @media (max-width: 1030px) {
   .boardImg {
     width: 40px;
@@ -2460,7 +2464,7 @@ form {
     font-size: 15px; }
   .containerSummary {
     padding: 89px 0px;
-    width: 90%; }
+    width: 100%; }
   .summary-padding {
     margin-left: 20px;
     margin-top: 20px; } }

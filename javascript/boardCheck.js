@@ -138,6 +138,9 @@ async function taskProgressBar(i) {
   if (width > 0) {
     progressBar.style.width = `${width}%`;
   }
+  if(allSubtasks == 0) {
+    progressBar.innerHTML="";
+  }
 }
 
 /**

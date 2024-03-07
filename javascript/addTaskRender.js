@@ -13,7 +13,6 @@ function renderAddTask() {
   }
 }
 
-
 /**
  * Renders the subtask input field.
  */
@@ -22,7 +21,6 @@ function renderSubTask() {
   container.innerHTML += subTaskInputHtml();
 }
 
-
 /**
  * Renders the subtask input field for big AddTask.
  */
@@ -30,7 +28,6 @@ function renderSubTaskAddTask() {
   let container = document.getElementById('subtasks');
   container.innerHTML += subTaskInputHtmlAddTask();
 }
-
 
 /**
  * Renders the generated subtasks in the specified container.
@@ -46,7 +43,6 @@ function renderGeneratedSubTasks(idContainer) {
   }
 }
 
-
 /**
  * Edits the subtask with the given ID.
  * @param {string} id - The ID of the subtask to edit.
@@ -58,7 +54,6 @@ function editSubTask(id) {
   container.innerHTML = editSubTaskHtml(textContent, id);
 }
 
-
 /**
  * Adds or edits a subtask at the specified index.
  * @param {number} id - The ID of the subtask to save edit.
@@ -66,11 +61,14 @@ function editSubTask(id) {
  */
 function addEditSubTask(id, idContainer) {
   let subTaskInput = document.getElementById('editSubTaskInput');
+
   let nr = findSubtaskPosition(id);
   subtasks[nr]['subTaskInput'] = subTaskInput.value;
+  if (subTaskInput.value.length == 0) {
+    deleteSubTask(id, idContainer);
+  }
   renderGeneratedSubTasks(idContainer);
 }
-
 
 /**
  * Displays the task form with assigned contacts.
@@ -99,7 +97,6 @@ async function showTaskForm(id) {
   }
 }
 
-
 /**
  * Checks if a specific contact is selected and updates the UI accordingly.
  * @param {number} i - The index of the contact.
@@ -116,7 +113,6 @@ function checkIfSelectedContact(i, contactNumber) {
     userId.classList.remove('selected-profile-active-item');
   }
 }
-
 
 /**
  * Filters contacts based on the search term and renders them.
@@ -141,7 +137,6 @@ async function filterAddTaskContact() {
   }
 }
 
-
 /**
  * Renders the contacts in the assigned dropdown.
  * @param {Array} contacts - The array of contacts to render.
@@ -160,7 +155,6 @@ async function renderContacts(contacts) {
     checkIfSelectedContact(i);
   }
 }
-
 
 /**
  * Renders the filtered contacts in the assigned dropdown.
@@ -187,7 +181,6 @@ function renderFilteredContacts(filteredContacts) {
   }
 }
 
-
 /**
  * Toggles the display of a dropdown menu.
  * @param {string} idDropdown - The ID of the dropdown menu to toggle.
@@ -207,7 +200,6 @@ function openDropDown(idDropdown, idImgArrow) {
     dropdownImgArrow.classList.remove('rotate-arrow');
   }
 }
-
 
 /**
  * Closes the dropdown menu if the corresponding elements exist in the DOM.
@@ -238,9 +230,7 @@ function closeDropDown() {
   if (dropdownImgArrowCategory) {
     dropdownImgArrowCategory.classList.remove('rotate-arrow');
   }
-
 }
-
 
 // Function to close the dropdown menu with if
 document.addEventListener('DOMContentLoaded', function () {
@@ -259,7 +249,6 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
-
 // Function for openDropDownCategory
 function openDropDownCategory() {
   let assignedDropdownCategory = document.getElementById('assignedDropdownCategory');
@@ -276,7 +265,6 @@ function openDropDownCategory() {
   }
 }
 
-
 // Function for closing DropDownCategory
 function closeDropDownCategory(event) {
   let assignedDropdownCategory = document.getElementById('assignedDropdownCategory');
@@ -290,7 +278,6 @@ function closeDropDownCategory(event) {
     document.body.removeEventListener('click', closeDropDown);
   }
 }
-
 
 /**
  * Adds an assigned contact to the selected contacts list.
@@ -307,7 +294,6 @@ async function addAssignedContact(i, color, contactsNumber) {
   await setIsChoosenValue(contactsNumber);
   await renderSelectedContacts(i);
 }
-
 
 /**
  * Adds a filtered and assigned contact with specified attributes.
@@ -327,7 +313,6 @@ async function addFilteredAssignedContact(i, color, contactsNumber) {
   await setIsChoosenValue(contactsNumber);
   await renderSelectedContacts(i);
 }
-
 
 /**
  * Adds a selected contact to the list of selected contacts.
@@ -357,7 +342,6 @@ function addSelectedContact(assignedDropdown, checkboxImage, userID, selectedCon
   }
 }
 
-
 /**
  * Sets background for the selected contact based on its 'isChoosen' status.
  * Updates the visual representation of the contact with the specified div ID.
@@ -377,7 +361,6 @@ function backgroundForSelectedContact(divId) {
   }
 }
 
-
 /**
  * Checks if the selected contact already exists in the list of selected contacts.
  *
@@ -391,7 +374,6 @@ function checkIfSelectedContactExist(selectedContact) {
     }
   }
 }
-
 
 /**
  * Renders the selected contacts in the "Assigned Contacts" section on the user interface.

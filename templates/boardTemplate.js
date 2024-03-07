@@ -16,7 +16,7 @@ function generateTodoHTML(i, img, x) {
                 <div class="board-task-description">
                 ${tasks[i]['taskDescription']}
                 </div>
-                <div class="board-task-subtask">
+                <div id="subtaskClearIfEmpty-${i}" class="board-task-subtask">
                   <div class="board-task-subtask-progress">
                     <div
                       class="progress-done"
@@ -32,7 +32,6 @@ function generateTodoHTML(i, img, x) {
                     <img src="${img}" alt="" id="taskImg${i}"/>
                 </div>`;
 }
-
 
 /**
  * Generates HTML for subtasks.
@@ -51,7 +50,6 @@ function subTasksValueHtml(id, i) {
     </li>`;
 }
 
-
 /**
  * Generates HTML for the subtask input field in an editable task popup.
  * @param {number} i - The index of the task.
@@ -68,7 +66,6 @@ function subTaskInputEditHtml(i) {
   `;
 }
 
-
 /**
  * Generates HTML for the subtask input field in a task popup.
  * @returns {string} - The HTML content for the subtask input field.
@@ -79,7 +76,6 @@ function subTaskInputFieldHtml() {
   <img onclick="addSubTask('subTaskInput', 'inputFieldBox')" class="inputImgPlus" src="assets/img/AddTask/plus.svg" alt="Add Icon" />
   `;
 }
-
 
 /**
  * Generates HTML for a subtask in an editable task popup.
@@ -98,7 +94,6 @@ function subTasksValueEditHtml(id, subTaskInput, j) {
       </div>
     </li>`;
 }
-
 
 /**
  * Generates HTML for a task popup with specified information.
@@ -152,13 +147,13 @@ function generateTaskPopupHTML(i, img, date) {
           <div class="aTPopupButtonsBottom">
           <div class="aTPopupButtonsBottomMenuContainer"> 
             <div>
-              <button class="buttonGrey" onclick="openMenuMoveTo()">Move to Category</button>
+              <button class="buttonGrey" onclick="openMenuMoveTo('${tasks[i].currentState}')">Move to Category</button>
             </div>
             <div class="menuMoveToMobile d-none" id="menuMoveToMobile">
-              <button class="buttonMenuMoveTaskMobile width100" onclick="moveToMobile(${i}, 'toDo')">To do</button>
-              <button class="buttonMenuMoveTaskMobile width100" onclick="moveToMobile(${i}, 'inProgress')">In progress</button>
-              <button class="buttonMenuMoveTaskMobile width100" onclick="moveToMobile(${i}, 'awaitFeedback')">Await feedback</button>
-              <button class="buttonMenuMoveTaskMobile width100" onclick="moveToMobile(${i}, 'done')">Done</button>
+              <button class="buttonMenuMoveTaskMobile width100" onclick="moveToMobile(${i}, 'toDo')" id="btn-toDo">To do</button>
+              <button class="buttonMenuMoveTaskMobile width100" onclick="moveToMobile(${i}, 'inProgress')" id="btn-inProgress">In progress</button>
+              <button class="buttonMenuMoveTaskMobile width100" onclick="moveToMobile(${i}, 'awaitFeedback')" id="btn-awaitFeedback">Await feedback</button>
+              <button class="buttonMenuMoveTaskMobile width100" onclick="moveToMobile(${i}, 'done')" id="btn-done">Done</button>
             </div>
           </div> 
           <div class=aTPopupButtonsBottomRightContainer>
@@ -277,7 +272,6 @@ function renderSubtasksInfoHtml(j, subTask, i) {
 `;
 }
 
-
 function subTasksValueHtml(id, i) {
   return /*html*/ `
     <li id="${id}" class="subtask-div-list" onclick="doNotCLose(event)" ondblclick="editSubTask(${id})"><div class="subtask-div-text">${subtasks[i]['subTaskInput']}</div>
@@ -287,7 +281,6 @@ function subTasksValueHtml(id, i) {
       </div>
     </li>`;
 }
-
 
 function addTaskPopUpHtml(column) {
   return /*html*/ `
@@ -393,7 +386,6 @@ function addTaskPopUpHtml(column) {
     `;
 }
 
-
 /**
  * Generates HTML content for indicating that a task has been added to the board.
  * @returns {string} The HTML content for the task added message.
@@ -406,7 +398,6 @@ function addedTaskToBoardHtml() {
     </div>
   `;
 }
-
 
 /**
  * Generates HTML content for assigning a user with specified information.
@@ -427,7 +418,6 @@ function assignedToUserHtml(i, color, currentUser, initials) {
   `;
 }
 
-
 /**
  * Generates HTML content for assigning the current user with specified information.
  * @param {number} i - The index of the user.
@@ -447,7 +437,6 @@ function assignedToUserYouHtml(i, color, currentUser, initials) {
   `;
 }
 
-
 /**
  * Generates HTML content for rendering selected contacts with specified information for editing.
  * @param {number} i - The index of the task.
@@ -461,7 +450,6 @@ function renderSelectedContactsEditHtml(i, j, color, initials) {
     <div class="assinged-contact-overview" style="background-color:${color}" onclick="removeSelectedContact(${i}, ${j})">${initials}</div>
     `;
 }
-
 
 /**
  * Generates HTML content for displaying the task form for editing.
@@ -481,7 +469,6 @@ function showTaskFormEditHtml() {
   `;
 }
 
-
 /**
  * Generates HTML content for changing buttons for adding tasks during editing.
  * @param {number} i - The index of the task.
@@ -498,7 +485,6 @@ function changeButtonsAddTaskEditHtml(i) {
   `;
 }
 
-
 /**
  * Generates HTML content for rendering a contact profile in a board task.
  * @param {string} contact - The name or initials of the contact.
@@ -511,7 +497,6 @@ function renderContactsInBoardTaskHtml(contact, contactColor) {
   `;
 }
 
-
 /**
  * Generates HTML content for rendering additional contacts if there are more than four.
  * @param {number} additionalContactLength - The number of additional contacts beyond the fourth.
@@ -522,7 +507,6 @@ function renderIfMoreContactsThanFourHtml(additionalContactLength) {
     <div class="board-task-member-profile" style="background-color: #a8a8a8 !important">${additionalContactLength}</div>
   `;
 }
-
 
 /**
  * Generates HTML content for rendering additional contacts if there are more than four.

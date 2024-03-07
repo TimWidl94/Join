@@ -2,7 +2,7 @@
 
 .body-add-task {
   margin: 0;
-  min-height: 100vh;
+  min-height: 80vh;
 }
 #showSelectedCategory {
   font-size: 18px;
@@ -36,7 +36,7 @@
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
-  margin-top: 120px;
+  margin-top: 130px;
   padding-left: calc(232px + 50px);
   padding-right: 50px;
   overflow-x: hidden !important;
@@ -440,7 +440,7 @@
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
-  max-height: 150px;
+  min-height: 80px;
   overflow-y: auto;
   overflow-x: hidden;
   &-text {

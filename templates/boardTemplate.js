@@ -533,7 +533,7 @@ function moveBoxTasksHtml(boxId) {
   let moveContainerId = `'` + boxId + `'`;
   let containerId = boxId + 'Empty';
   return /*html*/ `
-<div class="board-task drag-area-highlight d-none" id="${containerId}"
+<div class="board-task drag-area-highlight" id="${containerId}"
    ondrop="moveTo(${moveContainerId})" 
    ondragover="allowDrop(event)" 
    ondragleave="removeHighlight(${moveContainerId})";>

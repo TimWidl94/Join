@@ -70,28 +70,28 @@
               To do
               <div onclick="openAddTaskPopup('toDo')" class="board-svg-container"></div>
             </div>
-            <div class="board drag-area" id="toDo" ondragover="highlight('toDo')"></div>
+            <div class="board drag-area" id="toDo" ondrop="moveTo('toDo')" ondragover="allowDrop(event)" ></div>
           </div>
           <div class="col-4 overflowYActive">
             <div class="board-title">
               In progress
               <div onclick="openAddTaskPopup('inProgress')" class="board-svg-container"></div>
             </div>
-            <div class="board drag-area" id="inProgress" ondragover="highlight('inProgress')"></div>
+            <div class="board drag-area" id="inProgress"  ondrop="moveTo('inProgress')" ondragover="allowDrop(event), highlight('inProgress')"></div>
           </div>
           <div class="col-4 overflowYActive">
             <div class="board-title">
               Await feedback
               <div onclick="openAddTaskPopup('awaitFeedback')" class="board-svg-container"></div>
             </div>
-            <div class="board drag-area" id="awaitFeedback" ondragover="highlight('awaitFeedback')"></div>
+            <div class="board drag-area" id="awaitFeedback"  ondrop="moveTo('awaitFeedback')" ondragover="allowDrop(event), highlight('awaitFeedback')"></div>
           </div>
           <div class="col-4 overflowYActive">
             <div class="board-title">
               Done
               <div onclick="openAddTaskPopup('done')" class="board-svg-container"></div>
             </div>
-            <div class="board drag-area" id="done" ondragover="highlight('done')"></div>
+            <div class="board drag-area" id="done"  ondrop="moveTo('done')" ondragover="allowDrop(event)"></div>
           </div>
         </div>
       </div>

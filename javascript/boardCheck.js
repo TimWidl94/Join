@@ -205,21 +205,31 @@ function openDropDownCategoryEdit() {
  * @param {string} id - The ID of the drop zone to highlight.
  */
 function highlight(id) {
-  let emptyId = id + 'Empty';
-  let dottedContainer = document.getElementById(emptyId);
-  if (tasks[currentDraggedElement]['currentState'] !== id) {
-    dottedContainer.classList.remove('d-none');
-  }
+ dottedContainer = true;
+ let moveContainerId = `'` + id + `'`;
+ let containerId = id + 'Empty';
+ let contentBox = document.getElementById(id);
+ let childContenBox = document.createElement("div")
+ childContenBox.innerHTML = `
+ <div class="board-task drag-area-highlight" id="${containerId}"
+    ondrop="moveTo(${moveContainerId})" 
+    ondragover="allowDrop(event)" 
+    ;>
+ </div>
+ `;
+ if(dottedContainer === true){
+ contentBox.appendChild(childContenBox);
+ dottedContainer = false;
 }
+
 
 /**
  * Remove highlight from a drop zone.
  * @param {string} id - The ID of the drop zone to remove highlight from.
  */
 function removeHighlight(id) {
-  document.getElementById(id).classList.remove('drag-area-highlight');
   let emptyId = id + 'Empty';
-  document.getElementById(emptyId).classList.add('d-none');
+  document.getElementById(emptyId).innerHTML = ``;
 }
 
 /**

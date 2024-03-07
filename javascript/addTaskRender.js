@@ -325,7 +325,7 @@ async function addFilteredAssignedContact(i, color, contactsNumber) {
  */
 function addSelectedContact(assignedDropdown, checkboxImage, userID, selectedContact, color) {
   const index = selectedContacts.findIndex((contact) => contact.name === selectedContact && contact.color === color);
-  if (!checkIfSelectedContactExist(selectedContact)) {
+  if (!checkIfSelectedContactExist(selectedContact, color)) {
     assignedDropdown.classList.toggle('addTask-selected');
     if (!selectedContacts.includes(selectedContact)) {
       if (index === -1) {
@@ -367,9 +367,9 @@ function backgroundForSelectedContact(divId) {
  * @param {string} selectedContact - The selected contact.
  * @returns {boolean} - Returns true if the selected contact already exists, otherwise false.
  */
-function checkIfSelectedContactExist(selectedContact) {
+function checkIfSelectedContactExist(selectedContact, color) {
   for (let i = 0; i < selectedContacts.length; i++) {
-    if (selectedContacts[i]['name'].includes(selectedContact)) {
+    if (selectedContacts[i]['name'].includes(selectedContact) && selectedContacts[i]['color'].includes(color)) {
       return true;
     }
   }

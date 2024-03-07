@@ -67,13 +67,6 @@ function addEditSubTask(id, idContainer) {
   if (subTaskInput.value.length == 0) {
     deleteSubTask(id, idContainer);
   }
-  // let button = document.getElementById('addEditSubTaskBtn');
-  // button.disabled = false;
-  // else {
-  //   console.log('subTaskInput.value = 0');
-  //   button.disabled = true;
-  // }
-
   renderGeneratedSubTasks(idContainer);
 }
 

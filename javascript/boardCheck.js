@@ -221,7 +221,7 @@ function highlight(id) {
  contentBox.appendChild(childContenBox);
  dottedContainer = false;
 }
-
+}
 
 /**
  * Remove highlight from a drop zone.

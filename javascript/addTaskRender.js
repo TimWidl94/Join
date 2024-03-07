@@ -63,10 +63,9 @@ function addEditSubTask(id, idContainer) {
   let subTaskInput = document.getElementById('editSubTaskInput');
 
   let nr = findSubtaskPosition(id);
-  console.log('subTaskInput.value', subTaskInput.value);
-  if (subTaskInput.value > 0) {
-    console.log('subTaskInput.value > 0');
-    subtasks[nr]['subTaskInput'] = subTaskInput.value;
+  subtasks[nr]['subTaskInput'] = subTaskInput.value;
+  if (subTaskInput.value.length == 0) {
+    deleteSubTask(id, idContainer);
   }
   // let button = document.getElementById('addEditSubTaskBtn');
   // button.disabled = false;

@@ -275,7 +275,7 @@ async function renderToDoTasks() {
       await taskProgressBar(i);
     }
   }
-  // contentBoxToDo.innerHTML += moveBoxTasksHtml('toDo');
+  contentBoxToDo.innerHTML += moveBoxTasksHtml('toDo');
 }
 
 
@@ -295,7 +295,7 @@ async function renderInProgressTasks() {
       await taskProgressBar(i);
     }
   }
-  // contentBoxToDo.innerHTML += moveBoxTasksHtml('inProgress');
+  contentBoxToDo.innerHTML += moveBoxTasksHtml('inProgress');
 }
 
 
@@ -315,7 +315,7 @@ async function renderAwaitFeedbackTasks() {
       await taskProgressBar(i);
     }
   }
-  // contentBoxToDo.innerHTML += moveBoxTasksHtml('awaitFeedback');
+  contentBoxToDo.innerHTML += moveBoxTasksHtml('awaitFeedback');
 }
 
 
@@ -335,7 +335,7 @@ async function renderDoneTasks() {
       await taskProgressBar(i);
     }
   }
-  // contentBoxToDo.innerHTML += moveBoxTasksHtml('done');
+  contentBoxToDo.innerHTML += moveBoxTasksHtml('done');
 }
 
 

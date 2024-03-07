@@ -516,11 +516,13 @@ function renderIfMoreContactsThanFourHtml(additionalContactLength) {
 function moveBoxTasksHtml(boxId) {
   let moveContainerId = `'` + boxId + `'`;
   let containerId = boxId + 'Empty';
+  let removeContainerId = `'` + containerId + `'`;
   return /*html*/ `
-<div class="board-task drag-area-highlight" id="${containerId}"
-   ondrop="moveTo(${moveContainerId})" 
-   ondragover="allowDrop(event)" 
-   ondragleave="removeHighlight(${moveContainerId})";>
-</div>
+ <div class="board-task drag-area-highlight d-none" id="${containerId}"
+    ondrop="moveTo(${moveContainerId})" 
+    ondragover="allowDrop(event)" 
+    ondragleave="removeHighlight(${moveContainerId})";
+    ;>
+ </div>
 `;
 }

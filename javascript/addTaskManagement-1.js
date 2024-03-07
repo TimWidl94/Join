@@ -26,7 +26,6 @@ async function init() {
   changePrioToMedium('mediumContainer', 'mediumImg');
   setMinDateToday('myDateInput');
   await setNumberOnContacts();
-  console.log('addTask reloaded');
 }
 
 /**

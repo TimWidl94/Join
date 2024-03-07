@@ -137,9 +137,8 @@ async function taskProgressBar(i) {
   if (width > 0) {
     progressBar.style.width = `${width}%`;
   }
-  if(allSubtasks == 0) {
-    subtaskClearIfEmpty.innerHTML="";
-    console.log(subtaskClearIfEmpty);
+  if (allSubtasks == 0) {
+    subtaskClearIfEmpty.innerHTML = '';
   }
 }
 

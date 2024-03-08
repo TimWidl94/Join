@@ -205,10 +205,12 @@ function openDropDownCategoryEdit() {
  * @param {string} id - The ID of the drop zone to highlight.
  */
 function highlight(id) {
+  if(id !== 'toDo'){
+    debugger;
   if(elementIsDragging === true){
  let containerId = id + 'Empty';
  let container = document.getElementById(containerId);
- container.classList.remove('d-none')
+ container.classList.remove('d-none')}
 }
 }
 

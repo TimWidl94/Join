@@ -2550,7 +2550,7 @@ form {
 .drag-area-highlight {
   border: 3px dotted grey;
   width: 170px !important;
-  height: 180px;
+  min-height: 180px;
   background: #f6f7f8 !important;
   z-index: 1; }
 

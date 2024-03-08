@@ -62,7 +62,7 @@ function checkTaskAreaDisplayEmpty() {
     let dragArea = dragAreas[i];
     let category = categories[i];
 
-    if (dragArea.children.length < 1) {
+    if (dragArea.children.length < 2) {
       dragArea.innerHTML = /*html*/ `<div class="drag-area-empty">No task in "${category}"</div>`;
     }
   }
@@ -205,24 +205,26 @@ function openDropDownCategoryEdit() {
  * @param {string} id - The ID of the drop zone to highlight.
  */
 function highlight(id) {
-  if(id !== 'toDo'){
-    debugger;
-  if(elementIsDragging === true){
- let containerId = id + 'Empty';
- let container = document.getElementById(containerId);
+  let containerId = id + 'Empty';
+  let container = document.getElementById(containerId);
+  if(elementIsDragging === true && container.classList.contains('d-none')){
  container.classList.remove('d-none')}
 }
-}
+
 
 /**
  * Remove highlight from a drop zone.
  * @param {string} id - The ID of the drop zone to remove highlight from.
  */
-function removeHighlight(id) {
+function removeHighlight(id, event) {
+  if (event.currentTarget.contains(event.relatedTarget)) {    
+    return;
+  }
+  if(id !== 'awaitFeedback'){
   let emptyId = id + 'Empty';
   let container = document.getElementById(emptyId);
   
-  container.classList.add('d-none');
+  container.classList.add('d-none');}
 }
 
 /**

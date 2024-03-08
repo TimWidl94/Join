@@ -139,8 +139,6 @@
     opacity: 0; } }
 
 @media (max-width: 600px) {
-  .logo-bg-animation {
-    animation: none; }
   #logo-white {
     display: none; }
   .login-mobile-position {

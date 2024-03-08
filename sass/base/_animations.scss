@@ -107,6 +107,8 @@
 }
 
 @keyframes fadeOutLogo {
+
+
   0% {
     opacity: 1;
      background-color: $primary-color;
@@ -182,6 +184,9 @@
 
 
 @media(max-width: 600px) {
+  .logo-bg-animation {
+    animation: none;
+  }
 
   #logo-white {
     display: none;

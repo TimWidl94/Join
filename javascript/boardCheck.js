@@ -205,10 +205,11 @@ function openDropDownCategoryEdit() {
  * @param {string} id - The ID of the drop zone to highlight.
  */
 function highlight(id) {
+  if(elementIsDragging === true){
  let containerId = id + 'Empty';
  let container = document.getElementById(containerId);
- if(id != tasks[currentDraggedElement]["currentState"])
- container.classList.remove('d-none');
+ container.classList.remove('d-none')
+}
 }
 
 /**
@@ -218,6 +219,7 @@ function highlight(id) {
 function removeHighlight(id) {
   let emptyId = id + 'Empty';
   let container = document.getElementById(emptyId);
+  
   container.classList.add('d-none');
 }
 
@@ -249,6 +251,7 @@ async function moveTo(category) {
   tasks[currentDraggedElement]['currentState'] = category;
   // removeHighlight(category);
   await updateHTML();
+  elementIsDragging = false;
 }
 
 /**
@@ -257,6 +260,7 @@ async function moveTo(category) {
  */
 function startDragging(id) {
   currentDraggedElement = id;
+  elementIsDragging = true;
 }
 
 /**

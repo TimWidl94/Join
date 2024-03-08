@@ -1,7 +1,7 @@
 let currentDraggedElement;
 let selectedPrioPopupEdit;
 let subTaskCounter = 0;
-let dottedContainer = false;
+let elementIsDragging = false;
 
 /**
  * Initialize the board by loading data, updating HTML elements, and setting initial user settings.

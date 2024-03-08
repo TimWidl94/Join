@@ -54,16 +54,17 @@ function saveAddedSubtasks(i) {
 /**
  * Check if a task area is empty and display a message if it is.
  */
-function checkTaskAreaDisplayEmpty() {
+function checkTaskAreaDisplayEmpty(boxId) {
   let dragAreas = document.getElementsByClassName('drag-area');
   let categories = ['To do', 'In progress', 'Await feedback', 'Done'];
-
+  let containerId = boxId + 'Empty';
   for (let i = 0; i < dragAreas.length; i++) {
     let dragArea = dragAreas[i];
     let category = categories[i];
 
     if (dragArea.children.length < 2) {
-      dragArea.innerHTML = /*html*/ `<div class="drag-area-empty">No task in "${category}"</div>`;
+      dragArea.innerHTML += /*html*/ `<div class="drag-area-empty">No task in "${category}"</div>`;
+      dragArea.innerHTML += /*html*/ ` <div class="board-task drag-area-highlight d-none" id="${containerId}";></div>`;
     }
   }
 }

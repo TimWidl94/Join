@@ -342,7 +342,7 @@
   }
 
   .summary-padding{
-    width: 100%;
+    width: calc(100% - 71px);
     margin-left: 71px;
   }
   .row-header {

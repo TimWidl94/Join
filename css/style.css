@@ -3348,9 +3348,11 @@ form {
     gap: 12px; } }
 
 @media (max-width: 400px) {
-  .aTPopup,
-  .atPopupEdit {
+  .aTPopup {
     margin-left: 12px;
+    margin-right: 12px; }
+  .atPopupEdit {
+    margin-left: 0;
     margin-right: 12px; }
   .aTPopupH1 {
     font-size: 40px;

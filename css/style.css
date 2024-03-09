@@ -3681,7 +3681,9 @@ footer {
   .checkboxBox {
     padding: 0px 179px 0px 39px; }
   .rememberMeFont {
-    width: 142px; } }
+    width: 142px; }
+  .passwordDontMatch {
+    padding-left: 30px; } }
 
 @media (max-height: 800px) {
   .logInOverlayBox {

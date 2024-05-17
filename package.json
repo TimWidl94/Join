@@ -5,7 +5,7 @@
   "scripts": {
     "compile:sass": "node-sass sass/main.scss css/style.css -w"
   },
-  "author": "Tim Widl, Christian Grund, Verena Schranz",
+  "author": "Christian Grund",
   "license": "ISC",
   "devDependencies": {
     "node-sass": "^9.0.0"

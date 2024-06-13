@@ -18,21 +18,15 @@ function legalNoticeH1Html() {
     `;
 }
 
-
 function legalNoticeHtmlMain() {
   return /*html*/ `
       <h2 class="h2-text-sites">Imprint</h2>
-      <ul>
-        <li>Verena Schranz</li>
-        <li>Tim Widl</li>
-        <li>Christian Grund</li>
-        <br />
-        <p class="p-text-sites" class="p-text-sites">Musterstraße 01 <br /> 00000 Musterstadt</p>
-      </ul>
+      <p class="p-text-sites">Christian Grund<br>Fritz-Tröndle-Str. 6a<br>77704 Oberkirch</p>
+      
       <h2 class="h2-text-sites">Exploring the Board</h2>
       <p class="p-text-sites">
         Email:
-        <a href="mailto:Join-Gruppe-9@mail.de"><span class="span-blue">Join-Gruppe-9@mail.de</span></a>
+        <a href="mailto:christian.grund@outlook.de"><span class="span-blue">christian.grund@outlook.de</span></a>
       </p>
       <h2 class="h2-text-sites">Acceptance of terms</h2>
       <p class="p-text-sites">
@@ -88,15 +82,15 @@ function legalNoticeHtmlMain() {
       </p>
       <h2 class="h2-text-sites">Indemnity</h2>
       <p class="p-text-sites">
-        You agree to indemnify, defend and hold harmless us, the listed
+        You agree to indemnify, defend and hold harmless me, the listed
         students, the <span class="span-blue">Developer Akademie</span>, and our
         affiliates, partners, officers, directors, agents, and employees, from
         and against any claim, demand, loss, damage, cost, or liability
         (including reasonable legal fees) arising out of or relating to your use
         of <span class="span-blue">Join</span> and/or your breach of this Legal
         Notice. <br /><br />
-        For any questions or notices, please contact us at
-        <a href="mailto:Join-Gruppe-9@mail.de"><span class="span-blue">Join-Gruppe-9@mail.de</span></a>.
+        For any questions or notices, please contact me at
+        <a href="mailto:christian.grund@outlook.de"><span class="span-blue">christian.grund@outlook.de</span></a>.
         <br /><br />
         Date: February 1, 2024
       </p>
@@ -181,7 +175,7 @@ function helpHtmlMain() {
         >Once a task is completed, you can either move it to the "Done" list or delete it. Deleting a card will
         permanently remove it from the board. Please exercise caution when deleting cards, as this action is
         irreversible. Remember that using <span class="span-blue">Join</span> effectively requires consistent updates from you and your team to ensure
-        the board reflects the current state of your project. Have more questions about <span class="span-blue">Join</span>? Feel free to contact us at
+        the board reflects the current state of your project. Have more questions about <span class="span-blue">Join</span>? Feel free to contact me at
         [Your Contact Email]. We're here to help you! Enjoy using <span class="span-blue">Join</span>!</p
       >
   `;
@@ -326,7 +320,7 @@ function privacyPolicyHtmlMain() {
     <h3>Types of Data Collected</h3>
     <h4>Personal Data</h4>
     <p class="p-text-sites">
-      While using Our Service, We may ask You to provide Us with certain
+      While using Our Service, We may ask You to provide me with certain
       personally identifiable information that can be used to contact or
       identify You. Personally identifiable information may include, but is
       not limited to:
@@ -414,7 +408,7 @@ function privacyPolicyHtmlMain() {
       <li>
         <p class="p-text-sites"><strong>Necessary / Essential Cookies</strong></p>
         <p class="p-text-sites">Type: Session Cookies</p>
-        <p class="p-text-sites">Administered by: Us</p>
+        <p class="p-text-sites">Administered by: me</p>
         <p class="p-text-sites">
           Purpose: These Cookies are essential to provide You with services
           available through the Website and to enable You to use some of its
@@ -427,7 +421,7 @@ function privacyPolicyHtmlMain() {
       <li>
         <p class="p-text-sites"><strong>Cookies Policy / Notice Acceptance Cookies</strong></p>
         <p class="p-text-sites">Type: Persistent Cookies</p>
-        <p class="p-text-sites">Administered by: Us</p>
+        <p class="p-text-sites">Administered by: Me</p>
         <p class="p-text-sites">
           Purpose: These Cookies identify if users have accepted the use of
           cookies on the Website.
@@ -436,9 +430,9 @@ function privacyPolicyHtmlMain() {
       <li>
         <p class="p-text-sites"><strong>Functionality Cookies</strong></p>
         <p class="p-text-sites">Type: Persistent Cookies</p>
-        <p class="p-text-sites">Administered by: Us</p>
+        <p class="p-text-sites">Administered by: Me</p>
         <p class="p-text-sites">
-          Purpose: These Cookies allow us to remember choices You make when
+          Purpose: These Cookies allow me to remember choices You make when
           You use the Website, such as remembering your login details or
           language preference. The purpose of these Cookies is to provide You
           with a more personal experience and to avoid You having to re-enter
@@ -473,7 +467,7 @@ function privacyPolicyHtmlMain() {
           <strong>For the performance of a contract:</strong> the development,
           compliance and undertaking of the purchase contract for the
           products, items or services You have purchased or of any other
-          contract with Us through the Service.
+          contract with Me through the Service.
         </p>
       </li>
       <li>
@@ -498,7 +492,7 @@ function privacyPolicyHtmlMain() {
       <li>
         <p class="p-text-sites">
           <strong>To manage Your requests:</strong> To attend and manage Your
-          requests to Us.
+          requests to Me.
         </p>
       </li>
       <li>
@@ -508,7 +502,7 @@ function privacyPolicyHtmlMain() {
           reorganization, dissolution, or other sale or transfer of some or
           all of Our assets, whether as a going concern or as part of
           bankruptcy, liquidation, or similar proceeding, in which Personal
-          Data held by Us about our Service users is among the assets
+          Data held by Me about our Service users is among the assets
           transferred.
         </p>
       </li>
@@ -540,7 +534,7 @@ function privacyPolicyHtmlMain() {
         Our affiliates, in which case we will require those affiliates to
         honor this Privacy Policy. Affiliates include Our parent company and
         any other subsidiaries, joint venture partners or other companies that
-        We control or that are under common control with Us.
+        We control or that are under common control with Me.
       </li>
       <li>
         <strong>With business partners:</strong> We may share Your information
@@ -607,8 +601,8 @@ function privacyPolicyHtmlMain() {
       You may update, amend, or delete Your information at any time by signing
       in to Your Account, if you have one, and visiting the account settings
       section that allows you to manage Your personal information. You may
-      also contact Us to request access to, correct, or delete any personal
-      information that You have provided to Us.
+      also contact Me to request access to, correct, or delete any personal
+      information that You have provided to Me.
     </p>
     <p class="p-text-sites">
       Please note, however, that We may need to retain certain information
@@ -647,7 +641,7 @@ function privacyPolicyHtmlMain() {
     </ul>
     <h3>Security of Your Personal Data</h3>
     <p class="p-text-sites">
-      The security of Your Personal Data is important to Us, but remember that
+      The security of Your Personal Data is important to Me, but remember that
       no method of transmission over the Internet, or method of electronic
       storage is 100% secure. While We strive to use commercially acceptable
       means to protect Your Personal Data, We cannot guarantee its absolute
@@ -658,7 +652,7 @@ function privacyPolicyHtmlMain() {
       Our Service does not address anyone under the age of 13. We do not
       knowingly collect personally identifiable information from anyone under
       the age of 13. If You are a parent or guardian and You are aware that
-      Your child has provided Us with Personal Data, please contact Us. If We
+      Your child has provided Me with Personal Data, please contact Me. If We
       become aware that We have collected Personal Data from anyone under the
       age of 13 without verification of parental consent, We take steps to
       remove that information from Our servers.
@@ -672,7 +666,7 @@ function privacyPolicyHtmlMain() {
     <h2 class="h2-text-sites">Links to Other Websites</h2>
     <p class="p-text-sites">
       Our Service may contain links to other websites that are not operated by
-      Us. If You click on a third party link, You will be directed to that
+      Me. If You click on a third party link, You will be directed to that
       third party's site. We strongly advise You to review the Privacy Policy
       of every site You visit.
     </p>
@@ -695,13 +689,11 @@ function privacyPolicyHtmlMain() {
       changes. Changes to this Privacy Policy are effective when they are
       posted on this page.
     </p>
-    <h2 class="h2-text-sites">Contact Us</h2>
+    <h2 class="h2-text-sites">Contact me</h2>
     <p class="p-text-sites">
-      If you have any questions about this Privacy Policy, You can contact us:
+      If you have any questions about this Privacy Policy, You can contact me:
     </p>
     <ul>
-      <li>By email: TimNowak195@gmail.com</li>
-      <li>By email: info@verenaschranz.de</li>
       <li>By email: christian.grund@outlook.de</li>
     </ul>
   `;

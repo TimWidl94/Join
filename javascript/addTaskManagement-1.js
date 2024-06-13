@@ -173,12 +173,12 @@ function changePrioToMedium(idContainer, idImg) {
   let img = document.getElementById(idImg);
 
   prioContainer.classList.add('priorityMediumActive');
-  img.src = './assets/img/AddTask/mediumPrioSign.svg';
+  img.src = 'assets/img/addTask/mediumPrioSign.svg';
   selectedPrio = 'medium';
   document.getElementById('urgentContainer').classList.remove('priorityUrgentActive');
-  document.getElementById('urgentImg').src = './assets/img/AddTask/ArrowUpPrioSign.svg';
+  document.getElementById('urgentImg').src = 'assets/img/addTask/arrowUpPrioSign.svg';
   document.getElementById('lowContainer').classList.remove('priorityLowActive');
-  document.getElementById('lowImg').src = './assets/img/AddTask/ArrowDownPrioSign.svg';
+  document.getElementById('lowImg').src = 'assets/img/addTask/arrowDownPrioSign.svg';
 }
 
 /**
@@ -192,12 +192,12 @@ function changePrioToUrgent(idContainer, idImg) {
   let img = document.getElementById(idImg);
 
   prioContainer.classList.add('priorityUrgentActive');
-  img.src = './assets/img/AddTask/urgentPrioActive.svg';
+  img.src = 'assets/img/addTask/urgentPrioActive.svg';
   selectedPrio = 'urgent';
   document.getElementById('mediumContainer').classList.remove('priorityMediumActive');
-  document.getElementById('mediumImg').src = './assets/img/AddTask/mediumPrioSignInactive.svg';
+  document.getElementById('mediumImg').src = 'assets/img/addTask/mediumPrioSignInactive.svg';
   document.getElementById('lowContainer').classList.remove('priorityLowActive');
-  document.getElementById('lowImg').src = './assets/img/AddTask/ArrowDownPrioSign.svg';
+  document.getElementById('lowImg').src = 'assets/img/addTask/arrowDownPrioSign.svg';
 }
 
 /**
@@ -210,12 +210,12 @@ function changePrioToLow(idContainer, idImg) {
   let prioContainer = document.getElementById(idContainer);
   let img = document.getElementById(idImg);
   prioContainer.classList.add('priorityLowActive');
-  img.src = './assets/img/AddTask/lowPrioActive.svg';
+  img.src = 'assets/img/addTask/lowPrioActive.svg';
   selectedPrio = 'low';
   document.getElementById('urgentContainer').classList.remove('priorityUrgentActive');
-  document.getElementById('urgentImg').src = './assets/img/AddTask/ArrowUpPrioSign.svg';
+  document.getElementById('urgentImg').src = 'assets/img/addTask/arrowUpPrioSign.svg';
   document.getElementById('mediumContainer').classList.remove('priorityMediumActive');
-  document.getElementById('mediumImg').src = './assets/img/AddTask/mediumPrioSignInactive.svg';
+  document.getElementById('mediumImg').src = 'assets/img/addTask/mediumPrioSignInactive.svg';
 }
 
 /**
@@ -337,7 +337,7 @@ function removeSelectedContact(assignedDropdown, checkboxImage, userID, selected
     if (index !== -1) {
       selectedContacts.splice(index, 1);
     }
-    checkboxImage.src = './assets/img/icons/checkBox.svg';
+    checkboxImage.src = 'assets/img/icons/checkBox.svg';
     userID.classList.remove('selected-profile-active-item');
     assignedDropdown.classList.toggle('addTask-selected');
   }

@@ -5,7 +5,7 @@
  */
 function hoverTodo(element) {
   let img = document.getElementById(element);
-  img.setAttribute('src', '../assets/img/Summary/pencilWhiteDesktop.svg');
+  img.setAttribute('src', '../assets/img/summary/pencilWhiteDesktop.svg');
 }
 
 
@@ -16,7 +16,7 @@ function hoverTodo(element) {
  */
 function unhoverTodo(element) {
   let img = document.getElementById(element);
-  img.setAttribute('src', '../assets/img/Summary/pencilBlackDesktop.svg');
+  img.setAttribute('src', '../assets/img/summary/pencilBlackDesktop.svg');
 }
 
 
@@ -27,7 +27,7 @@ function unhoverTodo(element) {
  */
 function hoverDone(element) {
   let img = document.getElementById(element);
-  img.setAttribute('src', '../assets/img/Summary/hookButtonWhiteDesktop.svg');
+  img.setAttribute('src', '../assets/img/summary/hookButtonWhiteDesktop.svg');
 }
 
 
@@ -38,7 +38,7 @@ function hoverDone(element) {
  */
 function unhoverDone(element) {
   let img = document.getElementById(element);
-  img.setAttribute('src', '../assets/img/Summary/hookButtonBlackDesktop.svg');
+  img.setAttribute('src', '../assets/img/summary/hookButtonBlackDesktop.svg');
 }
 
 
@@ -64,7 +64,7 @@ function summaryHtml() {
               <div class="sum-col-6">
                 <a href="/board.html">
                   <div class="summary-todo summary-gap-default" onmouseover="hoverTodo('todoImg');" onmouseout="unhoverTodo('todoImg');">
-                  <img class="boardImg" src="../assets/img/Summary/pencilBlackDesktop.svg" alt="" id="todoImg"  />
+                  <img class="boardImg" src="../assets/img/summary/pencilBlackDesktop.svg" alt="" id="todoImg"  />
                   <div class="summary-flex-column">
                     <div class="summary-todo-counter">${todoTasks}</div>
                     <div
@@ -78,7 +78,7 @@ function summaryHtml() {
               <div class="sum-col-6">
                 <a href="/board.html">
                 <div class="summary-todo summary-gap-default" onmouseover="hoverDone('doneImg');" onmouseout="unhoverDone('doneImg');">
-                  <img class="boardImg" src="../assets/img/Summary/hookButtonBlackDesktop.svg" alt="" id="doneImg"/>
+                  <img class="boardImg" src="../assets/img/summary/hookButtonBlackDesktop.svg" alt="" id="doneImg"/>
                   <div class="summary-flex-column">
                     <div class="summary-todo-counter">${doneTasks}</div>
                     <div
@@ -97,7 +97,7 @@ function summaryHtml() {
               <div class="summary-summarySmallContainerMiddle summary-gap-urgent">
                 <div class="sum-col-6">
                   <div class="summary-urgent-wrapper">
-                    <img class="boardImg" src="./assets/img/Summary/urgent-icon.svg" alt="" />
+                    <img class="boardImg" src="./assets/img/summary/urgent-icon.svg" alt="" />
                     <div class="summary-flex-column">
                       <div class="summary-todo-counter">${urgentTasks}</div>
                       <div

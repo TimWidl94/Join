@@ -166,15 +166,15 @@ function getContactColor(selectedContactName) {
  */
 function setPrioImg(i) {
   if (tasks[i]['prio'] == 'low') {
-    let img = './assets/img/AddTask/ArrowDownPrioSign.svg';
+    let img = 'assets/img/addTask/arrowDownPrioSign.svg';
     return img;
   }
   if (tasks[i]['prio'] == 'medium') {
-    let img = './assets/img/AddTask/mediumPrioSignInactive.svg';
+    let img = 'assets/img/addTask/mediumPrioSignInactive.svg';
     return img;
   }
   if (tasks[i]['prio'] == 'urgent') {
-    let img = './assets/img/AddTask/ArrowUpPrioSign.svg';
+    let img = 'assets/img/addTask/arrowUpPrioSign.svg';
     return img;
   }
 }

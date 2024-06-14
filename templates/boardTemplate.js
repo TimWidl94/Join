@@ -45,7 +45,7 @@ function subTasksValueHtml(id, i) {
       <div class="d-hover" >
         <img class="subtask-div-btn" onclick="editSubTask(${id})" src="./assets/img/icons/edit.svg" alt="">
         <span class="subTaskInputImg-vertical-1"></span>
-        <img class="subtask-div-btn" onclick="deleteSubTask(${id}, 'subTaskContainer')" src="./assets/img/icons/delete.svg" alt="">
+        <img class="subtask-div-btn" onclick="deleteSubTask(${id}, 'subTaskContainerEdit')" src="./assets/img/icons/delete.svg" alt="">
       </div>
     </li>`;
 }
@@ -60,7 +60,7 @@ function subTaskInputEditHtml(i) {
   <span class="aTPopupSpan">Subtasks</span>
           <div class="inputFieldBox" id="inputFieldBoxEdit">
             <input id="subTaskInputEdit" type="text" placeholder="Add new subtask" onclick="changeButtonsAddTaskEdit('inputFieldBoxEdit', ${i})" />
-            <img onclick="addSubTaskEdit('subTaskInputEdit', 'subTaskContainer', ${i})" class="inputImgPlus" src="assets/img/addTask/plus.svg" alt="Add Icon" />
+            <img onclick="addSubTaskEdit('subTaskInputEdit', 'subTaskContainerEdit', ${i})" class="inputImgPlus" src="assets/img/addTask/plus.svg" alt="Add Icon" />
           </div>
           <div id="subTaskErrorEdit" class="subtask-div-error"></div>
   `;
@@ -90,7 +90,7 @@ function subTasksValueEditHtml(id, subTaskInput, j) {
       <div class="d-hover" >
         <img class="subtask-div-btn" onclick="editSubTask(${id})" src="./assets/img/icons/edit.svg" alt="">
         <span class="subTaskInputImg-vertical-1"></span>
-        <img class="subtask-div-btn" onclick="deleteSubTaskEdit(${id}, 'subTaskContainer', '${subTaskInput}')" src="./assets/img/icons/delete.svg" alt="">
+        <img class="subtask-div-btn" onclick="deleteSubTaskEdit(${id}, 'subTaskContainerEdit', '${subTaskInput}')" src="./assets/img/icons/delete.svg" alt="">
       </div>
     </li>`;
 }
@@ -236,7 +236,7 @@ function generateTaskPopupHTML(i, img, date) {
               <div id="subtasksEdit">
               </div>
 
-              <ul id="subTaskContainer" class="subtask-div ulContainer" >
+              <ul id="subTaskContainerEdit" class="subtask-div ulContainer" >
               </ul> 
 
           </div>
@@ -277,7 +277,7 @@ function subTasksValueHtml(id, i) {
     <li id="${id}" class="subtask-div-list" onclick="doNotCLose(event)" ondblclick="editSubTask(${id})"><div class="subtask-div-text">${subtasks[i]['subTaskInput']}</div>
       <div class="subtask-div-list-hover-items">
         <img class="subtask-div-btn" onclick="editSubTask(${id})" src="./assets/img/icons/edit.svg" alt=""><span class="subTaskInputImg-vertical-added"></span>
-        <img class="subtask-div-btn" onclick="deleteSubTask(${id}, 'subTaskContainer')" src="./assets/img/icons/delete.svg" alt="">
+        <img class="subtask-div-btn" onclick="deleteSubTask(${id}, 'subTaskContainerEdit')" src="./assets/img/icons/delete.svg" alt="">
       </div>
     </li>`;
 }
@@ -445,9 +445,9 @@ function assignedToUserYouHtml(i, color, currentUser, initials) {
  * @param {string} initials - The initials of the contact.
  * @returns {string} The HTML content for rendering the selected contact for editing.
  */
-function renderSelectedContactsEditHtml(i, j, color, initials) {
+function renderSelectedContactsEditHtml(contactsIndex, color, initials) {
   return /*html*/ `
-    <div class="assinged-contact-overview" style="background-color:${color}" onclick="removeSelectedContact(${i}, ${j})">${initials}</div>
+    <div class="assinged-contact-overview" style="background-color:${color}" onclick="removeSelectedContact(${selectedContacts[contactsIndex].selectedContactsId})">${initials}</div>
     `;
 }
 

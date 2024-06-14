@@ -332,13 +332,14 @@ function addSelectedContact(assignedDropdown, checkboxImage, userID, selectedCon
         selectedContacts.push({
           name: selectedContact,
           color: color,
+          selectedContactsId: selectedContacts.length,
         });
       }
     }
     checkboxImage.src = './assets/img/icons/check_button-white.svg';
     userID.classList.add('selected-profile-active-item');
   } else {
-    removeSelectedContact(assignedDropdown, checkboxImage, userID, selectedContact, color);
+    removeSelectedContact(selectedContacts[index].selectedContactsId);
   }
 }
 
@@ -380,7 +381,7 @@ function checkIfSelectedContactExist(selectedContact, color) {
  *
  * @param {number} i - The index of the currently selected contact.
  */
-function renderSelectedContacts(i) {
+function renderSelectedContacts() {
   let content = document.getElementById('assignedAddedContact');
   content.innerHTML = '';
 
@@ -389,6 +390,6 @@ function renderSelectedContacts(i) {
     let initials = getInitials(selectedContacts[j]['name']);
     let color = contact['color'];
 
-    content.innerHTML += renderSelectedContactsHtml(i, j, initials, color);
+    content.innerHTML += renderSelectedContactsHtml(j, initials, color);
   }
 }

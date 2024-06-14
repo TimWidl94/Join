@@ -279,15 +279,14 @@ function subtasksAfterDeletionHtml(i, nr, idContainer) {
 
 /**
  * Generates HTML for rendering selected contacts.
- * @param {number} i - The index of the contact.
- * @param {number} j - The index of the selected contact.
+ * @param {number} contactsIndex - The index of the contact.
  * @param {string} initials - The initials of the contact.
  * @param {string} color - The color of the contact.
  * @returns {string} The HTML content for rendering selected contacts.
  */
-function renderSelectedContactsHtml(i, j, initials, color) {
+function renderSelectedContactsHtml(contactsIndex, initials, color) {
   return /*html*/ `
-    <div class="assinged-contact-overview" style="background-color:${color}" onclick="removeSelectedContact(${i}, ${j})">${initials}</div>
+    <div class="assinged-contact-overview" style="background-color:${color}" onclick="removeSelectedContact(${selectedContacts[contactsIndex].selectedContactsId})">${initials}</div>
   `;
 }
 

@@ -404,7 +404,7 @@ function changeButtonsAddTaskEdit(id, i) {
  */
 function renderEditTask(i) {
   renderSubTasksInput(i);
-  renderSubTasksEditable(i, 'subTaskContainer');
+  renderSubTasksEditable(i, 'subTaskContainerEdit');
   showTaskFormEdit('assignedToEdit');
 }
 

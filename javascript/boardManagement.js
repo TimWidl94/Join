@@ -254,6 +254,7 @@ function findSubtaskPositionEdit(id) {
 async function editTask(i) {
   let popupInfo = document.getElementById('aTPopup');
   let popupEdit = document.getElementById('aTPopupEdit');
+  document.getElementById('addTaskPopupWrapper').remove();
 
   popupEdit.classList.remove('d-none');
   popupInfo.classList.add('d-none');
@@ -348,7 +349,7 @@ function renderSelectedContactsEdit(i) {
     let contact = selectedContacts[j];
     let initials = getInitials(selectedContacts[j]['name']);
     let color = contact['color'];
-    content.innerHTML += renderSelectedContactsEditHtml(i, j, color, initials);
+    content.innerHTML += renderSelectedContactsEditHtml(j, color, initials);
   }
 }
 
@@ -370,7 +371,7 @@ function populateAssignedDropdown() {
     let currentUser = contacts[i]['name'];
     let initials = getInitials(currentUser);
     let color = contacts[i]['color'];
-    let assignedDropdown = document.getElementById('assignedDropdown');
+    let assignedDropdownEdit = document.getElementById('assignedDropdown');
     let username = checkForUserName();
     let contactNumber = contacts[i]['nr'];
 
@@ -381,3 +382,4 @@ function populateAssignedDropdown() {
     }
   }
 }
+

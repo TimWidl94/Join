@@ -123,6 +123,7 @@ async function closeTaskPopup() {
 document.addEventListener('DOMContentLoaded', function () {
   document.body.addEventListener('click', function (event) {
     let addTaskPopup = document.getElementById('addTaskPopupWrapper');
+    if(addTaskPopup){
     if (!addTaskPopup.classList.contains('d-none')) {
       let dropdownClose = document.getElementById('dropdownClose');
       if (!dropdownClose.contains(event.target)) {
@@ -130,7 +131,7 @@ document.addEventListener('DOMContentLoaded', function () {
         closeTaskPopup();
       }
     }
-  });
+  }});
 });
 
 /**
@@ -230,7 +231,6 @@ function findTaskEdit(subTaskInput) {
       }
     }
   }
-  console.error('Task not found!');
   return -1;
 }
 
@@ -254,7 +254,9 @@ function findSubtaskPositionEdit(id) {
 async function editTask(i) {
   let popupInfo = document.getElementById('aTPopup');
   let popupEdit = document.getElementById('aTPopupEdit');
-  document.getElementById('addTaskPopupWrapper').remove();
+  let addTaskPopUpForm = document.getElementById('addTaskPopUpForm');
+  if(addTaskPopUpForm){
+  document.getElementById('addTaskPopUpForm').remove();};
 
   popupEdit.classList.remove('d-none');
   popupInfo.classList.add('d-none');

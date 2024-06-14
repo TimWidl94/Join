@@ -284,7 +284,7 @@ function subTasksValueHtml(id, i) {
 
 function addTaskPopUpHtml(column) {
   return /*html*/ `
-    <form onsubmit="addTaskPopUp('myDateInputPopup', '${column}'); return false" class="formAddTask" id="addTaskPopUp">
+    <form onsubmit="addTaskPopUp('myDateInputPopup', '${column}'); return false" class="formAddTask" id="addTaskPopUpForm">
     <div class="container-left-right-wrapper">
       <section class="container-left-popup">
       

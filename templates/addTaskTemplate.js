@@ -29,7 +29,7 @@ function addTaskHtml() {
           <p>Due Date<span class="span-required">*</span></p>
           <div id="due-date">
             <label for="myDateInput"></label>
-            <input id="myDateInput" type="date" required>
+            <input id="myDateInput" type="date" required oninput="checkIfFormIsFilled('myDateInput')">
           </div>
           <div class="priority">
             <p>Prio</p>
@@ -286,7 +286,7 @@ function subtasksAfterDeletionHtml(i, nr, idContainer) {
  */
 function renderSelectedContactsHtml(contactsIndex, initials, color) {
   return /*html*/ `
-    <div class="assinged-contact-overview" style="background-color:${color}" onclick="removeSelectedContact(${selectedContacts[contactsIndex].selectedContactsId})">${initials}</div>
+    <div class="assinged-contact-overview" style="background-color:${color}">${initials}</div>
   `;
 }
 
